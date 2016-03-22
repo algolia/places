@@ -1,0 +1,8 @@
+.DS_Store
+coverage/
+node_modules/
+dist/
+npm-debug.log*
+docs/_site
+docs/.sass-cache/
+dist-es5-module/
