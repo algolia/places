@@ -11,17 +11,9 @@ See our [website][places-website] for more information.
 ## Table of Contents
 
 - [Introduction](#introduction)
-- [Setup](#setup)
-- [Customization](#customization)
-  - [Advanced styling](#advanced-styling)
-- [Custom options](#custom-options)
-  - [Autocomplete options](#autocomplete-options)
-  - [Algolia options](#algolia-options)
-- [Development workflow](#development-workflow)
-  - [Local example](#local-example)
-  - [Local build](#local-build)
-  - [Documentation website](#documentation-website)
-  - [MacOS](#macos)
+- [Documentation](#documentation)
+- [Demo](#demo)
+- [Contributing](#contributing)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
