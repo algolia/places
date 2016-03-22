@@ -1,5 +1,11 @@
 .btn {
-  background: $darkish-pink;
+  background: $red-pink;
   color: #fff;
-  border: 1px solid $red-pink;
+  border: 1px solid $darkish-pink;
+  height: 40px;
+  max-width: 140px;
+  line-height: 40px;
+  padding: 0 1em;
+  text-align: center;
+  display: block;
 }
