@@ -1,0 +1,12 @@
+@import 'normalize.css';
+
+// Import Algolia's boilerplate CSS
+@import 'csspeed';
+
+@import 'vendors/variables',
+        'vendors/mixins';
+
+@import 'components/containers',
+        'components/navigation',
+        'components/buttons';
+
