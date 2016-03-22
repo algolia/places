@@ -8,7 +8,7 @@
     "build:js": "./scripts/build-js.sh",
     "dev": "./scripts/dev.sh",
     "docs:update-website": "./scripts/docs/update-website.sh",
-    "doctoc": "doctoc --maxlevel 3 README.md CONTRIBUTING.md",
+    "doctoc": "doctoc --maxlevel 3 CONTRIBUTING.md",
     "lint": "eslint .",
     "release": "./scripts/release.sh",
     "shrinkwrap": "npm-shrinkwrap --dev",

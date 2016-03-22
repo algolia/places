@@ -1,36 +1,15 @@
-# Places
-
-The easiest way to add fast geo search to your website. Powered by [Algolia][algolia-website].
-
-See our [website][places-website] for more information.
-
 [![Version][version-svg]][package-url] [![Build Status][travis-svg]][travis-url] [![Coverage Status][coveralls-svg]][coveralls-url] [![License][license-image]][license-url] [![Downloads][downloads-image]][downloads-url]
 
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
-
-- [Introduction](#introduction)
-- [Documentation](#documentation)
-- [Demo](#demo)
-- [Contributing](#contributing)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
-## Introduction
+# Places
 
 [Places][places-website] is [Algolia][algolia-website] answer to address search. You can use it in your website to provide your users
 an autocomplete address search.
 
-Places is in BETA. Use the [form on our website][places-website] for early access.
-
-## Documentation
-
-Find all the documentation on [the places website][places-website].
+See the [website][places-website] for more information.
 
 ## Demo
 
-TODO: Demo GIF placeholder
+TODO: demo gif
 
 ## Contributing
 
