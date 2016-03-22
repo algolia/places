@@ -1,0 +1,15 @@
+/* Containers
+================*/
+.container {
+  max-width: $max-width;
+}
+
+section {
+  min-height: 550px;
+  width: 100%;
+
+  &.hero-section {
+    background: $denim-blue;
+    color: #fff;
+  }
+}
