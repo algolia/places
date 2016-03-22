@@ -2,21 +2,22 @@
 title: Welcome to Middleman
 ---
 %div.navigation
-	%span.brand
-		Algolia Community
+	%div.fl-left
+		%span.brand
+			Algolia Community
+	%div.fl-right
+		%div.searchbar
+			%input
 
-	%div.searchbar
-		%input
-
-	%ul
-		%li 
-			%a documentations
-		%li 
-			%a examples
-		%li 
-			%a about
-		%li
-			%a github
+		%ul
+			%li 
+				%a documentations
+			%li 
+				%a examples
+			%li 
+				%a about
+			%li
+				%a github
 
 
 %section.hero-section
@@ -27,13 +28,13 @@ title: Welcome to Middleman
 				%h1 Places Lorem Ipsumdol
 				%h4 The easiest way to find n address lorem
 				
-				%a.btn 
+				%a{href: "#", class: "btn"}
 					Hello world
 			
 			%div.fl-right
 				%img{src: "images/svg/places-illustration.svg"}
 
-		%input{type: "text", class: "searchbar"}
+		%input{type: "text", class: "hero-searchbar"}
 
 %section
 	.container

@@ -1,12 +1,19 @@
 @import 'normalize.css';
 
-// Import Algolia's boilerplate CSS
+// Import CSSPeed boilerplate CSS
+// Since I plan to create a css 
+// boilerplate for algolia's landing pages
+// it may change in the future
+// Still thinking about it
 @import 'csspeed';
 
 @import 'vendors/variables',
-        'vendors/mixins';
+        'vendors/mixins',
+        'vendors/base';
 
-@import 'components/containers',
+@import 'components/icons',
+        'components/containers',
         'components/navigation',
-        'components/buttons';
+        'components/buttons',
+        'components/inputs';
 
