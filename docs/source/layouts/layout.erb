@@ -1,7 +1,9 @@
 <!doctype html>
 <html>
   <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
 
     <!-- Always force latest IE rendering engine or request Chrome Frame -->
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
@@ -9,8 +11,8 @@
     <!-- Use title if it's in the page YAML frontmatter -->
     <title><%= current_page.data.title || "The Middleman" %></title>
 
-    <%= stylesheet_link_tag "normalize", "all", "style" %>
-    <%= javascript_include_tag  "all" %>
+    <%= stylesheet_link_tag :site %>
+    <%= javascript_include_tag :all %>
   </head>
 
   <body class="<%= page_classes %>">
