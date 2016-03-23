@@ -21,6 +21,10 @@ page '/*.txt', layout: false
 # Reload the browser automatically whenever files change
 configure :development do
   activate :livereload
+  activate :external_pipeline,
+    name: :webpack,
+    command: "npm run js:watch -- --output-path docs/.webpack/javascripts",
+    source: ".webpack"
 end
 
 ###

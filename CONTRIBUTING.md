@@ -51,7 +51,9 @@ npm run dev
 # TODO: url for local dev
 ```
 
-That's it, you should be able to hack from here.
+Open http://localhost.localdomain:4567/.
+
+Any change made to places.js library or the docs will trigger an autoreload.
 
 # Commit message guidelines
 
