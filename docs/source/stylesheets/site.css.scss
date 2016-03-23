@@ -18,3 +18,7 @@
         'components/inputs',
         'components/fonts';
   
+
+@if $debug == true {
+  html { @include grid();  }
+}

@@ -76,23 +76,29 @@ section {
 
     &:nth-child(1),
     &:nth-child(3) {
-      padding-right: 40px;
+      padding-right: 10px;
     }
 
     &:nth-child(2),
     &:nth-child(4) {
-      padding-left: 40px;
+      padding-left: 10px;
     }
   }
 
-  .bloc-2 {
+  .bloc-3 {
     img {
       width: 90%;
+      margin: 0 auto;
+      display: block;
+      float: none;
+      padding: 0 16px 16px;
     }
   }
 
   h3.title ~ p {
     margin: 0;
+    font-size: 16px;
+    line-height: 22px;
   }
 }
 
