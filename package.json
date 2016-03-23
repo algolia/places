@@ -5,7 +5,8 @@
   "main": "dist/npm/index.js",
   "scripts": {
     "build": "./scripts/build.sh",
-    "build:js": "./scripts/build-js.sh",
+    "js:build": "webpack",
+    "js:watch": "webpack --watch",
     "dev": "./scripts/dev.sh",
     "docs:update-website": "./scripts/docs/update-website.sh",
     "doctoc": "doctoc --maxlevel 3 CONTRIBUTING.md",

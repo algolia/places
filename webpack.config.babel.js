@@ -19,10 +19,10 @@ export default {
   // helps fixing the npm link not working with webpack
   // http://stackoverflow.com/a/33722844/147079
   resolve: {
-    fallback: [join(__dirname, '..', 'node_modules')]
+    fallback: [join(__dirname, 'node_modules')]
   },
   resolveLoader: {
-    fallback: [join(__dirname, '..', 'node_modules')]
+    fallback: [join(__dirname, 'node_modules')]
   },
   // replace usage of process.env.NODE_ENV with the actual NODE_ENV from command line
   // when building. Some modules might be using it, this way we will reduce the code output when
