@@ -1,3 +1,1 @@
-console.log('my JS isess king')
-var obj = {};
-console.log({...obj});
+places({container: document.querySelector('#landing-demo')});
