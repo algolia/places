@@ -7,6 +7,22 @@
   }
 }
 
+@mixin big-mq {
+  @media (max-width: $bp-big){
+    @content
+  }
+}
+@mixin medium-mq {
+  @media (max-width: $bp-wide){
+    @content
+  }
+}
+@mixin small-mq {
+  @media (max-width: $bp-medium){
+    @content
+  }
+}
+
 
 @mixin grid(){
     outline: solid 1px rgba(purple, .1) !important;

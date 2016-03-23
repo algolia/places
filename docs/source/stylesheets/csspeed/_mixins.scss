@@ -1,0 +1,16 @@
+
+@mixin big-mq {
+  @media (min-width: $bp-wide) and (max-width: $bp-big){
+    @content
+  }
+}
+@mixin medium-mq {
+  @media (min-width: $bp-medium) and (max-width: $bp-wide){
+    @content
+  }
+}
+@mixin small-mq {
+  @media (min-width: $bp-small) and (max-width: $bp-medium){
+    @content
+  }
+}

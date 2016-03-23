@@ -14,16 +14,16 @@ input {
     padding: 6px 43px 6px 16px;
     position: relative;
     top: 50px;
-    
+
     background: {
         image: url($icon-search);
         repeat: no-repeat;
         position: center right 15px;
     }
-    
+
     -webkit-transition: .2s;
     transition: .2s;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
     border: solid 1px rgba(255, 255, 255, 0.5);
 
     @inlcude placeholder {

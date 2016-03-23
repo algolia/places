@@ -9,20 +9,20 @@ section {
   width: 100%;
   float: left;
   position: relative;
-  
+
 
   &.hero-section {
     background: $denim-blue;
     color: #fff;
     padding-top: $navigation-height*1.5;
     position: relative;
-    
+
     .icon {
       width: 20px;
       height: 20px;
       display: block;
       position: relative;
-      
+
       &:after {
         position: absolute;
         display: block;
@@ -69,6 +69,13 @@ section {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+    @include medium-mq {
+     position: relative;
+     transform: none;
+     top: inherit;
+     left: inherit;
+    }
   }
 
   .bloc-5 {
@@ -83,6 +90,13 @@ section {
     &:nth-child(4) {
       padding-left: 10px;
     }
+
+    @include medium-mq {
+      width: 100%;
+    }
+    @include small-mq {
+      width: 100%;
+    }
   }
 
   .bloc-3 {
@@ -92,6 +106,8 @@ section {
       display: block;
       float: none;
       padding: 0 16px 16px;
+
+      max-width: 140px;
     }
   }
 
@@ -149,7 +165,7 @@ section {
     overflow: hidden;
     float: left;
     width: 100%;
-    
+
     .icon {
       float: left;
       width: 40px;
