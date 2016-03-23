@@ -17,6 +17,25 @@ section {
     padding-top: $navigation-height;
     position: relative;
     
+    .icon {
+      width: 30px;
+      height: 30px;
+      display: block;
+      position: relative;
+      
+      &:after {
+        position: absolute;
+        display: block;
+        content: '';
+        width: 16px;
+        height: 2px;
+        background: #D8D8D8;
+        top: 40px;
+        left: 0;
+        right: 0;
+        margin: auto;
+      }
+    }
 
     h1 {
       margin-bottom: 0;

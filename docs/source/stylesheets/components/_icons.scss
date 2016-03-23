@@ -3,14 +3,18 @@
   color: transparent;
 
   &-love {
-    background: url($icon-heart)no-repeat center center / contain;
+    background: url($icon-heart)no-repeat center center / contain
   }
 
   &-algolia {
-    background: url($icon-algolia-dark)no-repeat center center / contain;
+    background: url($icon-algolia-dark)no-repeat center center / contain
   }
 
   &-mail {
-    background: url($icon-mail)no-repeat 8px 7px / 70%;
+    background: url($icon-mail)no-repeat 8px 7px / 70%
+  }
+
+  &-algolia-small {
+    background: url($icon-algolia-small)no-repeat center center / contain
   }
 }
