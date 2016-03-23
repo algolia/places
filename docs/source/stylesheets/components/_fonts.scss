@@ -1,0 +1,79 @@
+/* heading settings
+=======================*/
+h1 {
+  font-size: 46px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+/* Paragraphs
+======================*/
+p {
+  font-family: 'Open Sans', Helvetica Neue, helvetica, sans-serif;
+  font-size: 20px;
+  line-height: 32px;
+}
+
+/* Big titles
+======================*/
+h2.title {
+  text-align: center;
+  width: 100%;
+  font-size: 28px;
+  color: $charcoal-grey;
+  display: block;
+  position: relative;
+  margin-top: 120px;
+  margin-bottom: 80px;
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 3px;
+    background: $red-pink;
+    top: calc(28px + 32px);
+    left: 0;
+    right: 0;
+    margin: auto;  
+  }
+
+  ~ p {
+    color: $charcoal-grey;
+    font-size: 20px;
+    text-align: center; 
+  }
+}
+
+/* Small titles
+======================*/
+h3.title {
+  height: 24px;
+  color: $greyish-brown;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+
+  ~ p {
+    margin: 32px 0;
+    padding: 0;
+  }
+}
+
+/* Anchors / links
+====================*/
+.link {
+  text-transform: uppercase;
+  font-size: 16px;
+  color: $red-pink;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0 8px;
+}

@@ -4,8 +4,31 @@
   max-height: $navigation-height;
   background: $denim-blue;
   overflow: hidden;
+  z-index: 12;
   
   .brand {
     float: left;
+  }
+
+  .searchbar {
+    float: left;
+    width: 100px;
+    background: red;
+    height: 40px;
+
+    input {
+      display: none;
+    }
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+    float: left;
+    list-style: none;
+    
+    li {
+      display: inline-block;
+    }
   }
 }

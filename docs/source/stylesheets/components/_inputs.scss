@@ -1,3 +1,7 @@
+input {
+    outline: none;
+}
+
 .hero-searchbar {
     max-width: 956px;
     display: block;
@@ -7,7 +11,9 @@
     background-color: #fff;
     border-radius: 4px;
     border: 0;
-    padding: 6px 6px 6px 43px;
+    padding: 6px 43px 6px 16px;
+    position: relative;
+    top: 80px;
     
     background: {
         image: url($icon-search);
@@ -17,6 +23,11 @@
     
     -webkit-transition: .2s;
     transition: .2s;
+
+    @inlcude placeholder {
+        font-size: 18px;
+        font-family: 'Open Sans', Helvetica Neue, helvetica, sans-serif;
+    }
 }
 
 

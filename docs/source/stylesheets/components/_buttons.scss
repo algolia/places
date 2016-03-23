@@ -1,11 +1,33 @@
 .btn {
-  background: $red-pink;
+  background: $darkish-pink;
   color: #fff;
-  border: 1px solid $darkish-pink;
+  border: 1px solid $red-pink;
   height: 40px;
   max-width: 140px;
   line-height: 40px;
   padding: 0 1em;
   text-align: center;
   display: block;
+  text-decoration: none;
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 12px;
+
+  &:hover,
+  &:active {
+    background: $red-pink
+  }
+
+  &.btn-cta {
+    max-width: 230px;
+    margin: 32px auto;
+  }
+
+  &.btn-grey {
+    background: $silver;
+    border-color: $light-blue-grey;
+    border-width: 2px;
+    color: $grey-blue
+  }
 }

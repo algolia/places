@@ -7,10 +7,147 @@
 section {
   min-height: 550px;
   width: 100%;
+  float: left;
+  position: relative;
+  
 
   &.hero-section {
     background: $denim-blue;
     color: #fff;
     padding-top: $navigation-height;
+    position: relative;
+    
+
+    h1 {
+      margin-bottom: 0;
+      padding: 0;
+      line-height: 22px;
+    }
+
+    h3 {
+      font-size: 20px;
+      color: $powder-blue;
+    }
+
+    .hero-illustration {
+      max-width: 240px;
+      margin-top: 60px;
+    }
+  }
+}
+
+
+/* Sections
+=========================*/
+
+.marketing-section {
+  margin-top: 120px;
+  margin-bottom: 60px;
+  .container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .bloc-5 {
+    margin-bottom: 40px;
+
+    &:nth-child(1),
+    &:nth-child(3) {
+      padding-right: 40px;
+    }
+
+    &:nth-child(2),
+    &:nth-child(4) {
+      padding-left: 40px;
+    }
+  }
+
+  .bloc-2 {
+    img {
+      width: 90%;
+    }
+  }
+
+  h3.title ~ p {
+    margin: 0;
+  }
+}
+
+////
+.action-section {
+  background: $pale-grey url('../images/svg/search-everywhere-illu.svg')no-repeat center bottom / 35%;
+  padding-bottom: 420px;
+}
+
+
+////
+
+.footer-section {
+  color: $greyish-brown;
+
+  p {
+    margin: 48px 0;
+  }
+
+  .link {
+    &:not(:first-of-type):before {
+      content: '•';
+      position: relative;
+      margin-right: 16px;
+      color: $charcoal-grey
+    }
+  }
+
+
+  .newsletter-bloc {
+    margin-top: 120px;
+  }
+}
+
+/* Newsletter form
+=========================*/
+
+.newsletter-form {
+  width: calc(286px + 106px + 10px);
+  margin: auto;
+
+  > div {
+    max-width: 286px;
+    height: 40px;
+    line-height: 40px;
+    box-shadow: inset 0 0 0 2px $silver;
+    border-radius: 3px;
+    overflow: hidden;
+    float: left;
+    width: 100%;
+    
+    .icon {
+      float: left;
+      width: 40px;
+      height: 40px;
+    }
+    input {
+      float: left;
+      width: calc(100% - 44px);
+      height: calc(100% - 4px);
+      border: none;
+      position: relative;
+      top: 2px;
+      left: 2px;
+      padding-left: 6px;
+
+      @include placeholder {
+        font-size: 14px;
+        color: $blue-grey;
+      }
+    }
+  }
+
+  .btn {
+    float: left;
+    width: 106px;
+    margin-left: 10px;
   }
 }

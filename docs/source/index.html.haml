@@ -2,39 +2,46 @@
 title: Welcome to Middleman
 ---
 %div.navigation
-	%div.fl-left
-		%span.brand
-			Algolia Community
-	%div.fl-right
-		%div.searchbar
-			%input
+	-# %div.fl-left
+	-# 	%span.brand
+	-# 		Algolia Community
 
-		%ul
-			%li
-				%a documentations
-			%li
-				%a examples
-			%li
-				%a about
-			%li
-				%a github
+			
+	-# %div.fl-right
+	-# 	%div.searchbar
+	-# 		%input
 
+	-# 	%ul
+	-# 		%li 
+	-# 			%a documentations
+	-# 		%li 
+	-# 			%a examples
+	-# 		%li 
+	-# 			%a about
+	-# 		%li
+	-# 			%a github
+
+	-# %div{id: "instant-search-nav", class: "navbar-collapse"}
+	-#   %ul{class: "nav navbar-nav navbar-right"}
+	-#     %li{class: "hidden-xs"}
+	-#       %form{class: "form search-form", action: "#"}
+	-#         %input{class: "form-control aa-input", placeholder: "Search in the documentation", type: "text", id: "doc-search"}
 
 %section.hero-section
 	.container
 		%div.hero-container
 
 			%div.fl-left
-				%h1 Places Lorem Ipsumdol
-				%h4 The easiest way to find n address lorem
-
-				%a{href: "#", class: "btn"}
-					Hello world
-
+				%h1 Places
+				%h1 Lorem Ipsumdol
+				%h3 The easiest way to find n address lorem
+				
+				%a{href: "#", class: "btn"} Get Started
+			
 			%div.fl-right
-				%img{src: "images/svg/places-illustration.svg"}
+				%img{src: "images/svg/places-illustration.svg", class: "hero-illustration"}
 
-		%input{type: "text", class: "hero-searchbar"}
+		%input{type: "text", class: "hero-searchbar", placeholder: "Search a country, city or address…"}
 
 %section
 	.container
@@ -43,38 +50,38 @@ title: Welcome to Middleman
 			%p We're kind of scratching our own itch here. As developers, we spend a lot of time reading documentation, and it isn’t always easy to find the information we need.
 			%p	No one's to blame, building a good search for a documentation is a complex challenge. We just happen to have a lot of experience doing that, and we want to share it with the world.
 %hr
-%section
+%section.marketing-section
 	.container
 		%div.bloc-5
-			%div.fl-left.bloc-1
-				%img{src: "images/svg/sugestions.svg"}
+			%div.fl-left.bloc-2
+				%img{src: "images/svg/illus-feat-autocomplete.svg"}
 
-			%div.fl-left.bloc-9
-				%h3 Auto-suggestions
+			%div.fl-left.bloc-8
+				%h3.title Auto-suggestions
 				%p We're kind of scratching our own itch here. As developers, we spend a lot lorem ipsum dolor sit amet en consequeter
-
+		
 		%div.bloc-5
-			%div.fl-left.bloc-1
-				%img{src: "images/svg/sugestions.svg"}
+			%div.fl-left.bloc-2
+				%img{src: "images/svg/illus-feat-relevance.svg"}
 
-			%div.fl-left.bloc-9
-				%h3 Auto-suggestions
+			%div.fl-left.bloc-8
+				%h3.title Relevance
 				%p We're kind of scratching our own itch here. As developers, we spend a lot lorem ipsum dolor sit amet en consequeter
-
+		
 		%div.bloc-5
-			%div.fl-left.bloc-1
-				%img{src: "images/svg/sugestions.svg"}
+			%div.fl-left.bloc-2
+				%img{src: "images/svg/illus-feat-typo-tolerance.svg"}
 
-			%div.fl-left.bloc-9
-				%h3 Auto-suggestions
+			%div.fl-left.bloc-8
+				%h3.title Typo Tolerance
 				%p We're kind of scratching our own itch here. As developers, we spend a lot lorem ipsum dolor sit amet en consequeter
-
+		
 		%div.bloc-5
-			%div.fl-left.bloc-1
-				%img{src: "images/svg/sugestions.svg"}
+			%div.fl-left.bloc-2
+				%img{src: "images/svg/illus-feat-rocket.svg"}
 
-			%div.fl-left.bloc-9
-				%h3 Auto-suggestions
+			%div.fl-left.bloc-8
+				%h3.title Speed
 				%p We're kind of scratching our own itch here. As developers, we spend a lot lorem ipsum dolor sit amet en consequeter
 
 
@@ -85,19 +92,25 @@ title: Welcome to Middleman
 			%p We're kind of scratching our own itch here. As developers, we spend a lot of time reading documentation, and it isn’t always easy to find the information we need.
 			%p	No one's to blame, building a good search for a documentation is a complex challenge. We just happen to have a lot of experience doing that, and we want to share it with the world.
 
+			%a{class: "btn btn-cta"} Get Started
 
 
 
-%section.footer
+
+%section.footer-section
 	.container.center-text
-		%p Designed and built with <span class="icon-love">♥︎</span> by <span class="icon-algolia">Algolia</span>
-		%p Code licensed under <a href="#">MIT</a> <a href="#">Github</a> <a href="#">issues</a> <a href="#">Releases</a>
+		%p Designed and built with <span class="icon icon-love">♥︎</span> by <span class="icon icon-algolia">Algolia</span>
+		%p Code licensed under <a href="#" class="link">MIT</a> <a href="#" class="link">Github</a> <a href="#" class="link">issues</a> <a href="#" class="link">Releases</a>
 
 		%div.newsletter-bloc
 			%h4 Sign up for our newsletter
 			%p Follow project updates and general vector loveliness
 			%div.newsletter-form
 				%div
-					%span.icon-mail
+					%span.icon.icon-mail
 					%input{type: "text", placeholder: "Email"}
 				%a{class:"btn btn-grey"} Subscribe
+
+
+
+

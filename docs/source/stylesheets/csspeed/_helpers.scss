@@ -9,3 +9,20 @@
 .fl-right {
   float: right;
 }
+
+hr {
+  border: none;
+  float: left;
+  clear: both;
+  &:before,
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+    
+  }
+
+  width: 100%;
+  height: 1px;
+  background: #e5e5e5
+}
