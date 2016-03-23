@@ -8,6 +8,8 @@
     "js:build": "webpack",
     "js:watch": "webpack --watch",
     "dev": "./scripts/dev.sh",
+    "docs:js:build": "webpack --config webpack.config.docs.babel.js",
+    "docs:js:watch": "webpack --config webpack.config.docs.babel.js --watch",
     "docs:update-website": "./scripts/docs/update-website.sh",
     "doctoc": "doctoc --maxlevel 3 CONTRIBUTING.md",
     "lint": "eslint .",

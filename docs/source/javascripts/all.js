@@ -1,1 +1,3 @@
-// This is where it all goes :)
+console.log('my JS isess king')
+var obj = {};
+console.log({...obj});

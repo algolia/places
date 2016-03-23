@@ -1,5 +1,10 @@
-console.log('give meeee love');
+import algoliasearch from 'algoliasearch';
+import autocomplete from 'autocomplete.js';
 
-export default function places() {
-  // TODO design and implement me
+export default function places({
+  countries,
+  language = navigator.language,
+  inputContainer
+}) {
+
 }

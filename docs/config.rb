@@ -22,10 +22,18 @@ page '/*.txt', layout: false
 configure :development do
   activate :livereload
   activate :external_pipeline,
-    name: :webpack,
-    command: "npm run js:watch -- --output-path docs/.webpack/javascripts",
+    name: :places,
+    command: "npm run js:watch -- --output-path docs/.webpack/js",
     source: ".webpack"
 end
+
+activate :external_pipeline,
+  name: :all,
+  command: "npm run docs:js:watch",
+  source: ".webpack"
+
+set :js_dir, 'js'
+ignore '/javascripts/*'
 
 ###
 # Helpers
