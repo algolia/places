@@ -14,12 +14,12 @@ section {
   &.hero-section {
     background: $denim-blue;
     color: #fff;
-    padding-top: $navigation-height;
+    padding-top: $navigation-height*1.5;
     position: relative;
     
     .icon {
-      width: 30px;
-      height: 30px;
+      width: 20px;
+      height: 20px;
       display: block;
       position: relative;
       
@@ -30,10 +30,11 @@ section {
         width: 16px;
         height: 2px;
         background: #D8D8D8;
-        top: 40px;
+        top: 30px;
         left: 0;
         right: 0;
         margin: auto;
+        opacity: 0.5;
       }
     }
 
@@ -46,6 +47,7 @@ section {
     h3 {
       font-size: 20px;
       color: $powder-blue;
+      font-weight: 400;
     }
 
     .hero-illustration {
