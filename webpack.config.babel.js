@@ -13,6 +13,8 @@ export default {
   module: {
     loaders: [{
       test: /\.js$/, exclude: /node_modules/, loader: 'babel'
+    }, {
+      test: /\.svg$/, loader: 'raw'
     }]
   },
   // when module not found, find locally first
