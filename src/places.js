@@ -2,9 +2,10 @@ import algoliasearch from 'algoliasearch';
 import autocomplete from 'autocomplete.js';
 
 import createHitFormatter from './createHitFormatter.js';
-import formatValue from './formatValue.js';
+import formatInputValue from './formatInputValue.js';
+import formatAutocompleteSuggestion from './formatAutocompleteSuggestion.js';
 
-const hitFormatter = createHitFormatter(formatValue);
+const hitFormatter = createHitFormatter({formatAutocompleteSuggestion, formatInputValue});
 
 export default function places({
   countries,
@@ -12,7 +13,7 @@ export default function places({
   container
 }) {
   const placesAPIClient = algoliasearch.initPlaces('places', '5c759b588c767287a3dca1e8e18232f8');
-  autocomplete(container, {debug: true, autoselect: true}, {
+  const autocompleteInstance = autocomplete(container, {debug: true, autoselect: true}, {
     source: (query, cb) => placesAPIClient
       .search({query})
       .then(({hits}) => hits.slice(0, 5).map(hitFormatter))
