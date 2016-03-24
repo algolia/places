@@ -1,0 +1,33 @@
+$timingFunction: 3s ease infinite;
+
+@mixin anim($name, $p1, $p2, $p3) {
+  @keyframes #{$name}{
+    0%, 20%, 80%, 100% {
+      transform: #{$p1};
+    }
+    10%, 40%, 50% {
+      transform: #{$p2};
+    }
+    60% {
+      transform: #{$p3};
+    }
+  }
+}
+
+svg {
+ display: block;
+ width: 100%;
+}
+
+#pin {
+  animation: bounce $timingFunction;
+}
+#ellipse {
+  transform-origin: center center;
+  -moz-transform-origin: 40% 50%;
+  animation: bounceShadow $timingFunction;
+}
+
+
+@include anim('bounce', 'translateY(0)', 'translateY(-5px)', 'translateY(-5px)');
+@include anim('bounceShadow', 'scale(1)', 'scale(0.75)', 'scale(0.75)');

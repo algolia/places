@@ -1,51 +1,36 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="303px" height="230px" viewBox="0 0 303 230" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 3.6.1 (26313) - http://www.bohemiancoding.com/sketch -->
-    <title>Geosearch</title>
-    <desc>Created with Sketch.</desc>
-    <defs>
-        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-1">
-            <feOffset dx="0" dy="6" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
-            <feGaussianBlur stdDeviation="6" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
-            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.35 0" in="shadowBlurOuter1" type="matrix" result="shadowMatrixOuter1"></feColorMatrix>
-            <feOffset dx="0" dy="9" in="SourceAlpha" result="shadowOffsetOuter2"></feOffset>
-            <feGaussianBlur stdDeviation="13.5" in="shadowOffsetOuter2" result="shadowBlurOuter2"></feGaussianBlur>
-            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.14 0" in="shadowBlurOuter2" type="matrix" result="shadowMatrixOuter2"></feColorMatrix>
-            <feMerge>
-                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
-                <feMergeNode in="shadowMatrixOuter2"></feMergeNode>
-                <feMergeNode in="SourceGraphic"></feMergeNode>
-            </feMerge>
-        </filter>
-        <path id="path-2" d="M130.61928,1.38745626 C127.976911,-0.15437001 123.699522,-0.152382348 121.073036,1.3874563 L2.16200103,71.1018466 C-0.467874382,72.6436729 -0.451186669,75.1217589 2.2005758,76.6375506 L121.034456,144.564984 C123.685636,146.080443 127.993672,146.080776 130.638636,144.576019 L250.075875,76.6265145 C252.728938,75.1171503 252.747521,72.6494573 250.095237,71.1018455 L130.61928,1.38745626 Z"></path>
-    </defs>
-    <g id="Prototype" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="landing-page-2" transform="translate(-912.000000, -127.000000)">
-            <g id="hero-banner" transform="translate(0.000000, -2.000000)">
-                <g id="Geosearch" transform="translate(936.132231, 131.347107)">
-                    <g id="Group-9" transform="translate(1.000000, 46.000000)">
-                        <mask id="mask-3" fill="white">
-                            <use xlink:href="#path-2"></use>
-                        </mask>
-                        <use id="Rectangle-19-Copy-72" stroke="#2897C5" stroke-width="4.5" fill="#FFFFFF" filter="url(#filter-1)" xlink:href="#path-2"></use>
-                        <g id="Group" mask="url(#mask-3)" stroke="#2897C5" stroke-opacity="0.33" stroke-width="4.14720016">
-                            <g transform="translate(-0.238771, 12.193523)">
-                                <path d="M29.3652039,79.4392055 L55.9121886,93.9590566 L62.12765,79.4392055 L29.3652039,79.4392055 Z" id="Fill-1886"></path>
-                                <path d="M87.6663207,10.2970577 L0.68761071,60.7708256 L6.90037571,65.610776 L67.9992105,65.610776 L87.6663207,10.2970577 Z" id="Fill-1887"></path>
-                                <path d="M86.8832215,53.1651894 L71.0280257,104.067716 L120.730146,132.838709 C126.721809,105.690695 148.552732,70.1326982 163.53189,53.1651894 L86.8832215,53.1651894 Z" id="Fill-1888"></path>
-                                <path d="M178.446905,38.7196028 C184.435578,33.9764514 190.19887,30.3948882 195.286022,28.26531 L149.723049,-5.68434189e-14 L105.552523,-5.68434189e-14 L91.7399389,38.7196028 L178.446905,38.7196028 Z" id="Fill-1889"></path>
-                                <path d="M179.40626,103.218982 L161.809101,80.0563626 C153.787578,91.4634241 144.037165,111.290673 140.058748,126.381602" id="Fill-1890"></path>
-                                <path d="M215.382995,37.2624954 C203.85941,42.1083352 177.262151,58.5737661 169.054348,67.4329719 L193.348184,94.650478 L257.127289,60.7708256 L215.382995,37.2624954 Z" id="Fill-1891"></path>
-                            </g>
-                        </g>
-                    </g>
-                    <ellipse id="Oval-201-Copy-8" fill-opacity="0.599999964" fill="#A1C2D0" cx="124.744592" cy="122.421456" rx="29.9790565" ry="11.0627436"></ellipse>
-                    <g id="Fill-1895-Copy-+-Fill-1896-Copy" transform="translate(89.739939, 0.731276)" stroke="#8962B2">
-                        <path d="M67.6501078,33.5833289 C67.6501078,52.1297223 33.8250539,117.541651 33.8250539,117.541651 C33.8250539,117.541651 0,52.1297223 0,33.5833289 C0,15.0369355 15.1451679,0 33.8250539,0 C52.5049399,0 67.6501078,15.0369355 67.6501078,33.5833289 Z" id="Fill-1895-Copy" stroke-width="5.52960022" fill="#E6D2FC"></path>
-                        <path d="M33.8250539,48.3995035 C25.817214,48.3995035 19.3286022,41.9004181 19.3286022,33.8796524 C19.3286022,25.8617907 25.817214,19.3598014 33.8250539,19.3598014 C41.8328938,19.3598014 48.3215056,25.8617907 48.3215056,33.8796524 C48.3215056,41.9004181 41.8328938,48.3995035 33.8250539,48.3995035 Z" id="Fill-1896-Copy" stroke-width="2.76480011" fill="#FFFFFF"></path>
-                    </g>
-                </g>
-            </g>
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="303" height="230" viewBox="0 0 303 230">
+<title>Geosearch</title>
+<defs>
+    <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="b">
+        <feOffset dy="6" in="SourceAlpha" result="shadowOffsetOuter1"/>
+        <feGaussianBlur stdDeviation="6" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>
+        <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0" in="shadowBlurOuter1" result="shadowMatrixOuter1"/>
+        <feOffset dy="9" in="SourceAlpha" result="shadowOffsetOuter2"/>
+        <feGaussianBlur stdDeviation="13.5" in="shadowOffsetOuter2" result="shadowBlurOuter2"/>
+        <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.14 0" in="shadowBlurOuter2" result="shadowMatrixOuter2"/>
+        <feMerge>
+            <feMergeNode in="shadowMatrixOuter1"/>
+            <feMergeNode in="shadowMatrixOuter2"/>
+            <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+    </filter>
+    <path id="a" d="M130.62 1.387c-2.643-1.54-6.92-1.54-9.547 0L2.163 71.102c-2.63 1.542-2.614 4.02.038 5.536l118.834 67.927c2.652 1.515 6.96 1.516 9.605.01l119.436-67.948c2.653-1.51 2.672-3.978.02-5.525L130.618 1.387z"/>
+</defs>
+<g transform="translate(24.132 2.347)" fill="none" fill-rule="evenodd">
+    <g transform="translate(1 46)">
+        <mask id="c" fill="#fff">
+            <use xlink:href="#a"/>
+        </mask>
+        <use stroke="#2897C5" stroke-width="4.5" fill="#FFF" filter="url(#b)" xlink:href="#a"/>
+        <g mask="url(#c)" stroke="#2897C5" stroke-opacity=".33" stroke-width="4.147">
+            <path d="M29.126 91.633l26.547 14.52 6.216-14.52H29.125zM87.428 22.49L.448 72.965l6.214 4.84H67.76L87.428 22.49zM86.644 65.36l-15.855 50.9 49.7 28.772c5.993-27.148 27.824-62.706 42.803-79.673h-76.65zM178.208 50.913c5.99-4.743 11.752-8.325 16.84-10.454l-45.564-28.266h-44.17L91.5 50.914h86.708zM179.167 115.413L161.57 92.25c-8.02 11.407-17.772 31.234-21.75 46.325M215.144 49.456c-11.523 4.846-38.12 21.31-46.328 30.17l24.293 27.218 63.78-33.88-41.746-23.508z"/>
         </g>
     </g>
+    <ellipse fill-opacity=".6" fill="#A1C2D0" cx="124.745" cy="122.421" rx="29.979" ry="11.063"/>
+    <g stroke="#8962B2" id="pin" viewbox="0 0 100 100">
+        <path d="M157.39 34.315c0 18.546-33.825 83.958-33.825 83.958S89.74 52.86 89.74 34.315C89.74 15.768 104.885.73 123.565.73c18.68 0 33.825 15.038 33.825 33.585z" stroke-width="5.53" fill="#E6D2FC"/>
+        <path d="M123.565 49.13c-8.008 0-14.496-6.498-14.496-14.52 0-8.017 6.487-14.52 14.495-14.52s14.496 6.503 14.496 14.52c0 8.022-6.487 14.52-14.495 14.52z" stroke-width="2.765" fill="#FFF"/>
+    </g>
+</g>
 </svg>

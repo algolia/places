@@ -2,22 +2,49 @@
   position: fixed;
   width: 100%;
   max-height: $navigation-height;
-  background: $denim-blue;
+  line-height: $navigation-height;
+  background: darken($denim-blue, 5%);
   overflow: hidden;
-  z-index: 12;
-  
+  z-index: 101;
+  color: #fff;
+  padding: 0 16px;
+  margin: 0;
+
   .brand {
     float: left;
   }
 
   .searchbar {
     float: left;
-    width: 100px;
-    background: red;
-    height: 40px;
+    width: auto;
+    height: $navigation-height;
 
     input {
-      display: none;
+      position: relative;
+      width: 36px;
+      height: 36px;
+      line-height: 2.3em;
+      padding: 0 0px 0 35px;
+      background-color: transparent;
+      background-image: url($icon-search-white);
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: 15px;
+
+      border: solid 2px rgba(#FFF, 0.5);
+      border-radius: 40px;
+      color: #FFFFFF;
+      overflow: hidden;
+      margin-right: 16px;
+      cursor: pointer;
+      transition: width 0.2s ease;
+
+
+      &:focus {
+        width: 300px;
+        background-position: center left 15px;
+      }
+
     }
   }
 
@@ -26,9 +53,10 @@
     margin: 0;
     float: left;
     list-style: none;
-    
+
     li {
       display: inline-block;
+      padding: 0 6px;
     }
   }
 }
