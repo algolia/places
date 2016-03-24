@@ -17,7 +17,11 @@
   <body class="<%= page_classes %>">
     <%= yield %>
 
+    <% if environment?(:development) %>
     <%= javascript_include_tag :places %>
+    <% else %>
+    <script src="//cdn.jsdelivr.net/places.js/1/places.min.js"></script>
+    <% end %>
     <%= javascript_include_tag :all %>
   </body>
 </html>

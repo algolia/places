@@ -1,7 +1,7 @@
 Hi (future) collaborator!
 
 **tl;dr;**
-- submit pull requests to develop branch
+- use pull requests
 - use [conventional changelog](https://github.com/ajoslin/conventional-changelog/blob/master/conventions/angular.md) commit style messages
 - squash your commits
 - have fun
@@ -31,10 +31,6 @@ Hi (future) collaborator!
 # Where to start?
 
 Have a fix or a new feature? [Search for corresponding issues](https://github.com/algolia/places/issues) first then create a new one.
-
-Always check the status of the [develop branch](https://github.com/algolia/places/tree/develop) for the freshest code.
-
-Always submit pull requests to the develop branch. Docs and hotfixes can be submitted to master.
 
 # Development workflow
 
@@ -125,14 +121,6 @@ Example:
     - `fix after review ...`
   - **both commits should be squashed* in a single commit: `feat(widget) ..`
 
-# When are issues closed?
-
-Once the a fix is done, having the fix in the `develop` branch is not sufficient, it needs to be part of a release for us to close the issue.
-
-So that you never ask yourself "Is this released?".
-
-Instead of closing the issue, we will add a ` ✔ to be released` label.
-
 # Releasing
 
 If you are a maintainer, you can release.
@@ -144,33 +132,3 @@ You must be on the master branch.
 ```sh
 npm run release
 ```
-
-This task will merge develop into master.
-
-# Hotfixes
-
-All our work is done on the develop branch but it could be necessary to push a hotfix to the master
-branch and do a patch release. To fix a very important bug.
-
-For this, you should:
-- add `hotfix` to the commit message **body**
-- submit your pull request to the master branch
-
-## Releasing hotfixes
-
-You must be on the master branch.
-
-This task will not merge develop in master, only release current master.
-
-```sh
-HOTFIX=1 npm run release
-```
-
-## Documentation updates
-
-If you have important documentation update to release without wanting to release
-a new version of places, you can do a documentation hotfix.
-
-Then once the hotfix is merged into master, the documentation will be updated automatically.
-
-You will have to manually backport this documentation fix in develop.

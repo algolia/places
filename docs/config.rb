@@ -1,3 +1,9 @@
+# https://github.com/middleman/middleman/issues/1857#issuecomment-200930893
+# the source directory of webpack should exists before starting
+require 'fileutils'
+FileUtils.mkdir_p('.webpack')
+FileUtils.rm_rf(Dir.glob('.webpack/*'))
+
 ###
 # Page options, layouts, aliases and proxies
 ###
@@ -20,6 +26,7 @@ page '/*.txt', layout: false
 
 # Reload the browser automatically whenever files change
 configure :development do
+  activate :gzip
   activate :livereload
   activate :external_pipeline,
     name: :places,
@@ -29,7 +36,7 @@ end
 
 activate :external_pipeline,
   name: :all,
-  command: "npm run docs:js:watch",
+  command: "npm run docs:js:#{ build? ? :build : :watch }",
   source: ".webpack"
 
 set :js_dir, 'js'
@@ -45,12 +52,14 @@ ignore '/javascripts/*'
 #     "Helping"
 #   end
 # end
+#
 
 # Build-specific configuration
 configure :build do
-  # Minify CSS on build
-  # activate :minify_css
-
-  # Minify Javascript on build
-  # activate :minify_javascript
+  # this may trigger bad behavior, if so, see
+  # https://github.com/middleman/middleman-minify-html
+  activate :minify_html
+  activate :minify_css
+  activate :minify_javascript
+  activate :asset_hash
 end

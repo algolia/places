@@ -1,3 +1,5 @@
+/* eslint no-unused-vars: 0 */
+// this ^^ line can be removed, just so travis test works
 import icons from './icons.js';
 
 export default function formatAutocompleteSuggestion({
