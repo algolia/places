@@ -52,7 +52,7 @@ input {
     border: solid 1px rgba(255, 255, 255, 0.5);
 
     @include placeholder {
-        font-size: 18px;
+        font-size: 16px;
         font-family: 'Open Sans', Helvetica Neue, helvetica, sans-serif;
     }
 }

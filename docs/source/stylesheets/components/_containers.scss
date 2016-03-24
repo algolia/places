@@ -10,6 +10,10 @@ section {
   float: left;
   position: relative;
 
+  @include medium-mq {
+    padding: 0 16px;
+  }
+
 
   &.hero-section {
     background: $denim-blue;
@@ -54,6 +58,40 @@ section {
       max-width: 240px;
       margin-top: 60px;
     }
+
+    @include small-mq {
+      text-align: center;
+      padding-top: 16px;
+      position: relative;
+      max-width: 100%;
+
+      .fl-left {
+        width: 100%;
+      }
+
+      .fl-right {
+        display: none;
+      }
+
+      .small-illustration {
+        max-width: 30%;
+        display: block;
+        float: none;
+        margin: auto;
+
+        img {
+          width: 100%;
+        }
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      .btn {
+        max-width: 100%;
+      }
+    }
   }
 }
 
@@ -93,10 +131,9 @@ section {
 
     @include medium-mq {
       width: 100%;
+      padding: 0 !important;
     }
-    @include small-mq {
-      width: 100%;
-    }
+
   }
 
   .bloc-3 {
@@ -122,6 +159,23 @@ section {
 .action-section {
   background: $pale-grey url('../images/svg/search-everywhere-illu.svg')no-repeat center bottom / 35%;
   padding-bottom: 420px;
+
+  @include medium-mq {
+    background: $pale-grey url('../images/svg/search-everywhere-illu.svg')no-repeat center bottom / 55%;
+  }
+
+  @include big-min-mq {
+    background: $pale-grey url('../images/svg/search-everywhere-illu.svg')no-repeat center bottom / 25%;
+  }
+
+  @include small-mq {
+    padding-bottom: 260px;
+
+    .btn.btn-cta {
+      max-width: 100%;
+      width: 100%;
+    }
+  }
 }
 
 
@@ -155,6 +209,7 @@ section {
 .newsletter-form {
   width: calc(286px + 106px + 10px);
   margin: auto;
+
 
   > div {
     max-width: 286px;
@@ -193,4 +248,28 @@ section {
     width: 106px;
     margin-left: 10px;
   }
+
+
+
+  @include small-mq {
+    width: 100%;
+    padding-bottom: 32px;
+    margin-bottom: 32px;
+
+    > div {
+      width: 100%;
+      max-width: 100%;
+
+      input {
+      }
+    }
+
+   .btn {
+      width: 100%;
+      max-width: 100%;
+      margin: 8px 0;
+    }
+  }
 }
+
+

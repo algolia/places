@@ -19,6 +19,10 @@ p {
   font-size: 20px;
   line-height: 32px;
   color: $charcoal-grey-75;
+
+  @include small-mq {
+    font-size: 16px;
+  }
 }
 
 /* Big titles
@@ -42,29 +46,33 @@ h2.title {
     top: calc(28px + 32px);
     left: 0;
     right: 0;
-    margin: auto;  
+    margin: auto;
   }
 
   ~ p {
     color: $charcoal-grey;
     font-size: 20px;
-    text-align: center; 
+    text-align: center;
+
+    @include small-mq {
+      font-size: 16px;
+    }
   }
 }
 
 /* Small titles
 ======================*/
 h3.title {
-  height: 24px;
+  font-size: 24px;
   color: $greyish-brown;
   font-weight: bold;
   margin: 0;
   padding: 0;
-  line-height: 0;
+  line-height: 1;
 
   ~ p {
     margin: 32px 0;
-    padding: 0;
+    padding: 8px 0 0;
   }
 }
 
