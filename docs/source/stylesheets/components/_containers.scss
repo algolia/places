@@ -198,8 +198,27 @@ section {
   }
 
 
+
   .newsletter-bloc {
     margin-top: 120px;
+  }
+
+  @include small-mq {
+    .links {
+      text-align: center;
+      a:nth-child(2) {
+        margin-bottom: 16px;
+        display: block;
+
+      }
+      a:nth-child(3):before {
+        display: none;
+      }
+    }
+
+    .newsletter-bloc {
+      margin-top: 60px;
+    }
   }
 }
 

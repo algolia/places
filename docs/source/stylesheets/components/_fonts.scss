@@ -37,6 +37,8 @@ h2.title {
   margin-top: 120px;
   margin-bottom: 80px;
 
+
+
   &:after {
     content: '';
     position: absolute;
@@ -57,6 +59,10 @@ h2.title {
     @include small-mq {
       font-size: 16px;
     }
+  }
+
+  @include small-mq {
+    margin-top: 60px;
   }
 }
 
