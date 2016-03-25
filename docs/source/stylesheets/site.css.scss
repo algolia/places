@@ -9,15 +9,13 @@
 
 @import 'vendors/variables',
         'vendors/mixins',
-        'vendors/base';
+        'vendors/base',
+        'vendors/svg-animations';
 
 @import 'components/icons',
         'components/containers',
         'components/navigation',
         'components/buttons',
         'components/inputs',
-        'components/fonts';
-
-@if $debug == true {
-  html { @include grid();  }
-}
+        'components/fonts',
+        'components/dropdown';

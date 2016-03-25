@@ -157,15 +157,15 @@ section {
 
 ////
 .action-section {
-  background: $pale-grey url('../images/svg/search-everywhere-illu.svg')no-repeat center bottom / 35%;
+  background: $pale-grey url('../images/svg/search-everywhere-illu.svg')no-repeat center bottom / 38%;
   padding-bottom: 420px;
 
   @include medium-mq {
-    background: $pale-grey url('../images/svg/search-everywhere-illu.svg')no-repeat center bottom / 55%;
+    background: $pale-grey url('../images/svg/search-everywhere-illu.svg')no-repeat center bottom / 58%;
   }
 
   @include big-min-mq {
-    background: $pale-grey url('../images/svg/search-everywhere-illu.svg')no-repeat center bottom / 25%;
+    background: $pale-grey url('../images/svg/search-everywhere-illu.svg')no-repeat center bottom / 28%;
   }
 
   @include small-mq {
@@ -186,6 +186,7 @@ section {
 
   p {
     margin: 48px 0;
+    font-size: 16px;
   }
 
   .link {
