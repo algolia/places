@@ -10,8 +10,9 @@ export default function formatAutocompleteSuggestion({
   name
 }) {
   return (
-`${name}
-${isCity === false ? ` ${city},` : ''}
+`<span class="pl-icon">${icons[isCity === false ? 'address' : 'city']}</span>
+<span class="pl-name">${name}</span> <span class="pl-address">
+${isCity === false ? `${city},` : ``}
  ${administrative},
- ${country}`);
+ ${country}</span>`);
 }
