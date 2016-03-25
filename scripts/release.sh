@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-[ -z $HOTFIX ] && HOTFIX='0'
-
 set -e # exit when error
 
 if [[ -n $(npm owner add `npm whoami`) ]]; then
@@ -23,12 +21,6 @@ fi
 printf "\n\nRelease: update working tree"
 git pull origin master
 git fetch origin --tags
-
-if [ $HOTFIX == '0' ]; then
-  printf "\n\nRelease: merge develop branch"
-  git fetch origin develop
-  git merge origin/develop
-fi
 
 printf "Release: npm install"
 npm install
@@ -77,11 +69,6 @@ printf "\n\nRelease: push to github, publish on npm"
 git push origin master
 git push origin --tags
 npm publish
-git checkout develop
-git pull origin develop
-git merge master
-git push origin develop
-git checkout master
 
 printf "Release:
 Package was published to npm.

@@ -25,7 +25,7 @@ fi
 
 if [ "$RANGE" == "" ]; then
   # locally
-  RANGE="origin/develop..HEAD"
+  RANGE="origin/master..HEAD"
 elif [[ "$RANGE" == *...* ]]; then
   # Travis sends the ranges with 3 dots. Git only wants 2.
   RANGE=`echo $TRAVIS_COMMIT_RANGE | sed 's/\.\.\./../'`

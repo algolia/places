@@ -1,8 +1,3 @@
 {
-  "env": {
-    "test": {
-      "plugins": ["babel-plugin-rewire"]
-    }
-  },
   "presets": ["es2015", "stage-2"]
 }

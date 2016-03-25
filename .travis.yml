@@ -1,23 +1,20 @@
 language: node_js
-node_js: 4
+node_js: 5
 before_install:
-  - 'git config --global user.email "algobot@users.noreply.github.com"'
-  - 'git config --global user.name "algobot"'
+  - 'git config --global user.email "algoliaplacesbot@users.noreply.github.com"'
+  - 'git config --global user.name "algoliaplacesbot"'
   - npm prune
-  - rvm install 2.2.0
-  - rvm use 2.2.0
-before_cache: npm prune
+  - rvm install 2.3.0
+  - rvm use 2.3.0
 install: npm install
 script: ./scripts/test-ci.sh
-after_script: ./scripts/travis-after-script.sh
 branches:
   only:
     - master
-    - develop
+notifications:
+  slack: algolia:wSMHl9gxKQ7cRvnOPUWE9esI
 sudo: false
 cache:
-  directories:
+  - bundler
+  - directories:
     - node_modules
-env:
-  global:
-    # TODO: add necessary keys for cache, deploy

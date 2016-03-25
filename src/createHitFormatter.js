@@ -25,5 +25,5 @@ export default function createHitFormatter({formatAutocompleteSuggestion, format
     });
 
     return formatted;
-  }
+  };
 }
