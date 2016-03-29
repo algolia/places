@@ -30,17 +30,17 @@ configure :development do
   activate :livereload
   activate :external_pipeline,
     name: :places,
-    command: "npm run js:watch -- --output-path docs/.webpack/js",
-    source: ".webpack"
+    command: 'npm run js:watch -- --output-path docs/.webpack/js',
+    source: '.webpack'
 end
-
-activate :external_pipeline,
-  name: :all,
-  command: "npm run docs:js:#{ build? ? :build : :watch }",
-  source: ".webpack"
 
 set :js_dir, 'js'
 ignore '/javascripts/*'
+
+activate :external_pipeline,
+  name: :all,
+  command: "npm run docs:js:#{build? ? :build : :watch}",
+  source: '.webpack'
 
 ###
 # Helpers
@@ -62,4 +62,12 @@ configure :build do
   activate :minify_css
   activate :minify_javascript
   activate :asset_hash
+  activate :relative_assets
+  set :relative_links, true
+end
+
+activate :deploy do |deploy|
+  deploy.build_before = true
+  deploy.deploy_method = :git
+  deploy.remote   = "https://#{ENV['GH_TOKEN']}@github.com/algolia/places.git"
 end

@@ -44,7 +44,6 @@ Requirements:
 
 ```sh
 npm run dev
-# TODO: url for local dev
 ```
 
 Open http://localhost.localdomain:4567/.

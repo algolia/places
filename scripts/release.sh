@@ -2,6 +2,8 @@
 
 set -e # exit when error
 
+printf "\nReleasing\n"
+
 if [[ -n $(npm owner add `npm whoami`) ]]; then
   printf "Release: Not an owner of the npm repo, ask for it"
   exit 1
