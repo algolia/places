@@ -16,8 +16,8 @@ notifications:
 sudo: false
 gemfile: docs/Gemfile
 cache:
-  - bundler
-  - directories:
+  bundler: true
+  directories:
     - node_modules
 env:
   global:
