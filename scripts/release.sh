@@ -67,11 +67,11 @@ git tag "v$newVersion"
 printf "\n\nRelease: almost done, check everything in another terminal tab.\n"
 read -p "=> Release: when ready, press [ENTER] to push to github and publish the package"
 
-printf "\n\nRelease: push to github, publish on npm"
+printf "\n\nRelease: push to github, publish on npm\n"
 git push origin master
 git push origin --tags
 npm publish
 
-printf "Release:
+printf "\n\nRelease:
 Package was published to npm.
 A job on travis-ci will be automatically launched to finalize the release."
