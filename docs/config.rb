@@ -62,6 +62,8 @@ configure :build do
   activate :minify_css
   activate :minify_javascript
   activate :asset_hash
+  # website is hosted on a subpath /places.js so we use relative links
+  # and assets
   activate :relative_assets
   set :relative_links, true
 end

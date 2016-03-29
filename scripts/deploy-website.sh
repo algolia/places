@@ -11,8 +11,10 @@ VERSION=`json version < package.json`
 cd docs
 bundle install
 VERSION=${VERSION} NODE_ENV=production bundle exec middleman deploy &>/dev/null # hide output, we do not want github tokens to leak in stdout
-if [ $? -eq 1 ]
+if [ $? -eq 0 ]
 then
+  echo "\nWebsite was updated\n"
+else
   echo "\nCould not update the website\n"
   exit 1
 fi
