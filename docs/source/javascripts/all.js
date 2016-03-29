@@ -1,12 +1,16 @@
 places({container: document.querySelector('#landing-demo')});
 
-document.addEventListener('scroll', function(event){
-	const hero = document.querySelector('.hero-section');
-	const navigation = document.querySelector('.navigation') ;
+// The following code is used to change the color of the navigation
+// depending the level of page scroll.
+const hero = document.querySelector('.hero-section');
+const navigation = document.querySelector('.navigation') ;
+const height = hero.offsetHeight;
+const navHeight = navigation.offsetHeight;
+const sidebar = document.getElementById('sidebar');
 
+
+document.addEventListener('scroll', function(event){
 	const value = event.target.scrollingElement.scrollTop;
-	const height = hero.offsetHeight;
-	const navHeight = navigation.offsetHeight;
 
 	if(value > height) {
 		navigation.classList.add('darken');
@@ -16,4 +20,24 @@ document.addEventListener('scroll', function(event){
 	} else {
 		navigation.classList.remove('darken','init');
 	}
+
+	const doc = document.querySelector('.documentation-section');
+	if(doc){
+		const paddingDoc = window.getComputedStyle(doc, null).getPropertyValue('padding-top').split('px')[0];
+		// Fix the sidebar navigation
+		if(value > ((height - navHeight) + parseInt(paddingDoc)) && sidebar) {
+			sidebar.classList.add('fixed')
+		} else {
+			sidebar.classList.remove('fixed')
+		}
+	}
 })
+
+// document.addEventListener('scroll', function(event){
+// 	const valuex = event.target.scrollingElement.scrollTop;
+// 	if(valuex > ((height - navHeight) + parseInt(paddingDoc)) && sidebar) {
+// 		sidebar.classList.add('fixed')
+// 	} else {
+// 		sidebar.classList.remove('fixed')
+// 	}
+// })
