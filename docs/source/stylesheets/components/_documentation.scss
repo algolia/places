@@ -1,0 +1,36 @@
+
+.documentation-section {
+  padding-top: 120px;
+
+  .container {
+    article {
+      width: 100%;
+      position: relative;
+      left: calc(#{$sidebar-width} + 40px);
+      margin-top: 60px;
+    }
+  }
+
+  p,
+  ul {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  h2 {
+    color: $charcoal-grey;
+    font-size: 28px;
+  }
+
+  @include small-mq {
+    padding-top: 16px;
+
+    .container {
+      article {
+        left: 0;
+        float: left;
+        margin-top: 40px;
+      }
+    }
+  }
+}

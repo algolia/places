@@ -1,7 +1,7 @@
 /* global places */
 
 places({
-  container: document.querySelector('#landing-demo')
+	container: document.querySelector('#landing-demo')
 });
 
 // The following code is used to change the color of the navigation
@@ -15,8 +15,8 @@ const sidebar = document.getElementById('sidebar');
 
 // automatically darken the top menu when going down
 document.addEventListener('scroll', scrollEvent => {
-  const hero = document.querySelector('.hero-section');
-  const navigation = document.querySelector('.navigation');
+	const hero = document.querySelector('.hero-section');
+	const navigation = document.querySelector('.navigation');
 	const value = event.target.scrollingElement.scrollTop;
 
 	if(value > height) {
@@ -40,11 +40,44 @@ document.addEventListener('scroll', scrollEvent => {
 	}
 })
 
-// document.addEventListener('scroll', function(event){
-// 	const valuex = event.target.scrollingElement.scrollTop;
-// 	if(valuex > ((height - navHeight) + parseInt(paddingDoc)) && sidebar) {
-// 		sidebar.classList.add('fixed')
-// 	} else {
-// 		sidebar.classList.remove('fixed')
-// 	}
-// })
+// Responsive navigation
+const theSelect = document.createElement('select');
+let winWidth = window.innerWidth;
+
+function checkWidth() {
+	if(winWidth < 768) {
+		theSelect.classList.add('show')
+	} else {
+		theSelect.classList.remove('show')
+	}
+}
+function selectizer(){
+   // Let's make the select
+   var isSelect = document.getElementById('selectNav');
+   theSelect.id = "selectNav";
+
+  if(!isSelect) {
+    document.querySelector('.navigation').appendChild(theSelect)
+  }
+
+   const links = document.querySelectorAll('.menu li a');
+
+   for(let i = 0;i<links.length;i++) {
+
+   	var option = document.createElement("option");
+   	option.text = links[i].textContent;
+   	option.value = links[i].href;
+   	theSelect.appendChild(option)
+   }
+
+   checkWidth()
+ }
+
+ window.onload = function() {
+ 	selectizer()
+ }
+
+ window.onresize = function() {
+ 	winWidth = window.innerWidth;
+ 	checkWidth()
+ }
