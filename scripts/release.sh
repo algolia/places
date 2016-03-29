@@ -4,8 +4,8 @@ set -e # exit when error
 
 printf "\nReleasing\n"
 
-if [[ -n $(npm owner add `npm whoami`) ]]; then
-  printf "Release: Not an owner of the npm repo, ask for it"
+if [[ -n $(npm owner add "$(npm whoami)") ]]; then
+  printf "Release: Not an owner of the npm repo, ask a contributor for access"
   exit 1
 fi
 
@@ -30,7 +30,7 @@ npm install
 currentVersion=`cat package.json | json version`
 
 # header
-printf "\n\nRelease: current version is $currentVersion"
+printf "\n\nRelease: current version is %s" $currentVersion
 printf "\nRelease: a changelog will be generated only if a fix/feat/performance/breaking token is found in git log"
 printf "\nRelease: you must choose a new ve.rs.ion (semver)"
 printf "\nRelease: press q to exit the next screen\n\n"
@@ -60,8 +60,8 @@ npm run doctoc
 
 # git add and tag
 commitMessage="v$newVersion\n\n$changelog"
-git add src/version.js npm-shrinkwrap.json package.json CHANGELOG.md README.md CONTRIBUTING.md
-printf "$commitMessage" | git commit --file -
+git add src/version.js package.json CHANGELOG.md README.md CONTRIBUTING.md
+printf "%s" "$commitMessage" | git commit --file -
 git tag "v$newVersion"
 
 printf "\n\nRelease: almost done, check everything in another terminal tab.\n"
