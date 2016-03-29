@@ -1,4 +1,4 @@
-[![Version][version-svg]][package-url] [![Build Status][travis-svg]][travis-url] [![Coverage Status][coveralls-svg]][coveralls-url] [![License][license-image]][license-url] [![Downloads][downloads-image]][downloads-url]
+[![Version][version-svg]][package-url] [![Build Status][travis-svg]][travis-url] [![License][license-image]][license-url] [![Downloads][downloads-image]][downloads-url]
 
 # Places
 
@@ -21,8 +21,6 @@ We have a [contributing guide][contributing].
 [package-url]: https://npmjs.org/package/places.js
 [travis-svg]: https://img.shields.io/travis/algolia/places/master.svg?style=flat-square
 [travis-url]: https://travis-ci.org/algolia/places
-[coveralls-svg]: https://img.shields.io/coveralls/algolia/places/master.svg?style=flat-square
-[coveralls-url]: https://coveralls.io/github/algolia/places?branch=docs%2Fbadges
 [license-image]: http://img.shields.io/badge/license-MIT-green.svg?style=flat-square
 [license-url]: LICENSE
 [downloads-image]: https://img.shields.io/npm/dm/places.js.svg?style=flat-square

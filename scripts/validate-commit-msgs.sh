@@ -2,6 +2,8 @@
 
 set -e # exit when error
 
+printf "\nValidating commit message\n"
+
 [ -z $TRAVIS_PULL_REQUEST ] && TRAVIS_PULL_REQUEST="false"
 
 if [ $TRAVIS_PULL_REQUEST == "false" ]; then

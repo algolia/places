@@ -4,11 +4,11 @@
   "description": "🌐 The easiest way to add fast geo search to your website.",
   "main": "dist/npm/index.js",
   "scripts": {
-    "build": "./scripts/build.sh",
+    "build": "NODE_ENV=production ./scripts/build.sh",
     "dev": "./scripts/dev.sh",
     "docs:js:build": "webpack --config webpack.config.docs.babel.js",
     "docs:js:watch": "webpack --config webpack.config.docs.babel.js --watch",
-    "docs:update-website": "./scripts/docs/update-website.sh",
+    "docs:deploy": "./scripts/deploy-website.sh",
     "doctoc": "doctoc --maxlevel 3 CONTRIBUTING.md",
     "js:build": "webpack",
     "js:watch": "webpack --watch",
@@ -16,7 +16,8 @@
     "release": "./scripts/release.sh",
     "shrinkwrap": "npm-shrinkwrap --dev",
     "test": "mocha --opts mocha.opts && npm run lint",
-    "test:watch": "npm run test -- --watch --reporter min"
+    "test:watch": "npm run test -- --watch --reporter min",
+    "test:ci": "./scripts/test-ci.sh"
   },
   "author": "Algolia (https://www.algolia.com)",
   "homepage": "https://community.algolia.com/places",

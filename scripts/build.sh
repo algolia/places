@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-set -e # exit when error
+set -e # exit when error, no verbose
+
+printf "\nBuilding places.js library\n"
 
 NAME='places'
 LICENSE="/*! ${NAME} ${VERSION:-UNRELEASED} | © Algolia | github.com/algolia/places */"
@@ -13,8 +15,8 @@ DIST_FILE_SOURCEMAP_MIN="$DIST_DIR_CDN/${NAME}.min.js.map"
 
 mkdir -p "$DIST_DIR_CDN" "$DIST_DIR_NPM"
 
-rm -rf "$DIST_DIR_CDN"/*
-rm -rf "$DIST_DIR_NPM"/*
+rm -rf "${DIST_DIR_CDN:?}"/*
+rm -rf "${DIST_DIR_NPM:?}"/*
 
 # places.js as one ES5 file + minified version and source maps
 webpack
