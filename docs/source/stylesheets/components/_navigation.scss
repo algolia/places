@@ -80,4 +80,13 @@
       }
     }
   }
+
+  // Responsive nav
+  select {
+    display: none;
+
+    &.show {
+      display: inline-block;
+    }
+  }
 }
