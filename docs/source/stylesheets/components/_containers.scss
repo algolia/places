@@ -188,7 +188,28 @@ section {
   }
 }
 
+.documentation-section {
+  padding-top: 120px;
 
+  .container {
+    article {
+      position: relative;
+      left: calc(#{$sidebar-width} + 40px);
+      margin-top: 60px;
+    }
+  }
+
+  p,
+  ul {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  h2 {
+    color: $charcoal-grey;
+    font-size: 28px;
+  }
+}
 ////
 
 .footer-section {

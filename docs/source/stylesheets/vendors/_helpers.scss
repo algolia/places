@@ -71,3 +71,18 @@ hr {
 
   }
 }
+
+.pipe {
+  width: 2px;
+  height: 20px;
+  background: $red-pink;
+  display: inline-block;
+  float: left;
+  margin: 20px 16px 0;
+  line-height: $navigation-height;
+
+  &+ span {
+    font-weight: bold;
+
+  }
+}
