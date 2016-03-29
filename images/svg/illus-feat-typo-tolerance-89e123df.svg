@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="74px" height="74px" viewBox="0 0 74 74" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.5.2 (25235) - http://www.bohemiancoding.com/sketch -->
+    <title>feature-icons/illus-feat-typo-tolerance</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="features-icons" sketch:type="MSArtboardGroup" transform="translate(-160.000000, -717.000000)" stroke-width="1.3">
+            <g id="feature-icons/illus-feat-typo-tolerance" sketch:type="MSLayerGroup" transform="translate(161.000000, 718.000000)">
+                <g id="Fill-311-Copy-2-+-Group-Copy" transform="translate(0.000000, 0.325137)" stroke="#2897C5" stroke-opacity="0.333305027" fill="#FFFFFF" sketch:type="MSShapeGroup">
+                    <path d="M71.8040455,35.7650273 C71.8040455,55.5177268 55.8024652,71.5300546 36.0644753,71.5300546 C16.3264855,71.5300546 0.324905183,55.5177268 0.324905183,35.7650273 C0.324905183,16.0129781 16.3264855,0 36.0644753,0 C55.8024652,0 71.8040455,16.0129781 71.8040455,35.7650273" id="Fill-311-Copy-2"></path>
+                </g>
+                <path d="M29.6275724,44.7551819 L32.8434345,44.7551819 L33.0220935,20.7955009 L25.741159,20.7955009 L25.5625,25.3549375 L21.0960249,25.3549375 L21.2746839,17.1307695 L49.6389277,17.1307695 L49.8175867,25.3549375 L45.3511116,25.3549375 L45.1724526,20.7955009 L38.025319,20.7955009 L37.84666,44.7551819 L41.4646982,44.7551819 L41.4646982,48.4206873 L29.6275724,48.4206873 L29.6275724,44.7551819 Z" id="Fill-5668" stroke="#2897C5" fill="#F2F9FB" sketch:type="MSShapeGroup"></path>
+                <path d="M20.4702957,57.5629499 C24.1595164,57.5629498 21.7000359,52.9481393 25.1842999,52.9481393 C28.6685639,52.9481393 26.0041267,57.5629499 30.1032608,57.5629499 C34.2023949,57.5629499 31.9478711,52.9481393 35.6370918,52.9481393 C39.3263125,52.9481393 37.1236284,57.5629499 40.6591315,57.5629499 C44.1946347,57.5629499 43.1174111,52.9481393 45.884927,52.9481393 C48.652443,52.9481393 46.9097105,57.5629499 51.0088446,57.5629499" id="Path-235" stroke="#FE336F" sketch:type="MSShapeGroup"></path>
+            </g>
+        </g>
+    </g>
+</svg>
