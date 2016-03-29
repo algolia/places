@@ -1,11 +1,19 @@
+@import 'normalize';
+
+// Import CSSPeed boilerplate CSS
+// Since I plan to create a css
+// boilerplate for algolia's landing pages
+// it may change in the future
+// Still thinking about it
+
 @import 'vendors/variables',
-        'vendors/normalize',
         'vendors/mixins',
-        'vendors/helpers',
         'vendors/base',
+        'vendors/helpers',
         'vendors/svg-animations';
 
-@import 'components/icons',
+@import 'components/code-highlight',
+        'components/icons',
         'components/containers',
         'components/navigation',
         'components/buttons',
