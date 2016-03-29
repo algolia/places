@@ -203,11 +203,38 @@ section {
   }
 }
 
+.documentation-section {
+  padding-top: 120px;
 
+  .container {
+    article {
+      position: relative;
+      left: calc(#{$sidebar-width} + 40px);
+      margin-top: 60px;
+    }
+  }
+
+  p,
+  ul {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  h2 {
+    color: $charcoal-grey;
+    font-size: 28px;
+  }
+}
 ////
 
 .footer-section {
   color: $greyish-brown;
+  z-index: 10;
+  background: #fff;
+
+  hr {
+    margin: 0;
+  }
 
   p {
     margin: 48px 0;
@@ -223,7 +250,10 @@ section {
     }
   }
 
-
+  .container {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
 
   .newsletter-bloc {
     margin-top: 120px;
