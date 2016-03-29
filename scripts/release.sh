@@ -60,7 +60,7 @@ npm run doctoc
 
 # git add and tag
 commitMessage="v$newVersion\n\n$changelog"
-git add src/lib/version.js npm-shrinkwrap.json package.json CHANGELOG.md README.md CONTRIBUTING.md
+git add src/version.js npm-shrinkwrap.json package.json CHANGELOG.md README.md CONTRIBUTING.md
 printf "$commitMessage" | git commit --file -
 git tag "v$newVersion"
 

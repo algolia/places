@@ -5,7 +5,7 @@ import path from 'path';
 import mversion from 'mversion';
 
 import semver from 'semver';
-import currentVersion from '../src/lib/version.js';
+import currentVersion from '../src/version.js';
 
 if (!process.env.VERSION) {
   throw new Error('bump: Usage is VERSION=MAJOR.MINOR.PATCH scripts/bump-package-version.js');
@@ -22,9 +22,9 @@ if (semver.gte(currentVersion, newVersion)) {
 
 console.log('Bumping ' + newVersion);
 
-console.log('..Updating src/lib/version.js');
+console.log('..Updating src/version.js');
 
-let versionFile = path.join(__dirname, '../src/lib/version.js');
+let versionFile = path.join(__dirname, '../src/version.js');
 let newContent = "export default '" + newVersion + "';\n";
 fs.writeFileSync(versionFile, newContent);
 
