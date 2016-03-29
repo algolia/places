@@ -1,2 +1,3 @@
-places({container: document.querySelector('#landing-demo')});
+/* global places */
 
+places({container: document.querySelector('#landing-demo')});
