@@ -36,6 +36,7 @@ end
 
 set :js_dir, 'js'
 ignore '/javascripts/*'
+config[:cdn_url] = '//cdn.jsdelivr.net/places.js/0/places.min.js'
 
 activate :external_pipeline,
   name: :all,
