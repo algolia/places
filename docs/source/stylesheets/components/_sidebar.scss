@@ -1,0 +1,84 @@
+nav.sidebar {
+  float: left;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  max-width: $sidebar-width;
+  border-right: 1px solid #d8d8d8;
+
+  &.fixed {
+    position: fixed;
+    top: $navigation-height + 16px;
+    z-index: 12;
+  }
+
+
+  ul {
+    list-style: none;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    float: left;
+
+
+    li {
+      width: 100%;
+      display: block;
+      height: 32px;
+      line-height: 32px;
+
+      a {
+        text-decoration: none;
+        display: block;
+        width: 100%;
+        height: 100%;
+        color: $charcoal-grey-75;
+        font-weight: 400;
+
+
+        &:focus,
+        &:target {
+          color: $red-pink;
+          box-shadow: inset -2px 0 0 0 $red-pink
+        }
+      }
+    }
+  }
+
+  @include small-mq {
+    width: calc(100% + 16px);
+    max-width: calc(100% + 16px);
+    position: relative;
+    max-height: 40px;
+    left: 0px;
+    top: -16px;
+    border: none;
+
+
+    &.fixed {
+      background: $brand-primary;
+      color: #fff;
+      top: $navigation-height;
+    }
+
+    ul {
+      width: 100%;
+      padding: 0 16px;
+      height: 40px;
+
+      li {
+        float: left;
+        display: inline-block;
+        width: auto;
+        height: 40px;
+        line-height: 40px;
+        margin-right: 8px;
+
+        a {
+          text-align: center;
+          color: #fff;
+        }
+      }
+    }
+  }
+}

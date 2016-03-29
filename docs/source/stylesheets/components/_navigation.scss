@@ -23,6 +23,12 @@
     float: left;
   }
 
+  a {
+    color: #fff;
+    text-decoration: none;
+    padding-bottom: 8px;
+  }
+
   .searchbar {
     float: left;
     width: auto;
@@ -66,6 +72,12 @@
     li {
       display: inline-block;
       padding: 0 6px;
+
+      &.active {
+        a {
+          border-bottom: 2px solid $red-pink;
+        }
+      }
     }
   }
 }
