@@ -1,3 +1,13 @@
+# This travis.yml was built to:
+#   - install ruby and nodejs
+#   - run nodejs test
+#   - lint javascript code
+#   - check commit message style when in a PR
+#   - deploy website when merged to master
+# We defined the language to be ruby to benefit from bundle caching, it seems to be the only way to have it
+# working well in travis.
+# Then we install ruby and nodejs with rvm and nvm
+# We also cache ./node_modules/
 language: ruby
 before_install:
   - 'git config --global user.email "algoliaplacesbot@users.noreply.github.com"'
@@ -8,10 +18,9 @@ before_install:
   - nvm install 5
   - nvm use 5
 gemfile: docs/Gemfile
-install:
+script:
   - npm install
-  - bundle install
-script: npm run test:ci
+  - npm run test:ci
 branches:
   only:
     - master
