@@ -20,11 +20,7 @@ Hi (future) collaborator!
   - [Body](#body)
   - [Footer](#footer)
 - [Stash your commits](#stash-your-commits)
-- [When are issues closed?](#when-are-issues-closed)
 - [Releasing](#releasing)
-- [Hotfixes](#hotfixes)
-  - [Releasing hotfixes](#releasing-hotfixes)
-  - [Documentation updates](#documentation-updates)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
