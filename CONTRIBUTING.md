@@ -19,7 +19,7 @@ Hi (future) collaborator!
   - [Subject](#subject)
   - [Body](#body)
   - [Footer](#footer)
-- [Stash your commits](#stash-your-commits)
+- [Squash your commits](#squash-your-commits)
 - [Releasing](#releasing)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -106,15 +106,17 @@ reference GitHub issues that this commit **Closes**.
 
 **Breaking Changes** should start with the word `BREAKING CHANGE:` with a space or two newlines. The rest of the commit message is then used for this.
 
-# Stash your commits
+# Squash your commits
 
-Once you are done with a fix or feature and the review was done, [squash](http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html) your commits to avoid things like "fix dangling comma in bro.js", "fix after review"
+Once you are done with a fix or feature and the review was done, [squash](http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html) your commits to avoid things like "fix dangling comma in bro.js", "fix after review".
+
+The goal is to have meaningful, feature based commits instead of a lot of small commits.
 
 Example:
     - `feat(widget): new feature blabla..`
     - `refactor new feature blablabla...`
     - `fix after review ...`
-  - **both commits should be squashed* in a single commit: `feat(widget) ..`
+  - **both commits should be squashed** in a single commit: `feat(widget) ..`
 
 # Releasing
 
