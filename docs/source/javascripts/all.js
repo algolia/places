@@ -4,7 +4,7 @@ places({
   container: document.querySelector('#landing-demo')
 });
 
-// automatically add necessary css classes for responsive layour
+// automatically darken the top menu when going down
 document.addEventListener('scroll', scrollEvent => {
   const hero = document.querySelector('.hero-section');
   const navigation = document.querySelector('.navigation');
