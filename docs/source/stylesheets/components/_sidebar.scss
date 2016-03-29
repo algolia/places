@@ -9,6 +9,7 @@ nav.sidebar {
   &.fixed {
     position: fixed;
     top: $navigation-height + 16px;
+    z-index: 12;
   }
 
 
@@ -39,6 +40,43 @@ nav.sidebar {
         &:target {
           color: $red-pink;
           box-shadow: inset -2px 0 0 0 $red-pink
+        }
+      }
+    }
+  }
+
+  @include small-mq {
+    width: calc(100% + 16px);
+    max-width: calc(100% + 16px);
+    position: relative;
+    max-height: 40px;
+    left: 0px;
+    top: -16px;
+    border: none;
+
+
+    &.fixed {
+      background: $brand-primary;
+      color: #fff;
+      top: $navigation-height;
+    }
+
+    ul {
+      width: 100%;
+      padding: 0 16px;
+      height: 40px;
+
+      li {
+        float: left;
+        display: inline-block;
+        width: auto;
+        height: 40px;
+        line-height: 40px;
+        margin-right: 8px;
+
+        a {
+          text-align: center;
+          color: #fff;
         }
       }
     }
