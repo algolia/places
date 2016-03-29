@@ -42,10 +42,18 @@ hr {
 }
 
 .no-desktop {
-  display: none;
+  display: none !important;
 
   @include small-mq {
-    display: block;
+    display: block !important;
+  }
+}
+
+.no-mobile {
+  display: block !important;
+
+  @include small-mq {
+    display: none !important;
   }
 }
 

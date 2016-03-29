@@ -1,6 +1,9 @@
 .highlight {
   padding: 24px;
   border-radius: 4px;
+  max-width: 100%;
+  display: block;
+
 }
 @if $highlight-theme == 'github' {
   .highlight {
