@@ -36,6 +36,7 @@ end
 
 set :js_dir, 'js'
 ignore '/javascripts/*'
+config[:cdn_url] = '//cdn.jsdelivr.net/places.js/0/places.min.js'
 
 activate :external_pipeline,
   name: :all,
@@ -62,6 +63,8 @@ configure :build do
   activate :minify_css
   activate :minify_javascript
   activate :asset_hash
+  # website is hosted on a subpath /places.js so we use relative links
+  # and assets
   activate :relative_assets
   set :relative_links, true
 end
