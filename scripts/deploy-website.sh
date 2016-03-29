@@ -9,7 +9,6 @@ printf "\nDeploying website website to gh-pages\n"
 VERSION=`json version < package.json`
 
 cd docs
-bundle install
 VERSION=${VERSION} NODE_ENV=production bundle exec middleman deploy &>/dev/null # hide output, we do not want github tokens to leak in stdout
 if [ $? -eq 0 ]
 then

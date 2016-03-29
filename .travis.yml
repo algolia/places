@@ -1,12 +1,16 @@
-language: node_js
-node_js: 5
+language: ruby
 before_install:
   - 'git config --global user.email "algoliaplacesbot@users.noreply.github.com"'
   - 'git config --global user.name "algoliaplacesbot"'
   - npm prune
   - rvm install 2.3.0
   - rvm use 2.3.0
-install: npm install
+  - nvm install 5
+  - nvm use 5
+gemfile: docs/Gemfile
+install:
+  - npm install
+  - bundle install
 script: npm run test:ci
 branches:
   only:
@@ -14,10 +18,9 @@ branches:
 notifications:
   slack: algolia:wSMHl9gxKQ7cRvnOPUWE9esI
 sudo: false
-gemfile: docs/Gemfile
 cache:
-  - bundler
-  - directories:
+  bundler: true
+  directories:
     - node_modules
 env:
   global:
