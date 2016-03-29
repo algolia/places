@@ -1,6 +1,27 @@
+/* Grid system
+// .bloc-1 = 10%
+// .bloc-2 = 20%
+// and so on..
+================*/
+$sizes: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
+
+[class*="bloc-"] {
+  float: left;
+}
+@each $size in $sizes {
+  .bloc-#{$size} {
+    $size: $size*10%;
+    width: $size;
+  }
+}
+
+
 /* Containers
 ================*/
 .container {
+  float: none;
+  margin: auto;
+  width: 100%;
   max-width: $max-width;
 }
 
