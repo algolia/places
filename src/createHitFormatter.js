@@ -12,7 +12,7 @@ export default function createHitFormatter({formatAutocompleteSuggestion, format
 
     // this is the value to put inside the input.value
     // autocomplete.js automatically takes hit.value as the underlying
-    // input value when a suggestion is validated
+    // input value when a suggestion is validated with enter or selected with the mouse
     formatted.value = formatInputValue({
       ...formatted,
       name: hit.locale_names.default[0]

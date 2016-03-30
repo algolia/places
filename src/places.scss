@@ -1,0 +1,88 @@
+$icon-search: "data:image/svg+xml;utf8,<svg width=\'22\' height=\'22\' viewBox=\'0 0 22 22\' xmlns=\'http://www.w3.org/2000/svg\'><title>search-icon copy</title><path d=\'M15.723 13.836h-.993l-.353-.34c1.233-1.433 1.975-3.295 1.975-5.32C16.352 3.66 12.692 0 8.176 0S0 3.66 0 8.176s3.66 8.176 8.176 8.176c2.025 0 3.887-.742 5.32-1.975l.34.353v.993L20.126 22 22 20.126l-6.277-6.29zm-7.547 0c-3.132 0-5.66-2.528-5.66-5.66s2.528-5.66 5.66-5.66 5.66 2.528 5.66 5.66-2.528 5.66-5.66 5.66z\' fill=\'%23A3A3A3\' fill-rule=\'evenodd\'/></svg>";
+$pale-grey: #f2f4f6;
+$greyish: #a4a4a4;
+
+// all em units are computed given a font of 16px
+// see http://pxtoem.com/ to change/add values
+.algolia-places {
+  width: 100%; // we ask the autocomplete to take the full width of his container
+
+  .aa-input {
+    border: solid 0.063em rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0.063em 0.625em rgba(0, 0, 0, 0.2), 0 0.125em 0.250em 0 rgba(0, 0, 0, 0.1);
+    background: {
+      image: url($icon-search);
+      repeat: no-repeat;
+      position: center right 1em;
+    }
+  }
+
+  .aa-input, .aa-hint {
+    width: 100%;
+    height: 3.5em;
+    padding-left: 1em;
+    padding-right: 3em;
+    border-radius: 0.250em;
+  }
+
+  .aa-dropdown-menu {
+    width: 100%;
+    background: #ffffff;
+    box-shadow: 0 0.063em 0.625em rgba(0, 0, 0, 0.2), 0 0.125em 0.250em 0 rgba(0, 0, 0, 0.1);
+    border-radius: 0.250em;
+    margin-top: 0.250em;
+  }
+
+  .aa-suggestion {
+    cursor: pointer;
+    height: 2.875em;
+    line-height: 2.875em;
+    padding-left: 1.125em;
+    em {
+      font-weight: bold;
+      font-style: normal;
+    }
+
+    &:first-child {
+      border-top-left-radius: 0.250em;
+      border-top-right-radius: 0.250em;
+    }
+
+    &:last-child {
+      border-bottom-left-radius: 0.250em;
+      border-bottom-right-radius: 0.250em;
+    }
+  }
+
+  .pl-address {
+    font-size: 0.875em; // 14px when font is 16px
+    margin-left: 0.857em; // 12px when font is 14px
+    color: $greyish;
+  }
+
+  .pl-icon {
+    max-width: 0.875em;
+    max-height: 1.250em;
+    margin-right: 0.625em;
+    float: left;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+
+    svg {
+      transform: scale(0.90);
+    }
+  }
+
+  .aa-cursor {
+    background: $pale-grey;
+
+    .pl-address {
+      color: darken($greyish, 10%)
+    }
+
+    .pl-icon svg {
+      transform: scale(1)
+    }
+  }
+}

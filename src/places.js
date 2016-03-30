@@ -6,6 +6,7 @@ import autocomplete from 'autocomplete.js';
 import createHitFormatter from './createHitFormatter.js';
 import formatInputValue from './formatInputValue.js';
 import formatAutocompleteSuggestion from './formatAutocompleteSuggestion.js';
+import './places.scss';
 
 const hitFormatter = createHitFormatter({
   formatAutocompleteSuggestion,
@@ -17,16 +18,36 @@ export default function places({
   // language = navigator.language,
   container
 }) {
-  const placesAPIClient = algoliasearch.initPlaces('places', '5c759b588c767287a3dca1e8e18232f8');
-  autocomplete(container, {debug: true, autoselect: true}, {
-    source: (query, cb) => placesAPIClient
-      .search({query})
-      .then(({hits}) => hits.slice(0, 5).map(hitFormatter))
-      .then(hits => {console.log(hits); return hits;})
-      .then(cb)
-      .catch(err => console.error(err)),
-    templates: {
-      suggestion: hit => hit.suggestion
+  const client = algoliasearch.initPlaces('6TZ2RYGYRQ', '20b9e128b7e37ff38a4e86b08477980b');
+
+  // https://github.com/algolia/autocomplete.js#options
+  const options = {
+    debug: true,
+    openOnFocus: true,
+    autoselect: true
+  };
+
+  // https://github.com/algolia/autocomplete.js#options
+  const templates = {
+    suggestion: hit => hit.suggestion
+  };
+
+  // https://github.com/algolia/autocomplete.js#sources
+  const source = (query, cb) => client
+    .search({query})
+    .then(({hits}) => hits.slice(0, 5).map(hitFormatter))
+    .then(hits => {console.log(hits); return hits;})
+    .then(cb)
+    .catch(err => console.error(err));
+
+  autocomplete(
+    container,
+    options, {
+      source,
+      templates
     }
-  });
+  );
+
+  const autocompleteContainer = container.parentNode;
+  autocompleteContainer.classList.add('algolia-places');
 }
