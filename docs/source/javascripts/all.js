@@ -48,7 +48,7 @@ function selectizer(){
    // Let's make the select
    var isSelect = document.getElementById('selectNav');
    theSelect.id = "selectNav";
-   theSelect.classList.add('no-desktop');
+   theSelect.classList.add('display-on-small');
 
   if(!isSelect) {
     document.querySelector('.navigation').appendChild(theSelect)
@@ -66,19 +66,14 @@ function selectizer(){
    	option.value = links[i].href;
    	theSelect.appendChild(option)
    }
-
-   checkWidth()
  }
 
  window.onload = function() {
  	selectizer()
  }
 
- window.onresize = function() {
- 	winWidth = window.innerWidth;
- }
 
- theSelect.addEventListener('change', function(event){
+ theSelect.addEventListener('change', function(event) {
  	var value = this.options[this.selectedIndex].value;
  	window.location = value;
  })

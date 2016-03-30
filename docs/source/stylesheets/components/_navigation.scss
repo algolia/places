@@ -60,6 +60,9 @@
         background-position: center left 15px;
       }
 
+      @include small-mq {
+        display: none;
+      }
     }
   }
 
@@ -68,6 +71,10 @@
     margin: 0;
     float: left;
     list-style: none;
+
+    @include small-mq {
+      display: none;
+    }
 
     li {
       display: inline-block;
