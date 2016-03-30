@@ -1,0 +1,125 @@
+---
+title: Algolia Places - Documentation
+---
+%div.navigation
+  %div.fl-left
+  %a{href: "/index.html"}
+    %span.brand
+      <span class="icon icon-algolia-light">Algolia</span> Community
+    %span.pipe
+    %span.no-mobile Places
+
+
+  %div.fl-right
+    %div.searchbar
+      %input{class: "form-control aa-input", placeholder: "Search in the documentation", type: "text", id: "doc-search"}
+
+    %ul.menu
+      %li.active
+        %a{href: "/documentation.html"} documentation
+      %li
+        %a{href: "example.html"} examples
+      %li
+        %a{href: "#"} about
+      %li
+        %a{href: "#"}
+          %span.icon.icon-github
+            github
+
+
+%section.hero-section.shrink
+  .container
+    %div.hero-container
+
+      %div.fl-left
+        %span{class: "icon icon-algolia-small no-mobile", id: "icon-algolia"}
+        %span{class: "display-on-small small-illustration"}
+          %img{src: "images/svg/places-illustration.svg"}
+        %h1 Documentation
+        %h3 The easiest way to find an address lorem dolor sit amet en consequeter
+
+
+%section.documentation-section
+  .container
+    %nav.sidebar#sidebar
+      %ul
+        %li
+          %a{href: "#introduction"} Introduction
+
+        %li
+          %a{href: "#setup"} Setup
+
+        %li
+          %a{href: "#options"} Options
+
+    %div.documentation-container
+      %article{id: "introduction"}
+        %h2 Introduction
+
+        %p
+          We’re scratching our own itch here. As developers, we spend a lot of time reading documentation, and it isn’t always easy to find the information we need.
+
+        %p
+          Not blaming anyone here. Building a good search for a documentation is a complex challenge. We happen to have a lot of experience doing that, and we want to share it with the world. For free.
+
+        %p
+          Just submit the form on the website and we’ll get back to you with what you need to integrate your new search into your website.
+        %ul
+          %li We’ll crawl your documentation pages,
+          %li We’ll configure your search experience, 
+          %li You’ll need to add a bit of JavaScript and CSS code to your website.
+
+
+      %article{id: "setup"}
+        %h2 Setup
+
+        %p
+          Once we’ve crawled your documentation website we’ll send you the credentials you need to add the following code snippet to your website:
+
+        :code
+          # lang: html
+          <link rel="stylesheet" href="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" /> 
+          <script type="text/javascript" src="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+          <script type="text/javascript">
+            docsearch({ 
+              apiKey: '<API_KEY>',
+              indexName: '<INDEX_NAME>',
+              inputSelector: '<YOUR_INPUT_DOM_SELECTOR>' 
+            }); 
+          </script>
+        %span
+
+      %article{id: "options"}
+        %h2 Options
+
+        %p
+          You can pass any options to the underlying <code>autocomplete</code> instance through the <code>autocompleteOptions</code> parameter. You will find all <code>autocomplete</code> options in <a href="https://github.com/algolia/autocomplete.js">its own documentation.</a>
+
+        %p You can also listen to <code>autocomplete</code> events through the <code>.autocomplete</code> property of the docsearch <code>instance</code>.
+
+        :code
+          # lang: html
+          <link rel="stylesheet" href="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" /> 
+          <script type="text/javascript" src="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+          <script type="text/javascript">
+            docsearch({ 
+              apiKey: '<API_KEY>',
+              indexName: '<INDEX_NAME>',
+              inputSelector: '<YOUR_INPUT_DOM_SELECTOR>' 
+            }); 
+          </script>
+
+%section.footer-section
+  %hr
+  .container.center-text
+    %p Designed and built with <span class="icon icon-love">♥︎</span> by <span class="icon icon-algolia">Algolia</span>
+    %p.links Code licensed under <a href="#" class="link">MIT</a> <br class="no-desktop"/> <a href="#" class="link">Github</a> <a href="#" class="link">issues</a> <a href="#" class="link">Releases</a>
+
+    %div.newsletter-bloc
+      %h4 Sign up for our newsletter
+      %p Follow project updates and general vector loveliness
+      %div.newsletter-form
+        %div
+          %span.icon.icon-mail
+          %input{type: "text", placeholder: "Email"}
+        %a{href: "http://algolia.com", class:"btn btn-grey"} Subscribe

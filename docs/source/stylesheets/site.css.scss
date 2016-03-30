@@ -1,14 +1,20 @@
-@import 'vendors/variables',
-        'vendors/normalize',
+
+
+@import 'vendors/normalize',
+        'vendors/variables',
         'vendors/mixins',
-        'vendors/helpers',
         'vendors/base',
         'vendors/svg-animations';
 
-@import 'components/icons',
+@import 'components/code-highlight',
+        'components/icons',
         'components/containers',
         'components/navigation',
         'components/buttons',
         'components/inputs',
         'components/fonts',
-        'components/dropdown';
+        'components/dropdown',
+        'components/sidebar',
+        'components/documentation';
+
+@import 'vendors/helpers';

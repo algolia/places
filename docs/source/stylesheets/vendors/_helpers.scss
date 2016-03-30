@@ -1,3 +1,17 @@
+$sizes: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
+
+[class*="bloc-"] {
+  float: left;
+}
+@each $size in $sizes {
+  .bloc-#{$size} {
+    $size: $size*10%;
+    width: $size;
+  }
+}
+
+
+
 .center-text {
   text-align: center;
 }
@@ -14,12 +28,12 @@ hr {
   border: none;
   float: left;
   clear: both;
+
   &:before,
   &:after {
     content: '';
     display: table;
     clear: both;
-
   }
 
   width: 100%;
@@ -27,10 +41,56 @@ hr {
   background: #e5e5e5
 }
 
+.pipe {
+  width: 2px;
+  height: 20px;
+  background: $red-pink;
+  display: inline-block;
+  float: left;
+  margin: 20px 16px 0;
+  line-height: $navigation-height;
+
+  &+ span {
+    font-weight: bold;
+    width: 0;
+    float: left;
+
+  }
+}
+
+// The following helper classes
+// made responsive desing easy
+//  - no-desktop : Only display on mobile
+//  - no-mobile  : Only display on desktop
+//  - display-on-small : only display on smallish screen ( no mobile )
+
 .no-desktop {
-  display: none;
+  display: none !important;
 
   @include small-mq {
-    display: block;
+    display: none !important;
+  }
+  @include mobile-mq {
+    display: block !important;
+  }
+
+  @media screen and (orientation: landscape) {
+    display: none !important;
+  }
+}
+
+.no-mobile {
+  display: block !important;
+
+  @include small-mq {
+    display: none !important;
+  }
+}
+
+.display-on-small {
+  display: none !important;
+
+  @media (max-width: 960px){
+    display: inline-block !important
   }
 }

@@ -1,8 +1,9 @@
 ---
-title: Algolia - Places
+title: Algolia Places
 ---
 %div.navigation
 	%div.fl-left
+	%a{href: "/index.html"}
 		%span.brand
 			<span class="icon icon-algolia-light">Algolia</span> Community
 
@@ -11,15 +12,15 @@ title: Algolia - Places
 		%div.searchbar
 			%input{class: "form-control aa-input", placeholder: "Search in the documentation", type: "text", id: "doc-search"}
 
-		%ul
+		%ul.menu
 			%li
-				%a documentations
+				%a{href: "/documentation.html"} documentation
 			%li
-				%a examples
+				%a{href: "#"} examples
 			%li
-				%a about
+				%a{href: "#"} about
 			%li
-				%a
+				%a{href: "#"}
 					%span.icon.icon-github
 						github
 
@@ -29,14 +30,13 @@ title: Algolia - Places
 		%div.hero-container
 
 			%div.fl-left
-				%span{class: "icon icon-algolia-small", id: "icon-algolia"}
-				%span{class: "no-desktop small-illustration"}
+				%span{class: "icon icon-algolia-small no-mobile", id: "icon-algolia"}
+				%span{class: "display-on-small small-illustration"}
 					%img{src: "images/svg/places-illustration.svg"}
 				%h1 Places
 				%h1 Lorem Ipsumdol
 				%h3 The easiest way to find an address lorem
 
-				%a{href: "http://algolia.com", class: "btn"} Get Started
 
 			%div.fl-right
 				-#%img{src: "images/svg/places-illustration.svg", class: "hero-illustration"}
@@ -49,6 +49,9 @@ title: Algolia - Places
 			%h2.title Why Places ?
 			%p We're kind of scratching our own itch here. As developers, we spend a lot of time reading documentation, and it isn’t always easy to find the information we need.
 			%p	No one's to blame, building a good search for a documentation is a complex challenge. We just happen to have a lot of experience doing that, and we want to share it with the world.
+
+			%a{href: "http://algolia.com", class: "btn btn-cta"} Get Started
+
 %hr
 %section.marketing-section
 	.container
@@ -98,6 +101,7 @@ title: Algolia - Places
 
 
 %section.footer-section
+	%hr
 	.container.center-text
 		%p Designed and built with <span class="icon icon-love">♥︎</span> by <span class="icon icon-algolia">Algolia</span>
 		%p.links Code licensed under <a href="#" class="link">MIT</a> <br class="no-desktop"/> <a href="#" class="link">Github</a> <a href="#" class="link">issues</a> <a href="#" class="link">Releases</a>
