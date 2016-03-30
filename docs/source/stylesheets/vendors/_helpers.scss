@@ -41,22 +41,6 @@ hr {
   background: #e5e5e5
 }
 
-.no-desktop {
-  display: none !important;
-
-  @include small-mq {
-    display: block !important;
-  }
-}
-
-.no-mobile {
-  display: block !important;
-
-  @include small-mq {
-    display: none !important;
-  }
-}
-
 .pipe {
   width: 2px;
   height: 20px;
@@ -68,6 +52,45 @@ hr {
 
   &+ span {
     font-weight: bold;
+    width: 0;
+    float: left;
 
+  }
+}
+
+// The following helper classes
+// made responsive desing easy
+//  - no-desktop : Only display on mobile
+//  - no-mobile  : Only display on desktop
+//  - display-on-small : only display on smallish screen ( no mobile )
+
+.no-desktop {
+  display: none !important;
+
+  @include small-mq {
+    display: none !important;
+  }
+  @include mobile-mq {
+    display: block !important;
+  }
+
+  @media screen and (orientation: landscape) {
+    display: none !important;
+  }
+}
+
+.no-mobile {
+  display: block !important;
+
+  @include small-mq {
+    display: none !important;
+  }
+}
+
+.display-on-small {
+  display: none !important;
+
+  @media (max-width: 960px){
+    display: inline-block !important
   }
 }
