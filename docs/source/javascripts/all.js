@@ -44,17 +44,11 @@ document.addEventListener('scroll', scrollEvent => {
 const theSelect = document.createElement('select');
 let winWidth = window.innerWidth;
 
-function checkWidth() {
-	if(winWidth < 768) {
-		theSelect.classList.add('show')
-	} else {
-		theSelect.classList.remove('show')
-	}
-}
 function selectizer(){
    // Let's make the select
    var isSelect = document.getElementById('selectNav');
    theSelect.id = "selectNav";
+   theSelect.classList.add('no-desktop');
 
   if(!isSelect) {
     document.querySelector('.navigation').appendChild(theSelect)
@@ -79,5 +73,9 @@ function selectizer(){
 
  window.onresize = function() {
  	winWidth = window.innerWidth;
- 	checkWidth()
  }
+
+ theSelect.addEventListener('change', function(event){
+ 	var value = this.options[this.selectedIndex].value;
+ 	window.location = value;
+ })
