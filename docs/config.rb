@@ -26,6 +26,7 @@ page '/*.txt', layout: false
 
 # Reload the browser automatically whenever files change
 configure :development do
+  config[:places] = :places
   activate :gzip
   activate :livereload
   activate :syntax
@@ -37,7 +38,6 @@ end
 
 set :js_dir, 'js'
 ignore '/javascripts/*'
-config[:cdn_url] = '//cdn.jsdelivr.net/places.js/0/places.min.js'
 
 activate :external_pipeline,
   name: :all,
@@ -58,6 +58,7 @@ activate :external_pipeline,
 
 # Build-specific configuration
 configure :build do
+  config[:places] = '//cdn.jsdelivr.net/places.js/0/places.min.js'
   # this may trigger bad behavior, if so, see
   # https://github.com/middleman/middleman-minify-html
   activate :minify_html

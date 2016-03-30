@@ -16,12 +16,7 @@
 
   <body class="<%= page_classes %>">
     <%= yield %>
-
-    <% if environment?(:development) %>
-    <%= javascript_include_tag :places %>
-    <% else %>
-    <script src="<%= config[:cdn_url] %>"></script>
-    <% end %>
+    <%= javascript_include_tag config[:places] %>
     <%= javascript_include_tag :all %>
   </body>
 </html>
