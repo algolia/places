@@ -83,10 +83,9 @@
 
   // Responsive nav
   select {
-    display: none;
-
-    &.show {
-      display: inline-block;
-    }
+    display: inline-block;
+    position: absolute;
+    top: 16px;
+    right: 8px;
   }
 }
