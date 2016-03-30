@@ -55,7 +55,10 @@ function selectizer(){
   }
 
    const links = document.querySelectorAll('.menu li a');
-
+   var home = document.createElement('option');
+   home.text = "Homepage";
+   home.value = "index.html";
+   theSelect.appendChild(home);
    for(let i = 0;i<links.length;i++) {
 
    	var option = document.createElement("option");
