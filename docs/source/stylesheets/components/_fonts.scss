@@ -23,6 +23,12 @@ p {
   @include small-mq {
     font-size: 16px;
   }
+
+  &+ ul {
+      font-size: 20px;
+  line-height: 32px;
+  color: $charcoal-grey-75;
+  }
 }
 
 /* Big titles
