@@ -28,12 +28,12 @@ hr {
   border: none;
   float: left;
   clear: both;
+
   &:before,
   &:after {
     content: '';
     display: table;
     clear: both;
-
   }
 
   width: 100%;
