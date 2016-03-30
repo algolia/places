@@ -23,6 +23,12 @@
     float: left;
   }
 
+  a {
+    color: #fff;
+    text-decoration: none;
+    padding-bottom: 8px;
+  }
+
   .searchbar {
     float: left;
     width: auto;
@@ -54,6 +60,9 @@
         background-position: center left 15px;
       }
 
+      @include small-mq {
+        display: none;
+      }
     }
   }
 
@@ -63,9 +72,27 @@
     float: left;
     list-style: none;
 
+    @include small-mq {
+      display: none;
+    }
+
     li {
       display: inline-block;
       padding: 0 6px;
+
+      &.active {
+        a {
+          border-bottom: 2px solid $red-pink;
+        }
+      }
     }
+  }
+
+  // Responsive nav
+  select {
+    display: inline-block;
+    position: absolute;
+    top: 16px;
+    right: 8px;
   }
 }

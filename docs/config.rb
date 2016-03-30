@@ -28,6 +28,7 @@ page '/*.txt', layout: false
 configure :development do
   activate :gzip
   activate :livereload
+  activate :syntax
   activate :external_pipeline,
     name: :places,
     command: 'npm run js:watch -- --output-path docs/.webpack/js',
