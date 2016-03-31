@@ -8,10 +8,12 @@ export default function formatAutocompleteSuggestion({
   isCity,
   name
 }) {
-  return (
-`<span class="pl-icon">${icons[isCity === false ? 'address' : 'city']}</span>
+  const out = `<span class="pl-icon">${icons[isCity === false ? 'address' : 'city']}</span>
 <span class="pl-name">${name}</span> <span class="pl-address">
 ${isCity === false ? `${city},` : ``}
  ${administrative},
- ${country}</span>`);
+ ${country}</span>`
+  .replace(/\n/g, '');
+
+  return out;
 }

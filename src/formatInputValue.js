@@ -5,9 +5,11 @@ export default function formatInputValue({
   isCity,
   name
 }) {
-  return (
-`${name}
+  const out = `${name}
 ${isCity === false ? ` ${city},` : ''}
  ${administrative},
- ${country}`);
+ ${country}`
+  .replace(/\n/g, '');
+
+  return out;
 }
