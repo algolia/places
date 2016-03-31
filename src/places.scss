@@ -7,6 +7,8 @@ $greyish: #a4a4a4;
 .algolia-places {
   width: 100%; // we ask the autocomplete to take the full width of his container
 
+  .aa-hint {color: #dedede}
+
   .aa-input {
     border: solid 0.063em rgba(255, 255, 255, 0.5);
     box-shadow: 0 0.063em 0.625em rgba(0, 0, 0, 0.2), 0 0.125em 0.250em 0 rgba(0, 0, 0, 0.1);
