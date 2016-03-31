@@ -2,89 +2,137 @@ $icon-search: "data:image/svg+xml;utf8,<svg width=\'22\' height=\'22\' viewBox=\
 $pale-grey: #f2f4f6;
 $greyish: #a4a4a4;
 
+$browser-context: 16; // Default
+
+@function em($pixels, $context: $browser-context) {
+  @return #{$pixels/$context}em;
+}
+
+@mixin placeholder {
+  $placeholders: ":-webkit-input" ":-moz" "-moz" "-ms-input";
+  @each $placeholder in $placeholders {
+    &:#{$placeholder}-placeholder {
+      @content;
+    }
+  }
+}
+
+
 // all em units are computed given a font of 16px
 // see http://pxtoem.com/ to change/add values
 .algolia-places {
-  width: 100%; // we ask the autocomplete to take the full width of his container
+  width: 100%;
 
-  .aa-hint {color: #dedede}
+  .aa-input,
+  .aa-hint{
+    padding: em(12) em(16);
+    border-radius: 3px;
+    line-height: em(40);
+    height: 40px;
+  }
 
   .aa-input {
-    border: solid 0.063em rgba(255, 255, 255, 0.5);
-    box-shadow: 0 0.063em 0.625em rgba(0, 0, 0, 0.2), 0 0.125em 0.250em 0 rgba(0, 0, 0, 0.1);
-    background: {
-      image: url($icon-search);
-      repeat: no-repeat;
-      position: center right 1em;
-    }
-  }
-
-  .aa-input, .aa-hint {
-    width: 100%;
-    height: 3.5em;
-    padding-left: 1em;
-    padding-right: 3em;
-    border-radius: 0.250em;
-  }
-
-  .aa-dropdown-menu {
-    width: 100%;
-    background: #ffffff;
-    box-shadow: 0 0.063em 0.625em rgba(0, 0, 0, 0.2), 0 0.125em 0.250em 0 rgba(0, 0, 0, 0.1);
-    border-radius: 0.250em;
-    margin-top: 0.250em;
-  }
-
-  .aa-suggestion {
-    cursor: pointer;
-    height: 2.875em;
-    line-height: 2.875em;
-    padding-left: 1.125em;
-    em {
-      font-weight: bold;
-      font-style: normal;
-    }
-
-    &:first-child {
-      border-top-left-radius: 0.250em;
-      border-top-right-radius: 0.250em;
-    }
-
-    &:last-child {
-      border-bottom-left-radius: 0.250em;
-      border-bottom-right-radius: 0.250em;
-    }
-  }
-
-  .pl-address {
-    font-size: 0.875em; // 14px when font is 16px
-    margin-left: 0.857em; // 12px when font is 14px
-    color: $greyish;
-  }
-
-  .pl-icon {
-    max-width: 0.875em;
-    max-height: 1.250em;
-    margin-right: 0.625em;
-    float: left;
     position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+    width: 100%;
+    overflow: hidden;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: em(1) solid #ccc;
+    color: #555555;
 
-    svg {
-      transform: scale(0.90);
+    background: {
+      image: url("data:image/svg+xml;utf8,<svg width=\'14\' height=\'20\' viewBox=\'0 0 14 20\' xmlns=\'http://www.w3.org/2000/svg\'><path d=\'M7 0C3.13 0 0 3.13 0 7c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5C5.62 9.5 4.5 8.38 4.5 7S5.62 4.5 7 4.5 9.5 5.62 9.5 7 8.38 9.5 7 9.5z\' fill=\'%23CFCFCF\' fill-rule=\'evenodd\'/></svg>");
+      repeat: no-repeat;
+      position: center right 16px;
+      size: 14px;
+    }
+
+    &:hover,
+    &:focus {
+      border-color: #999;
+      background: {
+        image: url("data:image/svg+xml;utf8,<svg width=\'14\' height=\'20\' viewBox=\'0 0 14 20\' xmlns=\'http://www.w3.org/2000/svg\'><path d=\'M7 0C3.13 0 0 3.13 0 7c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5C5.62 9.5 4.5 8.38 4.5 7S5.62 4.5 7 4.5 9.5 5.62 9.5 7 8.38 9.5 7 9.5z\' fill=\'%23AAAAAA\' fill-rule=\'evenodd\'/></svg>");
+        repeat: no-repeat;
+        position: center right 16px;
+        size: 14px;
+      }
+    }
+
+    @include placeholder {
+      font-size: 14px;
+      color: #aaaaaa;
     }
   }
 
-  .aa-cursor {
-    background: $pale-grey;
+  .aa-hint {
+    width: 100%;
+    height: 100%;
+    color: lighten(#555555, 35%);
+    border: 1px solid transparent;
+  }
+
+  // Dropdown
+  .aa-dropdown-menu {
+      width: 100%;
+      background: #ffffff;
+      box-shadow: 0 em(1) em(10) rgba(0, 0, 0, 0.2), 0 em(2) em(4) 0 rgba(0, 0, 0, 0.1);
+      border-radius: em(4);
+      margin-top: em(4);
+    }
+
+    .aa-suggestion {
+      cursor: pointer;
+      height: em(46);
+      line-height: em(46);
+      padding-left: em(18);
+      overflow: hidden;
+
+      em {
+        font-weight: bold;
+        font-style: normal;
+      }
+
+      &:first-child {
+        border-top-left-radius: em(4);
+        border-top-right-radius: em(4);
+      }
+
+      &:last-child {
+        border-bottom-left-radius: em(4);
+        border-bottom-right-radius: em(4);
+      }
+    }
 
     .pl-address {
-      color: darken($greyish, 10%)
+      font-size: em(14); // 14px when font is 16px
+      margin-left: em(13); // 12px when font is 14px
+      color: $greyish;
     }
 
-    .pl-icon svg {
-      transform: scale(1)
+    .pl-icon {
+      max-width: em(14);
+      max-height: em(20);
+      margin-right: em(10);
+      float: left;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+
+      svg {
+        transform: scale(0.90);
+      }
     }
-  }
+
+    .aa-cursor {
+      background: $pale-grey;
+
+      .pl-address {
+        color: darken($greyish, 10%)
+      }
+
+      .pl-icon svg {
+        transform: scale(1)
+      }
+    }
 }

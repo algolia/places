@@ -1,39 +1,52 @@
 input {
   outline: none;
 }
-
-.algolia-places {
-  top: 50px;
-  font-family: 'Open Sans', helvetica Neue;
-
-  &:before {
-    content:'Try me!';
-    position: absolute;
-    top: -44px;
-    left: 10px;
-    width: 100px;
-    height: 44px;
-    text-align: right;
-    font-style: italic;
-    font-weight: 600;
+// Style the input for the Demo page
+.hero-section {
+  .algolia-places {
+    top: 50px;
     font-family: 'Open Sans', helvetica Neue;
-    font-size: 16px;
-    line-height: 44px;
-    color: $powder-blue;
-    background: {
-      image: url($icon-arrow);
-      repeat: no-repeat;
-      position: bottom 12px left 12px;
-      size: 24px;
+    width: 100%; // we ask the autocomplete to take the full width of his container
+
+    &:before {
+      content:'Try me!';
+      position: absolute;
+      top: -44px;
+      left: 10px;
+      width: 100px;
+      height: 44px;
+      text-align: right;
+      font-style: italic;
+      font-weight: 600;
+      font-family: 'Open Sans', helvetica Neue;
+      font-size: 16px;
+      line-height: 44px;
+      color: $powder-blue;
+      background: {
+        image: url($icon-arrow);
+        repeat: no-repeat;
+        position: bottom 12px left 12px;
+        size: 24px;
+      }
+    }
+
+    .aa-input {
+      border: solid em(1) rgba(255, 255, 255, 0.5);
+      box-shadow: 0 em(1) em(10) rgba(0, 0, 0, 0.2), 0 em(2) em(4) 0 rgba(0, 0, 0, 0.1);
+      color: #8f94ad;
+      font-family: "Raleway", Helvetica Neue, helvetica;
+    }
+
+    .aa-input, .aa-hint {
+      width: 100%;
+      height: em(56);
+      padding-left: em(16);
+      padding-right: em(48);
+      border-radius: em(4);
+    }
+
+    .aa-suggestion {
+      color: #262626;
     }
   }
-}
-
-.algolia-places .aa-suggestion {
-  color: #262626;
-}
-
-.hero-searchbar {
-  color: #8f94ad;
-  font-family: "Raleway", Helvetica Neue, helvetica;
 }
