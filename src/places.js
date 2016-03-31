@@ -7,6 +7,7 @@ import createHitFormatter from './createHitFormatter.js';
 import formatInputValue from './formatInputValue.js';
 import formatAutocompleteSuggestion from './formatAutocompleteSuggestion.js';
 import './places.scss';
+import EventEmitter from 'events';
 
 const hitFormatter = createHitFormatter({
   formatAutocompleteSuggestion,
@@ -18,13 +19,15 @@ export default function places({
   // language = navigator.language,
   container
 }) {
+  const placesInstance = new EventEmitter();
   const client = algoliasearch.initPlaces('6TZ2RYGYRQ', '20b9e128b7e37ff38a4e86b08477980b');
 
   // https://github.com/algolia/autocomplete.js#options
   const options = {
     debug: true,
     openOnFocus: true,
-    autoselect: true
+    autoselect: true,
+    hint: true
   };
 
   // https://github.com/algolia/autocomplete.js#options
@@ -40,7 +43,7 @@ export default function places({
     .then(cb)
     .catch(err => console.error(err));
 
-  autocomplete(
+  const autocompleteInstance = autocomplete(
     container,
     options, {
       source,
@@ -48,6 +51,15 @@ export default function places({
     }
   );
 
+  const autocompleteEvents = ['selected', 'autocompleted'];
+  autocompleteEvents.forEach(eventName => {
+    autocompleteInstance.on(`autocomplete:${eventName}`, (_, suggestion) => {
+      placesInstance.emit('change', suggestion);
+    });
+  });
+
   const autocompleteContainer = container.parentNode;
   autocompleteContainer.classList.add('algolia-places');
+
+  return placesInstance;
 }
