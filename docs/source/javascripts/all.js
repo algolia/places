@@ -1,8 +1,9 @@
 /* global places */
+/* eslint no-console: 0 */
 
 places({
   container: document.querySelector('#landing-demo')
-});
+}).on('change', suggestion => console.log(suggestion));
 
 // The following code is used to change the color of the navigation
 // depending the level of page scroll.
