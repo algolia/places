@@ -15,8 +15,27 @@ const sidebar = document.getElementById('sidebar');
 
 
 // automatically darken the top menu when going down
-document.addEventListener('scroll', () => {
-  const value = event.target.scrollingElement.scrollTop;
+// Using requestAnimationFrame
+const doc = document.querySelector('.documentation-section');
+
+
+let [latestKnownScrollY, ticking] = [0, false];
+
+function onScroll() {
+  latestKnownScrollY = window.scrollY;
+  requestTick();
+}
+
+function requestTick() {
+  if (!ticking) {
+    requestAnimationFrame(updateScroll);
+  }
+  ticking = true;
+}
+function updateScroll() {
+  ticking = false;
+  var currentScrollY = latestKnownScrollY;
+  const value = currentScrollY;
 
   if (value > height) {
     navigation.classList.add('darken');
@@ -27,7 +46,6 @@ document.addEventListener('scroll', () => {
     navigation.classList.remove('darken', 'init');
   }
 
-  const doc = document.querySelector('.documentation-section');
   if (doc) {
     let paddingDoc = window.getComputedStyle(doc, null).getPropertyValue('padding-top').split('px')[0];
     paddingDoc = parseInt(paddingDoc, 10);
@@ -38,7 +56,10 @@ document.addEventListener('scroll', () => {
       sidebar.classList.remove('fixed');
     }
   }
-});
+}
+window.addEventListener('scroll', onScroll, false);
+
+
 // Responsive navigation
 const theSelect = document.createElement('select');
 
