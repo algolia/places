@@ -14,8 +14,8 @@ const sidebar = document.getElementById('sidebar');
 
 
 // automatically darken the top menu when going down
-document.addEventListener('scroll', () => {
-  const value = event.target.scrollingElement.scrollTop;
+document.addEventListener('scroll', scrollEvent => {
+  const value = scrollEvent.target.scrollingElement.scrollTop;
 
   if (value > height) {
     navigation.classList.add('darken');
