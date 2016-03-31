@@ -26,7 +26,7 @@ page '/*.txt', layout: false
 
 # Reload the browser automatically whenever files change
 configure :development do
-  config[:places] = :places
+  config[:places_lib_url] = :places
   activate :gzip
   activate :livereload
   activate :syntax
@@ -48,6 +48,8 @@ activate :external_pipeline,
 # Helpers
 ###
 
+config[:places_lib_version] = ENV['VERSION']
+
 # Methods defined in the helpers block are available in templates
 # helpers do
 #   def some_helper
@@ -58,7 +60,7 @@ activate :external_pipeline,
 
 # Build-specific configuration
 configure :build do
-  config[:places] = '//cdn.jsdelivr.net/places.js/0/places.min.js'
+  config[:places_lib_url] = '//cdn.jsdelivr.net/places.js/0/places.min.js'
   # this may trigger bad behavior, if so, see
   # https://github.com/middleman/middleman-minify-html
   activate :minify_html
