@@ -16,7 +16,8 @@
 
   <body class="<%= page_classes %>">
     <%= yield %>
-    <%= javascript_include_tag config[:places] %>
+    <%= partial "/partials/footer" %>
+    <%= javascript_include_tag config[:places_lib_url] %>
     <%= javascript_include_tag :all %>
   </body>
 </html>

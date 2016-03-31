@@ -66,7 +66,7 @@ title: Algolia Places - Documentation
           Just submit the form on the website and we’ll get back to you with what you need to integrate your new search into your website.
         %ul
           %li We’ll crawl your documentation pages,
-          %li We’ll configure your search experience, 
+          %li We’ll configure your search experience,
           %li You’ll need to add a bit of JavaScript and CSS code to your website.
 
 
@@ -78,14 +78,14 @@ title: Algolia Places - Documentation
 
         :code
           # lang: html
-          <link rel="stylesheet" href="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" /> 
+          <link rel="stylesheet" href="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
           <script type="text/javascript" src="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
           <script type="text/javascript">
-            docsearch({ 
+            docsearch({
               apiKey: '<API_KEY>',
               indexName: '<INDEX_NAME>',
-              inputSelector: '<YOUR_INPUT_DOM_SELECTOR>' 
-            }); 
+              inputSelector: '<YOUR_INPUT_DOM_SELECTOR>'
+            });
           </script>
         %span
 
@@ -99,27 +99,12 @@ title: Algolia Places - Documentation
 
         :code
           # lang: html
-          <link rel="stylesheet" href="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" /> 
+          <link rel="stylesheet" href="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
           <script type="text/javascript" src="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
           <script type="text/javascript">
-            docsearch({ 
+            docsearch({
               apiKey: '<API_KEY>',
               indexName: '<INDEX_NAME>',
-              inputSelector: '<YOUR_INPUT_DOM_SELECTOR>' 
-            }); 
+              inputSelector: '<YOUR_INPUT_DOM_SELECTOR>'
+            });
           </script>
-
-%section.footer-section
-  %hr
-  .container.center-text
-    %p Designed and built with <span class="icon icon-love">♥︎</span> by <span class="icon icon-algolia">Algolia</span>
-    %p.links Code licensed under <a href="#" class="link">MIT</a> <br class="no-desktop"/> <a href="#" class="link">Github</a> <a href="#" class="link">issues</a> <a href="#" class="link">Releases</a>
-
-    %div.newsletter-bloc
-      %h4 Sign up for our newsletter
-      %p Follow project updates and general vector loveliness
-      %div.newsletter-form
-        %div
-          %span.icon.icon-mail
-          %input{type: "text", placeholder: "Email"}
-        %a{href: "http://algolia.com", class:"btn btn-grey"} Subscribe
