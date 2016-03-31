@@ -14,7 +14,10 @@ export default {
     loaders: [{
       test: /\.js$/, exclude: /node_modules/, loader: 'babel'
     }, {
-      test: /\.svg$/, loader: 'raw'
+      test: /\.svg$/, loader: 'raw', exclude: /node_modules/
+    }, {
+      test: /\.scss$/, exclude: /node_modules/,
+      loaders: ['style?insertAt=top', 'css', 'sass']
     }]
   },
   // when module not found, find locally first

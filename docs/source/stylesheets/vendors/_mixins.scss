@@ -7,8 +7,6 @@
   }
 }
 
-
-
 @mixin big-min-mq {
   @media (min-width: $bp-big){
     @content
