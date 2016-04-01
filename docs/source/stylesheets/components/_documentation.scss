@@ -6,7 +6,6 @@
     article {
       width: 100%;
       position: relative;
-      left: calc(#{$sidebar-width} + 40px);
       margin-top: 60px;
     }
   }
@@ -22,12 +21,24 @@
     font-size: 28px;
   }
 
+  .documentation-container {
+    float: left;
+    position: relative;
+    left: calc(200px);
+    width: calc(100% - 160px);
+    padding-left: 40px;
+  }
+
   @include small-mq {
     padding-top: 16px;
 
     .container {
-      article {
+      .documentation-container {
         left: 0;
+        width: 100%;
+        padding: 0 16px;
+      }
+      article {
         float: left;
         margin-top: 40px;
       }
