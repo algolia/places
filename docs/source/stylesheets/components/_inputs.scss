@@ -1,39 +1,48 @@
 input {
   outline: none;
 }
-
-.algolia-places {
-  top: 50px;
-  font-family: 'Open Sans', helvetica Neue;
-
-  &:before {
-    content:'Try me!';
-    position: absolute;
-    top: -44px;
-    left: 10px;
-    width: 100px;
-    height: 44px;
-    text-align: right;
-    font-style: italic;
-    font-weight: 600;
+// Style the input for the Demo page
+.hero-section {
+  .algolia-places {
+    top: 50px;
     font-family: 'Open Sans', helvetica Neue;
-    font-size: 16px;
-    line-height: 44px;
-    color: $powder-blue;
-    background: {
-      image: url($icon-arrow);
-      repeat: no-repeat;
-      position: bottom 12px left 12px;
-      size: 24px;
+
+    &:before {
+      content:'Try it!';
+      position: absolute;
+      top: -44px;
+      left: 2px;
+      width: 100px;
+      height: 44px;
+      text-align: right;
+      font-style: italic;
+      font-weight: 600;
+      line-height: 44px;
+      color: $powder-blue;
+      background: {
+        image: url($icon-arrow);
+        repeat: no-repeat;
+        position: bottom 12px left 24px;
+        size: 24px;
+      }
+    }
+
+    .aa-input {
+      border: solid 1px rgba(255, 255, 255, 0.5);
+      box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+      color: #8f94ad;
+    }
+
+    .aa-input, .aa-hint {
+      font-family: "Raleway", Helvetica Neue, helvetica;
+      height: 56px;
+      padding-left: 16px;
+      padding-right: 48px;
+      border-radius: 4px;
+    }
+
+    .aa-suggestion {
+      color: #262626;
     }
   }
-}
-
-.algolia-places .aa-suggestion {
-  color: #262626;
-}
-
-.hero-searchbar {
-  color: #8f94ad;
-  font-family: "Raleway", Helvetica Neue, helvetica;
 }

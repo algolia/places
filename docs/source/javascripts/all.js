@@ -7,12 +7,12 @@ places({
 
 // The following code is used to change the color of the navigation
 // depending the level of page scroll.
+
 const hero = document.querySelector('.hero-section');
 const navigation = document.querySelector('.navigation');
-const height = hero.offsetHeight;
+const height = hero.offsetHeight || 0;
 const navHeight = navigation.offsetHeight;
 const sidebar = document.getElementById('sidebar');
-
 
 // automatically darken the top menu when going down
 document.addEventListener('scroll', () => {
