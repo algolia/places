@@ -40,8 +40,13 @@ set :js_dir, 'js'
 ignore '/javascripts/*'
 
 activate :external_pipeline,
-  name: :all,
-  command: "npm run docs:js:#{build? ? :build : :watch}",
+  name: :index,
+  command: "BUNDLE=index npm run docs:js:#{build? ? :build : :watch}",
+  source: '.webpack'
+
+activate :external_pipeline,
+  name: :documentation,
+  command: "BUNDLE=documentation npm run docs:js:#{build? ? :build : :watch}",
   source: '.webpack'
 
 ###
@@ -50,13 +55,11 @@ activate :external_pipeline,
 
 config[:places_lib_version] = ENV['VERSION']
 
-# Methods defined in the helpers block are available in templates
-# helpers do
-#   def some_helper
-#     "Helping"
-#   end
-# end
-#
+helpers do
+  def nav_active(path)
+    current_page.path == path ? {:class => "active"} : {}
+  end
+end
 
 # Build-specific configuration
 configure :build do

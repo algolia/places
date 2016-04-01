@@ -12,12 +12,16 @@
     <title><%= current_page.data.title || "Algolia Places" %></title>
 
     <%= stylesheet_link_tag :site %>
+    <%= auto_stylesheet_link_tag %>
   </head>
 
   <body class="<%= page_classes %>">
     <%= yield %>
     <%= partial "/partials/footer" %>
+    <script>
+      var currentPath = '<%= current_page.path %>';
+    </script>
     <%= javascript_include_tag config[:places_lib_url] %>
-    <%= javascript_include_tag :all %>
+    <%= auto_javascript_include_tag %>
   </body>
 </html>
