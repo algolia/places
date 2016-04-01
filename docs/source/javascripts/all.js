@@ -17,17 +17,8 @@ const sidebar = document.getElementById('sidebar');
 // automatically darken the top menu when going down
 document.addEventListener('scroll', () => {
   const value = event.target.scrollingElement.scrollTop;
-
-  if (value > height) {
-    navigation.classList.add('darken');
-  } else if (value > (height - navHeight)) {
-    navigation.classList.add('init');
-    navigation.classList.remove('darken');
-  } else {
-    navigation.classList.remove('darken', 'init');
-  }
-
   const doc = document.querySelector('.documentation-section');
+
   if (doc) {
     let paddingDoc = window.getComputedStyle(doc, null).getPropertyValue('padding-top').split('px')[0];
     paddingDoc = parseInt(paddingDoc, 10);

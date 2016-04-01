@@ -3,21 +3,12 @@
   width: 100%;
   max-height: $navigation-height;
   line-height: $navigation-height;
-  background: transparent;
+  background: #0a1724;
   overflow: hidden;
   z-index: 101;
   color: #fff;
   padding: 0 16px;
   margin: 0;
-
-  &.init {
-    background: #2F468C;
-  }
-
-  &.darken {
-    background: #0C1621;
-  }
-
 
   .brand {
     float: left;
