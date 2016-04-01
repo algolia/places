@@ -1,12 +1,5 @@
-$icon-search: "data:image/svg+xml;utf8,<svg width=\'22\' height=\'22\' viewBox=\'0 0 22 22\' xmlns=\'http://www.w3.org/2000/svg\'><title>search-icon copy</title><path d=\'M15.723 13.836h-.993l-.353-.34c1.233-1.433 1.975-3.295 1.975-5.32C16.352 3.66 12.692 0 8.176 0S0 3.66 0 8.176s3.66 8.176 8.176 8.176c2.025 0 3.887-.742 5.32-1.975l.34.353v.993L20.126 22 22 20.126l-6.277-6.29zm-7.547 0c-3.132 0-5.66-2.528-5.66-5.66s2.528-5.66 5.66-5.66 5.66 2.528 5.66 5.66-2.528 5.66-5.66 5.66z\' fill=\'%23A3A3A3\' fill-rule=\'evenodd\'/></svg>";
-$pale-grey: #f2f4f6;
-$greyish: #a4a4a4;
-
-$browser-context: 16; // Default
-
-@function em($pixels, $context: $browser-context) {
-  @return #{$pixels/$context}em;
-}
+$icon-pin: 'data:image/svg+xml;utf8,<svg width="14" height="20" viewBox="0 0 14 20" xmlns="http://www.w3.org/2000/svg"><path d="M7 0C3.13 0 0 3.13 0 7c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5C5.62 9.5 4.5 8.38 4.5 7S5.62 4.5 7 4.5 9.5 5.62 9.5 7 8.38 9.5 7 9.5z" fill="%23CFCFCF" fill-rule="evenodd"/></svg>';
+$icon-pin-hover: 'data:image/svg+xml;utf8,<svg width="14" height="20" viewBox="0 0 14 20" xmlns="http://www.w3.org/2000/svg"><path d="M7 0C3.13 0 0 3.13 0 7c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5C5.62 9.5 4.5 8.38 4.5 7S5.62 4.5 7 4.5 9.5 5.62 9.5 7 8.38 9.5 7 9.5z" fill="%23AAAAAA" fill-rule="evenodd"/></svg>';
 
 @mixin placeholder {
   $placeholders: ":-webkit-input" ":-moz" "-moz" "-ms-input";
@@ -17,32 +10,31 @@ $browser-context: 16; // Default
   }
 }
 
-
 // all em units are computed given a font of 16px
 // see http://pxtoem.com/ to change/add values
 .algolia-places {
   width: 100%;
 
   .aa-input,
-  .aa-hint{
-    padding: em(12) em(16);
-    border-radius: 3px;
-    line-height: em(40);
+  .aa-hint {
+    box-sizing: border-box;
+    width: 100%;
+    padding-left: 16px;
+    padding-right: 30px;
+    line-height: 40px;
     height: 40px;
+    // it's necessary to specify border for both inputs to get the exact same dimensions and
+    // avoid font overlaps
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    outline: none;
   }
 
   .aa-input {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border: em(1) solid #ccc;
     color: #555555;
 
     background: {
-      image: url("data:image/svg+xml;utf8,<svg width=\'14\' height=\'20\' viewBox=\'0 0 14 20\' xmlns=\'http://www.w3.org/2000/svg\'><path d=\'M7 0C3.13 0 0 3.13 0 7c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5C5.62 9.5 4.5 8.38 4.5 7S5.62 4.5 7 4.5 9.5 5.62 9.5 7 8.38 9.5 7 9.5z\' fill=\'%23CFCFCF\' fill-rule=\'evenodd\'/></svg>");
+      image: url($icon-pin);
       repeat: no-repeat;
       position: center right 16px;
       size: 14px;
@@ -50,89 +42,67 @@ $browser-context: 16; // Default
 
     &:hover,
     &:focus {
-      border-color: #999;
+      border-color: #999999;
       background: {
-        image: url("data:image/svg+xml;utf8,<svg width=\'14\' height=\'20\' viewBox=\'0 0 14 20\' xmlns=\'http://www.w3.org/2000/svg\'><path d=\'M7 0C3.13 0 0 3.13 0 7c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5C5.62 9.5 4.5 8.38 4.5 7S5.62 4.5 7 4.5 9.5 5.62 9.5 7 8.38 9.5 7 9.5z\' fill=\'%23AAAAAA\' fill-rule=\'evenodd\'/></svg>");
-        repeat: no-repeat;
-        position: center right 16px;
-        size: 14px;
+        image: url($icon-pin-hover);
       }
     }
 
     @include placeholder {
-      font-size: 14px;
-      color: #aaaaaa;
+      color: #cccccc;
     }
   }
 
   .aa-hint {
-    width: 100%;
-    height: 100%;
-    color: lighten(#555555, 35%);
-    border: 1px solid transparent;
+    color: #cccccc;
+    background: #ffffff;
   }
 
   // Dropdown
   .aa-dropdown-menu {
-      width: 100%;
-      background: #ffffff;
-      box-shadow: 0 em(1) em(10) rgba(0, 0, 0, 0.2), 0 em(2) em(4) 0 rgba(0, 0, 0, 0.1);
-      border-radius: em(4);
-      margin-top: em(4);
+    width: 100%;
+    background: #ffffff;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    margin-top: 3px;
+    overflow: hidden; // avoid non rounded borders to overlap
+  }
+
+  .aa-suggestion {
+    cursor: pointer;
+    height: 46px;
+    line-height: 46px;
+    padding-left: 18px;
+    overflow: hidden;
+
+    em {
+      font-weight: bold;
+      font-style: normal;
     }
+  }
 
-    .aa-suggestion {
-      cursor: pointer;
-      height: em(46);
-      line-height: em(46);
-      padding-left: em(18);
-      overflow: hidden;
+  .pl-address {
+    font-size: smaller;
+    margin-left: 12px; // 12px when font is 14px
+    color: #aaaaaa;
+  }
 
-      em {
-        font-weight: bold;
-        font-style: normal;
-      }
+  .pl-icon {
+    margin-right: 10px;
+    display: inline-block;
+    width: 14px;
 
-      &:first-child {
-        border-top-left-radius: em(4);
-        border-top-right-radius: em(4);
-      }
-
-      &:last-child {
-        border-bottom-left-radius: em(4);
-        border-bottom-right-radius: em(4);
-      }
+    svg {
+      transform: scale(0.90);
+      vertical-align: text-bottom;
     }
+  }
 
-    .pl-address {
-      font-size: em(14); // 14px when font is 16px
-      margin-left: em(13); // 12px when font is 14px
-      color: $greyish;
+  .aa-cursor {
+    background: #efefef;
+
+    .pl-icon svg {
+      transform: scale(1)
     }
-
-    .pl-icon {
-      max-width: em(14);
-      max-height: em(20);
-      margin-right: em(10);
-      float: left;
-      position: relative;
-      top: 50%;
-      transform: translateY(-50%);
-
-      svg {
-        transform: scale(0.90);
-      }
-    }
-
-    .aa-cursor {
-      background: $pale-grey;
-
-      .pl-address {
-        color: darken($greyish, 10%)
-      }
-
-      .pl-icon svg {
-        transform: scale(1)
-      }
-    }
+  }
 }
