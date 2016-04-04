@@ -3,7 +3,7 @@
   border-radius: 4px;
   max-width: 100%;
   display: block;
-
+  overflow: scroll;
 }
 @if $highlight-theme == 'github' {
   .highlight {
