@@ -10,6 +10,10 @@
   float: none;
   margin: auto;
   width: 100%;
+
+  @media (min-width: $bp-big) {
+    max-width: calc(#{$max-width} + 260px);
+  }
 }
 
 section {

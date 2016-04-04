@@ -3,3 +3,4 @@ dist/
 npm-debug.log
 docs/.sass-cache/
 docs/.webpack/
+.DS_Store
