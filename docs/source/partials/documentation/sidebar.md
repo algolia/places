@@ -1,0 +1,3 @@
+- [Getting started](#getting-started)
+- [API](#api)
+- [Rate limit](#rate-limitf)

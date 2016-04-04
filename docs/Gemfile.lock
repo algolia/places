@@ -134,6 +134,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  kramdown
   middleman (>= 4.0.0)
   middleman-deploy (~> 2.0.0.pre.alpha)
   middleman-livereload
