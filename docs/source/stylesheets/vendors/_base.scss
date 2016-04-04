@@ -22,3 +22,14 @@ p a {
   color: #21A4D7;
   text-decoration: none;
 }
+
+hr {
+  margin: 0;
+}
+
+figure {
+  figcaption {
+    text-indent: -9999px;
+    color: transparent;
+  }
+}

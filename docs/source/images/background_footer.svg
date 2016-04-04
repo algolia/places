@@ -8,6 +8,19 @@
             <stop stop-color="#0B1E39" offset="0%"></stop>
             <stop stop-color="#1D3657" offset="100%"></stop>
         </radialGradient>
+        <linearGradient x1="67.1397712%" y1="88.5822452%" x2="-15.2286835%" y2="-69.5126771%" id="linearGradient-2">
+            <stop stop-color="#1D3657" offset="0%"></stop>
+            <stop stop-color="#15517B" offset="100%"></stop>
+        </linearGradient>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="8" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="9" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.35 0" in="shadowBlurOuter1" type="matrix" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
     </defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="footer-copy">
@@ -27,6 +40,7 @@
             <rect id="Rectangle-89-Copy-8" fill="#1D3657" transform="translate(136.885822, 579.885822) rotate(-315.000000) translate(-136.885822, -579.885822) " x="-53.9522728" y="389.047727" width="381.67619" height="381.67619"></rect>
             <rect id="Rectangle-89-Copy-2" fill="#1D3657" transform="translate(1308.885822, 344.838095) rotate(-315.000000) translate(-1308.885822, -344.838095) " x="1118.04773" y="154" width="381.67619" height="381.67619"></rect>
             <rect id="Rectangle-89-Copy-3" fill="#1D3657" transform="translate(1613.885822, 631.838095) rotate(-315.000000) translate(-1613.885822, -631.838095) " x="1423.04773" y="441" width="381.67619" height="381.67619"></rect>
+            <rect id="Rectangle-89" stroke-opacity="0.158571105" stroke="#46AEDA" fill="url(#linearGradient-2)" filter="url(#filter-3)" transform="translate(719.885822, 283.114178) rotate(-315.000000) translate(-719.885822, -283.114178) " x="529.047727" y="92.2760826" width="381.67619" height="381.67619"></rect>
         </g>
     </g>
 </svg>
