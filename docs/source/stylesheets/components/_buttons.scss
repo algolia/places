@@ -34,6 +34,44 @@
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
   }
 
+  &.btn-black {
+    background: $black;
+    border-color: mix($black, #fff, 90%);
+  }
+
   cursor: pointer;
+
+  &-ghost {
+    background: transparent;
+    border-color: currentColor;
+    font-weight: bold;
+    max-width: inherit;
+    padding: 0 32px;
+
+
+    &-grey {
+      color:  $steel;
+
+      &:hover {
+        background: $steel;
+        border-color: $steel;
+        color: #fff;
+
+        .ico-triangle {
+          border-left-color: #fff
+        }
+      }
+    }
+
+    &-pink {
+      color:  $red-pink;
+
+      &:hover {
+        background: $red-pink;
+        border-color: $red-pink;
+        color: #fff;
+      }
+    }
+  }
 
 }

@@ -7,6 +7,17 @@
   }
 }
 
+@mixin footer-text{
+  color: #496f92;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 12px;
+  margin: 0;
+  font-family: 'Raleway', helvetica, sans-serif;
+  font-weight: 800;
+  float: none;
+}
+
 @mixin big-min-mq {
   @media (min-width: $bp-big){
     @content
