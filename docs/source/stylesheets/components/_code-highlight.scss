@@ -4,6 +4,7 @@
   max-width: 100%;
   display: block;
   overflow: scroll;
+  font-size: 14px;
 }
 @if $highlight-theme == 'github' {
   .highlight {

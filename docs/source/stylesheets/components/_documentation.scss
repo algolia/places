@@ -23,9 +23,9 @@
   .documentation-container {
     float: left;
     position: relative;
-    left: calc(200px);
-    width: calc(100% - 160px);
-    padding-left: 40px;
+    left: #{$sidebar-width};
+    width: calc(100% - #{$sidebar-width});
+    padding-left: 30px;
   }
 
   @include small-mq {
