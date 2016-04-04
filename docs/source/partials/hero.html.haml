@@ -1,0 +1,16 @@
+%section{:class => ["hero-section", ("shrink" if current_page.path != "index.html")]}
+  .container
+    %div.hero-container
+
+      %div.fl-left
+        %span{class: "icon icon-algolia-small no-mobile", id: "icon-algolia"}
+        %span{class: "display-on-small small-illustration"}
+          %img{src: "images/svg/places-illustration.svg"}
+        %h1= current_page.data.title
+        - if current_page.data.subtitle
+          %h3= current_page.data.subtitle
+
+      %div.fl-right
+        = partial("/images/svg/places-illustration.svg")
+    - if current_page.path == 'index.html'
+      %input{type: "text", id: "landing-demo", class: "hero-searchbar", autofocus: true, placeholder: "Search a country, city or address…"}
