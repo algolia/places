@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="572px" height="572px" viewBox="0 0 572 572" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.6.1 (26313) - http://www.bohemiancoding.com/sketch -->
+    <title>Rectangle 89</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="67.1397712%" y1="88.5822452%" x2="-15.2286835%" y2="-69.5126771%" id="linearGradient-1">
+            <stop stop-color="#1D3657" offset="0%"></stop>
+            <stop stop-color="#15517B" offset="100%"></stop>
+        </linearGradient>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="8" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="9" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.35 0" in="shadowBlurOuter1" type="matrix" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-opacity="0.158571105" filter="url(#filter-2)">
+        <rect id="Rectangle-89" stroke="#46AEDA" fill="url(#linearGradient-1)" transform="translate(291.885822, 280.885822) rotate(-315.000000) translate(-291.885822, -280.885822) " x="101.047727" y="90.0477272" width="381.67619" height="381.67619"></rect>
+    </g>
+</svg>
