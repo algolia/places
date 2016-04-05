@@ -106,6 +106,12 @@ section {
     &.shrink {
       min-height: 314px
     }
+
+    svg {
+      path {
+        transform: translateY(12px);
+      }
+    }
   }
 }
 
