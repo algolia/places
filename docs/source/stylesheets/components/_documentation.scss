@@ -19,6 +19,15 @@
     color: $charcoal-grey;
     font-size: 28px;
     padding-right: 1em;
+
+    &[id] {
+      &:before {
+        content: "";
+        display: block;
+        height: $offset-height;
+        margin: -$offset-height 0 0;
+      }
+    }
   }
 
   .documentation-container {
