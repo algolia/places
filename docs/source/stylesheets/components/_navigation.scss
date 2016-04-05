@@ -20,6 +20,17 @@
     padding-bottom: 8px;
   }
 
+  // .menu .icon {
+  //   width: 30px;
+  //   height: $navigation-height;
+  //   display: inline-block;
+  // }
+  .menu svg {
+    width: 28px;
+    height: 60px;
+    float: left;
+
+  }
   .searchbar {
     float: left;
     width: auto;
@@ -70,6 +81,8 @@
     li {
       display: inline-block;
       padding: 0 6px;
+      float: left;
+
 
       &.active {
         a {
