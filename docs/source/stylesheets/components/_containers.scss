@@ -75,7 +75,7 @@ section {
 
       .fl-left {
         width: 100%;
-        margin-top: 40px;
+        margin-top: $navigation-height;
       }
 
       .fl-right {
@@ -108,7 +108,8 @@ section {
     }
 
     svg {
-      path {
+      path,
+      ellipse {
         transform: translateY(12px);
       }
     }
