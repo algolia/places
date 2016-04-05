@@ -1,19 +1,20 @@
 %div.navigation
-  %div.fl-left
-  %a{href: "./", title: "Homepage", :data => {:path => "index.html"}}
-    %span.brand
-      <span class="icon icon-algolia-light">Algolia</span> Community
-    %span.pipe
-    %span.no-mobile Places
+  %div.container
+    %div.fl-left
+    %a{href: "./", title: "Homepage", :data => {:path => "index.html"}}
+      %span.brand
+        <span class="icon icon-algolia-light">Algolia</span> Community
+      %span.pipe
+      %span.no-mobile Places
 
-  %div.fl-right
-    %div.searchbar
-      %input{class: "form-control aa-input", placeholder: "Search in the documentation", type: "text", id: "doc-search"}
+    %div.fl-right
+      %div.searchbar
+        %input{class: "form-control aa-input", placeholder: "Search in the documentation", type: "text", id: "doc-search"}
 
-    %ul.menu
-      %li{nav_active("documentation.html")}
-        %a{href: "documentation.html", title: "Documentation", :data => {:path => "documentation.html"}} documentation
-      %li
-        %a{href: "https://github.com/algolia/places", title: "GitHub repository"}
-          %span.icon.icon-github
-            github
+      %ul.menu
+        %li{nav_active("documentation.html")}
+          %a{href: "documentation.html", title: "Documentation", :data => {:path => "documentation.html"}} documentation
+        %li
+          %a{href: "https://github.com/algolia/places", title: "GitHub repository"}
+            %span.icon.icon-github
+              github
