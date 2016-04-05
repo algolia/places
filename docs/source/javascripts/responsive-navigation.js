@@ -5,7 +5,7 @@ const links = navigation.querySelectorAll('a');
 const responsiveNavigation = document.createElement('select');
 responsiveNavigation.classList.add('display-on-small');
 
-for (const link of links) {
+[...links].forEach(link => {
   let option = document.createElement('option');
   option.text = link.title;
   option.value = link.href;
@@ -13,7 +13,7 @@ for (const link of links) {
     option.selected = true;
   }
   responsiveNavigation.appendChild(option);
-}
+});
 
 navigation.appendChild(responsiveNavigation);
 navigation.addEventListener('change', e => {
