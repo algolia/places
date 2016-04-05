@@ -18,7 +18,7 @@ function anchorableTitles() {
       .querySelector('.documentation-container')
       .querySelectorAll('h1, h2, h3');
 
-  for (const header of headers) {
+  [...headers].forEach(header => {
     // duplicate id in name to benefit from css :target
     header.setAttribute('name', header.getAttribute('id'));
     const anchor = document.createElement('a');
@@ -26,7 +26,7 @@ function anchorableTitles() {
     anchor.classList.add('anchor');
     anchor.textContent = '#';
     header.appendChild(anchor);
-  }
+  });
 }
 
 function sidebarFollowScroll() {
