@@ -37,7 +37,10 @@ export default function places({
   const source = (query, cb) => client
     .search({query})
     .then(({hits}) => hits.slice(0, 5).map(hitFormatter))
-    .then(hits => {console.log(hits); return hits;})
+    .then(suggestions => {
+      placesInstance.emit('suggestions', suggestions);
+      return suggestions;
+    })
     .then(cb)
     .catch(err => console.error(err));
 
@@ -49,11 +52,14 @@ export default function places({
     }
   );
 
-  const autocompleteEvents = ['selected', 'autocompleted'];
-  autocompleteEvents.forEach(eventName => {
+  const autocompleteChangeEvents = ['selected', 'autocompleted'];
+  autocompleteChangeEvents.forEach(eventName => {
     autocompleteInstance.on(`autocomplete:${eventName}`, (_, suggestion) => {
       placesInstance.emit('change', suggestion);
     });
+  });
+  autocompleteInstance.on('autocomplete:cursorchanged', (_, suggestion) => {
+    placesInstance.emit('cursorchanged', suggestion);
   });
 
   const autocompleteContainer = container.parentNode;
