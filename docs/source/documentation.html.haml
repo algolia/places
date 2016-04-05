@@ -7,67 +7,8 @@ title: Documentation
 %section.documentation-section
   .container
     %nav.sidebar#sidebar
-      %ul
-        %li
-          %a{href: "#introduction"} Introduction
-        %li
-          %a{href: "#setup"} Setup
-        %li
-          %a{href: "#options"} Options
+      ~ partial("/partials/documentation/sidebar")
 
     %div.documentation-container
-      %article{id: "introduction"}
-        %h2 Introduction
-
-        %p
-          We’re scratching our own itch here. As developers, we spend a lot of time reading documentation, and it isn’t always easy to find the information we need.
-
-        %p
-          Not blaming anyone here. Building a good search for a documentation is a complex challenge. We happen to have a lot of experience doing that, and we want to share it with the world. For free.
-
-        %p
-          Just submit the form on the website and we’ll get back to you with what you need to integrate your new search into your website.
-        %ul
-          %li We’ll crawl your documentation pages,
-          %li We’ll configure your search experience,
-          %li You’ll need to add a bit of JavaScript and CSS code to your website.
-
-
-      %article{id: "setup"}
-        %h2 Setup
-
-        %p
-          Once we’ve crawled your documentation website we’ll send you the credentials you need to add the following code snippet to your website:
-
-        :code
-          # lang: html
-          <link rel="stylesheet" href="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
-          <script src="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
-          <script>
-            docsearch({
-              apiKey: '<API_KEY>',
-              indexName: '<INDEX_NAME>',
-              inputSelector: '<YOUR_INPUT_DOM_SELECTOR>'
-            });
-          </script>
-        %span
-
-      %article{id: "options"}
-        %h2 Options
-
-        %p
-          You can pass any options to the underlying <code>autocomplete</code> instance through the <code>autocompleteOptions</code> parameter. You will find all <code>autocomplete</code> options in <a href="https://github.com/algolia/autocomplete.js">its own documentation.</a>
-
-        %p You can also listen to <code>autocomplete</code> events through the <code>.autocomplete</code> property of the docsearch <code>instance</code>.
-
-        :code
-          # lang: html
-          <link rel="stylesheet" href="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
-          <script src="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
-          <script>
-            docsearch({
-              apiKey: '<API_KEY>',
-              indexName: '<INDEX_NAME>',
-              inputSelector: '<YOUR_INPUT_DOM_SELECTOR>'
-            });
-          </script>
+      ~ partial("/partials/documentation/documentation")
+      -# We are using ~ instead of #, see why: https://github.com/middleman/middleman-syntax/issues/16#issuecomment-85270459

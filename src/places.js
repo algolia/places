@@ -24,8 +24,6 @@ export default function places({
 
   // https://github.com/algolia/autocomplete.js#options
   const options = {
-    debug: true,
-    openOnFocus: true,
     autoselect: true,
     hint: true
   };

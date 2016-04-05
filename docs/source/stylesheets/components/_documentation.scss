@@ -18,6 +18,7 @@
   h2 {
     color: $charcoal-grey;
     font-size: 28px;
+    padding-right: 1em;
   }
 
   .documentation-container {
@@ -26,6 +27,23 @@
     left: #{$sidebar-width};
     width: calc(100% - #{$sidebar-width});
     padding-left: 30px;
+
+    .anchor {
+      margin-left: .2em;
+      display: none;
+    }
+
+    h2, h3 {
+      &:hover {
+        .anchor {
+          display: inline;
+        }
+      }
+
+      &:target {
+        text-decoration: underline;
+      }
+    }
   }
 
   @include small-mq {

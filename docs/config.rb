@@ -29,7 +29,6 @@ configure :development do
   config[:places_lib_url] = :places
   activate :gzip
   activate :livereload
-  activate :syntax
   activate :external_pipeline,
     name: :places,
     command: 'npm run js:watch -- --output-path docs/.webpack/js',
@@ -38,6 +37,11 @@ end
 
 set :js_dir, 'js'
 ignore '/javascripts/*'
+
+set :markdown_engine, :kramdown
+set :markdown, input: 'GFM'
+
+activate :syntax, line_numbers: true, css_class: 'codehilite'
 
 activate :external_pipeline,
   name: :index,
@@ -54,6 +58,7 @@ activate :external_pipeline,
 ###
 
 config[:places_lib_version] = ENV['VERSION']
+config[:places_cdn_url] = '//cdn.jsdelivr.net/places.js/0/places.min.js'
 
 helpers do
   def nav_active(path)
@@ -63,7 +68,7 @@ end
 
 # Build-specific configuration
 configure :build do
-  config[:places_lib_url] = '//cdn.jsdelivr.net/places.js/0/places.min.js'
+  config[:places_lib_url] = config[:places_cdn_url]
   # this may trigger bad behavior, if so, see
   # https://github.com/middleman/middleman-minify-html
   activate :minify_html
