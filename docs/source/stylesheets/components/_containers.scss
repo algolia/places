@@ -3,7 +3,6 @@
 /* Containers
 ================*/
 .container {
-  float: none;
   margin: auto;
   width: 100%;
   max-width: $max-width;
@@ -26,12 +25,10 @@ section {
     padding: 0 16px;
   }
 
-
   &.hero-section {
     background: $denim-blue;
     color: #fff;
     padding-top: $navigation-height*1.5;
-    position: relative;
 
     .hero-container {
       margin-top: 20px;
@@ -59,8 +56,6 @@ section {
     }
 
     h1 {
-      margin-bottom: 0;
-      padding: 0;
       line-height: 22px;
     }
 
@@ -79,11 +74,10 @@ section {
 
       .fl-left {
         width: 100%;
+        margin: auto;
         margin-top: $navigation-height * 1.5;
         max-width: 500px;
         float: none;
-        margin-right: auto;
-        margin-left: auto;
 
          body.index &{
           margin-top: $navigation-height * 2;
@@ -97,7 +91,6 @@ section {
       .small-illustration {
         max-width: 30%;
         display: block;
-        float: none;
         margin: auto;
 
         img {
