@@ -1,5 +1,5 @@
-// this ^^ line can be removed, just so travis test works
-import icons from './icons.js';
+import addressIcon from './icons/address.svg';
+import cityIcon from './icons/city.svg';
 
 export default function formatAutocompleteSuggestion({
   administrative,
@@ -8,8 +8,8 @@ export default function formatAutocompleteSuggestion({
   isCity,
   name
 }) {
-  const out = `<span class="pl-icon">${icons[isCity === false ? 'address' : 'city']}</span>
-<span class="pl-name">${name}</span> <span class="pl-address">
+  const out = `<span class="ap-suggestion-icon">${isCity === true ? cityIcon : addressIcon}</span>
+<span class="ap-name">${name}</span> <span class="ap-address">
 ${isCity === false ? `${city},` : ``}
  ${administrative},
  ${country}</span>`
