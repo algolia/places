@@ -19,7 +19,9 @@
     color: $charcoal-grey;
     font-size: 28px;
     padding-right: 1em;
+  }
 
+  h2, h3 {
     &[id] {
       &:before {
         content: "";
@@ -146,4 +148,3 @@
     }
   }
 }
-
