@@ -15,8 +15,8 @@ const hitFormatter = createHitFormatter({
 });
 
 export default function places({
-  // countries,
-  // language = navigator.language,
+  countries,
+  language = navigator.language.split('-')[0],
   container
 }) {
   const placesInstance = new EventEmitter();
@@ -30,12 +30,12 @@ export default function places({
 
   // https://github.com/algolia/autocomplete.js#options
   const templates = {
-    suggestion: hit => hit.suggestion
+    suggestion: hit => hit._dropdownHTMLFormatted
   };
 
   // https://github.com/algolia/autocomplete.js#sources
   const source = (query, cb) => client
-    .search({query})
+    .search({query, language, countries})
     .then(({hits}) => hits.slice(0, 5).map(hitFormatter))
     .then(suggestions => {
       placesInstance.emit('suggestions', suggestions);
@@ -48,7 +48,8 @@ export default function places({
     container,
     options, {
       source,
-      templates
+      templates,
+      displayKey: '_inputValue'
     }
   );
 
