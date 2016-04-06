@@ -10,6 +10,17 @@
   padding: 0 16px;
   margin: 0;
 
+  .container {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  @include huge-min-mq {
+    .container {
+      max-width: calc(#{$max-width} + 260px)
+    }
+  }
+
   .brand {
     float: left;
 

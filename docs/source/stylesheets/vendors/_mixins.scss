@@ -26,6 +26,11 @@
     @content
   }
 }
+@mixin huge-min-mq {
+  @media (min-width: $bp-huge){
+    @content
+  }
+}
 
 @mixin big-mq {
   @media (max-width: $bp-big){
