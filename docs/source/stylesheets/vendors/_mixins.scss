@@ -18,6 +18,11 @@
   float: none;
 }
 
+%active-links {
+  color: $red-pink;
+  box-shadow: inset -2px 0 0 0 $red-pink
+}
+
 @mixin big-min-mq {
   @media (min-width: $bp-big){
     @content

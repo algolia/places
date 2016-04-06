@@ -38,9 +38,12 @@ nav.sidebar {
 
         &:focus,
         &:target {
-          color: $red-pink;
-          box-shadow: inset -2px 0 0 0 $red-pink
+          @extend %active-links;
         }
+      }
+
+      &.active a{
+        @extend %active-links;
       }
     }
   }
