@@ -1,7 +1,7 @@
 .documentation-section {
-  padding-top: 120px;
 
   .container {
+
     article {
       width: 100%;
       position: relative;
@@ -36,6 +36,7 @@
     left: #{$sidebar-width};
     width: calc(100% - #{$sidebar-width});
     padding-left: 30px;
+    padding-top: 120px;
 
     // API tables
     table.api {
@@ -83,6 +84,10 @@
             margin-bottom: 0;
           }
         }
+      }
+      &+ h2,
+      &+ h3 {
+        margin-top: 2em;
       }
     }
 

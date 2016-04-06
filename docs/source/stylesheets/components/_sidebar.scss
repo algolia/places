@@ -5,11 +5,13 @@ nav.sidebar {
   position: absolute;
   max-width: $sidebar-width;
   border-right: 1px solid #d8d8d8;
+  padding-top: 120px;
 
   &.fixed {
     position: fixed;
     top: $navigation-height + 16px;
     z-index: 9;
+    padding-top: 0;
   }
 
 
