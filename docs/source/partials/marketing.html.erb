@@ -48,8 +48,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       var scr = document.createElement("script");
       var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
       scr.setAttribute('async', 'true');
-      scr.type = "text/javascript";
-      scr.src = host + "/j/roundtrip.js";
+      scr.type = 'text/javascript';
+      scr.src = host + '/' + 'j/roundtrip.js'; // middleman removes the leading '/' if concatenated to j/, not sure why...
       ((document.getElementsByTagName('head') || [null])[0] ||
         document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
     };
