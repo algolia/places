@@ -43,6 +43,12 @@
     }
 
     h2, h3 {
+      padding-bottom: 8px;
+
+      .anchor {
+        color: $red-pink;
+        text-decoration: none;
+      }
       &:hover {
         .anchor {
           display: inline;
@@ -50,7 +56,9 @@
       }
 
       &:target {
-        text-decoration: underline;
+        .anchor {
+          display: inline;
+        }
       }
     }
   }

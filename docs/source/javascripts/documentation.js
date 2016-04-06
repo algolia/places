@@ -5,6 +5,7 @@ import './responsive-navigation.js';
 demo();
 anchorableTitles();
 sidebarFollowScroll();
+activeLinks();
 
 function demo() {
   places({
@@ -51,3 +52,22 @@ function sidebarFollowScroll() {
     }
   });
 }
+
+// The Following code is used to set active items
+// On the documentation sidebar depending on the
+// clicked item
+function activeLinks() {
+  const linksContainer = document.querySelector('#sidebar ul');
+  const removeActive = (item) => {
+    item.classList.remove('active');
+  };
+
+  linksContainer.addEventListener('click', function(e) {
+    if (e.target.tagName === 'A') {
+      [].forEach.call(this.children, removeActive);
+      e.target.parentNode.classList.add('active');
+    }
+  });
+}
+
+
