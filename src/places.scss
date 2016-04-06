@@ -1,6 +1,3 @@
-$icon-pin: 'data:image/svg+xml;utf8,<svg width="14" height="20" viewBox="0 0 14 20" xmlns="http://www.w3.org/2000/svg"><path d="M7 0C3.13 0 0 3.13 0 7c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5C5.62 9.5 4.5 8.38 4.5 7S5.62 4.5 7 4.5 9.5 5.62 9.5 7 8.38 9.5 7 9.5z" fill="%23CFCFCF" fill-rule="evenodd"/></svg>';
-$icon-pin-hover: 'data:image/svg+xml;utf8,<svg width="14" height="20" viewBox="0 0 14 20" xmlns="http://www.w3.org/2000/svg"><path d="M7 0C3.13 0 0 3.13 0 7c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5C5.62 9.5 4.5 8.38 4.5 7S5.62 4.5 7 4.5 9.5 5.62 9.5 7 8.38 9.5 7 9.5z" fill="%23AAAAAA" fill-rule="evenodd"/></svg>';
-
 @mixin placeholder {
   $placeholders: ":-webkit-input" ":-moz" "-moz" "-ms-input";
   @each $placeholder in $placeholders {
@@ -30,22 +27,18 @@ $icon-pin-hover: 'data:image/svg+xml;utf8,<svg width="14" height="20" viewBox="0
     outline: none;
   }
 
+  .aa-input:hover ~ .ap-input-icon svg,
+  .aa-input:focus ~ .ap-input-icon svg,
+  .ap-input-icon:hover svg {
+    fill: #aaaaaa;
+  }
+
   .aa-input {
     color: #555555;
-
-    background: {
-      image: url($icon-pin);
-      repeat: no-repeat;
-      position: center right 16px;
-      size: 14px;
-    }
 
     &:hover,
     &:focus {
       border-color: #999999;
-      background: {
-        image: url($icon-pin-hover);
-      }
     }
 
     @include placeholder {
@@ -81,13 +74,13 @@ $icon-pin-hover: 'data:image/svg+xml;utf8,<svg width="14" height="20" viewBox="0
     }
   }
 
-  .pl-address {
+  .ap-address {
     font-size: smaller;
     margin-left: 12px; // 12px when font is 14px
     color: #aaaaaa;
   }
 
-  .pl-icon {
+  .ap-suggestion-icon {
     margin-right: 10px;
     display: inline-block;
     width: 14px;
@@ -96,14 +89,29 @@ $icon-pin-hover: 'data:image/svg+xml;utf8,<svg width="14" height="20" viewBox="0
 
     svg {
       transform: scale(0.90);
+      fill: #cfcfcf;
+    }
+  }
+
+  .ap-input-icon {
+    border: 0;
+    background: transparent;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 12px;
+    outline: none;
+    svg {
+      fill: #cfcfcf;
     }
   }
 
   .aa-cursor {
     background: #efefef;
 
-    .pl-icon svg {
-      transform: scale(1)
+    .ap-suggestion-icon svg {
+      transform: scale(1);
+      fill: #aaaaaa;
     }
   }
 }
