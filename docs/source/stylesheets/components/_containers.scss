@@ -33,6 +33,10 @@ section {
     padding-top: $navigation-height*1.5;
     position: relative;
 
+    .hero-container {
+      margin-top: 20px;
+    }
+
     .icon {
       width: 20px;
       height: 20px;
@@ -108,6 +112,10 @@ section {
     }
 
     .fl-right svg {
+      max-width: 260px;
+      position: relative;
+      top: -20px;
+
       path,
       ellipse {
         transform: translateY(12px);
