@@ -91,10 +91,11 @@ $icon-pin-hover: 'data:image/svg+xml;utf8,<svg width="14" height="20" viewBox="0
     margin-right: 10px;
     display: inline-block;
     width: 14px;
+    height: 20px;
+    vertical-align: middle; // handles right alignment with text
 
     svg {
       transform: scale(0.90);
-      vertical-align: text-bottom;
     }
   }
 
