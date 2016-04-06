@@ -15,6 +15,7 @@
   font-size: 12px;
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
   transition: background 0.1s ease;
+  cursor: pointer;
 
   &:hover,
   &:active {
@@ -39,7 +40,6 @@
     border-color: mix($black, #fff, 90%);
   }
 
-  cursor: pointer;
 
   &-ghost {
     background: transparent;
@@ -47,7 +47,6 @@
     font-weight: bold;
     max-width: inherit;
     padding: 0 32px;
-
 
     &-grey {
       color:  $steel;

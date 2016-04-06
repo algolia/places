@@ -2,8 +2,7 @@
         'vendors/variables',
         'vendors/functions',
         'vendors/mixins',
-        'vendors/base',
-        'vendors/svg-animations';
+        'vendors/base';
 
 @import 'components/code-highlight',
         'components/icons',
@@ -16,4 +15,5 @@
         'components/documentation',
         'components/footer';
 
-@import 'vendors/helpers';
+@import 'vendors/helpers',
+        'vendors/svg-animations';
