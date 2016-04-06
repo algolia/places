@@ -75,7 +75,15 @@ section {
 
       .fl-left {
         width: 100%;
-        margin-top: $navigation-height;
+        margin-top: $navigation-height * 1.5;
+        max-width: 500px;
+        float: none;
+        margin-right: auto;
+        margin-left: auto;
+
+         body.index &{
+          margin-top: $navigation-height * 2;
+        }
       }
 
       .fl-right {
@@ -104,7 +112,7 @@ section {
 
 
     &.shrink {
-      min-height: 314px
+      min-height: 314px;
     }
 
     .fl-right svg {
@@ -139,6 +147,7 @@ section {
 
   .bloc-5 {
     margin-bottom: 40px;
+    position: relative;
 
     &:nth-child(1),
     &:nth-child(3) {
@@ -153,8 +162,30 @@ section {
     @include medium-mq {
       width: 100%;
       padding: 0 !important;
+
+      .bloc-3 {
+        position: relative;
+        height: 100%;
+
+        img {
+          width: 100%;
+          position: relative;
+          top: 30px;
+          left: -8px;
+        }
+      }
     }
 
+    @include tablet-mq-portrait {
+      .bloc-7 {
+        padding-right: 16px;
+      }
+      .bloc-3 img {
+        max-width: 50%;
+        top: 0;
+        left: 0
+      }
+    }
   }
 
   .bloc-3 {

@@ -103,7 +103,7 @@
     background: $black;
     position: absolute;
     bottom: 0;
-    height: $navigation-height;
+    min-height: $navigation-height;
     text-align: center;
 
     p {
@@ -167,7 +167,26 @@
     .action-footer {
       width: calc(16px + 100%);
       left: -16px;
+      padding-bottom: 16px;
+      text-align: center;
 
+      p {
+        font-size: 12px;
+        float: left;
+        width: 100%;
+        text-align: center;
+      }
+
+      .btn,
+      a:nth-child(2) {
+        width: calc(100% - 32px);
+        max-width: calc(100% - 32px);
+        margin: 0 auto;
+        margin-bottom: 8px;
+        float: none;
+        position: relative;
+        left: 8px;
+      }
     }
   }
 }
