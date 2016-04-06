@@ -8,7 +8,7 @@ export default function createHitFormatter({formatAutocompleteSuggestion, format
       country: hit.country.default,
       countryCode: findCountryCode(hit._tags),
       isCity: hit.is_city,
-      name: hit.locale_names.default[0]
+      name: hit.locale_names.default[0].trim() // trim should be done in data, waiting for a fix in Places API
     };
 
     // this is the value to put inside the input.value
@@ -19,7 +19,7 @@ export default function createHitFormatter({formatAutocompleteSuggestion, format
     // this is the value shown in suggestions, we highlight the name
     formatted.suggestion = formatAutocompleteSuggestion({
       ...formatted,
-      name: hit._highlightResult.locale_names.default[0].value
+      name: hit._highlightResult.locale_names.default[0].value.trim()
     });
 
     return formatted;
