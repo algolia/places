@@ -57,13 +57,6 @@ nav.sidebar {
     top: -16px;
     border: none;
 
-
-    &.fixed {
-      background: $brand-primary;
-      color: #fff;
-      top: $navigation-height;
-    }
-
     ul {
       width: 100%;
       padding: 0 16px;
@@ -76,11 +69,34 @@ nav.sidebar {
         height: 40px;
         line-height: 40px;
         margin-right: 8px;
+        display: none;
+
 
         a {
           text-align: center;
           color: #fff;
+
+          &:focus,
+          &:target {
+            font-weight: bold;
+            box-shadow: none;
+          }
         }
+
+        &.active a {
+          font-weight: bold;
+          box-shadow: none;
+        }
+      }
+    }
+
+    &.fixed {
+      background: $brand-primary;
+      color: #fff;
+      top: $navigation-height;
+
+      ul li {
+        display: inline-block;
       }
     }
   }

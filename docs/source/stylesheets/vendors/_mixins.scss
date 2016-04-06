@@ -1,3 +1,4 @@
+// Mixins
 @mixin placeholder {
   $placeholders: ":-webkit-input" ":-moz" "-moz" "-ms-input";
   @each $placeholder in $placeholders {
@@ -18,11 +19,8 @@
   float: none;
 }
 
-%active-links {
-  color: $red-pink;
-  box-shadow: inset -2px 0 0 0 $red-pink
-}
 
+// Responsive Breakpoints
 @mixin big-min-mq {
   @media (min-width: $bp-big){
     @content
@@ -47,5 +45,36 @@
 @mixin mobile-mq {
   @media  (max-width: $bp-small){
     @content
+  }
+}
+@mixin tablet-mq-portrait {
+ @media only screen
+  and (min-device-width : 768px)
+  and (max-device-width : 1024px)
+  and (orientation : portrait) {
+    @content
+  }
+}
+@mixin tablet-mq-landscape {
+ @media only screen
+  and (min-device-width : 768px)
+  and (max-device-width : 1024px)
+  and (orientation : landscape) {
+    @content
+  }
+}
+
+// Placeholders
+
+%active-links {
+  color: $red-pink;
+  box-shadow: inset -2px 0 0 0 $red-pink;
+
+  @include small-mq {
+    font-weight: bold;
+    box-shadow: none;
+    color: #fff;
+    border-bottom: 2px solid $red-pink;
+
   }
 }

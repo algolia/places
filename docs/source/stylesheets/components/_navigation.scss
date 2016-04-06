@@ -12,6 +12,11 @@
 
   .brand {
     float: left;
+
+    // Fix cross-rendering issues
+    .icon.icon-algolia-light{
+      background-position: center bottom;
+    }
   }
 
   a {
@@ -20,11 +25,6 @@
     padding-bottom: 8px;
   }
 
-  // .menu .icon {
-  //   width: 30px;
-  //   height: $navigation-height;
-  //   display: inline-block;
-  // }
   .menu svg {
     width: 28px;
     height: 60px;
