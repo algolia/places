@@ -1,0 +1,31 @@
+<form action="/billing" class="billing-form">
+  <div class="form-group">
+    <label for="form-address">Address*</label>
+    <input type="text" class="form-control" id="form-address" placeholder="Search Addresses" />
+  </div>
+  <div class="form-group">
+    <label for="form-address2">Address 2</label>
+    <input type="text" class="form-control" id="form-address2" placeholder="Address Line 2" />
+  </div>
+  <div class="form-group">
+    <label for="form-city">City*</label>
+    <input type="text" class="form-control" id="form-city" placeholder="City">
+  </div>
+  <div class="form-group">
+    <label for="form-zip">Zip Code*</label>
+    <input type="text" class="form-control" id="form-zip" placeholder="Zip Code">
+  </div>
+  <button type="submit" class="btn btn-default">Save</button>
+</form>
+
+<script>
+  var placesAutocomplete = places({
+    container: document.querySelector('#form-address')
+  });
+  placesAutocomplete.on('change', function resultSelected(result) {
+    document.querySelector('#form-address').value = result.name;
+    document.querySelector('#form-address2').value = result.administrative;
+    document.querySelector('#form-city').value = result.city;
+    document.querySelector('#form-zip').value = ''; // result.postcode[0] ?
+  });
+</script>

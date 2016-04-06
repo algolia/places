@@ -1,0 +1,12 @@
+---
+title: Examples
+---
+
+%section.documentation-section
+  .container
+    %nav.sidebar#sidebar
+      ~ partial("/partials/examples/sidebar")
+
+    %div.documentation-container
+      ~ partial("/partials/examples/index")
+      -# We are using ~ instead of #, see why: https://github.com/middleman/middleman-syntax/issues/16#issuecomment-85270459
