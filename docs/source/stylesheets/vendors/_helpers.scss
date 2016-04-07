@@ -54,7 +54,14 @@ hr {
     font-weight: bold;
     width: 0;
     float: left;
+  }
 
+  body.index &{
+    display: none;
+
+    &+ span {
+      display: none !important;
+    }
   }
 }
 

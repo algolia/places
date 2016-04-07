@@ -8,6 +8,8 @@ import formatInputValue from './formatInputValue.js';
 import formatAutocompleteSuggestion from './formatAutocompleteSuggestion.js';
 import './places.scss';
 import EventEmitter from 'events';
+import clearIcon from './icons/clear.svg';
+import pinIcon from './icons/address.svg';
 
 const hitFormatter = createHitFormatter({
   formatAutocompleteSuggestion,
@@ -20,13 +22,26 @@ export default function places({
   container
 }) {
   const placesInstance = new EventEmitter();
-  const client = algoliasearch.initPlaces('6TZ2RYGYRQ', '20b9e128b7e37ff38a4e86b08477980b');
+  const client = algoliasearch.initPlaces(
+    '6TZ2RYGYRQ',
+    '20b9e128b7e37ff38a4e86b08477980b',
+    {hosts: ['places-de-1.algolia.net']} // use staging for now, FIXME
+  );
+  client.as.setExtraHeader('targetIndexingIndexes', true);
 
   // https://github.com/algolia/autocomplete.js#options
   const options = {
     autoselect: true,
-    hint: true
+    hint: true,
+    cssClasses: {
+      root: 'algolia-places',
+      prefix: 'ap'
+    }
   };
+
+  if (process.env.NODE_ENV === 'development') {
+    options.debug = true;
+  }
 
   // https://github.com/algolia/autocomplete.js#options
   const templates = {
@@ -53,6 +68,8 @@ export default function places({
     }
   );
 
+  const autocompleteContainer = container.parentNode;
+
   const autocompleteChangeEvents = ['selected', 'autocompleted'];
   autocompleteChangeEvents.forEach(eventName => {
     autocompleteInstance.on(`autocomplete:${eventName}`, (_, suggestion) => {
@@ -63,8 +80,33 @@ export default function places({
     placesInstance.emit('cursorchanged', suggestion);
   });
 
-  const autocompleteContainer = container.parentNode;
-  autocompleteContainer.classList.add('algolia-places');
+  const clear = document.createElement('button');
+  clear.classList.add('ap-input-icon');
+  clear.innerHTML = clearIcon;
+  autocompleteContainer.appendChild(clear);
+  clear.style.display = 'none';
+
+  const pin = document.createElement('button');
+  pin.classList.add('ap-input-icon');
+  pin.innerHTML = pinIcon;
+  autocompleteContainer.appendChild(pin);
+
+  pin.addEventListener('click', () => autocompleteInstance.focus());
+  clear.addEventListener('click', () => {
+    autocompleteInstance.autocomplete.setVal('');
+    autocompleteInstance.focus();
+  });
+
+  autocompleteContainer.querySelector('.ap-input').addEventListener('input', () => {
+    const query = autocompleteInstance.val();
+    if (query === '') {
+      pin.style.display = '';
+      clear.style.display = 'none';
+    } else {
+      clear.style.display = '';
+      pin.style.display = 'none';
+    }
+  });
 
   return placesInstance;
 }

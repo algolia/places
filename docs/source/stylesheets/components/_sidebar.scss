@@ -5,11 +5,13 @@ nav.sidebar {
   position: absolute;
   max-width: $sidebar-width;
   border-right: 1px solid #d8d8d8;
+  padding-top: 120px;
 
   &.fixed {
     position: fixed;
     top: $navigation-height + 16px;
     z-index: 9;
+    padding-top: 0;
   }
 
 
@@ -40,10 +42,9 @@ nav.sidebar {
         &:target {
           @extend %active-links;
         }
-      }
-
-      &.active a{
-        @extend %active-links;
+        &.active {
+          @extend %active-links;
+        }
       }
     }
   }
@@ -51,43 +52,17 @@ nav.sidebar {
   @include small-mq {
     width: calc(100% + 16px);
     max-width: calc(100% + 16px);
-    position: relative;
-    max-height: 40px;
+    position: absolute;
+    max-height: 46px;
     left: 0px;
-    top: -16px;
+    top: 16px;
     border: none;
+    padding-top: 0;
 
-    ul {
-      width: 100%;
-      padding: 0 16px;
-      height: 40px;
-
-      li {
-        float: left;
-        display: inline-block;
-        width: auto;
-        height: 40px;
-        line-height: 40px;
-        margin-right: 8px;
-        display: none;
-
-
-        a {
-          text-align: center;
-          color: #fff;
-
-          &:focus,
-          &:target {
-            font-weight: bold;
-            box-shadow: none;
-          }
-        }
-
-        &.active a {
-          font-weight: bold;
-          box-shadow: none;
-        }
-      }
+    select {
+      width: calc(100% - 32px);
+      margin: 8px  8px;
+      visibility: hidden;
     }
 
     &.fixed {
@@ -95,8 +70,8 @@ nav.sidebar {
       color: #fff;
       top: $navigation-height;
 
-      ul li {
-        display: inline-block;
+      select {
+        visibility: visible;
       }
     }
   }

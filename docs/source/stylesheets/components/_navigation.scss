@@ -90,14 +90,19 @@
     }
 
     li {
-      display: inline-block;
-      padding: 0 6px;
       float: left;
+      padding: 0 15px;
+      font-family: "Open Sans";
+      font-size: 14px;
+      padding-bottom: 19px;
 
+      a {
+        padding-bottom: 18px;
+      }
 
       &.active {
         a {
-          border-bottom: 2px solid $red-pink;
+          border-bottom: 3px solid $red-pink;
         }
       }
     }

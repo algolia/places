@@ -27,13 +27,13 @@ input {
       }
     }
 
-    .aa-input {
+    .ap-input {
       border: solid 1px rgba(255, 255, 255, 0.5);
       box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
       color: #8f94ad;
     }
 
-    .aa-input, .aa-hint {
+    .ap-input, .ap-hint {
       font-family: "Raleway", Helvetica Neue, helvetica;
       height: 56px;
       padding-left: 16px;
@@ -41,7 +41,7 @@ input {
       border-radius: 4px;
     }
 
-    .aa-suggestion {
+    .ap-suggestion {
       color: #262626;
       text-align: left;
     }

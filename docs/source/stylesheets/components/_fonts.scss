@@ -1,5 +1,10 @@
 /* heading settings
 =======================*/
+h1,h2,h3,h4 {
+  padding: 0;
+  margin: 0;
+}
+
 h1 {
   font-size: 46px;
 }
@@ -25,9 +30,9 @@ p {
   }
 
   &+ ul {
-      font-size: 20px;
-  line-height: 32px;
-  color: $charcoal-grey-75;
+    font-size: 20px;
+    line-height: 32px;
+    color: $charcoal-grey-75;
   }
 }
 
@@ -42,8 +47,6 @@ h2.title {
   position: relative;
   margin-top: 120px;
   margin-bottom: 80px;
-
-
 
   &:after {
     content: '';

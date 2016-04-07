@@ -1,7 +1,7 @@
 .documentation-section {
-  padding-top: 120px;
 
   .container {
+
     article {
       width: 100%;
       position: relative;
@@ -13,13 +13,37 @@
   ul {
     font-size: 16px;
     line-height: 22px;
+
+    li {
+      clear: both;
+    }
+
+    ul {
+      font-weight: normal;
+      font-size: 14px;
+      position: relative;
+
+      li {
+        height: 26px;
+        line-height: 26px;
+
+        &:before {
+          content: '-';
+          float: left;
+          margin-right: 6px;
+          color: $greyish
+        }
+      }
+    }
   }
 
   h2 {
     color: $charcoal-grey;
     font-size: 28px;
     padding-right: 1em;
+  }
 
+  h2, h3 {
     &[id] {
       &:before {
         content: "";
@@ -36,43 +60,58 @@
     left: #{$sidebar-width};
     width: calc(100% - #{$sidebar-width});
     padding-left: 30px;
+    padding-top: 120px;
 
     // API tables
     table.api {
       padding: 0;
       border-collapse: collapse;
       border-spacing: 0;
+
       tr {
         border-top: 1px solid #cccccc;
         background-color: white;
         margin: 0;
         padding: 0;
-        &:nth-child(2n) {background-color: #f8f8f8;}
+
+        &:nth-child(2n) {
+          background-color: #f8f8f8;
+        }
+
         th {
           font-weight: bold;
           border: 1px solid #cccccc;
           text-align: left;
           margin: 0;
           padding: 6px 13px;
+
           &:first-child {
             margin-top: 0;
           }
+
           &:last-child {
             margin-bottom: 0;
           }
         }
+
         td {
           border: 1px solid #cccccc;
           text-align: left;
           margin: 0;
           padding: 6px 13px;
+
           &:first-child {
             margin-top: 0;
           }
+
           &:last-child {
             margin-bottom: 0;
           }
         }
+      }
+      &+ h2,
+      &+ h3 {
+        margin-top: 2em;
       }
     }
 
@@ -82,7 +121,7 @@
     }
 
     .algolia-places {
-      color: #000000
+      color: #000000;
     }
 
     h2, h3 {
@@ -92,6 +131,7 @@
         color: $red-pink;
         text-decoration: none;
       }
+
       &:hover {
         .anchor {
           display: inline;
@@ -107,7 +147,7 @@
   }
 
   @include small-mq {
-    padding-top: 16px;
+    padding-top: 32px;
 
     .container {
       .documentation-container {
@@ -115,6 +155,7 @@
         width: 100%;
         padding: 0 16px;
       }
+
       article {
         float: left;
         margin-top: 40px;
@@ -129,4 +170,3 @@
     }
   }
 }
-
