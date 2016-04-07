@@ -35,6 +35,10 @@ export default function places({
     hint: true
   };
 
+  if (process.env.NODE_ENV === 'development') {
+    options.debug = true;
+  }
+
   // https://github.com/algolia/autocomplete.js#options
   const templates = {
     suggestion: hit => hit._dropdownHTMLFormatted
