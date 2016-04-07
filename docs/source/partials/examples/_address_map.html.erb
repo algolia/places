@@ -39,6 +39,7 @@
 
   function updateMap(e) {
     markers.forEach(removeMarker);
+    markers = [];
     e.suggestions.forEach(addMarker);
     findBestZoom();
   }
