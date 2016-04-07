@@ -1,5 +1,5 @@
-<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
-<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+<link rel="stylesheet" href="//cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+<script src="//cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
 <div id="map-example">
   <div class="left-column">
     <input type="text" id="input-map" placeholder="Where are we going?" />
@@ -22,10 +22,10 @@
 
   var map = L.map('map');
   var osmLayer = new L.TileLayer(
-    'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       minZoom: 1,
       maxZoom: 12,
-      attribution: 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+      attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
     }
   );
 
