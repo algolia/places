@@ -30,6 +30,10 @@ export default function createHitFormatter({formatAutocompleteSuggestion, format
       /* eslint no-console: 0 */
       console.error('Could not parse object', hit);
       console.error(e);
+      return {
+        inputValue: 'Could not parse object',
+        _dropdownHTMLFormatted: 'Could not parse object'
+      };
     }
   };
 }
