@@ -53,16 +53,18 @@ Here are the options you can pass to the `places(options)` function.
 <!-- Indentation is on purpose for <td>s, to allow HTML inside markdown -->
 <table class="api">
   <thead><tr>
-    <th>Option name</th>
-    <th>Type</th>
-    <th>Required</th>
+    <th>Option</th>
     <th>Description</th>
   </tr></thead>
   <tbody>
     <tr>
-<td markdown="span">`container`</td>
-<td markdown="span">[HTMLInputElement](https://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/html2/HTMLInputElement.html)</td>
-<td markdown="span">**yes**</td>
+<td markdown="1">
+`container`
+
+Type: [HTMLInputElement](https://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/html2/HTMLInputElement.html)
+
+required: **yes**
+</td>
 <td markdown="1">
 Determines the `<input />` that will be used for the Algolia Places autocompletion menu.
 
@@ -71,9 +73,13 @@ You just need to pass a reference to an Element. Obtained via
 </td>
     </tr>
     <tr>
-<td markdown="span">`language`</td>
-<td markdown="span">string</td>
-<td markdown="span">no</td>
+<td markdown="1">
+`language`
+
+Type: string
+
+required: no
+</td>
 <td markdown="1">
 Change the default language of the results.
 You can pass two letters country codes ([ISO 639-1](https://en.wikipedia.org/wiki/ISO_3166-1#Officially_assigned_code_elements)).
@@ -83,9 +89,13 @@ Example: `en` when navigator.language is `en_US`.
 </td>
     </tr>
     <tr>
-<td markdown="span">`countries`</td>
-<td markdown="span">string[]</td>
-<td markdown="span">no</td>
+<td markdown="1">
+`countries`
+
+Type: string[]
+
+required: no
+</td>
 <td markdown="1">
 Change the countries to search in. You must pass an array of two letters country codes
 ([ISO 639-1](https://en.wikipedia.org/wiki/ISO_3166-1#Officially_assigned_code_elements)).
@@ -128,39 +138,43 @@ placesAutocomplete.on('change', suggestion => console.log(suggestion));
 
 <table class="api">
   <thead><tr>
-    <th>Event name</th>
-    <th>Event data</th>
-    <th>Fired when</th>
-    <th>Usecase</th>
+    <th>Event</th>
+    <th>Description</th>
   </tr></thead>
   <tbody>
     <tr>
-<td markdown="span">`change`</td>
-<td markdown="span">[suggestion](#suggestion-object)</td>
 <td markdown="1">
-Suggestion selected in the dropdown or hint was validated.
+`change`
+
+Event data: [suggestion](#suggestion-object)
 </td>
 <td markdown="1">
-FIXME
+Fired when suggestion selected in the dropdown or hint was validated.
+
+FIXME simple usecase
 </td>
     </tr>
     <tr>
-<td markdown="span">`suggestions`</td>
-<td markdown="span">[suggestion](#suggestion-object)[]</td>
 <td markdown="1">
-Dropdown receives suggestions. You will receive the array of suggestions that are displayed.
+`suggestions`
+
+Event data: [suggestion](#suggestion-object)[]
 </td>
 <td markdown="1">
+Fired when dropdown receives suggestions. You will receive the array of suggestions that are displayed.
+
 You can use this event to display the suggestions [on a map](FIXME example).
 </td>
     </tr>
     <tr>
-<td markdown="span">`cursorchanged`</td>
-<td markdown="span">[suggestion](#suggestion-object)</td>
 <td markdown="1">
-Arrows keys used to navigate suggestions.
+`cursorchanged`
+
+Event data: [suggestion](#suggestion-object)
 </td>
 <td markdown="1">
+Fired when arrows keys are used to navigate suggestions.
+
 You can use this event to [pre-fill other form elements](FIXME).
 </td>
     </tr>
@@ -173,63 +187,86 @@ All of the events will send suggestion objects with those propreties:
 
 <table class="api">
   <thead><tr>
-    <th>Property name</th>
-    <th>Type</th>
+    <th>Property</th>
     <th>Description</th>
   </tr></thead>
   <tbody>
     <tr>
-<td markdown="span">`administrative`</td>
-<td markdown="span">string</td>
+<td markdown="1">
+`administrative`
+
+Type: string
+</td>
 <td markdown="1">
 FIXME.
 </td>
     </tr>
     <tr>
-<td markdown="span">`city`</td>
-<td markdown="span">string</td>
+<td markdown="1">
+`city`
+
+Type: string
+</td>
 <td markdown="1">
 City name.
 </td>
     </tr>
     <tr>
-<td markdown="span">`country`</td>
-<td markdown="span">string</td>
+<td markdown="1">
+`country`
+
+Type: string
+</td>
 <td markdown="1">
 Country name.
 </td>
     </tr>
     <tr>
-<td markdown="span">`countryCode`</td>
-<td markdown="span">string</td>
+<td markdown="1">
+`countryCode`
+
+Type: string
+</td>
 <td markdown="1">
 Two letters country code ([ISO 639-1](https://en.wikipedia.org/wiki/ISO_3166-1#Officially_assigned_code_elements)).
 </td>
     </tr>
     <tr>
-<td markdown="span">`isCity`</td>
-<td markdown="span">boolean</td>
+<td markdown="1">
+`isCity`
+
+Type: boolean
+</td>
 <td markdown="1">
 Will be true if the current suggestion is a city.
 </td>
     </tr>
     <tr>
-<td markdown="span">`lat`</td>
-<td markdown="span">number</td>
+<td markdown="1">
+`lat`
+
+Type: number
+</td>
 <td markdown="1">
 Latitude of the place found.
 </td>
     </tr>
     <tr>
-<td markdown="span">`lng`</td>
-<td markdown="span">number</td>
+<td markdown="1">
+`lng`
+
+Type: number
+</td>
 <td markdown="1">
 Longitude of the place found.
 </td>
     </tr>
     <tr>
-<td markdown="span">`name`</td>
-<td markdown="span">string</td>
+<td markdown="1">
+`name`
+
+Type: string
+</td>
 <td markdown="1">
 Display name of the place found. This is the value that is shown in the dropdown or in the input when
 validated. Without any html formatting.

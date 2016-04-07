@@ -1,7 +1,9 @@
 /* eslint no-console: 0 */
 /* global places */
 
-import './responsive-navigation.js';
+import responsiveNavigation from './responsiveNavigation.js';
+
+responsiveNavigation();
 
 const placesAutocomplete = places({
   container: document.querySelector('#landing-demo')
