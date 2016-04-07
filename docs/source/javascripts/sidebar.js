@@ -67,12 +67,12 @@ function sidebarFollowScroll(sidebarContainer) {
 // On the documentation sidebar depending on the
 // clicked item
 function activeLinks(sidebarContainer) {
-  const linksContainer = sidebarContainer.querySelector('ul li');
+  const linksContainer = sidebarContainer.querySelector('ul');
 
-  linksContainer.addEventListener('click', function(e) {
+  linksContainer.addEventListener('click', e => {
     if (e.target.tagName === 'A') {
-      [...this.children].forEach(item => item.classList.remove('active'));
-      e.target.parentNode.classList.add('active');
+      [...linksContainer.querySelectorAll('a')].forEach(item => item.classList.remove('active'));
+      e.target.classList.add('active');
     }
   });
 }

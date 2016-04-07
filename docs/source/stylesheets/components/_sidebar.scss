@@ -42,10 +42,9 @@ nav.sidebar {
         &:target {
           @extend %active-links;
         }
-      }
-
-      &.active a{
-        @extend %active-links;
+        &.active {
+          @extend %active-links;
+        }
       }
     }
   }
