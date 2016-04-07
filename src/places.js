@@ -32,7 +32,11 @@ export default function places({
   // https://github.com/algolia/autocomplete.js#options
   const options = {
     autoselect: true,
-    hint: true
+    hint: true,
+    cssClasses: {
+      root: 'algolia-places',
+      prefix: 'ap'
+    }
   };
 
   if (process.env.NODE_ENV === 'development') {
@@ -65,7 +69,6 @@ export default function places({
   );
 
   const autocompleteContainer = container.parentNode;
-  autocompleteContainer.classList.add('algolia-places');
 
   const autocompleteChangeEvents = ['selected', 'autocompleted'];
   autocompleteChangeEvents.forEach(eventName => {
@@ -94,7 +97,7 @@ export default function places({
     autocompleteInstance.focus();
   });
 
-  autocompleteContainer.querySelector('.aa-input').addEventListener('input', () => {
+  autocompleteContainer.querySelector('.ap-input').addEventListener('input', () => {
     const query = autocompleteInstance.val();
     if (query === '') {
       pin.style.display = '';

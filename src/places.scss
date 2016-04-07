@@ -12,8 +12,8 @@
 .algolia-places {
   width: 100%;
 
-  .aa-input,
-  .aa-hint {
+  .ap-input,
+  .ap-hint {
     box-sizing: border-box;
     width: 100%;
     padding-left: 16px;
@@ -27,13 +27,13 @@
     outline: none;
   }
 
-  .aa-input:hover ~ .ap-input-icon svg,
-  .aa-input:focus ~ .ap-input-icon svg,
+  .ap-input:hover ~ .ap-input-icon svg,
+  .ap-input:focus ~ .ap-input-icon svg,
   .ap-input-icon:hover svg {
     fill: #aaaaaa;
   }
 
-  .aa-input {
+  .ap-input {
     color: #555555;
 
     &:hover,
@@ -46,13 +46,13 @@
     }
   }
 
-  .aa-hint {
+  .ap-hint {
     color: #cccccc;
     background: #ffffff;
   }
 
   // Dropdown
-  .aa-dropdown-menu {
+  .ap-dropdown-menu {
     width: 100%;
     background: #ffffff;
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
@@ -61,7 +61,7 @@
     overflow: hidden; // avoid non rounded borders to overlap
   }
 
-  .aa-suggestion {
+  .ap-suggestion {
     cursor: pointer;
     height: 46px;
     line-height: 46px;
@@ -111,7 +111,7 @@
     }
   }
 
-  .aa-cursor {
+  .ap-cursor {
     background: #efefef;
 
     .ap-suggestion-icon svg {

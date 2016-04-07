@@ -53,7 +53,7 @@
   },
   "dependencies": {
     "algoliasearch": "^3.13.1",
-    "autocomplete.js": "^0.17.2",
+    "autocomplete.js": "^0.18.0",
     "events": "^1.1.0"
   }
 }
