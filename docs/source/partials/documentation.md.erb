@@ -159,7 +159,7 @@ var placesAutocomplete = {
   container: document.querySelector('#demo')
 };
 
-placesAutocomplete.on('change', suggestion => console.log(suggestion));
+placesAutocomplete.on('change', e => console.log(e.suggestion));
 ```
 
 <table class="api">
@@ -172,7 +172,10 @@ placesAutocomplete.on('change', suggestion => console.log(suggestion));
 <td markdown="1">
 `change`
 
-Event data: [suggestion](#suggestion-object)
+Event data:
+
+- suggestion *Type: [suggestion](#suggestion-object)*
+- query *Type: string*
 </td>
 <td markdown="1">
 Fired when suggestion selected in the dropdown or hint was validated.
@@ -184,7 +187,10 @@ FIXME simple usecase
 <td markdown="1">
 `suggestions`
 
-Event data: [suggestion](#suggestion-object)[]
+Event data:
+
+- suggestions *Type: [suggestion](#suggestion-object)*
+- query *Type: string*
 </td>
 <td markdown="1">
 Fired when dropdown receives suggestions. You will receive the array of suggestions that are displayed.
@@ -196,7 +202,9 @@ You can use this event to display the suggestions [on a map](FIXME example).
 <td markdown="1">
 `cursorchanged`
 
-Event data: [suggestion](#suggestion-object)
+Event data:
+- suggestion *Type: [suggestion](#suggestion-object)*
+- query *Type: string*
 </td>
 <td markdown="1">
 Fired when arrows keys are used to navigate suggestions.

@@ -23,10 +23,10 @@
     container: document.querySelector('#form-address'),
     type: ['address']
   });
-  placesAutocomplete.on('change', function resultSelected(result) {
-    document.querySelector('#form-address').value = result.name;
-    document.querySelector('#form-address2').value = result.administrative;
-    document.querySelector('#form-city').value = result.city;
-    document.querySelector('#form-zip').value = ''; // result.postcode[0] ?
+  placesAutocomplete.on('change', function resultSelected(e) {
+    document.querySelector('#form-address').value = e.suggestion.name;
+    document.querySelector('#form-address2').value = e.suggestion.administrative;
+    document.querySelector('#form-city').value = e.suggestion.city;
+    document.querySelector('#form-zip').value = ''; // e.suggestion.postcode[0] ?
   });
 </script>

@@ -13,13 +13,12 @@ if (process.env.NODE_ENV === 'development') {
   const events = ['change', 'suggestions', 'cursorchanged'];
   events.forEach(eventName =>
     placesAutocomplete.on(eventName, eventData => {
-      if (!Array.isArray(eventData)) {
-        eventData = [eventData];
-      }
-
       console.log(`Algolia Places: received event **${eventName}**`);
       if (typeof console.table === 'function') {
-        console.table(eventData);
+        Object.keys(eventData).forEach(dataKeyName => {
+          console.log(`data: ${dataKeyName}`);
+          console.table(eventData[dataKeyName]);
+        });
       } else {
         console.log('event data:', eventData);
       }
