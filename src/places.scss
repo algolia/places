@@ -101,8 +101,14 @@
     bottom: 0;
     right: 12px;
     outline: none;
+
     svg {
       fill: #cfcfcf;
+      // keep the icons centered
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
     }
   }
 
