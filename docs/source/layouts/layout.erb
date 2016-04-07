@@ -11,6 +11,7 @@
 
     <%= stylesheet_link_tag :site %>
     <%= auto_stylesheet_link_tag %>
+    <%= javascript_include_tag config[:places_lib_url] %>
   </head>
 
   <body class="<%= page_classes %>">
@@ -21,7 +22,6 @@
     <script>
       var currentPath = '<%= current_page.path %>';
     </script>
-    <%= javascript_include_tag config[:places_lib_url] %>
     <%= auto_javascript_include_tag %>
   </body>
 </html>

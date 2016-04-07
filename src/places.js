@@ -48,21 +48,19 @@ export default function places({
     suggestion: hit => hit._dropdownHTMLFormatted
   };
 
-  // https://github.com/algolia/autocomplete.js#sources
-  const source = (query, cb) => client
-    .search({query, language, countries})
-    .then(({hits}) => hits.slice(0, 5).map(hitFormatter))
-    .then(suggestions => {
-      placesInstance.emit('suggestions', suggestions);
-      return suggestions;
-    })
-    .then(cb)
-    .catch(err => console.error(err));
-
   const autocompleteInstance = autocomplete(
     container,
     options, {
-      source,
+      // https://github.com/algolia/autocomplete.js#sources
+      source: (query, cb) => client
+        .search({query, language, countries})
+        .then(({hits}) => hits.slice(0, 5).map(hitFormatter))
+        .then(suggestions => {
+          placesInstance.emit('suggestions', {suggestions, query: autocompleteInstance.val()});
+          return suggestions;
+        })
+        .then(cb)
+        .catch(err => console.error(err)),
       templates,
       displayKey: '_inputValue'
     }
@@ -73,11 +71,11 @@ export default function places({
   const autocompleteChangeEvents = ['selected', 'autocompleted'];
   autocompleteChangeEvents.forEach(eventName => {
     autocompleteInstance.on(`autocomplete:${eventName}`, (_, suggestion) => {
-      placesInstance.emit('change', suggestion);
+      placesInstance.emit('change', {suggestion, query: autocompleteInstance.val()});
     });
   });
   autocompleteInstance.on('autocomplete:cursorchanged', (_, suggestion) => {
-    placesInstance.emit('cursorchanged', suggestion);
+    placesInstance.emit('cursorchanged', {suggestion, query: autocompleteInstance.val()});
   });
 
   const clear = document.createElement('button');
@@ -97,15 +95,20 @@ export default function places({
     autocompleteInstance.focus();
   });
 
+  let previousQuery = '';
   autocompleteContainer.querySelector('.ap-input').addEventListener('input', () => {
     const query = autocompleteInstance.val();
     if (query === '') {
       pin.style.display = '';
       clear.style.display = 'none';
+      if (previousQuery !== query) {
+        placesInstance.emit('change', {query});
+      }
     } else {
       clear.style.display = '';
       pin.style.display = 'none';
     }
+    previousQuery = query;
   });
 
   return placesInstance;
