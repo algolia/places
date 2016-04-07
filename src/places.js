@@ -22,7 +22,11 @@ export default function places({
   container
 }) {
   const placesInstance = new EventEmitter();
-  const client = algoliasearch.initPlaces('6TZ2RYGYRQ', '20b9e128b7e37ff38a4e86b08477980b');
+  const client = algoliasearch.initPlaces(
+    '6TZ2RYGYRQ',
+    '20b9e128b7e37ff38a4e86b08477980b',
+    {hosts: ['places-de-1.algolia.net']} // use staging for now, FIXME
+  );
 
   // https://github.com/algolia/autocomplete.js#options
   const options = {
