@@ -1,16 +1,6 @@
-## City Search
+## Simple input
 
-Places.js turns any HTML `<input />` into a City as-you-type search bar. You can filter on a specific list of countries if needed:
-
-<%= partial '/partials/examples/city_search' %>
-
-```html
-<%= partial '/partials/examples/city_search' %>
-```
-
-## Address Search
-
-Places.js turns any HTML `<input />` into an Address as-you-type search bar. You can filter on a specific list of countries if needed:
+places.js turns any HTML `<input />` into an autocomplete address search bar.
 
 <%= partial '/partials/examples/address_search' %>
 
@@ -18,9 +8,10 @@ Places.js turns any HTML `<input />` into an Address as-you-type search bar. You
 <%= partial '/partials/examples/address_search' %>
 ```
 
-## Address Form
+## Complete form
 
-Places.js turns any complex address `<form />` into a fast and user-friendly as-you-type search:
+Once the user has selected an address, you can use the [change event](documentation.html#events) to
+fill-out another form with the user address structured data.
 
 <%= partial '/partials/examples/address_form' %>
 
@@ -28,10 +19,43 @@ Places.js turns any complex address `<form />` into a fast and user-friendly as-
 <%= partial '/partials/examples/address_form' %>
 ```
 
-## Address search (with Map)
+## Only cities
 
-FIXME
+You can build a city search input by using the [type parameter](documentation.html#options).
 
-## Address search (mobile)
+<%= partial '/partials/examples/city_search' %>
 
-FIXME
+```html
+<%= partial '/partials/examples/city_search' %>
+```
+
+FIXME not implemented
+
+## Only countries
+
+You can also search in countries only.
+
+places.js turns any HTML `<input />` into a City as-you-type search bar. You can filter on a specific list of countries if needed:
+
+<%= partial '/partials/examples/country_search' %>
+
+```html
+<%= partial '/partials/examples/country_search' %>
+```
+
+FIXME not implemented
+
+## Places.js + map
+
+We will use the [Leaflet](http://leafletjs.com/) JavaScript library as an example library to
+display the places.js results on the map and update them when needed.
+
+<%= partial '/partials/examples/address_map' %>
+
+```html
+<%= partial '/partials/examples/address_map' %>
+```
+
+## Mobile search
+
+FIXME what do we want to show here?

@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+<div id="map-example">
+  <div class="left-column">
+    <input type="text" id="input-map" placeholder="Show me where is.." />
+  </div>
+  <div class="right-column">
+    <div id="map"></div>
+  </div>
+</div>
+
+<style>
+  #map-example #map, #map-example {height: 200px}
+  #map-example .left-column {float: left; width: 50%}
+  #map-example .right-column {margin-left: 52%}
+</style>
+
+<script>
+  var placesAutocomplete = places({
+    container: document.querySelector('#input-map'),
+  });
+
+  var map = L.map('map');
+  var osmLayer = new L.TileLayer(
+    'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      minZoom: 1,
+      maxZoom: 12,
+      attribution: 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+    }
+  );
+
+  map.setView(new L.LatLng(0, 0), 1);
+  map.addLayer(osmLayer);
+
+  placesAutocomplete.on('suggestions', updateMap);
+
+  function updateMap() {
+
+  }
+</script>

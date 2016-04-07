@@ -1,5 +1,0 @@
-- [City search](#city-search)
-- [Address search](#address-search)
-- [Address form](#address-form)
-- [Address search (with Map)](#address-search-with-map)
-- [Address search (mobile)](#address-search-mobile)

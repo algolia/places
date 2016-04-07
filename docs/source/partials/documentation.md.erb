@@ -6,7 +6,7 @@ and use the places.js library.
 ### Using `<script>` tags
 
 ```html
-<input  type="text" id="demo" placeholder="Where are we going?" />
+<input type="text" id="demo" placeholder="Where are we going?" />
 <script src="<%= config[:places_cdn_url] %>"></script>
 <script>
   var placesAutocomplete = places({
@@ -32,8 +32,8 @@ Put an `<input />` in your html page:
 Initialize the places.js library:
 
 ```js
-import places from 'places.js';
-const placesAutocomplete = places({
+var places = require('places.js');
+var placesAutocomplete = places({
   container: document.querySelector('#places-demo')
 });
 ```
@@ -103,13 +103,38 @@ Change the countries to search in. You must pass an array of two letters country
 **Default**: Search on the whole planet.
 </td>
     </tr>
+    <tr>
+<td markdown="1">
+`type`
+
+Type: string[]
+
+required: no
+</td>
+<td markdown="1">
+Change the type of results you want to search in.
+
+Available types:
+
+- city
+- country
+- address
+
+You must provide an array of types
+if you want to configure this.
+
+**Default**: Search in all types.
+
+FIXME: not implemented
+</td>
+    </tr>
   </tbody>
 </table>
 
-Simple example with only the required parameter:
+Simple example providing only the required `container` parameter:
 
 ```js
-const placesAutocomplete = {
+var placesAutocomplete = {
   container: document.querySelector('#demo')
 };
 ```
@@ -117,10 +142,11 @@ const placesAutocomplete = {
 Advanced example using all parameters:
 
 ```js
-const placesAutocomplete = {
+var placesAutocomplete = {
   container: document.querySelector('#demo'),
-  language: 'de',
-  countries: ['us', 'ru']
+  language: 'de', // Receives results in German
+  countries: ['us', 'ru'], // Search in the United States of America and in the Russian Federation
+  type: ['city'] // Search only for cities names
 };
 ```
 
@@ -129,7 +155,7 @@ const placesAutocomplete = {
 The Algolia Places autocomplete exposes some events that you can register to:
 
 ```js
-const placesAutocomplete = {
+var placesAutocomplete = {
   container: document.querySelector('#demo')
 };
 

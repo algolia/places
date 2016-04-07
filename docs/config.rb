@@ -53,6 +53,11 @@ activate :external_pipeline,
   command: "BUNDLE=documentation npm run docs:js:#{build? ? :build : :watch}",
   source: '.webpack'
 
+activate :external_pipeline,
+  name: :examples,
+  command: "BUNDLE=examples npm run docs:js:#{build? ? :build : :watch}",
+  source: '.webpack'
+
 ###
 # Helpers
 ###

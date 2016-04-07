@@ -1,11 +1,11 @@
 <form action="/billing" class="billing-form">
   <div class="form-group">
     <label for="form-address">Address*</label>
-    <input type="text" class="form-control" id="form-address" placeholder="Search Addresses" />
+    <input type="text" class="form-control" id="form-address" placeholder="Where do you live?" />
   </div>
   <div class="form-group">
     <label for="form-address2">Address 2</label>
-    <input type="text" class="form-control" id="form-address2" placeholder="Address Line 2" />
+    <input type="text" class="form-control" id="form-address2" placeholder="Street number and name" />
   </div>
   <div class="form-group">
     <label for="form-city">City*</label>
@@ -20,7 +20,8 @@
 
 <script>
   var placesAutocomplete = places({
-    container: document.querySelector('#form-address')
+    container: document.querySelector('#form-address'),
+    type: ['address']
   });
   placesAutocomplete.on('change', function resultSelected(result) {
     document.querySelector('#form-address').value = result.name;
