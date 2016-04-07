@@ -82,13 +82,12 @@
 
   .ap-suggestion-icon {
     margin-right: 10px;
-    display: inline-block;
     width: 14px;
     height: 20px;
     vertical-align: middle; // handles right alignment with text
 
     svg {
-      transform: scale(0.90);
+      transform: scale(0.90) translateY(2px);
       fill: #cfcfcf;
     }
   }
@@ -99,7 +98,7 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    right: 12px;
+    right: 16px;
     outline: none;
 
     svg {
