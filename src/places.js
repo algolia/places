@@ -94,7 +94,7 @@ export default function places({
     autocompleteInstance.focus();
   });
 
-  autocompleteInstance.on('autocomplete:updated', () => {
+  autocompleteContainer.querySelector('.aa-input').addEventListener('input', () => {
     const query = autocompleteInstance.val();
     if (query === '') {
       pin.style.display = '';
