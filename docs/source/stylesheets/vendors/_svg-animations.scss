@@ -15,11 +15,6 @@ $timingFunction: 3s ease infinite;
   }
 }
 
-svg {
- display: block;
- width: 100%;
-}
-
 #pin {
   animation: bounce $timingFunction;
 }

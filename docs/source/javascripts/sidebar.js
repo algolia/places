@@ -3,6 +3,7 @@ export default function sidebar({headersContainer, sidebarContainer, headerStart
   const select = document.createElement('select');
   const list = document.createElement('ul');
   const startLevel = headerStartLevel; // we start at h2
+  list.classList.add('no-mobile');
   let currentList = list;
   let currentLevel = startLevel;
 
@@ -29,6 +30,7 @@ export default function sidebar({headersContainer, sidebarContainer, headerStart
     const option = document.createElement('option');
     option.setAttribute('value', link.getAttribute('href'));
     option.textContent = `${spacer(currentLevel - startLevel)}${title}`;
+    select.classList.add('display-on-small');
     select.appendChild(option);
   });
 
@@ -65,7 +67,7 @@ function sidebarFollowScroll(sidebarContainer) {
 // On the documentation sidebar depending on the
 // clicked item
 function activeLinks(sidebarContainer) {
-  const linksContainer = sidebarContainer.querySelector('ul');
+  const linksContainer = sidebarContainer.querySelector('ul li');
 
   linksContainer.addEventListener('click', function(e) {
     if (e.target.tagName === 'A') {
