@@ -9,41 +9,13 @@
 
 // all em units are computed given a font of 16px
 // see http://pxtoem.com/ to change/add values
-.algolia-places {
+.algolia-places.algolia-places-styled {
   width: 100%;
-
-  .ap-input,
-  .ap-hint {
-    box-sizing: border-box;
-    width: 100%;
-    padding-left: 16px;
-    padding-right: 30px;
-    line-height: 40px;
-    height: 40px;
-    // it's necessary to specify border for both inputs to get the exact same dimensions and
-    // avoid font overlaps
-    border: 1px solid #cccccc;
-    border-radius: 3px;
-    outline: none;
-  }
 
   .ap-input:hover ~ .ap-input-icon svg,
   .ap-input:focus ~ .ap-input-icon svg,
   .ap-input-icon:hover svg {
     fill: #aaaaaa;
-  }
-
-  .ap-input {
-    color: #555555;
-
-    &:hover,
-    &:focus {
-      border-color: #999999;
-    }
-
-    @include placeholder {
-      color: #cccccc;
-    }
   }
 
   .ap-hint {
