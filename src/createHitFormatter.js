@@ -3,8 +3,10 @@ import findCountryCode from './findCountryCode.js';
 export default function createHitFormatter({formatAutocompleteSuggestion, formatInputValue}) {
   return hit => {
     try {
+      const administrative = hit.administrative && hit.administrative[0] !== hit.locale_names[0] ?
+        hit.administrative[0] : undefined;
       let suggestion = {
-        administrative: hit.administrative && hit.administrative[0],
+        administrative,
         city: hit.city && hit.city[0],
         country: hit.country,
         countryCode: findCountryCode(hit._tags),
