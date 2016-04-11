@@ -6,11 +6,11 @@ and use the places.js library.
 ### Using `<script>` tags
 
 ```html
-<input type="text" id="demo" placeholder="Where are we going?" />
+<input type="text" id="address-input" placeholder="Where are we going?" />
 <script src="<%= config[:places_cdn_url] %>"></script>
 <script>
   var placesAutocomplete = places({
-    container: document.querySelector('#places-demo')
+    container: document.querySelector('#address-input')
   });
 </script>
 ```
@@ -26,7 +26,7 @@ npm install places.js --save
 Put an `<input />` in your html page:
 
 ```html
-<input type="text" id="demo" placeholder="Where are we going?" />
+<input type="text" id="address-input" placeholder="Where are we going?" />
 ```
 
 Initialize the places.js library:
@@ -34,7 +34,7 @@ Initialize the places.js library:
 ```js
 var places = require('places.js');
 var placesAutocomplete = places({
-  container: document.querySelector('#places-demo')
+  container: document.querySelector('#address-input')
 });
 ```
 
@@ -46,7 +46,7 @@ As a result, you will get the Algolia Places autocompletion menu:
 
 ## API
 
-### options
+### Options
 
 Here are the options you can pass to the `places(options)` function.
 
@@ -150,7 +150,7 @@ var placesAutocomplete = {
 };
 ```
 
-### events
+### Events
 
 The Algolia Places autocomplete exposes some events that you can register to:
 
