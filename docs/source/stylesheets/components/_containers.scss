@@ -129,8 +129,6 @@ section {
 =========================*/
 
 .marketing-section {
-  margin-top: 120px;
-  margin-bottom: 60px;
   .container {
     position: absolute;
     top: 50%;
@@ -210,7 +208,7 @@ section {
 ////
 .action-section {
   background: $pale-grey url('../images/svg/search-everywhere-illu.svg')no-repeat center bottom / 38%;
-  padding-bottom: 420px;
+  padding-bottom: 300px;
 
   @include medium-mq {
     background: $pale-grey url('../images/svg/search-everywhere-illu.svg')no-repeat center bottom / 58%;
