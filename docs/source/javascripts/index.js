@@ -5,9 +5,11 @@ import responsiveNavigation from './responsiveNavigation.js';
 
 responsiveNavigation();
 
+const $input = document.querySelector('#landing-demo');
 const placesAutocomplete = places({
-  container: document.querySelector('#landing-demo')
+  container: $input
 });
+$input.style.opacity = 1; // we initially hide the input to avoid size flickering
 
 if (process.env.NODE_ENV === 'development') {
   const events = ['change', 'suggestions', 'cursorchanged'];
