@@ -79,12 +79,14 @@ export default function places({
   });
 
   const clear = document.createElement('button');
+  clear.setAttribute('type', 'button');
   clear.classList.add('ap-input-icon');
   clear.innerHTML = clearIcon;
   autocompleteContainer.appendChild(clear);
   clear.style.display = 'none';
 
   const pin = document.createElement('button');
+  pin.setAttribute('type', 'button');
   pin.classList.add('ap-input-icon');
   pin.innerHTML = pinIcon;
   autocompleteContainer.appendChild(pin);
