@@ -1,43 +1,22 @@
-.billing-form {
-  position: relative;
+.form-control {
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 16px;
+  line-height: 40px;
+  height: 40px;
+  border: 1px solid #cccccc;
+  border-radius: 3px;
+  outline: none;
+}
 
-  .form-group {
-    margin-bottom: 1em;
+.form-group {
+  margin-bottom: 1em;
+  clear: both;
 
-    label {
-      display: block;
-      float: left;
-      width: 28%;
-      margin-right: 2%;
-      line-height: 40px;
-      text-align: right;
-    }
-
-    .form-control {
-      width: 50%;
-      box-sizing: border-box;
-      padding-left: 16px;
-      line-height: 40px;
-      height: 40px;
-      border: 1px solid #cccccc;
-      border-radius: 3px;
-      outline: none;
-    }
-
-    .algolia-places {
-      width: 50% !important;
-
-      .form-control {
-        width: 100%;
-      }
-    }
-
-  }
-
-  button.btn {
-    float: right;
-    margin-right: 50%;
-    margin-bottom: 2em;
+  label {
+    display: block;
+    font-weight: bold;
+    font-size: .8em;
   }
 
 }

@@ -19,7 +19,8 @@ const hitFormatter = createHitFormatter({
 export default function places({
   countries,
   language = navigator.language.split('-')[0],
-  container
+  container,
+  style
 }) {
   const placesInstance = new EventEmitter();
   const client = algoliasearch.initPlaces(
@@ -34,7 +35,7 @@ export default function places({
     autoselect: true,
     hint: true,
     cssClasses: {
-      root: 'algolia-places',
+      root: 'algolia-places' + (style === false ? '' : ' algolia-places-styled'),
       prefix: 'ap'
     }
   };
