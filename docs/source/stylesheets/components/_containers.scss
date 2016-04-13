@@ -215,9 +215,12 @@ section {
   }
 
   @include big-min-mq {
-    background: $pale-grey url('../images/svg/search-everywhere-illu.svg')no-repeat center bottom / 28%;
+    background: $pale-grey url('../images/svg/search-everywhere-illu.svg')no-repeat center bottom /500px;
   }
 
+  @include mobile-mq {
+    background: $pale-grey url('../images/svg/search-everywhere-illu.svg')no-repeat center bottom /400px;
+  }
   @include small-mq {
     padding-bottom: 260px;
 
