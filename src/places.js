@@ -10,6 +10,7 @@ import './places.scss';
 import EventEmitter from 'events';
 import clearIcon from './icons/clear.svg';
 import pinIcon from './icons/address.svg';
+import version from './version.js';
 
 const hitFormatter = createHitFormatter({
   formatAutocompleteSuggestion,
@@ -29,6 +30,8 @@ export default function places({
     {hosts: ['places-de-1.algolia.net']} // use staging for now, FIXME
   );
   client.as.setExtraHeader('targetIndexingIndexes', true);
+
+  client.as.addAlgoliaAgent += `Algolia Places ${version}`;
 
   // https://github.com/algolia/autocomplete.js#options
   const options = {
