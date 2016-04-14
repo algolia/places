@@ -96,10 +96,13 @@
     opacity: .8;
     text-align: right;
     padding: .5em 1em .5em 0;
-    font-size: 60%;
+    font-size: 12px;
+
     a {
       vertical-align: sub;
     }
+
+
     &:hover {
       opacity: 1;
     }
