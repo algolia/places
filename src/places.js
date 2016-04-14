@@ -10,12 +10,20 @@ import './places.scss';
 import EventEmitter from 'events';
 import clearIcon from './icons/clear.svg';
 import pinIcon from './icons/address.svg';
+import algoliaLogo from './icons/algolia.svg';
+import osmLogo from './icons/osm.svg';
 import version from './version.js';
 
 const hitFormatter = createHitFormatter({
   formatAutocompleteSuggestion,
   formatInputValue
 });
+
+const footerTemplate =
+`<div class="ap-footer">
+Built by <a href="https://www.algolia.com/?UTMFIXME" title="Search by Algolia" class="ap-footer-algolia">${algoliaLogo.trim()}</a>
+using <a href="https://community.algolia.com/license" class="ap-footer-osm">${osmLogo.trim()}</a> data
+</div>`;
 
 export default function places({
   countries,
@@ -49,7 +57,8 @@ export default function places({
 
   // https://github.com/algolia/autocomplete.js#options
   const templates = {
-    suggestion: hit => hit._dropdownHTMLFormatted
+    suggestion: hit => hit._dropdownHTMLFormatted,
+    footer: footerTemplate
   };
 
   const autocompleteInstance = autocomplete(

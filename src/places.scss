@@ -91,4 +91,20 @@
       fill: #aaaaaa;
     }
   }
+
+  .ap-footer {
+    opacity: .8;
+    text-align: right;
+    padding: .5em 1em .5em 0;
+    font-size: 12px;
+
+    a {
+      vertical-align: sub;
+    }
+
+
+    &:hover {
+      opacity: 1;
+    }
+  }
 }

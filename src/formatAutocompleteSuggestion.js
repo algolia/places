@@ -8,7 +8,9 @@ export default function formatAutocompleteSuggestion({
   isCity,
   name
 }) {
-  const out = `<span class="ap-suggestion-icon">${isCity === true ? cityIcon : addressIcon}</span>
+  const out = `<span class="ap-suggestion-icon">${isCity === true ?
+    cityIcon.trim() :
+    addressIcon.trim()}</span>
 <span class="ap-name">${name}</span> <span class="ap-address">
 ${isCity === false ? `${city},` : ''}
  ${administrative ? `${administrative},` : ''}
