@@ -97,11 +97,15 @@
     text-align: right;
     padding: .5em 1em .5em 0;
     font-size: 12px;
+    line-height: 12px;
 
     a {
-      vertical-align: sub;
+      color: inherit;
+      text-decoration: none;
+      svg {
+        vertical-align: middle;
+      }
     }
-
 
     &:hover {
       opacity: 1;
