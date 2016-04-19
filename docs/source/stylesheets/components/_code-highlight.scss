@@ -101,6 +101,10 @@ pre {
   overflow-x: auto;
   word-break: inherit;
   word-wrap: inherit;
+
+  &.lineno {
+    padding: 0;
+  }
 }
 
 .codehilite .gl {
