@@ -1,12 +1,8 @@
 export default function findCountryCode(tags) {
-  let countryCode;
-
-  [...tags].forEach(tag => {
+  for (const tag of tags) {
     const find = tag.match(/country\/(.*)?/);
     if (find) {
-      countryCode = find[1];
+      return find[1];
     }
-  });
-
-  return countryCode;
+  }
 }

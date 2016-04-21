@@ -1,0 +1,17 @@
+<input type="text" id="address" class="form-control" placeholder="Where are we going?" />
+
+<p>Change event data:</p>
+<pre id="address-value"></pre>
+
+<script>
+  var placesAutocomplete = places({
+    container: document.querySelector('#address')
+  });
+
+  placesAutocomplete.on('change', function(suggestion) {
+    console.log(suggestion)
+    document
+      .querySelector('#address-value')
+      .textContent = JSON.stringify(suggestion, '', 2);
+  });
+</script>

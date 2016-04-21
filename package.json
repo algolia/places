@@ -14,7 +14,7 @@
     "js:watch": "webpack --watch",
     "lint": "eslint .",
     "release": "./scripts/release.sh",
-    "test": "mocha --opts mocha.opts && npm run lint",
+    "test": "npm run lint",
     "test:watch": "npm run test -- --watch --reporter min",
     "test:ci": "./scripts/test-ci.sh"
   },

@@ -105,7 +105,7 @@ Change the countries to search in. You must pass an array of two letters country
     </tr>
     <tr>
 <td markdown="1">
-`type`
+`types`
 
 Type: string[]
 
@@ -124,8 +124,6 @@ You must provide an array of types
 if you want to configure this.
 
 **Default**: Search in all types.
-
-FIXME: not implemented
 </td>
     </tr>
     <tr>
@@ -189,12 +187,13 @@ placesAutocomplete.on('change', e => console.log(e.suggestion));
 Event data:
 
 - suggestion *Type: [suggestion](#suggestion-object)*
-- query *Type: string*
+- query *Type: string*,
+- suggestionIndex *Type: number*
 </td>
 <td markdown="1">
 Fired when suggestion selected in the dropdown or hint was validated.
 
-FIXME simple usecase
+You can use this event to then populate another form, [see the example](examples.html#complete-form).
 </td>
     </tr>
     <tr>
@@ -209,7 +208,9 @@ Event data:
 <td markdown="1">
 Fired when dropdown receives suggestions. You will receive the array of suggestions that are displayed.
 
-You can use this event to display the suggestions [on a map](FIXME example).
+You will also receive this event when no places were found.
+
+You can use this event to display the suggestions on a map, see the [map example](examples.html#displaying-a-map).
 </td>
     </tr>
     <tr>
@@ -217,13 +218,15 @@ You can use this event to display the suggestions [on a map](FIXME example).
 `cursorchanged`
 
 Event data:
+
 - suggestion *Type: [suggestion](#suggestion-object)*
 - query *Type: string*
+- suggestionIndex *Type: number*
 </td>
 <td markdown="1">
 Fired when arrows keys are used to navigate suggestions.
 
-You can use this event to [pre-fill other form elements](FIXME).
+You can use this event to highlight markers on a map, see the [map example](examples.html#displaying-a-map).
 </td>
     </tr>
   </tbody>
@@ -231,7 +234,7 @@ You can use this event to [pre-fill other form elements](FIXME).
 
 ### Suggestion object
 
-All of the events will send suggestion objects with those propreties:
+All of the events will send suggestion objects with those properties:
 
 <table class="api">
   <thead><tr>
@@ -281,32 +284,22 @@ Two letters country code ([ISO 639-1](https://en.wikipedia.org/wiki/ISO_3166-1#O
     </tr>
     <tr>
 <td markdown="1">
-`isCity`
+`type`
 
-Type: boolean
+Type: string
 </td>
 <td markdown="1">
-Will be true if the current suggestion is a city.
+Type of the current suggestion, possible values: `country`, `city`, `address`.
 </td>
     </tr>
     <tr>
 <td markdown="1">
-`lat`
+`latlng`
 
-Type: number
+Type: Object
 </td>
 <td markdown="1">
-Latitude of the place found.
-</td>
-    </tr>
-    <tr>
-<td markdown="1">
-`lng`
-
-Type: number
-</td>
-<td markdown="1">
-Longitude of the place found.
+Latitude and longitude of the place found. Shape: `{lat: 48.797885, lng: 2.337034}`.
 </td>
     </tr>
     <tr>
@@ -316,8 +309,22 @@ Longitude of the place found.
 Type: string
 </td>
 <td markdown="1">
-Display name of the place found. This is the value that is shown in the dropdown or in the input when
-validated. Without any html formatting.
+Display name of the place found.
+
+Examples:
+
+  - Paris
+  - 589 Howard Street San Francisco
+</td>
+    </tr>
+    <tr>
+<td markdown="1">
+`value`
+
+Type: string
+</td>
+<td markdown="1">
+Full display name of the place found. It's the value displayed in the input.
 
 Examples:
 
@@ -330,7 +337,7 @@ Examples:
 
 ## Rate limit (FIXME)
 
-FIXME
+FIXME what's the final rate limit?
 
 ## License
 
