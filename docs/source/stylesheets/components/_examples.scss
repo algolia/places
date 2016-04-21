@@ -18,5 +18,11 @@
     font-weight: bold;
     font-size: .8em;
   }
+}
 
+#map-example {
+  // trigger zindex value otherwise
+  // map goes hover other elements (like header)
+  position: relative;
+  z-index: 0;
 }

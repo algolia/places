@@ -1,7 +1,7 @@
 import addressIcon from './icons/address.svg';
 import cityIcon from './icons/city.svg';
 
-export default function formatAutocompleteSuggestion({
+export default function formatDropdownValue({
   administrative,
   city,
   country,

@@ -2,10 +2,10 @@
 
 places.js turns any HTML `<input />` into an autocomplete address search bar.
 
-<%= partial '/partials/examples/address_search' %>
+<%= partial '/partials/examples/simple_input' %>
 
 ```html
-<%= partial '/partials/examples/address_search' %>
+<%= partial '/partials/examples/simple_input' %>
 ```
 
 ## Complete form
@@ -13,13 +13,13 @@ places.js turns any HTML `<input />` into an autocomplete address search bar.
 Once the user has selected an address, you can use the [change event](documentation.html#events) to
 fill-out another form with the user address structured data.
 
-<%= partial '/partials/examples/address_form' %>
+<%= partial '/partials/examples/complete_form' %>
 
 ```html
-<%= partial '/partials/examples/address_form' %>
+<%= partial '/partials/examples/complete_form' %>
 ```
 
-## Only cities
+## City search
 
 You can build a city search input by using the [type parameter](documentation.html#options).
 
@@ -29,9 +29,7 @@ You can build a city search input by using the [type parameter](documentation.ht
 <%= partial '/partials/examples/city_search' %>
 ```
 
-FIXME not implemented
-
-## Only countries
+## Country search
 
 You can also search in countries only.
 
@@ -43,19 +41,13 @@ places.js turns any HTML `<input />` into a City as-you-type search bar. You can
 <%= partial '/partials/examples/country_search' %>
 ```
 
-FIXME not implemented
+## Displaying a map
 
-## Places.js + map
-
-We will use the [Leaflet](http://leafletjs.com/) JavaScript library as an example library to
+We will use the [Leaflet](http://leafletjs.com/) JavaScript library as an example to
 display the places.js results on the map and update them when needed.
 
-<%= partial '/partials/examples/address_map' %>
+<%= partial '/partials/examples/map' %>
 
 ```html
-<%= partial '/partials/examples/address_map' %>
+<%= partial '/partials/examples/map' %>
 ```
-
-## Mobile search
-
-FIXME what do we want to show here?
