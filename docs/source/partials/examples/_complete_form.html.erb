@@ -20,7 +20,7 @@
 <script>
   var placesAutocomplete = places({
     container: document.querySelector('#form-address'),
-    type: ['address']
+    types: ['address']
   });
   placesAutocomplete.on('change', function resultSelected(e) {
     document.querySelector('#form-address').value = e.suggestion.name;

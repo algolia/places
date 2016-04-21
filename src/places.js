@@ -48,7 +48,7 @@ export default function places({
   client.as.addAlgoliaAgent += `Algolia Places ${version}`;
 
   // https://github.com/algolia/autocomplete.js#options
-  const autocomplateOptions = {
+  const autocompleteOptions = {
     autoselect: true,
     hint: false,
     cssClasses: {
@@ -58,7 +58,7 @@ export default function places({
   };
 
   if (process.env.NODE_ENV === 'development') {
-    autocomplateOptions.debug = true;
+    autocompleteOptions.debug = true;
   }
 
   const templates = {
@@ -68,7 +68,7 @@ export default function places({
 
   const autocompleteInstance = autocomplete(
     container,
-    autocomplateOptions, {
+    autocompleteOptions, {
       // https://github.com/algolia/autocomplete.js#sources
       source: (query, cb) => client
         .search({query, language, countries, tagFilters: types})
