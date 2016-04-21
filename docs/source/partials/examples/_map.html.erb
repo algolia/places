@@ -16,7 +16,7 @@
   var osmLayer = new L.TileLayer(
     'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       minZoom: 1,
-      maxZoom: 12,
+      maxZoom: 13,
       attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
     }
   );
@@ -47,7 +47,9 @@
     markers
       .forEach(function(marker, markerIndex) {
         if (markerIndex === e.suggestionIndex) {
+          markers = [marker];
           marker.setOpacity(1);
+          findBestZoom();
         } else {
           removeMarker(marker);
         }
@@ -83,6 +85,6 @@
 
   function findBestZoom() {
     var featureGroup = L.featureGroup(markers);
-    map.fitBounds(featureGroup.getBounds().pad(0.5));
+    map.fitBounds(featureGroup.getBounds().pad(0.5), {animate: false});
   }
 </script>
