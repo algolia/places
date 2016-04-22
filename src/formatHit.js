@@ -18,6 +18,7 @@ export default function formatHit(hit, hitIndex) {
         lat: hit._geoloc[0].lat,
         lng: hit._geoloc[0].lng
       },
+      postcode: hit.postcode && hit.postcode[0],
       name: hit.locale_names[0].trim() // trim should be done in data, waiting for a fix in Places API
     };
 
