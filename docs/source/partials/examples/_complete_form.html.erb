@@ -12,8 +12,8 @@
     <input type="text" class="form-control" id="form-city" placeholder="City">
   </div>
   <div class="form-group">
-    <label for="form-zip">Zip Code*</label>
-    <input type="text" class="form-control" id="form-zip" placeholder="Zip Code">
+    <label for="form-zip">ZIP code*</label>
+    <input type="text" class="form-control" id="form-zip" placeholder="ZIP code">
   </div>
 </form>
 
@@ -27,7 +27,7 @@
       document.querySelector('#form-address').value = e.suggestion.name;
       document.querySelector('#form-address2').value = e.suggestion.administrative;
       document.querySelector('#form-city').value = e.suggestion.city;
-      document.querySelector('#form-zip').value = ''; // e.suggestion.postcode[0] ?
+      document.querySelector('#form-zip').value = e.suggestion.postcode;
     }
   });
 </script>
