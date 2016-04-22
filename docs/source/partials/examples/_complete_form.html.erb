@@ -19,13 +19,15 @@
 
 <script>
   var placesAutocomplete = places({
-    container: document.querySelector('#form-address'),
-    types: ['address']
+    container: document.querySelector('#form-address')
+    // FIXME: types: ['address']
   });
   placesAutocomplete.on('change', function resultSelected(e) {
-    document.querySelector('#form-address').value = e.suggestion.name;
-    document.querySelector('#form-address2').value = e.suggestion.administrative;
-    document.querySelector('#form-city').value = e.suggestion.city;
-    document.querySelector('#form-zip').value = ''; // e.suggestion.postcode[0] ?
+    if (e.suggestion) {
+      document.querySelector('#form-address').value = e.suggestion.name;
+      document.querySelector('#form-address2').value = e.suggestion.administrative;
+      document.querySelector('#form-city').value = e.suggestion.city;
+      document.querySelector('#form-zip').value = ''; // e.suggestion.postcode[0] ?
+    }
   });
 </script>
