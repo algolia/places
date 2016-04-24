@@ -15,8 +15,8 @@ export default function formatHit(hit, hitIndex) {
       countryCode: findCountryCode(hit._tags),
       type: findType(hit._tags),
       latlng: {
-        lat: hit._geoloc[0].lat,
-        lng: hit._geoloc[0].lng
+        lat: hit._geoloc.lat,
+        lng: hit._geoloc.lng
       },
       postcode: hit.postcode && hit.postcode[0],
       name: hit.locale_names[0].trim() // trim should be done in data, waiting for a fix in Places API

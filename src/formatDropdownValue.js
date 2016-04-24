@@ -5,14 +5,14 @@ export default function formatDropdownValue({
   administrative,
   city,
   country,
-  isCity,
+  type,
   name
 }) {
-  const out = `<span class="ap-suggestion-icon">${isCity === true ?
+  const out = `<span class="ap-suggestion-icon">${type === 'city' ?
     cityIcon.trim() :
     addressIcon.trim()}</span>
 <span class="ap-name">${name}</span> <span class="ap-address">
-${isCity === false ? `${city},` : ''}
+${type !== 'city' ? `${city},` : ''}
  ${administrative ? `${administrative},` : ''}
  ${country}</span>`
   .replace(/\n/g, '');
