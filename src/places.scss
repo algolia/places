@@ -12,6 +12,10 @@
 .algolia-places.algolia-places-styled {
   width: 100%;
 
+  .ap-input, .ap-hint {
+    width: 100%;
+  }
+
   .ap-input:hover ~ .ap-input-icon svg,
   .ap-input:focus ~ .ap-input-icon svg,
   .ap-input-icon:hover svg {
