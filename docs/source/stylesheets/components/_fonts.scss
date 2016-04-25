@@ -41,7 +41,7 @@ p {
 h2.title {
   text-align: center;
   width: 100%;
-  font-size: 28px;
+  font-size: 1.8em;
   color: $charcoal-grey;
   display: block;
   position: relative;
@@ -54,7 +54,7 @@ h2.title {
     width: 50px;
     height: 3px;
     background: $red-pink;
-    top: calc(28px + 32px);
+    top: 2.8em;
     left: 0;
     right: 0;
     margin: auto;
@@ -62,7 +62,7 @@ h2.title {
 
   ~ p {
     color: $charcoal-grey;
-    font-size: 20px;
+    font-size: 1.3em;
     text-align: center;
 
     @include small-mq {
@@ -79,12 +79,12 @@ h2.title {
 /* Small titles
 ======================*/
 h3.title {
-  font-size: 24px;
+  font-size: 1.5em;
   color: $greyish-brown;
   font-weight: bold;
   margin: 0;
   padding: 0;
-  line-height: 1;
+  line-height: 1.2em;
 
   ~ p {
     margin: 32px 0;

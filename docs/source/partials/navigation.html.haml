@@ -1,11 +1,9 @@
 %div.navigation
   %div.container
     %div.fl-left
-    %a{href: "./", title: "Homepage", :data => {:path => "index.html"}}
-      %span.brand
-        <span class="icon icon-algolia-light">Algolia</span> Community
-      %span.pipe
-      %span.no-mobile Places
+    %a.logo-community{href: "https://community.algolia.com/", title: "Homepage" }
+      <img src="https://res.cloudinary.com/hilnmyskv/image/upload/logo-community-inline-dark.svg" width="150" alt="Algolia Community" />
+    %a.project-title{ :href => "https://community.algolia.com/places/"} Places
 
     %div.fl-right
       %div.searchbar
@@ -17,5 +15,5 @@
         %li{nav_active("examples.html")}
           %a{href: "examples.html", title: "Examples", :data => {:path => "examples.html"}} Examples
         %li
-          %a{href: "https://github.com/algolia/places", title: "GitHub repository"}
+          %a.navbar-github-link{href: "https://github.com/algolia/places", title: "GitHub repository"}
             = partial("/images/svg/icon-github.svg")

@@ -54,7 +54,7 @@ nav.sidebar {
     max-width: calc(100% + 16px);
     position: absolute;
     max-height: 46px;
-    left: 0px;
+    left: 0;
     top: 16px;
     border: none;
     padding-top: 0;
@@ -68,7 +68,7 @@ nav.sidebar {
     &.fixed {
       background: $brand-primary;
       color: #fff;
-      top: $navigation-height;
+      top: 50px;
 
       select {
         visibility: visible;

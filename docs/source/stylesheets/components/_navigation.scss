@@ -1,8 +1,8 @@
 .navigation {
   position: fixed;
   width: 100%;
-  max-height: $navigation-height;
-  line-height: $navigation-height;
+  height: 50px;
+  line-height: 50px;
   background: $black;
   overflow: hidden;
   z-index: 101;
@@ -21,27 +21,47 @@
     }
   }
 
-  .brand {
-    float: left;
+  .logo-community {
+    color: white;
+    font-size: 26px;
+    font-weight: 100 !important;
+    margin-right: 12px;
+    border-right: #FF2E6C 2px solid;
+    padding-left: 8px;
 
-    // Fix cross-rendering issues
-    .icon.icon-algolia-light{
-      background-position: center bottom;
+    img {
+      position: relative;
+      top: 7px;
+      width: 200px;
+      margin-right: 6px;
+    }
+  }
+
+  .project-title {
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    position: relative;
+    top: -2px;
+
+    &:hover, &:active, &:focus {
+      color: white;
     }
   }
 
   a {
     color: #fff;
     text-decoration: none;
-    padding-bottom: 8px;
   }
 
   .menu svg {
+    position: relative;
     width: 28px;
-    height: 60px;
+    height: 36px;
     float: left;
-
+    top: 6px;
   }
+
   .searchbar {
     float: left;
     width: auto;
@@ -52,21 +72,19 @@
       width: 36px;
       height: 36px;
       line-height: 2.3em;
-      padding: 0 0px 0 35px;
+      padding: 0 0px 0 34px;
       background-color: transparent;
       background-image: url($icon-search-white);
       background-repeat: no-repeat;
       background-position: center center;
       background-size: 15px;
-
-      border: solid 2px rgba(#FFF, 0.5);
+      border: solid 2px rgba(#FFF, .5);
       border-radius: 40px;
       color: #FFFFFF;
       overflow: hidden;
-      margin-right: 16px;
+      margin-right: 8px;
       cursor: pointer;
-      transition: width 0.2s ease;
-
+      transition: width .2s ease;
 
       &:focus {
         width: 300px;
@@ -91,18 +109,14 @@
 
     li {
       float: left;
-      padding: 0 15px;
-      font-family: "Open Sans";
+      padding: 0 14px;
       font-size: 14px;
-      padding-bottom: 19px;
-
-      a {
-        padding-bottom: 18px;
-      }
+      font-family: Open Sans;
 
       &.active {
         a {
-          border-bottom: 3px solid $red-pink;
+          padding-bottom: 4px;
+          border-bottom: 2px solid $red-pink;
         }
       }
     }

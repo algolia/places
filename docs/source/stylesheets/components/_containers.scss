@@ -7,8 +7,6 @@
   width: 100%;
   max-width: $max-width;
   float: none;
-  margin: auto;
-  width: 100%;
 }
 
 section {
@@ -209,6 +207,7 @@ section {
 .action-section {
   background: $pale-grey url('../images/svg/search-everywhere-illu.svg')no-repeat center bottom / 38%;
   padding-bottom: 300px;
+  margin-bottom: -120px;
 
   @include medium-mq {
     background: $pale-grey url('../images/svg/search-everywhere-illu.svg')no-repeat center bottom / 58%;
