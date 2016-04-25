@@ -17,6 +17,7 @@
   </div>
 </form>
 
+<%= javascript_include_tag config[:places_cdn_url] %>
 <script>
   var placesAutocomplete = places({
     container: document.querySelector('#form-address'),
