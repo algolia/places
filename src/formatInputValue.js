@@ -2,13 +2,12 @@ export default function formatInputValue({
   administrative,
   city,
   country,
-  type,
   name
 }) {
   const out = `${name}
-${type !== 'city' ? ` ${city},` : ''}
+ ${city ? ` ${city},` : ''}
  ${administrative ? `${administrative},` : ''}
- ${country}`
+ ${country ? ` ${country}` : ''}`
   .replace(/\n/g, '');
 
   return out;

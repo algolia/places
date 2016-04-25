@@ -5,12 +5,15 @@ import formatDropdownValue from './formatDropdownValue.js';
 
 export default function formatHit(hit, hitIndex) {
   try {
-    const administrative = hit.administrative && hit.administrative[0] !== hit.locale_names[0] ?
+    const name = hit.locale_names[0].trim(); // trim should be done in data, waiting for a fix in Places API
+    const administrative = hit.administrative && hit.administrative[0] !== name ?
       hit.administrative[0] : undefined;
+    const city = hit.city && hit.city[0] !== name ? hit.city[0] : undefined;
 
     const suggestion = {
+      name,
       administrative,
-      city: hit.city && hit.city[0],
+      city,
       country: hit.country,
       countryCode: findCountryCode(hit._tags),
       type: findType(hit._tags),
@@ -18,8 +21,7 @@ export default function formatHit(hit, hitIndex) {
         lat: hit._geoloc.lat,
         lng: hit._geoloc.lng
       },
-      postcode: hit.postcode && hit.postcode[0],
-      name: hit.locale_names[0].trim() // trim should be done in data, waiting for a fix in Places API
+      postcode: hit.postcode && hit.postcode[0]
     };
 
     // this is the value to put inside the <input value=
