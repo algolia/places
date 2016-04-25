@@ -88,6 +88,8 @@ GEM
     middleman-minify-html (3.4.1)
       htmlcompressor (~> 0.2.0)
       middleman-core (>= 3.2)
+    middleman-protect-emails (0.4.0)
+      middleman-core (>= 3.4)
     middleman-syntax (2.1.0)
       middleman-core (>= 3.2)
       rouge (~> 1.0)
@@ -139,6 +141,7 @@ DEPENDENCIES
   middleman-deploy (~> 2.0.0.pre.alpha)
   middleman-livereload
   middleman-minify-html
+  middleman-protect-emails
   middleman-syntax
   tzinfo-data
   wdm (~> 0.1.0)
