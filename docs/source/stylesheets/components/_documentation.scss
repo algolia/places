@@ -41,6 +41,16 @@
     color: $charcoal-grey;
     font-size: 28px;
     padding-right: 1em;
+    border-bottom: 1px solid #d8d8d8;
+    margin-top: 2em;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  h3 {
+    margin-top: 1em;
   }
 
   h2, h3 {

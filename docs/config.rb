@@ -58,6 +58,8 @@ activate :external_pipeline,
   command: "BUNDLE=examples npm run docs:js:#{build? ? :build : :watch}",
   source: '.webpack'
 
+activate :protect_emails
+
 ###
 # Helpers
 ###
