@@ -71,8 +71,8 @@ export default function places({
     autocompleteOptions, {
       // https://github.com/algolia/autocomplete.js#sources
       source: (query, cb) => client
-        .search({query, language, countries, tagFilters: types})
-        .then(({hits}) => hits.slice(0, 5).map(formatHit))
+        .search({query, language, countries, tagFilters: types, hitsPerPage: 5})
+        .then(({hits}) => hits.map(formatHit))
         .then(suggestions => {
           placesInstance.emit('suggestions', {
             suggestions: suggestions.map(filterSuggestionData),
