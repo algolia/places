@@ -19,8 +19,8 @@
 
 <script>
   var placesAutocomplete = places({
-    container: document.querySelector('#form-address')
-    // FIXME: types: ['address']
+    container: document.querySelector('#form-address'),
+    types: ['address']
   });
   placesAutocomplete.on('change', function resultSelected(e) {
     if (e.suggestion) {
