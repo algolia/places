@@ -11,10 +11,10 @@ export default function formatDropdownValue({
   const out = `<span class="ap-suggestion-icon">${type === 'city' ?
     cityIcon.trim() :
     addressIcon.trim()}</span>
-<span class="ap-name">${name}</span> <span class="ap-address">
-${type !== 'city' ? `${city},` : ''}
+ <span class="ap-name">${name}</span> <span class="ap-address">
+ ${city ? `${city},` : ''}
  ${administrative ? `${administrative},` : ''}
- ${country}</span>`
+ ${country ? ` ${country}` : ''}</span>`
   .replace(/\n/g, '');
 
   return out;
