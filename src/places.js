@@ -32,7 +32,7 @@ export default function places({
   countries,
   language = navigator.language.split('-')[0],
   container,
-  types,
+  type,
   style
 }) {
   const placesInstance = new EventEmitter();
@@ -71,7 +71,7 @@ export default function places({
     autocompleteOptions, {
       // https://github.com/algolia/autocomplete.js#sources
       source: (query, cb) => client
-        .search({query, language, countries, tagFilters: types, hitsPerPage: 5})
+        .search({query, language, countries, type, hitsPerPage: 5})
         .then(({hits}) => hits.map(formatHit))
         .then(suggestions => {
           placesInstance.emit('suggestions', {
