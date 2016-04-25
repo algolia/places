@@ -7,7 +7,8 @@ and use the places.js library.
 
 ```html
 <input type="search" id="address-input" placeholder="Where are we going?" />
-<script src="<%= config[:places_cdn_url] %>"></script>
+
+<%= javascript_include_tag config[:places_cdn_url] %>
 <script>
   var placesAutocomplete = places({
     container: document.querySelector('#address-input')

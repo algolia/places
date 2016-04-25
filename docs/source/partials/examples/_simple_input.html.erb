@@ -3,6 +3,7 @@
 <p>Change event data:</p>
 <pre id="address-value"></pre>
 
+<%= javascript_include_tag config[:places_cdn_url] %>
 <script>
   var placesAutocomplete = places({
     container: document.querySelector('#address')

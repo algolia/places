@@ -1,5 +1,6 @@
 <input type="search" id="country" class="form-control" placeholder="What's your favorite country?" />
 
+<%= javascript_include_tag config[:places_cdn_url] %>
 <script>
   var placesAutocomplete = places({
     container: document.querySelector('#country'),
