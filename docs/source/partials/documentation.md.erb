@@ -6,7 +6,7 @@ and use the places.js library.
 ### Using `<script>` tags
 
 ```html
-<input type="text" id="address-input" placeholder="Where are we going?" />
+<input type="search" id="address-input" placeholder="Where are we going?" />
 <script src="<%= config[:places_cdn_url] %>"></script>
 <script>
   var placesAutocomplete = places({
@@ -26,7 +26,7 @@ npm install places.js --save
 Put an `<input />` in your html page:
 
 ```html
-<input type="text" id="address-input" placeholder="Where are we going?" />
+<input type="search" id="address-input" placeholder="Where are we going?" />
 ```
 
 Initialize the places.js library:
@@ -42,7 +42,7 @@ var placesAutocomplete = places({
 
 As a result, you will get the Algolia Places autocompletion menu:
 
-<input type="text" id="docs-getting-started-demo" class="form-control" placeholder="Where are we going?" />
+<input type="search" id="docs-getting-started-demo" class="form-control" placeholder="Where are we going?" />
 
 ## API
 
