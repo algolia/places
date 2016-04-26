@@ -30,7 +30,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 placesAutocomplete.on('change', function(e) {
-  if(e.query == "") {
+  if (e.query === '') {
     $response.textContent = '';
     $response.classList.remove('display');
   } else {
