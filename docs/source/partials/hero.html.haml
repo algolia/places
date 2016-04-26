@@ -15,3 +15,6 @@
         = partial("/images/svg/places-illustration.svg")
     - if current_page.path == 'index.html'
       %input{type: "search", id: "landing-demo", class: "hero-searchbar form-control", autofocus: true, placeholder: "Search a city or address", style: 'opacity: 0'}
+
+  %div.relative
+    %pre#json-response
