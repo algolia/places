@@ -6,6 +6,7 @@ import responsiveNavigation from './responsiveNavigation.js';
 responsiveNavigation();
 
 const $input = document.querySelector('#landing-demo');
+const $response = document.querySelector('#json-response');
 const placesAutocomplete = places({
   container: $input
 });
@@ -27,3 +28,13 @@ if (process.env.NODE_ENV === 'development') {
     })
   );
 }
+
+placesAutocomplete.on('change', function(e) {
+  if (e.query === '') {
+    $response.textContent = '';
+    $response.classList.remove('display');
+  } else {
+    $response.textContent = JSON.stringify(e, '', 2);
+    $response.classList.add('display');
+  }
+});

@@ -133,3 +133,31 @@ a code {
   margin: 0 -1px;
   padding: 3px 10px;
 }
+
+
+
+////
+#json-response {
+  margin: 2em auto 2em;
+  display: block;
+  max-width: 940px;
+  padding: 1em;
+  border: 1px solid rgba(255,255,255, 0.2);
+  border-radius: 4px;
+  background: rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 0;
+
+  &:not(.display) {
+    visibility: hidden;
+  }
+
+
+  &.display {
+    visibility: visible;
+
+
+    @extend %animated;
+    @extend %fadeInDown;
+  }
+}

@@ -71,6 +71,18 @@
 
 // Placeholders
 
+
+%fadeInDown {
+  animation-name: fadeInDown;
+}
+
+%animated {
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
 %active-links {
   color: $red-pink;
   box-shadow: inset -2px 0 0 0 $red-pink;

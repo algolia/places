@@ -1,5 +1,3 @@
-
-
 /* Containers
 ================*/
 .container {
@@ -26,6 +24,12 @@ section {
 
     .container {
       margin-top: 40px;
+    }
+
+    .relative {
+      margin-top: 4em;
+      float: left;
+      width: 100%;
     }
 
     .icon {
