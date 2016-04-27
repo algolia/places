@@ -65,7 +65,7 @@ activate :protect_emails
 ###
 
 config[:places_lib_version] = ENV['VERSION']
-config[:places_cdn_url] = '//cdn.jsdelivr.net/places.js/0/places.min.js'
+config[:places_cdn_url] = 'https://cdn.jsdelivr.net/places.js/0/places.min.js'
 
 helpers do
   def nav_active(path)

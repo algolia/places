@@ -1,0 +1,16 @@
+<input type="search" id="address-templates" class="form-control" placeholder="Where are we going?" />
+
+<%= javascript_include_tag config[:places_lib_url] %>
+<script>
+  var placesAutocomplete = places({
+    container: document.querySelector('#address-templates'),
+    templates: {
+      inputValue: function(suggestion) {
+        return 'Maybe ' + suggestion.name + ' in ' + suggestion.country + '?';
+      },
+      dropdownSuggestion: function(suggestion) {
+        return '<u>Click here to select ' + suggestion.name + ' from ' + suggestion.country + '</u>';
+      }
+    }
+  });
+</script>

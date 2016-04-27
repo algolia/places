@@ -4,20 +4,13 @@ import EventEmitter from 'events';
 import algoliasearch from 'algoliasearch';
 import autocomplete from 'autocomplete.js';
 
+import defaultTemplates from './defaultTemplates.js';
 import formatHit from './formatHit.js';
+import version from './version.js';
 
 import './places.scss';
 import clearIcon from './icons/clear.svg';
 import pinIcon from './icons/address.svg';
-import algoliaLogo from './icons/algolia.svg';
-import osmLogo from './icons/osm.svg';
-import version from './version.js';
-
-const footerTemplate =
-`<div class="ap-footer">
-Built by <a href="https://www.algolia.com/?UTMFIXME" title="Search by Algolia" class="ap-footer-algolia">${algoliaLogo.trim()}</a>
-using <a href="https://community.algolia.com/places/documentation.html#license" class="ap-footer-osm" title="Algolia Places data © OpenStreetMap contributors">${osmLogo.trim()} <span>data</span></a>
-</div>`;
 
 const filterSuggestionData = suggestion => ({
   ...suggestion,
@@ -32,18 +25,32 @@ export default function places({
   countries,
   language = navigator.language.split('-')[0],
   container,
+  apiKey = ' ',
+  appId = ' ',
+  templates: userTemplates = {},
   type,
   style
 }) {
   const placesInstance = new EventEmitter();
   const client = algoliasearch.initPlaces(
-    '  ',
-    '  ',
+    apiKey,
+    appId,
     {hosts: ['c3-test-1.algolia.net']} // use staging for now, FIXME
   );
-  client.as._computeRequestHeaders = function() {
-    return {targetIndexingIndexes: true}; // no need for any appid or key
+
+  const templates = {
+    ...defaultTemplates,
+    ...userTemplates,
+    footer: defaultTemplates.footer
   };
+
+  // when keys are empty, we need to force not sending them through the client
+  if (apiKey === ' ' && appId === ' ') {
+    client.as._computeRequestHeaders = function() {
+      return {targetIndexingIndexes: true}; // no need for any appid or key
+    };
+  }
+
   client.as.setExtraHeader('targetIndexingIndexes', true);
   client.as.addAlgoliaAgent += `Algolia Places ${version}`;
 
@@ -61,18 +68,21 @@ export default function places({
     autocompleteOptions.debug = true;
   }
 
-  const templates = {
-    suggestion: hit => hit._dropdownValue,
-    footer: footerTemplate
-  };
-
   const autocompleteInstance = autocomplete(
     container,
     autocompleteOptions, {
       // https://github.com/algolia/autocomplete.js#sources
       source: (query, cb) => client
         .search({query, language, countries, type, hitsPerPage: 5})
-        .then(({hits}) => hits.map(formatHit))
+        .then(
+          ({hits}) => hits.map((hit, hitIndex) =>
+            formatHit({
+              hit,
+              hitIndex,
+              templates
+            })
+          )
+        )
         .then(suggestions => {
           placesInstance.emit('suggestions', {
             suggestions: suggestions.map(filterSuggestionData),
@@ -82,7 +92,10 @@ export default function places({
         })
         .then(cb)
         .catch(err => console.error(err)),
-      templates,
+      templates: {
+        suggestion: hit => hit._dropdownValue,
+        footer: defaultTemplates.footer
+      },
       displayKey: 'value'
     }
   );
@@ -110,6 +123,7 @@ export default function places({
   const clear = document.createElement('button');
   clear.setAttribute('type', 'button');
   clear.classList.add('ap-input-icon');
+  clear.classList.add('ap-input-icon-clear');
   clear.innerHTML = clearIcon;
   autocompleteContainer.appendChild(clear);
   clear.style.display = 'none';
@@ -117,6 +131,7 @@ export default function places({
   const pin = document.createElement('button');
   pin.setAttribute('type', 'button');
   pin.classList.add('ap-input-icon');
+  pin.classList.add('ap-input-icon-pin');
   pin.innerHTML = pinIcon;
   autocompleteContainer.appendChild(pin);
 

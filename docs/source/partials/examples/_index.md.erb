@@ -51,3 +51,42 @@ display the places.js results on the map and update them when needed.
 ```html
 <%= partial '/partials/examples/map' %>
 ```
+
+## Custom templates
+
+You can customize both the input value and dropdown suggestion templates.
+
+Templates are functions called with a [suggestion object](./documentation.html#suggestion-object).
+
+<%= partial '/partials/examples/templates' %>
+
+```html
+<%= partial '/partials/examples/templates' %>
+```
+
+## Input styling
+
+The default Algolia Places styling should be sufficient for most websites: we only style
+the dropdown in a light way, the input remains unstyled and so can fit any website.
+
+Here's an example styling the input:
+
+<%= partial '/partials/examples/input_styling' %>
+
+```html
+<%= partial '/partials/examples/input_styling' %>
+```
+
+See our [documentation about styling](./documentation.html#styling) for more details.
+
+## Full styling
+
+To disable all styling, use the `style` option:
+
+<%= partial '/partials/examples/full_styling' %>
+
+```html
+<%= partial '/partials/examples/full_styling' %>
+```
+
+See our [documentation about styling](./documentation.html#styling) for more details.

@@ -1,0 +1,18 @@
+<input type="search" id="input-styling-address" placeholder="Where are we going?" />
+
+<%= javascript_include_tag config[:places_lib_url] %>
+<style>
+  #input-styling-address {
+    background: #efefef;
+    color: #000;
+    border: 3px solid #00f;
+    border-radius: 1em;
+    padding: .5em;
+  }
+</style>
+
+<script>
+  var placesAutocomplete = places({
+    container: document.querySelector('#input-styling-address')
+  });
+</script>

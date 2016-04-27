@@ -1,6 +1,6 @@
 <input type="search" id="city" class="form-control" placeholder="In which city do you live?" />
 
-<%= javascript_include_tag config[:places_cdn_url] %>
+<%= javascript_include_tag config[:places_lib_url] %>
 <script>
   var placesAutocomplete = places({
     container: document.querySelector('#city'),
