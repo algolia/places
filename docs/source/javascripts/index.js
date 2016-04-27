@@ -34,7 +34,7 @@ placesAutocomplete.on('change', function(e) {
     $response.textContent = '';
     $response.classList.remove('display');
   } else {
-    $response.textContent = JSON.stringify(e, '', 2);
+    $response.textContent = JSON.stringify(e, null, 2);
     $response.classList.add('display');
   }
 });

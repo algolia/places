@@ -3,15 +3,17 @@
 <p>Change event data:</p>
 <pre id="address-value"></pre>
 
-<%= javascript_include_tag config[:places_cdn_url] %>
+<%= javascript_include_tag config[:places_lib_url] %>
 <script>
   var placesAutocomplete = places({
     container: document.querySelector('#address')
   });
 
   placesAutocomplete.on('change', function(e) {
+    console.log(e);
+
     document
       .querySelector('#address-value')
-      .textContent = JSON.stringify(e, '', 2);
+      .textContent = JSON.stringify(e, null, 2);
   });
 </script>

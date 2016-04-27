@@ -1,9 +1,11 @@
 import findCountryCode from './findCountryCode.js';
 import findType from './findType.js';
-import formatInputValue from './formatInputValue';
-import formatDropdownValue from './formatDropdownValue.js';
 
-export default function formatHit(hit, hitIndex) {
+export default function formatHit({
+  hit,
+  hitIndex,
+  templates
+}) {
   try {
     const name = hit.locale_names[0].trim(); // trim should be done in data, waiting for a fix in Places API
     const administrative = hit.administrative && hit.administrative[0] !== name ?
@@ -25,8 +27,8 @@ export default function formatHit(hit, hitIndex) {
     };
 
     // this is the value to put inside the <input value=
-    const value = formatInputValue(suggestion);
-    const dropdownValue = formatDropdownValue({
+    const value = templates.inputValue(suggestion);
+    const dropdownValue = templates.dropdownSuggestion({
       ...suggestion,
       name: hit._highlightResult.locale_names[0].value.trim()
     });

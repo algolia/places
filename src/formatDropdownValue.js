@@ -1,5 +1,12 @@
 import addressIcon from './icons/address.svg';
 import cityIcon from './icons/city.svg';
+import countryIcon from './icons/country.svg';
+
+const icons = {
+  address: addressIcon,
+  city: cityIcon,
+  country: countryIcon
+};
 
 export default function formatDropdownValue({
   administrative,
@@ -8,9 +15,7 @@ export default function formatDropdownValue({
   type,
   name
 }) {
-  const out = `<span class="ap-suggestion-icon">${type === 'city' ?
-    cityIcon.trim() :
-    addressIcon.trim()}</span>
+  const out = `<span class="ap-suggestion-icon">${icons[type].trim()}</span>
  <span class="ap-name">${name}</span> <span class="ap-address">
  ${city ? `${city},` : ''}
  ${administrative ? `${administrative},` : ''}
