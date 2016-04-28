@@ -4,6 +4,11 @@
 <script>
   var placesAutocomplete = places({
     container: document.querySelector('#city'),
-    type: 'city'
+    type: 'city',
+    templates: {
+      inputValue: function(suggestion) {
+        return suggestion.name;
+      }
+    }
   });
 </script>

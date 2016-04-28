@@ -21,14 +21,18 @@
 <script>
   var placesAutocomplete = places({
     container: document.querySelector('#form-address'),
-    type: 'address'
+    type: 'address',
+    templates: {
+      inputValue: function(suggestion) {
+        return suggestion.name;
+      }
+    }
   });
   placesAutocomplete.on('change', function resultSelected(e) {
     if (e.suggestion) {
-      document.querySelector('#form-address').value = e.suggestion.name;
-      document.querySelector('#form-address2').value = e.suggestion.administrative;
-      document.querySelector('#form-city').value = e.suggestion.city;
-      document.querySelector('#form-zip').value = e.suggestion.postcode;
+      document.querySelector('#form-address2').value = e.suggestion.administrative || '';
+      document.querySelector('#form-city').value = e.suggestion.city || '';
+      document.querySelector('#form-zip').value = e.suggestion.postcode || '';
     }
   });
 </script>
