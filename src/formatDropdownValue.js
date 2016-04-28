@@ -16,11 +16,11 @@ export default function formatDropdownValue({
   name
 }) {
   const out = `<span class="ap-suggestion-icon">${icons[type].trim()}</span>
- <span class="ap-name">${name}</span> <span class="ap-address">
- ${city ? `${city},` : ''}
- ${administrative ? `${administrative},` : ''}
- ${country ? ` ${country}` : ''}</span>`
-  .replace(/\n/g, '');
-
+<span class="ap-name">${name}</span>
+<span class="ap-address">
+  ${city ? `${city},` : ''}
+  ${administrative ? `${administrative},` : ''}
+  ${country ? `${country}` : ''}
+</span>`.replace(/\s*\n\s*/g, ' ');
   return out;
 }
