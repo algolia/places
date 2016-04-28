@@ -4,6 +4,7 @@ import findType from './findType.js';
 export default function formatHit({
   hit,
   hitIndex,
+  query,
   templates
 }) {
   try {
@@ -36,6 +37,7 @@ export default function formatHit({
     return {
       ...suggestion,
       value,
+      _query: query,
       _dropdownValue: dropdownValue,
       _index: hitIndex
     };
