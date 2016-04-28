@@ -7,7 +7,7 @@ export default function formatHit({
   templates
 }) {
   try {
-    const name = hit.locale_names[0].trim(); // trim should be done in data, waiting for a fix in Places API
+    const name = hit.locale_names[0];
     const administrative = hit.administrative && hit.administrative[0] !== name ?
       hit.administrative[0] : undefined;
     const city = hit.city && hit.city[0] !== name ? hit.city[0] : undefined;
@@ -30,7 +30,7 @@ export default function formatHit({
     const value = templates.inputValue(suggestion);
     const dropdownValue = templates.dropdownSuggestion({
       ...suggestion,
-      name: hit._highlightResult.locale_names[0].value.trim()
+      name: hit._highlightResult.locale_names[0].value
     });
 
     return {
