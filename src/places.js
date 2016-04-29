@@ -14,11 +14,12 @@ import pinIcon from './icons/address.svg';
 
 const filterSuggestionData = suggestion => ({
   ...suggestion,
-  // omit _dropdownValue and _index,
+  // omit _dropdownValue, _index and _query,
   // _dropdownValue is not needed user side
-  // _index is sent at the root of the element
+  // _index & _query are sent at the root of the element
   _dropdownValue: undefined,
-  _index: undefined
+  _index: undefined,
+  _query: undefined
 });
 
 export default function places({
@@ -79,14 +80,15 @@ export default function places({
             formatHit({
               hit,
               hitIndex,
+              query,
               templates
             })
           )
         )
         .then(suggestions => {
           placesInstance.emit('suggestions', {
-            suggestions: suggestions.map(filterSuggestionData),
-            query: autocompleteInstance.val()
+            query,
+            suggestions: suggestions.map(filterSuggestionData)
           });
           return suggestions;
         })
@@ -107,7 +109,7 @@ export default function places({
     autocompleteInstance.on(`autocomplete:${eventName}`, (_, suggestion) => {
       placesInstance.emit('change', {
         suggestion: filterSuggestionData(suggestion),
-        query: autocompleteInstance.val(),
+        query: suggestion._query,
         suggestionIndex: suggestion._index
       });
     });
@@ -115,7 +117,7 @@ export default function places({
   autocompleteInstance.on('autocomplete:cursorchanged', (_, suggestion) => {
     placesInstance.emit('cursorchanged', {
       suggestion: filterSuggestionData(suggestion),
-      query: autocompleteInstance.val(),
+      query: suggestion._query,
       suggestionIndex: suggestion._index
     });
   });
