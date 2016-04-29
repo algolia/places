@@ -2,7 +2,7 @@
   "name": "places.js",
   "version": "0.20.0",
   "description": "🌐 The easiest way to add fast geo search to your website.",
-  "main": "dist/npm/index.js",
+  "main": "dist/cdn/places.js",
   "scripts": {
     "build": "NODE_ENV=production ./scripts/build.sh",
     "dev": "./scripts/dev.sh",
@@ -24,7 +24,6 @@
   "repository": "https://github.com/algolia/places",
   "license": "MIT",
   "devDependencies": {
-    "babel-cli": "^6.6.5",
     "babel-core": "^6.7.4",
     "babel-eslint": "^5.0.0",
     "babel-loader": "^6.2.4",
