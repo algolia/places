@@ -38,7 +38,7 @@ printf "\nRelease: press q to exit the next screen\n\n"
 # preview changelog
 read -p "=> Release: press [ENTER] to view changes since latest version.."
 
-conventional-changelog -p angular | less
+conventional-changelog --preset angular --output-unreleased | less
 
 # choose and bump new version
 # printf "\n\nRelease: Please enter the new chosen version > "
@@ -52,7 +52,7 @@ NODE_ENV=production VERSION=$newVersion npm run build
 # update changelog
 printf "\n\nRelease: update changelog"
 changelog=`conventional-changelog -p angular`
-conventional-changelog -p angular -i CHANGELOG.md -w
+conventional-changelog --preset angular --infile CHANGELOG.md --same-file
 
 # regenerate readme TOC
 printf "\n\nRelease: generate TOCS"
