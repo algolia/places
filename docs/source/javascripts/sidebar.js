@@ -46,16 +46,28 @@ function sidebarFollowScroll(sidebarContainer) {
     // The following code is used to change the color of the navigation
     // depending the level of page scroll.
     const hero = document.querySelector('.hero-section');
+    const footer = document.querySelector('.footer-section');
     const navigation = document.querySelector('.navigation');
-    const height = hero.offsetHeight;
+    const menu = document.querySelector('.sidebar > ul');
+
+    const heroHeight = hero.offsetHeight;
     const navHeight = navigation.offsetHeight;
+    const height = document.body.scrollHeight;
+    const footerHeight = footer.offsetHeight;
+    const menuHeight = menu.offsetHeight;
 
     const currentScroll = window.pageYOffset;
     const doc = document.querySelector('.documentation-section');
     let paddingDoc = window.getComputedStyle(doc, null).getPropertyValue('padding-top').split('px')[0];
     paddingDoc = parseInt(paddingDoc, 10);
     // Fix the sidebar navigation
-    if (currentScroll > ((height - navHeight) + paddingDoc) && sidebar) {
+    if (currentScroll > ((heroHeight - navHeight) + paddingDoc)) {
+      const fold = height - footerHeight - menuHeight - paddingDoc - 50;
+      if (currentScroll > fold) {
+        sidebarContainer.style.top = (fold - currentScroll) + 'px';
+      } else {
+        sidebarContainer.style.top = null;
+      }
       sidebarContainer.classList.add('fixed');
     } else {
       sidebarContainer.classList.remove('fixed');
