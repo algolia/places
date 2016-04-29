@@ -1,8 +1,20 @@
 input {
   outline: none;
+  border-radius: 4px;
+
+  @include appearance(none !important);
+  &::-webkit-search-decoration,
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-results-button,
+  &::-webkit-search-results-decoration {
+   display: none !important;
+  }
 }
+
+
 // Style the input for the Demo page
 .hero-section {
+
   .algolia-places {
     top: 50px;
     font-family: 'Open Sans', helvetica Neue;
@@ -36,6 +48,8 @@ input {
       padding-left: 16px;
       padding-right: 48px;
       border-radius: 4px;
+
+      @include appearance(none)
     }
 
     .ap-suggestion {

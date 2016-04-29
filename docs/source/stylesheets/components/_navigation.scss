@@ -34,6 +34,10 @@
       top: 7px;
       width: 200px;
       margin-right: 6px;
+
+      &.community-badge {
+        width: 34px;
+      }
     }
   }
 
@@ -115,7 +119,7 @@
 
       &.active {
         a {
-          padding-bottom: 4px;
+          padding-bottom: 14px;
           border-bottom: 2px solid $red-pink;
         }
       }

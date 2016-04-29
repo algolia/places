@@ -6,12 +6,19 @@
   max-width: $max-width;
   float: none;
 }
+.row {
+  float: left;
 
+}
 section {
   min-height: 550px;
   width: 100%;
   float: left;
   position: relative;
+
+  &.oddbg {
+    background-color: #f9fafb
+  }
 
   @include medium-mq {
     padding: 0 16px;
@@ -208,8 +215,34 @@ section {
 }
 
 ////
+.examples-section {
+  padding-bottom: 3em;
+
+  .bloc-5 {
+    padding: 1em;
+
+    @include small-mq {
+      width: 100%;
+    }
+  }
+
+  .row:nth-of-type(1) {
+    margin-top: 5em;
+  }
+
+  h3.title {
+    margin-top: 1em;
+  }
+
+  h3.title ~ p {
+    margin: 0;
+    font-size: 16px;
+  }
+}
+
+////
 .action-section {
-  background: $pale-grey url('../images/svg/search-everywhere-illu.svg')no-repeat center bottom / 38%;
+  background: url('../images/svg/search-everywhere-illu.svg')no-repeat center bottom / 38%;
   padding-bottom: 300px;
   margin-bottom: -120px;
 

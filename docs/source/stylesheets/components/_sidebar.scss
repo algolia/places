@@ -58,6 +58,7 @@ nav.sidebar {
     top: 16px;
     border: none;
     padding-top: 0;
+    display: none;
 
     select {
       width: calc(100% - 32px);
@@ -69,6 +70,7 @@ nav.sidebar {
       background: $brand-primary;
       color: #fff;
       top: 50px;
+      display: block;
 
       select {
         visibility: visible;

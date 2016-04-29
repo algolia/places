@@ -19,6 +19,20 @@
   float: none;
 }
 
+@mixin hide() {
+  display: none !important;
+  visibility: hidden;
+}
+
+@mixin unhide($type) {
+  display: $type !important;
+  visibility: visible;
+}
+@mixin appearance ($value) {
+  -webkit-appearance: $value;
+     -moz-appearance: $value;
+          appearance: $value;
+}
 
 // Responsive Breakpoints
 @mixin big-min-mq {

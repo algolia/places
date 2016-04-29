@@ -76,32 +76,48 @@ hr {
 //  - display-on-small : only display on smallish screen ( no mobile )
 
 .no-desktop {
-  display: none !important;
-
+  @include hide();
   @include small-mq {
-    display: none !important;
+    @include hide();
   }
+
   @include mobile-mq {
-    display: block !important;
+    @include unhide(block);
   }
+
+
+&.community-badge {
+  @include mobile-mq {
+    @include unhide(inline);
+  }
+}
 
   @media screen and (orientation: landscape) {
-    display: none !important;
+    @include hide();
   }
 }
 
 .no-mobile {
-  display: block !important;
+  @include unhide(block);
+
+  &.nav-icon {
+    @include unhide(inline);
+
+    @include small-mq {
+      @include hide();
+    }
+  }
 
   @include small-mq {
-    display: none !important;
+    @include hide();
   }
 }
 
 .display-on-small {
-  display: none !important;
+  @include hide();
 
   @media (max-width: 960px){
-    display: inline-block !important
+    display: inline-block !important;
+    visibility: visible;
   }
 }

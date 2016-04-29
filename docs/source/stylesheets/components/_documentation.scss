@@ -77,6 +77,9 @@
       padding: 0;
       border-collapse: collapse;
       border-spacing: 0;
+      width: 100%;
+      display: block;
+      margin: 0;
 
       tr {
         border-top: 1px solid #cccccc;
@@ -123,7 +126,54 @@
       &+ h3 {
         margin-top: 2em;
       }
+
+
+      @include small-mq {
+        display: block;
+        float: left;
+        margin-bottom: 2em;
+
+          thead, tbody, th, td, tr {
+            display: block;
+            float: left;
+            width: 100%;
+          }
+          tbody {
+            border-bottom: 1px solid #cccccc;
+          }
+          tr {
+            border-left: 1px solid #cccccc;
+            border-right: 1px solid #cccccc;
+
+            th {
+              border: none;
+
+              &:nth-of-type(2) {
+                border-left: 1px solid #cccccc;
+              }
+            }
+          }
+          tr td  {
+            border: none;
+            overflow: auto;
+
+
+            &:nth-of-type(2) {
+             border-left: 1px solid #cccccc;
+            }
+          }
+
+          th, td {
+            width: 50%;
+            float: left;
+          }
+
+          tr:nth-child(even) {
+            background: #f8f8f8
+          }
+        }
     }
+
 
     .anchor {
       margin-left: .2em;
