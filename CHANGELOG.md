@@ -1,3 +1,19 @@
+<a name="0.21.0"></a>
+# [0.21.0](https://github.com/algolia/places/compare/v0.20.0...v0.21.0) (2016-04-29)
+
+
+### Bug Fixes
+
+* **query:** the `query` attribute should reflect the original query ([f02f766](https://github.com/algolia/places/commit/f02f766))
+* **website:** Fix issue #84 ([982ffe6](https://github.com/algolia/places/commit/982ffe6)), closes [#84](https://github.com/algolia/places/issues/84)
+* **website:** fixed some element for responsive purposes & MISC ([75fb4e2](https://github.com/algolia/places/commit/75fb4e2))
+
+### Features
+
+* **around:** add LatLng, radius, viaIP options ([ea509e7](https://github.com/algolia/places/commit/ea509e7))
+
+
+
 <a name="0.20.0"></a>
 # [0.20.0](https://github.com/algolia/places/compare/v0.19.0...v0.20.0) (2016-04-27)
 
