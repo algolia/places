@@ -3,6 +3,7 @@
 import anchorableHeaders from './anchorableHeaders.js';
 import responsiveNavigation from './responsiveNavigation.js';
 import sidebar from './sidebar.js';
+import activateClipboard from './activateClipboard.js';
 
 responsiveNavigation();
 sidebar({
@@ -12,6 +13,7 @@ sidebar({
 });
 anchorableHeaders(document.querySelector('.documentation-container'));
 demo();
+activateClipboard([...document.querySelectorAll('.code')]);
 
 function demo() {
   places({
