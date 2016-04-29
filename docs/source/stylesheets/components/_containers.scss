@@ -220,6 +220,10 @@ section {
 
   .bloc-5 {
     padding: 1em;
+
+    @include small-mq {
+      width: 100%;
+    }
   }
 
   .row:nth-of-type(1) {
