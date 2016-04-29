@@ -52,6 +52,18 @@ display the places.js results on the map and update them when needed.
 <%= partial '/partials/examples/map' %>
 ```
 
+## Force lat, lng, radius
+
+Reusing the [map](#displaying-a-map) example, we want to only search around Paris, France.
+
+This is useful when you really want to display results around a specific area.
+
+<%= partial '/partials/examples/map_paris' %>
+
+```html
+<%= partial '/partials/examples/map_paris' %>
+```
+
 ## Custom templates
 
 You can customize both the input value and dropdown suggestion templates.

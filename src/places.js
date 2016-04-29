@@ -30,7 +30,10 @@ export default function places({
   appId = ' ',
   templates: userTemplates = {},
   type,
-  style
+  style,
+  aroundLatLng,
+  aroundRadius,
+  aroundLatLngViaIP = true
 }) {
   const placesInstance = new EventEmitter();
   const client = algoliasearch.initPlaces(
@@ -69,12 +72,32 @@ export default function places({
     autocompleteOptions.debug = true;
   }
 
+  let defaultQueryParams = {
+    countries,
+    hitsPerPage: 5,
+    language,
+    type
+  };
+
+  if (aroundLatLng) {
+    defaultQueryParams.aroundLatLng = aroundLatLng;
+  } else {
+    defaultQueryParams.aroundLatLngViaIP = aroundLatLngViaIP;
+  }
+
+  if (aroundRadius) {
+    defaultQueryParams.aroundRadius = aroundRadius;
+  }
+
   const autocompleteInstance = autocomplete(
     container,
     autocompleteOptions, {
       // https://github.com/algolia/autocomplete.js#sources
       source: (query, cb) => client
-        .search({query, language, countries, type, hitsPerPage: 5})
+        .search({
+          ...defaultQueryParams,
+          query
+        })
         .then(
           ({hits}) => hits.map((hit, hitIndex) =>
             formatHit({
