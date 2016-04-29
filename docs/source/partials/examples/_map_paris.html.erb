@@ -1,34 +1,42 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/leaflet/1/leaflet.css" />
 <script src="https://cdn.jsdelivr.net/leaflet/1/leaflet.js"></script>
-<div id="map-example-container"></div>
-<input type="search" id="input-map" class="form-control" placeholder="Where are we going?" />
+<div id="map-example-container-paris"></div>
+<input type="search" id="input-map-paris" class="form-control" placeholder="Find a street in Paris, France. Try &quot;Rivoli&quot;" />
 
 <style>
-  #map-example-container {height: 300px};
+  #map-example-container-paris {height: 300px};
 </style>
 
 <%= javascript_include_tag config[:places_lib_url] %>
 <script>
+  var latlng = {
+    lat: 48.8566,
+    lng: 2.34287
+  };
+
   var placesAutocomplete = places({
-    container: document.querySelector('#input-map')
+    container: document.querySelector('#input-map-paris'),
+    aroundLatLng: latlng.lat + ',' + latlng.lng, // Paris latitude longitude
+    aroundRadius: 10 * 1000, // 10km radius
+    type: 'address'
   });
 
-  var map = L.map('map-example-container', {
+  var map = L.map('map-example-container-paris', {
     scrollWheelZoom: false,
     zoomControl: false
   });
 
   var osmLayer = new L.TileLayer(
     'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      minZoom: 1,
-      maxZoom: 13,
+      minZoom: 12,
+      maxZoom: 18,
       attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
     }
   );
 
   var markers = [];
 
-  map.setView(new L.LatLng(0, 0), 1);
+  map.setView(new L.LatLng(latlng.lat, latlng.lng), 12);
   map.addLayer(osmLayer);
 
   placesAutocomplete.on('suggestions', handleOnSuggestions);
@@ -40,7 +48,7 @@
     markers = [];
 
     if (e.suggestions.length === 0) {
-      map.setView(new L.LatLng(0, 0), 1);
+      map.setView(new L.LatLng(latlng.lat, latlng.lng), 12);
       return;
     }
 
@@ -61,7 +69,7 @@
       });
 
     if (e.query === '') {
-      map.setView(new L.LatLng(0, 0), 1);
+      map.setView(new L.LatLng(latlng.lat, latlng.lng), 12);
     }
   }
 
