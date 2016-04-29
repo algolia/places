@@ -13,7 +13,11 @@
     container: document.querySelector('#input-map'),
   });
 
-  var map = L.map('map-example-container');
+  var map = L.map('map-example-container', {
+    scrollWheelZoom: false,
+    zoomControl: false
+  });
+
   var osmLayer = new L.TileLayer(
     'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       minZoom: 1,
