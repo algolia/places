@@ -33,7 +33,7 @@ export default function places({
   style,
   aroundLatLng,
   aroundRadius,
-  aroundLatLngViaIP = true
+  aroundLatLngViaIP
 }) {
   const placesInstance = new EventEmitter();
   const client = algoliasearch.initPlaces(
@@ -81,7 +81,7 @@ export default function places({
 
   if (aroundLatLng) {
     defaultQueryParams.aroundLatLng = aroundLatLng;
-  } else {
+  } else if (typeof aroundLatLngViaIP !== 'undefined') {
     defaultQueryParams.aroundLatLngViaIP = aroundLatLngViaIP;
   }
 
