@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/leaflet/1/leaflet.css" />
-<script src="https://cdn.jsdelivr.net/leaflet/1/leaflet.js"></script>
 <div id="map-example-container-paris"></div>
 <input type="search" id="input-map-paris" class="form-control" placeholder="Find a street in Paris, France. Try &quot;Rivoli&quot;" />
 
@@ -9,97 +7,97 @@
 
 <%= javascript_include_tag config[:places_lib_url] %>
 <script>
-  (function() {
-    var latlng = {
-      lat: 48.8566,
-      lng: 2.34287
-    };
+(function() {
+  var latlng = {
+    lat: 48.8566,
+    lng: 2.34287
+  };
 
-    var placesAutocomplete = places({
-      container: document.querySelector('#input-map-paris'),
-      aroundLatLng: latlng.lat + ',' + latlng.lng, // Paris latitude longitude
-      aroundRadius: 10 * 1000, // 10km radius
-      type: 'address'
-    });
+  var placesAutocomplete = places({
+    container: document.querySelector('#input-map-paris'),
+    aroundLatLng: latlng.lat + ',' + latlng.lng, // Paris latitude longitude
+    aroundRadius: 10 * 1000, // 10km radius
+    type: 'address'
+  });
 
-    var map = L.map('map-example-container-paris', {
-      scrollWheelZoom: false,
-      zoomControl: false
-    });
+  var map = L.map('map-example-container-paris', {
+    scrollWheelZoom: false,
+    zoomControl: false
+  });
 
-    var osmLayer = new L.TileLayer(
-      'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        minZoom: 12,
-        maxZoom: 18,
-        attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
-      }
-    );
+  var osmLayer = new L.TileLayer(
+    'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      minZoom: 12,
+      maxZoom: 18,
+      attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+    }
+  );
 
-    var markers = [];
+  var markers = [];
 
-    map.setView(new L.LatLng(latlng.lat, latlng.lng), 12);
-    map.addLayer(osmLayer);
+  map.setView(new L.LatLng(latlng.lat, latlng.lng), 12);
+  map.addLayer(osmLayer);
 
-    placesAutocomplete.on('suggestions', handleOnSuggestions);
-    placesAutocomplete.on('cursorchanged', handleOnCursorchanged);
-    placesAutocomplete.on('change', handleOnChange);
+  placesAutocomplete.on('suggestions', handleOnSuggestions);
+  placesAutocomplete.on('cursorchanged', handleOnCursorchanged);
+  placesAutocomplete.on('change', handleOnChange);
 
-    function handleOnSuggestions(e) {
-      markers.forEach(removeMarker);
-      markers = [];
+  function handleOnSuggestions(e) {
+    markers.forEach(removeMarker);
+    markers = [];
 
-      if (e.suggestions.length === 0) {
-        map.setView(new L.LatLng(latlng.lat, latlng.lng), 12);
-        return;
-      }
-
-      e.suggestions.forEach(addMarker);
-      findBestZoom();
+    if (e.suggestions.length === 0) {
+      map.setView(new L.LatLng(latlng.lat, latlng.lng), 12);
+      return;
     }
 
-    function handleOnChange(e) {
-      markers
-        .forEach(function(marker, markerIndex) {
-          if (markerIndex === e.suggestionIndex) {
-            markers = [marker];
-            marker.setOpacity(1);
-            findBestZoom();
-          } else {
-            removeMarker(marker);
-          }
-        });
+    e.suggestions.forEach(addMarker);
+    findBestZoom();
+  }
 
-      if (e.query === '') {
-        map.setView(new L.LatLng(latlng.lat, latlng.lng), 12);
-      }
-    }
+  function handleOnChange(e) {
+    markers
+      .forEach(function(marker, markerIndex) {
+        if (markerIndex === e.suggestionIndex) {
+          markers = [marker];
+          marker.setOpacity(1);
+          findBestZoom();
+        } else {
+          removeMarker(marker);
+        }
+      });
 
-    function handleOnCursorchanged(e) {
-      markers
-        .forEach(function(marker, markerIndex) {
-          if (markerIndex === e.suggestionIndex) {
-            marker.setOpacity(1);
-            marker.setZIndexOffset(1000);
-          } else {
-            marker.setZIndexOffset(0);
-            marker.setOpacity(0.5);
-          }
-        });
+    if (e.query === '') {
+      map.setView(new L.LatLng(latlng.lat, latlng.lng), 12);
     }
+  }
 
-    function addMarker(suggestion) {
-      var marker = L.marker(suggestion.latlng, {opacity: .4});
-      marker.addTo(map);
-      markers.push(marker);
-    }
+  function handleOnCursorchanged(e) {
+    markers
+      .forEach(function(marker, markerIndex) {
+        if (markerIndex === e.suggestionIndex) {
+          marker.setOpacity(1);
+          marker.setZIndexOffset(1000);
+        } else {
+          marker.setZIndexOffset(0);
+          marker.setOpacity(0.5);
+        }
+      });
+  }
 
-    function removeMarker(marker) {
-      map.removeLayer(marker);
-    }
+  function addMarker(suggestion) {
+    var marker = L.marker(suggestion.latlng, {opacity: .4});
+    marker.addTo(map);
+    markers.push(marker);
+  }
 
-    function findBestZoom() {
-      var featureGroup = L.featureGroup(markers);
-      map.fitBounds(featureGroup.getBounds().pad(0.5), {animate: false});
-    }
-  })();
+  function removeMarker(marker) {
+    map.removeLayer(marker);
+  }
+
+  function findBestZoom() {
+    var featureGroup = L.featureGroup(markers);
+    map.fitBounds(featureGroup.getBounds().pad(0.5), {animate: false});
+  }
+})();
 </script>
