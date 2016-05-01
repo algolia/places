@@ -116,7 +116,7 @@ export default function places({
           return suggestions;
         })
         .then(cb)
-        .catch(err => console.error(err)),
+        .catch(err => setTimeout(() => {throw err;}, 0)),
       templates: {
         suggestion: hit => hit._dropdownValue,
         footer: defaultTemplates.footer
