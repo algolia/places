@@ -136,8 +136,10 @@ a code {
 
 
 
-////
 #json-response {
+  unicode-bidi: embed;
+  font-family: monospace;
+  white-space: pre;
   margin: 2em auto 2em;
   display: block;
   max-width: 940px;
