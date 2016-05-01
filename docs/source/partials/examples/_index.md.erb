@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/leaflet/1/leaflet.css" />
+<script src="https://cdn.jsdelivr.net/leaflet/1/leaflet.js"></script>
+
 ## Simple input
 
 places.js turns any HTML `<input />` into an autocomplete address search bar.
@@ -48,6 +51,15 @@ display the places.js results on the map and update them when needed.
 
 <%= partial '/partials/examples/map' %>
 
+To try this example, you need to add leaflet in your code:
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/leaflet/1/leaflet.css" />
+<script src="https://cdn.jsdelivr.net/leaflet/1/leaflet.js"></script>
+```
+
+Then use this:
+
 ```html
 <%= partial '/partials/examples/map' %>
 ```
@@ -59,6 +71,15 @@ Reusing the [map](#displaying-a-map) example, we want to only search around Pari
 This is useful when you really want to display results around a specific area.
 
 <%= partial '/partials/examples/map_paris' %>
+
+To try this example, you need to add leaflet in your code:
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/leaflet/1/leaflet.css" />
+<script src="https://cdn.jsdelivr.net/leaflet/1/leaflet.js"></script>
+```
+
+Then use this:
 
 ```html
 <%= partial '/partials/examples/map_paris' %>

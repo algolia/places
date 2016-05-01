@@ -2,6 +2,7 @@
 
 <%= javascript_include_tag config[:places_lib_url] %>
 <script>
+(function() {
   var placesAutocomplete = places({
     container: document.querySelector('#city'),
     type: 'city',
@@ -11,4 +12,5 @@
       }
     }
   });
+});
 </script>

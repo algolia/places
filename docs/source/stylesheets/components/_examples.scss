@@ -20,7 +20,8 @@
   }
 }
 
-#map-example-container {
+#map-example-container,
+#map-example-container-paris {
   // trigger zindex value otherwise
   // map goes hover other elements (like header)
   position: relative;
