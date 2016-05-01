@@ -19,6 +19,7 @@
 
 <%= javascript_include_tag config[:places_lib_url] %>
 <script>
+(function() {
   var placesAutocomplete = places({
     container: document.querySelector('#form-address'),
     type: 'address',
@@ -35,4 +36,5 @@
       document.querySelector('#form-zip').value = e.suggestion.postcode || '';
     }
   });
+});
 </script>

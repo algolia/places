@@ -5,6 +5,7 @@
 
 <%= javascript_include_tag config[:places_lib_url] %>
 <script>
+(function() {
   var placesAutocomplete = places({
     container: document.querySelector('#address')
   });
@@ -16,4 +17,5 @@
       .querySelector('#address-value')
       .textContent = JSON.stringify(e, null, 2);
   });
+});
 </script>
