@@ -49,10 +49,9 @@ function sidebarFollowScroll(sidebarContainer) {
     const footer = document.querySelector('.footer-section');
     const navigation = document.querySelector('.navigation');
     const menu = document.querySelector('.sidebar > ul');
-
     const heroHeight = hero.offsetHeight;
     const navHeight = navigation.offsetHeight;
-    const height = document.body.scrollHeight;
+    const height = document.querySelector('html').getBoundingClientRect().height;
     const footerHeight = footer.offsetHeight;
     const menuHeight = menu.offsetHeight;
 
