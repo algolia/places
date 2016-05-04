@@ -52,7 +52,7 @@
     "webpack": "^1.12.2"
   },
   "dependencies": {
-    "algoliasearch": "^3.13.1",
+    "algoliasearch": "^3.14.0",
     "autocomplete.js": "^0.19.0",
     "events": "^1.1.0"
   }

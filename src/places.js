@@ -1,7 +1,7 @@
 /* eslint no-console:0 */
 import EventEmitter from 'events';
 
-import algoliasearch from 'algoliasearch';
+import algoliasearch from 'algoliasearch/lite';
 import autocomplete from 'autocomplete.js';
 
 import defaultTemplates from './defaultTemplates.js';
