@@ -1,0 +1,78 @@
+$square-map: (
+  (input,135, #13c4a5, #10a4b8),
+  (form,138, #af84e3, #5071c7),
+  (city,314, #ec4918, #e25d8d),
+  (country,134, #fad961, #f76b1c),
+  (map,135, #81bf30, #00bdbd),
+  (custom,135, #bfbfbf, #8a8a8a)
+);
+
+.examples-intro {
+  margin-top: 4em;
+  margin-bottom: 6em;
+
+  float: left;
+  width: 100%;
+  display: none;
+
+  body.examples &{
+    display: block;
+  }
+
+  .items-holder {
+    // border: 1px solid red;
+    margin: 2em auto 2em;
+    display: block;
+    max-width: 940px;
+    padding: 0em;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+    .item {
+      max-width: 120px;
+      height: 120px;
+      float: left;
+      flex:1 1 auto;
+      margin: 0 22px;
+      text-align: center;
+
+      &:first-of-type {
+        margin-left: 0;
+      }
+      &:last-of-type {
+        margin-right: 0;
+      }
+
+      span.square {
+        display: block;
+        position: relative;
+        max-width: 120px;
+        height: 120px;
+        border-radius: 16px;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+
+        @each $class,$degrees, $color-a, $color-b in $square-map {
+          &.#{$class} {
+            background: linear-gradient(#{$degrees}deg, #{$color-a} 0, #{$color-b} 100%);
+          }
+        }
+      }
+
+      svg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .name {
+        font-family: 'Open Sans', Helvetica Neue, helvetica, sans-serif;
+        opacity: 0.8;
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 52px;
+      }
+    }
+  }
+}

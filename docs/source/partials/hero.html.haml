@@ -18,3 +18,35 @@
 
   %div.relative
     %div#json-response
+
+  %div.examples-intro
+    %div.items-holder
+      %div{:class => "item"}
+        %span{:class => "square input"}
+          = partial("/images/svg/search-icon-2.svg")
+        %span.name Simple Input
+
+      %div{:class => "item"}
+        %span{:class => "square form"}
+          = partial("/images/svg/form-icon.svg")
+        %span.name Complete Form
+
+      %div{:class => "item"}
+        %span{:class => "square city"}
+          = partial("/images/svg/city-icon.svg")
+        %span.name City Search
+
+      %div{:class => "item"}
+        %span{:class => "square country"}
+          = partial("/images/svg/country-icon.svg")
+        %span.name Country Search
+
+      %div{:class => "item"}
+        %span{:class => "square map"}
+          = partial("/images/svg/map-icon.svg")
+        %span.name Map Search
+
+      %div{:class => "item"}
+        %span{:class => "square custom"}
+          = partial("/images/svg/custom-icon.svg")
+        %span.name Custom
