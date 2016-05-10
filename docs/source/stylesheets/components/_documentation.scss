@@ -54,14 +54,12 @@
     margin-top: 1em;
   }
 
-  h2, h3 {
-    &[id] {
-      &:before {
-        content: "";
-        display: block;
-        height: $offset-height;
-        margin: -$offset-height 0 0;
-      }
+  h2, h3, .api-entry {
+    &:before {
+      content: "";
+      display: block;
+      height: $offset-height;
+      margin: -$offset-height 0 0;
     }
   }
 
@@ -178,7 +176,8 @@
 
     .anchor {
       margin-left: .2em;
-      display: none;
+      display: inline;
+      visibility: hidden;
     }
 
     .algolia-places {
@@ -187,7 +186,9 @@
 
     h2, h3 {
       padding-bottom: 8px;
+    }
 
+    h2, h3, .api-entry {
       .anchor {
         color: $red-pink;
         text-decoration: none;
@@ -195,13 +196,13 @@
 
       &:hover {
         .anchor {
-          display: inline;
+          visibility: visible;
         }
       }
 
       &:target {
         .anchor {
-          display: inline;
+          visibility: visible;
         }
       }
     }

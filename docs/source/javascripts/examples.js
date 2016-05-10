@@ -1,4 +1,4 @@
-import anchorableHeaders from './anchorableHeaders.js';
+import anchorableElements from './anchorableElements.js';
 import responsiveNavigation from './responsiveNavigation.js';
 import sidebar from './sidebar.js';
 import activateClipboard from './activateClipboard.js';
@@ -9,5 +9,9 @@ sidebar({
   sidebarContainer: document.querySelector('#sidebar'),
   headerStartLevel: 2
 });
-anchorableHeaders(document.querySelector('.documentation-container'));
+anchorableElements(
+  document
+    .querySelector('.documentation-container')
+    .querySelectorAll('h2, h3')
+);
 activateClipboard([...document.querySelectorAll('.code')]);
