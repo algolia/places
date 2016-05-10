@@ -37,6 +37,11 @@ section {
       margin-top: 4em;
       float: left;
       width: 100%;
+      display: none;
+
+      body.index &{
+        display: block;
+      }
     }
 
     .icon {
@@ -128,6 +133,10 @@ section {
       path,
       ellipse {
         transform: translateY(12px);
+      }
+
+      body:not(.index) &{
+        display: none;
       }
     }
   }

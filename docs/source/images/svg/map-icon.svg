@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="34px" height="48px" viewBox="0 0 34 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.7.2 (28276) - http://www.bohemiancoding.com/sketch -->
+    <title>map-icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Places-1-Copy-9" transform="translate(-952.000000, -310.000000)" fill="#FFFFFF">
+            <g id="Group-20" transform="translate(253.000000, 274.000000)">
+                <path d="M716,36 C706.601429,36 699,43.512 699,52.8 C699,65.4 716,84 716,84 C716,84 733,65.4 733,52.8 C733,43.512 725.398571,36 716,36 L716,36 Z M716,58.8 C712.648571,58.8 709.928571,56.112 709.928571,52.8 C709.928571,49.488 712.648571,46.8 716,46.8 C719.351429,46.8 722.071429,49.488 722.071429,52.8 C722.071429,56.112 719.351429,58.8 716,58.8 L716,58.8 Z" id="map-icon"></path>
+            </g>
+        </g>
+    </g>
+</svg>
