@@ -39,10 +39,11 @@ export default function sidebar({headersContainer, sidebarContainer, headerStart
   sidebarContainer.appendChild(select);
   sidebarFollowScroll(sidebarContainer);
   activeLinks(sidebarContainer);
+  scrollSpy(sidebarContainer, headersContainer);
 }
 
 function sidebarFollowScroll(sidebarContainer) {
-  document.addEventListener('scroll', () => {
+  const positionSidebar = () => {
     // The following code is used to change the color of the navigation
     // depending the level of page scroll.
     const hero = document.querySelector('.hero-section');
@@ -71,7 +72,38 @@ function sidebarFollowScroll(sidebarContainer) {
     } else {
       sidebarContainer.classList.remove('fixed');
     }
-  });
+  };
+
+  window.addEventListener('load', positionSidebar);
+  document.addEventListener('DOMContentLoaded', positionSidebar);
+  document.addEventListener('scroll', positionSidebar);
+}
+
+function scrollSpy(sidebarContainer, headersContainer) {
+  const headers = [...headersContainer.querySelectorAll('h2, h3')];
+
+  const setActiveSidebarLink = header => {
+    [...sidebarContainer.querySelectorAll('a')].forEach(item => {
+      if (item.getAttribute('href').slice(1) === header.getAttribute('id')) {
+        item.classList.add('active');
+      } else {
+        item.classList.remove('active');
+      }
+    });
+  };
+
+  const findActiveSidebarLink = () => {
+    const highestVisibleHeaders = headers
+      .map(header => ({element: header, rect: header.getBoundingClientRect()}))
+      .sort((header1, header2) => Math.abs(header1.rect.top) < Math.abs(header2.rect.top) ? -1 : 1);
+
+    setActiveSidebarLink(highestVisibleHeaders[0].element);
+  };
+
+  findActiveSidebarLink();
+  window.addEventListener('load', findActiveSidebarLink);
+  document.addEventListener('DOMContentLoaded', findActiveSidebarLink);
+  document.addEventListener('scroll', findActiveSidebarLink);
 }
 
 // The Following code is used to set active items
