@@ -29,6 +29,11 @@ $square-map: (
     flex-wrap: wrap;
     flex-direction: row;
 
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
     .item {
       max-width: 120px;
       height: 120px;
@@ -50,11 +55,20 @@ $square-map: (
         max-width: 120px;
         height: 120px;
         border-radius: 16px;
-        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+        box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3);
+        transition: box-shadow 0.3s ease;
 
         @each $class,$degrees, $color-a, $color-b in $square-map {
           &.#{$class} {
             background: linear-gradient(#{$degrees}deg, #{$color-a} 0, #{$color-b} 100%);
+          }
+        }
+
+        &:hover {
+          box-shadow: none;
+
+          &~ .name {
+            opacity: 1;
           }
         }
       }
@@ -72,6 +86,7 @@ $square-map: (
         font-size: 16px;
         font-weight: 300;
         line-height: 52px;
+        transition: opacity 0.3s ease;
       }
     }
   }
