@@ -70,7 +70,7 @@ Here are the options you can pass to the `places(options)` function.
   <tbody>
     <tr>
 <td markdown="1">
-`container`
+<div class="api-entry" id="api-options-container"><code>container</code></div>
 
 Type: [HTMLInputElement](https://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/html2/HTMLInputElement.html)
 
@@ -85,7 +85,7 @@ You just need to pass a reference to an Element. Obtained via
     </tr>
     <tr>
 <td markdown="1">
-`aroundLatLng`
+<div class="api-entry" id="api-options-aroundLatLng"><code>aroundLatLng</code></div>
 
 Type: string
 
@@ -100,7 +100,7 @@ The default is to search around the location of the user determined via his IP a
     </tr>
     <tr>
 <td markdown="1">
-`aroundLatLngViaIP`
+<div class="api-entry" id="api-options-aroundLatLngViaIP"><code>aroundLatLngViaIP</code></div>
 
 Type: boolean
 
@@ -113,7 +113,7 @@ default.
     </tr>
     <tr>
 <td markdown="1">
-`aroundRadius`
+<div class="api-entry" id="api-options-aroundRadius"><code>aroundRadius</code></div>
 
 Type: number
 
@@ -126,7 +126,7 @@ value.
     </tr>
     <tr>
 <td markdown="1">
-`language`
+<div class="api-entry" id="api-options-language"><code>language</code></div>
 
 Type: string
 
@@ -142,7 +142,7 @@ Example: `en` when navigator.language is `en_US`.
     </tr>
     <tr>
 <td markdown="1">
-`countries`
+<div class="api-entry" id="api-options-countries"><code>countries</code></div>
 
 Type: string[]
 
@@ -157,7 +157,7 @@ Change the countries to search in. You must pass an array of two letters country
     </tr>
     <tr>
 <td markdown="1">
-`templates`
+<div class="api-entry" id="api-options-templates"><code>templates</code></div>
 
 Type: Object
 
@@ -180,7 +180,7 @@ return an HTML string to be displayed in the dropdown.
     </tr>
     <tr>
 <td markdown="1">
-`type`
+<div class="api-entry" id="api-options-type"><code>type</code></div>
 
 Type: string
 
@@ -200,7 +200,7 @@ Available types:
     </tr>
     <tr>
 <td markdown="1">
-`style`
+<div class="api-entry" id="api-options-style"><code>style</code></div>
 
 Type: boolean
 
@@ -254,7 +254,7 @@ placesAutocomplete.on('change', e => console.log(e.suggestion));
   <tbody>
     <tr>
 <td markdown="1">
-`change`
+<div class="api-entry" id="api-events-change"><code>change</code></div>
 
 Event data:
 
@@ -270,7 +270,7 @@ You can use this event to then populate another form, [see the example](examples
     </tr>
     <tr>
 <td markdown="1">
-`suggestions`
+<div class="api-entry" id="api-events-suggestions"><code>suggestions</code></div>
 
 Event data:
 
@@ -287,7 +287,7 @@ You can use this event to display the suggestions on a map, see the [map example
     </tr>
     <tr>
 <td markdown="1">
-`cursorchanged`
+<div class="api-entry" id="api-events-cursorchanged"><code>cursorchanged</code></div>
 
 Event data:
 
@@ -316,7 +316,7 @@ All of the events will send suggestion objects with those properties:
   <tbody>
     <tr>
 <td markdown="1">
-`administrative`
+<div class="api-entry" id="api-suggestion-administrative"><code>administrative</code></div>
 
 Type: string
 </td>
@@ -332,7 +332,7 @@ Examples:
     </tr>
     <tr>
 <td markdown="1">
-`city`
+<div class="api-entry" id="api-suggestion-city"><code>city</code></div>
 
 Type: string
 </td>
@@ -342,7 +342,7 @@ City name.
     </tr>
     <tr>
 <td markdown="1">
-`country`
+<div class="api-entry" id="api-suggestion-country"><code>country</code></div>
 
 Type: string
 </td>
@@ -352,7 +352,7 @@ Country name.
     </tr>
     <tr>
 <td markdown="1">
-`countryCode`
+<div class="api-entry" id="api-suggestion-countryCode"><code>countryCode</code></div>
 
 Type: string
 </td>
@@ -362,7 +362,7 @@ Two letters country code ([ISO 639-1](https://en.wikipedia.org/wiki/ISO_3166-1#O
     </tr>
     <tr>
 <td markdown="1">
-`type`
+<div class="api-entry" id="api-suggestion-type"><code>type</code></div>
 
 Type: string
 </td>
@@ -372,7 +372,7 @@ Type of the current suggestion, possible values: `country`, `city`, `address`.
     </tr>
     <tr>
 <td markdown="1">
-`latlng`
+<div class="api-entry" id="api-suggestion-latlng"><code>latlng</code></div>
 
 Type: Object
 </td>
@@ -382,7 +382,7 @@ Latitude and longitude of the place found. Shape: `{lat: 48.797885, lng: 2.33703
     </tr>
     <tr>
 <td markdown="1">
-`name`
+<div class="api-entry" id="api-suggestion-name"><code>name</code></div>
 
 Type: string
 </td>
@@ -397,7 +397,7 @@ Examples:
     </tr>
     <tr>
 <td markdown="1">
-`postcode`
+<div class="api-entry" id="api-suggestion-postcode"><code>postcode</code></div>
 
 Type: string
 </td>
@@ -412,7 +412,7 @@ Examples:
     </tr>
     <tr>
 <td markdown="1">
-`value`
+<div class="api-entry" id="api-suggestion-value"><code>value</code></div>
 
 Type: string
 </td>
