@@ -22,31 +22,37 @@
   %div.examples-intro
     %div.items-holder
       %div{:class => "item"}
-        %span{:class => "square input"}
-          = partial("/images/svg/search-icon-2.svg")
-        %span.name Simple Input
+        %a{:href => '#simple-input'}
+          %span{:class => "square input"}
+            = partial("/images/svg/search-icon-2.svg")
+          %span.name Simple Input
 
       %div{:class => "item"}
-        %span{:class => "square form"}
-          = partial("/images/svg/form-icon.svg")
-        %span.name Complete Form
+        %a{:href => '#complete-form'}
+          %span{:class => "square form"}
+            = partial("/images/svg/form-icon.svg")
+          %span.name Complete Form
 
       %div{:class => "item"}
-        %span{:class => "square city"}
-          = partial("/images/svg/city-icon.svg")
-        %span.name City Search
+        %a{:href => '#city-search'}
+          %span{:class => "square city"}
+            = partial("/images/svg/city-icon.svg")
+          %span.name City Search
 
       %div{:class => "item"}
-        %span{:class => "square country"}
-          = partial("/images/svg/country-icon.svg")
-        %span.name Country Search
+        %a{:href => '#country-search'}
+          %span{:class => "square country"}
+            = partial("/images/svg/country-icon.svg")
+          %span.name Country Search
 
       %div{:class => "item"}
-        %span{:class => "square map"}
-          = partial("/images/svg/map-icon.svg")
-        %span.name Map Search
+        %a{:href => '#displaying-a-map'}
+          %span{:class => "square map"}
+            = partial("/images/svg/map-icon.svg")
+          %span.name Map Search
 
       %div{:class => "item"}
-        %span{:class => "square custom"}
-          = partial("/images/svg/custom-icon.svg")
-        %span.name Custom
+        %a{:href => '#custom-templates'}
+          %span{:class => "square custom"}
+            = partial("/images/svg/custom-icon.svg")
+          %span.name Custom

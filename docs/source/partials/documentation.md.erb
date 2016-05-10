@@ -462,17 +462,24 @@ Then the dropdown html structure looks like this:
 For the css part, here is the css used by default on our page :
 
 ```css
+/* Main input wrapper */
 .algolia-places.algolia-places-styled {
   width: 100%;
 }
+
+/* The algolia-places input */
 .algolia-places.algolia-places-styled .ap-input, .algolia-places.algolia-places-styled .ap-hint {
   width: 100%;
 }
+
+/* The style of the svg icons when the input is on hover */
 .algolia-places.algolia-places-styled .ap-input:hover ~ .ap-input-icon svg,
 .algolia-places.algolia-places-styled .ap-input:focus ~ .ap-input-icon svg,
 .algolia-places.algolia-places-styled .ap-input-icon:hover svg {
   fill: #aaaaaa;
 }
+
+/* The dropdown style */
 .algolia-places.algolia-places-styled .ap-dropdown-menu {
   width: 100%;
   background: #ffffff;
@@ -481,6 +488,8 @@ For the css part, here is the css used by default on our page :
   margin-top: 3px;
   overflow: hidden;
 }
+
+/* The suggestions style */
 .algolia-places.algolia-places-styled .ap-suggestion {
   cursor: pointer;
   height: 46px;
@@ -488,25 +497,33 @@ For the css part, here is the css used by default on our page :
   padding-left: 18px;
   overflow: hidden;
 }
+
+/* The highlighted names style */
 .algolia-places.algolia-places-styled .ap-suggestion em {
   font-weight: bold;
   font-style: normal;
 }
+
+/* The addresses style */
 .algolia-places.algolia-places-styled .ap-address {
   font-size: smaller;
   margin-left: 12px;
   color: #aaaaaa;
 }
+/* The icons of each suggestions ( can be a building or a pin ) */
 .algolia-places.algolia-places-styled .ap-suggestion-icon {
   margin-right: 10px;
   width: 14px;
   height: 20px;
   vertical-align: middle;
 }
+/* The style of the svg inside the .ap-suggestion-icon */
 .algolia-places.algolia-places-styled .ap-suggestion-icon svg {
   transform: scale(0.9) translateY(2px);
   fill: #cfcfcf;
 }
+
+/* The icons inside the input ( can be a pin or a cross ) */
 .algolia-places.algolia-places-styled .ap-input-icon {
   border: 0;
   background: transparent;
@@ -516,6 +533,8 @@ For the css part, here is the css used by default on our page :
   right: 16px;
   outline: none;
 }
+
+/* The style of the svg inside the .ap-input-icon */
 .algolia-places.algolia-places-styled .ap-input-icon svg {
   fill: #cfcfcf;
   position: absolute;
@@ -523,13 +542,19 @@ For the css part, here is the css used by default on our page :
   right: 0;
   transform: translateY(-50%);
 }
+
+/* .a-cursor is the class a suggestion go on hover */
 .algolia-places.algolia-places-styled .ap-cursor {
   background: #efefef;
 }
+
+/* The style of the svg icon, when the .ap-suggestion is on hover */
 .algolia-places.algolia-places-styled .ap-cursor .ap-suggestion-icon svg {
   transform: scale(1);
   fill: #aaaaaa;
 }
+
+/* The styles of the Algolia Places input footer */
 .algolia-places.algolia-places-styled .ap-footer {
   opacity: .8;
   text-align: right;
@@ -537,13 +562,19 @@ For the css part, here is the css used by default on our page :
   font-size: 12px;
   line-height: 12px;
 }
+
+/* The styles of the Algolia Places input footer links */
 .algolia-places.algolia-places-styled .ap-footer a {
   color: inherit;
   text-decoration: none;
 }
+
+/* The styles of the Algolia Places input footer svg icons */
 .algolia-places.algolia-places-styled .ap-footer a svg {
   vertical-align: middle;
 }
+
+/* The styles of the Algolia Places input footer on hover */
 .algolia-places.algolia-places-styled .ap-footer:hover {
   opacity: 1;
 }
