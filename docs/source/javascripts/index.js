@@ -5,11 +5,41 @@ import responsiveNavigation from './responsiveNavigation.js';
 import docsearch from 'docsearch.js';
 
 responsiveNavigation();
-document.addEventListener('DOMContentLoaded', () => docsearch({
-  apiKey: '5718722ffb11e109821befd53a1d9fde',
-  indexName: 'places',
-  inputSelector: '#doc-search'
-}));
+
+
+
+var myDocsearch = docsearch({
+   apiKey: '5718722ffb11e109821befd53a1d9fde',
+   indexName: 'places',
+   inputSelector: '#docsearch',
+   debug: true
+ });
+
+$(".searchbox [type='reset']").on("click", function() {
+	$(".aa-input").focus();
+	$(this).addClass("hide");
+	myDocsearch.autocomplete.autocomplete.setVal("");
+});
+
+$("#docsearch").on("keyup", function() {
+	var searchbox = document.querySelector(".aa-input");
+	var reset = document.querySelector(".searchbox [type='reset']");
+	$(this).removeClass("hide");
+	if (searchbox.value.length === 0){
+		$(this).addClass("hide");
+	}
+});
+
+$("#docsearch").on('change', function() {
+    $(this).addClass('filled');
+});
+
+$("#docsearch").on('blur', function() {
+  if ($(this).val().length === 0){
+    $(this).removeClass('filled');
+  }
+});
+
 
 const $input = document.querySelector('#landing-demo');
 const $response = document.querySelector('#json-response');

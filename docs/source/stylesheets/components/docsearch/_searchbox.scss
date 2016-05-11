@@ -25,7 +25,7 @@
   $border-radius: $input-height / 2,
   $input-border-color: #ccc,
   $input-focus-border-color: #1ec9ea,
-  $input-background: #f8f8f8,
+  $input-background: #000,
   $input-focus-background: #fff,
   $placeholder-color: #aaa,
   $icon: 'sbx-icon-search-1',
@@ -40,7 +40,6 @@
   .searchbox {
     display: inline-block;
     position: relative;
-    width: $input-width;
     height: even-px($input-height)!important;
     white-space: nowrap;
     box-sizing: border-box;
@@ -59,17 +58,21 @@
       box-shadow: inset 0 0 0 $border-width $input-border-color;
       background: $input-background !important;
       padding: 0;
-      padding-right: if($icon-position == 'right', even-px($input-height) + even-px($icon-clear-size) + 8px, even-px($input-height * .8))
-                + if($icon-background-opacity == 0, 0, even-px($font-size));
-      padding-left: if($icon-position == 'right',
-                even-px($font-size / 2) + even-px($border-radius / 2),
-                even-px($input-height) + if($icon-background-opacity == 0, 0, even-px($font-size * 1.2)));
-      width: 100%;
+      width: $input-height;
       height: 100%;
       vertical-align: middle;
       white-space: normal;
       font-size: $font-size;
       appearance: none;
+      color: transparent;
+
+      &::-webkit-input-placeholder{
+        color: transparent;
+      }
+
+      &::placeholder{
+        color: transparent;
+      }
 
       &::-webkit-search-decoration,
       &::-webkit-search-cancel-button,
@@ -83,16 +86,25 @@
       }
 
       &:focus,
-      &:active {
+      &:active,
+      &.filled {
+        padding-right: if($icon-position == 'right', even-px($input-height) + even-px($icon-clear-size) + 8px, even-px($input-height * .8))
+                  + if($icon-background-opacity == 0, 0, even-px($font-size));
+        padding-left: if($icon-position == 'right',
+                  even-px($font-size / 2) + even-px($border-radius / 2),
+                  even-px($input-height) + if($icon-background-opacity == 0, 0, even-px($font-size * 1.2)));
+        width: 100%;
         outline: 0;
         box-shadow: inset 0 0 0 $border-width $input-focus-border-color;
         background: $input-focus-background;
+        color: white;
+        &::-webkit-input-placeholder{
+          color: #777;
+        }
+        &::placeholder{
+          color: #777;
+        }
       }
-
-      &::placeholder {
-        color: $placeholder-color;
-      }
-
     }
 
     &__submit {
@@ -104,11 +116,13 @@
       background-color: rgba($icon-background, $icon-background-opacity);
       padding: 0;
       width: even-px($input-height) + if($icon-background-opacity == 0, 0, even-px($font-size / 2));
+      line-height: even-px($input-height);
       height: 100%;
       vertical-align: middle;
       text-align: center;
       font-size: inherit;
       user-select: none;
+      pointer-events: none;
       @if $icon-position == 'right' {
         right: 0;
         left: inherit;
@@ -158,6 +172,7 @@
       font-size: inherit;
       user-select: none;
       fill: rgba(#000, .5);
+      color: #46AEDA;
 
       &.hide {
         display: none;

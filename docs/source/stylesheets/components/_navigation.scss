@@ -2,7 +2,6 @@
   position: fixed;
   width: 100%;
   height: 50px;
-  line-height: 50px;
   background: $black;
   z-index: 101;
   color: #fff;
@@ -61,57 +60,24 @@
     position: relative;
     width: 28px;
     height: 36px;
-    float: left;
-    top: 6px;
-  }
-
-  .searchbar {
-    float: left;
-    width: auto;
-    height: $navigation-height;
-
-    input {
-      position: relative;
-      width: 36px;
-      height: 36px;
-      line-height: 2.3em;
-      padding: 0 0px 0 34px;
-      background-color: transparent;
-      background-image: url($icon-search-white);
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: 15px;
-      border: solid 2px rgba(#FFF, .5);
-      border-radius: 40px;
-      color: #FFFFFF;
-      overflow: hidden;
-      margin-right: 8px;
-      cursor: pointer;
-      transition: width .2s ease;
-
-      &:focus {
-        width: 300px;
-        background-position: center left 15px;
-      }
-
-      @include small-mq {
-        display: none;
-      }
-    }
+    top: -2px;
+    display: inline-block;
+    vertical-align: middle;
   }
 
   ul {
-    padding: 0;
-    margin: 0;
-    float: left;
+    display: inline-block;
     list-style: none;
+    margin: 0;
+    padding: 0;
+    line-height: 50px;
 
     @include small-mq {
       display: none;
     }
 
     li {
-      float: left;
+      display: inline-block;
       padding: 0 14px;
       font-size: 14px;
       font-family: Open Sans;
