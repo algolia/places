@@ -9,11 +9,12 @@
 
 // all em units are computed given a font of 16px
 // see http://pxtoem.com/ to change/add values
-.algolia-places.algolia-places-styled {
+.algolia-places {
   width: 100%;
 
   .ap-input, .ap-hint {
     width: 100%;
+    padding-right: 35px;
   }
 
   .ap-input:hover ~ .ap-input-icon svg,
