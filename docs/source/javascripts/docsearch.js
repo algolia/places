@@ -32,6 +32,6 @@ docsearchInput.addEventListener('change', () => docsearchInput.classList.add('fi
 
 docsearchInput.addEventListener('blur', () => {
   if (docsearchInput.value.length === 0) {
-    docsearchInput.classList.remove('filled')
+    docsearchInput.classList.remove('filled');
   }
 });
