@@ -7,7 +7,7 @@
     %a.project-title.nav-link{href: "./", title: "Home"} Places
 
     .fl-right
-      %form.searchbox{:novalidate => "novalidate", :onsubmit => "return false;", :style => "visibility:hidden;height:0"}
+      %form.searchbox#docsearch-form{:novalidate => "novalidate", :onsubmit => "return false;", :style => "visibility:hidden;height:0"}
         .searchbox__wrapper{:role => "search"}
           %input#docsearch.searchbox__input{:autocomplete => "off", :name => "search", :placeholder => "Search in the doc", :required => "required", :type => "search"}
             %button.searchbox__submit{:title => "Submit your search query.", :type => "submit"}
