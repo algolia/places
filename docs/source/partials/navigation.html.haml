@@ -4,7 +4,7 @@
     %a.logo-community{href: "https://community.algolia.com/", title: 'Algolia Community'}
       %img{src:"https://res.cloudinary.com/hilnmyskv/image/upload/logo-community-inline-dark.svg",width:"150",alt:"Algolia Community", class:"nav-icon no-mobile"}
       %img{src:"https://res.cloudinary.com/hilnmyskv/image/upload/v1461180081/logo-community-sm.svg", alt:"Algolia Community", class:"community-badge no-desktop"}
-    %a.project-title{href: "./", title: "Home"} Places
+    %a.project-title.nav-link{href: "./", title: "Home"} Places
 
     %div.fl-right
       %div.searchbar
@@ -12,9 +12,9 @@
 
       %ul.menu
         %li{nav_active("documentation.html")}
-          %a{href: "documentation.html", title: "Documentation", :data => {:path => "documentation.html"}} Documentation
+          %a.nav-link{href: "documentation.html", title: "Documentation", :data => {:path => "documentation.html"}} Documentation
         %li{nav_active("examples.html")}
-          %a{href: "examples.html", title: "Examples", :data => {:path => "examples.html"}} Examples
+          %a.nav-link{href: "examples.html", title: "Examples", :data => {:path => "examples.html"}} Examples
         %li
-          %a.navbar-github-link{href: "https://github.com/algolia/places", title: "GitHub repository"}
+          %a.nav-link.navbar-github-link{href: "https://github.com/algolia/places", title: "GitHub repository"}
             = partial("/images/svg/icon-github.svg")

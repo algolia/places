@@ -4,7 +4,7 @@
 
 export default function responsiveNavigation() {
   const navigation = document.querySelector('.navigation');
-  const links = navigation.querySelectorAll('a');
+  const links = navigation.querySelectorAll('a.nav-link');
   const navigationAsSelect = document.createElement('select');
   navigationAsSelect.classList.add('display-on-small');
 
@@ -19,5 +19,5 @@ export default function responsiveNavigation() {
   });
 
   navigation.appendChild(navigationAsSelect);
-  navigation.addEventListener('change', e => window.location = e.target.value);
+  navigationAsSelect.addEventListener('change', e => window.location = e.target.value);
 }
