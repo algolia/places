@@ -1,3 +1,24 @@
+<a name="0.23.0"></a>
+# [0.23.0](https://github.com/algolia/places/compare/v0.22.0...v0.23.0) (2016-05-11)
+
+
+### Bug Fixes
+
+* **documentation:** Fix sidebar scroll related to #145 (#148) ([a5ef82e](https://github.com/algolia/places/commit/a5ef82e)), closes [#145](https://github.com/algolia/places/issues/145) [(#148](https://github.com/(/issues/148)
+* **landing:** proper gifs parameters ([54ed9c5](https://github.com/algolia/places/commit/54ed9c5))
+* **style:false:** do not use .double.className ([3392d4a](https://github.com/algolia/places/commit/3392d4a))
+* **utm:** compute same utm as docsearch ([2cb1e54](https://github.com/algolia/places/commit/2cb1e54))
+* **UX:** highlight metadata also ([aa88262](https://github.com/algolia/places/commit/aa88262)), closes [#157](https://github.com/algolia/places/issues/157)
+
+### Features
+
+* **documentation:** Clean css example ([428ef7a](https://github.com/algolia/places/commit/428ef7a))
+* **examples:** Making the examples squares clickable ([c1a1843](https://github.com/algolia/places/commit/c1a1843))
+* **webiste:** remove useless file ([39ace9e](https://github.com/algolia/places/commit/39ace9e))
+* **website:** New examples header and MISC optimization ([69c27ec](https://github.com/algolia/places/commit/69c27ec))
+
+
+
 <a name="0.22.0"></a>
 # [0.22.0](https://github.com/algolia/places/compare/v0.21.0...v0.22.0) (2016-05-01)
 
