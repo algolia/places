@@ -2,8 +2,14 @@
 /* global places */
 
 import responsiveNavigation from './responsiveNavigation.js';
+import docsearch from 'docsearch.js';
 
 responsiveNavigation();
+document.addEventListener('DOMContentLoaded', () => docsearch({
+  apiKey: '5718722ffb11e109821befd53a1d9fde',
+  indexName: 'places',
+  inputSelector: '#doc-search'
+}));
 
 const $input = document.querySelector('#landing-demo');
 const $response = document.querySelector('#json-response');
