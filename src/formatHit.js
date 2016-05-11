@@ -9,9 +9,15 @@ export default function formatHit({
 }) {
   try {
     const name = hit.locale_names[0];
+    const highlightedName = hit._highlightResult.locale_names[0].value;
+
     const administrative = hit.administrative && hit.administrative[0] !== name ?
       hit.administrative[0] : undefined;
+    const highlightedAdministrative = administrative ?
+      hit._highlightResult.administrative[0].value : undefined;
+
     const city = hit.city && hit.city[0] !== name ? hit.city[0] : undefined;
+    const highlightedCity = city ? hit._highlightResult.city[0].value : undefined;
 
     const suggestion = {
       name,
@@ -31,7 +37,10 @@ export default function formatHit({
     const value = templates.inputValue(suggestion);
     const dropdownValue = templates.dropdownSuggestion({
       ...suggestion,
-      name: hit._highlightResult.locale_names[0].value
+      name: highlightedName,
+      administrative: highlightedAdministrative,
+      city: highlightedCity,
+      country: hit._highlightResult.country.value
     });
 
     return {
