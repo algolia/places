@@ -63,7 +63,7 @@ export default function places({
     autoselect: true,
     hint: false,
     cssClasses: {
-      root: 'algolia-places' + (style === false ? '' : ' algolia-places-styled'),
+      root: 'algolia-places' + (style === false ? '-nostyle' : ''),
       prefix: 'ap'
     }
   };
