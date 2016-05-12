@@ -18,10 +18,10 @@
     }
   }
 
-  &.no-desktop {
+  &.display-on-small {
     img {
       width: 100%;
-      margin: 2em auto;
+      margin: 2em auto 3em;
       display: block;
     }
   }
@@ -218,13 +218,3 @@
   }
 }
 
-
-///// Helper
-.container {
-  width: 100%;
-
-  .row {
-    margin: 2em auto;
-    max-width: 640px;
-  }
-}
