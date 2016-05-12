@@ -11,6 +11,9 @@ export default function formatHit({
     const name = hit.locale_names[0];
     const highlightedName = hit._highlightResult.locale_names[0].value;
 
+    const country = hit.country;
+    const highlightedCountry = hit.country ? hit._highlightResult.country.value : undefined;
+
     const administrative = hit.administrative && hit.administrative[0] !== name ?
       hit.administrative[0] : undefined;
     const highlightedAdministrative = administrative ?
@@ -23,7 +26,7 @@ export default function formatHit({
       name,
       administrative,
       city,
-      country: hit.country,
+      country,
       countryCode: findCountryCode(hit._tags),
       type: findType(hit._tags),
       latlng: {
@@ -40,7 +43,7 @@ export default function formatHit({
       name: highlightedName,
       administrative: highlightedAdministrative,
       city: highlightedCity,
-      country: hit._highlightResult.country.value
+      country: highlightedCountry
     });
 
     return {
