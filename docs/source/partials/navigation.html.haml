@@ -5,7 +5,7 @@
       %img{src:"https://res.cloudinary.com/hilnmyskv/image/upload/v1461180081/logo-community-sm.svg", alt:"Algolia Community", class:"community-badge no-desktop"}
     %a.project-title.nav-link{href: "./", title: "Home"} Places
 
-    .fl-right
+    .fl-right.no-mobile
       %form.searchbox#docsearch-form{:novalidate => "novalidate", :onsubmit => "return false;", :style => "visibility:hidden;height:0"}
         .searchbox__wrapper{:role => "search"}
           %input#docsearch.searchbox__input{:autocomplete => "off", :name => "search", :placeholder => "Search in the doc", :required => "required", :type => "search"}
