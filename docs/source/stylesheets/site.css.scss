@@ -21,3 +21,10 @@
 
 @import 'vendors/helpers',
         'vendors/animations';
+
+@import 'components/docsearch/docsearch';
+@import 'components/docsearch/dropdown';
+@import 'components/docsearch/searchbox';
+
+@include dropdown($dropdown-config...);
+@include searchbox($searchbox-config...);
