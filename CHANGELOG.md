@@ -1,3 +1,13 @@
+<a name="0.23.1"></a>
+## [0.23.1](https://github.com/algolia/places/compare/v0.23.0...v0.23.1) (2016-05-12)
+
+
+### Bug Fixes
+
+* **formatHit:** handle `undefined` country in highlighted mode ([f240f15](https://github.com/algolia/places/commit/f240f15))
+
+
+
 <a name="0.23.0"></a>
 # [0.23.0](https://github.com/algolia/places/compare/v0.22.0...v0.23.0) (2016-05-11)
 
