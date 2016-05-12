@@ -432,6 +432,8 @@ Examples:
 
 Algolia Places can fit existing designs. By default only the dropdown has a default light style.
 
+### HTML structure
+
 The overall html structure looks like this:
 
 ```html
@@ -459,84 +461,76 @@ Then the dropdown html structure looks like this:
 </span>
 ```
 
-For the css part, here is the css used by default on our page :
+### CSS classes
+
+Here's a visual explanation of the different CSS classes:
+
+<%= partial '/partials/examples/visual-helper' %>
+
+Here's a default empty CSS file you can copy paste to tune the default styling:
 
 ```css
 /* Main input wrapper */
-.algolia-places {
-}
+.algolia-places {}
 
 /* The algolia-places input */
-.algolia-places .ap-input, .algolia-places .ap-hint {
-}
+.algolia-places .ap-input, .algolia-places .ap-hint {}
 
 /* The style of the svg icons when the input is on hover */
 .algolia-places .ap-input:hover ~ .ap-input-icon svg,
 .algolia-places .ap-input:focus ~ .ap-input-icon svg,
-.algolia-places .ap-input-icon:hover svg {
-}
+.algolia-places .ap-input-icon:hover svg {}
 
 /* The dropdown style */
-.algolia-places .ap-dropdown-menu {
-}
+.algolia-places .ap-dropdown-menu {}
 
 /* The suggestions style */
-.algolia-places .ap-suggestion {
-}
+.algolia-places .ap-suggestion {}
 
 /* The highlighted names style */
-.algolia-places .ap-suggestion em {
-}
+.algolia-places .ap-suggestion em {}
 
 /* The addresses style */
-.algolia-places .ap-address {
-}
+.algolia-places .ap-address {}
 
 /* The icons of each suggestions ( can be a building or a pin ) */
-.algolia-places .ap-suggestion-icon {
-}
+.algolia-places .ap-suggestion-icon {}
 
 /* The style of the svg inside the .ap-suggestion-icon */
-.algolia-places .ap-suggestion-icon svg {
-}
+.algolia-places .ap-suggestion-icon svg {}
 
 /* The icons inside the input ( can be a pin or a cross ) */
-.algolia-places .ap-input-icon {
-}
+.algolia-places .ap-input-icon {}
 
 /* The style of the svg inside the .ap-input-icon */
-.algolia-places .ap-input-icon svg {
-}
+.algolia-places .ap-input-icon svg {}
 
 /* .a-cursor is the class a suggestion go on hover */
-.algolia-places .ap-cursor {
-}
+.algolia-places .ap-cursor {}
 
 /* The style of the svg icon, when the .ap-suggestion is on hover */
-.algolia-places .ap-cursor .ap-suggestion-icon svg {
-}
+.algolia-places .ap-cursor .ap-suggestion-icon svg {}
 
 /* The styles of the Algolia Places input footer */
-.algolia-places .ap-footer {
-}
+.algolia-places .ap-footer {}
 
 /* The styles of the Algolia Places input footer links */
-.algolia-places .ap-footer a {
-}
+.algolia-places .ap-footer a {}
 
 /* The styles of the Algolia Places input footer svg icons */
-.algolia-places .ap-footer a svg {
-}
+.algolia-places .ap-footer a svg {}
 
 /* The styles of the Algolia Places input footer on hover */
-.algolia-places .ap-footer:hover {
-}
-
+.algolia-places .ap-footer:hover {}
 ```
-<%= partial '/partials/examples/visual-helper' %>
 
+### Disabling default style
+
+By default we insert some styling into your page.
 
 You can disable all the Algolia Places styling by passing the `style: false` option.
+
+Once you do so, the default `algolia-places` class name will turn into `algolia-places-nostyle`.
 
 See our [styling examples](./examples.html#input-styling).
 

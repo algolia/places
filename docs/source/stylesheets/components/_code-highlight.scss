@@ -94,17 +94,16 @@
 }
 
 pre {
-  padding: 10px;
-  margin: 0;
+  margin: .5em 0;
   line-height: 23px;
   white-space: pre;
   overflow-x: auto;
   word-break: inherit;
   word-wrap: inherit;
+}
 
-  &.lineno {
-    padding: 0;
-  }
+.code pre {
+  padding: 0 10px;
 }
 
 .codehilite .gl {
