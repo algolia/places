@@ -15,6 +15,10 @@ $square-map: (
   width: 100%;
   display: none;
 
+  @include small-mq {
+    margin-bottom: 1.5em;
+  }
+
   body.examples &{
     display: block;
   }
@@ -28,6 +32,12 @@ $square-map: (
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+
+    @include small-mq {
+      align-items: center;
+      margin-bottom: 0;
+      float: left;
+    }
 
     a {
       text-decoration: none;
@@ -47,6 +57,18 @@ $square-map: (
       }
       &:last-of-type {
         margin-right: 0;
+      }
+
+      @include small-mq {
+        margin: auto auto 58px;
+        width: 50%;
+
+        &:first-of-type {
+          margin-left: auto;
+        }
+        &:last-of-type {
+          margin-right: auto;
+        }
       }
 
       span.square {

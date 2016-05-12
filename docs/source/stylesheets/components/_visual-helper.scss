@@ -1,0 +1,230 @@
+@mixin ov-border($color){
+  border: 2px solid $color;
+  border-radius: 4px;
+  color: $color;
+}
+
+.preview-holder {
+  position: relative;
+  width: 100%;
+
+  &.no-mobile {
+    transform: scale(0.8);
+
+    img {
+      width: 80%;
+      margin: auto;
+      display: block;
+    }
+  }
+
+  &.no-desktop {
+    img {
+      width: 100%;
+      margin: 2em auto;
+      display: block;
+    }
+  }
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+
+  [class*="ov-"] {
+    position: absolute;
+
+    &:before {
+      content: attr(data-mention);
+      position: absolute;
+      border: currentColor 2px solid;
+      background: #fff;
+      padding: 0.5em;
+      display: inline;
+      background: rgba(black, 0.01);
+      border-radius: 3px;
+      font-weight: bold;
+    }
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      border: 1px currentColor dotted;
+      height: 0px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  .ov-input {
+    width: 72.2%;
+    height: 15.5%;
+    margin: 3% auto 0;
+    left: 0;
+    right: 0;
+
+    @include ov-border(#F02E5C);
+
+    &:before {
+      margin: 0 -110px
+    }
+    &:after {
+      width: 30px;
+      left: -32px;
+    }
+  }
+
+  .ov-cancel {
+    width: 3%;
+    height: 10%;
+    margin: 4.2% 14.6% 0;
+    right: 0;
+    @include ov-border(#386088);
+
+    &:before {
+      margin: -0.5em  calc(100% + 30px);
+      width: 180px;
+    }
+    &:after {
+      width: 30px;
+      right: -32px;
+    }
+  }
+
+  .ov-suggestions {
+    width: 73%;
+    height: 68%;
+    margin: 10.5% auto;
+    left: 0;
+    right: 0;
+
+    @include ov-border(#0199D5);
+
+     &:before {
+      margin: 0 -208px;
+      width: 160px;
+    }
+    &:after {
+      top: 10%;
+      width: 30px;
+      left: -32px;
+    }
+
+
+    .ov-suggestion,
+    .ov-suggestion-cursor{
+      width: 98%;
+      left: 0;
+      right: 0;
+      margin: 0.6% auto;
+      height: 16%;
+
+      @include ov-border(darken(#8EDD42, 15%));
+
+      &:before {
+        margin: 0 calc(100% + 30px);
+        width: 180px;
+      }
+       &:after {
+        width: 28px;
+        right: -31px;
+      }
+    }
+
+    .ov-suggestion {
+      margin: 14.4% auto;
+
+      &:before {
+        margin: -0.5em  calc(100% + 30px);
+        width: 120px;
+      }
+
+      .ov-icon {
+        width: 5%;
+        left: 1%;
+        margin: 0.8% auto;
+        height: 78%;
+
+        @include ov-border(#386088);
+
+        &:before {
+          margin: -0.8em -198px;
+          width: 140px;
+        }
+        &:after {
+          width: 40px;
+          left: -42px;
+        }
+      }
+
+      .ov-name {
+        width: 19%;
+        left: 6%;
+        margin: 10% auto;
+        height: 72%;
+
+        @include ov-border(#A171E0);
+
+         &:before {
+          margin: -0.5em -162px;
+          width: 80px;
+        }
+        &:after {
+          width: 63px;
+          left: -65px;
+        }
+      }
+
+      .ov-address {
+        width: 43%;
+        left: 27%;
+        margin: 10% auto;
+        height: 72%;
+
+        @include ov-border(#A171E0);
+
+        &:before {
+          margin: -0.5em calc(100% + 190px);
+          width: 100px;
+        }
+        &:after {
+          width: 188px;
+          right: -190px;
+        }
+      }
+
+      .ov-highlight {
+        width: 20%;
+        left: 6%;
+        margin: 18% auto;
+        height: 72%;
+
+        @include ov-border(#FB7807);
+
+        &:before {
+          margin: -0.4em -132px;
+          width: 50px;
+        }
+        &:after {
+          width: 62px;
+          left: -64px;
+        }
+      }
+    }
+  }
+}
+
+
+///// Helper
+.container {
+  width: 100%;
+
+  .row {
+    margin: 2em auto;
+    max-width: 640px;
+  }
+}

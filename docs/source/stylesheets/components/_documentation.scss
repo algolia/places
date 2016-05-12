@@ -54,13 +54,17 @@
     margin-top: 1em;
   }
 
-  h2, h3, .api-entry {
+  h2, h3, .api-entry, .css-class {
     &:before {
       content: "";
       display: block;
       height: $offset-height;
       margin: -$offset-height 0 0;
     }
+  }
+
+  .css-class {
+    white-space: nowrap;
   }
 
   .documentation-container {
