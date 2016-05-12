@@ -1,0 +1,100 @@
+%div.preview-holder.no-mobile
+  %img{:src => "/images/visual-preview-places.png", :alt => "preview-places", :id => "visual-helper"}/
+  .overlay
+    .ov-input{'data-mention' => '.ap-input'}
+    .ov-cancel{'data-mention' => '.ap-input-icon-[clear/pin]'}
+    .ov-suggestions{'data-mention' => '.ap-dropdown-menu'}
+      .ov-suggestion-cursor{'data-mention' => '.ap-suggestion.ap-cursor'}
+      .ov-suggestion{'data-mention' => '.ap-suggestion'}
+        .ov-icon{'data-mention' => '.ap-suggestion-icon'}
+        .ov-name{'data-mention' => '.ap-name'}
+        .ov-highlight{'data-mention' => '<em>'}
+        .ov-address{'data-mention' => '.ap-address'}
+
+%div.preview-holder.no-desktop
+  %img{:src => "/images/visual-preview-places_mobile.png", :alt => "preview-places", :id => "visual-helper"}/
+
+%table.api
+  %thead
+    %tr
+      %th CSS Class
+      %th Description
+  %tbody
+    %tr
+      %td
+        %div{:class => "css-class api-entry", :id => "css-class-ap-input"}
+          <code>.ap-input</code>
+
+      %td
+        %p This class is the one use by the main places input
+
+    %tr
+      %td
+        %div{:class => "css-class api-entry", :id => "css-class-ap-input-icon-pin"}
+          <code>.ap-input-icon-pin</code>
+
+      %td
+        %p This is the class attached to the pin icon, which is visible when the input is on it's normal state
+
+    %tr
+      %td
+        %div{:class => "css-class api-entry", :id => "css-class-ap-input-icon-clear"}
+          <code>.ap-input-icon-clear</code>
+
+      %td
+        %p This is the class attached to the clear icon, which is visible when the input is filled, clicking it will empty the input
+
+    %tr
+      %td
+        %div{:class => "css-class api-entry", :id => "css-class-ap-dropdown-menu"}
+          <code>.ap-dropdown-menu</code>
+
+      %td
+        %p This class is the one that is on the whole suggestions wrapper
+
+    %tr
+      %td
+        %div{:class => "css-class api-entry", :id => "css-class-ap-suggestion"}
+          <code>.ap-suggestion</code>
+
+      %td
+        %p The .ap-suggestion class is the class of each dropdown suggestions
+
+    %tr
+      %td
+        %div{:class => "css-class api-entry", :id => "css-class-ap-cursor"}
+          <code>.ap-cursor</code>
+
+      %td
+        %p The .ap-cursor class is added to .ap-suggestion when the suggestion is hovered
+
+    %tr
+      %td
+        %div{:class => "css-class api-entry", :id => "css-class-ap-suggestion-icon"}
+          <code>.ap-suggestion-icon</code>
+
+      %td
+        %p The .ap-suggestion-icon is the class that is used on the left icon of each suggestions
+
+    %tr
+      %td
+        %div{:class => "css-class api-entry", :id => "css-class-ap-name"}
+          <code>.ap-name</code>
+
+      %td
+        %p The .ap-name class is the one used on the <strong>name</strong> of the place
+
+    %tr
+      %td
+        %div{:class => "css-class api-entry", :id => "css-class-ap-address"}
+          <code>.ap-address</code>
+
+      %td
+        %p The .ap-address class is the one used on the <strong>address</strong> of the place
+
+    %tr
+      %td
+        %div{:class => "css-class api-entry", :id => "css-class-em"}
+          <code> &lt;em></code>
+      %td
+        %p The &lt;em> tag in the .ap-suggestion is the tag that is used to make an highlight on each names
