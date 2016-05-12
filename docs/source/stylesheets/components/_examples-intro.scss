@@ -36,7 +36,6 @@ $square-map: (
     @include small-mq {
       align-items: center;
       margin-bottom: 0;
-      float: left;
     }
 
     a {
