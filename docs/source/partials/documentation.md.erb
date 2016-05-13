@@ -258,9 +258,10 @@ placesAutocomplete.on('change', e => console.log(e.suggestion));
 
 Event data:
 
-- suggestion *Type: [suggestion](#suggestion-object)*
-- query *Type: string*,
-- suggestionIndex *Type: number*
+- *rawAnswer* <br>Type: object
+- *query* <br>Type: string
+- *suggestion* <br>Type: [suggestion](#suggestion-object)
+- *suggestionIndex* <br>Type: number
 </td>
 <td markdown="1">
 Fired when suggestion selected in the dropdown or hint was validated.
@@ -274,8 +275,9 @@ You can use this event to then populate another form, [see the example](examples
 
 Event data:
 
-- suggestions *Type: [suggestion](#suggestion-object)*
-- query *Type: string*
+- *rawAnswer* <br>Type: object
+- *query* <br>Type: string
+- *suggestions* <br>Type:  [suggestion](#suggestion-object)
 </td>
 <td markdown="1">
 Fired when dropdown receives suggestions. You will receive the array of suggestions that are displayed.
@@ -291,9 +293,10 @@ You can use this event to display the suggestions on a map, see the [map example
 
 Event data:
 
-- suggestion *Type: [suggestion](#suggestion-object)*
-- query *Type: string*
-- suggestionIndex *Type: number*
+- *rawAnswer* <br>Type: object
+- *query* <br>Type: string
+- *suggestion* <br>Type: [suggestion](#suggestion-object)
+- *suggestionIndex* <br>Type: number
 </td>
 <td markdown="1">
 Fired when arrows keys are used to navigate suggestions.

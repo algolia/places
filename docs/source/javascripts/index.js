@@ -7,7 +7,6 @@ import './docsearch.js';
 responsiveNavigation();
 
 const $input = document.querySelector('#landing-demo');
-const $response = document.querySelector('#json-response');
 const placesAutocomplete = places({
   container: $input
 });
@@ -30,12 +29,22 @@ if (process.env.NODE_ENV === 'development') {
   );
 }
 
+const $response = document.querySelector('#json-response');
+const $responseText = document.querySelector('#json-response-text');
+const $responseTiming = document.querySelector('#json-response-timing');
 placesAutocomplete.on('change', function(e) {
   if (e.query === '') {
-    $response.textContent = '';
+    $responseText.textContent = '';
     $response.classList.remove('display');
   } else {
-    $response.textContent = JSON.stringify(e, null, 2);
+    const content = {
+      ...e,
+      // hide advanced API event data in demo
+      rawAnswer: undefined,
+      suggestionIndex: undefined
+    };
+    $responseText.textContent = JSON.stringify(content, null, 2);
+    $responseTiming.innerHTML = `Computed in <u>${e.rawAnswer.processingTimeMS}ms</u>`;
     $response.classList.add('display');
   }
 });
