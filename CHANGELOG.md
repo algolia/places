@@ -1,3 +1,20 @@
+<a name="0.24.0"></a>
+# [0.24.0](https://github.com/algolia/places/compare/v0.23.1...v0.24.0) (2016-05-13)
+
+
+### Bug Fixes
+
+* **browser support:** add IE11 - 10 - 9 support ([0365683](https://github.com/algolia/places/commit/0365683))
+* **website:** various css fixes ([a19c0e7](https://github.com/algolia/places/commit/a19c0e7))
+
+### Features
+
+* **rawAnswer:** add rawAnswer event data ([032a42a](https://github.com/algolia/places/commit/032a42a))
+* **website:** Added css visual helper + responsive goodness on examples ge ([fbae562](https://github.com/algolia/places/commit/fbae562))
+* **website:** Added css visual helper + responsive goodness on examples ge ([004755e](https://github.com/algolia/places/commit/004755e))
+
+
+
 <a name="0.23.1"></a>
 ## [0.23.1](https://github.com/algolia/places/compare/v0.23.0...v0.23.1) (2016-05-12)
 
