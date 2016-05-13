@@ -16,9 +16,10 @@ const filterSuggestionData = suggestion => ({
   ...suggestion,
   // omit _dropdownValue, _index and _query,
   // _dropdownValue is not needed user side
-  // _index & _query are sent at the root of the element
+  // _index, _query and _rawAnswer are sent at the root of the element
   _dropdownValue: undefined,
   _index: undefined,
+  _rawAnswer: undefined,
   _query: undefined
 });
 
@@ -99,21 +100,34 @@ export default function places({
           query
         })
         .then(
-          ({hits}) => hits.map((hit, hitIndex) =>
-            formatHit({
-              hit,
-              hitIndex,
-              query,
-              templates
-            })
-          )
+          content => {
+            const hits = content.hits.map((hit, hitIndex) => {
+              const formattedHit = formatHit({
+                hit,
+                hitIndex,
+                query,
+                templates
+              });
+
+              return {
+                ...formattedHit,
+                _rawAnswer: content
+              };
+            });
+
+            return {
+              hits,
+              rawAnswer: content
+            };
+          }
         )
-        .then(suggestions => {
+        .then(({hits, rawAnswer}) => {
           placesInstance.emit('suggestions', {
+            rawAnswer,
             query,
-            suggestions: suggestions.map(filterSuggestionData)
+            suggestions: hits.map(filterSuggestionData)
           });
-          return suggestions;
+          return hits;
         })
         .then(cb)
         .catch(err => setTimeout(() => {throw err;}, 0)),
@@ -131,16 +145,18 @@ export default function places({
   autocompleteChangeEvents.forEach(eventName => {
     autocompleteInstance.on(`autocomplete:${eventName}`, (_, suggestion) => {
       placesInstance.emit('change', {
-        suggestion: filterSuggestionData(suggestion),
+        rawAnswer: suggestion._rawAnswer,
         query: suggestion._query,
+        suggestion: filterSuggestionData(suggestion),
         suggestionIndex: suggestion._index
       });
     });
   });
   autocompleteInstance.on('autocomplete:cursorchanged', (_, suggestion) => {
     placesInstance.emit('cursorchanged', {
-      suggestion: filterSuggestionData(suggestion),
+      rawAnswer: suggestion._rawAnswer,
       query: suggestion._query,
+      suggestion: filterSuggestionData(suggestion),
       suggestionIndex: suggestion._index
     });
   });
