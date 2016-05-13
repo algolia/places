@@ -54,6 +54,26 @@
     margin-top: 1em;
   }
 
+  .api-entry {
+    margin: 1em 0;
+    code {
+      font-size: 100%;
+      font-weight: bold;
+    }
+  }
+
+  .api tr td:first-child {
+    p, ul {
+      font-size: 90%;
+      margin: .5em 0;
+      line-height: 1.5em;
+    }
+    em {
+      text-decoration: underline;
+      font-style: normal;
+    }
+  }
+
   h2, h3, .api-entry, .css-class {
     &:before {
       content: "";
