@@ -4,6 +4,7 @@ import EventEmitter from 'events';
 import algoliasearch from 'algoliasearch/lite';
 import autocomplete from 'autocomplete.js';
 
+import './navigatorLanguage.js';
 import defaultTemplates from './defaultTemplates.js';
 import formatHit from './formatHit.js';
 import version from './version.js';
