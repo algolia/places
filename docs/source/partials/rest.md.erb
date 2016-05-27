@@ -1,0 +1,331 @@
+## REST API
+
+The Algolia Places REST API supports HTTPS and is available via the `https://places-dsn.algolia.net` domain (leveraging our [Distributed Search Network](https://www.algolia.com/dsn) infrastructure).
+
+In order to guarantee a very high-availability, we recommend to implement a retry strategy on the following hosts if the `https://places-dsn.algolia.net` call fails:
+
+  - `https://places-1.algolianet.com`,
+  - then `https://places-2.algolianet.com`,
+  - then `https://places-3.algolianet.com`.
+
+### Endpoint
+
+To search using the Algolia Places REST API, you need to target the `/1/places/query` endpoint with a `POST` request.
+
+```bash
+$ curl -X POST 'https://places-dsn.algolia.net/1/places/query' --data '{"params":"query=Paris"}'
+```
+
+**Note:** The relative path prefix `/1/` indicates that we are currently using version 1 of the API.
+
+### Authentication
+
+If you're using the authenticated version of our API (higher rate-limits), you'll need to authenticate yourself. This is done via the following HTTP headers:
+
+  - `X-Algolia-Application-Id`,
+  - and `X-Algolia-API-Key`.
+
+### Query parameters
+
+Those are the available query parameters you can use to filter your search results:
+
+<!-- Indentation is on purpose for <td>s, to allow HTML inside markdown -->
+<table class="api">
+  <thead><tr>
+    <th>Option</th>
+    <th>Description</th>
+  </tr></thead>
+  <tbody>
+    <tr>
+<td markdown="1">
+<div class="api-entry" id="api-options-type"><code>type</code></div>
+Type: string
+</td>
+<td markdown="1">
+Restrict the search results to a specific type.
+
+Available types:
+
+- `city`
+- `country`
+- `address`
+
+**Default**: Search in all types.
+</td>
+    </tr>
+    <tr>
+<td markdown="1">
+<div class="api-entry" id="api-options-type"><code>hitsPerPage</code></div>
+Type: number
+</td>
+<td markdown="1">
+Specifies how many results you want to retrieve per search.
+
+**Default**: 20.
+</td>
+    </tr>
+    <tr>
+<td markdown="1">
+<div class="api-entry" id="api-options-language"><code>language</code></div>
+Type: string
+</td>
+<td markdown="1">
+If specified, restrict the search results to a single language.
+You can pass two letters country codes ([ISO 639-1](https://en.wikipedia.org/wiki/ISO_3166-1#Officially_assigned_code_elements)).
+</td>
+    </tr>
+    <tr>
+<td markdown="1">
+<div class="api-entry" id="api-options-countries"><code>countries</code></div>
+Type: string
+</td>
+<td markdown="1">
+If specified, restrict the search results to a specific list of comma-separated countries. You can pass two letters country codes ([ISO 639-1](https://en.wikipedia.org/wiki/ISO_3166-1#Officially_assigned_code_elements)).
+
+**Default**: Search on the whole planet.
+</td>
+    </tr>
+    <tr>
+<td markdown="1">
+<div class="api-entry" id="api-options-aroundLatLng"><code>aroundLatLng</code></div>
+Type: string
+</td>
+<td markdown="1">
+Force to *first* search around a specific latitude longitude. The option value must be provided as a string:
+`latitude,longitude` like `12.232,23.1`.
+
+The default is to search around the location of the user determined via his IP address (geoip).
+</td>
+    </tr>
+    <tr>
+<td markdown="1">
+<div class="api-entry" id="api-options-aroundLatLngViaIP"><code>aroundLatLngViaIP</code></div>
+Type: boolean
+</td>
+<td markdown="1">
+Whether or not to *first* search around the geolocation of the user found via his IP address. This is `true` by
+default.
+</td>
+    </tr>
+    <tr>
+<td markdown="1">
+<div class="api-entry" id="api-options-aroundRadius"><code>aroundRadius</code></div>
+Type: number
+</td>
+<td markdown="1">
+Radius in meters to search around the latitude/longitutde. Otherwise a default radius is automatically computed
+given the area density.
+</td>
+    </tr>
+  </tbody>
+</table>
+
+### Answer
+
+The API answers is using the JSON format and looks like:
+
+```json
+{
+  "hits" : [
+    {
+       "objectID" : "145746683_7444",
+       "locale_names" : {
+          "ar" : ["باريس"],
+          "ru" : ["Париж"],
+          "fr" : ["Paris", "Lutèce"],
+          "it" : ["Parigi"],
+          "default" : ["Paris"],
+          "pl" : ["Paryż"],
+          "hu" : ["Párizs"],
+          "ja" : ["パリ"],
+          "nl" : ["Parijs"],
+          "es" : ["París"],
+          "zh" : ["巴黎"]
+       },
+       "city" : {
+          "ja" : ["パリ"],
+          "nl" : ["Parijs"],
+          "es" : ["París"],
+          "zh" : ["巴黎"],
+          "ru" : ["Париж"],
+          "ar" : ["باريس"],
+          "it" : ["Parigi"],
+          "pl" : ["Paryż"],
+          "default" : ["Paris"],
+          "hu" : ["Párizs"]
+       },
+       "county" : {
+          "hu" : ["Párizs"],
+          "pl" : ["Paryż"],
+          "default" : ["Paris"],
+          "it" : ["Parigi"],
+          "ar" : ["باريس"],
+          "ru" : ["Париж"],
+          "zh" : ["巴黎"],
+          "es" : ["París"],
+          "ja" : ["パリ"],
+          "nl" : ["Parijs"]
+       },
+       "administrative" : ["Île-de-France"],
+       "country" : {
+          "es" : "Francia",
+          "nl" : "Frankrijk",
+          "ja" : "フランス",
+          "ro" : "Franța",
+          "zh" : "法国",
+          "it" : "Francia",
+          "ru" : "Франция",
+          "ar" : "فرنسا",
+          "de" : "Frankreich",
+          "pt" : "França",
+          "hu" : "Franciaország",
+          "default" : "France",
+          "pl" : "Francja"
+       },
+       "country_code" : "fr",
+       "postcode" : ["75000"],
+       "population" : 2243833,
+       "_geoloc" : {
+          "lat" : 48.8564,
+          "lng" : 2.3521
+       },
+       "_highlightResult" : {
+          "country" : {
+             // [...]
+          },
+          "city" : {
+             // [...]
+          },
+          "county" : {
+             // [...]
+          },
+          "postcode" : [
+             // [...]
+          ],
+          "administrative" : [
+             // [...]
+          ],
+          "locale_names" : {
+             "default" : [
+                {
+                   "value" : "<em>Paris</em>",
+                   "fullyHighlighted" : true,
+                   "matchedWords" : ["paris"],
+                   "matchLevel" : "full"
+                }
+             ]
+             // [...]
+          }
+       }
+    }
+  ],
+  "nbHits" : 1,
+  "query" : "Paris"
+}
+```
+
+<table class="api">
+  <thead><tr>
+    <th>Property</th>
+    <th>Description</th>
+  </tr></thead>
+  <tbody>
+    <tr>
+<td markdown="1">
+<div class="api-entry" id="api-suggestion-name"><code>locale_name</code></div>
+</td>
+<td markdown="1">
+List of names of the place. If no `language` parameter is specified, retrieves all of them.
+
+Examples:
+
+ - Paris
+ - 589 Howard Street
+</td>
+    </tr>
+    <tr>
+<td markdown="1">
+<div class="api-entry" id="api-suggestion-city"><code>city</code></div>
+</td>
+<td markdown="1">
+List of the associated city names. If no `language` parameter is specified, retrieves all of them.
+</td>
+    </tr>
+    <tr>
+<td markdown="1">
+<div class="api-entry" id="api-suggestion-county"><code>county</code></div>
+</td>
+<td markdown="1">
+List of the associated county names. If no `language` parameter is specified, retrieves all of them.
+</td>
+    </tr>
+    <tr>
+<td markdown="1">
+<div class="api-entry" id="api-suggestion-administrative"><code>administrative</code></div>
+</td>
+<td markdown="1">
+List of associated administrative region names.
+
+Examples:
+
+ - Pays de la Loire
+ - Texas
+ - Catalunya
+</td>
+    </tr>
+    <tr>
+<td markdown="1">
+<div class="api-entry" id="api-suggestion-country"><code>country</code></div>
+</td>
+<td markdown="1">
+Associated country name.
+</td>
+    </tr>
+    <tr>
+<td markdown="1">
+<div class="api-entry" id="api-suggestion-countryCode"><code>countryCode</code></div>
+</td>
+<td markdown="1">
+Two letters country code ([ISO 639-1](https://en.wikipedia.org/wiki/ISO_3166-1#Officially_assigned_code_elements)).
+</td>
+    </tr>
+    <tr>
+<td markdown="1">
+<div class="api-entry" id="api-suggestion-postcode"><code>postcode</code></div>
+</td>
+<td markdown="1">
+List of associated postcodes.
+</td>
+    </tr>
+    <tr>
+<td markdown="1">
+<div class="api-entry" id="api-suggestion-population"><code>population</code></div>
+</td>
+<td markdown="1">
+Associated population.
+</td>
+    </tr>
+    <tr>
+<td markdown="1">
+<div class="api-entry" id="api-suggestion-latlng"><code>_geoloc</code></div>
+</td>
+<td markdown="1">
+Associated list of latitude and longitude.
+
+Examples:
+
+ - `[{lat: 48.797885, lng: 2.337034}]`
+</td>
+    </tr>
+    <tr>
+<td markdown="1">
+<div class="api-entry" id="api-suggestion-highlightResult"><code>_highlightResult</code></div>
+</td>
+<td markdown="1">
+The associated highlighting information.
+</td>
+    </tr>
+</tbody>
+</table>
+
+**Note:** The non-documented attributes of the JSON answer may change, don't rely on them.
