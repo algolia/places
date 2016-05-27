@@ -95,6 +95,30 @@
     padding-left: 30px;
     padding-top: 120px;
 
+    // Rate-limits table
+    table.rate-limits {
+      padding: 0;
+      border-collapse: collapse;
+      border-spacing: 0;
+      width: 80%;
+      display: block;
+      margin: 0 auto;
+
+      tr {
+        th {
+          background: #efefef;
+        }
+        td {
+          vertical-align: top;
+        }
+        th, td {
+          padding: 1em 2em;
+          text-align: center;
+          border: 1px solid #cccccc;
+        }
+      }
+    }
+
     // API tables
     table.api {
       padding: 0;

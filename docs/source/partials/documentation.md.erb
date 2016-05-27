@@ -552,7 +552,28 @@ To do so, you can use the [Polyfill.io service](https://cdn.polyfill.io/v2/docs/
 
 ## Rate limits
 
-Algolia Places enforces a default limit of **1,000 requests per hour and per IP** for free usage. You can contact us by <a href="mailto:support@algolia.com">e-mail</a> if you need more.
+The Algolia Places API enforces some rate limits.
+
+<table class="rate-limits">
+  <thead>
+    <tr>
+      <th>1,000 requests / day</th>
+      <th>Need more?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Free</td>
+      <td>
+        Requires authentication
+        <br />
+        <a href="mailto:support@algolia.com">Contact us</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+The rate-limits computation are per IP and per HTTP Referer.
 
 ## License
 
