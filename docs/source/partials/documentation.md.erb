@@ -184,13 +184,13 @@ Change the templates used in place.js.
 
 Available templates:
 
-- inputValue
-- dropdownSuggestion
+- value
+- suggestion
 
 Each template is a function that will receive a [suggestion object](#suggestion-object) and must return
 a `string`.
 
-`inputValue` must return a plain string as it's used to fill the `input.value`. `dropdownSuggestion` can
+`value` must return a plain string as it's used to fill the `input.value`. `suggestion` should
 return an HTML string to be displayed in the dropdown.
 </td>
     </tr>
@@ -425,9 +425,39 @@ Examples:
   </tbody>
 </table>
 
-### API
+### autocomplete.js
 
-The documentation of the underlying REST API can be found [here](rest.html).
+places.js is reusing [Algolia's autocomplete.js](https://github.com/algolia/autocomplete.js) library.
+
+To be able to mix and search into your own data along with showing results of places,
+we provide an [autocomplete.js dataset](https://github.com/algolia/autocomplete.js#datasets):
+
+```html
+<%= javascript_include_tag config[:places_autocomplete_dataset_cdn_url] %>
+```
+
+See the [autocomplete.js dataset example](examples.html#autocompletejs).
+
+You will need an [Algolia account](https://www.algolia.com/) to be able to search into your own data.
+
+The autocomplete.js dataset is exported as `placesAutocompleteDataset` in the window, also available with npm
+using:
+
+```js
+import placesAutocompleteDataset from 'places.js/placesAutocompleteDataset';
+```
+
+All the places.js [options](#options) are available and can be passed to
+the `placesAutocompleteDataset` function.
+
+The places.js CSS file is automatically loaded so that the rendering of suggestions is already the one
+you will expect.
+
+### REST API
+
+Behind the places.js the JavaScript library lies a complete REST API.
+
+Read the underlying [REST API documentation](rest.html).
 
 ## Styling
 
@@ -475,54 +505,54 @@ Here's a default empty CSS file you can copy paste to tune the default styling:
 .algolia-places {}
 
 /* The algolia-places input */
-.algolia-places .ap-input, .algolia-places .ap-hint {}
+.ap-input, .ap-hint {}
 
 /* The style of the svg icons when the input is on hover */
-.algolia-places .ap-input:hover ~ .ap-input-icon svg,
-.algolia-places .ap-input:focus ~ .ap-input-icon svg,
-.algolia-places .ap-input-icon:hover svg {}
+.ap-input:hover ~ .ap-input-icon svg,
+.ap-input:focus ~ .ap-input-icon svg,
+.ap-input-icon:hover svg {}
 
 /* The dropdown style */
-.algolia-places .ap-dropdown-menu {}
+.ap-dropdown-menu {}
 
 /* The suggestions style */
-.algolia-places .ap-suggestion {}
+.ap-suggestion {}
 
 /* The highlighted names style */
-.algolia-places .ap-suggestion em {}
+.ap-suggestion em {}
 
 /* The addresses style */
-.algolia-places .ap-address {}
+.ap-address {}
 
 /* The icons of each suggestions ( can be a building or a pin ) */
-.algolia-places .ap-suggestion-icon {}
+.ap-suggestion-icon {}
 
 /* The style of the svg inside the .ap-suggestion-icon */
-.algolia-places .ap-suggestion-icon svg {}
+.ap-suggestion-icon svg {}
 
 /* The icons inside the input ( can be a pin or a cross ) */
-.algolia-places .ap-input-icon {}
+.ap-input-icon {}
 
 /* The style of the svg inside the .ap-input-icon */
-.algolia-places .ap-input-icon svg {}
+.ap-input-icon svg {}
 
 /* .a-cursor is the class a suggestion go on hover */
-.algolia-places .ap-cursor {}
+.ap-cursor {}
 
 /* The style of the svg icon, when the .ap-suggestion is on hover */
-.algolia-places .ap-cursor .ap-suggestion-icon svg {}
+.ap-cursor .ap-suggestion-icon svg {}
 
 /* The styles of the Algolia Places input footer */
-.algolia-places .ap-footer {}
+.ap-footer {}
 
 /* The styles of the Algolia Places input footer links */
-.algolia-places .ap-footer a {}
+.ap-footer a {}
 
 /* The styles of the Algolia Places input footer svg icons */
-.algolia-places .ap-footer a svg {}
+.ap-footer a svg {}
 
 /* The styles of the Algolia Places input footer on hover */
-.algolia-places .ap-footer:hover {}
+.ap-footer:hover {}
 ```
 
 ### Disabling default style
@@ -533,12 +563,13 @@ Once you do so, the default `algolia-places` class name will turn into `algolia-
 
 ## Browser support
 
-Algolia Places comes with native support for all current major browsers: Chrome, Firefox, Edge, Opera and Safari.
+Algolia Places comes with native support for all latest stable versions of
+current major browsers: Chrome, Firefox, Edge, Opera and Safari. Previous versions of those
+modern browsers should also work. But since those are auto-updating browsers, we do not guarantee it.
 
-It also works natively on Internet Explorer 11 and 10.
+Algolia Places also works natively on Internet Explorer 11 and 10.
 
 To support Internet Explorer 9, you need to include a polyfill for [Element.classList](https://developer.mozilla.org/en-US/docs/Web/API/Element/classList). To do so, you can use the [Polyfill.io service](https://cdn.polyfill.io/v2/docs/).
-
 
 ## Rate limits
 

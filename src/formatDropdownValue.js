@@ -8,13 +8,20 @@ const icons = {
   country: countryIcon
 };
 
-export default function formatDropdownValue({
-  administrative,
-  city,
-  country,
-  type,
-  name
-}) {
+export default function formatDropdownValue(options) {
+  let {
+    administrative,
+    city,
+    country,
+    type,
+    hit
+  } = options;
+
+  const name = hit._highlightResult.locale_names[0].value;
+  city = city ? hit._highlightResult.city[0].value : undefined;
+  administrative = administrative ? hit._highlightResult.administrative[0].value : undefined;
+  country = country ? hit._highlightResult.country.value : undefined;
+
   const out = `<span class="ap-suggestion-icon">${icons[type].trim()}</span>
 <span class="ap-name">${name}</span>
 <span class="ap-address">

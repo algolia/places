@@ -20,7 +20,12 @@ if (process.env.NODE_ENV === 'development') {
       if (typeof console.table === 'function') {
         Object.keys(eventData).forEach(dataKeyName => {
           console.log(`data: ${dataKeyName}`);
-          console.table(eventData[dataKeyName]);
+          const data = eventData[dataKeyName];
+          if (Array.isArray(data)) {
+            console.table(data);
+          } else {
+            console.log(data);
+          }
         });
       } else {
         console.log('event data:', eventData);
@@ -40,6 +45,13 @@ placesAutocomplete.on('change', function(e) {
     const content = {
       ...e,
       // hide advanced API event data in demo
+      suggestion: {
+        ...e.suggestion,
+        hit: undefined,
+        hitIndex: undefined,
+        query: undefined,
+        rawAnswer: undefined
+      },
       rawAnswer: undefined,
       suggestionIndex: undefined
     };

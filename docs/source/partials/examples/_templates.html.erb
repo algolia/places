@@ -6,10 +6,10 @@
   var placesAutocomplete = places({
     container: document.querySelector('#address-templates'),
     templates: {
-      inputValue: function(suggestion) {
+      value: function(suggestion) {
         return 'Maybe ' + suggestion.name + ' in ' + suggestion.country + '?';
       },
-      dropdownSuggestion: function(suggestion) {
+      suggestion: function(suggestion) {
         return '<u>Click here to select ' + suggestion.name + ' from ' + suggestion.country + '</u>';
       }
     }

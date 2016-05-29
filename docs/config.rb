@@ -26,11 +26,12 @@ page '/*.txt', layout: false
 
 # Reload the browser automatically whenever files change
 configure :development do
-  config[:places_lib_url] = :places
   activate :gzip
   activate :livereload
+  config[:places_lib_url] = 'places'
+  config[:places_autocomplete_dataset_lib_url] = 'placesAutocompleteDataset'
   activate :external_pipeline,
-    name: :places,
+    name: 'places',
     command: 'npm run js:watch -- --output-path docs/.webpack/js',
     source: '.webpack'
 end
@@ -58,6 +59,7 @@ activate :protect_emails
 
 config[:places_lib_version] = ENV['VERSION']
 config[:places_cdn_url] = 'https://cdn.jsdelivr.net/places.js/0/places.min.js'
+config[:places_autocomplete_dataset_cdn_url] = 'https://cdn.jsdelivr.net/places.js/0/placesAutocompleteDataset.min.js'
 
 helpers do
   def nav_active(path)
@@ -68,6 +70,7 @@ end
 # Build-specific configuration
 configure :build do
   config[:places_lib_url] = config[:places_cdn_url]
+  config[:places_autocomplete_dataset_lib_url] = config[:places_autocomplete_dataset_cdn_url]
   # this may trigger bad behavior, if so, see
   # https://github.com/middleman/middleman-minify-html
   activate :minify_html

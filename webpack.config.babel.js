@@ -2,12 +2,15 @@ import webpack from 'webpack';
 import {join} from 'path';
 
 export default {
-  entry: './index.js',
+  entry: {
+    places: './index.js',
+    placesAutocompleteDataset: './autocompleteDataset.js'
+  },
   devtool: 'source-map',
   output: {
     path: './dist/cdn',
-    filename: 'places.js',
-    library: 'places',
+    filename: '[name].js',
+    library: '[name]',
     libraryTarget: 'umd'
   },
   module: {

@@ -11,104 +11,104 @@
 // see http://pxtoem.com/ to change/add values
 .algolia-places {
   width: 100%;
+}
 
-  .ap-input, .ap-hint {
-    width: 100%;
-    padding-right: 35px;
+.ap-input, .ap-hint {
+  width: 100%;
+  padding-right: 35px;
+}
+
+.ap-input:hover ~ .ap-input-icon svg,
+.ap-input:focus ~ .ap-input-icon svg,
+.ap-input-icon:hover svg {
+  fill: #aaaaaa;
+}
+
+// Dropdown
+.ap-dropdown-menu {
+  width: 100%;
+  background: #ffffff;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  margin-top: 3px;
+  overflow: hidden; // avoid non rounded borders to overlap
+}
+
+.ap-suggestion {
+  cursor: pointer;
+  height: 46px;
+  line-height: 46px;
+  padding-left: 18px;
+  overflow: hidden;
+
+  em {
+    font-weight: bold;
+    font-style: normal;
   }
+}
 
-  .ap-input:hover ~ .ap-input-icon svg,
-  .ap-input:focus ~ .ap-input-icon svg,
-  .ap-input-icon:hover svg {
+.ap-address {
+  font-size: smaller;
+  margin-left: 12px; // 12px when font is 14px
+  color: #aaaaaa;
+}
+
+.ap-suggestion-icon {
+  margin-right: 10px;
+  width: 14px;
+  height: 20px;
+  vertical-align: middle; // handles right alignment with text
+
+  svg {
+    transform: scale(0.90) translateY(2px);
+    fill: #cfcfcf;
+  }
+}
+
+.ap-input-icon {
+  border: 0;
+  background: transparent;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 16px;
+  outline: none;
+
+  svg {
+    fill: #cfcfcf;
+    // keep the icons centered
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+  }
+}
+
+.ap-cursor {
+  background: #efefef;
+
+  .ap-suggestion-icon svg {
+    transform: scale(1);
     fill: #aaaaaa;
   }
+}
 
-  // Dropdown
-  .ap-dropdown-menu {
-    width: 100%;
-    background: #ffffff;
-    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
-    border-radius: 3px;
-    margin-top: 3px;
-    overflow: hidden; // avoid non rounded borders to overlap
-  }
+.ap-footer {
+  opacity: .8;
+  text-align: right;
+  padding: .5em 1em .5em 0;
+  font-size: 12px;
+  line-height: 12px;
 
-  .ap-suggestion {
-    cursor: pointer;
-    height: 46px;
-    line-height: 46px;
-    padding-left: 18px;
-    overflow: hidden;
-
-    em {
-      font-weight: bold;
-      font-style: normal;
-    }
-  }
-
-  .ap-address {
-    font-size: smaller;
-    margin-left: 12px; // 12px when font is 14px
-    color: #aaaaaa;
-  }
-
-  .ap-suggestion-icon {
-    margin-right: 10px;
-    width: 14px;
-    height: 20px;
-    vertical-align: middle; // handles right alignment with text
-
+  a {
+    color: inherit;
+    text-decoration: none;
     svg {
-      transform: scale(0.90) translateY(2px);
-      fill: #cfcfcf;
+      vertical-align: middle;
     }
   }
 
-  .ap-input-icon {
-    border: 0;
-    background: transparent;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 16px;
-    outline: none;
-
-    svg {
-      fill: #cfcfcf;
-      // keep the icons centered
-      position: absolute;
-      top: 50%;
-      right: 0;
-      transform: translateY(-50%);
-    }
-  }
-
-  .ap-cursor {
-    background: #efefef;
-
-    .ap-suggestion-icon svg {
-      transform: scale(1);
-      fill: #aaaaaa;
-    }
-  }
-
-  .ap-footer {
-    opacity: .8;
-    text-align: right;
-    padding: .5em 1em .5em 0;
-    font-size: 12px;
-    line-height: 12px;
-
-    a {
-      color: inherit;
-      text-decoration: none;
-      svg {
-        vertical-align: middle;
-      }
-    }
-
-    &:hover {
-      opacity: 1;
-    }
+  &:hover {
+    opacity: 1;
   }
 }
