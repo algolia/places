@@ -55,7 +55,8 @@
   }
 
   .api-entry {
-    margin: 1em 0;
+    margin: 2em 0;
+
     code {
       font-size: 100%;
       font-weight: bold;
@@ -63,10 +64,15 @@
   }
 
   .api tr td:first-child {
+    vertical-align: top;
+
     p, ul {
       font-size: 90%;
       margin: .5em 0;
       line-height: 1.5em;
+    }
+    ul {
+      padding-left: 1.5em;
     }
     em {
       text-decoration: underline;

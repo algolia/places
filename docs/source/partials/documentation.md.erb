@@ -55,11 +55,21 @@ As a result, you will get the Algolia Places autocompletion menu:
 
 <input type="search" id="docs-getting-started-demo" class="form-control" placeholder="Where are we going?" />
 
-## API
+## Usage
+
+To turn any HTML `<input />` into an address search bar make sure you include the `places.js` library and use the following initialization code:
+
+```js
+var options = {
+  container: '#my-input-DOM-selector',
+  // ...
+};
+places(options);
+```
 
 ### Options
 
-Here are the options you can pass to the `places(options)` function.
+Here are the options you can pass to the `places(options)` function:
 
 <!-- Indentation is on purpose for <td>s, to allow HTML inside markdown -->
 <table class="api">
@@ -70,11 +80,11 @@ Here are the options you can pass to the `places(options)` function.
   <tbody>
     <tr>
 <td markdown="1">
-<div class="api-entry" id="api-options-container"><code>container</code></div>
+<div class="api-entry" id="api-options-container"><code>container<span class="link">*</span></code></div>
 
-Type: [HTMLInputElement](https://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/html2/HTMLInputElement.html)
+Type: **[HTMLInputElement](https://www.w3.org/2003/01/dom2-javadoc/org/w3c/dom/html2/HTMLInputElement.html)**
 
-required: **yes**
+<span class="link">*</span> Required
 </td>
 <td markdown="1">
 Determines the `<input>` that will be used for the Algolia Places autocompletion menu.
@@ -85,52 +95,27 @@ You just need to pass a reference to an Element. Obtained via
     </tr>
     <tr>
 <td markdown="1">
-<div class="api-entry" id="api-options-aroundLatLng"><code>aroundLatLng</code></div>
+<div class="api-entry" id="api-options-type"><code>type</code></div>
 
-Type: string
-
-required: no
+Type: **string**
 </td>
 <td markdown="1">
-Force to *first* search around a specific latitude longitude. The option value must be provided as a string:
-`latitude,longitude` like `12.232,23.1`.
+Restrict the search results to a specific type.
 
-The default is to search around the location of the user determined via his IP address (geoip).
-</td>
-    </tr>
-    <tr>
-<td markdown="1">
-<div class="api-entry" id="api-options-aroundLatLngViaIP"><code>aroundLatLngViaIP</code></div>
+Available types:
 
-Type: boolean
+- city
+- country
+- address
 
-required: no
-</td>
-<td markdown="1">
-Whether or not to *first* search around the geolocation of the user found via his IP address. This is `true` by
-default.
-</td>
-    </tr>
-    <tr>
-<td markdown="1">
-<div class="api-entry" id="api-options-aroundRadius"><code>aroundRadius</code></div>
-
-Type: number
-
-required: no
-</td>
-<td markdown="1">
-Radius in meters to search around the latitude longitutde. Otherwise a default radius is automatically computed
-given the area density.
+**Default**: Search in all types.
 </td>
     </tr>
     <tr>
 <td markdown="1">
 <div class="api-entry" id="api-options-language"><code>language</code></div>
 
-Type: string
-
-required: no
+Type: **string**
 </td>
 <td markdown="1">
 Change the default language of the results.
@@ -144,9 +129,7 @@ Example: `en` when navigator.language is `en_US`.
 <td markdown="1">
 <div class="api-entry" id="api-options-countries"><code>countries</code></div>
 
-Type: string[]
-
-required: no
+Type: **string[]**
 </td>
 <td markdown="1">
 Change the countries to search in. You must pass an array of two letters country codes
@@ -157,11 +140,44 @@ Change the countries to search in. You must pass an array of two letters country
     </tr>
     <tr>
 <td markdown="1">
+<div class="api-entry" id="api-options-aroundLatLng"><code>aroundLatLng</code></div>
+
+Type: **string**
+</td>
+<td markdown="1">
+Force to *first* search around a specific latitude longitude. The option value must be provided as a string:
+`latitude,longitude` like `12.232,23.1`.
+
+The default is to search around the location of the user determined via his IP address (geoip).
+</td>
+    </tr>
+    <tr>
+<td markdown="1">
+<div class="api-entry" id="api-options-aroundLatLngViaIP"><code>aroundLatLngViaIP</code></div>
+
+Type: **boolean**
+</td>
+<td markdown="1">
+Whether or not to *first* search around the geolocation of the user found via his IP address. This is `true` by
+default.
+</td>
+    </tr>
+    <tr>
+<td markdown="1">
+<div class="api-entry" id="api-options-aroundRadius"><code>aroundRadius</code></div>
+
+Type: **number**
+</td>
+<td markdown="1">
+Radius in meters to search around the latitude longitutde. Otherwise a default radius is automatically computed
+given the area density.
+</td>
+    </tr>
+    <tr>
+<td markdown="1">
 <div class="api-entry" id="api-options-templates"><code>templates</code></div>
 
-Type: Object
-
-required: no
+Type: **Object**
 </td>
 <td markdown="1">
 Change the templates used in place.js.
@@ -180,31 +196,9 @@ return an HTML string to be displayed in the dropdown.
     </tr>
     <tr>
 <td markdown="1">
-<div class="api-entry" id="api-options-type"><code>type</code></div>
-
-Type: string
-
-required: no
-</td>
-<td markdown="1">
-Change the type of results you want to search in.
-
-Available types:
-
-- city
-- country
-- address
-
-**Default**: Search in all types.
-</td>
-    </tr>
-    <tr>
-<td markdown="1">
 <div class="api-entry" id="api-options-style"><code>style</code></div>
 
-Type: boolean
-
-required: no
+Type: **boolean**
 </td>
 <td markdown="1">
 Control whether the default styles should be used.
@@ -307,7 +301,7 @@ You can use this event to highlight markers on a map, see the [map example](exam
   </tbody>
 </table>
 
-### Suggestion object
+### Suggestions
 
 All of the events will send suggestion objects with those properties:
 
@@ -319,18 +313,27 @@ All of the events will send suggestion objects with those properties:
   <tbody>
     <tr>
 <td markdown="1">
-<div class="api-entry" id="api-suggestion-administrative"><code>administrative</code></div>
+<div class="api-entry" id="api-suggestion-type"><code>type</code></div>
 
 Type: string
 </td>
 <td markdown="1">
-Administrative region depending on the country.
+Type of the current suggestion, possible values: `country`, `city`, `address`.
+</td>
+    </tr>
+    <tr>
+<td markdown="1">
+<div class="api-entry" id="api-suggestion-name"><code>name</code></div>
+
+Type: string
+</td>
+<td markdown="1">
+Display name of the place found.
 
 Examples:
 
- - Pays de la Loire
- - Texas
- - Catalunya
+ - Paris
+ - 589 Howard Street San Francisco
 </td>
     </tr>
     <tr>
@@ -365,12 +368,18 @@ Two letters country code ([ISO 639-1](https://en.wikipedia.org/wiki/ISO_3166-1#O
     </tr>
     <tr>
 <td markdown="1">
-<div class="api-entry" id="api-suggestion-type"><code>type</code></div>
+<div class="api-entry" id="api-suggestion-administrative"><code>administrative</code></div>
 
 Type: string
 </td>
 <td markdown="1">
-Type of the current suggestion, possible values: `country`, `city`, `address`.
+Administrative region depending on the country.
+
+Examples:
+
+ - Pays de la Loire
+ - Texas
+ - Catalunya
 </td>
     </tr>
     <tr>
@@ -381,21 +390,6 @@ Type: Object
 </td>
 <td markdown="1">
 Latitude and longitude of the place found. Shape: `{lat: 48.797885, lng: 2.337034}`.
-</td>
-    </tr>
-    <tr>
-<td markdown="1">
-<div class="api-entry" id="api-suggestion-name"><code>name</code></div>
-
-Type: string
-</td>
-<td markdown="1">
-Display name of the place found.
-
-Examples:
-
- - Paris
- - 589 Howard Street San Francisco
 </td>
     </tr>
     <tr>
@@ -430,6 +424,10 @@ Examples:
     </tr>
   </tbody>
 </table>
+
+### API
+
+The documentation of the underlying REST API can be found [here](rest.html).
 
 ## Styling
 
@@ -529,25 +527,17 @@ Here's a default empty CSS file you can copy paste to tune the default styling:
 
 ### Disabling default style
 
-By default we insert some styling into your page.
+By default we insert some styling into your page. You can disable all the Algolia Places styling by passing the `style: false` option.
 
-You can disable all the Algolia Places styling by passing the `style: false` option.
-
-Once you do so, the default `algolia-places` class name will turn into `algolia-places-nostyle`.
-
-See our [styling examples](./examples.html#input-styling).
+Once you do so, the default `algolia-places` class name will turn into `algolia-places-nostyle`. See our [styling examples](./examples.html#input-styling).
 
 ## Browser support
 
-Algolia Places comes with native support for all current
-major browsers: Chrome, Firefox, Edge, Opera and Safari.
+Algolia Places comes with native support for all current major browsers: Chrome, Firefox, Edge, Opera and Safari.
 
 It also works natively on Internet Explorer 11 and 10.
 
-To support Internet Explorer 9, you need to include a polyfill for
-[Element.classList](https://developer.mozilla.org/en-US/docs/Web/API/Element/classList).
-
-To do so, you can use the [Polyfill.io service](https://cdn.polyfill.io/v2/docs/).
+To support Internet Explorer 9, you need to include a polyfill for [Element.classList](https://developer.mozilla.org/en-US/docs/Web/API/Element/classList). To do so, you can use the [Polyfill.io service](https://cdn.polyfill.io/v2/docs/).
 
 
 ## Rate limits

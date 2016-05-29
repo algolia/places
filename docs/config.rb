@@ -43,20 +43,12 @@ set :markdown, input: 'GFM'
 
 activate :syntax, line_numbers: true, css_class: 'codehilite'
 
-activate :external_pipeline,
-  name: :index,
-  command: "BUNDLE=index npm run docs:js:#{build? ? :build : :watch}",
-  source: '.webpack'
-
-activate :external_pipeline,
-  name: :documentation,
-  command: "BUNDLE=documentation npm run docs:js:#{build? ? :build : :watch}",
-  source: '.webpack'
-
-activate :external_pipeline,
-  name: :examples,
-  command: "BUNDLE=examples npm run docs:js:#{build? ? :build : :watch}",
-  source: '.webpack'
+[:index, :documentation, :rest, :examples].each do |name|
+  activate :external_pipeline,
+    name: name,
+    command: "BUNDLE=#{name} npm run docs:js:#{build? ? :build : :watch}",
+    source: '.webpack'
+end
 
 activate :protect_emails
 
