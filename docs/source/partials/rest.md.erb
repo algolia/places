@@ -13,7 +13,7 @@ In order to guarantee a very high-availability, we recommend to implement a retr
 To search using the Algolia Places REST API, you need to target the `/1/places/query` endpoint with a `POST` request.
 
 ```bash
-$ curl -X POST 'https://places-dsn.algolia.net/1/places/query' --data '{"params":"query=Paris"}'
+$ curl -X POST 'https://places-dsn.algolia.net/1/places/query' --data '{"query": "Paris"}'
 ```
 
 **Note:** The relative path prefix `/1/` indicates that we are currently using version 1 of the API.
@@ -24,6 +24,13 @@ If you're using the authenticated version of our API (higher rate-limits), you'l
 
   - `X-Algolia-Application-Id`,
   - and `X-Algolia-API-Key`.
+
+```bash
+$ curl -X POST 'https://places-dsn.algolia.net/1/places/query' \
+  -H 'X-Algolia-Application-Id: YourApplicationId' \
+  -H 'X-Algolia-API-Key: YourAPIKey' \
+  --data '{"query": "Paris"}'
+```
 
 ### Query parameters
 
@@ -119,6 +126,13 @@ given the area density.
     </tr>
   </tbody>
 </table>
+
+For instance, to search for **cities** in the **US** and in **France**, you would do:
+
+```bash
+$ curl -X POST 'https://places-dsn.algolia.net/1/places/query' \
+  --data '{"query": "Paris", "type": "city", "countries": ["us", "fr"]}'
+```
 
 ### JSON answer
 
