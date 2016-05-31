@@ -13,7 +13,7 @@ In order to guarantee a very high-availability, we recommend to implement a retr
 To search using the Algolia Places REST API, you need to target the `/1/places/query` endpoint with a `POST` request.
 
 ```bash
-$ curl -X POST 'https://places-dsn.algolia.net/1/places/query' --data '{"params":"query=Paris"}'
+$ curl -X POST 'https://places-dsn.algolia.net/1/places/query' --data '{"query": "Paris"}'
 ```
 
 **Note:** The relative path prefix `/1/` indicates that we are currently using version 1 of the API.
@@ -24,6 +24,13 @@ If you're using the authenticated version of our API (higher rate-limits), you'l
 
   - `X-Algolia-Application-Id`,
   - and `X-Algolia-API-Key`.
+
+```bash
+$ curl -X POST 'https://places-dsn.algolia.net/1/places/query' \
+  -H 'X-Algolia-Application-Id: YourApplicationId' \
+  -H 'X-Algolia-API-Key: YourAPIKey' \
+  --data '{"query": "Paris"}'
+```
 
 ### Query parameters
 
@@ -119,6 +126,13 @@ given the area density.
     </tr>
   </tbody>
 </table>
+
+For instance, to search for **cities** in the **US** and in **France**, you would do:
+
+```bash
+$ curl -X POST 'https://places-dsn.algolia.net/1/places/query' \
+  --data '{"query": "Paris", "type": "city", "countries": ["us", "fr"]}'
+```
 
 ### JSON answer
 
@@ -298,3 +312,21 @@ The associated highlighting information.
 </table>
 
 **Note:** The non-documented attributes of the JSON answer may change, don't rely on them.
+
+### Query strategy
+
+The Algolia Places REST API leverages [Algolia's Search API](https://www.algolia.com), the [OpenStreetMap](https://www.openstreetmap.org/) and the [GeoNames](http://www.geonames.org/) data.
+
+When you perform an Algolia Places Query:
+
+ 1. If you don't specify any `aroundLatLng` query parameter or if your source IP address isn't geo-localized, results will come from all around the world.
+ 1. If you specify an `aroundLatLng` query parameter or if your source IP address is geo-localized, results will be composed by:
+   - Places around you (&lt;10km),
+   - Places in your country,
+   - Popular places all around the world.
+ 1. Specifying a `country` query parameter will override this behavior, restricting the results to come from a subset of the countries.
+ 1. Numerical tokens are considered as optional words.
+ 1. Stopwords in the middle of the query are removed from the underlying search query (performance and relevancy purposes).
+ 1. Popular cities will always be retrieved first.
+ 1. If both a `city` and an `address` are matching, the city will be retrieved first.
+ 1. If the `query` doesn't retrieve any results, we fallback on a degraded query strategy: all words are considered optional and we only target cities.
