@@ -12,10 +12,15 @@ export default function activateClipboard(codeSamples) {
       text: () => codeSample.textContent
     });
 
-    copyToClipboard.classList.add('hint--top');
-    copyToClipboard.addEventListener('mouseleave', () => copyToClipboard.removeAttribute('data-hint'));
-    clipboard.on('success', () => copyToClipboard.setAttribute('data-hint', 'Copied!'));
+    copyToClipboard.addEventListener('mouseleave', () => {
+      copyToClipboard.removeAttribute('aria-label');
+      copyToClipboard.classList.remove('hint--top');
+    });
+    clipboard.on('success', () => {
+      copyToClipboard.classList.add('hint--top');
+      copyToClipboard.setAttribute('aria-label', 'Copied!');
+    });
     // safari: https://clipboardjs.com/#browser-support
-    clipboard.on('error', () => copyToClipboard.setAttribute('data-hint', 'Hit ⌘+C to copy'));
+    clipboard.on('error', () => copyToClipboard.setAttribute('aria-label', 'Hit ⌘+C to copy'));
   });
 }

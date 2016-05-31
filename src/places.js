@@ -5,60 +5,20 @@ import algoliasearch from 'algoliasearch/lite';
 import autocomplete from 'autocomplete.js';
 
 import './navigatorLanguage.js';
-import defaultTemplates from './defaultTemplates.js';
-import formatHit from './formatHit.js';
-import version from './version.js';
+
+import createAutocompleteDataset from './createAutocompleteDataset.js';
 
 import './places.scss';
 import clearIcon from './icons/clear.svg';
 import pinIcon from './icons/address.svg';
 
-const filterSuggestionData = suggestion => ({
-  ...suggestion,
-  // omit _dropdownValue, _index and _query,
-  // _dropdownValue is not needed user side
-  // _index, _query and _rawAnswer are sent at the root of the element
-  _dropdownValue: undefined,
-  _index: undefined,
-  _rawAnswer: undefined,
-  _query: undefined
-});
+export default function places(options) {
+  const {
+    container,
+    style
+  } = options;
 
-export default function places({
-  countries,
-  language = navigator.language.split('-')[0],
-  container,
-  apiKey = ' ',
-  appId = ' ',
-  templates: userTemplates = {},
-  type,
-  style,
-  aroundLatLng,
-  aroundRadius,
-  aroundLatLngViaIP
-}) {
   const placesInstance = new EventEmitter();
-  const client = algoliasearch.initPlaces(
-    apiKey,
-    appId,
-    {hosts: ['c3-test-1.algolia.net']} // use staging for now, FIXME
-  );
-
-  const templates = {
-    ...defaultTemplates,
-    ...userTemplates,
-    footer: defaultTemplates.footer
-  };
-
-  // when keys are empty, we need to force not sending them through the client
-  if (apiKey === ' ' && appId === ' ') {
-    client.as._computeRequestHeaders = function() {
-      return {targetIndexingIndexes: true}; // no need for any appid or key
-    };
-  }
-
-  client.as.setExtraHeader('targetIndexingIndexes', true);
-  client.as.addAlgoliaAgent += `Algolia Places ${version}`;
 
   // https://github.com/algolia/autocomplete.js#options
   const autocompleteOptions = {
@@ -74,91 +34,36 @@ export default function places({
     autocompleteOptions.debug = true;
   }
 
-  let defaultQueryParams = {
-    countries,
-    hitsPerPage: 5,
-    language,
-    type
-  };
-
-  if (aroundLatLng) {
-    defaultQueryParams.aroundLatLng = aroundLatLng;
-  } else if (typeof aroundLatLngViaIP !== 'undefined') {
-    defaultQueryParams.aroundLatLngViaIP = aroundLatLngViaIP;
-  }
-
-  if (aroundRadius) {
-    defaultQueryParams.aroundRadius = aroundRadius;
-  }
-
-  const autocompleteInstance = autocomplete(
-    container,
-    autocompleteOptions, {
-      // https://github.com/algolia/autocomplete.js#sources
-      source: (query, cb) => client
-        .search({
-          ...defaultQueryParams,
-          query
-        })
-        .then(
-          content => {
-            const hits = content.hits.map((hit, hitIndex) => {
-              const formattedHit = formatHit({
-                hit,
-                hitIndex,
-                query,
-                templates
-              });
-
-              return {
-                ...formattedHit,
-                _rawAnswer: content
-              };
-            });
-
-            return {
-              hits,
-              rawAnswer: content
-            };
-          }
-        )
-        .then(({hits, rawAnswer}) => {
-          placesInstance.emit('suggestions', {
-            rawAnswer,
-            query,
-            suggestions: hits.map(filterSuggestionData)
-          });
-          return hits;
-        })
-        .then(cb)
-        .catch(err => setTimeout(() => {throw err;}, 0)),
-      templates: {
-        suggestion: hit => hit._dropdownValue,
-        footer: defaultTemplates.footer
-      },
-      displayKey: 'value'
-    }
-  );
-
+  const autocompleteDataset = createAutocompleteDataset({
+    ...options,
+    algoliasearch,
+    onHits: ({hits, rawAnswer, query}) => placesInstance.emit('suggestions', {
+      rawAnswer,
+      query,
+      suggestions: hits
+    })
+  });
+  const autocompleteInstance = autocomplete(container, autocompleteOptions, autocompleteDataset);
   const autocompleteContainer = container.parentNode;
 
   const autocompleteChangeEvents = ['selected', 'autocompleted'];
+
   autocompleteChangeEvents.forEach(eventName => {
     autocompleteInstance.on(`autocomplete:${eventName}`, (_, suggestion) => {
       placesInstance.emit('change', {
-        rawAnswer: suggestion._rawAnswer,
-        query: suggestion._query,
-        suggestion: filterSuggestionData(suggestion),
-        suggestionIndex: suggestion._index
+        rawAnswer: suggestion.rawAnswer,
+        query: suggestion.query,
+        suggestion,
+        suggestionIndex: suggestion.hitIndex
       });
     });
   });
   autocompleteInstance.on('autocomplete:cursorchanged', (_, suggestion) => {
     placesInstance.emit('cursorchanged', {
-      rawAnswer: suggestion._rawAnswer,
-      query: suggestion._query,
-      suggestion: filterSuggestionData(suggestion),
-      suggestionIndex: suggestion._index
+      rawAnswer: suggestion.rawAnswer,
+      query: suggestion.query,
+      suggestion,
+      suggestionIndex: suggestion.hitIndex
     });
   });
 

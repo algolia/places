@@ -11,7 +11,7 @@
     container: document.querySelector('#country'),
     type: 'country',
     templates: {
-      dropdownSuggestion: function(suggestion) {
+      suggestion: function(suggestion) {
         return '<i class="flag ' + suggestion.countryCode + '"></i> ' +
           suggestion.name;
       }

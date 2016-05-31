@@ -1,0 +1,70 @@
+<input type="search" id="autocomplete-dataset" class="form-control" placeholder="Search for products or places" />
+
+<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.js"></script>
+<style>
+.ad-example-dropdown-menu {
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 5px;
+  padding: .5em;
+  box-shadow: 1px 1px 32px -10px rgba(0,0,0,0.62);
+}
+.ad-example-dropdown-menu .ad-example-suggestion {
+  cursor: pointer;
+  padding: 5px 4px;
+}
+.ad-example-dropdown-menu .ad-example-suggestion.ad-example-cursor {
+  background-color: #B2D7FF;
+}
+.ad-example-dropdown-menu .ad-example-suggestion em {
+  font-weight: bold;
+  font-style: normal;
+}
+.ad-example-header {
+  font-weight: bold;
+  padding: .5em 0;
+  margin-bottom: 1em;
+  border-bottom: 1px solid #ccc;
+}
+</style>
+<%= javascript_include_tag config[:places_autocomplete_dataset_lib_url] %>
+<script>
+(function() {
+  var client = algoliasearch('latency', '6be0576ff61c053d5f9a3225e2a90f76');
+  var index = client.initIndex('instant_search');
+
+  // create the first autocomplete.js dataset: products
+  var productsDataset = {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5, attributesToSnippet: ['name:7']}),
+    displayKey: 'name',
+    name: 'products',
+    templates: {
+      header: '<div class="ad-example-header">Products</div>',
+      suggestion: function(suggestion) {
+        return suggestion._snippetResult.name.value;
+      }
+    }
+  };
+
+  // create the second dataset: places
+  // we automatically inject the default CSS
+  // all the places.js options are available
+  var placesDataset = placesAutocompleteDataset({
+    algoliasearch: algoliasearch,
+    templates: {
+      header: '<div class="ad-example-header">Places</div>'
+    }
+  });
+
+  // init
+  var datasets = [productsDataset, placesDataset];
+  autocomplete(
+    document.querySelector('#autocomplete-dataset'),
+    {hint: false, cssClasses: {prefix: 'ad-example'}},
+    datasets
+  );
+})();
+</script>

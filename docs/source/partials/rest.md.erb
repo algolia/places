@@ -120,107 +120,76 @@ given the area density.
   </tbody>
 </table>
 
-### Answer
+### JSON answer
 
 The API answers is using the JSON format and looks like:
 
-```json
+```js
 {
-  "hits" : [
-    {
-       "objectID" : "145746683_7444",
-       "locale_names" : {
-          "ar" : ["باريس"],
-          "ru" : ["Париж"],
-          "fr" : ["Paris", "Lutèce"],
-          "it" : ["Parigi"],
-          "default" : ["Paris"],
-          "pl" : ["Paryż"],
-          "hu" : ["Párizs"],
-          "ja" : ["パリ"],
-          "nl" : ["Parijs"],
-          "es" : ["París"],
-          "zh" : ["巴黎"]
-       },
-       "city" : {
-          "ja" : ["パリ"],
-          "nl" : ["Parijs"],
-          "es" : ["París"],
-          "zh" : ["巴黎"],
-          "ru" : ["Париж"],
-          "ar" : ["باريس"],
-          "it" : ["Parigi"],
-          "pl" : ["Paryż"],
-          "default" : ["Paris"],
-          "hu" : ["Párizs"]
-       },
-       "county" : {
-          "hu" : ["Párizs"],
-          "pl" : ["Paryż"],
-          "default" : ["Paris"],
-          "it" : ["Parigi"],
-          "ar" : ["باريس"],
-          "ru" : ["Париж"],
-          "zh" : ["巴黎"],
-          "es" : ["París"],
-          "ja" : ["パリ"],
-          "nl" : ["Parijs"]
-       },
-       "administrative" : ["Île-de-France"],
-       "country" : {
-          "es" : "Francia",
-          "nl" : "Frankrijk",
-          "ja" : "フランス",
-          "ro" : "Franța",
-          "zh" : "法国",
-          "it" : "Francia",
-          "ru" : "Франция",
-          "ar" : "فرنسا",
-          "de" : "Frankreich",
-          "pt" : "França",
-          "hu" : "Franciaország",
-          "default" : "France",
-          "pl" : "Francja"
-       },
-       "country_code" : "fr",
-       "postcode" : ["75000"],
-       "population" : 2243833,
-       "_geoloc" : {
-          "lat" : 48.8564,
-          "lng" : 2.3521
-       },
-       "_highlightResult" : {
-          "country" : {
-             // [...]
-          },
-          "city" : {
-             // [...]
-          },
-          "county" : {
-             // [...]
-          },
-          "postcode" : [
-             // [...]
-          ],
-          "administrative" : [
-             // [...]
-          ],
-          "locale_names" : {
-             "default" : [
-                {
-                   "value" : "<em>Paris</em>",
-                   "fullyHighlighted" : true,
-                   "matchedWords" : ["paris"],
-                   "matchLevel" : "full"
-                }
-             ]
-             // [...]
-          }
-       }
+  "hits": [{
+    "objectID": "145746683_7444",
+    "locale_names": {
+      "ar": ["باريس"],
+      "ru": ["Париж"],
+      "fr": ["Paris", "Lutèce"],
+      "it": ["Parigi"],
+      "default": ["Paris"],
+      "pl": ["Paryż"],
+      "hu": ["Párizs"],
+      "ja": ["パリ"],
+      "nl": ["Parijs"],
+      "es": ["París"],
+      "zh": ["巴黎"]
+    },
+    "city": {
+      "default": ["Paris"],
+      // ... other languages
+    },
+    "county": {
+      "default": ["Paris"],
+      // ... other languages
+    },
+    "administrative": ["Île-de-France"],
+    "country": {
+      "default": "France",
+      // ... other languages
+    },
+    "country_code": "fr",
+    "postcode": ["75000"],
+    "population": 2243833,
+    "_geoloc": {
+      "lat": 48.8564,
+      "lng": 2.3521
+    },
+    "_highlightResult": {
+      "country": {
+        // [...]
+      },
+      "city": {
+        // [...]
+      },
+      "county": {
+        // [...]
+      },
+      "postcode": [
+        // [...]
+      ],
+      "administrative": [
+        // [...]
+      ],
+      "locale_names": {
+        "default": [{
+            "value": "<em>Paris</em>",
+            "fullyHighlighted": true,
+            "matchedWords": ["paris"],
+            "matchLevel": "full"
+          }]
+          // [...]
+      }
     }
-  ],
-  "nbHits" : 1,
-  "query" : "Paris"
+  }],
+  "nbHits": 1,
+  "query": "Paris"
 }
 ```
 

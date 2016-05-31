@@ -27,5 +27,5 @@
 @import 'components/docsearch/dropdown';
 @import 'components/docsearch/searchbox';
 
-@include dropdown($dropdown-config...);
 @include searchbox($searchbox-config...);
+@include dropdown($dropdown-config...);

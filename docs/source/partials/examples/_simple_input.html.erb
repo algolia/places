@@ -1,7 +1,6 @@
 <input type="search" id="address" class="form-control" placeholder="Where are we going?" />
 
-<p>Change event data:</p>
-<pre id="address-value"></pre>
+<p>Selected: <strong id="address-value">none</strong></p>
 
 <%= javascript_include_tag config[:places_lib_url] %>
 <script>
@@ -11,11 +10,9 @@
   });
 
   placesAutocomplete.on('change', function(e) {
-    console.log(e);
-
     document
       .querySelector('#address-value')
-      .textContent = JSON.stringify(e, null, 2);
+      .textContent = e.suggestion ? e.suggestion.value : 'none';
   });
 })();
 </script>
