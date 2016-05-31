@@ -1,3 +1,13 @@
+<a name="0.26.0"></a>
+# [0.26.0](https://github.com/algolia/places/compare/v0.25.0...v0.26.0) (2016-05-31)
+
+
+### Bug Fixes
+
+* **build:** fix build script, reduce algolia logo ([a212257](https://github.com/algolia/places/commit/a212257))
+
+
+
 <a name="0.25.0"></a>
 # [0.25.0](https://github.com/algolia/places/compare/v0.24.0...v0.25.0) (2016-05-31)
 
