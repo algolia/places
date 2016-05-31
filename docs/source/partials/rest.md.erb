@@ -312,3 +312,21 @@ The associated highlighting information.
 </table>
 
 **Note:** The non-documented attributes of the JSON answer may change, don't rely on them.
+
+### Query strategy
+
+The Algolia Places REST API leverages [Algolia's Search API](https://www.algolia.com) and the data of [OpenStreetMap](https://www.openstreetmap.org/) and [GeoNames](http://www.geonames.org/) contributors.
+
+When you perform an Algolia Places Query:
+
+ 1. If you don't specify any `aroundLatLng` query parameter or if your source IP address isn't geo-localized, results will come from all around the world.
+ 1. If you specify an `aroundLatLng` query parameter or if your source IP address is geo-localized, results will be composed by:
+   - Places around you (&lt;10km),
+   - Places in your country,
+   - Popular places all around the world.
+ 1. Specifying a `country` query parameter will override this behavior, restricting the results to come from a subset of the countries.
+ 1. Numerical tokens are considered as optional words.
+ 1. Stopwords in the middle of the query are removed from the underlying search query (performance and relevancy purposes).
+ 1. Popular cities will always be retrieved first.
+ 1. If both a `city` and an `address` are matching, the city will be retrieved first.
+ 1. If the `query` doesn't retrieve any results, we fallback on a degraded query strategy: all words are considered optional and we only target cities.

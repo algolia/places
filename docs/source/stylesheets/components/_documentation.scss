@@ -11,12 +11,14 @@
   }
 
   p,
-  ul {
+  ul,
+  ol {
     font-size: 16px;
     line-height: 22px;
 
     li {
       clear: both;
+      margin-bottom: 10px;
     }
 
     ul {
