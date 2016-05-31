@@ -9,10 +9,14 @@
     container: document.querySelector('#address')
   });
 
+  var $address = document.querySelector('#address-value')
   placesAutocomplete.on('change', function(e) {
-    document
-      .querySelector('#address-value')
-      .textContent = e.suggestion ? e.suggestion.value : 'none';
+    $address.textContent = e.suggestion.value 
   });
+
+  placesAutocomplete.on('clear', function() {
+    $address.textContent = 'none';
+  });
+
 })();
 </script>

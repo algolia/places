@@ -298,6 +298,21 @@ Fired when arrows keys are used to navigate suggestions.
 You can use this event to highlight markers on a map, see the [map example](examples.html#displaying-a-map).
 </td>
     </tr>
+    <tr>
+<td markdown="1">
+<div class="api-entry" id="api-events-clear"><code>clear</code></div>
+
+Event data: `undefined`
+
+</td>
+<td markdown="1">
+Fired when the input is cleared. This event doesn't return anything, as the value of the query is then `''`
+and no suggestion is displayed nor selected.
+
+You can use this event when used with a map to reset the pins and the default center. See this behaviour
+live on the [map example](examples.html#displaying-a-map).
+</td>
+    </tr>
   </tbody>
 </table>
 
