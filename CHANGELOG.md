@@ -1,3 +1,20 @@
+<a name="0.25.0"></a>
+# [0.25.0](https://github.com/algolia/places/compare/v0.24.0...v0.25.0) (2016-05-31)
+
+
+### Features
+
+* **autocomplete.js:** create a reusable places autocomplete.js dataset (#173) ([ab0363c](https://github.com/algolia/places/commit/ab0363c)), closes [#165](https://github.com/algolia/places/issues/165)
+
+
+### BREAKING CHANGES
+
+* autocomplete.js: S:
+- templates.inputValue => templates.value
+- templates.dropdownSuggestion => templates.suggestion
+
+
+
 <a name="0.24.0"></a>
 # [0.24.0](https://github.com/algolia/places/compare/v0.23.1...v0.24.0) (2016-05-13)
 
