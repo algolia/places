@@ -4,29 +4,31 @@ set -e # exit when error, no verbose
 
 printf "\nBuilding places.js library\n"
 
-NAME='places'
+BUNDLES=( 'places' 'placesAutocompleteDataset' )
 LICENSE="/*! ${NAME} ${VERSION:-UNRELEASED} | © Algolia | github.com/algolia/places */"
 DIST_DIR="dist/cdn"
-DIST_FILE="$DIST_DIR/${NAME}.js"
-DIST_FILE_MIN="$DIST_DIR/${NAME}.min.js"
-DIST_FILE_SOURCEMAP="$DIST_DIR/${NAME}.js.map"
-DIST_FILE_SOURCEMAP_MIN="$DIST_DIR/${NAME}.min.js.map"
 
 mkdir -p "$DIST_DIR"
-
 rm -rf "${DIST_DIR:?}"/*
-
-# places.js as one ES5 file + minified version and source maps
 webpack
-echo "$LICENSE" | cat - "${DIST_FILE}" > /tmp/out && mv /tmp/out "${DIST_FILE}"
 
-uglifyjs "${DIST_FILE}" \
-  --in-source-map "${DIST_FILE_SOURCEMAP}" \
-  --source-map "${DIST_FILE_SOURCEMAP_MIN}" \
-  --preamble "$LICENSE" \
-  -c warnings=false \
-  -m \
-  -o "${DIST_FILE_MIN}"
+for bundle in "${BUNDLES[@]}"
+do
+  dist_file="$DIST_DIR/${bundle}.js"
+  dist_file_min="$DIST_DIR/${bundle}.min.js"
+  dist_file_sourcemap="$DIST_DIR/${bundle}.js.map"
+  dist_file_sourcemap_min="$DIST_DIR/${bundle}.min.js.map"
 
-gzip_size=$(gzip -9 < $DIST_FILE_MIN | wc -c | pretty-bytes)
-echo "=> $DIST_FILE_MIN gzipped will weight $gzip_size"
+  echo "$LICENSE" | cat - "${dist_file}" > /tmp/out && mv /tmp/out "${dist_file}"
+
+  uglifyjs "${dist_file}" \
+    --in-source-map "${dist_file_sourcemap}" \
+    --source-map "${dist_file_sourcemap_min}" \
+    --preamble "$LICENSE" \
+    -c warnings=false \
+    -m \
+    -o "${dist_file_min}"
+
+  gzip_size=$(gzip -9 < $dist_file_min | wc -c | pretty-bytes)
+  echo "=> $dist_file_min gzipped will weight $gzip_size"
+done
