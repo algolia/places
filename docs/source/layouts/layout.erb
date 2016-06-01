@@ -17,7 +17,7 @@
     <%= javascript_include_tag config[:places_lib_url] %>
   </head>
 
-  <body class="<%= page_classes %>">
+  <body class="<%= page_classes %>" debug-grid>
     <%= partial("/partials/navigation") %>
     <%= partial("/partials/hero") %>
     <%= yield %>

@@ -3,7 +3,8 @@ import docsearch from 'docsearch.js';
 const search = docsearch({
   apiKey: '5718722ffb11e109821befd53a1d9fde',
   indexName: 'places',
-  inputSelector: '#docsearch'
+  inputSelector: '#docsearch',
+  debug: true
 });
 
 const form = document.querySelector('#docsearch-form');
