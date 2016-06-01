@@ -187,7 +187,7 @@ Available templates:
 - value
 - suggestion
 
-Each template is a function that will receive a [suggestion object](#suggestion-object) and must return
+Each template is a function that will receive a [suggestion object](#suggestions) and must return
 a `string`.
 
 `value` must return a plain string as it's used to fill the `input.value`. `suggestion` should
@@ -252,10 +252,10 @@ placesAutocomplete.on('change', e => console.log(e.suggestion));
 
 Event data:
 
-- *rawAnswer* <br>Type: object
-- *query* <br>Type: string
-- *suggestion* <br>Type: [suggestion](#suggestion-object)
-- *suggestionIndex* <br>Type: number
+- *query* <br>Type: **string**
+- *rawAnswer* <br>Type: **object**
+- *suggestion* <br>Type: **[suggestion](#suggestions)**
+- *suggestionIndex* <br>Type: **number**
 </td>
 <td markdown="1">
 Fired when suggestion selected in the dropdown or hint was validated.
@@ -269,9 +269,9 @@ You can use this event to then populate another form, [see the example](examples
 
 Event data:
 
-- *rawAnswer* <br>Type: object
-- *query* <br>Type: string
-- *suggestions* <br>Type:  [suggestion](#suggestion-object)
+- *rawAnswer* <br>Type: **object**
+- *query* <br>Type: **string**
+- *suggestions* <br>Type:  **Array<[suggestion](#suggestions)>**
 </td>
 <td markdown="1">
 Fired when dropdown receives suggestions. You will receive the array of suggestions that are displayed.
@@ -287,15 +287,30 @@ You can use this event to display the suggestions on a map, see the [map example
 
 Event data:
 
-- *rawAnswer* <br>Type: object
-- *query* <br>Type: string
-- *suggestion* <br>Type: [suggestion](#suggestion-object)
-- *suggestionIndex* <br>Type: number
+- *rawAnswer* <br>Type: **object**
+- *query* <br>Type: **string**
+- *suggestion* <br>Type: **[suggestion](#suggestions)**
+- *suggestionIndex* <br>Type: **number**
 </td>
 <td markdown="1">
 Fired when arrows keys are used to navigate suggestions.
 
 You can use this event to highlight markers on a map, see the [map example](examples.html#displaying-a-map).
+</td>
+    </tr>
+    <tr>
+<td markdown="1">
+<div class="api-entry" id="api-events-clear"><code>clear</code></div>
+
+Event data: `undefined`
+
+</td>
+<td markdown="1">
+Fired when the input is cleared. This event doesn't return anything, as the value of the query is then `''`
+and no suggestion is displayed nor selected.
+
+You can use this event when used with a map to reset the pins and the default center. See this behaviour
+live on the [map example](examples.html#displaying-a-map).
 </td>
     </tr>
   </tbody>
@@ -315,7 +330,7 @@ All of the events will send suggestion objects with those properties:
 <td markdown="1">
 <div class="api-entry" id="api-suggestion-type"><code>type</code></div>
 
-Type: string
+Type: **string**
 </td>
 <td markdown="1">
 Type of the current suggestion, possible values: `country`, `city`, `address`.
@@ -325,7 +340,7 @@ Type of the current suggestion, possible values: `country`, `city`, `address`.
 <td markdown="1">
 <div class="api-entry" id="api-suggestion-name"><code>name</code></div>
 
-Type: string
+Type: **string**
 </td>
 <td markdown="1">
 Display name of the place found.
@@ -340,7 +355,7 @@ Examples:
 <td markdown="1">
 <div class="api-entry" id="api-suggestion-city"><code>city</code></div>
 
-Type: string
+Type: **string**
 </td>
 <td markdown="1">
 City name.
@@ -350,7 +365,7 @@ City name.
 <td markdown="1">
 <div class="api-entry" id="api-suggestion-country"><code>country</code></div>
 
-Type: string
+Type: **string**
 </td>
 <td markdown="1">
 Country name.
@@ -360,7 +375,7 @@ Country name.
 <td markdown="1">
 <div class="api-entry" id="api-suggestion-countryCode"><code>countryCode</code></div>
 
-Type: string
+Type: **string**
 </td>
 <td markdown="1">
 Two letters country code ([ISO 639-1](https://en.wikipedia.org/wiki/ISO_3166-1#Officially_assigned_code_elements)).
@@ -370,7 +385,7 @@ Two letters country code ([ISO 639-1](https://en.wikipedia.org/wiki/ISO_3166-1#O
 <td markdown="1">
 <div class="api-entry" id="api-suggestion-administrative"><code>administrative</code></div>
 
-Type: string
+Type: **string**
 </td>
 <td markdown="1">
 Administrative region depending on the country.
@@ -386,7 +401,7 @@ Examples:
 <td markdown="1">
 <div class="api-entry" id="api-suggestion-latlng"><code>latlng</code></div>
 
-Type: Object
+Type: **Object**
 </td>
 <td markdown="1">
 Latitude and longitude of the place found. Shape: `{lat: 48.797885, lng: 2.337034}`.
@@ -396,7 +411,7 @@ Latitude and longitude of the place found. Shape: `{lat: 48.797885, lng: 2.33703
 <td markdown="1">
 <div class="api-entry" id="api-suggestion-postcode"><code>postcode</code></div>
 
-Type: string
+Type: **string**
 </td>
 <td markdown="1">
 Postcode (or ZIP Code) of the place found.
@@ -411,7 +426,7 @@ Examples:
 <td markdown="1">
 <div class="api-entry" id="api-suggestion-value"><code>value</code></div>
 
-Type: string
+Type: **string**
 </td>
 <td markdown="1">
 Full display name of the place found. It's the value displayed in the input.

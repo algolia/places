@@ -33,6 +33,7 @@
   placesAutocomplete.on('suggestions', handleOnSuggestions);
   placesAutocomplete.on('cursorchanged', handleOnCursorchanged);
   placesAutocomplete.on('change', handleOnChange);
+  placesAutocomplete.on('clear', handleOnClear);
 
   function handleOnSuggestions(e) {
     markers.forEach(removeMarker);
@@ -58,10 +59,11 @@
           removeMarker(marker);
         }
       });
-
-    if (e.query === '') {
-      map.setView(new L.LatLng(0, 0), 1);
-    }
+  }
+  
+  function handleOnClear() {
+    map.setView(new L.LatLng(0, 0), 1);
+    markers.forEach(removeMarker);
   }
 
   function handleOnCursorchanged(e) {

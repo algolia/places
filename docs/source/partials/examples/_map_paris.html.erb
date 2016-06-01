@@ -68,10 +68,10 @@
           removeMarker(marker);
         }
       });
+  }
 
-    if (e.query === '') {
-      map.setView(new L.LatLng(latlng.lat, latlng.lng), 12);
-    }
+  function handleOnClear() {
+    map.setView(new L.LatLng(latlng.lat, latlng.lng), 12);
   }
 
   function handleOnCursorchanged(e) {

@@ -88,6 +88,7 @@ export default function places(options) {
     autocompleteInstance.focus();
     clear.style.display = 'none';
     pin.style.display = '';
+    placesInstance.emit('clear');
   });
 
   let previousQuery = '';
@@ -97,7 +98,7 @@ export default function places(options) {
       pin.style.display = '';
       clear.style.display = 'none';
       if (previousQuery !== query) {
-        placesInstance.emit('change', {query});
+        placesInstance.emit('clear');
       }
     } else {
       clear.style.display = '';
