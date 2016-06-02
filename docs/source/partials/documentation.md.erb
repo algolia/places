@@ -442,37 +442,27 @@ Examples:
 
 ### autocomplete.js
 
-places.js is reusing [Algolia's autocomplete.js](https://github.com/algolia/autocomplete.js) library.
+The places.js library is leveraging [Algolia's autocomplete.js](https://github.com/algolia/autocomplete.js) library.
 
-To be able to mix and search into your own data along with showing results of places,
-we provide an [autocomplete.js dataset](https://github.com/algolia/autocomplete.js#datasets):
+To be able to combine your own data along with showing results of Algolia Places, we provide an [autocomplete.js dataset](https://github.com/algolia/autocomplete.js#datasets):
 
 ```html
 <%= javascript_include_tag config[:places_autocomplete_dataset_cdn_url] %>
 ```
 
-See the [autocomplete.js dataset example](examples.html#autocompletejs).
-
-You will need an [Algolia account](https://www.algolia.com/) to be able to search into your own data.
-
-The autocomplete.js dataset is exported as `placesAutocompleteDataset` in the window, also available with npm
-using:
+The autocomplete.js dataset is exported as `placesAutocompleteDataset` in the window, also available with npm using:
 
 ```js
 import placesAutocompleteDataset from 'places.js/placesAutocompleteDataset';
 ```
 
-All the places.js [options](#options) are available and can be passed to
-the `placesAutocompleteDataset` function.
+All the places.js [options](#options) are available and can be passed to the `placesAutocompleteDataset` function. The places.js CSS file is automatically loaded so that the rendering of suggestions is already the one you will expect.
 
-The places.js CSS file is automatically loaded so that the rendering of suggestions is already the one
-you will expect.
+You will need an [Algolia account](https://www.algolia.com/) to be able to search into your own data. See the [autocomplete.js dataset example](examples.html#autocompletejs).
 
 ### REST API
 
-Behind the places.js the JavaScript library lies a complete REST API.
-
-Read the underlying [REST API documentation](rest.html).
+Behind the places.js the JavaScript library lies a complete REST API. Read the underlying [REST API documentation](rest.html).
 
 ## Styling
 
@@ -578,9 +568,7 @@ Once you do so, the default `algolia-places` class name will turn into `algolia-
 
 ## Browser support
 
-Algolia Places comes with native support for all latest stable versions of
-current major browsers: Chrome, Firefox, Edge, Opera and Safari. Previous versions of those
-modern browsers should also work. But since those are auto-updating browsers, we do not guarantee it.
+Algolia Places comes with native support for all latest stable versions of current major browsers: Chrome, Firefox, Edge, Opera and Safari. Previous versions of those modern browsers should also work. But since those are auto-updating browsers, we do not guarantee it.
 
 Algolia Places also works natively on Internet Explorer 11 and 10.
 

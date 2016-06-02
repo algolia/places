@@ -16,7 +16,8 @@ export default function createAutocompleteSource({
 }) {
   const placesClient = algoliasearch.initPlaces(
     apiKey,
-    appId
+    appId,
+    {hosts: ['c3-test-1.algolia.net']}
   );
   placesClient.as.setExtraHeader('targetIndexingIndexes', true);
   placesClient.as.addAlgoliaAgent(`Algolia Places ${version}`);
