@@ -13,8 +13,7 @@ places.js turns any HTML `<input>` into an autocomplete address search bar.
 
 ## Complete form
 
-Once the user has selected an address, you can use the [change event](documentation.html#events) to
-fill-out another form with the user address structured data.
+Once the user has selected an address, you can use the [change event](documentation.html#events) to fill-out another form with the user address structured data.
 
 <%= partial '/partials/examples/complete_form' %>
 
@@ -44,10 +43,9 @@ places.js turns any HTML `<input>` into a City as-you-type search bar. You can f
 <%= partial '/partials/examples/country_search' %>
 ```
 
-## Displaying a map
+## Link to a map
 
-We will use the [Leaflet](http://leafletjs.com/) JavaScript library as an example to
-display the places.js results on the map and update them when needed.
+We will use the [Leaflet](http://leafletjs.com/) JavaScript library as an example to display the places.js results on the map and update them when needed.
 
 <%= partial '/partials/examples/map' %>
 
@@ -85,7 +83,9 @@ Then use this:
 <%= partial '/partials/examples/map_paris' %>
 ```
 
-## Custom templates
+## Custom
+
+### Custom templates
 
 You can customize both the input value and dropdown suggestion templates.
 
@@ -97,10 +97,23 @@ Templates are functions called with a [suggestion object](./documentation.html#s
 <%= partial '/partials/examples/templates' %>
 ```
 
-## Input styling
+### Custom data
 
-The default Algolia Places styling should be sufficient for most websites: we only style
-the dropdown in a light way, the input remains unstyled and so can fit any website.
+Using [Algolia's autocomplete.js](https://github.com/algolia/autocomplete.js) library, you can search in your own data along with showing Algolia Places results.
+
+You need an Algolia account to do so and the Algolia Places dataset:
+
+<%= partial '/partials/examples/autocomplete_dataset' %>
+
+```html
+<%= partial '/partials/examples/autocomplete_dataset' %>
+```
+
+See the documentation about the [placesAutocompleteDataset function](documentation.html#autocompletejs).
+
+### Input styling
+
+The default Algolia Places styling should be sufficient for most websites: we only style the dropdown in a light way, the input remains unstyled and so can fit any website.
 
 Here's an example styling the input:
 
@@ -112,7 +125,7 @@ Here's an example styling the input:
 
 See our [documentation about styling](./documentation.html#styling) for more details.
 
-## Disable default style
+### Disable default style
 
 To disable all styling, use the `style` option:
 
@@ -124,18 +137,3 @@ To disable all styling, use the `style` option:
 Once you do so, the default `algolia-places` class name will turn into `algolia-places-nostyle`.
 
 See our [documentation about styling](./documentation.html#styling) for more details.
-
-## autocomplete.js
-
-Using [Algolia's autocomplete.js](https://github.com/algolia/autocomplete.js) library, you can search
-in your own data along with showing Algolia Places results.
-
-You need an Algolia account to do so and the Algolia Places dataset:
-
-<%= partial '/partials/examples/autocomplete_dataset' %>
-
-```html
-<%= partial '/partials/examples/autocomplete_dataset' %>
-```
-
-See the documentation about the [placesAutocompleteDataset function](documentation.html##autocompletejs).

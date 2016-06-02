@@ -74,6 +74,10 @@
   right: 16px;
   outline: none;
 
+  &.ap-input-icon-pin {
+    cursor: initial;
+  }
+
   svg {
     fill: #cfcfcf;
     // keep the icons centered

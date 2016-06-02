@@ -32,7 +32,7 @@ $ curl -X POST 'https://places-dsn.algolia.net/1/places/query' \
   --data '{"query": "Paris"}'
 ```
 
-### Query parameters
+### Search parameters
 
 Those are the available query parameters you can use to filter your search results:
 
@@ -134,6 +134,16 @@ $ curl -X POST 'https://places-dsn.algolia.net/1/places/query' \
   --data '{"query": "Paris", "type": "city", "countries": ["us", "fr"]}'
 ```
 
+### HTTP headers
+
+You can use the regular `X-Forwarded-For` HTTP header to override the source IP address used to resolve the geo-location of the user. This is particularly useful when you want to use the API from your backend as if it was from your end-users locations.
+
+```bash
+$ curl -X POST 'https://places-dsn.algolia.net/1/places/query' \
+  -H 'X-Forwarded-For: 1.2.3.4' \
+  --data '{"query": "Paris"}'
+```
+
 ### JSON answer
 
 The API answers is using the JSON format and looks like:
@@ -176,21 +186,6 @@ The API answers is using the JSON format and looks like:
       "lng": 2.3521
     },
     "_highlightResult": {
-      "country": {
-        // [...]
-      },
-      "city": {
-        // [...]
-      },
-      "county": {
-        // [...]
-      },
-      "postcode": [
-        // [...]
-      ],
-      "administrative": [
-        // [...]
-      ],
       "locale_names": {
         "default": [{
             "value": "<em>Paris</em>",
@@ -199,7 +194,22 @@ The API answers is using the JSON format and looks like:
             "matchLevel": "full"
           }]
           // [...]
-      }
+      },
+      "city": {
+        // [...]
+      },
+      "county": {
+        // [...]
+      },
+      "country": {
+        // [...]
+      },
+      "postcode": [
+        // [...]
+      ],
+      "administrative": [
+        // [...]
+      ]
     }
   }],
   "nbHits": 1,
