@@ -172,7 +172,7 @@
       padding: 0;
       font-size: inherit;
       user-select: none;
-      fill: rgba(#46AEDA, .5);
+      fill: rgba($icon-color, .5);
 
       &.hide {
         display: none;

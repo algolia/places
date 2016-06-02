@@ -48,7 +48,7 @@ function sidebarFollowScroll(sidebarContainer) {
     // depending the level of page scroll.
     const hero = document.querySelector('.hero-section');
     const footer = document.querySelector('.footer-section');
-    const navigation = document.querySelector('.navigation');
+    const navigation = document.querySelector('.ac-nav');
     const menu = document.querySelector('.sidebar > ul');
     const heroHeight = hero.offsetHeight;
     const navHeight = navigation.offsetHeight;

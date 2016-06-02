@@ -3,10 +3,15 @@
 // the source file name of the current page (index.html, documentation.html)
 
 export default function responsiveNavigation() {
-  const navigation = document.querySelector('.navigation');
-  const links = navigation.querySelectorAll('a.nav-link');
+  const navigation = document.querySelector('.ac-nav');
+  const links = navigation.querySelectorAll('a');
   const navigationAsSelect = document.createElement('select');
-  navigationAsSelect.classList.add('display-on-small');
+
+  if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i)) {
+    navigationAsSelect.classList.add('display-on-small', 'device');
+  } else {
+    navigationAsSelect.classList.add('display-on-small');
+  }
 
   [...links].forEach(link => {
     let option = document.createElement('option');
