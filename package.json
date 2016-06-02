@@ -1,6 +1,6 @@
 {
   "name": "places.js",
-  "version": "0.27.0",
+  "version": "0.28.0",
   "description": "🌐 The easiest way to add fast geo search to your website.",
   "main": "dist/cdn/places.js",
   "scripts": {
