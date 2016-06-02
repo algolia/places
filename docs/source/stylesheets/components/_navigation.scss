@@ -184,8 +184,14 @@
     width: auto;
     height: $navigation-height;
 
+    .searchbox__input {
+      position: relative;
+      vertical-align: top;
+    }
+
     .searchbox__input,
     .searchbox__submit {
+
       @media (max-width: 960px) {
         display: none;
       }
