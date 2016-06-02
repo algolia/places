@@ -135,6 +135,14 @@
       }
     }
 
+    .ov-suggestion-cursor {
+      background: url(/images/svg/icon-hover-cursor.svg)no-repeat center right 16px / 4%;
+
+      &:hover {
+        background: url(/images/svg/icon-hover-cursor-visible.svg)no-repeat center right 16px / 4%;
+      }
+    }
+
     .ov-suggestion {
       margin: 14.4% auto;
 
@@ -164,7 +172,7 @@
       .ov-name {
         width: 19%;
         left: 6%;
-        margin: 10% auto;
+        margin: 9% auto;
         height: 72%;
 
         @include ov-border(#A171E0);
@@ -182,7 +190,7 @@
       .ov-address {
         width: 43%;
         left: 27%;
-        margin: 10% auto;
+        margin: 9% auto;
         height: 72%;
 
         @include ov-border(#A171E0);
@@ -200,7 +208,7 @@
       .ov-highlight {
         width: 20%;
         left: 6%;
-        margin: 18% auto;
+        margin: 17.2% auto;
         height: 72%;
 
         @include ov-border(#FB7807);

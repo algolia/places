@@ -2,6 +2,7 @@ $debug: false;
 
 /* Breakpoints
 =====================*/
+
 // breakpoints
 $bp-huge: 2000px;
 $bp-big: 1500px;
@@ -11,8 +12,9 @@ $bp-small: 768px;
 
 /* Dimensions
 =====================*/
+
 $max-width: 940px;
-$navigation-height: 60px;
+$navigation-height: 50px;
 $sidebar-width: 160px;
 
 $offset-height: $navigation-height + 20;
@@ -37,6 +39,13 @@ $silver: #d4d9de;
 $steel: #788795;
 $brand-primary: #1D96C7;
 $black: #0a1724;
+
+
+// Fonts
+$font-name: "Raleway";
+$font-fallback: Helvetica Neue, helvetica;
+$font-settings:  $font-name, $font-fallback;
+
 
 
 

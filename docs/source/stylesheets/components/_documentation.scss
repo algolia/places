@@ -45,9 +45,9 @@
     font-size: 28px;
     padding-right: 1em;
     border-bottom: 1px solid #d8d8d8;
-    margin-top: 2em;
+    margin-top: 3em;
 
-    &:first-child {
+    &:first-of-type {
       margin-top: 0;
     }
   }
