@@ -16,17 +16,16 @@ export default function createAutocompleteSource({
 }) {
   const placesClient = algoliasearch.initPlaces(
     apiKey,
-    appId,
-    {hosts: ['c3-test-1.algolia.net']}
+    appId
   );
-  placesClient.as.setExtraHeader('targetIndexingIndexes', true);
   placesClient.as.addAlgoliaAgent(`Algolia Places ${version}`);
 
   let defaultQueryParams = {
     countries,
     hitsPerPage: 5,
     language,
-    type
+    type,
+    enableBeta: true
   };
 
   if (aroundLatLng) {
