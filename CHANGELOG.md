@@ -1,3 +1,9 @@
+<a name="0.30.0"></a>
+# [0.30.0](https://github.com/algolia/places/compare/v0.29.0...v0.30.0) (2016-06-04)
+
+
+
+
 <a name="0.29.0"></a>
 # [0.29.0](https://github.com/algolia/places/compare/v0.28.0...v0.29.0) (2016-06-03)
 
