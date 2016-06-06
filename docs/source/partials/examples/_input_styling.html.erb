@@ -1,20 +1,51 @@
-<input type="search" id="input-styling-address" placeholder="Where are we going?" />
+<div id="input-styling-address">
+  <input type="search" placeholder="Where are we going?" />
+</div>
 
 <%= javascript_include_tag config[:places_lib_url] %>
 <style>
-  #input-styling-address {
-    background: #efefef;
-    color: #000;
-    border: 3px solid #00f;
-    border-radius: 1em;
-    padding: 0.5em;
-  }
+#input-styling-address input {
+  display: inline-block;
+  border: 1px solid #d9d9d9;
+  border-radius: 12px;
+  background: #ffffff;
+  padding: 1em 0 1em 45px;
+}
+
+#input-styling-address .ap-input-icon-pin {
+  left: 20px;
+  display: block !important;
+}
+
+#input-styling-address input:hover {
+  border-color: silver;
+}
+
+#input-styling-address input:focus, #input-styling-address input:active {
+  outline: 0;
+  border-color: #aaaaaa;
+  background: #ffffff;
+}
+
+#input-styling-address input::placeholder {
+  color: #aaaaaa;
+}
+
+#input-styling-address .ap-dropdown-menu {
+  box-shadow: none;
+  border: 1px solid #dadada;
+  border-radius: 0;
+}
+
+#input-styling-address .ap-suggestion {
+  border-bottom: 1px solid #efefef;
+}
 </style>
 
 <script>
 (function() {
   var placesAutocomplete = places({
-    container: document.querySelector('#input-styling-address')
+    container: document.querySelector('#input-styling-address input')
   });
 })();
 </script>

@@ -278,7 +278,7 @@ Fired when dropdown receives suggestions. You will receive the array of suggesti
 
 You will also receive this event when no places were found.
 
-You can use this event to display the suggestions on a map, see the [map example](examples.html#displaying-a-map).
+You can use this event to display the suggestions on a map, see the [map example](examples.html#link-to-a-map).
 </td>
     </tr>
     <tr>
@@ -295,7 +295,7 @@ Event data:
 <td markdown="1">
 Fired when arrows keys are used to navigate suggestions.
 
-You can use this event to highlight markers on a map, see the [map example](examples.html#displaying-a-map).
+You can use this event to highlight markers on a map, see the [map example](examples.html#link-to-a-map).
 </td>
     </tr>
     <tr>
@@ -310,7 +310,7 @@ Fired when the input is cleared. This event doesn't return anything, as the valu
 and no suggestion is displayed nor selected.
 
 You can use this event when used with a map to reset the pins and the default center. See this behaviour
-live on the [map example](examples.html#displaying-a-map).
+live on the [map example](examples.html#link-to-a-map).
 </td>
     </tr>
   </tbody>
@@ -458,7 +458,7 @@ import placesAutocompleteDataset from 'places.js/placesAutocompleteDataset';
 
 All the places.js [options](#options) are available and can be passed to the `placesAutocompleteDataset` function. The places.js CSS file is automatically loaded so that the rendering of suggestions is already the one you will expect.
 
-You will need an [Algolia account](https://www.algolia.com/) to be able to search into your own data. See the [autocomplete.js dataset example](examples.html#autocompletejs).
+You will need an [Algolia account](https://www.algolia.com/) to be able to search into your own data. See the [autocomplete.js dataset example](examples.html#custom-data).
 
 ### REST API
 
@@ -560,11 +560,12 @@ Here's a default empty CSS file you can copy paste to tune the default styling:
 .ap-footer:hover {}
 ```
 
-### Disabling default style
+### Disable default style
 
 By default we insert some styling into your page. You can disable all the Algolia Places styling by passing the `style: false` option.
 
-Once you do so, the default `algolia-places` class name will turn into `algolia-places-nostyle`. See our [styling examples](./examples.html#input-styling).
+Once you do so, the default all css classes will be suffixed with `-nostyle`,
+thus no styles will be applied. See our [styling examples](./examples.html#input-styling).
 
 ## Browser support
 
