@@ -57,7 +57,7 @@
       border: 0;
       border-radius: even-px($border-radius);
       box-shadow: inset 0 0 0 $border-width $input-border-color;
-      background: $input-background !important;
+      background: $input-background;
       padding: 0;
       width: $input-height;
       height: 100%;
