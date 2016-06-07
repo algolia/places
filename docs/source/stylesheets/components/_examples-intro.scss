@@ -1,3 +1,4 @@
+// icon - degree - colorStart - colorEnd
 $square-map: (
   (input,135, #13c4a5, #10a4b8),
   (form,138, #af84e3, #5071c7),
@@ -76,7 +77,7 @@ $square-map: (
         height: 120px;
         border-radius: 16px;
         box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3);
-        transition: box-shadow 0.3s ease;
+        transition: box-shadow 0.3s ease, transform 0.1s ease;
 
         @each $class,$degrees, $color-a, $color-b in $square-map {
           &.#{$class} {
@@ -86,6 +87,7 @@ $square-map: (
 
         &:hover {
           box-shadow: none;
+          transform: scale(1.05);
 
           &~ .name {
             opacity: 1;
