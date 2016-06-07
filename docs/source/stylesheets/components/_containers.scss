@@ -166,6 +166,7 @@ section {
      transform: none;
      top: inherit;
      left: inherit;
+     padding: 4em 16px;
     }
   }
 
@@ -194,7 +195,7 @@ section {
         img {
           width: 100%;
           position: relative;
-          top: 30px;
+          top: -10px;
           left: -8px;
         }
       }
@@ -210,6 +211,12 @@ section {
         left: 0
       }
     }
+
+    @include small-mq {
+      .bloc-3 img {
+          top: 10px;
+        }
+      }
   }
 
   .bloc-3 {

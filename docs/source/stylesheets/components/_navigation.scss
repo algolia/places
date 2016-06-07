@@ -1,115 +1,18 @@
-// .navigation {
-//   position: fixed;
-//   width: 100%;
-//   height: 52px;
-//   background: $black;
-//   z-index: 101;
-//   color: #fff;
-//   padding: 0 16px;
-//   margin: 0;
-
-//   .container {
-//     max-width: 100%;
-//     width: 100%;
-//   }
-
-//   @include huge-min-mq {
-//     .container {
-//       max-width: calc(#{$max-width} + 260px)
-//     }
-//   }
-
-//   .logo-community {
-//     color: white;
-//     font-size: 26px;
-//     font-weight: 100 !important;
-//     margin-right: 12px;
-//     border-right: #FF2E6C 2px solid;
-//     padding-left: 8px;
-//     padding-bottom: 4px;
-
-//     img {
-//       position: relative;
-//       top: 10px;
-//       width: 200px;
-//       margin-right: 6px;
-
-//       &.community-badge {
-//         width: 34px;
-//       }
-//     }
-//   }
-
-//   .project-title {
-//     color: white;
-//     font-size: 1.2em;
-//     font-weight: bold;
-//     position: relative;
-//     top: 0px;
-
-//     &:hover, &:active, &:focus {
-//       color: white;
-//     }
-//   }
-
-//   a {
-//     color: #fff;
-//     text-decoration: none;
-//   }
-
-//   .menu svg {
-//     width: 28px;
-//     height: 36px;
-//     display: inline-block;
-//     vertical-align: middle;
-//   }
-
-//   ul {
-//     display: inline-block;
-//     list-style: none;
-//     margin: 0;
-//     padding: 0;
-//     line-height: 50px;
-
-//     @include small-mq {
-//       display: none;
-//     }
-
-//     li {
-//       display: inline-block;
-//       padding: 0 14px;
-//       font-size: 14px;
-//       font-family: Open Sans;
-
-//       &.active {
-//         a {
-//           padding-bottom: 4px;
-//           border-bottom: 2px solid $red-pink;
-//         }
-//       }
-//     }
-//   }
-
-//   // Responsive nav
-//   select {
-//     display: inline-block;
-//     position: absolute;
-//     top: 16px;
-//     right: 8px;
-//   }
-// }
 .ac-nav {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: $navigation-height;
   padding: 0 16px;
   margin: 0;
   line-height: $navigation-height;
-  color: #fff;
-  background: $black;
   z-index: 101;
   font-family: $font-settings;
   box-sizing: border-box;
+  color: #fff;
+  background: $black;
+
 
   a {
     color: #fff;
@@ -179,14 +82,29 @@
     vertical-align: middle;
   }
 
+  .ac-nav-menu svg {
+    position: relative;
+    width: 28px;
+    height: 36px;
+  }
+
   .ac-nav-searchbox {
     float: left;
     width: auto;
     height: $navigation-height;
 
+    .searchbox__submit svg {
+      width: 12px;
+      height: 12px;
+      vertical-align: middle;
+      fill: #fff;
+    }
+
     .searchbox__input {
       position: relative;
       vertical-align: top;
+      line-height: 1.2;
+      font-weight: 500;
     }
 
     .searchbox__input,
@@ -203,6 +121,7 @@
     margin: 0;
     float: left;
     list-style: none;
+    max-height: $navigation-height;
 
     @media (max-width: 960px) {
       display: none;
@@ -213,6 +132,7 @@
       float: left;
       padding: 0 14px;
       font-size: 14px;
+      max-height: $navigation-height;
 
       &.active {
         a {
@@ -251,8 +171,8 @@
   .ac-nav-brand-breadcrumb {
     display: inline-block;
     width: 24px;
-    height: 24px;
-    background: url('../images/svg/icon-arrow-pipe.svg')no-repeat center center / contain;
+    height: $navigation-height;
+    background: url('../images/svg/icon-arrow-pipe.svg')no-repeat center center / 14px;
     vertical-align: middle;
   }
 
