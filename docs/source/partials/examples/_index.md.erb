@@ -64,7 +64,7 @@ Then use this:
 
 ## Force lat, lng, radius
 
-Reusing the [map](#displaying-a-map) example, we want to only search around Paris, France.
+Reusing the [map](#link-to-a-map) example, we want to only search around Paris, France.
 
 This is useful when you really want to display results around a specific area.
 
@@ -83,9 +83,9 @@ Then use this:
 <%= partial '/partials/examples/map_paris' %>
 ```
 
-## Custom
+## Advanced
 
-### Custom templates
+### Templates
 
 You can customize both the input value and dropdown suggestion templates.
 
@@ -122,18 +122,5 @@ Here's an example styling the input:
 ```html
 <%= partial '/partials/examples/input_styling' %>
 ```
-
-See our [documentation about styling](./documentation.html#styling) for more details.
-
-### Disable default style
-
-To disable all styling, use the `style` option:
-
-<%= partial '/partials/examples/full_styling' %>
-
-```html
-<%= partial '/partials/examples/full_styling' %>
-```
-Once you do so, the default `algolia-places` class name will turn into `algolia-places-nostyle`.
 
 See our [documentation about styling](./documentation.html#styling) for more details.

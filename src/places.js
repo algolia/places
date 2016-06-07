@@ -26,7 +26,7 @@ export default function places(options) {
     hint: false,
     cssClasses: {
       root: 'algolia-places' + (style === false ? '-nostyle' : ''),
-      prefix: 'ap'
+      prefix: 'ap' + (style === false ? '-nostyle' : '')
     }
   };
 
