@@ -12,6 +12,7 @@
   box-sizing: border-box;
   color: #fff;
   background: $black;
+  font-weight: 600;
 
 
   a {
@@ -34,6 +35,10 @@
     }
   }
 
+  .ac-nav-brand,
+  .ac-nav-menu {
+    max-height: 50px;
+  }
 
   .ac-nav-brand {
     float: left;
@@ -77,15 +82,15 @@
 
   .ac-nav-brand-title {
     position: relative;
-    font-size: 1em;
-    font-weight: 300;
+    font-size: 1.2em;
+    font-weight: 600;
     vertical-align: middle;
+    padding-left: 8px;
+    top: -2px;
   }
 
   .ac-nav-menu svg {
     position: relative;
-    width: 28px;
-    height: 36px;
   }
 
   .ac-nav-searchbox {
@@ -93,11 +98,16 @@
     width: auto;
     height: $navigation-height;
 
+    .searchbox {
+      top: -1px;
+    }
+
     .searchbox__submit svg {
       width: 12px;
       height: 12px;
       vertical-align: middle;
       fill: #fff;
+      top: -1px;
     }
 
     .searchbox__input {
@@ -105,6 +115,7 @@
       vertical-align: top;
       line-height: 1.2;
       font-weight: 500;
+      background: $black;
     }
 
     .searchbox__input,
@@ -172,8 +183,9 @@
     display: inline-block;
     width: 24px;
     height: $navigation-height;
-    background: url('../images/svg/icon-arrow-pipe.svg')no-repeat center center / 14px;
+    background: url('../images/svg/icon-arrow-pipe.svg')no-repeat center center / 20px 20px;
     vertical-align: middle;
+    margin-top: -4px;
   }
 
   .ac-icon {
