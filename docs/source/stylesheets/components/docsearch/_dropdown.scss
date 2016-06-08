@@ -229,12 +229,19 @@
       float: right;
       width: 70%;
       position: relative;
-      padding: $padding/3 0 $padding/3 $padding/1.5;
       cursor: pointer;
+
+      @if $padding == 12px {
+        padding: 0 0 0 $padding/1.5;
+      }
+      @else {
+        padding: $padding/3 0 $padding/3 $padding/1.5;
+      }
 
       .aa-cursor &{
         background: rgba(black, .03);
       }
+
       &:before {
         content: '';
         position: absolute;
@@ -257,14 +264,19 @@
 
       .algolia-docsearch-suggestion__main & {
         display: block;
-        margin-top: $padding;
+        margin-top: $padding/6;
       }
     }
 
     &--wrapper {
       width: 100%;
       float: left;
-      padding: $padding/2 0 0 0;
+      @if $padding == 12px {
+        padding: 0;
+      }
+      @else {
+        padding: $padding/2 0 0 0;
+      }
     }
 
     &--subcategory-column {
@@ -274,10 +286,16 @@
       padding-left: 0;
       text-align: right;
       position: relative;
-      padding: $padding/3 $padding/1.5;
       color: $subtitle-color;
       font-size: $subtitle-size;
       word-wrap: break-word;
+
+      @if $padding == 12px {
+        padding: 0 $padding/1.5;
+      }
+      @else {
+        padding: $padding/3 $padding/1.5;
+      }
 
       &:before {
         content: '';
