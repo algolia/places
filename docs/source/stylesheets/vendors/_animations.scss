@@ -20,13 +20,20 @@ $timingFunction: 3s ease infinite;
 }
 ellipse {
   transform-origin: center center;
-  -moz-transform-origin: 40% 50%;
+  -moz-transform-origin: 50% 40%;
   animation: bounceShadow $timingFunction;
 }
-
+// Fix svg in FF
+#plan-holder {
+  -moz-transform: translateY(10px);
+}
+#plan {
+  -moz-transform: scale(1.1);
+}
 
 @include anim('bounce', 'translateY(0)', 'translateY(-5px)', 'translateY(-5px)');
-@include anim('bounceShadow', 'scale(1) translateY(12px)', 'scale(0.75) translateY(12px)', 'scale(0.75) translateY(12px)');
+@include anim('bounceShadow', 'scale(1) translateY(12px)', 'scale(0.75) translateY(12px) ', 'scale(0.75) translateY(12px) ');
+@include anim('bounceShadow', 'scale(1) translateY(12px)', 'scale(0.75) translateY(12px) translateX(6px) ', 'scale(0.75) translateY(12px) translateX(6px) ');
 
 // Footer heartbeat
 @keyframes pulse{
