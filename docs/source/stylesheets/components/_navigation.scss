@@ -10,13 +10,12 @@
   z-index: 101;
   font-family: $font-settings;
   box-sizing: border-box;
-  color: #fff;
+  color: #FFFFFF;
   background: $black;
-  font-weight: 600;
-
+  font-weight: 400;
 
   a {
-    color: #fff;
+    color: #FFFFFF;
     text-decoration: none;
   }
 
@@ -26,12 +25,12 @@
     margin: auto;
     line-height: $navigation-height;
 
-    @media (min-width: $bp-huge){
-      max-width: calc(#{$max-width} + 260px)
+    @media (min-width: $bp-huge) {
+      max-width: calc(#{$max-width} + 260px);
     }
 
-    @media (max-width: $bp-big){
-      max-width: 100%
+    @media (max-width: $bp-big) {
+      max-width: 100%;
     }
   }
 
@@ -53,6 +52,12 @@
     font-weight: 100;
     vertical-align: sub;
 
+    @media (max-width: $bp-medium) {
+      padding: 0;
+      display: inline-block;
+      max-width: 30px;
+    }
+
     .ac-logo__lg,
     .ac-logo__sm {
       position: relative;
@@ -66,14 +71,14 @@
         display: none;
         visibility: hidden;
 
-        @media (max-width: 960px){
+        @media (max-width: $bp-medium) {
           display: inline-block;
-          visibility: visible
+          visibility: visible;
         }
       }
 
       &.ac-logo__lg {
-        @media (max-width: 960px){
+        @media (max-width: $bp-medium) {
           display: none;
         }
       }
@@ -83,10 +88,15 @@
   .ac-nav-brand-title {
     position: relative;
     font-size: 1.2em;
-    font-weight: 600;
+    font-weight: 400;
     vertical-align: middle;
     padding-left: 8px;
     top: -2px;
+
+    @media (max-width: $bp-medium) {
+      padding-left: 0;
+      font-size: 1em;
+    }
   }
 
   .ac-nav-menu svg {
@@ -99,14 +109,12 @@
     height: $navigation-height;
 
     .searchbox {
-      top: -1px;
     }
 
     .searchbox__submit svg {
       width: 12px;
       height: 12px;
       vertical-align: middle;
-      fill: #fff;
       top: -1px;
     }
 
@@ -121,7 +129,7 @@
     .searchbox__input,
     .searchbox__submit {
 
-      @media (max-width: 960px) {
+      @media (max-width: $bp-medium) {
         display: none;
       }
     }
@@ -134,7 +142,7 @@
     list-style: none;
     max-height: $navigation-height;
 
-    @media (max-width: 960px) {
+    @media (max-width: $bp-medium) {
       display: none;
     }
 
@@ -163,17 +171,21 @@
     display: none;
     visibility: hidden;
     position: absolute;
-    top: 16px;
+    top: 12px;
     right: 8px;
+    font-size: 16px;
+    color: #000;
+
 
     &:not(.device) {
-      background: linear-gradient(#efefef, #ccc);
+      background: linear-gradient(#EFEFEF, #CCCCCC);
       color: $black;
     }
 
-    @media (max-width: 960px){
+    @media (max-width: $bp-medium) {
       display: inline-block;
       visibility: visible;
+      max-width: 130px;
     }
   }
 
@@ -183,7 +195,8 @@
     display: inline-block;
     width: 24px;
     height: $navigation-height;
-    background: url('../images/svg/icon-arrow-pipe.svg')no-repeat center center / 12px auto;
+
+    background: url("../images/svg/icon-arrow-pipe.svg")no-repeat center center / 20px 20px;
     vertical-align: middle;
     margin-top: -4px;
   }
@@ -197,7 +210,7 @@
     vertical-align: sub;
 
     &.ac-icon-github {
-      background: url('../images/svg/icon-github.svg')no-repeat center center / contain
+      background: url("../images/svg/icon-github.svg")no-repeat center center / contain;
     }
   }
 }
