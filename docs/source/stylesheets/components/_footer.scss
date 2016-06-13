@@ -1,38 +1,42 @@
-.footer-section {
-  color: rgba(white, 0.75);
-  z-index: 10;
+
+.ac-footer {
   min-height: 830px;
   position: relative;
+  text-align: center;
+  color: $white-75;
+  background-color: #1D3657;
+  background-image: url("../images/svg/background_footer.svg");
+  background-repeat: no-repeat;
+  background-position:  center center;
+  background-size: 1420px;
+  font-family: $font-settings !important;
+  font-weight: 600;
+  box-sizing: border-box;
 
-  background: {
-    color: #1d3657;
-    image: url('../images/background_footer.svg');
-    repeat: no-repeat;
-    position:  center center;
-    size: 1420px;
+  p {
+    font-size: 12px;
+    color: $white-75;
+    font-family: $font-settings !important;
+    line-height: inherit;
   }
 
-  .inner-bloc {
+  .ac-footer-brand {
     max-width: 740px;
-    width: 70vw;
     max-height: 400px;
+    width: 70vw;
     height: 100%;
-    transition: all 0.3s ease;
-
     position: absolute;
     top: 48%;
     left: 50%;
-    transform: translate(-50%,-50%);
-    text-align: center;
+    transform: translate(-50%, -50%);
 
-    p {
-      float: left;
-      text-align: center;
-      top: 600px;
-      @include footer-text;
+    &:hover {
+      .ac-icon-love-dark {
+        background: url("../images/svg/icon-heart-light.svg")no-repeat center center / contain;
+      }
     }
 
-    img {
+    .ac-footer-brand-icon {
       width: 110px;
       margin-top: 20px;
     }
@@ -40,81 +44,96 @@
     figure {
       margin: 20px 0 0;
 
-      img {
+      .ac-footer-brand-logo {
         margin: 0;
         width: inherit;
       }
-    }
 
-    &:hover {
-      .icon-love-dark {
-        background: url($icon-heart)no-repeat center center / contain
+      figcaption {
+        text-indent: -9999px;
+        color: transparent;
       }
     }
   }
 
-  .icon {
-    position: absolute;
-    left: 0;
-    right: 0;
-    width: 20px;
-    height: 30px;
-    margin: auto;
+
+  .ac-footer-brand p,
+  .ac-footer-version {
+    color: #496F92;
+    text-transform: uppercase;
+    font-size: 12px;
+    margin: 0;
+    font-weight: 600;
+    float: none;
   }
 
-  p {
 
-    font-size: 12px;
-    color: rgba(white, 0.75);
-  }
+  .ac-footer-links {
+    width: 100%;
+    padding: 1em 0;
+    float: left;
+    margin: 0;
 
-  .link {
-    font-size: 12px;
-    &:not(:first-of-type):before {
-      content: '•';
-      position: relative;
-      margin-right: 16px;
-      color: rgba(white, 0.75);
+    br {
+      @media (min-width: 960px) {
+        display: none;
+      }
     }
   }
 
-  .container {
-    padding-top: 00px;
-    padding-bottom: 00px;
+
+  .ac-footer-link-item {
+    font-size: 12px;
+    color: $red-pink;
+    font-weight: 400;
+    margin-left: $margin;
+    text-decoration: none;
+
+    &:not(:first-of-type):before {
+      content: '•';
+      position: relative;
+      margin-right: $margin;
+      color: $white-75;
+      font-size: 1.2em;
+    }
   }
 
-  .btn.btn-cta {
+
+  .ac-footer-container {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+
+  .ac-footer-btn.ac-footer-btn-cta {
     max-width: 160px;
+    margin: 32px auto;
   }
 
-  .version {
+
+  .ac-footer-version {
     position: relative;
     width: 100%;
-    float: left;
-    text-align: center;
-    top: 640px;
-    @include footer-text;
+    top: 620px;
+    margin-bottom: 2em;
   }
 
-  .action-footer {
-    float: left;
+
+  .ac-footer-actions {
     width: 100%;
     background: $black;
     position: absolute;
     bottom: 0;
     min-height: $navigation-height;
-    text-align: center;
 
     p {
       display: inline;
       line-height: $navigation-height;
       padding: 0;
-      margin:0;
+      margin: 0;
       font-size: 14px;
-      color: #788795;
+      color: $steel;
       text-transform: uppercase;
-      font-family: 'Raleway', helvetica, sans-serif;
-      font-weight: bold;
     }
 
     a {
@@ -123,50 +142,114 @@
 
       &:nth-child(2) {
         margin-left: 32px;
-        margin-right: 16px;
+        margin-right: $margin;
       }
-    }
-
-    .fl-right {
-      height: $navigation-height;
-      line-height: $navigation-height;
     }
   }
 
-  @include small-mq {
-    .links {
-      text-align: center;
-      a:nth-child(2) {
-        margin-bottom: 16px;
-        display: block;
 
+  .ac-footer-btn,
+  [class*="ac-footer-btn-ghost"] {
+    background: $black;
+    border: 1px solid mix($black, #FFFFFF, 90%);
+    color: #FFFFFF;
+    height: 40px;
+    margin: 32px auto;
+    line-height: 40px;
+    padding: 0 1em;
+    display: block;
+    text-decoration: none;
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 12px;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, .2), 0 2px 4px 0 rgba(0, 0, 0, .1);
+    transition: background .1s ease;
+    cursor: pointer;
+
+    &:hover,
+    &:active {
+      background: $red-pink;
+    }
+  }
+
+
+  [class*="ac-footer-btn-ghost"] {
+    background: transparent;
+    border-color: currentColor;
+    font-weight: bold;
+    max-width: inherit;
+    padding: 0 32px;
+  }
+
+
+  .ac-footer-btn-ghost-grey {
+    color:  $steel;
+
+    &:hover {
+      background: $steel;
+      border-color: $steel;
+      color: #FFFFFF;
+
+      .ico-triangle {
+        border-left-color: #FFFFFF;
       }
-      a:nth-child(3):before {
+    }
+  }
+
+
+  .ac-footer-btn-ghost-pink {
+    color:  $red-pink;
+
+    &:hover {
+      background: $red-pink;
+      border-color: $red-pink;
+      color: #FFFFFF;
+    }
+  }
+
+
+  .ac-icon {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 20px;
+    height: 30px;
+    margin: auto;
+  }
+  .ac-icon-love-dark {
+    background: url("../images/svg/icon-heart-dark.svg")no-repeat center center / contain;
+  }
+}
+
+
+/*! On small devices */
+@media (max-width: $bp-medium) {
+  .ac-footer {
+    background-size: cover;
+    background-position: 50% 70px;
+
+    .ac-footer-links {
+      text-align: center;
+
+      .ac-footer-links:nth-child(2) {
+        margin-bottom: $margin;
+        display: block;
+      }
+
+      .ac-footer-links:nth-child(3):before {
         display: none;
       }
     }
 
-    .newsletter-bloc {
-      margin-top: 60px;
-    }
-  }
-
-  @include small-mq {
-
-    background: {
-      size: cover;
-      position: 50% 70px;
-    }
-
-
     hr {
       display: none;
-
     }
-    .action-footer {
-      width: calc(16px + 100%);
-      left: -16px;
-      padding-bottom: 16px;
+
+    .ac-footer-actions {
+      width: calc(#{$margin} + 100%);
+      left: -$margin;
+      padding-bottom: $margin;
       text-align: center;
 
       p {
@@ -176,7 +259,7 @@
         text-align: center;
       }
 
-      .btn,
+      .ac-footer-btn,
       a:nth-child(2) {
         width: calc(100% - 32px);
         max-width: calc(100% - 32px);
@@ -188,4 +271,73 @@
       }
     }
   }
+}
+
+// Footer heartbeat
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba($red-pink, .4);
+  }
+  70% {
+
+    box-shadow: 0 0 0 30px rgba($red-pink, 0);
+  }
+  100% {
+
+    box-shadow: 0 0 0 0 rgba($red-pink, 0);
+  }
+}
+
+@keyframes pulseHeart {
+  0% {
+    transform: scale(1.3);
+  }
+  70% {
+
+    transform: scale(1.15);
+  }
+  100% {
+
+    transform: scale(1);
+  }
+}
+
+.ac-icon-love-dark {
+  display: block;
+  position: relative;
+
+  &:before {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    top: 45%;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    right: 0;
+    z-index: -1;
+    border-radius: 100%;
+  }
+}
+
+.ac-footer-container:hover .ac-icon-love-dark {
+  animation: pulseHeart 1s ease infinite;
+
+  &:before {
+    animation: pulse 1s ease infinite !important;
+  }
+}
+
+
+.ac-icon-triangle {
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid $steel;
+  position: relative;
+  display: inline-block;
+  margin-left: 8px;
 }

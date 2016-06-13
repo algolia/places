@@ -16,7 +16,7 @@ $bp-small: 768px;
 $max-width: 940px;
 $navigation-height: 50px;
 $sidebar-width: 160px;
-
+$margin: 16px;
 $offset-height: $navigation-height + 20;
 
 
@@ -39,6 +39,7 @@ $silver: #d4d9de;
 $steel: #788795;
 $brand-primary: #1D96C7;
 $black: #0a1724;
+$white-75: rgba(white, 0.75);
 
 
 // Fonts

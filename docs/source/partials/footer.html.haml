@@ -1,28 +1,30 @@
-%section.footer-section
-  %hr
-  .container.center-text
-    %p.links Code licensed under <a href="https://github.com/algolia/places/blob/master/LICENSE" class="link">MIT</a> <br class="no-desktop"/> <a href="https://github.com/algolia/places" class="link">Github</a> <a href="https://github.com/algolia/places/issues" class="link">issues</a>
+%section.ac-footer
 
-  .container.inner-bloc
+  .ac-footer-container
+    %p.ac-footer-links
+      Code licensed under
+      %a.ac-footer-link-item{:href => "https://github.com/algolia/places/blob/master/LICENSE"} MIT
+      %br/
+      %a.ac-footer-link-item{:href => "https://github.com/algolia/places/"} Github
+      %a.ac-footer-link-item{:href => "https://github.com/algolia/places/issues"} issues
+
+  .ac-footer-container.ac-footer-brand
     %p This project is part of
-    %img{src: "images/svg/algolia-community-badge.svg"}
+    %img.ac-footer-brand-icon{:src => "http://res.cloudinary.com/hilnmyskv/image/upload/logo-community.svg"}/
     %figure
-      %img{src: "images/svg/algolia-community.svg"}
-      %figcaption
-        Algolia Community
-    %a{class: "btn btn-cta btn-black", href: "https://community.algolia.com/"} See More
+      %img.ac-footer-brand-logo{:src => "http://res.cloudinary.com/hilnmyskv/image/upload/v1463417234/algolia-community_n6tixd.svg"}/
+      %figcaption Algolia Community
 
-    %span.icon.icon-love-dark
+    %a.ac-footer-btn.ac-footer-btn-cta{:href => "https://community.algolia.com/"} See More
+    %span.ac-icon.ac-icon-love-dark
 
-  %p.version
-    Latest version:
-    = config[:places_lib_version]
+  %p.ac-footer-version Latest version: #{config[:places_lib_version]}
 
-  %div.action-footer
-    .container
-      %p Build unique search experience with Algolia
-
-      %a{class: "btn btn-ghost btn-ghost-grey", href: 'https://www.algolia.com/why?utm_medium=social-owned&utm_source=places%20website&utm_campaign=homepage&utm_term=why'} See Why <span class="ico-triangle"></span>
-      %a{class: "btn btn-ghost btn-ghost-pink", href: 'https://www.algolia.com/users/sign_up?utm_medium=social-owned&utm_source=places%20website&utm_campaign=homepage&utm_term=get_started'} Get Started For Free
-
+  .ac-footer-actions
+    .footer-container
+      %p Build unique search experiences with Algolia
+      %a.ac-footer-btn.ac-footer-btn-ghost-grey{:href => "https://www.algolia.com/why?utm_medium=social-owned&utm_source=places%20website&utm_campaign=homepage&utm_term=why"}
+        See Why
+        %span.ac-icon-triangle
+      %a.ac-footer-btn.ac-footer-btn-ghost-pink{:href => "https://www.algolia.com/users/sign_up?utm_medium=social-owned&utm_source=places%20website&utm_campaign=homepage&utm_term=get_started"} Get Started For Free
 = partial "/partials/marketing"
