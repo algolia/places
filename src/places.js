@@ -15,24 +15,22 @@ import pinIcon from './icons/address.svg';
 export default function places(options) {
   const {
     container,
-    style
+    style,
+    autocompleteOptions: userAutocompleteOptions = {}
   } = options;
 
   const placesInstance = new EventEmitter();
 
-  // https://github.com/algolia/autocomplete.js#options
   const autocompleteOptions = {
     autoselect: true,
     hint: false,
     cssClasses: {
       root: 'algolia-places' + (style === false ? '-nostyle' : ''),
       prefix: 'ap' + (style === false ? '-nostyle' : '')
-    }
+    },
+    debug: process.env.NODE_ENV === 'development' ? true : false,
+    ...userAutocompleteOptions
   };
-
-  if (process.env.NODE_ENV === 'development') {
-    autocompleteOptions.debug = true;
-  }
 
   const autocompleteDataset = createAutocompleteDataset({
     ...options,
