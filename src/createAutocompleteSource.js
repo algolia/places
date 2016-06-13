@@ -3,6 +3,7 @@ import version from './version.js';
 
 export default function createAutocompleteSource({
   algoliasearch,
+  clientOptions,
   apiKey,
   appId,
   aroundLatLng,
@@ -16,7 +17,8 @@ export default function createAutocompleteSource({
 }) {
   const placesClient = algoliasearch.initPlaces(
     apiKey,
-    appId
+    appId,
+    clientOptions
   );
   placesClient.as.addAlgoliaAgent(`Algolia Places ${version}`);
 
