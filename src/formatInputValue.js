@@ -4,7 +4,7 @@ export default function formatInputValue({
   country,
   name
 }) {
-  const out = `${name}
+  const out = `${name},
  ${city ? `${city},` : ''}
  ${administrative ? `${administrative},` : ''}
  ${country ? `${country}` : ''}`.replace(/\s*\n\s*/g, ' ').trim();
