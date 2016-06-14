@@ -26,8 +26,7 @@ export default function createAutocompleteSource({
     countries,
     hitsPerPage: 5,
     language,
-    type,
-    enableBeta: true
+    type
   };
 
   if (aroundLatLng) {
