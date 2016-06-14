@@ -1,10 +1,7 @@
-import anchorableElements from './anchorableElements.js';
-import responsiveNavigation from './responsiveNavigation.js';
 import sidebar from './sidebar.js';
 import activateClipboard from './activateClipboard.js';
-import './docsearch.js';
+import anchorableElements from './anchorableElements.js';
 
-responsiveNavigation();
 sidebar({
   headersContainer: document.querySelector('.documentation-container'),
   sidebarContainer: document.querySelector('#sidebar'),
@@ -13,6 +10,6 @@ sidebar({
 anchorableElements(
   document
     .querySelector('.documentation-container')
-    .querySelectorAll('h2, h3')
+    .querySelectorAll('h2, h3, .api-entry')
 );
 activateClipboard([...document.querySelectorAll('.code')]);

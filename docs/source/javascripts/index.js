@@ -1,11 +1,6 @@
 /* eslint no-console: 0 */
 /* global places */
 
-import responsiveNavigation from './responsiveNavigation.js';
-import './docsearch.js';
-
-responsiveNavigation();
-
 const $input = document.querySelector('#landing-demo');
 const placesAutocomplete = places({
   container: $input
