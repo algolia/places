@@ -10,7 +10,7 @@ See the [website][places-website] for more information.
 
 ## Demo
 
-Watch [more examples on the website][places-website].
+Watch [more examples on the website][places-website-examples].
 
 [![Demo]][demo]
 
