@@ -12,7 +12,7 @@ See the [website][places-website] for more information.
 
 Watch [more examples on the website][places-website-examples].
 
-[![Demo]][demo]
+[![Demo]][places-website]
 
 ## Contributing
 
