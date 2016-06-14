@@ -1,24 +1,24 @@
-**NOTHING TO :eyes: SEE HERE FOR NOW, we are working hard :triumph:**
+# Algolia Places
+
+    Turn any <input> into an address autocomplete
 
 [![Version][version-svg]][package-url] [![Build Status][travis-svg]][travis-url] [![License][license-image]][license-url] [![Downloads][downloads-image]][downloads-url]
 
-# Places
-
-[Places][places-website] is [Algolia][algolia-website] answer to address search. You can use it in your website to provide your users
-an autocomplete address search.
+[Algolia Places][places-website] provides a fast, distributed and easy way to use an address search autocomplete JavaScript library on your website.
 
 See the [website][places-website] for more information.
 
 ## Demo
 
-TODO: demo gif
+Watch [more examples on the website][places-website].
+
+[![Demo]][demo]
 
 ## Contributing
 
-Wanna contribute? Awesome!
+Wanna contribute? Awesome, please read the [contributing guide][contributing].
 
-We have a [contributing guide][contributing].
-
+[demo]: ./demo.gif
 [version-svg]: https://img.shields.io/npm/v/places.js.svg?style=flat-square
 [package-url]: https://npmjs.org/package/places.js
 [travis-svg]: https://img.shields.io/travis/algolia/places/master.svg?style=flat-square
@@ -28,6 +28,7 @@ We have a [contributing guide][contributing].
 [downloads-image]: https://img.shields.io/npm/dm/places.js.svg?style=flat-square
 [downloads-url]: http://npm-stat.com/charts.html?package=places.js
 [places-website]: https://community.algolia.com/places/?utm_medium=social-owned&utm_source=GitHub&utm_campaign=places%20repository
+[places-website-examples]: https://community.algolia.com/places/examples.html?utm_medium=social-owned&utm_source=GitHub&utm_campaign=places%20repository
 [algolia-website]: https://www.algolia.com/?utm_medium=social-owned&utm_source=GitHub&utm_campaign=places%20repository
 [places-docs]: https://community.algolia.com/places/documentation/?utm_medium=social-owned&utm_source=GitHub&utm_campaign=places%20repository
 [contributing]: CONTRIBUTING.md
