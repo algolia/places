@@ -47,7 +47,7 @@ function sidebarFollowScroll(sidebarContainer) {
     // The following code is used to change the color of the navigation
     // depending the level of page scroll.
     const hero = document.querySelector('.hero-section');
-    const footer = document.querySelector('.footer-section');
+    const footer = document.querySelector('.ac-footer');
     const navigation = document.querySelector('.ac-nav');
     const menu = document.querySelector('.sidebar > ul');
     const heroHeight = hero.offsetHeight;
