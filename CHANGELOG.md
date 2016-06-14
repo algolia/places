@@ -1,3 +1,20 @@
+<a name="0.32.0"></a>
+# [0.32.0](https://github.com/algolia/places/compare/v0.31.0...v0.32.0) (2016-06-14)
+
+
+### Bug Fixes
+
+* **docs:** footer and header updated to the last version ([9e6a54f](https://github.com/algolia/places/commit/9e6a54f))
+* **website:** Change docsearch input color on active ([480ed9a](https://github.com/algolia/places/commit/480ed9a))
+* **website:** Compact docsearch is compact now. ([cf3dabf](https://github.com/algolia/places/commit/cf3dabf))
+
+### Features
+
+* **autocompleteOptions:** expose the autocompleteOptions ([06c139c](https://github.com/algolia/places/commit/06c139c))
+* **clientOptions:** ability to set REST API client options ([4ad1eea](https://github.com/algolia/places/commit/4ad1eea))
+
+
+
 <a name="0.31.0"></a>
 # [0.31.0](https://github.com/algolia/places/compare/v0.30.0...v0.31.0) (2016-06-07)
 
