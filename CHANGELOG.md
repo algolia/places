@@ -1,3 +1,14 @@
+<a name="0.33.0"></a>
+# [0.33.0](https://github.com/algolia/places/compare/v0.32.0...v0.33.0) (2016-06-14)
+
+
+### Bug Fixes
+
+* **footer:** powered by link goes to algolia.com/places ([396ffc8](https://github.com/algolia/places/commit/396ffc8))
+* **value:** put a comma after the suggestion name in value ([2c7f351](https://github.com/algolia/places/commit/2c7f351))
+
+
+
 <a name="0.32.0"></a>
 # [0.32.0](https://github.com/algolia/places/compare/v0.31.0...v0.32.0) (2016-06-14)
 
