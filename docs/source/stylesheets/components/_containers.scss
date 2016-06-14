@@ -142,10 +142,6 @@ section {
       ellipse {
         transform: translateY(12px);
       }
-
-      body:not(.index) &{
-        display: none;
-      }
     }
   }
 }

@@ -11,9 +11,9 @@
         - if current_page.data.subtitle
           %h3= current_page.data.subtitle
 
+    - if current_page.path == 'index.html'
       %div.fl-right
         = partial("/images/svg/places-illustration.svg")
-    - if current_page.path == 'index.html'
       %input{type: "search", id: "landing-demo", class: "hero-searchbar form-control", autofocus: true, placeholder: "Search a city or address", style: 'opacity: 0'}
 
   %div.relative
@@ -21,40 +21,41 @@
       %div#json-response-text
       %div#json-response-timing
 
-  %div.examples-intro
-    %div.items-holder
-      %div{:class => "item"}
-        %a{:href => '#simple-input'}
-          %span{:class => "square input"}
-            = partial("/images/svg/search-icon-2.svg")
-          %span.name Simple Input
+  - if current_page.path == 'examples.html'
+    %div.examples-intro
+      %div.items-holder
+        %div{:class => "item"}
+          %a{:href => '#simple-input'}
+            %span{:class => "square input"}
+              = partial("/images/svg/search-icon-2.svg")
+            %span.name Simple Input
 
-      %div{:class => "item"}
-        %a{:href => '#complete-form'}
-          %span{:class => "square form"}
-            = partial("/images/svg/form-icon.svg")
-          %span.name Complete Form
+        %div{:class => "item"}
+          %a{:href => '#complete-form'}
+            %span{:class => "square form"}
+              = partial("/images/svg/form-icon.svg")
+            %span.name Complete Form
 
-      %div{:class => "item"}
-        %a{:href => '#city-search'}
-          %span{:class => "square city"}
-            = partial("/images/svg/city-icon.svg")
-          %span.name City Search
+        %div{:class => "item"}
+          %a{:href => '#city-search'}
+            %span{:class => "square city"}
+              = partial("/images/svg/city-icon.svg")
+            %span.name City Search
 
-      %div{:class => "item"}
-        %a{:href => '#country-search'}
-          %span{:class => "square country"}
-            = partial("/images/svg/country-icon.svg")
-          %span.name Country Search
+        %div{:class => "item"}
+          %a{:href => '#country-search'}
+            %span{:class => "square country"}
+              = partial("/images/svg/country-icon.svg")
+            %span.name Country Search
 
-      %div{:class => "item"}
-        %a{:href => '#link-to-a-map'}
-          %span{:class => "square map"}
-            = partial("/images/svg/map-icon.svg")
-          %span.name Map Search
+        %div{:class => "item"}
+          %a{:href => '#link-to-a-map'}
+            %span{:class => "square map"}
+              = partial("/images/svg/map-icon.svg")
+            %span.name Map Search
 
-      %div{:class => "item"}
-        %a{:href => '#advanced'}
-          %span{:class => "square advanced"}
-            = partial("/images/svg/advanced-icon.svg")
-          %span.name Advanced
+        %div{:class => "item"}
+          %a{:href => '#advanced'}
+            %span{:class => "square advanced"}
+              = partial("/images/svg/advanced-icon.svg")
+            %span.name Advanced
