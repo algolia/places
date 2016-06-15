@@ -238,6 +238,26 @@ If using the authenticated API, the API key to use.
     </tr>
     <tr>
 <td markdown="1">
+<div class="api-entry" id="api-options-useDeviceLocation"><code>useDeviceLocation</code></div>
+
+Type: **boolean**
+</td>
+<td markdown="1">
+Ask and use the device location.
+</td>
+    </tr>
+    <tr>
+<td markdown="1">
+<div class="api-entry" id="api-options-computeQueryParams"><code>computeQueryParams</code></div>
+
+Type: **object**
+</td>
+<td markdown="1">
+Allows you to override computed query parameters sent to the [Algolia Places REST API](rest.html).
+</td>
+    </tr>
+    <tr>
+<td markdown="1">
 <div class="api-entry" id="api-options-clientOptions"><code>clientOptions</code></div>
 
 Type: **object**
@@ -519,7 +539,7 @@ If you're already using instantsearch.js, you can use Algolia Places out of the 
 widget will do a search of places using Algolia Places and when an adress is selected, it
 will update the geolocation point of the instantsearch.js search.
 
-You can include it using a link tag: 
+You can include it using a link tag:
 
 ```html
 <%= javascript_include_tag config[:places_instantsearch_widget_cdn_url] %>
