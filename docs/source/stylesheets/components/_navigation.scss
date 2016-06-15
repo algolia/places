@@ -108,8 +108,7 @@
     width: auto;
     height: $navigation-height;
 
-    .searchbox {
-    }
+
 
     .searchbox__submit svg {
       width: 12px;
@@ -132,6 +131,12 @@
       @media (max-width: $bp-medium) {
         display: none;
       }
+    }
+
+    .searchbox__input:focus ~ * {
+      color:red;
+      background: red;
+      fill: red
     }
   }
 
