@@ -13,9 +13,17 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/hint.css/2/hint.min.css" />
     <link rel="stylesheet" media="screen" href="//fonts.googleapis.com/css?family=Raleway:300,800">
+    <% if current_page.path == 'index.html' %>
+    <link rel=canonical href="https://community.algolia.com/places">
+    <% end %>
+
     <%= stylesheet_link_tag :site %>
     <%= auto_stylesheet_link_tag %>
     <%= javascript_include_tag config[:places_lib_url] %>
+    <script>
+      var currentPath = '<%= current_page.path %>';
+      var clippyPath = '<%= image_path 'clippy.svg' %>';
+    </script>
   </head>
 
   <body class="<%= page_classes %>">
@@ -23,10 +31,6 @@
     <%= partial("/partials/hero") %>
     <%= yield %>
     <%= partial "/partials/footer" %>
-    <script>
-      var currentPath = '<%= current_page.path %>';
-      var clippyPath = '<%= image_path 'clippy.svg' %>';
-    </script>
     <%= javascript_include_tag :common %>
     <%= auto_javascript_include_tag %>
   </body>
