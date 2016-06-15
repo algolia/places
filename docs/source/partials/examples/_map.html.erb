@@ -2,7 +2,7 @@
 <input type="search" id="input-map" class="form-control" placeholder="Where are we going?" />
 
 <style>
-  #map-example-container {height: 300px};
+  #map-example-container {height: 300px; pointer-events: none;};
 </style>
 
 <%= javascript_include_tag config[:places_lib_url] %>
