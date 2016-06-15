@@ -19,8 +19,10 @@ export default function formatDropdownValue(options) {
 
   const name = hit._highlightResult.locale_names[0].value;
   city = city ? hit._highlightResult.city[0].value : undefined;
-  administrative = administrative ? hit._highlightResult.administrative[0].value : undefined;
-  country = country ? hit._highlightResult.country.value : undefined;
+  administrative = administrative && hit._highlightResult.administrative ?
+    hit._highlightResult.administrative[0].value : administrative;
+  country = country && hit._highlightResult.country ?
+    hit._highlightResult.country.value : country;
 
   const out = `<span class="ap-suggestion-icon">${icons[type].trim()}</span>
 <span class="ap-name">${name}</span>
