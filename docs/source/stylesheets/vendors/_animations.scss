@@ -14,6 +14,21 @@ $timingFunction: 3s ease infinite;
     }
   }
 }
+@mixin animEllipse($name, $p1, $p2, $p3) {
+  @keyframes #{$name}{
+    0%, 20%, 80%, 100% {
+      transform: #{$p1};
+    }
+    10%, 40%, 50% {
+      transform: #{$p2};
+      opacity: 0.6;
+    }
+    60% {
+      transform: #{$p3};
+      opacity: 0.6;
+    }
+  }
+}
 
 #pin {
   animation: bounce $timingFunction;
@@ -22,6 +37,8 @@ ellipse {
   transform-origin: center center;
   -moz-transform-origin: 50% 40%;
   animation: bounceShadow $timingFunction;
+  -moz-animation: mozBounceShadow $timingFunction;
+
 }
 // Fix svg in FF
 #plan-holder {
@@ -32,8 +49,8 @@ ellipse {
 }
 
 @include anim('bounce', 'translateY(0)', 'translateY(-5px)', 'translateY(-5px)');
-@include anim('bounceShadow', 'scale(1) translateY(12px)', 'scale(0.75) translateY(12px) ', 'scale(0.75) translateY(12px) ');
-@include anim('bounceShadow', 'scale(1) translateY(12px)', 'scale(0.75) translateY(12px) translateX(6px) ', 'scale(0.75) translateY(12px) translateX(6px) ');
+@include animEllipse('bounceShadow', 'scale(1) translateY(12px)', 'scale(0.75) translateY(12px) ', 'scale(0.75) translateY(12px) ');
+@include animEllipse('mozBounceShadow', 'scale(1) translateY(16px)', 'scale(0.75) translateY(16px) translateX(-8px) ', 'scale(0.75) translateY(16px) translateX(-8px) ');
 
 // Footer heartbeat
 @keyframes pulse{
