@@ -513,6 +513,51 @@ All the places.js [options](#options) are available and can be passed to the `pl
 
 You will need an [Algolia account](https://www.algolia.com/) to be able to search into your own data. See the [autocomplete.js dataset example](examples.html#custom-data).
 
+### instantsearch.js
+
+If you're already using instantsearch.js, you can use Algolia Places out of the box. This
+widget will do a search of places using Algolia Places and when an adress is selected, it
+will update the geolocation point of the instantsearch.js search.
+
+You can include it using a link tag: 
+
+```html
+<%= javascript_include_tag config[:places_instantsearch_widget_cdn_url] %>
+```
+
+The widget is exported as `placesInstantsearchWidget` in the window. It is also available with
+npm using:
+
+```js
+import widget from 'places.js/placesInstantsearchWidget';
+```
+
+The widget accept the same [options as places.js](#options). Because it is an instantsearch.js that
+will have an impact on the instantsearch search, it contains other options:
+
+
+<!-- Indentation is on purpose for <td>s, to allow HTML inside markdown -->
+<table class="api">
+  <thead><tr>
+    <th>Option</th>
+    <th>Description</th>
+  </tr></thead>
+  <tbody>
+    <tr>
+<td markdown="1">
+<div class="api-entry" id="api-options-instantsearch-default-position"><code>defaultPosition</code></div>
+
+Type: **number[]**
+
+</td>
+<td markdown="1">
+Sets the default position around which the instantsearch search is done, when no element is selected in the places widget.
+This position is an array of two numbers, representing the lattitude and the longitude.
+</td>
+    </tr>
+    </tbody>
+    </table>
+
 ### REST API
 
 Behind the places.js the JavaScript library lies a complete REST API. Read the underlying [REST API documentation](rest.html).
