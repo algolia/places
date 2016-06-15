@@ -1,3 +1,17 @@
+<a name="1.0.1"></a>
+## [1.0.1](https://github.com/algolia/places/compare/v1.0.0...v1.0.1) (2016-06-15)
+
+
+### Bug Fixes
+
+* **landing:** improve bounce animation ([aae4a34](https://github.com/algolia/places/commit/aae4a34))
+
+### Features
+
+* **precision:** add useDeviceLocation option (#210) ([634143b](https://github.com/algolia/places/commit/634143b))
+
+
+
 <a name="1.0.0"></a>
 # [1.0.0](https://github.com/algolia/places/compare/v0.33.0...v1.0.0) (2016-06-15)
 
