@@ -1,3 +1,18 @@
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/algolia/places/compare/v0.33.0...v1.0.0) (2016-06-15)
+
+
+### Bug Fixes
+
+* **website:** fix #202; Fix icon header; ([5ecaa60](https://github.com/algolia/places/commit/5ecaa60)), closes [#202](https://github.com/algolia/places/issues/202)
+* **website:** fix #203 (#206) ([dc70e0f](https://github.com/algolia/places/commit/dc70e0f)), closes [#203](https://github.com/algolia/places/issues/203) [(#206](https://github.com/(/issues/206)
+
+### Features
+
+* **instantsearch:** Provide an instantsearch.js widget for places ([e574433](https://github.com/algolia/places/commit/e574433))
+
+
+
 <a name="0.33.0"></a>
 # [0.33.0](https://github.com/algolia/places/compare/v0.32.0...v0.33.0) (2016-06-14)
 
