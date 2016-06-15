@@ -11,6 +11,8 @@ export default function createAutocompleteSource({
   aroundLatLngViaIP,
   countries,
   formatInputValue,
+  computeQueryParams = params => params,
+  useDeviceLocation = false,
   language = navigator.language.split('-')[0],
   onHits = () => {},
   type
@@ -39,11 +41,19 @@ export default function createAutocompleteSource({
     defaultQueryParams.aroundRadius = aroundRadius;
   }
 
+  let userCoords;
+  if (useDeviceLocation) {
+    navigator.geolocation.watchPosition(
+      ({coords}) => userCoords = `${coords.latitude},${coords.longitude}`
+    );
+  }
+
   return (query, cb) => placesClient
-      .search({
+      .search(computeQueryParams({
         ...defaultQueryParams,
+        [userCoords ? 'aroundLatLng' : undefined]: userCoords,
         query
-      })
+      }))
       .then(
         content => {
           const hits = content.hits.map((hit, hitIndex) => {

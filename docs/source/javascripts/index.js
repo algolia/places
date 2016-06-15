@@ -3,7 +3,8 @@
 
 const $input = document.querySelector('#landing-demo');
 const placesAutocomplete = places({
-  container: $input
+  container: $input,
+  useDeviceLocation: true
 });
 $input.style.opacity = 1; // we initially hide the input to avoid size flickering
 
