@@ -22,8 +22,8 @@ If you do not find any corresponding issue, [open a new one](https://github.com/
 
 ## Coding help
 
-The easiest way to get some coding advices is to ask your question on [Stack Overflow](https://stackoverflow.com/),
-our community of users will be happy to help you there.
+The easiest way to get some coding advices is to ask your question on [Stack Overflow](https://stackoverflow.com/questions/tagged/algolia) using the tags 'algolia' and 'places'. Our community of users will be happy to help you there.
+
 
 <script>
   function getip(res) {
