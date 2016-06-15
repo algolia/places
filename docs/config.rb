@@ -62,9 +62,9 @@ activate :protect_emails
 ###
 
 config[:places_lib_version] = ENV['VERSION']
-config[:places_cdn_url] = 'https://cdn.jsdelivr.net/places.js/0/places.min.js'
-config[:places_autocomplete_dataset_cdn_url] = 'https://cdn.jsdelivr.net/places.js/0/placesAutocompleteDataset.min.js'
-config[:places_instantsearch_widget_cdn_url] = 'https://cdn.jsdelivr.net/places.js/0/placesInstantsearchWidget.min.js'
+config[:places_cdn_url] = 'https://cdn.jsdelivr.net/places.js/1/places.min.js'
+config[:places_autocomplete_dataset_cdn_url] = 'https://cdn.jsdelivr.net/places.js/1/placesAutocompleteDataset.min.js'
+config[:places_instantsearch_widget_cdn_url] = 'https://cdn.jsdelivr.net/places.js/1/placesInstantsearchWidget.min.js'
 
 helpers do
   def nav_active(path)
