@@ -8,6 +8,7 @@
 }
 .ad-example-dropdown-menu {
   width: 100%;
+  color: black;
   background-color: #fff;
   border: 1px solid #ccc;
   border-top: none;
@@ -21,8 +22,13 @@
 }
 .ad-example-dropdown-menu .ad-example-suggestion img {
   height: 2em;
-  vertical-align: middle;
+  margin-top: .5em;
   margin-right: 10px;
+  float: left;
+}
+.ad-example-dropdown-menu .ad-example-suggestion small {
+  font-size: .8em;
+  color: #bbb;
 }
 .ad-example-dropdown-menu .ad-example-suggestion.ad-example-cursor {
   background-color: #B2D7FF;
@@ -53,7 +59,11 @@
       header: '<div class="ad-example-header">Vacation rentals</div>',
       suggestion: function(suggestion) {
         return '<div class="ad-example-suggestion">' +
-          '<img src="' + suggestion.thumbnail_url + '" />' + suggestion._highlightResult.name.value +
+          '<img src="' + suggestion.thumbnail_url + '" />' +
+          '<div>' +
+            suggestion._highlightResult.name.value + '<br />' +
+            '<small>' + suggestion._highlightResult.city.value + '</small>' +
+          '</div>' +
           '</div>';
       }
     }
@@ -67,7 +77,6 @@
     templates: {
       header: '<div class="ad-example-header">Cities</div>'
     },
-    type: 'city',
     hitsPerPage: 3
   });
 
