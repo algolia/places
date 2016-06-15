@@ -4,7 +4,7 @@ set -e # exit when error, no verbose
 
 printf "\nBuilding places.js library\n"
 
-BUNDLES=( 'places' 'placesAutocompleteDataset' )
+BUNDLES=( 'places' 'placesAutocompleteDataset' 'placesInstantsearchWidget' )
 LICENSE="/*! ${NAME} ${VERSION:-UNRELEASED} | © Algolia | github.com/algolia/places */"
 DIST_DIR="dist/cdn"
 
@@ -29,6 +29,6 @@ do
     -m \
     -o "${dist_file_min}"
 
-  gzip_size=$(gzip -9 < $dist_file_min | wc -c | pretty-bytes)
+  gzip_size=$(gzip -9 < "$dist_file_min" | wc -c | pretty-bytes)
   echo "=> $dist_file_min gzipped will weight $gzip_size"
 done

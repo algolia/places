@@ -27,6 +27,10 @@ docsearchInput
     }
   });
 
+docsearchInput.onblur = function() {
+  reset.classList.add('hide');
+};
+
 docsearchInput.addEventListener('change', () => docsearchInput.classList.add('filled'));
 
 docsearchInput.addEventListener('blur', () => {
