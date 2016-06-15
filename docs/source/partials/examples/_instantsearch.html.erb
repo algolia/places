@@ -1,0 +1,41 @@
+<input type="search" id="input-map-instantsearch" class="form-control" placeholder="Where are you looking for a coffee?" />
+<div id="map-instantsearch-container"></div>
+
+<style>
+  #map-instantsearch-container {height: 300px};
+</style>
+
+<%= javascript_include_tag config[:instantsearch_lib_url] %>
+<%= javascript_include_tag config[:places_instantsearch_widget_lib_url] %>
+<%= javascript_include_tag config[:instantsearch_googlemaps_lib_url] %>
+<%= javascript_include_tag config[:google_maps_lib_url] %>
+<script>
+(function() {
+var search = instantsearch({
+  appId: 'latency',
+  apiKey: 'ffc36feb6e9df06e1c3c4549b5af2b31',
+  indexName: 'starbucks',
+  searchParameters: {
+    hitsPerPage: 50
+  }
+});
+
+var searchBox = placesInstantsearchWidget({
+  container: document.querySelector('#input-map-instantsearch')
+});
+
+var map = instantsearchGoogleMaps({
+  container: document.querySelector('#map-instantsearch-container'),
+  prepareMarkerData: ({Brand, Name, 'Street Combined': street}) => {
+    return {
+      title: `${Brand} - ${Name}`
+    };
+  },
+  refineOnMapInteraction: true
+});
+
+search.addWidget(searchBox);
+search.addWidget(map);
+search.start();
+})();
+</script>

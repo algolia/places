@@ -4,7 +4,8 @@ import {join} from 'path';
 export default {
   entry: {
     places: './index.js',
-    placesAutocompleteDataset: './autocompleteDataset.js'
+    placesAutocompleteDataset: './autocompleteDataset.js',
+    placesInstantsearchWidget: './instantsearchWidget.js'
   },
   devtool: 'source-map',
   output: {
