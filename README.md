@@ -14,6 +14,58 @@ Watch [more examples on the website][places-website-examples].
 
 [![Demo]][places-website]
 
+## Getting started
+
+To use Algolia Places, all you need is an `<input>` and some JavaScript code that will load
+and use the places.js library.
+
+### CDN `<script>`
+
+Our JavaScript library is available on the [jsDelivr CDN](http://www.jsdelivr.com/projects/places.js).
+
+```html
+<script src="https://cdn.jsdelivr.net/places.js/1/places.min.js"></script>
+```
+
+Here's a small example using it:
+
+```html
+<input type="search" id="address-input" placeholder="Where are we going?" />
+
+<script>
+  var placesAutocomplete = places({
+    container: document.querySelector('#address-input')
+  });
+</script>
+```
+
+### Using npm
+
+Algolia Places is also available on [npm](https://www.npmjs.com/package/places.js).
+
+Install the module:
+
+```sh
+npm install places.js --save
+```
+
+Put an `<input>` in your html page:
+
+```html
+<input type="search" id="address-input" placeholder="Where are we going?" />
+```
+
+Initialize the places.js library:
+
+```js
+var places = require('places.js');
+var placesAutocomplete = places({
+  container: document.querySelector('#address-input')
+});
+```
+
+Full documentation is available on the [Algolia Places website][places-website].
+
 ## Contributing
 
 Wanna contribute? Awesome, please read the [contributing guide][contributing].
