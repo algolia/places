@@ -101,28 +101,6 @@ Templates are functions called with a [suggestion object](./documentation.html#s
 <%= partial '/partials/examples/templates' %>
 ```
 
-### instantsearch.js
-
-<%= partial '/partials/examples/instantsearch' %>
-
-```html
-<%= partial '/partials/examples/instantsearch' %>
-```
-
-### Custom data
-
-Using [Algolia's autocomplete.js](https://github.com/algolia/autocomplete.js) library, you can search in your own data along with showing Algolia Places results.
-
-You need an Algolia account to do so and the Algolia Places dataset:
-
-<%= partial '/partials/examples/autocomplete_dataset' %>
-
-```html
-<%= partial '/partials/examples/autocomplete_dataset' %>
-```
-
-See the documentation about the [placesAutocompleteDataset function](documentation.html#autocompletejs).
-
 ### Input styling
 
 The default Algolia Places styling should be sufficient for most websites: we only style the dropdown in a light way, the input remains unstyled and so can fit any website.
@@ -136,3 +114,25 @@ Here's an example styling the input:
 ```
 
 See our [documentation about styling](./documentation.html#styling) for more details.
+
+### autocomplete.js
+
+Using [Algolia's autocomplete.js](https://github.com/algolia/autocomplete.js) library, you can search in your own data along with showing Algolia Places results.
+
+You need an Algolia account to do so and the Algolia Places dataset:
+
+<%= partial '/partials/examples/autocomplete_dataset' %>
+
+```html
+<%= partial '/partials/examples/autocomplete_dataset' %>
+```
+
+See the documentation about the [placesAutocompleteDataset function](documentation.html#autocompletejs).
+
+### instantsearch.js
+
+<%= partial '/partials/examples/instantsearch' %>
+
+```html
+<%= partial '/partials/examples/instantsearch' %>
+```
