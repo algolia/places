@@ -27,10 +27,6 @@ docsearchInput
     }
   });
 
-docsearchInput.onblur = function() {
-  reset.classList.add('hide');
-};
-
 docsearchInput.addEventListener('change', () => docsearchInput.classList.add('filled'));
 
 docsearchInput.addEventListener('blur', () => {
@@ -38,3 +34,5 @@ docsearchInput.addEventListener('blur', () => {
     docsearchInput.classList.remove('filled');
   }
 });
+
+search.autocomplete.on('autocomplete:selected', () => reset.classList.add('hide'));
