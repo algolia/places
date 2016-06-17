@@ -700,7 +700,7 @@ The Algolia Places API enforces some rate limits.
 <table class="rate-limits">
   <thead>
     <tr>
-      <th>1,000 requests / day</th>
+      <th>1,000 requests per domain / day</th>
       <th>Need more?</th>
     </tr>
   </thead>
@@ -717,7 +717,7 @@ The Algolia Places API enforces some rate limits.
   </tbody>
 </table>
 
-The rate-limits computation are per IP and per HTTP Referer.
+If you're calling the API from your backend, the rate-limits computation is then based on the source IP.
 
 ## License
 
