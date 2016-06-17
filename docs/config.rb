@@ -48,7 +48,8 @@ set :markdown, input: 'GFM'
 
 activate :syntax, line_numbers: true, css_class: 'codehilite'
 
-[:index, :documentation, :rest, :examples, :common, :support, 'documentation-layout'].each do |name|
+# JS entry points
+[:index, :common, :support, 'documentation-layout'].each do |name|
   activate :external_pipeline,
     name: name,
     command: "BUNDLE=#{name} npm run docs:js:#{build? ? :build : :watch}",
