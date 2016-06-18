@@ -21,7 +21,7 @@ and use the places.js library.
 
 ### CDN `<script>`
 
-Our JavaScript library is available on the [jsDelivr CDN](http://www.jsdelivr.com/projects/places.js).
+Our JavaScript library is available on the [jsDelivr CDN](http://www.jsdelivr.com/projects/places.js) and also on  [cdnjs](https://cdnjs.com/libraries/instantsearch.js).
 
 ```html
 <script src="https://cdn.jsdelivr.net/places.js/1/places.min.js"></script>
