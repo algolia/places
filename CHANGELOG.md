@@ -1,3 +1,13 @@
+<a name="1.1.3"></a>
+## [1.1.3](https://github.com/algolia/places/compare/v1.1.2...v1.1.3) (2016-06-20)
+
+
+### Bug Fixes
+
+* **npm:** issue with webpack loaders resolution to be fixed ([bcf6e43](https://github.com/algolia/places/commit/bcf6e43))
+
+
+
 <a name="1.1.2"></a>
 ## [1.1.2](https://github.com/algolia/places/compare/v1.1.1...v1.1.2) (2016-06-20)
 
