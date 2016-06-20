@@ -1,4 +1,3 @@
-/* eslint no-console:0 */
 import EventEmitter from 'events';
 
 import algoliasearch from 'algoliasearch/lite';

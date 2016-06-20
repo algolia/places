@@ -41,9 +41,10 @@ export default function formatHit({
       value
     };
   } catch (e) {
-    /* eslint no-console: 0 */
+    /* eslint-disable no-console */
     console.error('Could not parse object', hit);
     console.error(e);
+    /* eslint-enable no-console */
     return {
       value: 'Could not parse object'
     };
