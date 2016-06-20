@@ -7,9 +7,12 @@ import './navigatorLanguage.js';
 
 import createAutocompleteDataset from './createAutocompleteDataset.js';
 
-import './places.scss';
 import clearIcon from './icons/clear.svg';
 import pinIcon from './icons/address.svg';
+
+import css from './places.scss';
+import insertCss from 'insert-css';
+insertCss(css, {prepend: true});
 
 const errors = {
   multiContainers:

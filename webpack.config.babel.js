@@ -21,7 +21,7 @@ export default {
       test: /\.svg$/, loader: 'raw', exclude: /node_modules/
     }, {
       test: /\.scss$/, exclude: /node_modules/,
-      loaders: ['style?insertAt=top', 'css', 'sass']
+      loaders: ['raw', 'sass']
     }]
   },
   // when module not found, find locally first
