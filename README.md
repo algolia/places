@@ -8,6 +8,8 @@
 
 See the [website][places-website] for more information.
 
+Read the [blog post](https://blog.algolia.com/introducing-algolia-places/) introducing Algolia Places.
+
 ## Demo
 
 Watch [more examples on the website][places-website-examples].
