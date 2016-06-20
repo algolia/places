@@ -71,7 +71,7 @@ printf "\n\nRelease: push to github, publish on npm\n"
 git push origin master
 git push origin --tags
 
-cp package.json dist/
+cp package.json README.md LICENSE dist/
 cd dist
 npm publish
 cd ..
