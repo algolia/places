@@ -1,3 +1,13 @@
+<a name="1.1.4"></a>
+## [1.1.4](https://github.com/algolia/places/compare/v1.1.3...v1.1.4) (2016-06-20)
+
+
+### Bug Fixes
+
+* **npm:** try to do the right build again ([04cfa42](https://github.com/algolia/places/commit/04cfa42))
+
+
+
 <a name="1.1.3"></a>
 ## [1.1.3](https://github.com/algolia/places/compare/v1.1.2...v1.1.3) (2016-06-20)
 
