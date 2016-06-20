@@ -71,7 +71,13 @@ printf "\n\nRelease: push to github, publish on npm\n"
 git push origin master
 git push origin --tags
 
+# We are gonna publish the package to npm, in a way
+# where only the dist cdn and npm are available
 cp package.json README.md LICENSE dist/
+# jsDelivr original structure for places.js
+# cannot be changed easily: https://github.com/jsdelivr/jsdelivr/issues/12282
+mkdir dist/dist
+mv dist/cdn dist/dist
 cd dist
 npm publish
 cd ..
