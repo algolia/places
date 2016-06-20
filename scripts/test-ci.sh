@@ -10,6 +10,9 @@ NODE_ENV=production npm run build
 # run tests
 npm test
 
+# try to build the libray
+npm run build
+
 # try to build the website
 ./scripts/build-website.sh
 

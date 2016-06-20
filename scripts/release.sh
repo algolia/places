@@ -70,7 +70,11 @@ read -p "=> Release: when ready, press [ENTER] to push to github and publish the
 printf "\n\nRelease: push to github, publish on npm\n"
 git push origin master
 git push origin --tags
+
+cp package.json dist/
+cd dist
 npm publish
+cd ..
 
 printf "\n\nRelease:
 Package was published to npm.
