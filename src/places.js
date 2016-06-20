@@ -11,12 +11,45 @@ import './places.scss';
 import clearIcon from './icons/clear.svg';
 import pinIcon from './icons/address.svg';
 
+const errors = {
+  multiContainers:
+`Algolia Places: 'container' must point to a single <input> element.
+Example: instantiate the library twice if you want to bind two <inputs>.
+
+See https://community.algolia.com/places/documentation.html#api-options-container`,
+  badContainer:
+`Algolia Places: 'container' must point to an <input> element.
+
+See https://community.algolia.com/places/documentation.html#api-options-container`
+};
+
 export default function places(options) {
   const {
     container,
     style,
     autocompleteOptions: userAutocompleteOptions = {}
   } = options;
+
+  // multiple DOM elements targeted
+  if (container instanceof NodeList) {
+    if (container.length > 1) {
+      throw new Error(errors.multiContainers);
+    }
+
+    // if single node NodeList received, resolve to the first one
+    return places({container: container[0], ...options});
+  }
+
+  // container sent as a string, resolve it for multiple DOM elements issue
+  if (typeof container === 'string') {
+    const resolvedContainer = document.querySelectorAll(container);
+    return places({container: resolvedContainer, ...options});
+  }
+
+  // if not an <input>, error
+  if (!(container instanceof HTMLInputElement)) {
+    throw new Error(errors.badContainer);
+  }
 
   const placesInstance = new EventEmitter();
 
