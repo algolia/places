@@ -1,3 +1,16 @@
+<a name="1.0.2"></a>
+## [1.0.2](https://github.com/algolia/places/compare/v1.0.1...v1.0.2) (2016-06-20)
+
+
+### Bug Fixes
+
+* **errors:** precise error messages on some bad usage ([dc8f0e1](https://github.com/algolia/places/commit/dc8f0e1)), closes [#229](https://github.com/algolia/places/issues/229)
+* **inputValue:** when name is a country, there should be no comma (#234) ([5e56c39](https://github.com/algolia/places/commit/5e56c39))
+* **src:** Fix ESLint configuration issue under /src/ for #231 (#232) ([0a60d4c](https://github.com/algolia/places/commit/0a60d4c)), closes [#231](https://github.com/algolia/places/issues/231) [#232](https://github.com/algolia/places/issues/232)
+* **website:** fix json response, thanks [@dzello](https://github.com/dzello) for the heads up ([de9d87f](https://github.com/algolia/places/commit/de9d87f))
+
+
+
 <a name="1.0.1"></a>
 ## [1.0.1](https://github.com/algolia/places/compare/v1.0.0...v1.0.1) (2016-06-15)
 
