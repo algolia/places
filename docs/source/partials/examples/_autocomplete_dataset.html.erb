@@ -81,7 +81,7 @@
   });
 
   // init
-  autocomplete(document.querySelector('#autocomplete-dataset'), {
+  var autocompleteInstance = autocomplete(document.querySelector('#autocomplete-dataset'), {
     hint: false,
     debug: true,
     cssClasses: {prefix: 'ad-example'}
@@ -89,5 +89,13 @@
     rentalsDataset,
     placesDataset
   ]);
+
+  var autocompleteChangeEvents = ['selected', 'autocompleted'];
+
+  autocompleteChangeEvents.forEach(function(eventName) {
+    autocompleteInstance.on('autocomplete:'+ eventName, function(event, suggestion, datasetName) {
+      console.log(datasetName, suggestion);
+    });
+  });
 })();
 </script>
