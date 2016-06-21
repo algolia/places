@@ -62,3 +62,52 @@ input {
     }
   }
 }
+
+.form-contact {
+  width: 800px;
+  margin: 0 auto;
+
+  .control-label{
+    font-size: 1em;
+    margin-bottom: 4px;
+  }
+
+  textarea{
+    height: 190px;
+  }
+
+  .btn-cta {
+    margin-top: 40px;
+    width: 150px;
+  }
+
+  .row{
+    width: 100%;
+  }
+
+  > .col-6{
+    width: 50%;
+    float: left;
+
+    &:first-child{
+      padding-right: 40px;
+    }
+  }
+
+  .form-group{
+    &:after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+    .col-6{
+      width: 50%;
+      float: left;
+
+      &:first-child{
+        padding-right: 8px;
+      }
+    }
+  }
+
+}

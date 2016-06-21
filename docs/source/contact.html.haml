@@ -1,0 +1,60 @@
+---
+title: Algolia Places
+subtitle: Turn any <code>&lt;input&gt;</code> into an address autocomplete
+---
+
+%link{:rel =>"stylesheet", :type => "text/css",  :href => "//cloud.github.com/downloads/lafeber/world-flags-sprite/flags16.css"}
+
+%section.examples-section
+  .container
+    %div
+      %h2.title Contact Us
+      %form.form-contact
+        .col-6
+          .form-group
+            .col-6
+              %label.control-label.required{:for => "textinput"} First Name
+              %input#textinput.form-control.input-md{:name => "textinput", :type => "text"}
+            .col-6
+              %label.control-label.required{:for => "textinput"} Last Name
+              %input#textinput.form-control.input-md{:name => "textinput", :type => "text"}
+          .form-group
+            %label.control-label.required{:for => "textinput"} Email
+            %input#textinput.form-control.input-md{:name => "textinput", :type => "email"}
+          .form-group
+            %label.control-label{:for => "textinput"} Company
+            %input#textinput.form-control.input-md{:name => "textinput", :type => "text"}
+          .form-group.f16
+            %label.control-label Country
+            %input#country
+        .col-6
+          .form-group
+            %label.control-label{:for => "textinput"} Please select the nature of your inquiry
+            %select#textinput.form-control.input-md{:name => "textinput", :type => "text"}
+              %option Request a demo
+              %option Request a quote
+              %option Upgrade or change an existing plan
+              %option Contact support
+              %option Other question
+          .form-group
+            %label.control-label Message
+            %textarea.form-control
+
+        .row
+          .form-group
+            %button.btn.btn-cta{:name => "textinput", :placeholder => "placeholder", :type => "text"} Submit
+
+
+:javascript
+  (function() {
+    var placesAutocomplete = places({
+      container: document.querySelector('#country'),
+      type: 'country',
+      templates: {
+        suggestion: function(suggestion) {
+          return '<i class="flag ' + suggestion.countryCode + '"></i> ' +
+            suggestion.name;
+        }
+      }
+    });
+  })();
