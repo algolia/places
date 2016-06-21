@@ -5,6 +5,6 @@ export default function findType(tags) {
   const type = item;
     if (tags.indexOf(item) !== -1) {
       return type;
-    });
-  }
+    }
+  });
 }
