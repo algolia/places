@@ -63,13 +63,33 @@ input {
   }
 }
 
+#form-message-success{
+  font-size: 1.2em;
+  background-color: #D6EAC7;
+  padding: 30px;
+  text-align: center;
+  border-radius: 4px;
+}
+
 #form-contact {
   width: 800px;
   margin: 0 auto;
 
+  &.hide{
+    display: none;
+  }
+
   .control-label{
     font-size: 1em;
     margin-bottom: 4px;
+
+    &.required::after{
+      display: inline-block;
+      content: '*';
+      margin-left: 4px;
+      color: #E7486B;
+      vertical-align: baseline;;
+    }
   }
 
   textarea{
