@@ -12,8 +12,9 @@
     type: 'country',
     templates: {
       suggestion: function(suggestion) {
+        var hit = suggestion.rawAnswer.hits[suggestion.hitIndex];
         return '<i class="flag ' + suggestion.countryCode + '"></i> ' +
-          suggestion.name;
+          hit._highlightResult.locale_names[0].value;
       }
     }
   });
