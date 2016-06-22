@@ -9,43 +9,53 @@ subtitle: Turn any <code>&lt;input&gt;</code> into an address autocomplete
   .container
     %div
       %h2.title Contact Us
-      %form.form-contact
+      %form#form-contact{:action => "https://goto.algolia.com/l/139121/2016-06-21/gbdyh", :method => "post", :onsubmit => "return validateForm()"}
         .col-6
           .form-group
             .col-6
-              %label.control-label.required{:for => "textinput"} First Name
-              %input#textinput.form-control.input-md{:name => "textinput", :type => "text"}
+              %label.control-label.required{:for => "first_name"} First Name
+              %input#first_name.form-control{:name => "first_name", :type => "text"}
             .col-6
-              %label.control-label.required{:for => "textinput"} Last Name
-              %input#textinput.form-control.input-md{:name => "textinput", :type => "text"}
+              %label.control-label.required{:for => "last_name"} Last Name
+              %input#last_name.form-control{:name => "last_name", :type => "text"}
           .form-group
-            %label.control-label.required{:for => "textinput"} Email
-            %input#textinput.form-control.input-md{:name => "textinput", :type => "email"}
+            %label.control-label.required{:for => "email"} Email
+            %input#email.form-control{:name => "email", :type => "email"}
           .form-group
-            %label.control-label{:for => "textinput"} Company
-            %input#textinput.form-control.input-md{:name => "textinput", :type => "text"}
+            %label.control-label{:for => "company"} Company
+            %input#company.form-control{:name => "company", :type => "text"}
           .form-group.f16
-            %label.control-label Country
-            %input#country
+            %label.control-label{:for => "country"} Country
+            %input#country{:name => "country", :type => "text"}
         .col-6
           .form-group
-            %label.control-label{:for => "textinput"} Please select the nature of your inquiry
-            %select#textinput.form-control.input-md{:name => "textinput", :type => "text"}
-              %option Request a demo
-              %option Request a quote
-              %option Upgrade or change an existing plan
-              %option Contact support
-              %option Other question
+            %label.control-label{:for => "sales_inquiry"} Please select the nature of your inquiry
+            %select#sales_inquiry.form-control{:name => "sales_inquiry", :type => "text"}
+              %option{:value => "demo"} Request a demo
+              %option{:value => "quote"} Request a quote
+              %option{:value => "plan"} Upgrade or change an existing plan
+              %option{:value => "support"} Contact support
+              %option{:value => "other"} Other questions
           .form-group
-            %label.control-label Message
-            %textarea.form-control
-
+            %label.control-label{:for => "message"} Message
+            %textarea#message.form-control{:name => "message"}
+        .row
+          .form-message
         .row
           .form-group
-            %button.btn.btn-cta{:name => "textinput", :placeholder => "placeholder", :type => "text"} Submit
+            %button#submit.btn.btn-cta{:type => "submit"} Submit
 
 
 :javascript
+
+  function validateForm() {
+    var x = document.forms["form-contact"]["first_name"].value;
+    if (x == null || x == "") {
+        alert("Name must be filled out");
+        return false;
+    }
+  }
+
   (function() {
     var placesAutocomplete = places({
       container: document.querySelector('#country'),

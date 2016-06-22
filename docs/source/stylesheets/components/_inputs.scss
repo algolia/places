@@ -63,7 +63,7 @@ input {
   }
 }
 
-.form-contact {
+#form-contact {
   width: 800px;
   margin: 0 auto;
 
@@ -74,6 +74,7 @@ input {
 
   textarea{
     height: 190px;
+    resize: none;
   }
 
   .btn-cta {
