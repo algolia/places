@@ -62,3 +62,73 @@ input {
     }
   }
 }
+
+#form-message-success{
+  font-size: 1.2em;
+  background-color: #D6EAC7;
+  padding: 30px;
+  text-align: center;
+  border-radius: 4px;
+}
+
+#form-contact {
+  width: 800px;
+  margin: 0 auto;
+
+  &.hide{
+    display: none;
+  }
+
+  .control-label{
+    font-size: 1em;
+    margin-bottom: 4px;
+
+    &.required::after{
+      display: inline-block;
+      content: '*';
+      margin-left: 4px;
+      color: #E7486B;
+      vertical-align: baseline;;
+    }
+  }
+
+  textarea{
+    height: 190px;
+    resize: none;
+  }
+
+  .btn-cta {
+    margin-top: 40px;
+    width: 150px;
+  }
+
+  .row{
+    width: 100%;
+  }
+
+  > .col-6{
+    width: 50%;
+    float: left;
+
+    &:first-child{
+      padding-right: 40px;
+    }
+  }
+
+  .form-group{
+    &:after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+    .col-6{
+      width: 50%;
+      float: left;
+
+      &:first-child{
+        padding-right: 8px;
+      }
+    }
+  }
+
+}

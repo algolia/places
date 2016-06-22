@@ -1,0 +1,88 @@
+---
+title: Algolia Places
+subtitle: Turn any <code>&lt;input&gt;</code> into an address autocomplete
+---
+
+%link{:rel =>"stylesheet", :type => "text/css",  :href => "//cloud.github.com/downloads/lafeber/world-flags-sprite/flags16.css"}
+
+%section.examples-section
+  .container
+    %div
+      %h2.title Contact Us
+      #form-message-success
+      %form#form-contact{:action => "https://goto.algolia.com/l/139121/2016-06-21/gbdyh", :method => "post", :onsubmit => "return validateForm()"}
+        .col-6
+          .form-group
+            .col-6
+              %label.control-label.required{:for => "first_name"} First Name
+              %input#first_name.form-control{:name => "first_name", :type => "text", :required => true}
+            .col-6
+              %label.control-label.required{:for => "last_name"} Last Name
+              %input#last_name.form-control{:name => "last_name", :type => "text", :required => true}
+          .form-group
+            %label.control-label.required{:for => "email"} Email
+            %input#email.form-control{:name => "email", :type => "email", :required => true}
+          .form-group
+            %label.control-label{:for => "company"} Company
+            %input#company.form-control{:name => "company", :type => "text"}
+          .form-group.f16
+            %label.control-label{:for => "country"} Country
+            %input#country{:name => "country", :type => "text"}
+        .col-6
+          .form-group
+            %label.control-label.required{:for => "sales_inquiry"} Please select the nature of your inquiry
+            %select#sales_inquiry.form-control{:name => "sales_inquiry", :type => "text"}
+              %option{:value => "demo"} Request a demo
+              %option{:value => "quote"} Request a quote
+              %option{:value => "plan"} Upgrade or change an existing plan
+              %option{:value => "support"} Contact support
+              %option{:value => "other"} Other questions
+          .form-group
+            %label.control-label{:for => "message"} Message
+            %textarea#message.form-control{:name => "message"}
+        .row
+          .form-group
+            %button#submit.btn.btn-cta{:type => "submit"} Submit
+
+
+:javascript
+
+  // Get params from the url
+  window.getUrlParameter = function(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+    sURLVariables = sPageURL.split('&'),
+    sParameterName,
+    i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+      sParameterName = sURLVariables[i].split('=');
+
+      if (sParameterName[0] === sParam) {
+        return sParameterName[1] === undefined ? true : sParameterName[1];
+      }
+    }
+  };
+
+
+
+  (function() {
+
+    var formState = getUrlParameter('form');
+
+    if (formState === 'success'){
+      document.getElementById("form-message-success").innerHTML="Thank you for contacting us regarding Algolia Places, we'll be in touch shortly.<br><br>Return to <a href='https://community.algolia.com/places'>Places homepage</a> or <a href='https://www.algolia.com/product'>learn more about Algolia</a>";
+      document.getElementById("form-contact").className += " hide";
+    }
+
+
+    var placesAutocomplete = places({
+      container: document.querySelector('#country'),
+      type: 'country',
+      templates: {
+        suggestion: function(suggestion) {
+          return '<i class="flag ' + suggestion.countryCode + '"></i> ' +
+            suggestion.name;
+        }
+      }
+    });
+  })();
