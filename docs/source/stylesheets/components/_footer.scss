@@ -74,6 +74,7 @@
     padding: 1em 0;
     float: left;
     margin: 0;
+    font-weight: 300;
 
     br {
       @media (min-width: 960px) {
@@ -238,7 +239,7 @@
         display: block;
       }
 
-      .ac-footer-links:nth-child(3):before {
+      .ac-footer-link-item:nth-child(3):before {
         display: none;
       }
     }
