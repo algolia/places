@@ -18,8 +18,8 @@ export default function createAutocompleteSource({
   type
 }) {
   const placesClient = algoliasearch.initPlaces(
-    apiKey,
     appId,
+    apiKey,
     clientOptions
   );
   placesClient.as.addAlgoliaAgent(`Algolia Places ${version}`);
