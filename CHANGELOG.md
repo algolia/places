@@ -1,3 +1,14 @@
+<a name="1.1.6"></a>
+## [1.1.6](https://github.com/algolia/places/compare/v1.1.5...v1.1.6) (2016-06-24)
+
+
+### Bug Fixes
+
+* **contact-form:** Fixed display success wrapper ([ca4eab0](https://github.com/algolia/places/commit/ca4eab0))
+* **initialization:** Swap appId and apiKey (#256) ([edf7469](https://github.com/algolia/places/commit/edf7469))
+
+
+
 <a name="1.1.5"></a>
 ## [1.1.5](https://github.com/algolia/places/compare/v1.1.4...v1.1.5) (2016-06-20)
 
