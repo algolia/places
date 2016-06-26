@@ -55,13 +55,14 @@ export default function places(options) {
   }
 
   const placesInstance = new EventEmitter();
+  const prefix = 'ap' + (style === false ? '-nostyle' : '');
 
   const autocompleteOptions = {
     autoselect: true,
     hint: false,
     cssClasses: {
       root: 'algolia-places' + (style === false ? '-nostyle' : ''),
-      prefix: 'ap' + (style === false ? '-nostyle' : '')
+      prefix
     },
     debug: process.env.NODE_ENV === 'development' ? true : false,
     ...userAutocompleteOptions
@@ -102,16 +103,16 @@ export default function places(options) {
 
   const clear = document.createElement('button');
   clear.setAttribute('type', 'button');
-  clear.classList.add('ap-input-icon');
-  clear.classList.add('ap-input-icon-clear');
+  clear.classList.add(`${prefix}-input-icon`);
+  clear.classList.add(`${prefix}-icon-clear`);
   clear.innerHTML = clearIcon;
   autocompleteContainer.appendChild(clear);
   clear.style.display = 'none';
 
   const pin = document.createElement('button');
   pin.setAttribute('type', 'button');
-  pin.classList.add('ap-input-icon');
-  pin.classList.add('ap-input-icon-pin');
+  pin.classList.add(`${prefix}-input-icon`);
+  pin.classList.add(`${prefix}-input-icon-pin`);
   pin.innerHTML = pinIcon;
   autocompleteContainer.appendChild(pin);
 
@@ -125,7 +126,8 @@ export default function places(options) {
   });
 
   let previousQuery = '';
-  autocompleteContainer.querySelector('.ap-input').addEventListener('input', () => {
+
+  autocompleteContainer.querySelector(`.${prefix}-input`).addEventListener('input', () => {
     const query = autocompleteInstance.val();
     if (query === '') {
       pin.style.display = '';
