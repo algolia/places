@@ -1,3 +1,13 @@
+<a name="1.1.7"></a>
+## [1.1.7](https://github.com/algolia/places/compare/v1.1.6...v1.1.7) (2016-06-26)
+
+
+### Bug Fixes
+
+* **style:** fix style: false option ([f77ef97](https://github.com/algolia/places/commit/f77ef97)), closes [#258](https://github.com/algolia/places/issues/258)
+
+
+
 <a name="1.1.6"></a>
 ## [1.1.6](https://github.com/algolia/places/compare/v1.1.5...v1.1.6) (2016-06-24)
 
