@@ -127,7 +127,7 @@ export default function places(options) {
 
   let previousQuery = '';
 
-  autocompleteContainer.querySelector(`.${prefix}-input`).addEventListener('input', () => {
+  const inputListener = () => {
     const query = autocompleteInstance.val();
     if (query === '') {
       pin.style.display = '';
@@ -140,7 +140,15 @@ export default function places(options) {
       pin.style.display = 'none';
     }
     previousQuery = query;
-  });
+  };
+
+  autocompleteContainer.querySelector(`.${prefix}-input`).addEventListener('input', inputListener);
+
+  placesInstance.destroy = () => {
+    // this is the only event we need to manually remove because the input will still be here
+    autocompleteContainer.querySelector(`.${prefix}-input`).removeEventListener('input', inputListener);
+    autocompleteInstance.autocomplete.destroy();
+  };
 
   return placesInstance;
 }
