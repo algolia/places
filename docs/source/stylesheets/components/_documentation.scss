@@ -109,8 +109,7 @@
       border-collapse: collapse;
       border-spacing: 0;
       width: 100%;
-      display: block;
-      margin: 0 0;
+      margin: 0;
 
       tr {
         th {
@@ -120,7 +119,7 @@
           vertical-align: top;
         }
         th, td {
-          padding: 1em 2em;
+          padding: 1em 0;
           text-align: center;
           border: 1px solid #cccccc;
         }
