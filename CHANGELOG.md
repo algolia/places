@@ -1,3 +1,13 @@
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/algolia/places/compare/v1.1.7...v1.2.0) (2016-06-27)
+
+
+### Features
+
+* **methods:** add destroy method ([9209e96](https://github.com/algolia/places/commit/9209e96)), closes [#260](https://github.com/algolia/places/issues/260)
+
+
+
 <a name="1.1.7"></a>
 ## [1.1.7](https://github.com/algolia/places/compare/v1.1.6...v1.1.7) (2016-06-26)
 
