@@ -134,4 +134,15 @@ input {
     }
   }
 
+  @media (max-width: $bp-medium) {
+    width: 100%;
+  }
+
+  @media (max-width: $bp-small) {
+    > .col-6 ,
+    > .col-6:first-child {
+      width: 100%;
+      padding: 0;
+    }
+  }
 }
