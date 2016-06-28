@@ -1,3 +1,13 @@
+<a name="1.2.1"></a>
+## [1.2.1](https://github.com/algolia/places/compare/v1.2.0...v1.2.1) (2016-06-28)
+
+
+### Bug Fixes
+
+* **limit:** add `limit` and `error` events (#267) ([4de866d](https://github.com/algolia/places/commit/4de866d)), closes [#265](https://github.com/algolia/places/issues/265)
+
+
+
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/algolia/places/compare/v1.1.7...v1.2.0) (2016-06-27)
 
