@@ -5,7 +5,7 @@ layout: documentation
 
 ## Need help?
 
-Algolia Places is built by [Algolia's people](https://github.com/orgs/algolia/people). We are here to help you with any issues you would face while using Algolia Places.
+Algolia Places is built by [Algolia's people](https://www.algolia.com/about). We are here to help you with any issues you would face while using Algolia Places.
 
 ### Irrelevant results
 
