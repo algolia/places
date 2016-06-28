@@ -15,6 +15,8 @@ export default function createAutocompleteSource({
   useDeviceLocation = false,
   language = navigator.language.split('-')[0],
   onHits = () => {},
+  onError,
+  onRateLimitReached,
   type
 }) {
   const placesClient = algoliasearch.initPlaces(
@@ -75,5 +77,13 @@ export default function createAutocompleteSource({
           return hits;
         }
       )
-      .then(cb);
+      .then(cb)
+      .catch(e => {
+        if (e.message === 'Too many requests') {
+          onRateLimitReached();
+          return;
+        }
+
+        onError(e);
+      });
 }

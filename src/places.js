@@ -75,7 +75,25 @@ export default function places(options) {
       rawAnswer,
       query,
       suggestions: hits
-    })
+    }),
+    onError: e => placesInstance.emit('error', e),
+    onRateLimitReached: () => {
+      const listeners = placesInstance.listenerCount('limit');
+      if (listeners === 0) {
+        console.log(
+`Algolia Places: Current rate limit reached.
+
+Sign up for a free 100,000 queries/month account at
+https://www.algolia.com/users/sign_up/places.
+
+Or upgrade your 100,000 queries/month plan by contacting us at
+https://community.algolia.com/places/contact.html.`
+);
+        return;
+      }
+
+      placesInstance.emit('limit');
+    }
   });
   const autocompleteInstance = autocomplete(container, autocompleteOptions, autocompleteDataset);
   const autocompleteContainer = container.parentNode;
