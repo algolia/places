@@ -80,7 +80,7 @@ export default function places(options) {
     onRateLimitReached: () => {
       const listeners = placesInstance.listenerCount('limit');
       if (listeners === 0) {
-        console.log(
+        console.log( // eslint-disable-line
 `Algolia Places: Current rate limit reached.
 
 Sign up for a free 100,000 queries/month account at
