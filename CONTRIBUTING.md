@@ -12,6 +12,7 @@ Hi (future) collaborator!
 
 - [Where to start?](#where-to-start)
 - [Development workflow](#development-workflow)
+  - [Testing](#testing)
 - [Commit message guidelines](#commit-message-guidelines)
   - [Revert](#revert)
   - [Type](#type)
@@ -45,6 +46,17 @@ npm run dev
 Open http://localhost.localdomain:4567/.
 
 Any change made to places.js library or the docs will trigger an autoreload.
+
+## Testing
+
+We have a unit test suite written with [Jest](http://facebook.github.io/jest/).
+
+```sh
+npm test
+npm run test:watch
+```
+
+You can use all of the Jest API and the [Jasmine API](http://jasmine.github.io/).
 
 # Commit message guidelines
 

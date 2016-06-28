@@ -25,9 +25,9 @@ export default function formatDropdownValue(options) {
   const out = `<span class="ap-suggestion-icon">${icons[type].trim()}</span>
 <span class="ap-name">${name}</span>
 <span class="ap-address">
-  ${city ? `${city},` : ''}
-  ${administrative ? `${administrative},` : ''}
-  ${country ? `${country}` : ''}
-</span>`.replace(/\s*\n\s*/g, ' ');
+  ${[city, administrative, country]
+    .filter(token => token !== undefined)
+    .join(', ')}</span>`.replace(/\s*\n\s*/g, ' ');
+
   return out;
 }

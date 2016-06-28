@@ -44,4 +44,4 @@ done
 BABEL_DISABLE_CACHE=1 BABEL_ENV=npm babel -q index.js -o "$dist_dir/index.js"
 BABEL_DISABLE_CACHE=1 BABEL_ENV=npm babel -q autocompleteDataset.js -o "$dist_dir/autocompleteDataset.js"
 BABEL_DISABLE_CACHE=1 BABEL_ENV=npm babel -q instantsearchWidget.js -o "$dist_dir/instantsearchWidget.js"
-BABEL_DISABLE_CACHE=1 BABEL_ENV=npm babel -q --out-dir "$dist_dir/src/" src/
+BABEL_DISABLE_CACHE=1 BABEL_ENV=npm babel -q src/ --out-dir "$dist_dir/src/" --ignore test.js

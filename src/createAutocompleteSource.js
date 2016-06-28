@@ -15,7 +15,7 @@ export default function createAutocompleteSource({
   useDeviceLocation = false,
   language = navigator.language.split('-')[0],
   onHits = () => {},
-  onError,
+  onError = e => {throw e;},
   onRateLimitReached,
   type
 }) {
@@ -35,7 +35,7 @@ export default function createAutocompleteSource({
 
   if (aroundLatLng) {
     defaultQueryParams.aroundLatLng = aroundLatLng;
-  } else if (typeof aroundLatLngViaIP !== 'undefined') {
+  } else if (aroundLatLngViaIP !== undefined) {
     defaultQueryParams.aroundLatLngViaIP = aroundLatLngViaIP;
   }
 
