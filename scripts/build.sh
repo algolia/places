@@ -20,14 +20,17 @@ for bundle in "${bundles[@]}"
 do
   dist_file="$dist_dir_cdn/${bundle}.js"
   dist_file_min="$dist_dir_cdn/${bundle}.min.js"
-  dist_file_sourcemap="$dist_dir_cdn/${bundle}.js.map"
-  dist_file_sourcemap_min="$dist_dir_cdn/${bundle}.min.js.map"
+  source_map="${bundle}.js.map"
+  source_map_min="${bundle}.min.js.map"
+  dist_file_sourcemap="$dist_dir_cdn/${source_map}"
+  dist_file_sourcemap_min="$dist_dir_cdn/${source_map_min}"
 
   echo "$license" | cat - "${dist_file}" > /tmp/out && mv /tmp/out "${dist_file}"
 
   uglifyjs "${dist_file}" \
     --in-source-map "${dist_file_sourcemap}" \
     --source-map "${dist_file_sourcemap_min}" \
+    --source-map-url "${source_map_min}" \
     --preamble "$license" \
     -c warnings=false \
     -m \
