@@ -1,6 +1,4 @@
-# Algolia Places
-
-    Turn any <input> into an address autocomplete
+[![header]][places-website]
 
 [![Version][version-svg]][package-url] [![Build Status][travis-svg]][travis-url] [![License][license-image]][license-url] [![Downloads][downloads-image]][downloads-url]
 
@@ -14,7 +12,7 @@ Read the [blog post](https://blog.algolia.com/introducing-algolia-places/) intro
 
 Watch [more examples on the website][places-website-examples].
 
-[![Demo]][places-website]
+[![demo]][places-website]
 
 ## Getting started
 
@@ -73,6 +71,7 @@ Full documentation is available on the [Algolia Places website][places-website].
 Wanna contribute? Awesome, please read the [contributing guide][contributing].
 
 [demo]: ./demo.gif
+[header]: ./header.png
 [version-svg]: https://img.shields.io/npm/v/places.js.svg?style=flat-square
 [package-url]: https://npmjs.org/package/places.js
 [travis-svg]: https://img.shields.io/travis/algolia/places/master.svg?style=flat-square
