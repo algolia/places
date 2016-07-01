@@ -1,6 +1,6 @@
 import EventEmitter from 'events';
 
-import algoliasearch from 'algoliasearch/lite';
+import algoliasearch from 'algoliasearch/lite.js';
 import autocomplete from 'autocomplete.js';
 
 import './navigatorLanguage.js';
@@ -14,17 +14,7 @@ import css from './places.scss';
 import insertCss from 'insert-css';
 insertCss(css, {prepend: true});
 
-const errors = {
-  multiContainers:
-`Algolia Places: 'container' must point to a single <input> element.
-Example: instantiate the library twice if you want to bind two <inputs>.
-
-See https://community.algolia.com/places/documentation.html#api-options-container`,
-  badContainer:
-`Algolia Places: 'container' must point to an <input> element.
-
-See https://community.algolia.com/places/documentation.html#api-options-container`
-};
+import errors from './errors.js';
 
 export default function places(options) {
   const {
@@ -40,13 +30,13 @@ export default function places(options) {
     }
 
     // if single node NodeList received, resolve to the first one
-    return places({container: container[0], ...options});
+    return places({...options, container: container[0]});
   }
 
   // container sent as a string, resolve it for multiple DOM elements issue
   if (typeof container === 'string') {
     const resolvedContainer = document.querySelectorAll(container);
-    return places({container: resolvedContainer, ...options});
+    return places({...options, container: resolvedContainer});
   }
 
   // if not an <input>, error
@@ -80,21 +70,15 @@ export default function places(options) {
     onRateLimitReached: () => {
       const listeners = placesInstance.listenerCount('limit');
       if (listeners === 0) {
-        console.log( // eslint-disable-line
-`Algolia Places: Current rate limit reached.
-
-Sign up for a free 100,000 queries/month account at
-https://www.algolia.com/users/sign_up/places.
-
-Or upgrade your 100,000 queries/month plan by contacting us at
-https://community.algolia.com/places/contact.html.`
-);
+        console.log(errors.rateLimitReached); // eslint-disable-line
         return;
       }
 
-      placesInstance.emit('limit');
-    }
+      placesInstance.emit('limit', {message: errors.rateLimitReached});
+    },
+    container: undefined
   });
+
   const autocompleteInstance = autocomplete(container, autocompleteOptions, autocompleteDataset);
   const autocompleteContainer = container.parentNode;
 
@@ -130,7 +114,7 @@ https://community.algolia.com/places/contact.html.`
   const pin = document.createElement('button');
   pin.setAttribute('type', 'button');
   pin.classList.add(`${prefix}-input-icon`);
-  pin.classList.add(`${prefix}-input-icon-pin`);
+  pin.classList.add(`${prefix}-icon-pin`);
   pin.innerHTML = pinIcon;
   autocompleteContainer.appendChild(pin);
 

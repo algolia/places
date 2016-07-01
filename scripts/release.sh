@@ -80,6 +80,9 @@ mkdir dist/dist
 mv dist/cdn dist/dist
 cd dist
 npm publish
+mv dist/dist/cdn dist/cdn
+rm dist/dist -rf
+rm dist/package.json dist/README.md dist/LICENSE
 cd ..
 
 printf "\n\nRelease:
