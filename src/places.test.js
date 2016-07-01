@@ -266,7 +266,7 @@ describe('places', () => {
         expect(pinButton.style.display).toEqual('');
       });
 
-      it('is no more called when instance is destroyed', () => {
+      it('is no more called when destroyed', () => {
         placesInstance.destroy();
         autocomplete.__setQuery('');
         input.dispatchEvent(new Event('input'));
@@ -277,6 +277,14 @@ describe('places', () => {
     it('has a destroy method', () => {
       placesInstance.destroy();
       expect(autocomplete.__instance.autocomplete.destroy).toBeCalled();
+    });
+
+    it('has all autocomplete methods', () => {
+      const autocompleteMethods = ['open', 'close', 'getVal', 'setVal', 'destroy'];
+      autocompleteMethods.forEach(methodName => {
+        placesInstance[methodName]();
+        expect(autocomplete.__instance.autocomplete[methodName]).toBeCalled();
+      });
     });
 
     it('inserts the css file on top', () =>

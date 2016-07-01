@@ -146,11 +146,16 @@ export default function places(options) {
 
   autocompleteContainer.querySelector(`.${prefix}-input`).addEventListener('input', inputListener);
 
-  placesInstance.destroy = () => {
-    // this is the only event we need to manually remove because the input will still be here
-    autocompleteContainer.querySelector(`.${prefix}-input`).removeEventListener('input', inputListener);
-    autocompleteInstance.autocomplete.destroy();
-  };
+  const autocompleteMethods = ['open', 'close', 'getVal', 'setVal', 'destroy'];
+  autocompleteMethods.forEach(methodName => {
+    placesInstance[methodName] = () => {
+      if (methodName === 'destroy') {
+        // this is the only event we need to manually remove because the input will still be here
+        autocompleteContainer.querySelector(`.${prefix}-input`).removeEventListener('input', inputListener);
+      }
+      return autocompleteInstance.autocomplete[methodName]();
+    };
+  });
 
   return placesInstance;
 }
