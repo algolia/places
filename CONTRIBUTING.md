@@ -35,7 +35,6 @@ We use the places website as a way to develop the places.js library.
 
 Requirements:
 - [Node.js](https://nodejs.org/en/), prefer latest stable.
-- npm@2 (npm install -g npm@2)
 - [Ruby](https://www.ruby-lang.org/en/), prefer latest stable.
 - [Bundler](http://bundler.io/), prefer latest stable.
 

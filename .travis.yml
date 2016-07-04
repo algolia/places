@@ -15,8 +15,8 @@ before_install:
   - npm prune
   - rvm install 2.3.0
   - rvm use 2.3.0
-  - nvm install 5
-  - nvm use 5
+  - nvm install 6
+  - nvm use 6
 gemfile: docs/Gemfile
 script:
   - npm install
