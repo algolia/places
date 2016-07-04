@@ -10,6 +10,9 @@ let autocomplete = jest.fn(() => {
     val: jest.fn(() => query),
     autocomplete: {
       setVal: jest.fn(),
+      getVal: jest.fn(),
+      open: jest.fn(),
+      close: jest.fn(),
       destroy: jest.fn()
     }
   };
