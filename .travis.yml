@@ -12,9 +12,11 @@ language: ruby
 before_install:
   - 'git config --global user.email "algoliaplacesbot@users.noreply.github.com"'
   - 'git config --global user.name "algoliaplacesbot"'
-  - npm prune
+  # https://github.com/travis-ci/travis-ci/issues/5092
+  - mv ./node_modules/.bin/which ./node_modules/.bin/which-tmp
   - rvm install 2.3.0
   - rvm use 2.3.0
+  - mv ./node_modules/.bin/which-tmp ./node_modules/.bin/which
   - nvm install 6
   - nvm use 6
 gemfile: docs/Gemfile
