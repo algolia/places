@@ -610,6 +610,34 @@ Examples:
  - 589 Howard Street San Francisco, California, United States of America
 </td>
     </tr>
+    <tr>
+<td markdown="1">
+<div class="api-entry" id="api-suggestion-value"><code>highlight</code></div>
+
+Type: **object**
+</td>
+<td markdown="1">
+Given the query, contains the highlited values of the following attributes:
+
+- name
+- administrative
+- city
+- country
+
+Example:
+
+```js
+// query was `par`
+console.log(suggestion.highlight);
+// {
+//   name: '<em>Par</em>is',
+//   administrative: 'Île-de-France',
+//   country: 'France'
+// }
+```
+
+</td>
+    </tr>
   </tbody>
 </table>
 

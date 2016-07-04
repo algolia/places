@@ -15,6 +15,13 @@ export default function formatHit({
       hit.administrative[0] : undefined;
     const city = hit.city && hit.city[0] !== name ? hit.city[0] : undefined;
 
+    const highlight = {
+      name: hit._highlightResult.locale_names[0].value,
+      city: city ? hit._highlightResult.city[0].value : undefined,
+      administrative: administrative ? hit._highlightResult.administrative[0].value : undefined,
+      country: country ? hit._highlightResult.country.value : undefined
+    };
+
     const suggestion = {
       name,
       administrative,
@@ -34,6 +41,7 @@ export default function formatHit({
 
     return {
       ...suggestion,
+      highlight,
       hit,
       hitIndex,
       query,
