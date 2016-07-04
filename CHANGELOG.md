@@ -1,3 +1,19 @@
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/algolia/places/compare/v1.2.1...v1.3.0) (2016-07-04)
+
+
+### Bug Fixes
+
+* **dev:** fix sourcemaps url in minified builds ([af4f8d3](https://github.com/algolia/places/commit/af4f8d3))
+
+
+### Features
+
+* **autocomplete:** add and forward all autocomplete.js methods (#270) ([b3d41a4](https://github.com/algolia/places/commit/b3d41a4))
+* **highlight:** add highlited attributes in the suggestion data (#271) ([a5cb4c6](https://github.com/algolia/places/commit/a5cb4c6))
+
+
+
 <a name="1.2.1"></a>
 ## [1.2.1](https://github.com/algolia/places/compare/v1.2.0...v1.2.1) (2016-06-28)
 
