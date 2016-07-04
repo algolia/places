@@ -10,13 +10,14 @@
 # We also cache ./node_modules/
 language: ruby
 before_install:
+  # Dirty hack for https://github.com/travis-ci/travis-ci/issues/5092
+  - >
+    PATH=`echo $PATH | sed "s/\.\/node_modules\/\.bin//g"`;
+    export PATH=$PATH:./node_modules/.bin;
   - 'git config --global user.email "algoliaplacesbot@users.noreply.github.com"'
   - 'git config --global user.name "algoliaplacesbot"'
-  # https://github.com/travis-ci/travis-ci/issues/5092
-  - '[ -f ./node_modules/.bin/which ] && mv ./node_modules/.bin/which ./node_modules/.bin/which-tmp'
   - rvm install 2.3.0
   - rvm use 2.3.0
-  - '[ -f ./node_modules/.bin/which-tmp ] && mv ./node_modules/.bin/which-tmp ./node_modules/.bin/which'
   - nvm install 6
   - nvm use 6
 gemfile: docs/Gemfile
