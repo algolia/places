@@ -1,3 +1,13 @@
+<a name="1.3.1"></a>
+## [1.3.1](https://github.com/algolia/places/compare/v1.3.0...v1.3.1) (2016-07-06)
+
+
+### Bug Fixes
+
+* **rate limit:** check statusCode instead of error message (#273) ([ed52234](https://github.com/algolia/places/commit/ed52234))
+
+
+
 <a name="1.3.0"></a>
 # [1.3.0](https://github.com/algolia/places/compare/v1.2.1...v1.3.0) (2016-07-04)
 
