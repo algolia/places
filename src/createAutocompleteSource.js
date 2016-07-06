@@ -79,7 +79,7 @@ export default function createAutocompleteSource({
       )
       .then(cb)
       .catch(e => {
-        if (e.message === 'Too many requests') {
+        if (e.statusCode === 429) {
           onRateLimitReached();
           return;
         }
