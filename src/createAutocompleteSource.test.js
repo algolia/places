@@ -167,7 +167,8 @@ describe('createAutocompleteSource', () => {
   });
 
   it('supports onRateLimitReached option', () => {
-    const error = new Error('Too many requests');
+    const error = new Error('Some error message');
+    error.statusCode = 429;
     const searchFn = jest.fn(() => Promise.reject(error));
     const onRateLimitReached = jest.fn();
     algoliasearch.__setSearchStub(searchFn);
