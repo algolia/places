@@ -7,4 +7,6 @@ export default function findType(tags) {
       return type;
     }
   }
+
+  return undefined;
 }

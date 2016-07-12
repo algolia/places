@@ -6,19 +6,19 @@ const addAlgoliaAgent = jest.fn();
 const search = jest.fn((...args) => searchStub(...args));
 
 const algoliasearch = {
-  initPlaces: jest.fn(() => {
-    return {
+  initPlaces: jest.fn(() =>
+    ({
       as: {
         addAlgoliaAgent
       },
       search
-    };
-  })
+    })
+  )
 };
 
 algoliasearch.__searchSpy = search;
 algoliasearch.__addAlgoliaAgentSpy = addAlgoliaAgent;
-algoliasearch.__setSearchStub = fn => searchStub = fn;
-algoliasearch.__clearSearchStub = () => searchStub = defaultSearchStub;
+algoliasearch.__setSearchStub = fn => { searchStub = fn; };
+algoliasearch.__clearSearchStub = () => { searchStub = defaultSearchStub; };
 
 export default algoliasearch;

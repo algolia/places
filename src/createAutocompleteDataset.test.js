@@ -11,12 +11,12 @@ describe('createAutocompleteDataset', () => {
   let dataset;
 
   beforeEach(() => createAutocompleteSource.mockClear());
-  beforeEach(() =>
+  beforeEach(() => {
     dataset = createAutocompleteDataset({
       templates: {option: 'test'},
       option: 'test'
-    })
-  );
+    });
+  });
 
   it('returns an autocomplete.js dataset', () => {
     expect(dataset).toEqual({

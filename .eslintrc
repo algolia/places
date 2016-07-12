@@ -1,6 +1,0 @@
-{
-  "extends": "algolia",
-  "rules": {
-    "func-style": [2, "declaration", {"allowArrowFunctions": true}]
-  }
-}

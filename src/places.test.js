@@ -18,7 +18,7 @@ import createAutocompleteDataset from './createAutocompleteDataset.js';
 import autocomplete from 'autocomplete.js';
 
 describe('places', () => {
-  beforeEach(() => document.querySelector('body').innerHTML = '');
+  beforeEach(() => { document.querySelector('body').innerHTML = ''; });
 
   describe('container', () => {
     it('fails when container is made of multiple HTMLElements', () => {

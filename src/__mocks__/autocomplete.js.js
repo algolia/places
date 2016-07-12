@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-let autocomplete = jest.fn(() => {
+const autocomplete = jest.fn(() => {
   document.querySelector('input').classList.add('ap-input');
   let query = 'query';
 
@@ -17,7 +17,7 @@ let autocomplete = jest.fn(() => {
     }
   };
   autocomplete.__instance = instance;
-  autocomplete.__setQuery = q => query = q;
+  autocomplete.__setQuery = q => { query = q; };
   return instance;
 });
 

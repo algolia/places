@@ -98,7 +98,7 @@ describe('createAutocompleteSource', () => {
 
   it('supports computeQueryParams option', () => {
     const params = {myParams: 'wins'};
-    const computeQueryParams = jest.fn(() => (params));
+    const computeQueryParams = jest.fn(() => params);
     const {source, defaults} = setup({computeQueryParams});
     source(defaults.query);
     expect(algoliasearch.__searchSpy).toBeCalledWith(params);

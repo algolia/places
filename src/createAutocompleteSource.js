@@ -15,7 +15,7 @@ export default function createAutocompleteSource({
   useDeviceLocation = false,
   language = navigator.language.split('-')[0],
   onHits = () => {},
-  onError = e => {throw e;},
+  onError = e => { throw e; },
   onRateLimitReached,
   type
 }) {
@@ -26,7 +26,7 @@ export default function createAutocompleteSource({
   );
   placesClient.as.addAlgoliaAgent(`Algolia Places ${version}`);
 
-  let defaultQueryParams = {
+  const defaultQueryParams = {
     countries,
     hitsPerPage: 5,
     language,
@@ -46,7 +46,7 @@ export default function createAutocompleteSource({
   let userCoords;
   if (useDeviceLocation) {
     navigator.geolocation.watchPosition(
-      ({coords}) => userCoords = `${coords.latitude},${coords.longitude}`
+      ({coords}) => { userCoords = `${coords.latitude},${coords.longitude}`; }
     );
   }
 
@@ -58,15 +58,15 @@ export default function createAutocompleteSource({
       }))
       .then(
         content => {
-          const hits = content.hits.map((hit, hitIndex) => {
-            return formatHit({
+          const hits = content.hits.map((hit, hitIndex) =>
+            formatHit({
               formatInputValue,
               hit,
               hitIndex,
               query,
               rawAnswer: content
-            });
-          });
+            })
+          );
 
           onHits({
             hits,

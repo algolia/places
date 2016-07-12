@@ -6,4 +6,6 @@ export default function findCountryCode(tags) {
       return find[1];
     }
   }
+
+  return undefined;
 }

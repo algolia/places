@@ -9,7 +9,7 @@ const icons = {
 };
 
 export default function formatDropdownValue({type, highlight}) {
-  let {
+  const {
     name,
     administrative,
     city,

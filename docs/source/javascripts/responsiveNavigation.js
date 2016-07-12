@@ -14,7 +14,7 @@ export default function responsiveNavigation() {
   }
 
   [...links].forEach(link => {
-    let option = document.createElement('option');
+    const option = document.createElement('option');
     option.text = link.title;
     option.value = link.href;
     if (link.dataset.path === currentPath) {
@@ -24,5 +24,5 @@ export default function responsiveNavigation() {
   });
 
   navigation.appendChild(navigationAsSelect);
-  navigationAsSelect.addEventListener('change', e => window.location = e.target.value);
+  navigationAsSelect.addEventListener('change', e => { window.location = e.target.value; });
 }

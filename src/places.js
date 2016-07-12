@@ -45,16 +45,16 @@ export default function places(options) {
   }
 
   const placesInstance = new EventEmitter();
-  const prefix = 'ap' + (style === false ? '-nostyle' : '');
+  const prefix = `ap${style === false ? '-nostyle' : ''}`;
 
   const autocompleteOptions = {
     autoselect: true,
     hint: false,
     cssClasses: {
-      root: 'algolia-places' + (style === false ? '-nostyle' : ''),
+      root: `algolia-places${style === false ? '-nostyle' : ''}`,
       prefix
     },
-    debug: process.env.NODE_ENV === 'development' ? true : false,
+    debug: process.env.NODE_ENV === 'development',
     ...userAutocompleteOptions
   };
 
