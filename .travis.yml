@@ -27,6 +27,7 @@ script:
 branches:
   only:
     - master
+    - /^greenkeeper-.*$/
 notifications:
   slack: algolia:wSMHl9gxKQ7cRvnOPUWE9esI
 sudo: false
