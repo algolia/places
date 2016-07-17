@@ -1,6 +1,33 @@
 import findCountryCode from './findCountryCode.js';
 import findType from './findType.js';
 
+function getBestHighlightedForm(highlightedValues) {
+  const defaultValue = highlightedValues[0].value;
+  // collect all other matches
+  const bestAttributes = [];
+  for (let i = 1; i < highlightedValues.length; ++i) {
+    if (highlightedValues[i].matchLevel !== 'none') {
+      bestAttributes.push({index: i, matchedWords: highlightedValues[i].words});
+    }
+  }
+  // no matches in this attribute, retrieve first value
+  if (bestAttributes.length === 0) {
+    return defaultValue;
+  }
+  // sort the matches by `desc(words), asc(index)`
+  bestAttributes.sort((a, b) => {
+    if (a.words > b.words) {
+      return -1;
+    } else if (a.words < b.words) {
+      return 1;
+    }
+    return a.index - b.index;
+  });
+  // and append the best match to the first value
+  return bestAttributes[0].index === 0 ? `${defaultValue} (${highlightedValues[bestAttributes[1].index].value})`
+    : `${highlightedValues[bestAttributes[0].index].value} (${defaultValue})`;
+}
+
 export default function formatHit({
   formatInputValue,
   hit,
@@ -16,10 +43,10 @@ export default function formatHit({
     const city = hit.city && hit.city[0] !== name ? hit.city[0] : undefined;
 
     const highlight = {
-      name: hit._highlightResult.locale_names[0].value,
-      city: city ? hit._highlightResult.city[0].value : undefined,
-      administrative: administrative ? hit._highlightResult.administrative[0].value : undefined,
-      country: country ? hit._highlightResult.country.value : undefined
+      name: getBestHighlightedForm(hit._highlightResult.locale_names),
+      city: city ? getBestHighlightedForm(hit._highlightResult.city) : undefined,
+      administrative: administrative ? getBestHighlightedForm(hit._highlightResult.administrative) : undefined,
+      country: hit._highlightResult.country.value
     };
 
     const suggestion = {
