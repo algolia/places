@@ -2,12 +2,7 @@
 
 jest.disableAutomock();
 jest.mock('algoliasearch/lite.js', () => 'algoliasearch');
-jest.mock('./icons/address.svg', () => 'address');
 jest.mock('./icons/clear.svg', () => 'clear');
-jest.mock('./icons/city.svg', () => 'city');
-jest.mock('./icons/country.svg', () => 'country');
-jest.mock('./icons/algolia.svg', () => 'algolia');
-jest.mock('./icons/osm.svg', () => 'osm');
 jest.mock('./places.scss', () => 'places.scss');
 jest.mock('./createAutocompleteDataset', () => jest.fn(() => 'autocompleteDataset'));
 
