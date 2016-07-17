@@ -57,6 +57,9 @@
   },
   "jest": {
     "testRegex": "\\.test\\.js$",
-    "coverageDirectory": ".coverage/"
+    "coverageDirectory": ".coverage/",
+    "moduleNameMapper": {
+      "^.+\\.(svg)$": "<rootDir>/test/fileMock.js"
+    }
   }
 }
