@@ -6,6 +6,7 @@
   var placesAutocomplete = places({
     container: document.querySelector('#city'),
     type: 'city',
+    aroundLatLngViaIP: false,
     templates: {
       value: function(suggestion) {
         return suggestion.name;
