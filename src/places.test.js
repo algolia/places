@@ -277,8 +277,8 @@ describe('places', () => {
     it('has all autocomplete methods', () => {
       const autocompleteMethods = ['open', 'close', 'getVal', 'setVal', 'destroy'];
       autocompleteMethods.forEach(methodName => {
-        placesInstance[methodName]();
-        expect(autocomplete.__instance.autocomplete[methodName]).toBeCalled();
+        placesInstance[methodName]('hello');
+        expect(autocomplete.__instance.autocomplete[methodName]).toBeCalledWith('hello');
       });
     });
 
