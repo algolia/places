@@ -51,7 +51,7 @@
   },
   "dependencies": {
     "algoliasearch": "^3.17.0",
-    "autocomplete.js": "^0.20.1",
+    "autocomplete.js": "^0.21.0",
     "events": "^1.1.1",
     "insert-css": "^1.0.0"
   },
