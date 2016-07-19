@@ -1,5 +1,3 @@
-/* eslint-env jest, jasmine */
-
 jest.unmock('./formatInputValue.js');
 import formatInputValue from './formatInputValue.js';
 

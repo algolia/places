@@ -1,5 +1,3 @@
-/* eslint-env jest, jasmine */
-
 jest.disableAutomock();
 jest.mock('algoliasearch/lite.js', () => 'algoliasearch');
 jest.mock('./icons/clear.svg', () => 'clear');
@@ -230,6 +228,7 @@ describe('places', () => {
         expect(autocomplete.__instance.val).toBeCalled();
       });
 
+      // eslint-disable-next-line jasmine/missing-expect
       it('emits a clear event when necessary', done => {
         placesInstance.once('clear', done);
         autocomplete.__setQuery('a');

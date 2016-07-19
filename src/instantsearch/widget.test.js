@@ -1,5 +1,3 @@
-/* eslint-env jest, jasmine */
-
 jest.unmock('./widget.js');
 jest.mock('../places.js', () => {
   const module = jest.fn(() => {

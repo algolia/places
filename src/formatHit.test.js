@@ -1,4 +1,3 @@
-/* eslint-env jest, jasmine */
 /* eslint-disable camelcase */
 
 jest.unmock('./formatHit.js');

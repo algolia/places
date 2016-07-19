@@ -1,5 +1,3 @@
-/* eslint-env jest, jasmine */
-
 import createAutocompleteDataset from './createAutocompleteDataset.js';
 import createAutocompleteSource from './createAutocompleteSource.js';
 

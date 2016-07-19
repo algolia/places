@@ -1,5 +1,3 @@
-/* eslint-env jest, jasmine */
-
 jest.unmock('./findCountryCode.js');
 import findCountryCode from './findCountryCode.js';
 

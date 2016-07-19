@@ -1,5 +1,3 @@
-/* eslint-env jest */
-
 const defaultSearchStub = jest.fn(() => Promise.resolve());
 let searchStub = defaultSearchStub;
 const addAlgoliaAgent = jest.fn();

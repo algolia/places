@@ -1,5 +1,3 @@
-/* eslint-env jest, jasmine */
-
 import formatDropdownValue from './formatDropdownValue.js';
 jest.mock('./icons/address.svg', () => 'address');
 jest.unmock('./formatDropdownValue.js');

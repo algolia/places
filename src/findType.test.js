@@ -1,5 +1,3 @@
-/* eslint-env jest, jasmine */
-
 jest.unmock('./findType.js');
 import findType from './findType.js';
 

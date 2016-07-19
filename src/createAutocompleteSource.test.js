@@ -1,5 +1,3 @@
-/* eslint-env jest, jasmine */
-
 import formatHit from './formatHit.js';
 import version from './version.js';
 import createAutocompleteSource from './createAutocompleteSource.js';
