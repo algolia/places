@@ -1,3 +1,13 @@
+<a name="1.4.1"></a>
+## [1.4.1](https://github.com/algolia/places/compare/v1.4.0...v1.4.1) (2016-07-19)
+
+
+### Bug Fixes
+
+* **dep:** update autocomplete.js to 0.21.1 ([acc5ad8](https://github.com/algolia/places/commit/acc5ad8)), closes [#288](https://github.com/algolia/places/issues/288)
+
+
+
 <a name="1.4.0"></a>
 # [1.4.0](https://github.com/algolia/places/compare/v1.3.4...v1.4.0) (2016-07-19)
 
