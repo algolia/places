@@ -1,3 +1,19 @@
+<a name="1.4.0"></a>
+# [1.4.0](https://github.com/algolia/places/compare/v1.3.4...v1.4.0) (2016-07-19)
+
+
+### Bug Fixes
+
+* **autocomplete:** pass arguments to autocomplete methods (#290) ([7f42f07](https://github.com/algolia/places/commit/7f42f07)), closes [#288](https://github.com/algolia/places/issues/288)
+
+
+### Features
+
+* **highlight:** get the best matching values instead of the first one (#285) ([babb352](https://github.com/algolia/places/commit/babb352)), closes [#172](https://github.com/algolia/places/issues/172)
+* **icons:** new icons (busStop, trainStation, airport, townhall) (#284) ([ac72007](https://github.com/algolia/places/commit/ac72007))
+
+
+
 <a name="1.3.4"></a>
 ## [1.3.4](https://github.com/algolia/places/compare/v1.3.3...v1.3.4) (2016-07-12)
 
