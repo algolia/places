@@ -1,12 +1,20 @@
 export default function findType(tags) {
-  const types = ['country', 'city', 'address'];
+  const types = {
+    'country': 'country',
+    'city': 'city',
+    'amenity/bus_station': 'busStop',
+    'amenity/townhall': 'townhall',
+    'railway/station': 'trainStation',
+    'aeroway/aerodrome': 'airport',
+    'aeroway/terminal': 'airport',
+    'aeroway/gate': 'airport'
+  };
 
-  for (let typeIndex = 0; typeIndex < types.length; typeIndex++) {
-    const type = types[typeIndex];
-    if (tags.indexOf(type) !== -1) {
-      return type;
+  for (const t in types) {
+    if (tags.indexOf(t) !== -1) {
+      return types[t];
     }
   }
 
-  return undefined;
+  return 'address';
 }

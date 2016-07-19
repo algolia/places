@@ -7,7 +7,11 @@ describe('findType', () => {
   const testCases = [{
     name: 'empty array',
     input: [],
-    expected: undefined
+    expected: 'address'
+  }, {
+    name: 'unknown',
+    input: ['foo', 'bar'],
+    expected: 'address'
   }, {
     name: 'city',
     input: ['city', 'address'],
@@ -20,6 +24,22 @@ describe('findType', () => {
     name: 'address',
     input: ['address'],
     expected: 'address'
+  }, {
+    name: 'an airport',
+    input: ['address', 'aeroway/aerodrome'],
+    expected: 'airport'
+  }, {
+    name: 'a bus stop',
+    input: ['address', 'amenity/bus_station'],
+    expected: 'busStop'
+  }, {
+    name: 'a train station',
+    input: ['address', 'railway/station'],
+    expected: 'trainStation'
+  }, {
+    name: 'a townhall',
+    input: ['amenity/townhall', 'address'],
+    expected: 'townhall'
   }];
 
   testCases.forEach(

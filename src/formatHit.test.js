@@ -36,6 +36,23 @@ describe('formatHit', () => {
       }
     }),
     getTestCase({
+      name: 'locale_names[1] is matching',
+      hit: {
+        locale_names: ['Paris', 'Lutèce'],
+        city: ['Paris'],
+        administrative: ['Île-de-France'],
+        _highlightResult: {
+          locale_names: [{value: 'Paris', matchedWords: []}, {value: 'Lutèce', matchedWords: ['Lutèce']}]
+        }
+      },
+      expected: {
+        name: 'Paris',
+        administrative: 'Île-de-France',
+        city: undefined,
+        highlight: {name: 'Lutèce (Paris)', city: undefined}
+      }
+    }),
+    getTestCase({
       name: 'no city',
       hit: {city: undefined},
       expected: {
@@ -67,7 +84,7 @@ describe('formatHit', () => {
 
       // check properties
       Object.keys(testCase.expected).forEach(key =>
-        expect(output[key]).toEqual(testCase.expected[key])
+        expect(output[key]).toEqual(testCase.expected[key], `unexcepted value of "${key}"`)
       );
 
       // hit is passed through
