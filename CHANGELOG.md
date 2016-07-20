@@ -1,3 +1,13 @@
+<a name="1.4.2"></a>
+## [1.4.2](https://github.com/algolia/places/compare/v1.4.1...v1.4.2) (2016-07-20)
+
+
+### Bug Fixes
+
+* **formatHit:** fixed npe, not all hits have a country (#292) ([ff54319](https://github.com/algolia/places/commit/ff54319)), closes [#292](https://github.com/algolia/places/issues/292) [#291](https://github.com/algolia/places/issues/291)
+
+
+
 <a name="1.4.1"></a>
 ## [1.4.1](https://github.com/algolia/places/compare/v1.4.0...v1.4.1) (2016-07-19)
 
