@@ -74,6 +74,19 @@ describe('formatHit', () => {
         name: 'Paris',
         highlight: {city: undefined, name: 'Paris'}
       }
+    }),
+    getTestCase({
+      name: 'no country',
+      hit: {
+        country: undefined,
+        _highlightResult: {
+          country: undefined
+        }
+      },
+      expected: {
+        country: undefined,
+        highlight: {country: undefined}
+      }
     })
   ];
 
