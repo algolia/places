@@ -2,9 +2,6 @@ import findCountryCode from './findCountryCode.js';
 import findType from './findType.js';
 
 function getBestHighlightedForm(highlightedValues) {
-  if (highlightedValues.length === 0) {
-    return undefined;
-  }
   const defaultValue = highlightedValues[0].value;
   // collect all other matches
   const bestAttributes = [];
