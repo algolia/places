@@ -32,6 +32,10 @@
     @media (max-width: $bp-big) {
       max-width: 100%;
     }
+
+    .algolia-docsearch-suggestion {
+      line-height: 1em;
+    }
   }
 
   .ac-nav-brand,
