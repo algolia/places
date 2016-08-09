@@ -84,6 +84,12 @@ describe('createAutocompleteSource', () => {
     expect(algoliasearch.__searchSpy).toBeCalledWith({...defaults, aroundRadius: 2000});
   });
 
+  it('supports hitsPerPage option', () => {
+    const {source, defaults} = setup({hitsPerPage: 2});
+    source(defaults.query);
+    expect(algoliasearch.__searchSpy).toBeCalledWith({...defaults, hitsPerPage: 2});
+  });
+
   it('supports useDeviceLocation option', () => {
     const latitude = '456';
     const longitude = '789';
