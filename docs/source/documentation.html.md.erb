@@ -123,6 +123,8 @@ Available types:
 - airport
 
 **Default**: Search in all types.
+
+**Note**: If you restrict the search to `city` or `airport`, you probably want to disable the `aroundLatLngViaIP` option as well. This will make sure you don't get only nearby results.
 </td>
     </tr>
     <tr>
@@ -301,7 +303,8 @@ var placesAutocomplete = {
   container: document.querySelector('#demo'),
   language: 'de', // Receives results in German
   countries: ['us', 'ru'], // Search in the United States of America and in the Russian Federation
-  type: 'city' // Search only for cities names
+  type: 'city', // Search only for cities names
+  aroundLatLngViaIP: false // disable the extra search/boost around the source IP
 };
 ```
 
