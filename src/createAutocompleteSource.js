@@ -6,6 +6,7 @@ export default function createAutocompleteSource({
   clientOptions,
   apiKey,
   appId,
+  hitsPerPage,
   aroundLatLng,
   aroundRadius,
   aroundLatLngViaIP,
@@ -28,7 +29,7 @@ export default function createAutocompleteSource({
 
   const defaultQueryParams = {
     countries,
-    hitsPerPage: 5,
+    hitsPerPage: hitsPerPage || 5,
     language,
     type
   };
