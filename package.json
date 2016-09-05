@@ -33,7 +33,7 @@
     "babel-preset-stage-2": "^6.11.0",
     "clipboard": "^1.5.12",
     "conventional-changelog-cli": "^1.2.0",
-    "css-loader": "^0.24.0",
+    "css-loader": "^0.25.0",
     "docsearch.js": "^2.1.1",
     "doctoc": "^1.2.0",
     "eslint-config-algolia": "^5.3.1",
