@@ -40,7 +40,7 @@
     "jest-cli": "^13.1.1",
     "json": "^9.0.4",
     "mversion": "^1.10.1",
-    "node-sass": "^3.8.0",
+    "node-sass": "^3.9.1",
     "pretty-bytes-cli": "^2.0.0",
     "raw-loader": "^0.5.1",
     "sass-loader": "^4.0.0",
