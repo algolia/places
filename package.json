@@ -50,8 +50,8 @@
     "webpack": "^1.13.1"
   },
   "dependencies": {
-    "algoliasearch": "^3.17.0",
-    "autocomplete.js": "^0.21.1",
+    "algoliasearch": "^3.18.1",
+    "autocomplete.js": "^0.21.5",
     "events": "^1.1.1",
     "insert-css": "^1.0.0"
   },
