@@ -1,3 +1,13 @@
+<a name="1.4.4"></a>
+## [1.4.4](https://github.com/algolia/places/compare/v1.4.3...v1.4.4) (2016-09-22)
+
+
+### Bug Fixes
+
+* **createAutocompleteSource:** missing hitsPerPage forward (#313) ([74e4520](https://github.com/algolia/places/commit/74e4520)), closes [#308](https://github.com/algolia/places/issues/308)
+
+
+
 <a name="1.4.3"></a>
 ## [1.4.3](https://github.com/algolia/places/compare/v1.4.2...v1.4.3) (2016-07-30)
 
