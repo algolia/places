@@ -82,8 +82,8 @@ mv dist/cdn dist/dist
 cd dist
 npm publish
 mv dist/cdn cdn
-rm dist -rf
-rm package.json README.md LICENSE
+rm -rf dist
+rm -f package.json README.md LICENSE
 cd ..
 
 printf "
