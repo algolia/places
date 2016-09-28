@@ -36,7 +36,7 @@
     "css-loader": "^0.25.0",
     "docsearch.js": "^2.1.1",
     "doctoc": "^1.2.0",
-    "eslint-config-algolia": "^5.3.1",
+    "eslint-config-algolia": "^5.5.0",
     "jest-cli": "^13.1.1",
     "json": "^9.0.4",
     "mversion": "^1.10.1",
