@@ -1,6 +1,6 @@
 import EventEmitter from 'events';
 
-import algoliasearch from 'algoliasearch/lite';
+import algoliasearch from 'algoliasearch/lite.js';
 import autocomplete from 'autocomplete.js';
 
 import './navigatorLanguage.js';
@@ -14,17 +14,7 @@ import css from './places.scss';
 import insertCss from 'insert-css';
 insertCss(css, {prepend: true});
 
-const errors = {
-  multiContainers:
-`Algolia Places: 'container' must point to a single <input> element.
-Example: instantiate the library twice if you want to bind two <inputs>.
-
-See https://community.algolia.com/places/documentation.html#api-options-container`,
-  badContainer:
-`Algolia Places: 'container' must point to an <input> element.
-
-See https://community.algolia.com/places/documentation.html#api-options-container`
-};
+import errors from './errors.js';
 
 export default function places(options) {
   const {
@@ -40,13 +30,13 @@ export default function places(options) {
     }
 
     // if single node NodeList received, resolve to the first one
-    return places({container: container[0], ...options});
+    return places({...options, container: container[0]});
   }
 
   // container sent as a string, resolve it for multiple DOM elements issue
   if (typeof container === 'string') {
     const resolvedContainer = document.querySelectorAll(container);
-    return places({container: resolvedContainer, ...options});
+    return places({...options, container: resolvedContainer});
   }
 
   // if not an <input>, error
@@ -55,16 +45,16 @@ export default function places(options) {
   }
 
   const placesInstance = new EventEmitter();
-  const prefix = 'ap' + (style === false ? '-nostyle' : '');
+  const prefix = `ap${style === false ? '-nostyle' : ''}`;
 
   const autocompleteOptions = {
     autoselect: true,
     hint: false,
     cssClasses: {
-      root: 'algolia-places' + (style === false ? '-nostyle' : ''),
+      root: `algolia-places${style === false ? '-nostyle' : ''}`,
       prefix
     },
-    debug: process.env.NODE_ENV === 'development' ? true : false,
+    debug: process.env.NODE_ENV === 'development',
     ...userAutocompleteOptions
   };
 
@@ -75,8 +65,20 @@ export default function places(options) {
       rawAnswer,
       query,
       suggestions: hits
-    })
+    }),
+    onError: e => placesInstance.emit('error', e),
+    onRateLimitReached: () => {
+      const listeners = placesInstance.listenerCount('limit');
+      if (listeners === 0) {
+        console.log(errors.rateLimitReached); // eslint-disable-line
+        return;
+      }
+
+      placesInstance.emit('limit', {message: errors.rateLimitReached});
+    },
+    container: undefined
   });
+
   const autocompleteInstance = autocomplete(container, autocompleteOptions, autocompleteDataset);
   const autocompleteContainer = container.parentNode;
 
@@ -112,7 +114,7 @@ export default function places(options) {
   const pin = document.createElement('button');
   pin.setAttribute('type', 'button');
   pin.classList.add(`${prefix}-input-icon`);
-  pin.classList.add(`${prefix}-input-icon-pin`);
+  pin.classList.add(`${prefix}-icon-pin`);
   pin.innerHTML = pinIcon;
   autocompleteContainer.appendChild(pin);
 
@@ -144,11 +146,19 @@ export default function places(options) {
 
   autocompleteContainer.querySelector(`.${prefix}-input`).addEventListener('input', inputListener);
 
-  placesInstance.destroy = () => {
-    // this is the only event we need to manually remove because the input will still be here
-    autocompleteContainer.querySelector(`.${prefix}-input`).removeEventListener('input', inputListener);
-    autocompleteInstance.autocomplete.destroy();
-  };
+  const autocompleteMethods = ['open', 'close', 'getVal', 'setVal', 'destroy'];
+  autocompleteMethods.forEach(methodName => {
+    placesInstance[methodName] = (...args) => {
+      if (methodName === 'destroy') {
+        // this is the only event we need to manually remove because the input will still be here
+        autocompleteContainer.querySelector(`.${prefix}-input`).removeEventListener('input', inputListener);
+      }
+
+      autocompleteInstance.autocomplete[methodName](...args);
+    };
+  });
+
+  placesInstance.autocomplete = autocompleteInstance;
 
   return placesInstance;
 }

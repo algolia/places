@@ -10,13 +10,16 @@
 # We also cache ./node_modules/
 language: ruby
 before_install:
+  # Dirty hack for https://github.com/travis-ci/travis-ci/issues/5092
+  - >
+    PATH=`echo $PATH | sed "s/\.\/node_modules\/\.bin//g"`;
+    export PATH=$PATH:./node_modules/.bin;
   - 'git config --global user.email "algoliaplacesbot@users.noreply.github.com"'
   - 'git config --global user.name "algoliaplacesbot"'
-  - npm prune
   - rvm install 2.3.0
   - rvm use 2.3.0
-  - nvm install 5
-  - nvm use 5
+  - nvm install 6
+  - nvm use 6
 gemfile: docs/Gemfile
 script:
   - npm install
@@ -24,6 +27,7 @@ script:
 branches:
   only:
     - master
+    - /^greenkeeper-.*$/
 notifications:
   slack: algolia:wSMHl9gxKQ7cRvnOPUWE9esI
 sudo: false

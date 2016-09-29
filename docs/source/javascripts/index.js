@@ -33,26 +33,25 @@ if (process.env.NODE_ENV === 'development') {
 const $response = document.querySelector('#json-response');
 const $responseText = document.querySelector('#json-response-text');
 const $responseTiming = document.querySelector('#json-response-timing');
-placesAutocomplete.on('change', function(e) {
-  if (e.query === '') {
-    $responseText.textContent = '';
-    $response.classList.remove('display');
-  } else {
-    const content = {
-      ...e,
-      // hide advanced API event data in demo
-      suggestion: {
-        ...e.suggestion,
-        hit: undefined,
-        hitIndex: undefined,
-        query: undefined,
-        rawAnswer: undefined
-      },
-      rawAnswer: undefined,
-      suggestionIndex: undefined
-    };
-    $responseText.textContent = JSON.stringify(content, null, 2);
-    $responseTiming.innerHTML = `Computed in <u>${e.rawAnswer.processingTimeMS}ms</u>`;
-    $response.classList.add('display');
-  }
+placesAutocomplete.on('change', e => {
+  const content = {
+    ...e,
+    // hide advanced API event data in demo
+    suggestion: {
+      ...e.suggestion,
+      hit: undefined,
+      hitIndex: undefined,
+      query: undefined,
+      rawAnswer: undefined
+    },
+    rawAnswer: undefined,
+    suggestionIndex: undefined
+  };
+  $responseText.textContent = JSON.stringify(content, null, 2);
+  $responseTiming.innerHTML = `Computed in <u>${e.rawAnswer.processingTimeMS}ms</u>`;
+  $response.classList.add('display');
+});
+placesAutocomplete.on('clear', () => {
+  $responseText.textContent = '';
+  $response.classList.remove('display');
 });

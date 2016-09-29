@@ -7,11 +7,14 @@ export default function createAutocompleteDataset(options) {
     ...options.templates
   };
 
+  const source = createAutocompleteSource({
+    ...options,
+    formatInputValue: templates.value,
+    templates: undefined
+  });
+
   return {
-    source: createAutocompleteSource({
-      ...options,
-      formatInputValue: templates.value
-    }),
+    source,
     templates,
     displayKey: 'value',
     name: 'places'

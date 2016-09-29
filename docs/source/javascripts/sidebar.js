@@ -34,7 +34,7 @@ export default function sidebar({headersContainer, sidebarContainer, headerStart
     select.appendChild(option);
   });
 
-  select.addEventListener('change', e => window.location = e.target.value);
+  select.addEventListener('change', e => { window.location = e.target.value; });
   sidebarContainer.appendChild(list);
   sidebarContainer.appendChild(select);
   sidebarFollowScroll(sidebarContainer);
@@ -61,10 +61,10 @@ function sidebarFollowScroll(sidebarContainer) {
     let paddingDoc = window.getComputedStyle(doc, null).getPropertyValue('padding-top').split('px')[0];
     paddingDoc = parseInt(paddingDoc, 10);
     // Fix the sidebar navigation
-    if (currentScroll > ((heroHeight - navHeight) + paddingDoc)) {
+    if (currentScroll > heroHeight - navHeight + paddingDoc) {
       const fold = height - footerHeight - menuHeight - paddingDoc - 50;
       if (currentScroll > fold) {
-        sidebarContainer.style.top = (fold - currentScroll) + 'px';
+        sidebarContainer.style.top = `${fold - currentScroll}px`;
       } else {
         sidebarContainer.style.top = null;
       }
@@ -95,11 +95,11 @@ function scrollSpy(sidebarContainer, headersContainer) {
   const findActiveSidebarLink = () => {
     const highestVisibleHeaders = headers
       .map(header => ({element: header, rect: header.getBoundingClientRect()}))
-      .filter(({rect}) => {
+      .filter(({rect}) =>
         // top element relative viewport position should be at least 1/3 viewport
         // and element should be in viewport
-        return rect.top < window.innerHeight / 3 && rect.bottom < window.innerHeight;
-      })
+        rect.top < window.innerHeight / 3 && rect.bottom < window.innerHeight
+      )
       // then we take the closest to this position as reference
       .sort((header1, header2) => Math.abs(header1.rect.top) < Math.abs(header2.rect.top) ? -1 : 1);
 

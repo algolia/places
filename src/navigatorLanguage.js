@@ -12,6 +12,6 @@ if (!('language' in navigator)) {
   // http://msdn.microsoft.com/en-us/library/ie/ms533052.aspx (via
   // http://msdn.microsoft.com/en-us/library/ie/ms534713.aspx), they
   // appear to be in lower case, so we bring them into harmony with navigator.language.
-  (navigator.userLanguage && navigator.userLanguage.replace(/-[a-z]{2}$/, String.prototype.toUpperCase)) ||
+  navigator.userLanguage && navigator.userLanguage.replace(/-[a-z]{2}$/, String.prototype.toUpperCase) ||
   'en-US'; // Default for anonymizing services: http://www.whatwg.org/specs/web-apps/current-work/multipage/timers.html#navigatorlanguage
 }

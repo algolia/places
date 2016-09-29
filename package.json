@@ -1,6 +1,6 @@
 {
   "name": "places.js",
-  "version": "1.2.0",
+  "version": "1.4.4",
   "description": "🌐 Turn any <input> into an address autocomplete.",
   "main": "index.js",
   "scripts": {
@@ -14,8 +14,8 @@
     "js:watch": "webpack --watch",
     "lint": "eslint .",
     "release": "./scripts/release.sh",
-    "test": "npm run lint",
-    "test:watch": "npm run test -- --watch --reporter min",
+    "test": "jest --bail --no-cache && npm run lint",
+    "test:watch": "jest --watch",
     "test:ci": "./scripts/test-ci.sh"
   },
   "author": "Algolia (https://www.algolia.com)",
@@ -26,38 +26,40 @@
   "devDependencies": {
     "babel-cli": "^6.10.1",
     "babel-core": "^6.10.4",
-    "babel-eslint": "^5.0.0",
+    "babel-jest": "^14.0.0",
     "babel-loader": "^6.2.4",
-    "babel-plugin-webpack-loaders": "^0.7.0",
+    "babel-plugin-webpack-loaders": "^0.8.0",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-stage-2": "^6.11.0",
-    "babel-register": "^6.9.0",
     "clipboard": "^1.5.12",
     "conventional-changelog-cli": "^1.2.0",
-    "css-loader": "^0.23.1",
-    "docsearch.js": "^1.3.0",
+    "css-loader": "^0.25.0",
+    "docsearch.js": "^2.1.1",
     "doctoc": "^1.2.0",
-    "eslint": "^1.6.0",
-    "eslint-config-airbnb": "^0.1.0",
-    "eslint-config-algolia": "^4.2.0",
-    "eslint-plugin-algolia": "^1.5.0",
-    "eslint-plugin-react": "^3.5.1",
+    "eslint-config-algolia": "^5.3.1",
+    "jest-cli": "^13.1.1",
     "json": "^9.0.4",
-    "mocha": "^2.5.3",
     "mversion": "^1.10.1",
-    "node-sass": "^3.8.0",
-    "pretty-bytes-cli": "^1.0.0",
+    "node-sass": "^3.9.1",
+    "pretty-bytes-cli": "^2.0.0",
     "raw-loader": "^0.5.1",
     "sass-loader": "^4.0.0",
     "semver": "^5.1.1",
     "to-string-loader": "^1.1.4",
-    "uglify-js": "^2.6.4",
+    "uglify-js": "^2.7.0",
     "webpack": "^1.13.1"
   },
   "dependencies": {
-    "algoliasearch": "^3.16.0",
-    "autocomplete.js": "^0.20.1",
+    "algoliasearch": "^3.18.1",
+    "autocomplete.js": "^0.21.7",
     "events": "^1.1.1",
     "insert-css": "^1.0.0"
+  },
+  "jest": {
+    "testRegex": "\\.test\\.js$",
+    "coverageDirectory": ".coverage/",
+    "moduleNameMapper": {
+      "^.+\\.(svg)$": "<rootDir>/test/fileMock.js"
+    }
   }
 }

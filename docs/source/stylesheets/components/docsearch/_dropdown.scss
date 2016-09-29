@@ -149,7 +149,7 @@
 
 
   // Dropdown wrapper
-  .aa-dropdown-menu {
+  .ds-dropdown-menu {
     position: relative;
     top: -6px;
     border-radius: $border-radius+px;
@@ -187,12 +187,12 @@
       }
     }
 
-    .aa-suggestions {
+    .ds-suggestions {
       position: relative;
       z-index: 1000;
     }
 
-    [class^="aa-dataset-"] {
+    [class^="ds-dataset-"] {
       position: relative;
       border: solid $border-width+px $border-color;
       background: $background-color;
@@ -238,7 +238,7 @@
         padding: $padding/3 0 $padding/3 $padding/1.5;
       }
 
-      .aa-cursor &{
+      .ds-cursor &{
         background: rgba(black, .03);
       }
 

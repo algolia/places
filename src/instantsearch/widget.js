@@ -16,7 +16,7 @@ class AlgoliaPlacesWidget {
 
     helper.setQueryParameter('aroundLatLng', this.defaultPosition);
 
-    placesAutocomplete.on('change', (opts) => {
+    placesAutocomplete.on('change', opts => {
       const {suggestion: {latlng: {lat, lng}}} = opts;
       helper.setQueryParameter('aroundLatLng', `${lat},${lng}`)
             .search();

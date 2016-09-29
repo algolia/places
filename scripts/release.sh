@@ -51,7 +51,6 @@ NODE_ENV=production VERSION=$newVersion npm run build
 
 # update changelog
 printf "\n\nRelease: update changelog"
-changelog=`conventional-changelog -p angular`
 conventional-changelog --preset angular --infile CHANGELOG.md --same-file
 
 # regenerate readme TOC
@@ -59,9 +58,11 @@ printf "\n\nRelease: generate TOCS"
 npm run doctoc
 
 # git add and tag
-commitMessage="v$newVersion\n\n$changelog"
+commitMessage="release v$newVersion
+
+See https://github.com/algolia/places/blob/master/CHANGELOG.md"
 git add src/version.js package.json CHANGELOG.md README.md CONTRIBUTING.md
-printf "%s" "$commitMessage" | git commit --file -
+printf %s "$commitMessage" | git commit --file -
 git tag "v$newVersion"
 
 printf "\n\nRelease: almost done, check everything in another terminal tab.\n"
@@ -80,8 +81,13 @@ mkdir dist/dist
 mv dist/cdn dist/dist
 cd dist
 npm publish
+mv dist/cdn cdn
+rm -rf dist
+rm -f package.json README.md LICENSE
 cd ..
 
-printf "\n\nRelease:
+printf "
+Release:
 Package was published to npm.
-A job on travis-ci will be automatically launched to finalize the release."
+A job on travis-ci will be automatically launched to finalize the release.
+"

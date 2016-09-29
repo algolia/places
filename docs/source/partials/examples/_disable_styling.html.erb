@@ -10,15 +10,7 @@
   border-radius: 12px;
   background: #ffffff;
   padding: 1em 0 1em 45px;
-}
-
-#input-styling-address .ap-input-icon-pin {
-  left: 20px;
-  display: block !important;
-}
-
-#input-styling-address input:hover {
-  border-color: silver;
+  width: 100%;
 }
 
 #input-styling-address input:focus, #input-styling-address input:active {
@@ -27,26 +19,35 @@
   background: #ffffff;
 }
 
-#input-styling-address input::placeholder {
-  color: #aaaaaa;
-}
-
-#input-styling-address .ap-dropdown-menu {
+#input-styling-address .ap-nostyle-dropdown-menu {
   box-shadow: none;
   border: 1px solid #dadada;
   border-radius: 0;
+  background: #fff;
+  width: 100%;
 }
 
-#input-styling-address .ap-suggestion {
-  border-bottom: 1px solid #efefef;
+#input-styling-address .ap-nostyle-input-icon {
+  display: block;
+  position: absolute;
+  background: none;
+  border: none;
 }
+
+#input-styling-address .algolia-places-nostyle { width: 50%; }
+#input-styling-address .ap-nostyle-icon-pin { left: 5px;top: 10px; }
+#input-styling-address .ap-nostyle-icon-clear { right: 5px;top: 15px }
+#input-styling-address input:hover { border-color: silver; }
+#input-styling-address input::placeholder { color: #aaaaaa; }
+#input-styling-address .ap-nostyle-suggestion { border-bottom: 1px solid #efefef; }
 </style>
 
 <script>
 (function() {
   var placesAutocomplete = places({
     container: document.querySelector('#input-styling-address input'),
-    style: false
+    style: false,
+    debug: true
   });
 })();
 </script>

@@ -7,12 +7,13 @@ link.addEventListener('click', clickEvent => {
   clickEvent.preventDefault();
   try {
     navigator.geolocation.getCurrentPosition(
-      ({coords}) => // success
+      ({coords}) => { // success
         window.location.href = getFormURL(
           window.userip ? `${window.userip} (detected)` : defaultIp,
           `${coords.latitude},${coords.longitude}  (detected)`
-        ),
-      () => window.location.href = clickEvent.target.href // error
+        );
+      },
+      () => { window.location.href = clickEvent.target.href; } // error
     );
   } catch (geoNotAvailable) {
     window.location.href = clickEvent.target.href;

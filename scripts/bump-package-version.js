@@ -10,22 +10,22 @@ import currentVersion from '../src/version.js';
 if (!process.env.VERSION) {
   throw new Error('bump: Usage is VERSION=MAJOR.MINOR.PATCH scripts/bump-package-version.js');
 }
-let newVersion = process.env.VERSION;
+const newVersion = process.env.VERSION;
 
 if (!semver.valid(newVersion)) {
-  throw new Error('bump: Provided new version (' + newVersion + ') is not a valid version per semver');
+  throw new Error(`bump: Provided new version ${newVersion} is not a valid version per semver`);
 }
 
 if (semver.gte(currentVersion, newVersion)) {
-  throw new Error('bump: Provided new version is not higher than current version (' + newVersion + ' <= ' + currentVersion + ')');
+  throw new Error(`bump: Provided new version is not higher than current version (${newVersion} <= ${currentVersion})`);
 }
 
-console.log('Bumping ' + newVersion);
+console.log(`Bumping ${newVersion}`);
 
 console.log('..Updating src/version.js');
 
-let versionFile = path.join(__dirname, '../src/version.js');
-let newContent = "export default '" + newVersion + "';\n";
+const versionFile = path.join(__dirname, '../src/version.js');
+const newContent = `export default \'${newVersion}\';\n`;
 fs.writeFileSync(versionFile, newContent);
 
 console.log('..Updating package.json');

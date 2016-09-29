@@ -12,6 +12,7 @@ Hi (future) collaborator!
 
 - [Where to start?](#where-to-start)
 - [Development workflow](#development-workflow)
+  - [Testing](#testing)
 - [Commit message guidelines](#commit-message-guidelines)
   - [Revert](#revert)
   - [Type](#type)
@@ -34,7 +35,6 @@ We use the places website as a way to develop the places.js library.
 
 Requirements:
 - [Node.js](https://nodejs.org/en/), prefer latest stable.
-- npm@2 (npm install -g npm@2)
 - [Ruby](https://www.ruby-lang.org/en/), prefer latest stable.
 - [Bundler](http://bundler.io/), prefer latest stable.
 
@@ -45,6 +45,17 @@ npm run dev
 Open http://localhost.localdomain:4567/.
 
 Any change made to places.js library or the docs will trigger an autoreload.
+
+## Testing
+
+We have a unit test suite written with [Jest](http://facebook.github.io/jest/).
+
+```sh
+npm test
+npm run test:watch
+```
+
+You can use all of the Jest API and the [Jasmine API](http://jasmine.github.io/).
 
 # Commit message guidelines
 

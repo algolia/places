@@ -1,3 +1,105 @@
+<a name="1.4.4"></a>
+## [1.4.4](https://github.com/algolia/places/compare/v1.4.3...v1.4.4) (2016-09-22)
+
+
+### Bug Fixes
+
+* **createAutocompleteSource:** missing hitsPerPage forward (#313) ([74e4520](https://github.com/algolia/places/commit/74e4520)), closes [#308](https://github.com/algolia/places/issues/308)
+
+
+
+<a name="1.4.3"></a>
+## [1.4.3](https://github.com/algolia/places/compare/v1.4.2...v1.4.3) (2016-07-30)
+
+
+
+<a name="1.4.2"></a>
+## [1.4.2](https://github.com/algolia/places/compare/v1.4.1...v1.4.2) (2016-07-20)
+
+
+### Bug Fixes
+
+* **formatHit:** fixed npe, not all hits have a country (#292) ([ff54319](https://github.com/algolia/places/commit/ff54319)), closes [#292](https://github.com/algolia/places/issues/292) [#291](https://github.com/algolia/places/issues/291)
+
+
+
+<a name="1.4.1"></a>
+## [1.4.1](https://github.com/algolia/places/compare/v1.4.0...v1.4.1) (2016-07-19)
+
+
+### Bug Fixes
+
+* **dep:** update autocomplete.js to 0.21.1 ([acc5ad8](https://github.com/algolia/places/commit/acc5ad8)), closes [#288](https://github.com/algolia/places/issues/288)
+
+
+
+<a name="1.4.0"></a>
+# [1.4.0](https://github.com/algolia/places/compare/v1.3.4...v1.4.0) (2016-07-19)
+
+
+### Bug Fixes
+
+* **autocomplete:** pass arguments to autocomplete methods (#290) ([7f42f07](https://github.com/algolia/places/commit/7f42f07)), closes [#288](https://github.com/algolia/places/issues/288)
+
+
+### Features
+
+* **highlight:** get the best matching values instead of the first one (#285) ([babb352](https://github.com/algolia/places/commit/babb352)), closes [#172](https://github.com/algolia/places/issues/172)
+* **icons:** new icons (busStop, trainStation, airport, townhall) (#284) ([ac72007](https://github.com/algolia/places/commit/ac72007))
+
+
+
+<a name="1.3.4"></a>
+## [1.3.4](https://github.com/algolia/places/compare/v1.3.3...v1.3.4) (2016-07-12)
+
+
+
+<a name="1.3.3"></a>
+## [1.3.3](https://github.com/algolia/places/compare/v1.3.2...v1.3.3) (2016-07-06)
+
+
+
+<a name="1.3.2"></a>
+## [1.3.2](https://github.com/algolia/places/compare/v1.3.1...v1.3.2) (2016-07-06)
+
+
+
+<a name="1.3.1"></a>
+## [1.3.1](https://github.com/algolia/places/compare/v1.3.0...v1.3.1) (2016-07-06)
+
+
+### Bug Fixes
+
+* **rate limit:** check statusCode instead of error message (#273) ([ed52234](https://github.com/algolia/places/commit/ed52234))
+
+
+
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/algolia/places/compare/v1.2.1...v1.3.0) (2016-07-04)
+
+
+### Bug Fixes
+
+* **dev:** fix sourcemaps url in minified builds ([af4f8d3](https://github.com/algolia/places/commit/af4f8d3))
+
+
+### Features
+
+* **autocomplete:** add and forward all autocomplete.js methods (#270) ([b3d41a4](https://github.com/algolia/places/commit/b3d41a4))
+* **highlight:** add highlited attributes in the suggestion data (#271) ([a5cb4c6](https://github.com/algolia/places/commit/a5cb4c6))
+
+
+
+<a name="1.2.1"></a>
+## [1.2.1](https://github.com/algolia/places/compare/v1.2.0...v1.2.1) (2016-06-28)
+
+
+### Bug Fixes
+
+* **limit:** add `limit` and `error` events (#267) ([4de866d](https://github.com/algolia/places/commit/4de866d)), closes [#265](https://github.com/algolia/places/issues/265)
+
+
+
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/algolia/places/compare/v1.1.7...v1.2.0) (2016-06-27)
 

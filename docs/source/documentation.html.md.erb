@@ -117,8 +117,14 @@ Available types:
 - city
 - country
 - address
+- busStop
+- trainStation
+- townhall
+- airport
 
 **Default**: Search in all types.
+
+**Note**: If you restrict the search to `city` or `airport`, you probably want to disable the `aroundLatLngViaIP` option as well. This will make sure you don't get only nearby results.
 </td>
     </tr>
     <tr>
@@ -297,7 +303,8 @@ var placesAutocomplete = {
   container: document.querySelector('#demo'),
   language: 'de', // Receives results in German
   countries: ['us', 'ru'], // Search in the United States of America and in the Russian Federation
-  type: 'city' // Search only for cities names
+  type: 'city', // Search only for cities names
+  aroundLatLngViaIP: false // disable the extra search/boost around the source IP
 };
 ```
 
@@ -386,6 +393,32 @@ You can use this event when used with a map to reset the pins and the default ce
 live on the [map example](examples.html#link-to-a-map).
 </td>
     </tr>
+    <tr>
+<td markdown="1">
+<div class="api-entry" id="api-events-limit"><code>limit</code></div>
+
+Event data:
+
+- *message* <br>Type: **string**
+
+</td>
+<td markdown="1">
+Fired when you reached your current [rate limit](#rate-limits).
+</td>
+    </tr>
+    <tr>
+<td markdown="1">
+  <div class="api-entry" id="api-events-error"><code>error</code></div>
+
+Event data:
+
+- *message* <br>Type: **string**
+
+</td>
+<td markdown="1">
+  Fired when we could not make the request to Algolia Places servers for any reason but reaching your rate limit.
+</td>
+    </tr>
   </tbody>
 </table>
 
@@ -400,6 +433,54 @@ If you have a good use case for a new method, [open a new issue](https://github.
     <th>Description</th>
   </tr></thead>
   <tbody>
+    <tr>
+<td markdown="1">
+<div class="api-entry" id="api-methods-open"><code>open</code></div>
+
+Returns: **undefined**
+</td>
+<td markdown="1">
+Usage: **placesAutocomplete.open()**
+
+Opens the dropdown menu. The menu will be visible if it has content to show.
+</td>
+    </tr>
+    <tr>
+<td markdown="1">
+<div class="api-entry" id="api-methods-close"><code>close</code></div>
+
+Returns: **undefined**
+</td>
+<td markdown="1">
+Usage: **placesAutocomplete.close()**
+
+Closes the dropdown menu.
+</td>
+    </tr>
+    <tr>
+<td markdown="1">
+<div class="api-entry" id="api-methods-getVal"><code>getVal</code></div>
+
+Returns: **string**
+</td>
+<td markdown="1">
+Usage: **placesAutocomplete.getVal()**
+
+Get the current input value.
+</td>
+    </tr>
+    <tr>
+<td markdown="1">
+<div class="api-entry" id="api-methods-setVal"><code>setVal</code></div>
+
+Returns: **undefined**
+</td>
+<td markdown="1">
+Usage: **placesAutocomplete.setVal()**
+
+Set the current input value. This will not open the menu. You will need to call [.open()](#api-methods-open)
+</td>
+    </tr>
     <tr>
 <td markdown="1">
 <div class="api-entry" id="api-methods-destroy"><code>destroy</code></div>
@@ -432,7 +513,7 @@ All of the events will send suggestion objects with those properties:
 Type: **string**
 </td>
 <td markdown="1">
-Type of the current suggestion, possible values: `country`, `city`, `address`.
+Type of the current suggestion, possible values: `country`, `city`, `address`, `busStop`, `trainStation`, `townhall`, `airport`.
 </td>
     </tr>
     <tr>
@@ -536,6 +617,34 @@ Examples:
  - 589 Howard Street San Francisco, California, United States of America
 </td>
     </tr>
+    <tr>
+<td markdown="1">
+<div class="api-entry" id="api-suggestion-value"><code>highlight</code></div>
+
+Type: **object**
+</td>
+<td markdown="1">
+Given the query, contains the highlighted values of the following attributes:
+
+- name
+- administrative
+- city
+- country
+
+Example:
+
+```js
+// query was `par`
+console.log(suggestion.highlight);
+// {
+//   name: '<em>Par</em>is',
+//   administrative: 'Île-de-France',
+//   country: 'France'
+// }
+```
+
+</td>
+    </tr>
   </tbody>
 </table>
 
@@ -562,7 +671,7 @@ You will need an [Algolia account](https://www.algolia.com/) to be able to searc
 ### instantsearch.js
 
 If you're already using instantsearch.js, you can use Algolia Places out of the box. This
-widget will do a search of places using Algolia Places and when an adress is selected, it
+widget will do a search of places using Algolia Places and when an address is selected, it
 will update the geolocation point of the instantsearch.js search.
 
 You can include it using a link tag:
@@ -621,8 +730,8 @@ The overall html structure looks like this:
 ```html
 <span class="algolia-places">
   <input class="ap-input" />
-  <button type="button" class="ap-input-icon ap-input-icon-clear"><svg></svg></button>
-  <button type="button" class="ap-input-icon ap-input-icon-pin"><svg></svg></button>
+  <button type="button" class="ap-input-icon ap-icon-clear"><svg></svg></button>
+  <button type="button" class="ap-input-icon ap-icon-pin"><svg></svg></button>
 </span>
 ```
 
@@ -710,7 +819,7 @@ Here's a default empty CSS file you can copy paste to tune the default styling:
 
 By default we insert some styling into your page. You can disable all the Algolia Places styling by passing the `style: false` option.
 
-Once you do so, the default all css classes will be suffixed with `-nostyle`, thus no styles will be applied.
+Once you do so, all [CSS classes](#css-classes) will be prefixed with `ap-nostyle` and no styling will be applied anymore.
 
 Pin and clear icons will still be shown and working, without being styled.
 
@@ -752,6 +861,8 @@ The Algolia Places API enforces some rate limits.
 </table>
 
 If you're calling the API from your backend, the rate-limits computation is then based on the source IP.
+
+If you are using the places.js library, you will receive a [`limit` event](#api-events-limit) on the places.js instance when you reach your current rate limit.
 
 ## License
 

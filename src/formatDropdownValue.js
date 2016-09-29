@@ -1,33 +1,35 @@
 import addressIcon from './icons/address.svg';
 import cityIcon from './icons/city.svg';
 import countryIcon from './icons/country.svg';
+import busIcon from './icons/bus.svg';
+import trainIcon from './icons/train.svg';
+import townhallIcon from './icons/townhall.svg';
+import planeIcon from './icons/plane.svg';
 
 const icons = {
   address: addressIcon,
   city: cityIcon,
-  country: countryIcon
+  country: countryIcon,
+  busStop: busIcon,
+  trainStation: trainIcon,
+  townhall: townhallIcon,
+  airport: planeIcon
 };
 
-export default function formatDropdownValue(options) {
-  let {
+export default function formatDropdownValue({type, highlight}) {
+  const {
+    name,
     administrative,
     city,
-    country,
-    type,
-    hit
-  } = options;
-
-  const name = hit._highlightResult.locale_names[0].value;
-  city = city ? hit._highlightResult.city[0].value : undefined;
-  administrative = administrative ? hit._highlightResult.administrative[0].value : undefined;
-  country = country ? hit._highlightResult.country.value : undefined;
+    country
+  } = highlight;
 
   const out = `<span class="ap-suggestion-icon">${icons[type].trim()}</span>
 <span class="ap-name">${name}</span>
 <span class="ap-address">
-  ${city ? `${city},` : ''}
-  ${administrative ? `${administrative},` : ''}
-  ${country ? `${country}` : ''}
-</span>`.replace(/\s*\n\s*/g, ' ');
+  ${[city, administrative, country]
+    .filter(token => token !== undefined)
+    .join(', ')}</span>`.replace(/\s*\n\s*/g, ' ');
+
   return out;
 }
