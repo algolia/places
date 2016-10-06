@@ -1,4 +1,3 @@
-jest.unmock('./widget.js');
 jest.mock('../places.js', () => {
   const module = jest.fn(() => {
     const instance = {on: jest.fn()};

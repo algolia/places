@@ -1,11 +1,12 @@
 import formatHit from './formatHit.js';
 import version from './version.js';
 import createAutocompleteSource from './createAutocompleteSource.js';
-import algoliasearch from 'algoliasearch/lite.js';
+import algoliasearch from 'algoliasearch/src/browser/builds/algoliasearchLite.js';
 
-jest.unmock('./createAutocompleteSource.js');
 jest.mock('./formatHit.js', () => jest.fn(hit => ({formattedHit: {...hit}})));
-jest.mock('algoliasearch/lite.js', () => require.requireActual('./__mocks__/algoliasearch/lite.js'));
+jest.mock('algoliasearch/src/browser/builds/algoliasearchLite.js', () =>
+  require.requireActual('../__mocks__/algoliasearch/src/browser/builds/algoliasearchLite.js')
+);
 
 describe('createAutocompleteSource', () => {
   beforeEach(() => formatHit.mockClear());

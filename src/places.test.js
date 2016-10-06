@@ -1,5 +1,5 @@
 jest.disableAutomock();
-jest.mock('algoliasearch/lite.js', () => 'algoliasearch');
+jest.mock('algoliasearch/src/browser/builds/algoliasearchLite.js', () => 'algoliasearch');
 jest.mock('./icons/clear.svg', () => 'clear');
 jest.mock('./places.scss', () => 'places.scss');
 jest.mock('./createAutocompleteDataset', () => jest.fn(() => 'autocompleteDataset'));
@@ -9,6 +9,8 @@ import errors from './errors.js';
 import EventEmitter from 'events';
 import createAutocompleteDataset from './createAutocompleteDataset.js';
 import autocomplete from 'autocomplete.js';
+
+jest.mock('autocomplete.js');
 
 describe('places', () => {
   beforeEach(() => { document.querySelector('body').innerHTML = ''; });
