@@ -1,3 +1,13 @@
+<a name="1.4.6"></a>
+## [1.4.6](https://github.com/algolia/places/compare/v1.4.5...v1.4.6) (2016-10-06)
+
+
+### Bug Fixes
+
+* **meteorjs:** lite build must point to the browser lite ([5834f5b](https://github.com/algolia/places/commit/5834f5b))
+
+
+
 <a name="1.4.5"></a>
 ## [1.4.5](https://github.com/algolia/places/compare/v1.4.4...v1.4.5) (2016-10-03)
 
