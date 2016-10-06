@@ -1,4 +1,3 @@
-jest.unmock('./findCountryCode.js');
 import findCountryCode from './findCountryCode.js';
 
 describe('findCountryCode', () => {

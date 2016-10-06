@@ -1,4 +1,3 @@
-jest.unmock('./formatInputValue.js');
 import formatInputValue from './formatInputValue.js';
 
 describe('formatInputValue', () => {

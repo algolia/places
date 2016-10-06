@@ -1,6 +1,5 @@
 /* eslint-disable camelcase */
 
-jest.unmock('./formatHit.js');
 import formatHit from './formatHit.js';
 import findCountryCode from './findCountryCode.js';
 import findType from './findType.js';
