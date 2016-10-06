@@ -1,6 +1,6 @@
 import EventEmitter from 'events';
 
-import algoliasearch from 'algoliasearch/lite.js';
+import algoliasearch from 'algoliasearch/src/browser/builds/algoliasearchLite.js';
 import autocomplete from 'autocomplete.js';
 
 import './navigatorLanguage.js';
