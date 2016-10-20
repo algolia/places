@@ -31,7 +31,7 @@ class AlgoliaPlacesWidget {
 
 /**
  * Creates a new instance of the Algolia Places widget. This widget
- * sets the geolocation value for the search based on the seelected
+ * sets the geolocation value for the search based on the selected
  * result in the Algolia Places autocomplete. If the input is cleared,
  * the position is result to the default position.
  * @function
