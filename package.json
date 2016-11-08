@@ -37,7 +37,7 @@
     "docsearch.js": "^2.1.8",
     "doctoc": "^1.2.0",
     "eslint-config-algolia": "^5.3.1",
-    "jest-cli": "^16.0.1",
+    "jest-cli": "^17.0.0",
     "json": "^9.0.4",
     "mversion": "^1.10.1",
     "node-sass": "^3.10.1",
