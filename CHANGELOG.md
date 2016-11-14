@@ -1,3 +1,13 @@
+<a name="1.4.7"></a>
+## [1.4.7](https://github.com/algolia/places/compare/v1.4.6...v1.4.7) (2016-11-14)
+
+
+### Bug Fixes
+
+* **css:** re-add css file to npm package ([9c369d4](https://github.com/algolia/places/commit/9c369d4)), closes [#362](https://github.com/algolia/places/issues/362)
+
+
+
 <a name="1.4.6"></a>
 ## [1.4.6](https://github.com/algolia/places/compare/v1.4.5...v1.4.6) (2016-10-06)
 
