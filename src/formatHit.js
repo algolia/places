@@ -33,7 +33,7 @@ export default function formatHit({
   hit,
   hitIndex,
   query,
-  rawAnswer
+  rawAnswer,
 }) {
   try {
     const name = hit.locale_names[0];
@@ -46,7 +46,7 @@ export default function formatHit({
       name: getBestHighlightedForm(hit._highlightResult.locale_names),
       city: city ? getBestHighlightedForm(hit._highlightResult.city) : undefined,
       administrative: administrative ? getBestHighlightedForm(hit._highlightResult.administrative) : undefined,
-      country: country ? hit._highlightResult.country.value : undefined
+      country: country ? hit._highlightResult.country.value : undefined,
     };
 
     const suggestion = {
@@ -58,9 +58,9 @@ export default function formatHit({
       type: findType(hit._tags),
       latlng: {
         lat: hit._geoloc.lat,
-        lng: hit._geoloc.lng
+        lng: hit._geoloc.lng,
       },
-      postcode: hit.postcode && hit.postcode[0]
+      postcode: hit.postcode && hit.postcode[0],
     };
 
     // this is the value to put inside the <input value=
@@ -73,7 +73,7 @@ export default function formatHit({
       hitIndex,
       query,
       rawAnswer,
-      value
+      value,
     };
   } catch (e) {
     /* eslint-disable no-console */
@@ -81,7 +81,7 @@ export default function formatHit({
     console.error(e);
     /* eslint-enable no-console */
     return {
-      value: 'Could not parse object'
+      value: 'Could not parse object',
     };
   }
 }

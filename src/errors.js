@@ -15,5 +15,5 @@ Sign up for a free 100,000 queries/month account at
 https://www.algolia.com/users/sign_up/places.
 
 Or upgrade your 100,000 queries/month plan by contacting us at
-https://community.algolia.com/places/contact.html.`
+https://community.algolia.com/places/contact.html.`,
 };

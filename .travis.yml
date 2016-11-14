@@ -18,11 +18,12 @@ before_install:
   - 'git config --global user.name "algoliaplacesbot"'
   - rvm install 2.3.0
   - rvm use 2.3.0
-  - nvm install 6
-  - nvm use 6
+  - nvm install stable
+  - nvm use stable
+  - npm install --global yarn
 gemfile: docs/Gemfile
 script:
-  - npm install
+  - yarn
   - npm run test:ci
 branches:
   only:
@@ -35,6 +36,8 @@ cache:
   bundler: true
   directories:
     - node_modules
+    - ~/.yarn
+    - ~/.nvm
 env:
   global:
     # CACHE_URL

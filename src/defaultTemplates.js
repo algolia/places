@@ -9,5 +9,5 @@ export default {
   using <a href="https://community.algolia.com/places/documentation.html#license" class="ap-footer-osm" title="Algolia Places data © OpenStreetMap contributors">${osmLogo.trim()} <span>data</span></a>
   </div>`,
   value,
-  suggestion
+  suggestion,
 };

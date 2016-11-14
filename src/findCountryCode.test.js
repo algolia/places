@@ -4,11 +4,11 @@ describe('findCountryCode', () => {
   const testCases = [{
     name: 'empty array',
     input: [],
-    expected: undefined
+    expected: undefined,
   }, {
     name: 'match',
     input: ['country/us', 'country/fr'],
-    expected: 'us'
+    expected: 'us',
   }];
 
   testCases.forEach(

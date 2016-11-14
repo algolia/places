@@ -11,7 +11,7 @@ describe('createAutocompleteDataset', () => {
   beforeEach(() => {
     dataset = createAutocompleteDataset({
       templates: {option: 'test'},
-      option: 'test'
+      option: 'test',
     });
   });
 
@@ -20,7 +20,7 @@ describe('createAutocompleteDataset', () => {
       source: 'source',
       templates: {template: 'test', value: 'test', option: 'test'},
       displayKey: 'value',
-      name: 'places'
+      name: 'places',
     });
   });
 
@@ -29,7 +29,7 @@ describe('createAutocompleteDataset', () => {
       createAutocompleteSource.mock.calls[0][0]
     ).toEqual({
       formatInputValue: 'test',
-      option: 'test'
+      option: 'test',
     });
   });
 });

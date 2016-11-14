@@ -4,39 +4,39 @@ describe('findType', () => {
   const testCases = [{
     name: 'empty array',
     input: [],
-    expected: 'address'
+    expected: 'address',
   }, {
     name: 'unknown',
     input: ['foo', 'bar'],
-    expected: 'address'
+    expected: 'address',
   }, {
     name: 'city',
     input: ['city', 'address'],
-    expected: 'city'
+    expected: 'city',
   }, {
     name: 'country',
     input: ['country', 'city'],
-    expected: 'country'
+    expected: 'country',
   }, {
     name: 'address',
     input: ['address'],
-    expected: 'address'
+    expected: 'address',
   }, {
     name: 'an airport',
     input: ['address', 'aeroway/aerodrome'],
-    expected: 'airport'
+    expected: 'airport',
   }, {
     name: 'a bus stop',
     input: ['address', 'amenity/bus_station'],
-    expected: 'busStop'
+    expected: 'busStop',
   }, {
     name: 'a train station',
     input: ['address', 'railway/station'],
-    expected: 'trainStation'
+    expected: 'trainStation',
   }, {
     name: 'a townhall',
     input: ['amenity/townhall', 'address'],
-    expected: 'townhall'
+    expected: 'townhall',
   }];
 
   testCases.forEach(

@@ -13,7 +13,7 @@ const icons = {
   busStop: busIcon,
   trainStation: trainIcon,
   townhall: townhallIcon,
-  airport: planeIcon
+  airport: planeIcon,
 };
 
 export default function formatDropdownValue({type, highlight}) {
@@ -21,7 +21,7 @@ export default function formatDropdownValue({type, highlight}) {
     name,
     administrative,
     city,
-    country
+    country,
   } = highlight;
 
   const out = `<span class="ap-suggestion-icon">${icons[type].trim()}</span>

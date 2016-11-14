@@ -1,7 +1,7 @@
 jest.disableAutomock();
 jest.mock('algoliasearch/src/browser/builds/algoliasearchLite.js', () => 'algoliasearch');
 jest.mock('./icons/clear.svg', () => 'clear');
-jest.mock('./places.scss', () => 'places.scss');
+jest.mock('./places.css', () => 'places.css');
 jest.mock('./createAutocompleteDataset', () => jest.fn(() => 'autocompleteDataset'));
 
 import places from './places.js';
@@ -117,7 +117,7 @@ describe('places', () => {
           cssClasses: {prefix: 'ap', root: 'algolia-places'},
           debug: false,
           hint: false,
-          option: 'value'
+          option: 'value',
         },
         'autocompleteDataset'
       );
@@ -137,7 +137,7 @@ describe('places', () => {
         rawAnswer: 'rawAnswer',
         query: 'query',
         suggestion: {rawAnswer: 'rawAnswer', query: 'query', hitIndex: 0},
-        suggestionIndex: 0
+        suggestionIndex: 0,
       };
       placesInstance.once('change', eventData => {
         expect(eventData).toEqual(expectedEventData);
@@ -160,7 +160,7 @@ describe('places', () => {
         rawAnswer: 'rawAnswer',
         query: 'query',
         suggestion: {rawAnswer: 'rawAnswer', query: 'query', hitIndex: 0},
-        suggestionIndex: 0
+        suggestionIndex: 0,
       };
       placesInstance.once('change', eventData => {
         expect(eventData).toEqual(expectedEventData);
@@ -183,7 +183,7 @@ describe('places', () => {
         rawAnswer: 'rawAnswer',
         query: 'query',
         suggestion: {rawAnswer: 'rawAnswer', query: 'query', hitIndex: 0},
-        suggestionIndex: 0
+        suggestionIndex: 0,
       };
       placesInstance.once('cursorchanged', eventData => {
         expect(eventData).toEqual(expectedEventData);
@@ -284,7 +284,7 @@ describe('places', () => {
     });
 
     it('inserts the css file on top', () =>
-      expect(document.querySelector('head > style').textContent).toEqual('places.scss'));
+      expect(document.querySelector('head > style').textContent).toEqual('places.css'));
 
     it('returns an EventEmitter', () =>
       expect(placesInstance instanceof EventEmitter).toEqual(true));

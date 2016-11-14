@@ -11,8 +11,8 @@ describe('formatDropdownValue', () => {
           administrative: 'Île-de-France',
           city: 'Paris',
           country: 'France',
-          type: 'address'
-        }
+          type: 'address',
+        },
       })
     ).toEqual(
       '<span class="ap-suggestion-icon">address</span> <span class="ap-name">Paris</span> <span class="ap-address"> Paris, Île-de-France, France</span>' // eslint-disable-line max-len

@@ -25,7 +25,7 @@ console.log(`Bumping ${newVersion}`);
 console.log('..Updating src/version.js');
 
 const versionFile = path.join(__dirname, '../src/version.js');
-const newContent = `export default \'${newVersion}\';\n`;
+const newContent = `export default '${newVersion}';\n`;
 fs.writeFileSync(versionFile, newContent);
 
 console.log('..Updating package.json');

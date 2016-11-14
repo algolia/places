@@ -15,13 +15,13 @@ import places from '../places.js';
 describe('instantsearch widget', () => {
   let helper;
   const defaultOptions = {
-    places: 'option'
+    places: 'option',
   };
 
   beforeEach(() => {
     helper = {
       setQueryParameter: jest.fn().mockReturnThis(),
-      search: jest.fn().mockReturnThis()
+      search: jest.fn().mockReturnThis(),
     };
   });
 

@@ -10,7 +10,7 @@ import createAutocompleteDataset from './createAutocompleteDataset.js';
 import clearIcon from './icons/clear.svg';
 import pinIcon from './icons/address.svg';
 
-import css from './places.scss';
+import css from './places.css';
 import insertCss from 'insert-css';
 insertCss(css, {prepend: true});
 
@@ -20,7 +20,7 @@ export default function places(options) {
   const {
     container,
     style,
-    autocompleteOptions: userAutocompleteOptions = {}
+    autocompleteOptions: userAutocompleteOptions = {},
   } = options;
 
   // multiple DOM elements targeted
@@ -52,10 +52,10 @@ export default function places(options) {
     hint: false,
     cssClasses: {
       root: `algolia-places${style === false ? '-nostyle' : ''}`,
-      prefix
+      prefix,
     },
     debug: process.env.NODE_ENV === 'development',
-    ...userAutocompleteOptions
+    ...userAutocompleteOptions,
   };
 
   const autocompleteDataset = createAutocompleteDataset({
@@ -64,7 +64,7 @@ export default function places(options) {
     onHits: ({hits, rawAnswer, query}) => placesInstance.emit('suggestions', {
       rawAnswer,
       query,
-      suggestions: hits
+      suggestions: hits,
     }),
     onError: e => placesInstance.emit('error', e),
     onRateLimitReached: () => {
@@ -76,7 +76,7 @@ export default function places(options) {
 
       placesInstance.emit('limit', {message: errors.rateLimitReached});
     },
-    container: undefined
+    container: undefined,
   });
 
   const autocompleteInstance = autocomplete(container, autocompleteOptions, autocompleteDataset);
@@ -90,7 +90,7 @@ export default function places(options) {
         rawAnswer: suggestion.rawAnswer,
         query: suggestion.query,
         suggestion,
-        suggestionIndex: suggestion.hitIndex
+        suggestionIndex: suggestion.hitIndex,
       });
     });
   });
@@ -99,7 +99,7 @@ export default function places(options) {
       rawAnswer: suggestion.rawAnswer,
       query: suggestion.query,
       suggestion,
-      suggestionIndex: suggestion.hitIndex
+      suggestionIndex: suggestion.hitIndex,
     });
   });
 

@@ -16,7 +16,7 @@ describe('formatHit', () => {
     getTestCase({
       name: 'no administrative',
       hit: {administrative: undefined},
-      expected: {administrative: undefined, highlight: {administrative: undefined}}
+      expected: {administrative: undefined, highlight: {administrative: undefined}},
     }),
     getTestCase({
       name: 'administrative[0] === locale_names[0]',
@@ -25,13 +25,13 @@ describe('formatHit', () => {
         locale_names: ['Île-de-France'],
         _highlightResult: {
           locale_names: [{value: 'Île-de-France'}],
-          administrative: [{value: 'Île-de-France'}]
-        }
+          administrative: [{value: 'Île-de-France'}],
+        },
       },
       expected: {
         administrative: undefined, name: 'Île-de-France',
-        highlight: {administrative: undefined, name: 'Île-de-France'}
-      }
+        highlight: {administrative: undefined, name: 'Île-de-France'},
+      },
     }),
     getTestCase({
       name: 'locale_names[1] is matching',
@@ -40,23 +40,23 @@ describe('formatHit', () => {
         city: ['Paris'],
         administrative: ['Île-de-France'],
         _highlightResult: {
-          locale_names: [{value: 'Paris', matchedWords: []}, {value: 'Lutèce', matchedWords: ['Lutèce']}]
-        }
+          locale_names: [{value: 'Paris', matchedWords: []}, {value: 'Lutèce', matchedWords: ['Lutèce']}],
+        },
       },
       expected: {
         name: 'Paris',
         administrative: 'Île-de-France',
         city: undefined,
-        highlight: {name: 'Lutèce (Paris)', city: undefined}
-      }
+        highlight: {name: 'Lutèce (Paris)', city: undefined},
+      },
     }),
     getTestCase({
       name: 'no city',
       hit: {city: undefined},
       expected: {
         city: undefined,
-        highlight: {city: undefined}
-      }
+        highlight: {city: undefined},
+      },
     }),
     getTestCase({
       name: 'city[0] === locale_names[0]',
@@ -65,28 +65,28 @@ describe('formatHit', () => {
         locale_names: ['Paris'],
         _highlightResult: {
           locale_names: [{value: 'Paris'}],
-          city: [{value: 'Paris'}]
-        }
+          city: [{value: 'Paris'}],
+        },
       },
       expected: {
         city: undefined,
         name: 'Paris',
-        highlight: {city: undefined, name: 'Paris'}
-      }
+        highlight: {city: undefined, name: 'Paris'},
+      },
     }),
     getTestCase({
       name: 'no country',
       hit: {
         country: undefined,
         _highlightResult: {
-          country: undefined
-        }
+          country: undefined,
+        },
       },
       expected: {
         country: undefined,
-        highlight: {country: undefined}
-      }
-    })
+        highlight: {country: undefined},
+      },
+    }),
   ];
 
   testCases.forEach(
@@ -117,7 +117,7 @@ describe('formatHit', () => {
         countryCode: output.countryCode,
         type: output.type,
         latlng: output.latlng,
-        postcode: output.postcode
+        postcode: output.postcode,
       });
 
       expect(output.rawAnswer).toEqual('rawAnswer');
@@ -140,7 +140,7 @@ describe('formatHit', () => {
 function getTestCase({
   name,
   hit: userHit = {},
-  expected: userExpected = {}
+  expected: userExpected = {},
 }) {
   const defaultHit = {
     locale_names: ['rue de rivoli'],
@@ -149,7 +149,7 @@ function getTestCase({
     city: ['Paris'],
     _geoloc: {
       lat: '123',
-      lng: '456'
+      lng: '456',
     },
     postcode: ['75004'],
     _tags: ['tags'],
@@ -157,8 +157,8 @@ function getTestCase({
       locale_names: [{value: 'Paris'}],
       city: [{value: 'Paris'}],
       administrative: [{value: 'Île-de-France'}],
-      country: {value: 'France'}
-    }
+      country: {value: 'France'},
+    },
   };
 
   const defaultExpected = {
@@ -168,7 +168,7 @@ function getTestCase({
     country: 'France',
     latlng: {
       lat: '123',
-      lng: '456'
+      lng: '456',
     },
     postcode: '75004',
     hitIndex: 0,
@@ -178,8 +178,8 @@ function getTestCase({
       name: 'Paris',
       city: 'Paris',
       administrative: 'Île-de-France',
-      country: 'France'
-    }
+      country: 'France',
+    },
   };
 
   const hit = {
@@ -187,8 +187,8 @@ function getTestCase({
     ...userHit,
     _highlightResult: {
       ...defaultHit._highlightResult,
-      ...userHit._highlightResult
-    }
+      ...userHit._highlightResult,
+    },
   };
 
   const expected = {
@@ -196,9 +196,9 @@ function getTestCase({
     ...userExpected,
     highlight: {
       ...defaultExpected.highlight,
-      ...userExpected.highlight
+      ...userExpected.highlight,
     },
-    hit
+    hit,
   };
 
   return {
@@ -208,8 +208,8 @@ function getTestCase({
       hit,
       hitIndex: 0,
       query: 'query',
-      rawAnswer: 'rawAnswer'
+      rawAnswer: 'rawAnswer',
     },
-    expected
+    expected,
   };
 }

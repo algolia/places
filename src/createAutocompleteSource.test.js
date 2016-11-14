@@ -26,7 +26,7 @@ describe('createAutocompleteSource', () => {
 
   it('supports clientOptions', () => {
     const clientOptions = {
-      some: 'param'
+      some: 'param',
     };
     setup({clientOptions});
     expect(algoliasearch.initPlaces).toBeCalledWith(undefined, undefined, clientOptions);
@@ -131,7 +131,7 @@ describe('createAutocompleteSource', () => {
       expect(onHits).toBeCalledWith({
         hits: expectedHits,
         query: defaults.query,
-        rawAnswer: content
+        rawAnswer: content,
       });
     });
   });
@@ -199,7 +199,7 @@ function setup(sourceOptions = {}) {
   const defaults = {
     query: 'test',
     hitsPerPage: 5,
-    language: navigator.language.split('-')[0]
+    language: navigator.language.split('-')[0],
   };
   const cb = jest.fn(hits => hits);
   const expectedHits = content.hits.map((hit, hitIndex) => ({
@@ -208,8 +208,8 @@ function setup(sourceOptions = {}) {
       hitIndex,
       query,
       rawAnswer: content,
-      formatInputValue: sourceOptions.formatInputValue || undefined
-    }
+      formatInputValue: sourceOptions.formatInputValue || undefined,
+    },
   }));
   return {source, defaults, expectedHits, content, cb};
 }

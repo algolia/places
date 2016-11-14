@@ -3,7 +3,7 @@ export default function formatInputValue({
   city,
   country,
   name,
-  type
+  type,
 }) {
   const out = `${name}${type !== 'country' && country !== undefined ? ',' : ''}
  ${city ? `${city},` : ''}
