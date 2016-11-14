@@ -24,8 +24,8 @@ printf "\n\nRelease: update working tree"
 git pull origin master
 git fetch origin --tags
 
-printf "Release: npm install"
-npm install
+printf "Release: install dependencies"
+yarn
 
 currentVersion=`cat package.json | json version`
 
@@ -61,7 +61,11 @@ npm run doctoc
 commitMessage="release v$newVersion
 
 See https://github.com/algolia/places/blob/master/CHANGELOG.md"
-git add src/version.js package.json CHANGELOG.md README.md CONTRIBUTING.md
+
+printf "Release: update lock file"
+yarn
+
+git add src/version.js package.json CHANGELOG.md README.md CONTRIBUTING.md yarn.lock
 printf %s "$commitMessage" | git commit --file -
 git tag "v$newVersion"
 

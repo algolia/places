@@ -11,8 +11,8 @@ const autocomplete = jest.fn(() => {
       getVal: jest.fn(),
       open: jest.fn(),
       close: jest.fn(),
-      destroy: jest.fn()
-    }
+      destroy: jest.fn(),
+    },
   };
   autocomplete.__instance = instance;
   autocomplete.__setQuery = q => { query = q; };

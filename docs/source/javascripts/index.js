@@ -4,7 +4,7 @@
 const $input = document.querySelector('#landing-demo');
 const placesAutocomplete = places({
   container: $input,
-  useDeviceLocation: true
+  useDeviceLocation: true,
 });
 $input.style.opacity = 1; // we initially hide the input to avoid size flickering
 
@@ -42,10 +42,10 @@ placesAutocomplete.on('change', e => {
       hit: undefined,
       hitIndex: undefined,
       query: undefined,
-      rawAnswer: undefined
+      rawAnswer: undefined,
     },
     rawAnswer: undefined,
-    suggestionIndex: undefined
+    suggestionIndex: undefined,
   };
   $responseText.textContent = JSON.stringify(content, null, 2);
   $responseTiming.innerHTML = `Computed in <u>${e.rawAnswer.processingTimeMS}ms</u>`;

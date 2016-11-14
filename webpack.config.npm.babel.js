@@ -7,6 +7,6 @@ export default {
   entry: undefined,
   devtool: undefined,
   output: {
-    libraryTarget: 'commonjs2'
-  }
+    libraryTarget: 'commonjs2',
+  },
 };

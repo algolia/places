@@ -18,7 +18,7 @@ export default function createAutocompleteSource({
   onHits = () => {},
   onError = e => { throw e; },
   onRateLimitReached,
-  type
+  type,
 }) {
   const placesClient = algoliasearch.initPlaces(
     appId,
@@ -31,7 +31,7 @@ export default function createAutocompleteSource({
     countries,
     hitsPerPage: hitsPerPage || 5,
     language,
-    type
+    type,
   };
 
   if (aroundLatLng) {
@@ -55,7 +55,7 @@ export default function createAutocompleteSource({
       .search(computeQueryParams({
         ...defaultQueryParams,
         [userCoords ? 'aroundLatLng' : undefined]: userCoords,
-        query
+        query,
       }))
       .then(
         content => {
@@ -65,14 +65,14 @@ export default function createAutocompleteSource({
               hit,
               hitIndex,
               query,
-              rawAnswer: content
+              rawAnswer: content,
             })
           );
 
           onHits({
             hits,
             query,
-            rawAnswer: content
+            rawAnswer: content,
           });
 
           return hits;

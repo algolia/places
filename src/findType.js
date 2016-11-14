@@ -7,7 +7,7 @@ export default function findType(tags) {
     'railway/station': 'trainStation',
     'aeroway/aerodrome': 'airport',
     'aeroway/terminal': 'airport',
-    'aeroway/gate': 'airport'
+    'aeroway/gate': 'airport',
   };
 
   for (const t in types) {

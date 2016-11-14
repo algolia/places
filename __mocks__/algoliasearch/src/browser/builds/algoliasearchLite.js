@@ -7,11 +7,11 @@ const algoliasearch = {
   initPlaces: jest.fn(() =>
     ({
       as: {
-        addAlgoliaAgent
+        addAlgoliaAgent,
       },
-      search
+      search,
     })
-  )
+  ),
 };
 
 algoliasearch.__searchSpy = search;

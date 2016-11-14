@@ -9,7 +9,7 @@ export default function activateClipboard(codeSamples) {
     copyToClipboard.classList.add('clipboard');
     codeSample.appendChild(copyToClipboard);
     const clipboard = new Clipboard(copyToClipboard, {
-      text: () => codeSample.textContent
+      text: () => codeSample.textContent,
     });
 
     copyToClipboard.addEventListener('mouseleave', () => {

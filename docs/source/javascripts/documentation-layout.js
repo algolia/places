@@ -5,7 +5,7 @@ import anchorableElements from './anchorableElements.js';
 sidebar({
   headersContainer: document.querySelector('.documentation-container'),
   sidebarContainer: document.querySelector('#sidebar'),
-  headerStartLevel: 2
+  headerStartLevel: 2,
 });
 anchorableElements(
   document

@@ -4,7 +4,7 @@ set -e # exit when error
 
 printf "\nLaunching dev environment\n"
 
-npm install
+yarn
 
 VERSION=$(json version < package.json)"-DEV"
 
