@@ -34,6 +34,14 @@ export default function createAutocompleteSource({
     type,
   };
 
+  if (typeof defaultQueryParams.countries === 'string') {
+    defaultQueryParams.countries = defaultQueryParams.countries.toLowerCase();
+  }
+
+  if (typeof defaultQueryParams.language === 'string') {
+    defaultQueryParams.language = defaultQueryParams.language.toLowerCase();
+  }
+
   if (aroundLatLng) {
     defaultQueryParams.aroundLatLng = aroundLatLng;
   } else if (aroundLatLngViaIP !== undefined) {

@@ -49,6 +49,12 @@ describe('createAutocompleteSource', () => {
     expect(algoliasearch.__searchSpy).toBeCalledWith({...defaults, countries: ['fr']});
   });
 
+  it('lowercases countries option', () => {
+    const {source, defaults} = setup({countries: ['FR']});
+    source(defaults.query);
+    expect(algoliasearch.__searchSpy).toBeCalledWith({...defaults, countries: ['fr']});
+  });
+
   it('supports type option', () => {
     const {source, defaults} = setup({type: 'city'});
     source(defaults.query);
@@ -57,6 +63,12 @@ describe('createAutocompleteSource', () => {
 
   it('supports language option', () => {
     const {source, defaults} = setup({language: 'en'});
+    source(defaults.query);
+    expect(algoliasearch.__searchSpy).toBeCalledWith({...defaults, language: 'en'});
+  });
+
+  it('lowercases language option', () => {
+    const {source, defaults} = setup({language: 'EN'});
     source(defaults.query);
     expect(algoliasearch.__searchSpy).toBeCalledWith({...defaults, language: 'en'});
   });
