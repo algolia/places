@@ -1,3 +1,13 @@
+<a name="1.4.8"></a>
+## [1.4.8](https://github.com/algolia/places/compare/v1.4.7...v1.4.8) (2017-01-10)
+
+
+### Bug Fixes
+
+* **codes:** lowercase countries and language ([23451c7](https://github.com/algolia/places/commit/23451c7)), closes [#377](https://github.com/algolia/places/issues/377)
+
+
+
 <a name="1.4.7"></a>
 ## [1.4.7](https://github.com/algolia/places/compare/v1.4.6...v1.4.7) (2016-11-14)
 
