@@ -12,12 +12,25 @@ In order to guarantee a very high-availability, we recommend to implement a retr
   - then `https://places-2.algolianet.com`,
   - then `https://places-3.algolianet.com`.
 
-### Endpoint
+### Endpoints
+
+#### Search
 
 To search using the Algolia Places REST API, you need to target the `/1/places/query` endpoint with a `POST` request.
 
 ```bash
 $ curl -X POST 'https://places-dsn.algolia.net/1/places/query' --data '{"query": "Paris"}'
+```
+
+**Note:** The relative path prefix `/1/` indicates that we are currently using version 1 of the API.
+
+#### Get by objectID
+
+To get an Algolia Places Record using the REST API, you need to target the `/1/places/{objectID}` endpoint with a `GET` request.
+Replace `{objectID}` by the objectID you whish to query.
+
+```bash
+$ curl -X GET 'https://places-dsn.algolia.net/1/places/111781_17807753'
 ```
 
 **Note:** The relative path prefix `/1/` indicates that we are currently using version 1 of the API.
