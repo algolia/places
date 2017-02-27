@@ -1,3 +1,13 @@
+<a name="1.4.10"></a>
+## [1.4.10](https://github.com/algolia/places/compare/v1.4.9...v1.4.10) (2017-02-27)
+
+
+### Bug Fixes
+
+* **IE10:** add navigatorLanguage polyfill in autocompleteDataset ([b934d8f](https://github.com/algolia/places/commit/b934d8f)), closes [#385](https://github.com/algolia/places/issues/385)
+
+
+
 <a name="1.4.9"></a>
 ## [1.4.9](https://github.com/algolia/places/compare/v1.4.8...v1.4.9) (2017-01-30)
 
