@@ -1,46 +1,33 @@
-# This travis.yml was built to:
-#   - install ruby and nodejs
-#   - run nodejs test
-#   - lint javascript code
-#   - check commit message style when in a PR
-#   - deploy website when merged to master
-# We defined the language to be ruby to benefit from bundle caching, it seems to be the only way to have it
-# working well in travis.
-# Then we install ruby and nodejs with rvm and nvm
-# We also cache ./node_modules/
 language: ruby
 before_install:
-  # Dirty hack for https://github.com/travis-ci/travis-ci/issues/5092
-  - >
-    PATH=`echo $PATH | sed "s/\.\/node_modules\/\.bin//g"`;
-    export PATH=$PATH:./node_modules/.bin;
-  - 'git config --global user.email "algoliaplacesbot@users.noreply.github.com"'
-  - 'git config --global user.name "algoliaplacesbot"'
-  - rvm install 2.4.0
-  - rvm use 2.4.0
-  - nvm install stable
-  - nvm use stable
-  - npm install --global yarn
+- 'PATH=`echo $PATH | sed "s/\.\/node_modules\/\.bin//g"`; export PATH=$PATH:./node_modules/.bin;
+
+'
+- git config --global user.email "algoliaplacesbot@users.noreply.github.com"
+- git config --global user.name "algoliaplacesbot"
+- rvm install 2.4.0
+- rvm use 2.4.0
+- nvm install stable
+- nvm use stable
+- npm install --global yarn
 gemfile: docs/Gemfile
 script:
-  - yarn
-  - npm run test:ci
+- yarn
+- npm run test:ci
 branches:
   only:
-    - master
-    - /^greenkeeper-.*$/
+  - master
+  - "/^greenkeeper-.*$/"
 notifications:
   slack: algolia:wSMHl9gxKQ7cRvnOPUWE9esI
 sudo: false
 cache:
   bundler: true
   directories:
-    - node_modules
-    - ~/.yarn
-    - ~/.nvm
+  - node_modules
+  - "~/.yarn"
+  - "~/.nvm"
 env:
   global:
-    # CACHE_URL
-    - secure: DDefJ0w7b8bulZZNCIpcrOnPR6Itfpr/eB6kBbzU2/MbYJSyHfe09OSYj8wjYOnGHzhTvSoT+IIshA6ncSlpuZLcAHVRGA5ShZYQU9uctfDcsWKFcXPKfZ1BFc2IIeoiNWgeI9yileBi6NYirknTwRK1BRHXPWOgOZaX/Bo+Qah4zKZTzdVKkw+uMPZFQII6wIZ1JIwLr3Il1laqUISpk+fSvxT/n3UNKPdN/GLk1hGdtl4km/dSpQaB2UTBZVd56NuaoBs1hDoZiVK+/6OQ1j/+sG0qs6anLgRmJnjMOrsbHMo8VBjSmUw5X+5Gg2zDrM11nsLiwsA/IgrS8fUqZtPeHPugro0rJJRvUT4macGPh/lRylzRv0LjTHfcf2pZVSgv7LI0WEVYyfPDjbA1dNTlSkexzsKlxrGeIB0LgaN87OirGgU/zuUC0Ew5ZnpE/4xk7maAOC02Rb0aPv4O3IVIRhjT0mHYrZRLi5nJxiAg31+ce4+WvDKC2TdOplb7vQ9LCJeAxr11EyXsA0lpZmIkHxJc6iJF0yPaLLxGVmo41PuT/FgST5gC+JulBovV4wq7I3L1TKfz8+NTOkFxOkO+mz7UkKZm870gJTICgnw4cd9BomXnq4mS4UHerif6pzIEF+0bhvgLg4ZDL0FeOmFzjgpTuKjAjOFfWGwLL2k=    # GH_TOKEN
-    # GH_TOKEN
-    - secure: V55rGCcFyxIo3nIByQlxvZIE/hRwCstyvIfqvPXUbcFYwkEe4T6LQBuwXw5MqBMXlB/xwOuWlsG8o7MWYmbMnANG8mLa8/7dLvwqHZdbGOIsTnx5G6GwcPijjnevK91UorgY5y5IU/MvCy6PkkJa7EEzKpocvSe+TjfgDQA1HK7q1GrAIuInVzlv0+q2Z0+BVLJuP2CEr40WlGDEGYQerUQM+ONaRx9XHMLyy05akjevYADb3BD/Unv8xRFaaV5fy9sZfNLZDWUMKpAAzmomuabJSg8eQ+t+dDcZi436t+tvAjb6+B2Ql5fnNPJENkCQqYWlzdHAq/V9ADZhAURowC5zepcfmaLNT/eoEnLFRypoxfpqgxyHSgqdQ7uW6NMLAr8HL/baaMvLrr0vuOMZ3Mvb7XxNsscp/hmeeMAVw2BTSV0CoHnKbC6saMry2Ng+cKQ5qmo9NSHsyriRS51JxB1RA2qtsJrA5lBnLiBMUi5MkYXd3OYr0mUGEvcHYa/Z/Szx/LvOkPCkEvvKpVgTAIm5RGtFuML4bJP379qDd/0ORBwOEA4aFWjKZpePhN5UvjGkdcROGEXB9DtXvM0Q/Oj9zkwYIaJ60kX+0ayufizgk20+m3GzfmSpqSAfyCQjqvcO3s3a+E/561GvbuACtTQr/JIrnToUfXujEbakzIQ=
+  - secure: FvNhotbMfsYm+q1UNEUX9aWYKDePjwu5uUDkd5gcsN3mvT8BmjJekDc+PvCqwaG53y7XZ1iXAmIYzm8AUPkUzum32NoRL0bLn/mAu/qXItv0nAOU4lvkCrH3uLeC5Sf3IEZh6UiZxzyPMyu0pV7yyLJLhtR1C60KX+BdpdWy8Je8307c8jdesa+VwUAJ822OvW0lfSxfAeOfMEbNaBU2VNFgQQpvzMeA2lWqWjRzVRZ2h1F+TRSKFcI4czGYyVnYBQaRzp5/44KjIU0edQ1lW5vNjqGjXp4xxCB3/GnqyNWukLvLJfoxNtN+zzCLK4mKUjK8EeBX9zWxGTl2YPtNG5CrsX7lBHJQ52/XEc9oV9wcNodn4KlG/bsVwRSwiLIyFewSBY3h+Aqvv/RnANVDeEWrhB1NVIIGyiRQFpDUjoxceI7Mm7jSIYN6R1TOvwG/7FW7CnwGb9I1v4Ra2ixWg4e/xULSEboZZkLvCI+MpCHQwpk11exjhF3etpPv47rFd6PiumeCsJxSPeFp6N2erRHayl0KhGq9toH9pMKdlu/fy2dWz1QLVe57ClEfDvz+mn89z467L2oLkQC3gi4szM1VwFPxR7TPx0dw4/nmNwQpivDVoPzYswtsqNxgH5BsXL9L3DFhRGrLyDvEkmFpFMhhCvLJQDB3KjPaxG5FQaA=
+  - secure: xseRN3SzIwT2mMs4u0j7S/EfRS/DfGCyhIPfEfrZisuzEc81ziZep41j6pCi38TgYzFGxgxQRFr1IhS1aPHZW2mT5LWneNkXX5aN3nAfaTQio3i4an6YR7OEn1DYi/GZdxx+322RiUGXk8xowjWBNILd+ffTsrIKGk6rPC+TVT5IwfHfeKO8U5/OZSjTXGAh6GGyFBwmTNKpSk+VUC5PiT0NH8inV6/NF9Q3M56/6ZXUiJ1TloTnGpnyqOTBXj2wIc5X6bcz73eSPEV06+B1OrCw5FKjXNh6HAjdM2nh/c7jTsiewl1dh73I01jb2bfmh4YVQx+qbRZxotHtaeQzLE+tNMbITAf9qGD1BmdrlRSOTgG22J+VfS5tNATo4Dq1wq2soUtYeL+BeE5iIZVEwefXSVJJoM5Err0qeTm57mO3LDh/gVT7hFZ55tY55eV8aAPHhH4dqRKV1dmiklJqWE/qX4lw7n/20U3ZwluyinpU3QypXQLNu7jbmtrA6xEGHkTbgPDSizAE6KiAFbvNYeS3YEeT0ea5hLe+Jg+SpRfLrFoFkyqE27bccGxu3XzBb1DxDG/A5quIAZm1wg2ubfNGS+h0DaJDIaY3Nx/vC8Y11LfhoAJR9jWgYTDOs5Vvho5rnaW9haedQN4lAZ/FjagUD0s7zMmCzuPUnIvclck=
