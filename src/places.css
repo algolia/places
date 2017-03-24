@@ -14,6 +14,14 @@
   font: inherit;
 }
 
+.ap-input::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+.ap-input::-ms-clear {
+  display: none;
+}
+
 .ap-input:hover ~ .ap-input-icon svg,
 .ap-input:focus ~ .ap-input-icon svg,
 .ap-input-icon:hover svg {
