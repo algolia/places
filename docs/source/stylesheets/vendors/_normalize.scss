@@ -415,10 +415,14 @@ textarea {
 
 /**
  * Remove the inner padding and cancel buttons in Chrome on OS X and
- * Safari on OS X.
+ * Safari on OS X, and IE11+
  */
 
 [type="search"]::-webkit-search-cancel-button,
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
+}
+
+[type="search"]::-ms-clear {
+  display: none;
 }
