@@ -5,7 +5,7 @@ before_install:
 - git config --global user.name "algobot"
 - rvm install 2.4.0
 - rvm use 2.4.0
-- cd docs && bundle install
+- (cd docs && bundle install)
 script:
 - npm run test:ci
 branches:
