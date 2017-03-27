@@ -7,11 +7,15 @@
 //   user privacy (so your app may wish to provide a means of changing the locale)
 if (!('language' in navigator)) {
   navigator.language =
-  // IE 10 in IE8 mode on Windows 7 uses upper-case in
-  // navigator.userLanguage country codes but per
-  // http://msdn.microsoft.com/en-us/library/ie/ms533052.aspx (via
-  // http://msdn.microsoft.com/en-us/library/ie/ms534713.aspx), they
-  // appear to be in lower case, so we bring them into harmony with navigator.language.
-  navigator.userLanguage && navigator.userLanguage.replace(/-[a-z]{2}$/, String.prototype.toUpperCase) ||
-  'en-US'; // Default for anonymizing services: http://www.whatwg.org/specs/web-apps/current-work/multipage/timers.html#navigatorlanguage
+    // IE 10 in IE8 mode on Windows 7 uses upper-case in
+    // navigator.userLanguage country codes but per
+    // http://msdn.microsoft.com/en-us/library/ie/ms533052.aspx (via
+    // http://msdn.microsoft.com/en-us/library/ie/ms534713.aspx), they
+    // appear to be in lower case, so we bring them into harmony with navigator.language.
+    (navigator.userLanguage &&
+      navigator.userLanguage.replace(
+        /-[a-z]{2}$/,
+        String.prototype.toUpperCase
+      )) ||
+    'en-US'; // Default for anonymizing services: http://www.whatwg.org/specs/web-apps/current-work/multipage/timers.html#navigatorlanguage
 }

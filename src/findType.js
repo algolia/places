@@ -1,7 +1,7 @@
 export default function findType(tags) {
   const types = {
-    'country': 'country',
-    'city': 'city',
+    country: 'country',
+    city: 'city',
     'amenity/bus_station': 'busStop',
     'amenity/townhall': 'townhall',
     'railway/station': 'trainStation',

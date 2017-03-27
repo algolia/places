@@ -1,4 +1,6 @@
-export default function sidebar({headersContainer, sidebarContainer, headerStartLevel}) {
+export default function sidebar(
+  { headersContainer, sidebarContainer, headerStartLevel }
+) {
   const headers = headersContainer.querySelectorAll('h2, h3');
   const select = document.createElement('select');
   const list = document.createElement('ul');
@@ -13,7 +15,9 @@ export default function sidebar({headersContainer, sidebarContainer, headerStart
     if (level > currentLevel) {
       // we enter a sublist
       currentLevel = level;
-      currentList = currentList.lastChild.appendChild(document.createElement('ul'));
+      currentList = currentList.lastChild.appendChild(
+        document.createElement('ul')
+      );
     } else if (level < currentLevel) {
       // we exit a sublit
       currentLevel = level;
@@ -34,7 +38,9 @@ export default function sidebar({headersContainer, sidebarContainer, headerStart
     select.appendChild(option);
   });
 
-  select.addEventListener('change', e => { window.location = e.target.value; });
+  select.addEventListener('change', e => {
+    window.location = e.target.value;
+  });
   sidebarContainer.appendChild(list);
   sidebarContainer.appendChild(select);
   sidebarFollowScroll(sidebarContainer);
@@ -52,13 +58,18 @@ function sidebarFollowScroll(sidebarContainer) {
     const menu = document.querySelector('.sidebar > ul');
     const heroHeight = hero.offsetHeight;
     const navHeight = navigation.offsetHeight;
-    const height = document.querySelector('html').getBoundingClientRect().height;
+    const height = document
+      .querySelector('html')
+      .getBoundingClientRect().height;
     const footerHeight = footer.offsetHeight;
     const menuHeight = menu.offsetHeight;
 
     const currentScroll = window.pageYOffset;
     const doc = document.querySelector('.documentation-section');
-    let paddingDoc = window.getComputedStyle(doc, null).getPropertyValue('padding-top').split('px')[0];
+    let paddingDoc = window
+      .getComputedStyle(doc, null)
+      .getPropertyValue('padding-top')
+      .split('px')[0];
     paddingDoc = parseInt(paddingDoc, 10);
     // Fix the sidebar navigation
     if (currentScroll > heroHeight - navHeight + paddingDoc) {
@@ -94,14 +105,21 @@ function scrollSpy(sidebarContainer, headersContainer) {
 
   const findActiveSidebarLink = () => {
     const highestVisibleHeaders = headers
-      .map(header => ({element: header, rect: header.getBoundingClientRect()}))
-      .filter(({rect}) =>
-        // top element relative viewport position should be at least 1/3 viewport
-        // and element should be in viewport
-        rect.top < window.innerHeight / 3 && rect.bottom < window.innerHeight
+      .map(header => ({
+        element: header,
+        rect: header.getBoundingClientRect(),
+      }))
+      .filter(
+        ({ rect }) =>
+          // top element relative viewport position should be at least 1/3 viewport
+          // and element should be in viewport
+          rect.top < window.innerHeight / 3 && rect.bottom < window.innerHeight
       )
       // then we take the closest to this position as reference
-      .sort((header1, header2) => Math.abs(header1.rect.top) < Math.abs(header2.rect.top) ? -1 : 1);
+      .sort(
+        (header1, header2) =>
+          Math.abs(header1.rect.top) < Math.abs(header2.rect.top) ? -1 : 1
+      );
 
     if (highestVisibleHeaders.length === 0) {
       setActiveSidebarLink(headers[0]);
@@ -125,7 +143,8 @@ function activeLinks(sidebarContainer) {
 
   linksContainer.addEventListener('click', e => {
     if (e.target.tagName === 'A') {
-      [...linksContainer.querySelectorAll('a')].forEach(item => item.classList.remove('active'));
+      [...linksContainer.querySelectorAll('a')].forEach(item =>
+        item.classList.remove('active'));
       e.target.classList.add('active');
     }
   });

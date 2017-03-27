@@ -1,10 +1,11 @@
 import baseConfig from './webpack.config.babel.js';
+import { join } from 'path';
 
 export default {
   ...baseConfig,
   entry: `./docs/source/javascripts/${process.env.BUNDLE}.js`,
   output: {
-    path: './docs/.webpack/js',
+    path: join(__dirname, 'docs/.webpack/js'),
     filename: `${process.env.BUNDLE}.js`,
   },
 };

@@ -1,6 +1,7 @@
 import EventEmitter from 'events';
 
-import algoliasearch from 'algoliasearch/src/browser/builds/algoliasearchLite.js';
+import algoliasearch
+  from 'algoliasearch/src/browser/builds/algoliasearchLite.js';
 import autocomplete from 'autocomplete.js';
 
 import './navigatorLanguage.js';
@@ -12,7 +13,7 @@ import pinIcon from './icons/address.svg';
 
 import css from './places.css';
 import insertCss from 'insert-css';
-insertCss(css, {prepend: true});
+insertCss(css, { prepend: true });
 
 import errors from './errors.js';
 
@@ -30,13 +31,13 @@ export default function places(options) {
     }
 
     // if single node NodeList received, resolve to the first one
-    return places({...options, container: container[0]});
+    return places({ ...options, container: container[0] });
   }
 
   // container sent as a string, resolve it for multiple DOM elements issue
   if (typeof container === 'string') {
     const resolvedContainer = document.querySelectorAll(container);
-    return places({...options, container: resolvedContainer});
+    return places({ ...options, container: resolvedContainer });
   }
 
   // if not an <input>, error
@@ -61,11 +62,12 @@ export default function places(options) {
   const autocompleteDataset = createAutocompleteDataset({
     ...options,
     algoliasearch,
-    onHits: ({hits, rawAnswer, query}) => placesInstance.emit('suggestions', {
-      rawAnswer,
-      query,
-      suggestions: hits,
-    }),
+    onHits: ({ hits, rawAnswer, query }) =>
+      placesInstance.emit('suggestions', {
+        rawAnswer,
+        query,
+        suggestions: hits,
+      }),
     onError: e => placesInstance.emit('error', e),
     onRateLimitReached: () => {
       const listeners = placesInstance.listenerCount('limit');
@@ -74,12 +76,16 @@ export default function places(options) {
         return;
       }
 
-      placesInstance.emit('limit', {message: errors.rateLimitReached});
+      placesInstance.emit('limit', { message: errors.rateLimitReached });
     },
     container: undefined,
   });
 
-  const autocompleteInstance = autocomplete(container, autocompleteOptions, autocompleteDataset);
+  const autocompleteInstance = autocomplete(
+    container,
+    autocompleteOptions,
+    autocompleteDataset
+  );
   const autocompleteContainer = container.parentNode;
 
   const autocompleteChangeEvents = ['selected', 'autocompleted'];
@@ -144,14 +150,18 @@ export default function places(options) {
     previousQuery = query;
   };
 
-  autocompleteContainer.querySelector(`.${prefix}-input`).addEventListener('input', inputListener);
+  autocompleteContainer
+    .querySelector(`.${prefix}-input`)
+    .addEventListener('input', inputListener);
 
   const autocompleteMethods = ['open', 'close', 'getVal', 'setVal', 'destroy'];
   autocompleteMethods.forEach(methodName => {
     placesInstance[methodName] = (...args) => {
       if (methodName === 'destroy') {
         // this is the only event we need to manually remove because the input will still be here
-        autocompleteContainer.querySelector(`.${prefix}-input`).removeEventListener('input', inputListener);
+        autocompleteContainer
+          .querySelector(`.${prefix}-input`)
+          .removeEventListener('input', inputListener);
       }
 
       autocompleteInstance.autocomplete[methodName](...args);

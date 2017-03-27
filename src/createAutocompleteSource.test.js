@@ -1,12 +1,15 @@
 import formatHit from './formatHit.js';
 import version from './version.js';
 import createAutocompleteSource from './createAutocompleteSource.js';
-import algoliasearch from 'algoliasearch/src/browser/builds/algoliasearchLite.js';
+import algoliasearch
+  from 'algoliasearch/src/browser/builds/algoliasearchLite.js';
 
-jest.mock('./formatHit.js', () => jest.fn(hit => ({formattedHit: {...hit}})));
+jest.mock('./formatHit.js', () =>
+  jest.fn(hit => ({ formattedHit: { ...hit } })));
 jest.mock('algoliasearch/src/browser/builds/algoliasearchLite.js', () =>
-  require.requireActual('../__mocks__/algoliasearch/src/browser/builds/algoliasearchLite.js')
-);
+  require.requireActual(
+    '../__mocks__/algoliasearch/src/browser/builds/algoliasearchLite.js'
+  ));
 
 describe('createAutocompleteSource', () => {
   beforeEach(() => formatHit.mockClear());
@@ -14,13 +17,17 @@ describe('createAutocompleteSource', () => {
 
   it('instantiates an Algolia Places client', () => {
     setup();
-    expect(algoliasearch.initPlaces).toBeCalledWith(undefined, undefined, undefined);
+    expect(algoliasearch.initPlaces).toBeCalledWith(
+      undefined,
+      undefined,
+      undefined
+    );
   });
 
   it('supports appId and apiKey option', () => {
     const appId = 'id';
     const apiKey = 'key';
-    setup({appId, apiKey});
+    setup({ appId, apiKey });
     expect(algoliasearch.initPlaces).toBeCalledWith(appId, apiKey, undefined);
   });
 
@@ -28,117 +35,168 @@ describe('createAutocompleteSource', () => {
     const clientOptions = {
       some: 'param',
     };
-    setup({clientOptions});
-    expect(algoliasearch.initPlaces).toBeCalledWith(undefined, undefined, clientOptions);
+    setup({ clientOptions });
+    expect(algoliasearch.initPlaces).toBeCalledWith(
+      undefined,
+      undefined,
+      clientOptions
+    );
   });
 
   it('configures the Algolia Places client agent', () => {
     setup();
-    expect(algoliasearch.__addAlgoliaAgentSpy).toBeCalledWith(`Algolia Places ${version}`);
+    expect(algoliasearch.__addAlgoliaAgentSpy).toBeCalledWith(
+      `Algolia Places ${version}`
+    );
   });
 
   it('calls Algolia Places search with some default parameters', () => {
-    const {source, defaults} = setup();
+    const { source, defaults } = setup();
     source('rivoli');
-    expect(algoliasearch.__searchSpy).toBeCalledWith({...defaults, query: 'rivoli'});
+    expect(algoliasearch.__searchSpy).toBeCalledWith({
+      ...defaults,
+      query: 'rivoli',
+    });
   });
 
   it('supports countries option', () => {
-    const {source, defaults} = setup({countries: ['fr']});
+    const { source, defaults } = setup({ countries: ['fr'] });
     source(defaults.query);
-    expect(algoliasearch.__searchSpy).toBeCalledWith({...defaults, countries: ['fr']});
+    expect(algoliasearch.__searchSpy).toBeCalledWith({
+      ...defaults,
+      countries: ['fr'],
+    });
   });
 
   it('lowercases countries option', () => {
-    const {source, defaults} = setup({countries: ['FR']});
+    const { source, defaults } = setup({ countries: ['FR'] });
     source(defaults.query);
-    expect(algoliasearch.__searchSpy).toBeCalledWith({...defaults, countries: ['fr']});
+    expect(algoliasearch.__searchSpy).toBeCalledWith({
+      ...defaults,
+      countries: ['fr'],
+    });
   });
 
   it('supports type option', () => {
-    const {source, defaults} = setup({type: 'city'});
+    const { source, defaults } = setup({ type: 'city' });
     source(defaults.query);
-    expect(algoliasearch.__searchSpy).toBeCalledWith({...defaults, type: 'city'});
+    expect(algoliasearch.__searchSpy).toBeCalledWith({
+      ...defaults,
+      type: 'city',
+    });
   });
 
   it('supports language option', () => {
-    const {source, defaults} = setup({language: 'en'});
+    const { source, defaults } = setup({ language: 'en' });
     source(defaults.query);
-    expect(algoliasearch.__searchSpy).toBeCalledWith({...defaults, language: 'en'});
+    expect(algoliasearch.__searchSpy).toBeCalledWith({
+      ...defaults,
+      language: 'en',
+    });
   });
 
   it('lowercases language option', () => {
-    const {source, defaults} = setup({language: 'EN'});
+    const { source, defaults } = setup({ language: 'EN' });
     source(defaults.query);
-    expect(algoliasearch.__searchSpy).toBeCalledWith({...defaults, language: 'en'});
+    expect(algoliasearch.__searchSpy).toBeCalledWith({
+      ...defaults,
+      language: 'en',
+    });
   });
 
   it('supports aroundLatLng option', () => {
-    const {source, defaults} = setup({aroundLatLng: '123,456'});
+    const { source, defaults } = setup({ aroundLatLng: '123,456' });
     source(defaults.query);
-    expect(algoliasearch.__searchSpy).toBeCalledWith({...defaults, aroundLatLng: '123,456'});
+    expect(algoliasearch.__searchSpy).toBeCalledWith({
+      ...defaults,
+      aroundLatLng: '123,456',
+    });
   });
 
   it('supports aroundLatLngViaIP option', () => {
-    const {source, defaults} = setup({aroundLatLngViaIP: true});
+    const { source, defaults } = setup({ aroundLatLngViaIP: true });
     source(defaults.query);
-    expect(algoliasearch.__searchSpy).toBeCalledWith({...defaults, aroundLatLngViaIP: true});
+    expect(algoliasearch.__searchSpy).toBeCalledWith({
+      ...defaults,
+      aroundLatLngViaIP: true,
+    });
   });
 
   it('prefers aroundLatLng over aroundLatLngViaIP', () => {
-    const {source, defaults} = setup({aroundLatLng: '123,456', aroundLatLngViaIP: true});
+    const { source, defaults } = setup({
+      aroundLatLng: '123,456',
+      aroundLatLngViaIP: true,
+    });
     source(defaults.query);
-    expect(algoliasearch.__searchSpy).toBeCalledWith({...defaults, aroundLatLng: '123,456'});
+    expect(algoliasearch.__searchSpy).toBeCalledWith({
+      ...defaults,
+      aroundLatLng: '123,456',
+    });
   });
 
   it('supports aroundRadius option', () => {
-    const {source, defaults} = setup({aroundRadius: 2000});
+    const { source, defaults } = setup({ aroundRadius: 2000 });
     source(defaults.query);
-    expect(algoliasearch.__searchSpy).toBeCalledWith({...defaults, aroundRadius: 2000});
+    expect(algoliasearch.__searchSpy).toBeCalledWith({
+      ...defaults,
+      aroundRadius: 2000,
+    });
   });
 
   it('supports hitsPerPage option', () => {
-    const {source, defaults} = setup({hitsPerPage: 2});
+    const { source, defaults } = setup({ hitsPerPage: 2 });
     source(defaults.query);
-    expect(algoliasearch.__searchSpy).toBeCalledWith({...defaults, hitsPerPage: 2});
+    expect(algoliasearch.__searchSpy).toBeCalledWith({
+      ...defaults,
+      hitsPerPage: 2,
+    });
   });
 
   it('supports useDeviceLocation option', () => {
     const latitude = '456';
     const longitude = '789';
-    navigator.geolocation = {watchPosition: fn => fn({coords: {latitude, longitude}})};
+    navigator.geolocation = {
+      watchPosition: fn => fn({ coords: { latitude, longitude } }),
+    };
 
-    const {source, defaults} = setup({useDeviceLocation: true});
+    const { source, defaults } = setup({ useDeviceLocation: true });
     source(defaults.query);
-    expect(algoliasearch.__searchSpy).toBeCalledWith({...defaults, aroundLatLng: '456,789'});
+    expect(algoliasearch.__searchSpy).toBeCalledWith({
+      ...defaults,
+      aroundLatLng: '456,789',
+    });
   });
 
   it('supports computeQueryParams option', () => {
-    const params = {myParams: 'wins'};
+    const params = { myParams: 'wins' };
     const computeQueryParams = jest.fn(() => params);
-    const {source, defaults} = setup({computeQueryParams});
+    const { source, defaults } = setup({ computeQueryParams });
     source(defaults.query);
     expect(algoliasearch.__searchSpy).toBeCalledWith(params);
     expect(computeQueryParams).toBeCalledWith(defaults);
   });
 
   it('calls the source callback with the formatted hits', () => {
-    const {source, defaults, expectedHits, cb} = setup({aroundLatLngViaIP: true});
+    const { source, defaults, expectedHits, cb } = setup({
+      aroundLatLngViaIP: true,
+    });
     return source(defaults.query, cb).then(() => {
       expect(cb).toBeCalledWith(expectedHits);
     });
   });
 
   it('supports formatInputValue option', () => {
-    const {source, defaults, cb} = setup({formatInputValue: 'custom'});
+    const { source, defaults, cb } = setup({ formatInputValue: 'custom' });
     return source(defaults.query, cb).then(() => {
-      expect(cb.mock.calls[0][0][0].formattedHit.formatInputValue).toEqual('custom');
+      expect(cb.mock.calls[0][0][0].formattedHit.formatInputValue).toEqual(
+        'custom'
+      );
     });
   });
 
   it('supports onHits option', () => {
     const onHits = jest.fn();
-    const {source, defaults, expectedHits, content} = setup({onHits});
+    const { source, defaults, expectedHits, content } = setup({ onHits });
     return source(defaults.query).then(() => {
       expect(onHits).toBeCalledWith({
         hits: expectedHits,
@@ -153,7 +211,7 @@ describe('createAutocompleteSource', () => {
     const searchFn = jest.fn(() => Promise.reject(error));
     const onError = jest.fn();
     algoliasearch.__setSearchStub(searchFn);
-    const source = createAutocompleteSource({algoliasearch, onError});
+    const source = createAutocompleteSource({ algoliasearch, onError });
     return new Promise((resolve, reject) => {
       source()
         .then(() => {
@@ -170,7 +228,7 @@ describe('createAutocompleteSource', () => {
     const error = new Error('Nope');
     const searchFn = jest.fn(() => Promise.reject(error));
     algoliasearch.__setSearchStub(searchFn);
-    const source = createAutocompleteSource({algoliasearch});
+    const source = createAutocompleteSource({ algoliasearch });
     return new Promise((resolve, reject) => {
       source()
         .then(() => {
@@ -189,7 +247,10 @@ describe('createAutocompleteSource', () => {
     const searchFn = jest.fn(() => Promise.reject(error));
     const onRateLimitReached = jest.fn();
     algoliasearch.__setSearchStub(searchFn);
-    const source = createAutocompleteSource({algoliasearch, onRateLimitReached});
+    const source = createAutocompleteSource({
+      algoliasearch,
+      onRateLimitReached,
+    });
     return new Promise((resolve, reject) => {
       source()
         .then(() => {
@@ -204,9 +265,9 @@ describe('createAutocompleteSource', () => {
 });
 
 function setup(sourceOptions = {}) {
-  const content = {hits: [1]};
+  const content = { hits: [1] };
   algoliasearch.__setSearchStub(jest.fn(() => Promise.resolve(content)));
-  const source = createAutocompleteSource({algoliasearch, ...sourceOptions});
+  const source = createAutocompleteSource({ algoliasearch, ...sourceOptions });
   const query = 'test';
   const defaults = {
     query: 'test',
@@ -223,5 +284,5 @@ function setup(sourceOptions = {}) {
       formatInputValue: sourceOptions.formatInputValue || undefined,
     },
   }));
-  return {source, defaults, expectedHits, content, cb};
+  return { source, defaults, expectedHits, content, cb };
 }

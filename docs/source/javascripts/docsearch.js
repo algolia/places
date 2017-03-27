@@ -11,23 +11,22 @@ const docsearchInput = document.querySelector('#docsearch');
 const reset = form.querySelector('[type="reset"]');
 const searchbox = form.querySelector('.aa-input');
 
-reset
-  .addEventListener('click', () => {
-    searchbox.focus();
+reset.addEventListener('click', () => {
+  searchbox.focus();
+  reset.classList.add('hide');
+  search.autocomplete.autocomplete.setVal('');
+});
+
+docsearchInput.addEventListener('keyup', () => {
+  if (searchbox.value.length === 0) {
     reset.classList.add('hide');
-    search.autocomplete.autocomplete.setVal('');
-  });
+  } else {
+    reset.classList.remove('hide');
+  }
+});
 
-docsearchInput
-  .addEventListener('keyup', () => {
-    if (searchbox.value.length === 0) {
-      reset.classList.add('hide');
-    } else {
-      reset.classList.remove('hide');
-    }
-  });
-
-docsearchInput.addEventListener('change', () => docsearchInput.classList.add('filled'));
+docsearchInput.addEventListener('change', () =>
+  docsearchInput.classList.add('filled'));
 
 docsearchInput.addEventListener('blur', () => {
   if (docsearchInput.value.length === 0) {
@@ -35,4 +34,5 @@ docsearchInput.addEventListener('blur', () => {
   }
 });
 
-search.autocomplete.on('autocomplete:selected', () => reset.classList.add('hide'));
+search.autocomplete.on('autocomplete:selected', () =>
+  reset.classList.add('hide'));

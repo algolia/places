@@ -7,7 +7,9 @@ export default function responsiveNavigation() {
   const links = navigation.querySelectorAll('a');
   const navigationAsSelect = document.createElement('select');
 
-  if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i)) {
+  if (
+    navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i)
+  ) {
     navigationAsSelect.classList.add('display-on-small', 'device');
   } else {
     navigationAsSelect.classList.add('display-on-small');
@@ -24,5 +26,7 @@ export default function responsiveNavigation() {
   });
 
   navigation.appendChild(navigationAsSelect);
-  navigationAsSelect.addEventListener('change', e => { window.location = e.target.value; });
+  navigationAsSelect.addEventListener('change', e => {
+    window.location = e.target.value;
+  });
 }

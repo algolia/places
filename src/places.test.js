@@ -1,8 +1,12 @@
 jest.disableAutomock();
-jest.mock('algoliasearch/src/browser/builds/algoliasearchLite.js', () => 'algoliasearch');
+jest.mock(
+  'algoliasearch/src/browser/builds/algoliasearchLite.js',
+  () => 'algoliasearch'
+);
 jest.mock('./icons/clear.svg', () => 'clear');
 jest.mock('./places.css', () => 'places.css');
-jest.mock('./createAutocompleteDataset', () => jest.fn(() => 'autocompleteDataset'));
+jest.mock('./createAutocompleteDataset', () =>
+  jest.fn(() => 'autocompleteDataset'));
 
 import places from './places.js';
 import errors from './errors.js';
@@ -13,39 +17,55 @@ import autocomplete from 'autocomplete.js';
 jest.mock('autocomplete.js');
 
 describe('places', () => {
-  beforeEach(() => { document.querySelector('body').innerHTML = ''; });
+  beforeEach(() => {
+    document.querySelector('body').innerHTML = '';
+  });
 
   describe('container', () => {
     it('fails when container is made of multiple HTMLElements', () => {
-      document.querySelector('body').appendChild(document.createElement('span'));
-      document.querySelector('body').appendChild(document.createElement('span'));
+      document
+        .querySelector('body')
+        .appendChild(document.createElement('span'));
+      document
+        .querySelector('body')
+        .appendChild(document.createElement('span'));
       const container = document.querySelectorAll('span');
-      expect(() => places({container})).toThrowError(errors.multiContainers);
+      expect(() => places({ container })).toThrowError(errors.multiContainers);
     });
 
     it('fails when container is a css selector resoling to multiple elements', () => {
-      document.querySelector('body').appendChild(document.createElement('span'));
-      document.querySelector('body').appendChild(document.createElement('span'));
+      document
+        .querySelector('body')
+        .appendChild(document.createElement('span'));
+      document
+        .querySelector('body')
+        .appendChild(document.createElement('span'));
       const container = 'span';
-      expect(() => places({container})).toThrowError(errors.multiContainers);
+      expect(() => places({ container })).toThrowError(errors.multiContainers);
     });
 
     it('fails when container does not resolves to an HTMLInputElement', () => {
-      document.querySelector('body').appendChild(document.createElement('span'));
+      document
+        .querySelector('body')
+        .appendChild(document.createElement('span'));
       const container = 'span';
-      expect(() => places({container})).toThrowError(errors.badContainer);
+      expect(() => places({ container })).toThrowError(errors.badContainer);
     });
 
     it('works when using document.querySelectorAll', () => {
-      document.querySelector('body').appendChild(document.createElement('input'));
+      document
+        .querySelector('body')
+        .appendChild(document.createElement('input'));
       const container = document.querySelectorAll('input');
-      expect(() => places({container})).not.toThrow();
+      expect(() => places({ container })).not.toThrow();
     });
 
     it('works when using a css selector', () => {
-      document.querySelector('body').appendChild(document.createElement('input'));
+      document
+        .querySelector('body')
+        .appendChild(document.createElement('input'));
       const container = 'input';
-      expect(() => places({container})).not.toThrow();
+      expect(() => places({ container })).not.toThrow();
     });
   });
 
@@ -55,23 +75,32 @@ describe('places', () => {
 
     beforeEach(() => {
       createAutocompleteDataset.mockClear();
-      document.querySelector('body').appendChild(document.createElement('input'));
+      document
+        .querySelector('body')
+        .appendChild(document.createElement('input'));
       const container = document.querySelector('input');
-      placesInstance = places({container, autocomplete: 'option'});
+      placesInstance = places({ container, autocomplete: 'option' });
       args = createAutocompleteDataset.mock.calls[0][0];
     });
 
-    it('creates an autocomplete dataset', () => expect(createAutocompleteDataset).toBeCalled());
-    it('passes the algoliasearch client', () => expect(args.algoliasearch).toEqual('algoliasearch'));
-    it('passes provided options', () => expect(args.autocomplete).toEqual('option'));
+    it('creates an autocomplete dataset', () =>
+      expect(createAutocompleteDataset).toBeCalled());
+    it('passes the algoliasearch client', () =>
+      expect(args.algoliasearch).toEqual('algoliasearch'));
+    it('passes provided options', () =>
+      expect(args.autocomplete).toEqual('option'));
 
     it('triggers a suggestions event when onHits called', done => {
       placesInstance.once('suggestions', eventData => {
-        expect(eventData).toEqual({suggestions: 'hits', rawAnswer: 'rawAnswer', query: 'query'});
+        expect(eventData).toEqual({
+          suggestions: 'hits',
+          rawAnswer: 'rawAnswer',
+          query: 'query',
+        });
         done();
       });
 
-      args.onHits({hits: 'hits', rawAnswer: 'rawAnswer', query: 'query'});
+      args.onHits({ hits: 'hits', rawAnswer: 'rawAnswer', query: 'query' });
     });
 
     it('triggers an error event when onError called', done => {
@@ -85,7 +114,7 @@ describe('places', () => {
 
     it('triggers a limit event when onRateLimitReached called', done => {
       placesInstance.once('limit', eventData => {
-        expect(eventData).toEqual({message: errors.rateLimitReached});
+        expect(eventData).toEqual({ message: errors.rateLimitReached });
         done();
       });
 
@@ -106,15 +135,21 @@ describe('places', () => {
 
     beforeEach(() => {
       autocomplete.mockClear();
-      const container = document.querySelector('body').appendChild(document.createElement('input'));
-      placesInstance = places({container, autocompleteOptions: {option: 'value'}});
+      const container = document
+        .querySelector('body')
+        .appendChild(document.createElement('input'));
+      placesInstance = places({
+        container,
+        autocompleteOptions: { option: 'value' },
+      });
     });
 
     it('creates an autocomplete instance', () => {
       expect(autocomplete).toBeCalledWith(
-        document.querySelector('input'), {
+        document.querySelector('input'),
+        {
           autoselect: true,
-          cssClasses: {prefix: 'ap', root: 'algolia-places'},
+          cssClasses: { prefix: 'ap', root: 'algolia-places' },
           debug: false,
           hint: false,
           option: 'value',
@@ -136,14 +171,18 @@ describe('places', () => {
       const expectedEventData = {
         rawAnswer: 'rawAnswer',
         query: 'query',
-        suggestion: {rawAnswer: 'rawAnswer', query: 'query', hitIndex: 0},
+        suggestion: { rawAnswer: 'rawAnswer', query: 'query', hitIndex: 0 },
         suggestionIndex: 0,
       };
       placesInstance.once('change', eventData => {
         expect(eventData).toEqual(expectedEventData);
         done();
       });
-      eventHandler(null, {rawAnswer: 'rawAnswer', query: 'query', hitIndex: 0});
+      eventHandler(null, {
+        rawAnswer: 'rawAnswer',
+        query: 'query',
+        hitIndex: 0,
+      });
     });
 
     it('triggers a change event on autocomplete:autocompleted', done => {
@@ -159,14 +198,18 @@ describe('places', () => {
       const expectedEventData = {
         rawAnswer: 'rawAnswer',
         query: 'query',
-        suggestion: {rawAnswer: 'rawAnswer', query: 'query', hitIndex: 0},
+        suggestion: { rawAnswer: 'rawAnswer', query: 'query', hitIndex: 0 },
         suggestionIndex: 0,
       };
       placesInstance.once('change', eventData => {
         expect(eventData).toEqual(expectedEventData);
         done();
       });
-      eventHandler(null, {rawAnswer: 'rawAnswer', query: 'query', hitIndex: 0});
+      eventHandler(null, {
+        rawAnswer: 'rawAnswer',
+        query: 'query',
+        hitIndex: 0,
+      });
     });
 
     it('triggers a cursorchanged event on autocomplete:cursorchanged', done => {
@@ -182,18 +225,24 @@ describe('places', () => {
       const expectedEventData = {
         rawAnswer: 'rawAnswer',
         query: 'query',
-        suggestion: {rawAnswer: 'rawAnswer', query: 'query', hitIndex: 0},
+        suggestion: { rawAnswer: 'rawAnswer', query: 'query', hitIndex: 0 },
         suggestionIndex: 0,
       };
       placesInstance.once('cursorchanged', eventData => {
         expect(eventData).toEqual(expectedEventData);
         done();
       });
-      eventHandler(null, {rawAnswer: 'rawAnswer', query: 'query', hitIndex: 0});
+      eventHandler(null, {
+        rawAnswer: 'rawAnswer',
+        query: 'query',
+        hitIndex: 0,
+      });
     });
 
     it('has a clear button', done => {
-      const clearButton = document.querySelector('button.ap-input-icon.ap-icon-clear');
+      const clearButton = document.querySelector(
+        'button.ap-input-icon.ap-icon-clear'
+      );
       const pinButton = document.querySelector('.ap-icon-pin');
       expect(clearButton.innerHTML).toEqual('clear');
 
@@ -209,7 +258,9 @@ describe('places', () => {
     });
 
     it('has a pin button', () => {
-      const pinButton = document.querySelector('button.ap-input-icon.ap-icon-pin');
+      const pinButton = document.querySelector(
+        'button.ap-input-icon.ap-icon-pin'
+      );
       expect(pinButton.style.display).toEqual('');
     });
 
@@ -276,15 +327,25 @@ describe('places', () => {
     });
 
     it('has all autocomplete methods', () => {
-      const autocompleteMethods = ['open', 'close', 'getVal', 'setVal', 'destroy'];
+      const autocompleteMethods = [
+        'open',
+        'close',
+        'getVal',
+        'setVal',
+        'destroy',
+      ];
       autocompleteMethods.forEach(methodName => {
         placesInstance[methodName]('hello');
-        expect(autocomplete.__instance.autocomplete[methodName]).toBeCalledWith('hello');
+        expect(autocomplete.__instance.autocomplete[methodName]).toBeCalledWith(
+          'hello'
+        );
       });
     });
 
     it('inserts the css file on top', () =>
-      expect(document.querySelector('head > style').textContent).toEqual('places.css'));
+      expect(document.querySelector('head > style').textContent).toEqual(
+        'places.css'
+      ));
 
     it('returns an EventEmitter', () =>
       expect(placesInstance instanceof EventEmitter).toEqual(true));

@@ -1,5 +1,5 @@
 import webpack from 'webpack';
-import {join} from 'path';
+import { join } from 'path';
 
 export default {
   entry: {
@@ -9,29 +9,24 @@ export default {
   },
   devtool: 'source-map',
   output: {
-    path: './dist/cdn',
+    path: join(__dirname, './dist/cdn'),
     filename: '[name].js',
     library: '[name]',
     libraryTarget: 'umd',
   },
   module: {
-    loaders: [{
-      test: /\.js$/, exclude: /node_modules/, loader: 'babel',
-    }, {
-      test: /\.svg$/, loader: 'raw', exclude: /node_modules/,
-    }, {
-      test: /\.css$/, exclude: /node_modules/,
-      loader: 'raw',
-    }],
-  },
-  // when module not found, find locally first
-  // helps fixing the npm link not working with webpack
-  // http://stackoverflow.com/a/33722844/147079
-  resolve: {
-    fallback: [join(__dirname, 'node_modules')],
-  },
-  resolveLoader: {
-    fallback: [join(__dirname, 'node_modules')],
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+      },
+      {
+        test: /\.(svg|css)$/,
+        exclude: /node_modules/,
+        loader: 'raw-loader',
+      },
+    ],
   },
   // replace usage of process.env.NODE_ENV with the actual NODE_ENV from command line
   // when building. Some modules might be using it, this way we will reduce the code output when

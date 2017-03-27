@@ -21,6 +21,7 @@ export default function activateClipboard(codeSamples) {
       copyToClipboard.setAttribute('aria-label', 'Copied!');
     });
     // safari: https://clipboardjs.com/#browser-support
-    clipboard.on('error', () => copyToClipboard.setAttribute('aria-label', 'Hit ⌘+C to copy'));
+    clipboard.on('error', () =>
+      copyToClipboard.setAttribute('aria-label', 'Hit ⌘+C to copy'));
   });
 }
