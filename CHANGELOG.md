@@ -1,3 +1,8 @@
+<a name="1.4.12"></a>
+## [1.4.12](https://github.com/algolia/places/compare/v1.4.11...v1.4.12) (2017-03-27)
+
+
+
 <a name="1.4.11"></a>
 ## [1.4.11](https://github.com/algolia/places/compare/v1.4.10...v1.4.11) (2017-03-24)
 
