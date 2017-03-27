@@ -7,7 +7,10 @@ function getBestHighlightedForm(highlightedValues) {
   const bestAttributes = [];
   for (let i = 1; i < highlightedValues.length; ++i) {
     if (highlightedValues[i].matchLevel !== 'none') {
-      bestAttributes.push({index: i, matchedWords: highlightedValues[i].words});
+      bestAttributes.push({
+        index: i,
+        matchedWords: highlightedValues[i].words,
+      });
     }
   }
   // no matches in this attribute, retrieve first value
@@ -24,28 +27,36 @@ function getBestHighlightedForm(highlightedValues) {
     return a.index - b.index;
   });
   // and append the best match to the first value
-  return bestAttributes[0].index === 0 ? `${defaultValue} (${highlightedValues[bestAttributes[1].index].value})`
+  return bestAttributes[0].index === 0
+    ? `${defaultValue} (${highlightedValues[bestAttributes[1].index].value})`
     : `${highlightedValues[bestAttributes[0].index].value} (${defaultValue})`;
 }
 
-export default function formatHit({
-  formatInputValue,
-  hit,
-  hitIndex,
-  query,
-  rawAnswer,
-}) {
+export default function formatHit(
+  {
+    formatInputValue,
+    hit,
+    hitIndex,
+    query,
+    rawAnswer,
+  }
+) {
   try {
     const name = hit.locale_names[0];
     const country = hit.country;
-    const administrative = hit.administrative && hit.administrative[0] !== name ?
-      hit.administrative[0] : undefined;
+    const administrative = hit.administrative && hit.administrative[0] !== name
+      ? hit.administrative[0]
+      : undefined;
     const city = hit.city && hit.city[0] !== name ? hit.city[0] : undefined;
 
     const highlight = {
       name: getBestHighlightedForm(hit._highlightResult.locale_names),
-      city: city ? getBestHighlightedForm(hit._highlightResult.city) : undefined,
-      administrative: administrative ? getBestHighlightedForm(hit._highlightResult.administrative) : undefined,
+      city: city
+        ? getBestHighlightedForm(hit._highlightResult.city)
+        : undefined,
+      administrative: administrative
+        ? getBestHighlightedForm(hit._highlightResult.administrative)
+        : undefined,
       country: country ? hit._highlightResult.country.value : undefined,
     };
 

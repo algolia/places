@@ -1,10 +1,8 @@
 import baseConfig from './webpack.config.babel.js';
 
-// https://github.com/istarkov/babel-plugin-webpack-loaders#how-it-works
-
 export default {
   ...baseConfig,
-  entry: undefined,
+  entry: undefined, // https://github.com/istarkov/babel-plugin-webpack-loaders#how-it-works
   devtool: undefined,
   output: {
     libraryTarget: 'commonjs2',

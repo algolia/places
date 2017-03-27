@@ -1,32 +1,24 @@
-language: ruby
+language: node_js
+node_js: stable
 before_install:
-- 'PATH=`echo $PATH | sed "s/\.\/node_modules\/\.bin//g"`; export PATH=$PATH:./node_modules/.bin;
-
-'
-- git config --global user.email "algoliaplacesbot@users.noreply.github.com"
-- git config --global user.name "algoliaplacesbot"
+- git config --global user.email "algobot@users.noreply.github.com"
+- git config --global user.name "algobot"
 - rvm install 2.4.0
 - rvm use 2.4.0
-- nvm install stable
-- nvm use stable
-- npm install --global yarn
-gemfile: docs/Gemfile
+- cd docs && bundle install
 script:
-- yarn
 - npm run test:ci
 branches:
   only:
   - master
-  - "/^greenkeeper-.*$/"
 notifications:
   slack: algolia:wSMHl9gxKQ7cRvnOPUWE9esI
 sudo: false
 cache:
   bundler: true
+  yarn: true
   directories:
   - node_modules
-  - "~/.yarn"
-  - "~/.nvm"
 env:
   global:
   - secure: FvNhotbMfsYm+q1UNEUX9aWYKDePjwu5uUDkd5gcsN3mvT8BmjJekDc+PvCqwaG53y7XZ1iXAmIYzm8AUPkUzum32NoRL0bLn/mAu/qXItv0nAOU4lvkCrH3uLeC5Sf3IEZh6UiZxzyPMyu0pV7yyLJLhtR1C60KX+BdpdWy8Je8307c8jdesa+VwUAJ822OvW0lfSxfAeOfMEbNaBU2VNFgQQpvzMeA2lWqWjRzVRZ2h1F+TRSKFcI4czGYyVnYBQaRzp5/44KjIU0edQ1lW5vNjqGjXp4xxCB3/GnqyNWukLvLJfoxNtN+zzCLK4mKUjK8EeBX9zWxGTl2YPtNG5CrsX7lBHJQ52/XEc9oV9wcNodn4KlG/bsVwRSwiLIyFewSBY3h+Aqvv/RnANVDeEWrhB1NVIIGyiRQFpDUjoxceI7Mm7jSIYN6R1TOvwG/7FW7CnwGb9I1v4Ra2ixWg4e/xULSEboZZkLvCI+MpCHQwpk11exjhF3etpPv47rFd6PiumeCsJxSPeFp6N2erRHayl0KhGq9toH9pMKdlu/fy2dWz1QLVe57ClEfDvz+mn89z467L2oLkQC3gi4szM1VwFPxR7TPx0dw4/nmNwQpivDVoPzYswtsqNxgH5BsXL9L3DFhRGrLyDvEkmFpFMhhCvLJQDB3KjPaxG5FQaA=

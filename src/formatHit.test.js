@@ -12,11 +12,14 @@ describe('formatHit', () => {
   beforeEach(() => findType.mockClear());
 
   const testCases = [
-    getTestCase({name: 'simple'}),
+    getTestCase({ name: 'simple' }),
     getTestCase({
       name: 'no administrative',
-      hit: {administrative: undefined},
-      expected: {administrative: undefined, highlight: {administrative: undefined}},
+      hit: { administrative: undefined },
+      expected: {
+        administrative: undefined,
+        highlight: { administrative: undefined },
+      },
     }),
     getTestCase({
       name: 'administrative[0] === locale_names[0]',
@@ -24,13 +27,14 @@ describe('formatHit', () => {
         administrative: ['Île-de-France'],
         locale_names: ['Île-de-France'],
         _highlightResult: {
-          locale_names: [{value: 'Île-de-France'}],
-          administrative: [{value: 'Île-de-France'}],
+          locale_names: [{ value: 'Île-de-France' }],
+          administrative: [{ value: 'Île-de-France' }],
         },
       },
       expected: {
-        administrative: undefined, name: 'Île-de-France',
-        highlight: {administrative: undefined, name: 'Île-de-France'},
+        administrative: undefined,
+        name: 'Île-de-France',
+        highlight: { administrative: undefined, name: 'Île-de-France' },
       },
     }),
     getTestCase({
@@ -40,22 +44,25 @@ describe('formatHit', () => {
         city: ['Paris'],
         administrative: ['Île-de-France'],
         _highlightResult: {
-          locale_names: [{value: 'Paris', matchedWords: []}, {value: 'Lutèce', matchedWords: ['Lutèce']}],
+          locale_names: [
+            { value: 'Paris', matchedWords: [] },
+            { value: 'Lutèce', matchedWords: ['Lutèce'] },
+          ],
         },
       },
       expected: {
         name: 'Paris',
         administrative: 'Île-de-France',
         city: undefined,
-        highlight: {name: 'Lutèce (Paris)', city: undefined},
+        highlight: { name: 'Lutèce (Paris)', city: undefined },
       },
     }),
     getTestCase({
       name: 'no city',
-      hit: {city: undefined},
+      hit: { city: undefined },
       expected: {
         city: undefined,
-        highlight: {city: undefined},
+        highlight: { city: undefined },
       },
     }),
     getTestCase({
@@ -64,14 +71,14 @@ describe('formatHit', () => {
         city: ['Paris'],
         locale_names: ['Paris'],
         _highlightResult: {
-          locale_names: [{value: 'Paris'}],
-          city: [{value: 'Paris'}],
+          locale_names: [{ value: 'Paris' }],
+          city: [{ value: 'Paris' }],
         },
       },
       expected: {
         city: undefined,
         name: 'Paris',
-        highlight: {city: undefined, name: 'Paris'},
+        highlight: { city: undefined, name: 'Paris' },
       },
     }),
     getTestCase({
@@ -84,19 +91,21 @@ describe('formatHit', () => {
       },
       expected: {
         country: undefined,
-        highlight: {country: undefined},
+        highlight: { country: undefined },
       },
     }),
   ];
 
-  testCases.forEach(
-    testCase => it(`${testCase.name} test case`, () => {
+  testCases.forEach(testCase =>
+    it(`${testCase.name} test case`, () => {
       const output = formatHit(testCase.input);
 
       // check properties
       Object.keys(testCase.expected).forEach(key =>
-        expect(output[key]).toEqual(testCase.expected[key], `unexcepted value of "${key}"`)
-      );
+        expect(output[key]).toEqual(
+          testCase.expected[key],
+          `unexcepted value of "${key}"`
+        ));
 
       // hit is passed through
       expect(output.hit).toEqual(testCase.expected.hit);
@@ -123,25 +132,26 @@ describe('formatHit', () => {
       expect(output.rawAnswer).toEqual('rawAnswer');
       expect(output.query).toEqual('query');
       expect(output.hitIndex).toEqual(0);
-    })
-  );
+    }));
 
   it('returns a default object when unable to parse it', () => {
-    const consoleError = console.error;  // eslint-disable-line no-console
+    const consoleError = console.error; // eslint-disable-line no-console
     console.error = jest.fn(); // eslint-disable-line no-console
-    const output = formatHit({bad: 'data'});
-    const expected = {value: 'Could not parse object'};
+    const output = formatHit({ bad: 'data' });
+    const expected = { value: 'Could not parse object' };
     expect(output).toEqual(expected);
     expect(console.error).toBeCalled(); // eslint-disable-line no-console
     console.error = consoleError; // eslint-disable-line no-console
   });
 });
 
-function getTestCase({
-  name,
-  hit: userHit = {},
-  expected: userExpected = {},
-}) {
+function getTestCase(
+  {
+    name,
+    hit: userHit = {},
+    expected: userExpected = {},
+  }
+) {
   const defaultHit = {
     locale_names: ['rue de rivoli'],
     country: 'France',
@@ -154,10 +164,10 @@ function getTestCase({
     postcode: ['75004'],
     _tags: ['tags'],
     _highlightResult: {
-      locale_names: [{value: 'Paris'}],
-      city: [{value: 'Paris'}],
-      administrative: [{value: 'Île-de-France'}],
-      country: {value: 'France'},
+      locale_names: [{ value: 'Paris' }],
+      city: [{ value: 'Paris' }],
+      administrative: [{ value: 'Île-de-France' }],
+      country: { value: 'France' },
     },
   };
 

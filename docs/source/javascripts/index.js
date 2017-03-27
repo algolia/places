@@ -26,8 +26,7 @@ if (process.env.NODE_ENV === 'development') {
       } else {
         console.log('event data:', eventData);
       }
-    })
-  );
+    }));
 }
 
 const $response = document.querySelector('#json-response');

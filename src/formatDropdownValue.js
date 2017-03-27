@@ -16,7 +16,7 @@ const icons = {
   airport: planeIcon,
 };
 
-export default function formatDropdownValue({type, highlight}) {
+export default function formatDropdownValue({ type, highlight }) {
   const {
     name,
     administrative,
