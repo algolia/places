@@ -2,7 +2,7 @@ Hi (future) collaborator!
 
 **tl;dr;**
 - use pull requests
-- use [conventional changelog](https://github.com/conventional-changelog/conventional-changelog) commit style messages
+- use [conventional changelog](https://github.com/conventional-changelog/conventional-changelog/blob/master/packages/conventional-changelog-angular/convention.md) commit style messages
 - squash your commits
 - have fun
 
