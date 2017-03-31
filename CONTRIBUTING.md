@@ -2,7 +2,7 @@ Hi (future) collaborator!
 
 **tl;dr;**
 - use pull requests
-- use [conventional changelog](https://github.com/ajoslin/conventional-changelog/blob/master/conventions/angular.md) commit style messages
+- use [conventional changelog](https://github.com/conventional-changelog/conventional-changelog) commit style messages
 - squash your commits
 - have fun
 
