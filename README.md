@@ -8,6 +8,8 @@ See the [website][places-website] for more information.
 
 Read the [blog post](https://blog.algolia.com/introducing-algolia-places/) introducing Algolia Places.
 
+Fill the [Google form](https://community.algolia.com/places/support.html#irrelevant-results) to report any irrelevant results.
+
 ## Demo
 
 Watch [more examples on the website][places-website-examples].
