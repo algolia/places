@@ -713,6 +713,23 @@ This position is an array of two numbers, representing the lattitude and the lon
     </tbody>
     </table>
 
+### Backend
+
+You can also query the Places API from your backend, here is an example with our [PHP API Client](https://github.com/algolia/algoliasearch-client-php). It requires a registered [Places account](https://www.algolia.com/users/sign_up/places).
+
+```php
+<?php
+$appId = 'YOUR_PLACES_APP_ID';
+$apiKey = 'YOUR_PLACES_API_KEY';
+
+$client = new \AlgoliaSearch\Client($appId, $apiKey);
+$places = $client->initPlaces($appId, $apiKey);
+
+$data = json_encode(array('query' => 'Paris'));
+$result = $places->search($data);
+var_dump($result);
+```
+
 ### REST API
 
 Behind the places.js the JavaScript library lies a complete REST API. Read the underlying [REST API documentation](rest.html).
