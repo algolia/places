@@ -725,8 +725,7 @@ $apiKey = 'YOUR_PLACES_API_KEY';
 $client = new \AlgoliaSearch\Client($appId, $apiKey);
 $places = $client->initPlaces($appId, $apiKey);
 
-$data = json_encode(array('query' => 'Paris'));
-$result = $places->search($data);
+$result = $places->search('Paris');
 var_dump($result);
 ```
 
