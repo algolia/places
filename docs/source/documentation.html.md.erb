@@ -715,15 +715,28 @@ This position is an array of two numbers, representing the lattitude and the lon
 
 ### Backend
 
-You can also query the Places API from your backend, here is an example with our [PHP API Client](https://github.com/algolia/algoliasearch-client-php). It requires a registered [Places account](https://www.algolia.com/users/sign_up/places).
+You can also query the Places API from your backend, here is an example with our [PHP API Client](https://github.com/algolia/algoliasearch-client-php). 
+
+Without credentials (require PHP API Client >= 1.18.0):
 
 ```php
 <?php
+
+$places = \AlgoliaSearch\Client::initPlaces();
+
+$result = $places->search('Paris');
+var_dump($result);
+```
+
+With credentials, requires a registered [Places account](https://www.algolia.com/users/sign_up/places).
+
+```php
+<?php
+
 $appId = 'YOUR_PLACES_APP_ID';
 $apiKey = 'YOUR_PLACES_API_KEY';
 
-$client = new \AlgoliaSearch\Client($appId, $apiKey);
-$places = $client->initPlaces($appId, $apiKey);
+$places = \AlgoliaSearch\Client::initPlaces($appId, $apiKey);
 
 $result = $places->search('Paris');
 var_dump($result);
