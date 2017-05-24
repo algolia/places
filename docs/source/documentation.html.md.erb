@@ -713,9 +713,29 @@ This position is an array of two numbers, representing the lattitude and the lon
     </tbody>
     </table>
 
-### Backend
+### JavaScript API Client
 
-You can also query the Places API from your backend, here is an example with our [PHP API Client](https://github.com/algolia/algoliasearch-client-php). 
+You can directly query the [Places REST API](rest.html) using our [JavaScript API client](https://github.com/algolia/algoliasearch-client-javascript),
+either in browsers or with [Node.js](https://nodejs.org/).
+
+
+
+```js
+// var algoliasearch = require('algoliasearch');
+var places = algoliasearch.initPlaces(/*appId, apiKey*/);
+places
+  .search(/*{REST API Params}*/, function(err, res) {
+    if (err) {
+      throw err;
+    }
+    console.log(res);
+  });
+```
+
+### PHP API Client
+
+You can directly query the [Places REST API](rest.html) with our [PHP API Client](https://github.com/algolia/algoliasearch-client-php),
+so that you can do backend Places searches.
 
 Without credentials (require PHP API Client >= 1.18.0):
 
