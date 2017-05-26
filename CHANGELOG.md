@@ -1,3 +1,13 @@
+<a name="1.4.13"></a>
+## [1.4.13](https://github.com/algolia/places/compare/v1.4.12...v1.4.13) (2017-05-26)
+
+
+### Bug Fixes
+
+* **contributing:** fix link ([6473d4f](https://github.com/algolia/places/commit/6473d4f))
+
+
+
 <a name="1.4.12"></a>
 ## [1.4.12](https://github.com/algolia/places/compare/v1.4.11...v1.4.12) (2017-03-27)
 

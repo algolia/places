@@ -38,8 +38,8 @@ console.log('..Updating package.json');
 
 mversion.update(newVersion);
 
-replace({
+replace.sync({
   files: [path.join(__dirname, '..', 'README.md')],
-  from: `places.js@{currentVersion}`,
+  from: `places.js@${currentVersion}`,
   to: `places.js@${newVersion}`,
 });
