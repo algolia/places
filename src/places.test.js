@@ -6,7 +6,8 @@ jest.mock(
 jest.mock('./icons/clear.svg', () => 'clear');
 jest.mock('./places.css', () => 'places.css');
 jest.mock('./createAutocompleteDataset', () =>
-  jest.fn(() => 'autocompleteDataset'));
+  jest.fn(() => 'autocompleteDataset')
+);
 
 import places from './places.js';
 import errors from './errors.js';
@@ -291,14 +292,14 @@ describe('places', () => {
       });
 
       it('does not emits a clear event when unecessary', () => {
-        spyOn(placesInstance, 'emit');
+        jest.spyOn(placesInstance, 'emit');
         autocomplete.__setQuery('a');
         input.dispatchEvent(new Event('input'));
         autocomplete.__setQuery('');
         input.dispatchEvent(new Event('input'));
         autocomplete.__setQuery('');
         input.dispatchEvent(new Event('input'));
-        expect(placesInstance.emit.calls.count()).toEqual(1);
+        expect(placesInstance.emit.mock.calls.length).toEqual(1);
       });
 
       it('hides or show icons given the query', () => {

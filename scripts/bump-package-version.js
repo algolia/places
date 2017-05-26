@@ -2,8 +2,8 @@
 import fs from 'fs';
 import path from 'path';
 
+import replace from 'replace-in-file';
 import mversion from 'mversion';
-
 import semver from 'semver';
 import currentVersion from '../src/version.js';
 
@@ -37,3 +37,9 @@ fs.writeFileSync(versionFile, newContent);
 console.log('..Updating package.json');
 
 mversion.update(newVersion);
+
+replace({
+  files: [path.join(__dirname, '..', 'README.md')],
+  from: `places.js@{currentVersion}`,
+  to: `places.js@${newVersion}`,
+});

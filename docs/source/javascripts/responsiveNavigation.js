@@ -8,7 +8,8 @@ export default function responsiveNavigation() {
   const navigationAsSelect = document.createElement('select');
 
   if (
-    navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i)
+    navigator.userAgent.match(/iPhone/i) ||
+    navigator.userAgent.match(/iPod/i)
   ) {
     navigationAsSelect.classList.add('display-on-small', 'device');
   } else {

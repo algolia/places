@@ -17,12 +17,7 @@ const icons = {
 };
 
 export default function formatDropdownValue({ type, highlight }) {
-  const {
-    name,
-    administrative,
-    city,
-    country,
-  } = highlight;
+  const { name, administrative, city, country } = highlight;
 
   const out = `<span class="ap-suggestion-icon">${icons[type].trim()}</span>
 <span class="ap-name">${name}</span>

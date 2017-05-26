@@ -51,5 +51,6 @@ describe('findType', () => {
 
   testCases.forEach(testCase =>
     it(`${testCase.name} test case`, () =>
-      expect(findType(testCase.input)).toEqual(testCase.expected)));
+      expect(findType(testCase.input)).toEqual(testCase.expected))
+  );
 });

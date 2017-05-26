@@ -1,29 +1,27 @@
 import formatHit from './formatHit.js';
 import version from './version.js';
 
-export default function createAutocompleteSource(
-  {
-    algoliasearch,
-    clientOptions,
-    apiKey,
-    appId,
-    hitsPerPage,
-    aroundLatLng,
-    aroundRadius,
-    aroundLatLngViaIP,
-    countries,
-    formatInputValue,
-    computeQueryParams = params => params,
-    useDeviceLocation = false,
-    language = navigator.language.split('-')[0],
-    onHits = () => {},
-    onError = e => {
-      throw e;
-    },
-    onRateLimitReached,
-    type,
-  }
-) {
+export default function createAutocompleteSource({
+  algoliasearch,
+  clientOptions,
+  apiKey,
+  appId,
+  hitsPerPage,
+  aroundLatLng,
+  aroundRadius,
+  aroundLatLngViaIP,
+  countries,
+  formatInputValue,
+  computeQueryParams = params => params,
+  useDeviceLocation = false,
+  language = navigator.language.split('-')[0],
+  onHits = () => {},
+  onError = e => {
+    throw e;
+  },
+  onRateLimitReached,
+  type,
+}) {
   const placesClient = algoliasearch.initPlaces(appId, apiKey, clientOptions);
   placesClient.as.addAlgoliaAgent(`Algolia Places ${version}`);
 
@@ -76,7 +74,8 @@ export default function createAutocompleteSource(
             hitIndex,
             query,
             rawAnswer: content,
-          }));
+          })
+        );
 
         onHits({
           hits,

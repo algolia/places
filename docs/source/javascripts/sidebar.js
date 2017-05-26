@@ -1,6 +1,8 @@
-export default function sidebar(
-  { headersContainer, sidebarContainer, headerStartLevel }
-) {
+export default function sidebar({
+  headersContainer,
+  sidebarContainer,
+  headerStartLevel,
+}) {
   const headers = headersContainer.querySelectorAll('h2, h3');
   const select = document.createElement('select');
   const list = document.createElement('ul');
@@ -58,9 +60,8 @@ function sidebarFollowScroll(sidebarContainer) {
     const menu = document.querySelector('.sidebar > ul');
     const heroHeight = hero.offsetHeight;
     const navHeight = navigation.offsetHeight;
-    const height = document
-      .querySelector('html')
-      .getBoundingClientRect().height;
+    const height = document.querySelector('html').getBoundingClientRect()
+      .height;
     const footerHeight = footer.offsetHeight;
     const menuHeight = menu.offsetHeight;
 
@@ -144,7 +145,8 @@ function activeLinks(sidebarContainer) {
   linksContainer.addEventListener('click', e => {
     if (e.target.tagName === 'A') {
       [...linksContainer.querySelectorAll('a')].forEach(item =>
-        item.classList.remove('active'));
+        item.classList.remove('active')
+      );
       e.target.classList.add('active');
     }
   });
