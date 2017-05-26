@@ -32,15 +32,13 @@ function getBestHighlightedForm(highlightedValues) {
     : `${highlightedValues[bestAttributes[0].index].value} (${defaultValue})`;
 }
 
-export default function formatHit(
-  {
-    formatInputValue,
-    hit,
-    hitIndex,
-    query,
-    rawAnswer,
-  }
-) {
+export default function formatHit({
+  formatInputValue,
+  hit,
+  hitIndex,
+  query,
+  rawAnswer,
+}) {
   try {
     const name = hit.locale_names[0];
     const country = hit.country;

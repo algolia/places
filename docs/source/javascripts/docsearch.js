@@ -26,7 +26,8 @@ docsearchInput.addEventListener('keyup', () => {
 });
 
 docsearchInput.addEventListener('change', () =>
-  docsearchInput.classList.add('filled'));
+  docsearchInput.classList.add('filled')
+);
 
 docsearchInput.addEventListener('blur', () => {
   if (docsearchInput.value.length === 0) {
@@ -35,4 +36,5 @@ docsearchInput.addEventListener('blur', () => {
 });
 
 search.autocomplete.on('autocomplete:selected', () =>
-  reset.classList.add('hide'));
+  reset.classList.add('hide')
+);

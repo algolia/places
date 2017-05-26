@@ -105,7 +105,8 @@ describe('formatHit', () => {
         expect(output[key]).toEqual(
           testCase.expected[key],
           `unexcepted value of "${key}"`
-        ));
+        )
+      );
 
       // hit is passed through
       expect(output.hit).toEqual(testCase.expected.hit);
@@ -132,7 +133,8 @@ describe('formatHit', () => {
       expect(output.rawAnswer).toEqual('rawAnswer');
       expect(output.query).toEqual('query');
       expect(output.hitIndex).toEqual(0);
-    }));
+    })
+  );
 
   it('returns a default object when unable to parse it', () => {
     const consoleError = console.error; // eslint-disable-line no-console
@@ -145,13 +147,7 @@ describe('formatHit', () => {
   });
 });
 
-function getTestCase(
-  {
-    name,
-    hit: userHit = {},
-    expected: userExpected = {},
-  }
-) {
+function getTestCase({ name, hit: userHit = {}, expected: userExpected = {} }) {
   const defaultHit = {
     locale_names: ['rue de rivoli'],
     country: 'France',

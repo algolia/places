@@ -5,7 +5,7 @@ set -e # exit when error
 printf "\nClear CDN cache\n"
 
 VERSION=`json version < package.json`
-CDN_URL="http://cdn.jsdelivr.net/places.js/$VERSION/places.min.js"
+CDN_URL="https://cdn.jsdelivr.net/npm/places.js@$VERSION"
 
 while true; do
   STATUS=$(curl -L -I $CDN_URL 2>/dev/null | head -n 1 | cut -d$' ' -f2);
@@ -18,4 +18,5 @@ while true; do
   sleep 30
 done
 
-curl --silent -L $CACHE_URL > /dev/null
+# No more needed to clear the CDN cache because we advise to use specific versions
+# curl --silent -L $CACHE_URL > /dev/null

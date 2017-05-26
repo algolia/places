@@ -52,5 +52,6 @@ describe('formatInputValue', () => {
 
   testCases.forEach(testCase =>
     it(`${testCase.name} test case`, () =>
-      expect(formatInputValue(testCase.input)).toEqual(testCase.expected)));
+      expect(formatInputValue(testCase.input)).toEqual(testCase.expected))
+  );
 });
