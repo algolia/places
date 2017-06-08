@@ -285,6 +285,32 @@ Type: **object**
 autocomplete.js instance.
 </td>
     </tr>
+    <tr>
+<td markdown="1">
+<div class="api-entry" id="api-options-insideBoundingBox"><code>insideBoundingBox</code></div>
+
+Type: **string**
+</td>
+<td markdown="1">
+Filters the results inside the area defined by the two extreme points of a rectangle. [See guide](https://www.algolia.com/doc/guides/geo-search/geo-search-overview/#insideboundingbox).
+
+Format: `topRightLat, topRightLng, bottomLeftLat, bottomLeftLng`
+
+Example: `"60, 16, 40, -4"`
+</td>
+  </tr>
+  <tr>
+<td markdown="1">
+<div class="api-entry" id="api-options-insidePolygon"><code>insidePolygon</code></div>
+
+Type: **string**
+</td>
+<td markdown="1">
+Filters the results inside the area defined by a shape. [See guide](https://www.algolia.com/doc/guides/geo-search/geo-search-overview/#insidepolygon).
+
+Format: `p1Lat, p1Lng, p2Lat, p2Lng, p3Lat, p3Lng...`
+</td>
+</tr>
   </tbody>
 </table>
 
