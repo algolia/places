@@ -5,7 +5,7 @@ const $input = document.querySelector('#landing-demo');
 const placesAutocomplete = places({
   container: $input,
   useDeviceLocation: true,
-  insideBoundingBox: '1221,12',
+  insideBoundingBox: '60, 16, 40, -4',
 });
 $input.style.opacity = 1; // we initially hide the input to avoid size flickering
 
