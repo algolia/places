@@ -76,8 +76,10 @@ function sidebarFollowScroll(sidebarContainer) {
     if (currentScroll > heroHeight - navHeight + paddingDoc) {
       const fold = height - footerHeight - menuHeight - paddingDoc - 50;
       if (currentScroll > fold) {
+        // eslint-disable-next-line no-param-reassign
         sidebarContainer.style.top = `${fold - currentScroll}px`;
       } else {
+        // eslint-disable-next-line no-param-reassign
         sidebarContainer.style.top = null;
       }
       sidebarContainer.classList.add('fixed');

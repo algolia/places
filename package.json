@@ -15,11 +15,11 @@
     "js:build": "webpack",
     "js:watch": "webpack --watch",
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "release": "./scripts/release.sh",
     "test": "jest --bail --no-cache && npm run lint",
     "test:watch": "jest --watch",
-    "test:ci": "./scripts/test-ci.sh",
-    "precommit": "lint-staged"
+    "test:ci": "./scripts/test-ci.sh"
   },
   "author": "Algolia (https://www.algolia.com)",
   "homepage": "https://community.algolia.com/places",
@@ -28,10 +28,10 @@
   "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.24.1",
-    "babel-core": "^6.24.1",
+    "babel-core": "^6.25.0",
     "babel-eslint": "^7.2.3",
     "babel-jest": "^20.0.3",
-    "babel-loader": "^7.0.0",
+    "babel-loader": "^7.1.0",
     "babel-plugin-webpack-loaders": "^0.9.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
@@ -39,31 +39,29 @@
     "conventional-changelog-cli": "^1.3.1",
     "docsearch.js": "^2.3.3",
     "doctoc": "^1.3.0",
-    "eslint": "^3.19.0",
-    "eslint-config-algolia": "^8.0.0",
-    "eslint-config-prettier": "^2.1.1",
-    "eslint-import-resolver-webpack": "^0.8.1",
-    "eslint-plugin-import": "^2.3.0",
-    "eslint-plugin-jasmine": "^2.2.0",
+    "eslint": "^4.1.1",
+    "eslint-config-algolia": "^11.0.0",
+    "eslint-config-prettier": "^2.2.0",
+    "eslint-import-resolver-webpack": "^0.8.3",
+    "eslint-plugin-import": "^2.6.0",
+    "eslint-plugin-jasmine": "^2.6.2",
     "eslint-plugin-jest": "^20.0.3",
-    "eslint-plugin-prettier": "^2.1.1",
-    "eslint-plugin-react": "^7.0.1",
-    "husky": "^0.13.4",
+    "eslint-plugin-prettier": "^2.1.2",
+    "eslint-plugin-react": "^7.1.0",
     "jest-cli": "^20.0.4",
     "json": "^9.0.6",
-    "lint-staged": "^3.6.0",
     "mversion": "^1.10.1",
     "prettier": "^1.4.4",
     "pretty-bytes-cli": "^2.0.0",
     "raw-loader": "^0.5.1",
-    "replace-in-file": "^2.5.0",
+    "replace-in-file": "^2.5.2",
     "semver": "^5.1.1",
     "uglify-js": "^2.8.16",
     "webpack": "^2.6.1"
   },
   "dependencies": {
-    "algoliasearch": "^3.22.3",
-    "autocomplete.js": "^0.28.1",
+    "algoliasearch": "^3.24.0",
+    "autocomplete.js": "^0.28.2",
     "events": "^1.1.1",
     "insert-css": "^2.0.0"
   },
@@ -73,11 +71,5 @@
     "moduleNameMapper": {
       "^.+\\.(svg)$": "<rootDir>/test/fileMock.js"
     }
-  },
-  "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "git add"
-    ]
   }
 }

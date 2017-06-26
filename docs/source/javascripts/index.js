@@ -49,7 +49,8 @@ placesAutocomplete.on('change', e => {
     suggestionIndex: undefined,
   };
   $responseText.textContent = JSON.stringify(content, null, 2);
-  $responseTiming.innerHTML = `Computed in <u>${e.rawAnswer.processingTimeMS}ms</u>`;
+  $responseTiming.innerHTML = `Computed in <u>${e.rawAnswer
+    .processingTimeMS}ms</u>`;
   $response.classList.add('display');
 });
 placesAutocomplete.on('clear', () => {
