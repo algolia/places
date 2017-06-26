@@ -1,3 +1,13 @@
+<a name="1.4.15"></a>
+## [1.4.15](https://github.com/algolia/places/compare/v1.4.14...v1.4.15) (2017-06-26)
+
+
+### Features
+
+* **geo:** add insideBoundingBox insidePolygon ([19014fc](https://github.com/algolia/places/commit/19014fc))
+
+
+
 <a name="1.4.14"></a>
 ## [1.4.14](https://github.com/algolia/places/compare/v1.4.13...v1.4.14) (2017-05-26)
 
