@@ -10,6 +10,8 @@ export default function createAutocompleteSource({
   aroundLatLng,
   aroundRadius,
   aroundLatLngViaIP,
+  insideBoundingBox,
+  insidePolygon,
   countries,
   formatInputValue,
   computeQueryParams = params => params,
@@ -32,8 +34,10 @@ export default function createAutocompleteSource({
     type,
   };
 
-  if (typeof defaultQueryParams.countries === 'string') {
-    defaultQueryParams.countries = defaultQueryParams.countries.toLowerCase();
+  if (Array.isArray(defaultQueryParams.countries)) {
+    defaultQueryParams.countries = defaultQueryParams.countries.map(country =>
+      country.toLowerCase()
+    );
   }
 
   if (typeof defaultQueryParams.language === 'string') {
@@ -48,6 +52,14 @@ export default function createAutocompleteSource({
 
   if (aroundRadius) {
     defaultQueryParams.aroundRadius = aroundRadius;
+  }
+
+  if (insideBoundingBox) {
+    defaultQueryParams.insideBoundingBox = insideBoundingBox;
+  }
+
+  if (insidePolygon) {
+    defaultQueryParams.insidePolygon = insidePolygon;
   }
 
   let userCoords;

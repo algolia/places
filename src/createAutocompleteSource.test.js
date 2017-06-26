@@ -15,6 +15,7 @@ jest.mock('algoliasearch/src/browser/builds/algoliasearchLite.js', () =>
 
 describe('createAutocompleteSource', () => {
   beforeEach(() => formatHit.mockClear());
+  beforeEach(() => algoliasearch.__searchSpy.mockClear());
   beforeEach(() => algoliasearch.__clearSearchStub());
 
   it('instantiates an Algolia Places client', () => {
@@ -142,6 +143,24 @@ describe('createAutocompleteSource', () => {
     expect(algoliasearch.__searchSpy).toBeCalledWith({
       ...defaults,
       aroundRadius: 2000,
+    });
+  });
+
+  it('supports insidePolygon option', () => {
+    const { source, defaults } = setup({ insidePolygon: 2000 });
+    source(defaults.query);
+    expect(algoliasearch.__searchSpy).toBeCalledWith({
+      ...defaults,
+      insidePolygon: 2000,
+    });
+  });
+
+  it('supports insideBoundingBox option', () => {
+    const { source, defaults } = setup({ insideBoundingBox: 2000 });
+    source(defaults.query);
+    expect(algoliasearch.__searchSpy).toHaveBeenCalledWith({
+      ...defaults,
+      insideBoundingBox: 2000,
     });
   });
 
