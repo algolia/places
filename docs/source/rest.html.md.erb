@@ -357,6 +357,28 @@ The associated highlighting information.
 
 **Note:** The non-documented attributes of the JSON answer may change, don't rely on them.
 
+### Alternative JSON answer format
+
+When you provide the `language` parameter, only data for that language will be returned.
+
+Here is what it would look like if you are using the `fr` language for the `Paris` query:
+
+```js
+{
+  "hits": [{
+    "objectID": "145746683_7444",
+    "locale_names": ["Paris", "Lutèce"],
+    "city": ["Paris"],
+    // ...
+  }],
+}
+```
+
+**Warning:** In case you provide a non existing language, the engine will fallback to
+the default language and only display flattened values for that one resulting in
+the same output as in the last example.
+
+
 ### Query strategy
 
 The Algolia Places REST API leverages [Algolia's Search API](https://www.algolia.com), the [OpenStreetMap](https://www.openstreetmap.org/) and the [GeoNames](http://www.geonames.org/) data.
