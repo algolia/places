@@ -12,6 +12,8 @@
   border-radius: 3px;
   outline: none;
   font: inherit;
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 .ap-input::-webkit-search-decoration {
