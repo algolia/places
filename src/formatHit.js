@@ -9,7 +9,7 @@ function getBestHighlightedForm(highlightedValues) {
     if (highlightedValues[i].matchLevel !== 'none') {
       bestAttributes.push({
         index: i,
-        matchedWords: highlightedValues[i].words,
+        words: highlightedValues[i].matchedWords,
       });
     }
   }

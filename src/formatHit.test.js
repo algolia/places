@@ -58,6 +58,39 @@ describe('formatHit', () => {
       },
     }),
     getTestCase({
+      name: 'locale_names[1] is matching',
+      hit: {
+        locale_names: ['Paris', 'Lutèce'],
+        city: ['Paris'],
+        administrative: ['Île-de-France'],
+        _highlightResult: {
+          locale_names: [
+            {
+              value: 'Paris',
+              matchedWords: [],
+              matchLevel: 'none',
+            },
+            {
+              value: 'Lutèce',
+              matchedWords: ['Lutèce'],
+              matchLevel: 'partial',
+            },
+            {
+              value: 'Ville Lumière',
+              matchedWords: ['Ville Lumière'],
+              matchLevel: 'partial',
+            },
+          ],
+        },
+      },
+      expected: {
+        name: 'Paris',
+        administrative: 'Île-de-France',
+        city: undefined,
+        highlight: { name: 'Ville Lumière (Paris)', city: undefined },
+      },
+    }),
+    getTestCase({
       name: 'no city',
       hit: { city: undefined },
       expected: {

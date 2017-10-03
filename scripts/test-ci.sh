@@ -16,9 +16,6 @@ npm run build
 # try to build the website
 ./scripts/build-website.sh
 
-# check commit message format
-./scripts/validate-commit-msgs.sh
-
 # Finish release (clear CDN cache, deploy website) when building on master
 if [ "$TRAVIS_PULL_REQUEST" == 'false' ] && [ "$TRAVIS_BRANCH" == 'master' ]; then
   ./scripts/finish-release.sh
