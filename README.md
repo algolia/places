@@ -1,6 +1,6 @@
 [![header]][places-website]
 
-[![Version][version-svg]][package-url] [![Build Status][travis-svg]][travis-url] [![License][license-image]][license-url] [![Downloads][downloads-image]][downloads-url]
+[![Version][version-svg]][package-url] [![Build Status][travis-svg]][travis-url] [![License][license-image]][license-url] [![Downloads][downloads-image]][downloads-url] [![jsDelivr Hits][jsdelivr-badge]][jsdelivr-url]
 
 [Algolia Places][places-website] provides a fast, distributed and easy way to use an address search autocomplete JavaScript library on your website.
 
@@ -89,3 +89,5 @@ Wanna contribute? Awesome, please read the [contributing guide][contributing].
 [algolia-website]: https://www.algolia.com/?utm_medium=social-owned&utm_source=GitHub&utm_campaign=places%20repository
 [places-docs]: https://community.algolia.com/places/documentation/?utm_medium=social-owned&utm_source=GitHub&utm_campaign=places%20repository
 [contributing]: CONTRIBUTING.md
+[jsdelivr-badge]: https://data.jsdelivr.com/v1/package/npm/places.js/badge
+[jsdelivr-url]: https://www.jsdelivr.com/package/npm/places.js
