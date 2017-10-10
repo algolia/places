@@ -75,6 +75,7 @@ subtitle: Turn any <code>&lt;input&gt;</code> into an address autocomplete
     var placesAutocomplete = places({
       container: document.querySelector('#country'),
       type: 'country',
+      language: 'en',
       templates: {
         suggestion: function(suggestion) {
           return '<i class="flag ' + suggestion.countryCode + '"></i> ' +
