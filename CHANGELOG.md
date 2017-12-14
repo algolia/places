@@ -1,3 +1,19 @@
+<a name="1.4.16"></a>
+## [1.4.16](https://github.com/algolia/places/compare/v1.4.15...v1.4.16) (2017-12-14)
+
+
+### Bug Fixes
+
+* **contact:** force language to be English to avoid contact misses (SFDC) ([e6215bf](https://github.com/algolia/places/commit/e6215bf))
+* **css:** override the appearance of the input (#419) ([b3425ed](https://github.com/algolia/places/commit/b3425ed))
+* **doc:** broken links ([c55a4eb](https://github.com/algolia/places/commit/c55a4eb))
+* **doc:** make app creation more visible ([0ae6330](https://github.com/algolia/places/commit/0ae6330))
+* **events:** ensure clear event is emitted after setVal is called (#456) ([c84b7aa](https://github.com/algolia/places/commit/c84b7aa))
+* **formatHit:** not picking up the best highlighted attr ([9d14b83](https://github.com/algolia/places/commit/9d14b83))
+* **link:** broken license link ([aa3e5fa](https://github.com/algolia/places/commit/aa3e5fa))
+
+
+
 <a name="1.4.15"></a>
 ## [1.4.15](https://github.com/algolia/places/compare/v1.4.14...v1.4.15) (2017-06-26)
 
