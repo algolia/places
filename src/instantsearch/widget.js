@@ -11,15 +11,24 @@ class AlgoliaPlacesWidget {
   init({ helper }) {
     const placesAutocomplete = places(this.placesOptions);
 
-    helper.setQueryParameter('aroundLatLng', this.defaultPosition);
+    helper
+      .setQueryParameter('insideBoundingBox')
+      .setQueryParameter('aroundLatLng', this.defaultPosition);
 
     placesAutocomplete.on('change', opts => {
       const { suggestion: { latlng: { lat, lng } } } = opts;
-      helper.setQueryParameter('aroundLatLng', `${lat},${lng}`).search();
+
+      helper
+        .setQueryParameter('insideBoundingBox')
+        .setQueryParameter('aroundLatLng', `${lat},${lng}`)
+        .search();
     });
 
     placesAutocomplete.on('clear', () => {
-      helper.setQueryParameter('aroundLatLng', this.defaultPosition).search();
+      helper
+        .setQueryParameter('insideBoundingBox')
+        .setQueryParameter('aroundLatLng', this.defaultPosition)
+        .search();
     });
   }
 }
