@@ -1,3 +1,13 @@
+<a name="1.4.18"></a>
+## [1.4.18](https://github.com/algolia/places/compare/v1.4.17...v1.4.18) (2017-12-21)
+
+
+### Features
+
+* **InstantSearchWidget:** clear the boundingBox when perform a search (#455) ([dc2802c](https://github.com/algolia/places/commit/dc2802c))
+
+
+
 <a name="1.4.17"></a>
 ## [1.4.17](https://github.com/algolia/places/compare/v1.4.16...v1.4.17) (2017-12-14)
 
