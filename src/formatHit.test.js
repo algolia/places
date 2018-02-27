@@ -38,6 +38,46 @@ describe('formatHit', () => {
       },
     }),
     getTestCase({
+      name: 'no suburb',
+      hit: { suburb: undefined },
+      expected: {
+        suburb: undefined,
+        highlight: { suburb: undefined },
+      },
+    }),
+    getTestCase({
+      name: 'suburb[0] === locale_names[0]',
+      hit: {
+        suburb: ['Harbor City'],
+        locale_names: ['Harbor City'],
+        _highlightResult: {
+          locale_names: [{ value: 'Harbor City' }],
+          suburb: [{ value: 'Harbor City' }],
+        },
+      },
+      expected: {
+        suburb: undefined,
+        name: 'Harbor City',
+        highlight: { suburb: undefined, name: 'Harbor City' },
+      },
+    }),
+    getTestCase({
+      name: 'suburb[0] !== locale_names[0]',
+      hit: {
+        suburb: ['Harbor City'],
+        locale_names: ['237th Street'],
+        _highlightResult: {
+          locale_names: [{ value: '237th Street' }],
+          suburb: [{ value: 'Harbor City' }],
+        },
+      },
+      expected: {
+        suburb: 'Harbor City',
+        name: '237th Street',
+        highlight: { suburb: 'Harbor City', name: '237th Street' },
+      },
+    }),
+    getTestCase({
       name: 'locale_names[1] is matching',
       hit: {
         locale_names: ['Paris', 'Lutèce'],
@@ -156,6 +196,7 @@ describe('formatHit', () => {
         name: output.name,
         administrative: output.administrative,
         city: output.city,
+        suburb: output.suburb,
         country: output.country,
         countryCode: output.countryCode,
         type: output.type,
