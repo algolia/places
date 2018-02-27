@@ -1,3 +1,13 @@
+<a name="1.5.0"></a>
+# [1.5.0](https://github.com/algolia/places/compare/v1.4.18...v1.5.0) (2018-02-27)
+
+
+### Features
+
+* **suggestion:** expose suburb field from API in suggestion (#469) ([fd73e14](https://github.com/algolia/places/commit/fd73e14)), closes [#337](https://github.com/algolia/places/issues/337)
+
+
+
 <a name="1.4.18"></a>
 ## [1.4.18](https://github.com/algolia/places/compare/v1.4.17...v1.4.18) (2017-12-21)
 
