@@ -246,6 +246,7 @@ describe('places', () => {
       );
       const pinButton = document.querySelector('.ap-icon-pin');
       expect(clearButton.innerHTML).toEqual('clear');
+      expect(clearButton.getAttribute('aria-label')).toEqual('clear');
 
       placesInstance.once('clear', () => {
         expect(autocomplete.__instance.autocomplete.setVal).toBeCalledWith('');
@@ -263,6 +264,7 @@ describe('places', () => {
         'button.ap-input-icon.ap-icon-pin'
       );
       expect(pinButton.style.display).toEqual('');
+      expect(pinButton.getAttribute('aria-label')).toEqual('focus');
     });
 
     describe('input listener', () => {
