@@ -110,6 +110,7 @@ export default function places(options) {
 
   const clear = document.createElement('button');
   clear.setAttribute('type', 'button');
+  clear.setAttribute('aria-label', 'clear');
   clear.classList.add(`${prefix}-input-icon`);
   clear.classList.add(`${prefix}-icon-clear`);
   clear.innerHTML = clearIcon;
@@ -118,6 +119,7 @@ export default function places(options) {
 
   const pin = document.createElement('button');
   pin.setAttribute('type', 'button');
+  pin.setAttribute('aria-label', 'focus');
   pin.classList.add(`${prefix}-input-icon`);
   pin.classList.add(`${prefix}-icon-pin`);
   pin.innerHTML = pinIcon;
