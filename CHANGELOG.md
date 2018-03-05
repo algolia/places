@@ -1,3 +1,18 @@
+<a name="1.6.0"></a>
+# [1.6.0](https://github.com/algolia/places/compare/v1.5.0...v1.6.0) (2018-03-05)
+
+
+### Bug Fixes
+
+* **css:** add border-box to .ap-input (#472) ([dfa5747](https://github.com/algolia/places/commit/dfa5747))
+
+
+### Features
+
+* **autocomplete:** add aria-label to buttons ([3b4fe14](https://github.com/algolia/places/commit/3b4fe14))
+
+
+
 <a name="1.5.0"></a>
 # [1.5.0](https://github.com/algolia/places/compare/v1.4.18...v1.5.0) (2018-02-27)
 
