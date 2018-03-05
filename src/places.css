@@ -14,6 +14,7 @@
   font: inherit;
   appearance: none;
   -webkit-appearance: none;
+  box-sizing: border-box;
 }
 
 .ap-input::-webkit-search-decoration {
