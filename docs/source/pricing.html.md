@@ -12,6 +12,7 @@ By [signing up](https://www.algolia.com/users/sign_up/places), you can create a 
     <tr>
       <th>1,000 requests / day</th>
       <th>100,000 requests<br /> / month</th>
+      <th>After free tiers</th>
       <th>Need more?</th>
     </tr>
   </thead>
@@ -25,6 +26,10 @@ By [signing up](https://www.algolia.com/users/sign_up/places), you can create a 
         <p><a href="https://www.algolia.com/users/sign_up/places">Sign up</a></p>
       </td>
       <td>
+        <p>$0.40 per 1,000 requests</p>
+        <p><a href="https://www.algolia.com/users/sign_up/places">Sign up</a></p>
+      </td>
+      <td>
         <p>Up to Unlimited</p>
         <p><a href="contact.html">Contact us</a></p>
       </td>
@@ -34,7 +39,7 @@ By [signing up](https://www.algolia.com/users/sign_up/places), you can create a 
 
 ## Rate limits
 
-The Algolia Places API enforces some rate limits.
+The Algolia Places API enforces 30 queries per second. <a href="contact.html">Contact us</a> if you need more.
 
 If you're calling the API from your backend, the rate-limits computation is then based on the source IP.
 
