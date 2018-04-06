@@ -1,0 +1,120 @@
+// Sorry in advance, but this was necessary.
+// It's for the greater good
+
+@import 'vendors/normalize',
+        'vendors/variables',
+        'vendors/functions',
+        'vendors/mixins',
+				'vendors/base';
+				
+@import 'components/navigation',
+        'components/footer',
+        'components/inputs';
+
+@import '../../../node_modules/algolia-aerial/src/stylesheet/aerial';
+
+@import 'components/docsearch/docsearch';
+@import 'components/docsearch/dropdown';
+@import 'components/docsearch/searchbox';
+
+@include searchbox($searchbox-config...);
+@include dropdown($dropdown-config...);
+
+iframe {
+  border: none;
+}
+
+.hero-section {
+  @include diagonal(-4deg, $white, 150px, before) {
+    bottom: -110px;
+    left: 0;
+  }
+
+  #json-response {
+    margin: 2em auto;
+    max-width: 940px;
+    padding: 1em;
+    border-radius: 4px;
+    background-image: linear-gradient(283deg, #3A3665, #262243);
+    position: relative;
+    z-index: 0;
+  
+    #json-response-text {
+      unicode-bidi: embed;
+      font-family: monospace;
+      white-space: pre;
+
+      span[data-highlight-key] {
+        color: #93E600;
+      }
+      span[data-highlight-value] {
+        color: #FFC168;
+        em {
+          font-style: normal;
+        }
+        span[data-highlight-match] {
+          background: rgba($white, .25);
+        }
+      }
+      span[data-highlight-default] {
+        color: $white;
+      }
+    }
+  
+    #json-response-timing {
+      position: absolute;
+      bottom: .5em;
+      right: .5em;
+
+      span[data-highlight-fast] {
+        color: #93E600;
+      }
+      span[data-highlight-medium] {
+        color: #FFC168;
+      }
+      span[data-highlight-slow] {
+        color: $radical-red;
+      }
+    }
+  
+    &:not(.display) {
+      visibility: hidden;
+    }
+  
+    &.display {
+      visibility: visible;
+      @extend %animated;
+      @extend %fadeInDown;
+    }
+  }
+}
+
+.cta-section {
+  @include diagonal(-4deg, $titan-white, 100px, before) {
+    bottom: -40px;
+    left: 0;
+  }
+}
+
+.examples-section {
+  .gif {
+    width: 100%;
+    background-color: $white;
+  }
+
+  .flex-it-2 .content {
+    max-width: 70%;
+    margin: 0 auto;
+  }
+}
+
+.marketing-section {
+  @include diagonal(-4deg, $titan-white, 100px, before) {
+    top: -40px;
+    left: 0;
+  }
+  .content {
+    max-width: 75%;
+    margin: 0 auto;
+  }
+}

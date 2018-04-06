@@ -61,6 +61,7 @@
     "webpack": "^2.6.1"
   },
   "dependencies": {
+    "algolia-aerial": "^1.3.4",
     "algoliasearch": "^3.24.0",
     "autocomplete.js": "^0.28.2",
     "events": "^1.1.1",
