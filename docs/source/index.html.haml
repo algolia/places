@@ -7,20 +7,16 @@ layout: landing
 %section.hero-section.gradient-secondary.color-white.pos-rel{class: [("shrink" if current_page.path != "index.html")]}
   .container
     .spacer80
-    .spacer64
+    .spacer64.hidden-sm
     .flex-container.flex-dir-row.flex-align-center
       .flex-it-2
-        %span.visible-sm.small-illustration
-          = image_tag("images/svg/places-illustration.svg")
         %h1.text-heading= current_page.data.title
-        - if current_page.data.subtitle
-          %h3.text-bg= current_page.data.subtitle
+        %h3.text-bg= current_page.data.subtitle
 
-      - if current_page.path == 'index.html'
-        .flex-it-2
-          .pull-right
-            = partial("/images/svg/places-illustration.svg")
-        %input#landing-demo.hero-searchbar.form-control{type: "search", autofocus: true, placeholder: "Search a city or address", style: 'opacity: 0'}
+      .flex-it-2
+        .pull-right.hidden-sm
+          = partial("/images/svg/places-illustration.svg")
+      %input#landing-demo.hero-searchbar.form-control{type: "search", autofocus: true, placeholder: "Search a city or address", style: 'opacity: 0'}
     
     .spacer64
 
@@ -34,11 +30,11 @@ layout: landing
   .spacer64
   .container
     .flex-container.flex-dir-col.flex-align-center
-      %h2.text-lg Fast, beautiful and easy-to-use address autocompletion
+      %h2.text-lg.text-center Fast, beautiful and easy-to-use address autocompletion
       .spacer32
       %p.text-center Algolia Places provides a fast, distributed and easy way to use address search autocomplete JavaScript library on your website. It has been designed to improve the user experience of your HTML forms.
       .spacer32
-      %p
+      %p.text-center
         It harnesses
         = succeed("’s") do
           = link_to("OpenStreetMap", "documentation.html#license")
@@ -58,7 +54,8 @@ layout: landing
     .text-center
       %h2.text-lg One library, many possibilities
       %p Delight your users by implementing a powerful addresses autocomplete in minutes.
-    .spacer120
+    .spacer120.hidden-sm
+    .spacer32.visible-sm
 
 
     .flex-container.flex-dir-col
@@ -72,7 +69,7 @@ layout: landing
             = link_to("View code", "examples.html#complete-form")
       .spacer32
 
-      .flex-container.flex-align-center
+      .flex-container.flex-align-center.reverse-col
         .flex-it-2
           .content
             %h3.text-bg Create the best city or country selector
@@ -92,7 +89,7 @@ layout: landing
             = link_to("View code", "examples.html#link-to-a-map")
       .spacer32
 
-      .flex-container.flex-align-center
+      .flex-container.flex-align-center.reverse-col
         .flex-it-2
           .content
             %h3.text-bg autocomplete.js & instantsearch.js ready

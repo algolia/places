@@ -11,6 +11,9 @@
         'components/footer',
         'components/inputs';
 
+@import 'vendors/helpers',
+        'vendors/animations';
+
 @import '../../../node_modules/algolia-aerial/src/stylesheet/aerial';
 
 @import 'components/docsearch/docsearch';
@@ -24,7 +27,28 @@ iframe {
   border: none;
 }
 
+.display-on-small {
+  background-color: $white;
+}
+
 .hero-section {
+  @media (max-width: $screen-sm) {
+    .flex-it-2 {
+      flex: 0 1 100%;
+    }
+    #github-button {
+      display: none;
+    }
+    .text-heading {
+      font-size: 40px;
+      text-align: center;
+    }
+    .text-bg {
+      text-align: center;
+      line-height: 1.45;
+    }
+  }
+
   @include diagonal(-4deg, $white, 150px, before) {
     bottom: -110px;
     left: 0;
@@ -43,6 +67,7 @@ iframe {
       unicode-bidi: embed;
       font-family: monospace;
       white-space: pre;
+      overflow: scroll;
 
       span[data-highlight-key] {
         color: #93E600;
@@ -103,8 +128,24 @@ iframe {
   }
 
   .flex-it-2 .content {
-    max-width: 70%;
+    width: 70%;
     margin: 0 auto;
+  }
+  @media (max-width: $screen-sm) {
+    .flex-it-2 .content {
+      width: 100%;
+    }
+    .flex-container.flex-dir-col {
+      .flex-container.flex-align-center {
+        flex-direction: column;
+      }
+      .reverse-col {
+        flex-direction: column-reverse !important;
+      }
+    }
+    .flex-it-2 {
+      flex: 0 1 100%;
+    }
   }
 }
 
@@ -116,5 +157,21 @@ iframe {
   .content {
     max-width: 75%;
     margin: 0 auto;
+  }
+
+  @media (max-width: $screen-sm) {
+    .flex-it-2 {
+      flex: 0 1 100%;
+      .flex-it-3 {
+        flex: 0 1 auto;
+      }
+    }
+    .content {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+    .flex-grow-1 {
+      flex: 0 1 50%;
+    }
   }
 }
