@@ -32,6 +32,10 @@ iframe {
 }
 
 .hero-section {
+  @include diagonal(-4deg, $white, 150px, before) {
+    bottom: -110px;
+    left: 0;
+  }
   @media (max-width: $screen-sm) {
     .flex-it-2 {
       flex: 0 1 100%;
@@ -49,18 +53,9 @@ iframe {
     }
   }
 
-  @include diagonal(-4deg, $white, 150px, before) {
-    bottom: -110px;
-    left: 0;
-  }
-
   #json-response {
-    margin: 2em auto;
     max-width: 940px;
-    padding: 1em;
-    border-radius: 4px;
     background-image: linear-gradient(283deg, #3A3665, #262243);
-    position: relative;
     z-index: 0;
   
     #json-response-text {
@@ -122,14 +117,8 @@ iframe {
 }
 
 .examples-section {
-  .gif {
-    width: 100%;
-    background-color: $white;
-  }
-
   .flex-it-2 .content {
     width: 70%;
-    margin: 0 auto;
   }
   @media (max-width: $screen-sm) {
     .flex-it-2 .content {

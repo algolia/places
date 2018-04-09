@@ -20,8 +20,8 @@ layout: landing
     
     .spacer64
 
-    .pos-rel
-      #json-response.elevation2
+    .pos-rel.unscroll.p-b-large
+      #json-response.p-large.elevation2.radius6.m-t-large.m-b-large.m-l-r-auto.pos-rel
         #json-response-text
         #json-response-timing
 
@@ -61,9 +61,9 @@ layout: landing
     .flex-container.flex-dir-col
       .flex-container.flex-align-center
         .flex-it-2
-          = image_tag("https://res.cloudinary.com/hilnmyskv/image/upload/f_auto,w_600/v1461833483/Algolia_Places_-_demo_checkout_v2_1_zwg57n.gif", class: "gif p-large radius6 elevation0")
+          = image_tag("https://res.cloudinary.com/hilnmyskv/image/upload/f_auto,w_600/v1461833483/Algolia_Places_-_demo_checkout_v2_1_zwg57n.gif", class: "gif p-large radius6 elevation0 fill-white w100p")
         .flex-it-2
-          .content
+          .content.m-l-r-auto
             %h3.text-bg Autocomplete your forms
             %p Simplify your checkout and users’ accounts by filling multiple inputs at the same time.
             = link_to("View code", "examples.html#complete-form")
@@ -71,19 +71,19 @@ layout: landing
 
       .flex-container.flex-align-center.reverse-col
         .flex-it-2
-          .content
+          .content.m-l-r-auto
             %h3.text-bg Create the best city or country selector
             %p Stop scrolling through a list to pick a country. Help your users find it faster.
             = link_to("View code", "examples.html#country-search")
         .flex-it-2
-          = image_tag("https://res.cloudinary.com/hilnmyskv/image/upload/f_auto,q_100/v1462192192/Algolia_Places_-_demo_country_v2_gsn2qq.gif", class: "gif p-large radius6 elevation0")
+          = image_tag("https://res.cloudinary.com/hilnmyskv/image/upload/f_auto,q_100/v1462192192/Algolia_Places_-_demo_country_v2_gsn2qq.gif", class: "gif p-large radius6 elevation0 fill-white w100p")
       .spacer32
 
       .flex-container.flex-align-center
         .flex-it-2
-          = image_tag("https://res.cloudinary.com/hilnmyskv/image/upload/f_auto,w_600/v1462178462/Algolia_Places_-_demo_map_v2_tbsfvm.gif", class: "gif p-large radius6 elevation0")
+          = image_tag("https://res.cloudinary.com/hilnmyskv/image/upload/f_auto,w_600/v1462178462/Algolia_Places_-_demo_map_v2_tbsfvm.gif", class: "gif p-large radius6 elevation0 fill-white w100p")
         .flex-it-2
-          .content
+          .content.m-l-r-auto
             %h3.text-bg Link suggestions to a map
             %p Visualize the results at a glance by displaying them on a real-time map.
             = link_to("View code", "examples.html#link-to-a-map")
@@ -91,12 +91,12 @@ layout: landing
 
       .flex-container.flex-align-center.reverse-col
         .flex-it-2
-          .content
+          .content.m-l-r-auto
             %h3.text-bg autocomplete.js & instantsearch.js ready
             %p Build unique search experiences with the autocomplete.js & instantsearch.js plugins for Algolia Places.
             = link_to("View code", "examples.html#autocompletejs")
         .flex-it-2
-          = image_tag("images/hp-demo-autocompletejs.gif", class: "gif p-large radius6 elevation0 z-100 pos-rel")
+          = image_tag("images/hp-demo-autocompletejs.gif", class: "gif p-large radius6 elevation0 fill-white w100p z-100 pos-rel")
       .spacer32
 
 
