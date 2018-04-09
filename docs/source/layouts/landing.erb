@@ -26,12 +26,12 @@
     <title>Algolia Places <%= "| #{current_page.data.title}" if (current_page.path != 'index.html') %></title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/hint.css/2/hint.min.css" />
-    <link rel="stylesheet" media="screen" href="//fonts.googleapis.com/css?family=Raleway:300,800">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/algolia-aerial@1.3.4/dist/aerial.css">
     <% if current_page.path == 'index.html' %>
     <link rel=canonical href="https://community.algolia.com/places">
     <% end %>
 
-    <%= stylesheet_link_tag :site %>
+    <%= stylesheet_link_tag(:landing) %>
     <%= auto_stylesheet_link_tag %>
     <%= javascript_include_tag config[:places_lib_url] %>
     <script>
@@ -42,9 +42,8 @@
 
   <body class="<%= page_classes %>">
     <%= partial("/partials/navigation") %>
-    <%= partial("/partials/hero") %>
     <%= yield %>
-    <%= partial "/partials/footer" %>
+    <%= partial("/partials/footer") %>
     <%= javascript_include_tag :common %>
     <%= auto_javascript_include_tag %>
   </body>

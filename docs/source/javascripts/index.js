@@ -30,6 +30,19 @@ if (process.env.NODE_ENV === 'development') {
   );
 }
 
+const processingTime = time => {
+  switch (true) {
+    case time < 26:
+      return 'data-highlight-fast';
+    case time < 46:
+      return 'data-highlight-medium';
+    case time < 66:
+      return 'data-highlight-slow';
+    default:
+      return 'data-highlight-fast';
+  }
+};
+
 const $response = document.querySelector('#json-response');
 const $responseText = document.querySelector('#json-response-text');
 const $responseTiming = document.querySelector('#json-response-timing');
@@ -47,9 +60,30 @@ placesAutocomplete.on('change', e => {
     rawAnswer: undefined,
     suggestionIndex: undefined,
   };
-  $responseText.textContent = JSON.stringify(content, null, 2);
-  $responseTiming.innerHTML = `Computed in <u>${e.rawAnswer
-    .processingTimeMS}ms</u>`;
+  const output = JSON.stringify(content, null, 2);
+
+  const regex = {
+    key: /"(.*)"/g,
+    value: /"(.*)":/g,
+    float: /[-]?(\d+\.\d+)/g,
+    highlight: /(<em>(.*)<\/em>)/g,
+    default: /[:]/g,
+  };
+
+  const codes = output
+    .replace(regex.value, `<span data-highlight-value>"$1"</span>:`)
+    .replace(regex.key, `<span data-highlight-key>"$1"</span>`)
+    .replace(regex.float, `<span data-highlight-value>$1</span>`)
+    .replace(
+      regex.highlight,
+      `<span data-highlight-match>&lt;em&gt;$1&lt;/em&gt;</span>`
+    )
+    .replace(regex.default, `<span data-highlight-default>:</span>`);
+
+  $responseText.innerHTML = codes;
+  $responseTiming.innerHTML = `Computed in <span ${processingTime(
+    e.rawAnswer.processingTimeMS
+  )}>${e.rawAnswer.processingTimeMS}ms</span>`;
   $response.classList.add('display');
 });
 placesAutocomplete.on('clear', () => {
