@@ -41,7 +41,7 @@ const processingTime = time => {
     default:
       return 'data-highlight-fast';
   }
-}
+};
 
 const $response = document.querySelector('#json-response');
 const $responseText = document.querySelector('#json-response-text');
