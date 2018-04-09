@@ -71,14 +71,19 @@ placesAutocomplete.on('change', e => {
   };
 
   const codes = output
-    .replace(regex.value, '<span data-highlight-value>"$1"</span>:')
-    .replace(regex.key, '<span data-highlight-key>"$1"</span>')
-    .replace(regex.float, '<span data-highlight-value>$1</span>')
-    .replace(regex.highlight, '<span data-highlight-match>&lt;em&gt;$1&lt;/em&gt;</span>')
-    .replace(regex.default, '<span data-highlight-default>:</span>');
+    .replace(regex.value, `<span data-highlight-value>"$1"</span>:`)
+    .replace(regex.key, `<span data-highlight-key>"$1"</span>`)
+    .replace(regex.float, `<span data-highlight-value>$1</span>`)
+    .replace(
+      regex.highlight,
+      `<span data-highlight-match>&lt;em&gt;$1&lt;/em&gt;</span>`
+    )
+    .replace(regex.default, `<span data-highlight-default>:</span>`);
 
   $responseText.innerHTML = codes;
-  $responseTiming.innerHTML = `Computed in <span ${processingTime(e.rawAnswer.processingTimeMS)}>${e.rawAnswer.processingTimeMS}ms</span>`;
+  $responseTiming.innerHTML = `Computed in <span ${processingTime(
+    e.rawAnswer.processingTimeMS
+  )}>${e.rawAnswer.processingTimeMS}ms</span>`;
   $response.classList.add('display');
 });
 placesAutocomplete.on('clear', () => {
