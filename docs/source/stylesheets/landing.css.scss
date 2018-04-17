@@ -36,6 +36,9 @@ iframe {
     bottom: -110px;
     left: 0;
   }
+  #places_illustration {
+    overflow: visible;
+  }
   @media (max-width: $screen-sm) {
     .flex-it-2 {
       flex: 0 1 100%;
@@ -147,8 +150,30 @@ iframe {
     max-width: 75%;
     margin: 0 auto;
   }
-
+  
   @media (max-width: $screen-sm) {
+    .flex-container {
+      flex-direction: column;
+    }
+    .flex-it-2 {
+      flex: 0 1 100%;
+      &:nth-child(2n) {
+        margin-top: 64px;
+      }
+      .flex-it-3 {
+        flex: 0 1 auto;
+      }
+    }
+    .content {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+    .flex-grow-1 {
+      flex: 0 1 50%;
+    }
+  }
+  
+  @media (max-width: $screen-lg) {
     .flex-it-2 {
       flex: 0 1 100%;
       .flex-it-3 {
