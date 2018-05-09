@@ -2,12 +2,15 @@ input {
   outline: none;
   border-radius: 4px;
 
-  @include appearance(none !important);
   &::-webkit-search-decoration,
   &::-webkit-search-cancel-button,
   &::-webkit-search-results-button,
   &::-webkit-search-results-decoration {
    display: none !important;
+  }
+
+  &:not([type="radio"]):not([type="checkbox"]){
+    @include appearance(none !important);
   }
 }
 

@@ -39,9 +39,25 @@ subtitle: Turn any <code>&lt;input&gt;</code> into an address autocomplete
           .form-group
             %label.control-label{:for => "message"} Message
             %textarea#message.form-control{:name => "message"}
-        .row
-          .form-group
-            %button#submit.btn.btn-cta{:type => "submit"} Submit
+        .col-md-12
+          .form-group.pos-rel.p-small
+            %div
+              %input.fill-titan.pos-rel.p-r-small#accept_email{name: "gdpr_email", type: "checkbox"}
+              %label.text-sm{for: "accept_email", style: "display:inline;margin-left: 8px;letter-spacing: unset;font-weight: 500;text-transform: initial"} Yes please, I'd like to hear from Algolia via email.
+            %div
+              %input.fill-titan.pos-rel.p-r-small#accept_phone{name: "gdpr_phone", type: "checkbox"}
+              %label.text-sm{for: "accept_email", style: "display:inline;margin-left: 8px;letter-spacing: unset;font-weight: 500;text-transform: initial"} Yes please, I'd like to hear from Algolia via phone.
+            %div
+              %input.fill-titan.pos-rel.p-r-small#decline_email{name: "decline_contact", type: "checkbox"}
+              %label.text-sm{for: "decline_email", style: "display:inline;margin-left: 8px;letter-spacing: unset;font-weight: 500;text-transform: initial"} No thanks, I don't want to hear about Algolia services via phone or email.
+            %div
+              %input.fill-titan.pos-rel.p-r-small#accept_tos{name: "accept_tos", type: "checkbox"}
+              %label.text-sm{for: "accept_tos", style: "display:inline;margin-left: 8px;letter-spacing: unset;font-weight: 500;text-transform: initial"}
+                I agree to the
+                %a{href: "https://www.algolia.com/policies/terms", class:"clickable"} terms of service.
+          .row
+            .form-group
+              %button#submit.btn.btn-cta{:type => "submit"} Submit
 
 
 :javascript
@@ -55,6 +71,7 @@ subtitle: Turn any <code>&lt;input&gt;</code> into an address autocomplete
 
     for (i = 0; i < sURLVariables.length; i++) {
       sParameterName = sURLVariables[i].split('=');
+      console.log(sURLVariables[i])
 
       if (sParameterName[0] === sParam) {
         return sParameterName[1] === undefined ? true : sParameterName[1];
@@ -67,6 +84,7 @@ subtitle: Turn any <code>&lt;input&gt;</code> into an address autocomplete
     var formState = getUrlParameter('form');
 
     if (formState === 'success'){
+      debugger;
       document.getElementById("form-message-success").innerHTML="Thank you for contacting us regarding Algolia Places, we'll be in touch shortly.<br><br>Return to <a href='https://community.algolia.com/places'>Places homepage</a> or <a href='https://www.algolia.com/product'>learn more about Algolia</a>";
       document.getElementById("form-message-success").className = "";
       document.getElementById("form-contact").className += " hide";
