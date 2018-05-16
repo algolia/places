@@ -155,6 +155,23 @@ describe('formatHit', () => {
       },
     }),
     getTestCase({
+      name: 'county[0] === locale_names[0]',
+      hit: {
+        county: ['Paris'],
+        locale_names: ['Paris'],
+        _highlightResult: {
+          locale_names: [{ value: 'Paris' }],
+          city: [{ value: 'Paris' }],
+        },
+      },
+      expected: {
+        city: undefined,
+        county: undefined,
+        name: 'Paris',
+        highlight: { city: undefined, name: 'Paris', county: undefined },
+      },
+    }),
+    getTestCase({
       name: 'no country',
       hit: {
         country: undefined,
@@ -199,6 +216,7 @@ describe('formatHit', () => {
         suburb: output.suburb,
         country: output.country,
         countryCode: output.countryCode,
+        county: output.county,
         type: output.type,
         latlng: output.latlng,
         postcode: output.postcode,
@@ -227,6 +245,7 @@ function getTestCase({ name, hit: userHit = {}, expected: userExpected = {} }) {
     country: 'France',
     administrative: ['Île-de-France'],
     city: ['Paris'],
+    county: ['County of Paris'],
     _geoloc: {
       lat: '123',
       lng: '456',
@@ -236,6 +255,7 @@ function getTestCase({ name, hit: userHit = {}, expected: userExpected = {} }) {
     _highlightResult: {
       locale_names: [{ value: 'Paris' }],
       city: [{ value: 'Paris' }],
+      county: [{ value: 'County of Paris' }],
       administrative: [{ value: 'Île-de-France' }],
       country: { value: 'France' },
     },
@@ -244,6 +264,7 @@ function getTestCase({ name, hit: userHit = {}, expected: userExpected = {} }) {
   const defaultExpected = {
     name: 'rue de rivoli',
     administrative: 'Île-de-France',
+    county: 'County of Paris',
     city: 'Paris',
     country: 'France',
     latlng: {
@@ -259,6 +280,7 @@ function getTestCase({ name, hit: userHit = {}, expected: userExpected = {} }) {
       city: 'Paris',
       administrative: 'Île-de-France',
       country: 'France',
+      county: 'County of Paris',
     },
   };
 
