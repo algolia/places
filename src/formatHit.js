@@ -50,6 +50,10 @@ export default function formatHit({
       ? hit.suburb[0]
       : undefined;
 
+    const county = hit.county && hit.county[0] !== name
+      ? hit.county[0]
+      : undefined;
+
     const highlight = {
       name: getBestHighlightedForm(hit._highlightResult.locale_names),
       city: city
@@ -62,11 +66,15 @@ export default function formatHit({
       suburb: suburb
         ? getBestHighlightedForm(hit._highlightResult.suburb)
         : undefined,
+      county: county
+        ? getBestHighlightedForm(hit._highlightResult.county)
+        : undefined,
     };
 
     const suggestion = {
       name,
       administrative,
+      county,
       city,
       suburb,
       country,
