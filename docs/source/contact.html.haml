@@ -40,21 +40,16 @@ subtitle: Turn any <code>&lt;input&gt;</code> into an address autocomplete
             %label.control-label{:for => "message"} Message
             %textarea#message.form-control{:name => "message"}
         .col-md-12
+          .spacer16
           .form-group.pos-rel.p-small
             %div
-              %input.fill-titan.pos-rel.p-r-small#accept_email{name: "gdpr_email", type: "checkbox"}
-              %label.text-sm{for: "accept_email", style: "display:inline;margin-left: 8px;letter-spacing: unset;font-weight: 500;text-transform: initial"} Yes please, I'd like to hear from Algolia via email.
+              %input.fill-titan.pos-rel.p-r-small#marketing_optin{name: "marketing_optin", type: "checkbox", value: 'true'}
+              %label.text-sm{for: "marketing_optin", style: "display:inline;margin-left: 8px;letter-spacing: unset;font-weight: 500;text-transform: initial;font-size: 14px"} Yes, I'd like to receive more information on Algolia products, events and promotions via email.
             %div
-              %input.fill-titan.pos-rel.p-r-small#accept_phone{name: "gdpr_phone", type: "checkbox"}
-              %label.text-sm{for: "accept_email", style: "display:inline;margin-left: 8px;letter-spacing: unset;font-weight: 500;text-transform: initial"} Yes please, I'd like to hear from Algolia via phone.
-            %div
-              %input.fill-titan.pos-rel.p-r-small#decline_email{name: "decline_contact", type: "checkbox"}
-              %label.text-sm{for: "decline_email", style: "display:inline;margin-left: 8px;letter-spacing: unset;font-weight: 500;text-transform: initial"} No thanks, I don't want to hear about Algolia services via phone or email.
-            %div
-              %input.fill-titan.pos-rel.p-r-small#accept_tos{name: "accept_tos", type: "checkbox"}
-              %label.text-sm{for: "accept_tos", style: "display:inline;margin-left: 8px;letter-spacing: unset;font-weight: 500;text-transform: initial"}
-                I agree to the
-                %a{href: "https://www.algolia.com/policies/terms", class:"clickable"} terms of service.
+              %p{style: 'font-size: 14px'}
+                Refer to
+                %a{href: "https://www.algolia.com/policies/terms", class:"clickable"} Algolia's Privacy Policy
+                for more information on how we use and protect your data
           .row
             .form-group
               %button#submit.btn.btn-cta{:type => "submit"} Submit
