@@ -66,8 +66,6 @@ subtitle: Turn any <code>&lt;input&gt;</code> into an address autocomplete
 
     for (i = 0; i < sURLVariables.length; i++) {
       sParameterName = sURLVariables[i].split('=');
-      console.log(sURLVariables[i])
-
       if (sParameterName[0] === sParam) {
         return sParameterName[1] === undefined ? true : sParameterName[1];
       }
@@ -79,7 +77,6 @@ subtitle: Turn any <code>&lt;input&gt;</code> into an address autocomplete
     var formState = getUrlParameter('form');
 
     if (formState === 'success'){
-      debugger;
       document.getElementById("form-message-success").innerHTML="Thank you for contacting us regarding Algolia Places, we'll be in touch shortly.<br><br>Return to <a href='https://community.algolia.com/places'>Places homepage</a> or <a href='https://www.algolia.com/product'>learn more about Algolia</a>";
       document.getElementById("form-message-success").className = "";
       document.getElementById("form-contact").className += " hide";
