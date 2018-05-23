@@ -94,12 +94,25 @@ Specifies how many results you want to retrieve per search.
     </tr>
     <tr>
 <td markdown="1">
+<div class="api-entry" id="api-options-type"><code>page</code></div>
+Type: number
+</td>
+<td markdown="1">
+Specifies the current page to retrieve results for. First page starts at 0.
+
+**Default**: 0.
+</td>
+    </tr>
+    <tr>
+<td markdown="1">
 <div class="api-entry" id="api-options-language"><code>language</code></div>
 Type: string
 </td>
 <td markdown="1">
 If specified, restrict the search results to a single language.
 You can pass two letters country codes ([ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)).
+
+Warning: language parameter is case sensitive and should be lowercase otherwise it will fallback to default language.
 </td>
     </tr>
     <tr>
@@ -248,7 +261,7 @@ The API answers is using the JSON format and looks like:
   <tbody>
     <tr>
 <td markdown="1">
-<div class="api-entry" id="api-suggestion-name"><code>locale_name</code></div>
+<div class="api-entry" id="api-suggestion-name"><code>locale_names</code></div>
 </td>
 <td markdown="1">
 List of names of the place. If no `language` parameter is specified, retrieves all of them.
@@ -345,6 +358,28 @@ The associated highlighting information.
 </table>
 
 **Note:** The non-documented attributes of the JSON answer may change, don't rely on them.
+
+### Alternative JSON answer format
+
+When you provide the `language` parameter, only data for that language will be returned.
+
+Here is what it would look like if you are using the `fr` language for the `Paris` query:
+
+```js
+{
+  "hits": [{
+    "objectID": "145746683_7444",
+    "locale_names": ["Paris", "Lutèce"],
+    "city": ["Paris"],
+    // ...
+  }],
+}
+```
+
+**Warning:** In case you provide a non existing language, the engine will fallback to
+the default language and only display flattened values for that one resulting in
+the same output as in the last example.
+
 
 ### Query strategy
 
