@@ -39,9 +39,20 @@ subtitle: Turn any <code>&lt;input&gt;</code> into an address autocomplete
           .form-group
             %label.control-label{:for => "message"} Message
             %textarea#message.form-control{:name => "message"}
-        .row
-          .form-group
-            %button#submit.btn.btn-cta{:type => "submit"} Submit
+        .col-md-12
+          .spacer16
+          .form-group.pos-rel.p-small
+            %div
+              %input.fill-titan.pos-rel.p-r-small#marketing_optin{name: "marketing_optin", type: "checkbox", value: 'true'}
+              %label.text-sm{for: "marketing_optin", style: "display:inline;margin-left: 8px;letter-spacing: unset;font-weight: 500;text-transform: initial;font-size: 14px"} Yes, I'd like to receive more information on Algolia products, events and promotions via email.
+            %div
+              %p{style: 'font-size: 14px'}
+                Refer to
+                %a{href: "https://www.algolia.com/policies/terms", class:"clickable"} Algolia's Privacy Policy
+                for more information on how we use and protect your data
+          .row
+            .form-group
+              %button#submit.btn.btn-cta{:type => "submit"} Submit
 
 
 :javascript
@@ -55,7 +66,6 @@ subtitle: Turn any <code>&lt;input&gt;</code> into an address autocomplete
 
     for (i = 0; i < sURLVariables.length; i++) {
       sParameterName = sURLVariables[i].split('=');
-
       if (sParameterName[0] === sParam) {
         return sParameterName[1] === undefined ? true : sParameterName[1];
       }
