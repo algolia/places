@@ -4,7 +4,8 @@ set -e # exit when error
 
 printf "\nReleasing\n"
 
-if [[ -n $(npm owner add "$(npm whoami)") ]]; then
+if ! npm owner ls | grep -q "$(npm whoami)"
+then
   printf "Release: Not an owner of the npm repo, ask a contributor for access"
   exit 1
 fi
