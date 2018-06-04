@@ -1,3 +1,8 @@
+<a name="1.7.3"></a>
+## [1.7.3](https://github.com/algolia/places/compare/v1.7.2...v1.7.3) (2018-06-04)
+
+
+
 <a name="1.7.2"></a>
 ## [1.7.2](https://github.com/algolia/places/compare/v1.7.1...v1.7.2) (2018-05-17)
 
