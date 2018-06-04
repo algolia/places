@@ -42,17 +42,16 @@ export default function formatHit({
   try {
     const name = hit.locale_names[0];
     const country = hit.country;
-    const administrative = hit.administrative && hit.administrative[0] !== name
-      ? hit.administrative[0]
-      : undefined;
+    const administrative =
+      hit.administrative && hit.administrative[0] !== name
+        ? hit.administrative[0]
+        : undefined;
     const city = hit.city && hit.city[0] !== name ? hit.city[0] : undefined;
-    const suburb = hit.suburb && hit.suburb[0] !== name
-      ? hit.suburb[0]
-      : undefined;
+    const suburb =
+      hit.suburb && hit.suburb[0] !== name ? hit.suburb[0] : undefined;
 
-    const county = hit.county && hit.county[0] !== name
-      ? hit.county[0]
-      : undefined;
+    const county =
+      hit.county && hit.county[0] !== name ? hit.county[0] : undefined;
 
     const highlight = {
       name: getBestHighlightedForm(hit._highlightResult.locale_names),

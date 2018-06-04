@@ -301,7 +301,7 @@ describe('places', () => {
         input.dispatchEvent(new Event('input'));
         autocomplete.__setQuery('');
         input.dispatchEvent(new Event('input'));
-        expect(placesInstance.emit.mock.calls.length).toEqual(1);
+        expect(placesInstance.emit.mock.calls).toHaveLength(1);
       });
 
       it('hides or show icons given the query', () => {

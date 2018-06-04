@@ -1,3 +1,3 @@
 module.exports = {
-  extends: ['algolia'],
+  extends: ['algolia', 'algolia/jest'],
 };

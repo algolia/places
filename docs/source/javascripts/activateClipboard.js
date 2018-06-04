@@ -1,6 +1,6 @@
 /* global clippyPath */
 
-import Clipboard from 'clipboard';
+import ClipboardJS from 'clipboard';
 
 export default function activateClipboard(codeSamples) {
   codeSamples.forEach(codeSample => {
@@ -8,7 +8,7 @@ export default function activateClipboard(codeSamples) {
     copyToClipboard.innerHTML = `<img src="${clippyPath}" width="13" />`;
     copyToClipboard.classList.add('clipboard');
     codeSample.appendChild(copyToClipboard);
-    const clipboard = new Clipboard(copyToClipboard, {
+    const clipboard = new ClipboardJS(copyToClipboard, {
       text: () => codeSample.textContent,
     });
 
