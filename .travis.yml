@@ -1,6 +1,7 @@
 language: node_js
 node_js: stable
 before_install:
+- curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.7.0
 - git config --global user.email "algobot@users.noreply.github.com"
 - git config --global user.name "algobot"
 - rvm install 2.4.0
@@ -14,7 +15,7 @@ branches:
 notifications:
   slack:
     rooms:
-      secure: ksGBanrJ0rmBUpMJT8TWCvjJ6F8Rlin8a9DQNPNOa1s+bCGswp87V1a1bSybz/166JflMqSutf6ES2/qBcp8uhXS3hfKdpj3wJwUPtiWQ+Q1GRAsL7ZiPlz/OgOkACihyrONipjzTANSKhAy7NiJSGOMbSn09yUaaun+wp5iy1KJ2qcC/GRbytkyyDkzzVYDKonNV96KINeTnv3WnM+cgt/1YEzvQ6lPLExS0S90m4m/JUn+pO4CNfw0uHc1NEd3whPQi7WDr1a43qNGea7/WFg9f8yDn1PFnkLujYku77rfFrn164s1UaerUuHusEX7Qff/0BZ3Fy29LPfmQIqZzrb5RGRnsYxv+nyZwMuWw1xP/Ag2fs+GuPw8JG2JJNE61aAKL+HgbC/g4XaSckvwMzA3T/5cvJVh7aIBQmptDuB8AWygp6srBKgKtTmZxqFnpZaHm1Pz5A2C/mERQNf6YQorv/QBtT7seek9CtS5DBqlaBxogHTRN1qJ+dNZ/t1S8Tk5QT4w8Wt8L3xS4fBEakH0eaFXtKAPDO8optNMQhHesvBGUfOJ+bjaT/2626BFK9FXJg3VTlgPMZlto8QSaax6zJocmC3PGxvHOevB4cjR3j44msvmRRtgkRXIuxTK1mXamCbH2UCXLN5aVgXWSQjZY9W5uG8sqwFjnao4VZg=  
+      secure: ksGBanrJ0rmBUpMJT8TWCvjJ6F8Rlin8a9DQNPNOa1s+bCGswp87V1a1bSybz/166JflMqSutf6ES2/qBcp8uhXS3hfKdpj3wJwUPtiWQ+Q1GRAsL7ZiPlz/OgOkACihyrONipjzTANSKhAy7NiJSGOMbSn09yUaaun+wp5iy1KJ2qcC/GRbytkyyDkzzVYDKonNV96KINeTnv3WnM+cgt/1YEzvQ6lPLExS0S90m4m/JUn+pO4CNfw0uHc1NEd3whPQi7WDr1a43qNGea7/WFg9f8yDn1PFnkLujYku77rfFrn164s1UaerUuHusEX7Qff/0BZ3Fy29LPfmQIqZzrb5RGRnsYxv+nyZwMuWw1xP/Ag2fs+GuPw8JG2JJNE61aAKL+HgbC/g4XaSckvwMzA3T/5cvJVh7aIBQmptDuB8AWygp6srBKgKtTmZxqFnpZaHm1Pz5A2C/mERQNf6YQorv/QBtT7seek9CtS5DBqlaBxogHTRN1qJ+dNZ/t1S8Tk5QT4w8Wt8L3xS4fBEakH0eaFXtKAPDO8optNMQhHesvBGUfOJ+bjaT/2626BFK9FXJg3VTlgPMZlto8QSaax6zJocmC3PGxvHOevB4cjR3j44msvmRRtgkRXIuxTK1mXamCbH2UCXLN5aVgXWSQjZY9W5uG8sqwFjnao4VZg=
 sudo: false
 cache:
   bundler: true
