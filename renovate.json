@@ -1,5 +1,6 @@
 {
   "extends": [
-    "config:base"
+    "config:js-lib",
+    "algolia"
   ]
 }
