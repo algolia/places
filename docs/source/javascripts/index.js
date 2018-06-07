@@ -65,7 +65,7 @@ placesAutocomplete.on('change', e => {
   const regex = {
     key: /"(.*)"/g,
     value: /"(.*)":/g,
-    float: /[-]?(\d+\.\d+)/g,
+    float: /([-]?\d+\.\d+)/g,
     highlight: /(<em>(.*)<\/em>)/g,
     default: /[:]/g,
   };
