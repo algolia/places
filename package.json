@@ -27,7 +27,7 @@
   "repository": "https://github.com/algolia/places",
   "license": "MIT",
   "devDependencies": {
-    "algoliasearch-helper": "2.26.0",
+    "algoliasearch-helper": "2.26.1",
     "babel-cli": "6.26.0",
     "babel-core": "6.26.3",
     "babel-eslint": "8.2.3",
