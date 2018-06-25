@@ -2562,9 +2562,9 @@ eslint-import-resolver-node@^0.3.1:
     debug "^2.6.9"
     resolve "^1.5.0"
 
-eslint-import-resolver-webpack@0.10.0:
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/eslint-import-resolver-webpack/-/eslint-import-resolver-webpack-0.10.0.tgz#b6f2468dc3e8b4ea076e5d75bece8da932789b07"
+eslint-import-resolver-webpack@0.10.1:
+  version "0.10.1"
+  resolved "https://registry.yarnpkg.com/eslint-import-resolver-webpack/-/eslint-import-resolver-webpack-0.10.1.tgz#4cbceed2c0c43e488a74775c30861e58e00fb290"
   dependencies:
     array-find "^1.0.0"
     debug "^2.6.8"
