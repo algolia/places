@@ -33,7 +33,15 @@ Replace `{objectID}` by the objectID you whish to query.
 $ curl -X GET 'https://places-dsn.algolia.net/1/places/111781_17807753'
 ```
 
-**Note:** The relative path prefix `/1/` indicates that we are currently using version 1 of the API.
+### Reverse geocoding
+
+Reverse geocoding means converting a location (latitude and longitude) to a readable address.
+
+**Note:** `aroundLatLng` parameter is mandatory. The only optional parameters permitted for this endpoint are `hitsPerPage` and `language`.
+
+```bash
+$ curl -X GET 'https://places-dsn.algolia.net/1/places/reverse?aroundLatLng=48.880379,%202.327007&hitsPerPage=5&language=fr'
+```
 
 ### Authentication
 
