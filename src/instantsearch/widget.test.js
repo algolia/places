@@ -49,7 +49,7 @@ describe('instantsearch widget', () => {
 
     expect(helper.getState()).toMatchObject({
       insideBoundingBox: undefined,
-      aroundLatLng: '0,0',
+      aroundLatLng: '',
     });
   });
 
