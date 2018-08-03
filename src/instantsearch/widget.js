@@ -18,7 +18,10 @@ class AlgoliaPlacesWidget {
   init({ helper }) {
     helper
       .setQueryParameter('insideBoundingBox')
-      .setQueryParameter('aroundLatLng', this.defaultPosition);
+      .setQueryParameter(
+        'aroundLatLng',
+        this.uiState.position || this.defaultPosition
+      );
 
     this.placesAutocomplete.on('change', opts => {
       const {
@@ -56,6 +59,7 @@ class AlgoliaPlacesWidget {
       }
 
       this.placesAutocomplete.setVal(query || '');
+      this.uiState = uiState.places;
       return searchParameters
         .setQueryParameter('insideBoundingBox')
         .setQueryParameter('aroundLatLng', position);
