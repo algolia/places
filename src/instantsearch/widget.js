@@ -12,7 +12,7 @@ class AlgoliaPlacesWidget {
     this.placesOptions = placesOptions;
     this.placesAutocomplete = places(this.placesOptions);
 
-    this.state = {};
+    this.uiState = {};
   }
 
   init({ helper }) {
@@ -28,18 +28,18 @@ class AlgoliaPlacesWidget {
         },
       } = opts;
 
-      this.state.position = `${lat},${lng}`;
-      this.state.query = value;
+      this.uiState.position = `${lat},${lng}`;
+      this.uiState.query = value;
 
       helper
         .setQueryParameter('insideBoundingBox')
-        .setQueryParameter('aroundLatLng', this.state.position)
+        .setQueryParameter('aroundLatLng', this.uiState.position)
         .search();
     });
 
     this.placesAutocomplete.on('clear', () => {
-      this.state.position = undefined;
-      this.state.query = undefined;
+      this.uiState.position = undefined;
+      this.uiState.query = undefined;
 
       helper
         .setQueryParameter('insideBoundingBox')
@@ -65,12 +65,15 @@ class AlgoliaPlacesWidget {
   }
 
   getWidgetState(uiState) {
-    if (this.state.position === undefined && this.state.query === undefined) {
+    if (
+      this.uiState.position === undefined &&
+      this.uiState.query === undefined
+    ) {
       const newUiState = Object.assign({}, uiState);
       delete newUiState.places;
       return newUiState;
     }
-    return Object.assign({}, uiState, { places: this.state });
+    return Object.assign({}, uiState, { places: this.uiState });
   }
 }
 

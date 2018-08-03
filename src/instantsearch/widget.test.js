@@ -109,10 +109,12 @@ describe('instantsearch widget', () => {
   });
 
   describe('routing', () => {
-    const getInitializedWidget = () => {
+    const getInitializedWidget = (
+      widgetOptions = { defaultPosition: [2, 2] }
+    ) => {
       const client = createFakeClient();
       const helper = createFakekHelper(client);
-      const widget = algoliaPlacesWidget({ defaultPosition: [2, 2] });
+      const widget = algoliaPlacesWidget(widgetOptions);
       widget.init({ helper, state: helper.state });
 
       return [widget, helper];
@@ -164,7 +166,7 @@ describe('instantsearch widget', () => {
         expect(uiStateAfter).toMatchObject(expectedUiState);
       });
 
-      test('should give reset places uiState on clear', () => {
+      test('should reset places uiState on clear', () => {
         const [widget, helper] = getInitializedWidget();
 
         const eventName = places.__instance.on.mock.calls[1][0];
@@ -178,6 +180,39 @@ describe('instantsearch widget', () => {
         expect(helper.getState()).toMatchObject({
           insideBoundingBox: undefined,
           aroundLatLng: '2,2',
+        });
+
+        const uiStateBefore = {
+          places: {
+            position: '123,456',
+            query: 'Paris',
+          },
+        };
+
+        const uiStateAfter = widget.getWidgetState(uiStateBefore, {
+          searchParameters: helper.state,
+          helper,
+        });
+
+        const expectedUiState = {};
+
+        expect(uiStateAfter).toEqual(expectedUiState);
+      });
+
+      test('should reset places uiState on clear with no widgetOptions', () => {
+        const [widget, helper] = getInitializedWidget({});
+
+        const eventName = places.__instance.on.mock.calls[1][0];
+        const eventListener = places.__instance.on.mock.calls[1][1];
+
+        expect(eventName).toEqual('clear');
+
+        eventListener();
+
+        expect(helper.search).toBeCalled();
+        expect(helper.getState()).toMatchObject({
+          insideBoundingBox: undefined,
+          aroundLatLng: undefined,
         });
 
         const uiStateBefore = {
@@ -217,6 +252,21 @@ describe('instantsearch widget', () => {
         const [widget, helper] = getInitializedWidget();
         // The user presses back (browser), and the URL contains no parameters
         const uiState = {};
+
+        const searchParametersBefore = SearchParameters.make(helper.state);
+        const searchParametersAfter = widget.getWidgetSearchParameters(
+          searchParametersBefore,
+          { uiState }
+        );
+        expect(searchParametersAfter).toMatchSnapshot();
+        expect(searchParametersAfter.aroundLatLng).toBe('2,2');
+        expect(searchParametersAfter.insideBoundingBox).toBe(undefined);
+      });
+
+      test('should reset aroundLatLng if no defaultOptions and no value is in the UI State', () => {
+        const [widget, helper] = getInitializedWidget({});
+        // The user presses back (browser), and the URL contains no parameters
+        const uiState = {};
         // The current state is set to page 4
 
         const searchParametersBefore = SearchParameters.make(helper.state);
@@ -226,7 +276,7 @@ describe('instantsearch widget', () => {
         );
         // Applying an empty state, should force back to page 0
         expect(searchParametersAfter).toMatchSnapshot();
-        expect(searchParametersAfter.aroundLatLng).toBe('2,2');
+        expect(searchParametersAfter.aroundLatLng).toBe(undefined);
         expect(searchParametersAfter.insideBoundingBox).toBe(undefined);
       });
 
