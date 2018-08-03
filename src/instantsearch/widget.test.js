@@ -194,7 +194,12 @@ describe('instantsearch widget', () => {
           helper,
         });
 
-        const expectedUiState = {};
+        const expectedUiState = {
+          places: {
+            position: '2,2',
+            query: undefined,
+          },
+        };
 
         expect(uiStateAfter).toEqual(expectedUiState);
       });

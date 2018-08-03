@@ -16,7 +16,6 @@ class AlgoliaPlacesWidget {
   }
 
   init({ helper }) {
-    console.log('Hello:init');
     helper
       .setQueryParameter('insideBoundingBox')
       .setQueryParameter(
@@ -35,7 +34,6 @@ class AlgoliaPlacesWidget {
       this.state.position = `${lat},${lng}`;
       this.state.query = value;
 
-      console.log('Hello:change');
       helper
         .setQueryParameter('insideBoundingBox')
         .setQueryParameter('aroundLatLng', this.state.position)
@@ -46,7 +44,6 @@ class AlgoliaPlacesWidget {
       this.state.position = undefined;
       this.state.query = undefined;
 
-      console.log('Hello:clear');
       helper
         .setQueryParameter('insideBoundingBox')
         .setQueryParameter('aroundLatLng', this.defaultPosition)
@@ -55,31 +52,19 @@ class AlgoliaPlacesWidget {
   }
 
   getWidgetSearchParameters(searchParameters, { uiState }) {
-    console.log('gWSP', 'current', this.state, 'future', uiState.places);
-    if (
-      !uiState.places ||
-      (uiState.places.position === this.state.position &&
-        uiState.places.query === this.state.query)
-    ) {
+    if (!uiState.places) {
       this.placesAutocomplete.setVal('');
       return searchParameters;
     }
 
-    if (uiState.places) {
-      console.log('future has state', uiState.places);
-      const { query, position } = uiState.places;
+    const { query, position } = uiState.places;
 
-      this.state = uiState.places;
-      this.placesAutocomplete.setVal(query || '');
+    this.state = uiState.places;
+    this.placesAutocomplete.setVal(query || '');
 
-      console.log('set new state', this.state, query, position);
-
-      return searchParameters
-        .setQueryParameter('insideBoundingBox')
-        .setQueryParameter('aroundLatLng', position);
-    }
-
-    return searchParameters;
+    return searchParameters
+      .setQueryParameter('insideBoundingBox')
+      .setQueryParameter('aroundLatLng', position);
   }
 
   getWidgetState(uiState, { searchParameters }) {
