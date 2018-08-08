@@ -4,6 +4,12 @@ set -e # exit when error
 
 printf "\nReleasing\n"
 
+if [ "$(node -v)" != "v$(cat .nvmrc)" ]
+  then
+  printf "Release: Node version mismatch with .nvmrc (should be $(cat .nvmrc))\n"
+  exit 1
+fi
+
 if ! npm owner ls | grep -q "$(npm whoami)"
 then
   printf "Release: Not an owner of the npm repo, ask a contributor for access"
