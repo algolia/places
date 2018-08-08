@@ -1,3 +1,13 @@
+<a name="1.8.0"></a>
+# [1.8.0](https://github.com/algolia/places/compare/v1.7.3...v1.8.0) (2018-08-08)
+
+
+### Bug Fixes
+
+* **default-location:** don't default to [0,0] for defaultPosition ([#550](https://github.com/algolia/places/issues/550)) ([9c0056c](https://github.com/algolia/places/commit/9c0056c))
+
+
+
 <a name="1.7.3"></a>
 ## [1.7.3](https://github.com/algolia/places/compare/v1.7.2...v1.7.3) (2018-06-04)
 
