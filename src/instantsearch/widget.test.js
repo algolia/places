@@ -127,6 +127,29 @@ describe('instantsearch widget', () => {
     });
   });
 
+  it('removes aroundLatLngViaIP on change event', () => {
+    const client = createFakeClient();
+    const helper = createFakekHelper(client);
+    const widget = algoliaPlacesWidget(defaultOptions);
+
+    helper.setQueryParameter('aroundLatLngViaIP', true);
+    widget.init({ helper });
+
+    const eventName = places.__instance.on.mock.calls[0][0];
+    const eventListener = places.__instance.on.mock.calls[0][1];
+
+    expect(eventName).toEqual('change');
+
+    eventListener({ suggestion: { latlng: { lat: '123', lng: '456' } } });
+
+    expect(helper.search).toBeCalled();
+    expect(helper.getState()).toMatchObject({
+      insideBoundingBox: undefined,
+      aroundLatLng: '123,456',
+      aroundLatLngViaIP: false,
+    });
+  });
+
   it('configures aroundLatLng on clear event', () => {
     const client = createFakeClient();
     const helper = createFakekHelper(client);
@@ -365,6 +388,42 @@ describe('instantsearch widget', () => {
         // Applying a state with new parameters should apply them on the search
         expect(places.__instance.close).toHaveBeenCalled();
       });
+    });
+  });
+
+  it('restores aroundLatLngVia:true on clear event', () => {
+    const client = createFakeClient();
+    const helper = createFakekHelper(client);
+    const widget = algoliaPlacesWidget({ defaultPosition: [2, 2] });
+
+    helper.setQueryParameter('aroundLatLngViaIP', true);
+    widget.init({ helper });
+    const changeEventName = places.__instance.on.mock.calls[0][0];
+    const changeEventListener = places.__instance.on.mock.calls[0][1];
+
+    expect(changeEventName).toEqual('change');
+
+    changeEventListener({ suggestion: { latlng: { lat: '123', lng: '456' } } });
+
+    expect(helper.search).toBeCalled();
+    expect(helper.getState()).toMatchObject({
+      insideBoundingBox: undefined,
+      aroundLatLng: '123,456',
+      aroundLatLngViaIP: false,
+    });
+
+    const clearEventName = places.__instance.on.mock.calls[1][0];
+    const clearEventListener = places.__instance.on.mock.calls[1][1];
+
+    expect(clearEventName).toEqual('clear');
+
+    clearEventListener();
+
+    expect(helper.search).toBeCalled();
+    expect(helper.getState()).toMatchObject({
+      insideBoundingBox: undefined,
+      aroundLatLng: '2,2',
+      aroundLatLngViaIP: true,
     });
   });
 });

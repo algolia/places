@@ -27,6 +27,8 @@ class AlgoliaPlacesWidget {
   }
 
   init({ helper }) {
+    const viaIPFlag = helper.getQueryParameter('aroundLatLngViaIP');
+
     this.placesAutocomplete.on('change', opts => {
       const {
         suggestion: {
@@ -38,6 +40,7 @@ class AlgoliaPlacesWidget {
       this.query = value;
       helper
         .setQueryParameter('insideBoundingBox')
+        .setQueryParameter('aroundLatLngViaIP', false)
         .setQueryParameter('aroundLatLng', `${lat},${lng}`)
         .search();
     });
@@ -46,6 +49,7 @@ class AlgoliaPlacesWidget {
       this.query = '';
       helper
         .setQueryParameter('insideBoundingBox')
+        .setQueryParameter('aroundLatLngViaIP', viaIPFlag)
         .setQueryParameter('aroundLatLng', this.defaultPosition)
         .search();
     });
