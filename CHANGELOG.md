@@ -1,3 +1,13 @@
+<a name="1.9.0"></a>
+# [1.9.0](https://github.com/algolia/places/compare/v1.8.0...v1.9.0) (2018-08-08)
+
+
+### Features
+
+* **is-routing:** support instantsearch routing ([#551](https://github.com/algolia/places/issues/551)) ([05a8cdb](https://github.com/algolia/places/commit/05a8cdb))
+
+
+
 <a name="1.8.0"></a>
 # [1.8.0](https://github.com/algolia/places/compare/v1.7.3...v1.8.0) (2018-08-08)
 
