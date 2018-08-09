@@ -50,6 +50,7 @@ class AlgoliaPlacesWidget {
   getWidgetSearchParameters(searchParameters, { uiState }) {
     if (!uiState.places) {
       this.placesAutocomplete.setVal('');
+      this.placesAutocomplete.close();
       return searchParameters;
     }
 
@@ -57,6 +58,7 @@ class AlgoliaPlacesWidget {
 
     this.stateSetDuringRouting = true;
     this.placesAutocomplete.setVal(query || '');
+    this.placesAutocomplete.close();
 
     return searchParameters
       .setQueryParameter('insideBoundingBox')
