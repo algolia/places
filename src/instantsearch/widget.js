@@ -5,7 +5,7 @@ import places from '../places.js';
  */
 class AlgoliaPlacesWidget {
   constructor({ defaultPosition, ...placesOptions }) {
-    if (defaultPosition instanceof Array && defaultPosition.length === 2) {
+    if (Array.isArray(defaultPosition) && defaultPosition.length === 2) {
       this.defaultPosition = defaultPosition.join(',');
     }
 
