@@ -12,7 +12,7 @@ class AlgoliaPlacesWidget {
     this.placesOptions = placesOptions;
     this.placesAutocomplete = places(this.placesOptions);
 
-    this.state = {};
+    this.query = '';
   }
 
   init({ helper }) {
@@ -31,19 +31,15 @@ class AlgoliaPlacesWidget {
         },
       } = opts;
 
-      this.state.position = `${lat},${lng}`;
-      this.state.query = value;
-
+      this.query = value;
       helper
         .setQueryParameter('insideBoundingBox')
-        .setQueryParameter('aroundLatLng', this.state.position)
+        .setQueryParameter('aroundLatLng', `${lat},${lng}`)
         .search();
     });
 
     this.placesAutocomplete.on('clear', () => {
-      this.state.position = undefined;
-      this.state.query = undefined;
-
+      this.query = '';
       helper
         .setQueryParameter('insideBoundingBox')
         .setQueryParameter('aroundLatLng', this.defaultPosition)
@@ -59,7 +55,6 @@ class AlgoliaPlacesWidget {
 
     const { query, position } = uiState.places;
 
-    this.state = uiState.places;
     this.placesAutocomplete.setVal(query || '');
 
     return searchParameters
@@ -70,16 +65,13 @@ class AlgoliaPlacesWidget {
   getWidgetState(uiState, { searchParameters }) {
     if (
       uiState.places &&
-      this.state.query === uiState.places.query &&
+      this.query === uiState.places.query &&
       searchParameters.aroundLatLng === uiState.places.position
     ) {
       return uiState;
     }
 
-    if (
-      searchParameters.aroundLatLng === undefined &&
-      this.state.query === undefined
-    ) {
+    if (searchParameters.aroundLatLng === undefined && !this.query) {
       const newUiState = Object.assign({}, uiState);
       delete newUiState.places;
       return newUiState;
@@ -88,7 +80,7 @@ class AlgoliaPlacesWidget {
     return {
       ...uiState,
       places: {
-        query: this.state.query,
+        query: this.query,
         position: searchParameters.aroundLatLng,
       },
     };
