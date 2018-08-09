@@ -4,7 +4,7 @@ import places from '../places.js';
 
 jest.mock('../places.js', () => {
   const module = jest.fn(() => {
-    const instance = { on: jest.fn(), setVal: jest.fn() };
+    const instance = { on: jest.fn(), setVal: jest.fn(), close: jest.fn() };
 
     module.__instance = instance;
     return instance;
@@ -141,8 +141,12 @@ describe('instantsearch widget', () => {
         expect(eventName).toEqual('change');
 
         eventListener({
-          suggestion: { latlng: { lat: '123', lng: '456' }, value: 'Paris' },
+          suggestion: {
+            latlng: { lat: '123', lng: '456' },
+            value: 'Paris',
+          },
         });
+
         expect(helper.search).toBeCalled();
         expect(helper.getState()).toMatchObject({
           insideBoundingBox: undefined,
@@ -197,7 +201,7 @@ describe('instantsearch widget', () => {
         const expectedUiState = {
           places: {
             position: '2,2',
-            query: undefined,
+            query: '',
           },
         };
 
@@ -304,6 +308,22 @@ describe('instantsearch widget', () => {
         expect(searchParametersAfter).toMatchSnapshot();
         expect(searchParametersAfter.insideBoundingBox).toBe(undefined);
         expect(searchParametersAfter.aroundLatLng).toBe('123,123');
+      });
+
+      test('should close the dropdown', () => {
+        const [widget, helper] = getInitializedWidget();
+        // The user presses back (browser), and the URL contains some parameters
+        const uiState = {
+          places: {
+            position: '123,123',
+            query: 'Paris',
+          },
+        };
+
+        const searchParametersBefore = SearchParameters.make(helper.state);
+        widget.getWidgetSearchParameters(searchParametersBefore, { uiState });
+        // Applying a state with new parameters should apply them on the search
+        expect(places.__instance.close).toHaveBeenCalled();
       });
     });
   });
