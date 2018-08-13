@@ -54,16 +54,42 @@ describe('instantsearch widget', () => {
   });
 
   it('accepts a defaultPosition parameter', () => {
-    const client = createFakeClient();
-    const helper = createFakekHelper(client);
     const widget = algoliaPlacesWidget({ defaultPosition: [1, 1] });
 
-    widget.init({ helper });
+    const beforeConfiguration = {};
+    const afterConfiguration = widget.getConfiguration(beforeConfiguration);
 
-    expect(helper.getState()).toMatchObject({
+    expect(afterConfiguration).toEqual({
       insideBoundingBox: undefined,
       aroundLatLng: '1,1',
     });
+  });
+
+  it('overrides the aroundLatLng if a defaultPosition parameter is passed', () => {
+    const widget = algoliaPlacesWidget({ defaultPosition: [1, 1] });
+
+    const beforeConfiguration = {
+      aroundLatLng: '12,14',
+    };
+
+    const afterConfiguration = widget.getConfiguration(beforeConfiguration);
+
+    expect(afterConfiguration).toEqual({
+      insideBoundingBox: undefined,
+      aroundLatLng: '1,1',
+    });
+  });
+
+  it('does nothing to aroundLatLng if no defaultPosition parameter is passed', () => {
+    const widget = algoliaPlacesWidget({});
+
+    const beforeConfiguration = {
+      aroundLatLng: '12,14',
+    };
+
+    const afterConfiguration = widget.getConfiguration(beforeConfiguration);
+
+    expect(afterConfiguration).toEqual({});
   });
 
   it('configures aroundLatLng on change event', () => {
@@ -257,7 +283,7 @@ describe('instantsearch widget', () => {
         expect(searchParametersAfter).toBe(searchParametersBefore);
       });
 
-      test('should enforce the default value if no value is in the UI State', () => {
+      test('should not care about the default value even if no value is in the UI State', () => {
         const [widget, helper] = getInitializedWidget();
         // The user presses back (browser), and the URL contains no parameters
         const uiState = {};
@@ -268,7 +294,7 @@ describe('instantsearch widget', () => {
           { uiState }
         );
         expect(searchParametersAfter).toMatchSnapshot();
-        expect(searchParametersAfter.aroundLatLng).toBe('2,2');
+        expect(searchParametersAfter.aroundLatLng).toBe(undefined);
         expect(searchParametersAfter.insideBoundingBox).toBe(undefined);
       });
 

@@ -12,17 +12,21 @@ class AlgoliaPlacesWidget {
     this.placesOptions = placesOptions;
     this.placesAutocomplete = places(this.placesOptions);
 
-    this.stateSetDuringRouting = false;
     this.query = '';
   }
 
-  init({ helper }) {
-    if (!this.stateSetDuringRouting) {
-      helper
-        .setQueryParameter('insideBoundingBox')
-        .setQueryParameter('aroundLatLng', this.defaultPosition);
+  getConfiguration() {
+    const configuration = {};
+
+    if (this.defaultPosition) {
+      configuration.aroundLatLng = this.defaultPosition;
+      configuration.insideBoundingBox = undefined;
     }
 
+    return configuration;
+  }
+
+  init({ helper }) {
     this.placesAutocomplete.on('change', opts => {
       const {
         suggestion: {
@@ -56,7 +60,6 @@ class AlgoliaPlacesWidget {
 
     const { query, position } = uiState.places;
 
-    this.stateSetDuringRouting = true;
     this.placesAutocomplete.setVal(query || '');
     this.placesAutocomplete.close();
 
