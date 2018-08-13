@@ -428,9 +428,9 @@ autocomplete.js@^0.29.0:
   dependencies:
     immediate "^3.2.3"
 
-autocomplete.js@^0.30.0:
-  version "0.30.0"
-  resolved "https://registry.yarnpkg.com/autocomplete.js/-/autocomplete.js-0.30.0.tgz#e7a1425474291d255911499cee2a3c5624c9ccc5"
+autocomplete.js@^0.31.0:
+  version "0.31.0"
+  resolved "https://registry.yarnpkg.com/autocomplete.js/-/autocomplete.js-0.31.0.tgz#2387c4e9759dbfd03558777705f6f14a66ba446c"
   dependencies:
     immediate "^3.2.3"
 
