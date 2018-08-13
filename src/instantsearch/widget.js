@@ -60,6 +60,7 @@ class AlgoliaPlacesWidget {
 
     const { query, position } = uiState.places;
 
+    this.query = query;
     this.placesAutocomplete.setVal(query || '');
     this.placesAutocomplete.close();
 
