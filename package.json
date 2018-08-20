@@ -48,7 +48,7 @@
     "eslint-plugin-jasmine": "2.10.1",
     "eslint-plugin-jest": "21.21.0",
     "eslint-plugin-prettier": "2.6.2",
-    "eslint-plugin-react": "7.10.0",
+    "eslint-plugin-react": "7.11.1",
     "jest-cli": "23.5.0",
     "json": "9.0.6",
     "prettier": "1.14.2",
