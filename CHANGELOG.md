@@ -1,3 +1,13 @@
+<a name="1.9.1"></a>
+## [1.9.1](https://github.com/algolia/places/compare/v1.9.0...v1.9.1) (2018-08-29)
+
+
+### Bug Fixes
+
+* **deps:** update dependency autocomplete.js to ^0.31.0 ([9dddef2](https://github.com/algolia/places/commit/9dddef2))
+
+
+
 <a name="1.9.0"></a>
 # [1.9.0](https://github.com/algolia/places/compare/v1.8.0...v1.9.0) (2018-08-08)
 
