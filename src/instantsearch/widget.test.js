@@ -53,6 +53,20 @@ describe('instantsearch widget', () => {
     });
   });
 
+  it('does not call setQueryParameter during the init step', () => {
+    // Using setQueryParameter to change a filter value during the init step will
+    // have unintented consequences such as resetting the pagination to 0.
+    // We should not do that
+    const client = createFakeClient();
+    const helper = createFakekHelper(client);
+    const widget = algoliaPlacesWidget(defaultOptions);
+
+    helper.setQueryParameter = jest.fn();
+    widget.init({ helper });
+
+    expect(helper.setQueryParameter).not.toHaveBeenCalled();
+  });
+
   it('accepts a defaultPosition parameter', () => {
     const widget = algoliaPlacesWidget({ defaultPosition: [1, 1] });
 
