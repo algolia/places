@@ -4,7 +4,7 @@ import places from '../places.js';
 
 jest.mock('../places.js', () => {
   const module = jest.fn(() => {
-    const instance = { on: jest.fn(), setVal: jest.fn() };
+    const instance = { on: jest.fn(), setVal: jest.fn(), close: jest.fn() };
 
     module.__instance = instance;
     return instance;
@@ -53,17 +53,57 @@ describe('instantsearch widget', () => {
     });
   });
 
-  it('accepts a defaultPosition parameter', () => {
+  it('does not call setQueryParameter during the init step', () => {
+    // Using setQueryParameter to change a filter value during the init step will
+    // have unintented consequences such as resetting the pagination to 0.
+    // We should not do that
     const client = createFakeClient();
     const helper = createFakekHelper(client);
-    const widget = algoliaPlacesWidget({ defaultPosition: [1, 1] });
+    const widget = algoliaPlacesWidget(defaultOptions);
 
+    helper.setQueryParameter = jest.fn();
     widget.init({ helper });
 
-    expect(helper.getState()).toMatchObject({
+    expect(helper.setQueryParameter).not.toHaveBeenCalled();
+  });
+
+  it('accepts a defaultPosition parameter', () => {
+    const widget = algoliaPlacesWidget({ defaultPosition: [1, 1] });
+
+    const beforeConfiguration = {};
+    const afterConfiguration = widget.getConfiguration(beforeConfiguration);
+
+    expect(afterConfiguration).toEqual({
       insideBoundingBox: undefined,
       aroundLatLng: '1,1',
     });
+  });
+
+  it('overrides the aroundLatLng if a defaultPosition parameter is passed', () => {
+    const widget = algoliaPlacesWidget({ defaultPosition: [1, 1] });
+
+    const beforeConfiguration = {
+      aroundLatLng: '12,14',
+    };
+
+    const afterConfiguration = widget.getConfiguration(beforeConfiguration);
+
+    expect(afterConfiguration).toEqual({
+      insideBoundingBox: undefined,
+      aroundLatLng: '1,1',
+    });
+  });
+
+  it('does nothing to aroundLatLng if no defaultPosition parameter is passed', () => {
+    const widget = algoliaPlacesWidget({});
+
+    const beforeConfiguration = {
+      aroundLatLng: '12,14',
+    };
+
+    const afterConfiguration = widget.getConfiguration(beforeConfiguration);
+
+    expect(afterConfiguration).toEqual({});
   });
 
   it('configures aroundLatLng on change event', () => {
@@ -141,8 +181,12 @@ describe('instantsearch widget', () => {
         expect(eventName).toEqual('change');
 
         eventListener({
-          suggestion: { latlng: { lat: '123', lng: '456' }, value: 'Paris' },
+          suggestion: {
+            latlng: { lat: '123', lng: '456' },
+            value: 'Paris',
+          },
         });
+
         expect(helper.search).toBeCalled();
         expect(helper.getState()).toMatchObject({
           insideBoundingBox: undefined,
@@ -197,7 +241,7 @@ describe('instantsearch widget', () => {
         const expectedUiState = {
           places: {
             position: '2,2',
-            query: undefined,
+            query: '',
           },
         };
 
@@ -253,7 +297,7 @@ describe('instantsearch widget', () => {
         expect(searchParametersAfter).toBe(searchParametersBefore);
       });
 
-      test('should enforce the default value if no value is in the UI State', () => {
+      test('should not care about the default value even if no value is in the UI State', () => {
         const [widget, helper] = getInitializedWidget();
         // The user presses back (browser), and the URL contains no parameters
         const uiState = {};
@@ -264,7 +308,7 @@ describe('instantsearch widget', () => {
           { uiState }
         );
         expect(searchParametersAfter).toMatchSnapshot();
-        expect(searchParametersAfter.aroundLatLng).toBe('2,2');
+        expect(searchParametersAfter.aroundLatLng).toBe(undefined);
         expect(searchParametersAfter.insideBoundingBox).toBe(undefined);
       });
 
@@ -304,6 +348,22 @@ describe('instantsearch widget', () => {
         expect(searchParametersAfter).toMatchSnapshot();
         expect(searchParametersAfter.insideBoundingBox).toBe(undefined);
         expect(searchParametersAfter.aroundLatLng).toBe('123,123');
+      });
+
+      test('should close the dropdown', () => {
+        const [widget, helper] = getInitializedWidget();
+        // The user presses back (browser), and the URL contains some parameters
+        const uiState = {
+          places: {
+            position: '123,123',
+            query: 'Paris',
+          },
+        };
+
+        const searchParametersBefore = SearchParameters.make(helper.state);
+        widget.getWidgetSearchParameters(searchParametersBefore, { uiState });
+        // Applying a state with new parameters should apply them on the search
+        expect(places.__instance.close).toHaveBeenCalled();
       });
     });
   });

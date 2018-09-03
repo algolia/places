@@ -57,13 +57,13 @@ SearchParameters {
 }
 `;
 
-exports[`instantsearch widget routing getWidgetSearchParameters should enforce the default value if no value is in the UI State 1`] = `
+exports[`instantsearch widget routing getWidgetSearchParameters should not care about the default value even if no value is in the UI State 1`] = `
 SearchParameters {
   "advancedSyntax": undefined,
   "allowTyposOnNumericTokens": undefined,
   "analytics": undefined,
   "analyticsTags": undefined,
-  "aroundLatLng": "2,2",
+  "aroundLatLng": undefined,
   "aroundLatLngViaIP": undefined,
   "aroundPrecision": undefined,
   "aroundRadius": undefined,
