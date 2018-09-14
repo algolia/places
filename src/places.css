@@ -119,8 +119,7 @@
 }
 
 .ap-footer a svg {
-  vertical-align: text-bottom;
-  max-width: 60px;
+  vertical-align: middle;
 }
 
 .ap-footer:hover {
