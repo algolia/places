@@ -1,3 +1,13 @@
+<a name="1.11.0"></a>
+# [1.11.0](https://github.com/algolia/places/compare/v1.10.0...v1.11.0) (2018-09-17)
+
+
+### Bug Fixes
+
+* **viaIP-conflict:** disable aroundLatLngViaIP when setting location ([#554](https://github.com/algolia/places/issues/554)) ([29c2473](https://github.com/algolia/places/commit/29c2473))
+
+
+
 <a name="1.10.0"></a>
 # [1.10.0](https://github.com/algolia/places/compare/v1.9.1...v1.10.0) (2018-09-03)
 
