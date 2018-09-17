@@ -40,6 +40,10 @@ describe('instantsearch widget', () => {
     expect(places).toBeCalledWith({ places: 'option' });
   });
 
+  it('creates a places instance without parameters', () => {
+    expect(() => algoliaPlacesWidget()).not.toThrow();
+  });
+
   it('configures the helper', () => {
     const client = createFakeClient();
     const helper = createFakekHelper(client);
@@ -75,6 +79,7 @@ describe('instantsearch widget', () => {
 
     expect(afterConfiguration).toEqual({
       insideBoundingBox: undefined,
+      aroundLatLngViaIP: false,
       aroundLatLng: '1,1',
     });
   });
@@ -90,6 +95,7 @@ describe('instantsearch widget', () => {
 
     expect(afterConfiguration).toEqual({
       insideBoundingBox: undefined,
+      aroundLatLngViaIP: false,
       aroundLatLng: '1,1',
     });
   });
@@ -127,10 +133,36 @@ describe('instantsearch widget', () => {
     });
   });
 
-  it('configures aroundLatLng on clear event', () => {
+  it('removes aroundLatLngViaIP on change event', () => {
+    const client = createFakeClient();
+    const helper = createFakekHelper(client);
+    const widget = algoliaPlacesWidget(defaultOptions);
+
+    helper.setQueryParameter('aroundLatLngViaIP', true);
+
+    widget.init({ helper });
+
+    const eventName = places.__instance.on.mock.calls[0][0];
+    const eventListener = places.__instance.on.mock.calls[0][1];
+
+    expect(eventName).toEqual('change');
+
+    eventListener({ suggestion: { latlng: { lat: '123', lng: '456' } } });
+
+    expect(helper.search).toBeCalled();
+    expect(helper.getState()).toMatchObject({
+      insideBoundingBox: undefined,
+      aroundLatLng: '123,456',
+      aroundLatLngViaIP: false,
+    });
+  });
+
+  it('configures aroundLatLng with a default position on clear event', () => {
     const client = createFakeClient();
     const helper = createFakekHelper(client);
     const widget = algoliaPlacesWidget({ defaultPosition: [2, 2] });
+
+    helper.setQueryParameter('aroundLatLngViaIP', true);
 
     widget.init({ helper });
 
@@ -144,7 +176,53 @@ describe('instantsearch widget', () => {
     expect(helper.search).toBeCalled();
     expect(helper.getState()).toMatchObject({
       insideBoundingBox: undefined,
+      aroundLatLngViaIP: false,
       aroundLatLng: '2,2',
+    });
+  });
+
+  it('restores aroundLatLngViaIP without a default position on clear event', () => {
+    const client = createFakeClient();
+    const helper = createFakekHelper(client);
+    const widget = algoliaPlacesWidget();
+
+    helper.setQueryParameter('aroundLatLngViaIP', true);
+
+    widget.init({ helper });
+
+    const changeEventName = places.__instance.on.mock.calls[0][0];
+    const changeEventListener = places.__instance.on.mock.calls[0][1];
+
+    expect(changeEventName).toEqual('change');
+
+    changeEventListener({
+      suggestion: {
+        latlng: {
+          lat: '123',
+          lng: '456',
+        },
+      },
+    });
+
+    expect(helper.search).toBeCalled();
+    expect(helper.getState()).toMatchObject({
+      insideBoundingBox: undefined,
+      aroundLatLng: '123,456',
+      aroundLatLngViaIP: false,
+    });
+
+    const clearEventName = places.__instance.on.mock.calls[1][0];
+    const clearEventListener = places.__instance.on.mock.calls[1][1];
+
+    expect(clearEventName).toEqual('clear');
+
+    clearEventListener();
+
+    expect(helper.search).toBeCalled();
+    expect(helper.getState()).toMatchObject({
+      insideBoundingBox: undefined,
+      aroundLatLng: undefined,
+      aroundLatLngViaIP: true,
     });
   });
 
@@ -155,10 +233,46 @@ describe('instantsearch widget', () => {
       const client = createFakeClient();
       const helper = createFakekHelper(client);
       const widget = algoliaPlacesWidget(widgetOptions);
+
       widget.init({ helper, state: helper.state });
 
       return [widget, helper];
     };
+
+    it('restores aroundLatLngViaIP on clear event', () => {
+      const client = createFakeClient();
+      const helper = createFakekHelper(client);
+      const widget = algoliaPlacesWidget();
+
+      // Simulate the fact that a widget set `aroundLatLngViaIP` from the URLSync
+      const searchParametersBefore = SearchParameters.make({
+        aroundLatLngViaIP: true,
+      });
+
+      const uiState = {
+        places: {
+          position: '123,123',
+          query: 'Paris',
+        },
+      };
+
+      widget.getWidgetSearchParameters(searchParametersBefore, {
+        uiState,
+      });
+
+      widget.init({ helper });
+
+      const clearEventListener = places.__instance.on.mock.calls[1][1];
+
+      clearEventListener();
+
+      expect(helper.search).toBeCalled();
+      expect(helper.getState()).toMatchObject({
+        insideBoundingBox: undefined,
+        aroundLatLng: undefined,
+        aroundLatLngViaIP: true,
+      });
+    });
 
     describe('getWidgetState', () => {
       test('should give back the object unmodified if the default value is selected', () => {
