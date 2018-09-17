@@ -31,8 +31,7 @@ configure :development do
   config[:places_lib_url] = 'places'
   config[:places_autocomplete_dataset_lib_url] = 'placesAutocompleteDataset'
   config[:places_instantsearch_widget_lib_url] = 'placesInstantsearchWidget'
-  config[:instantsearch_lib_url] = 'https://cdn.jsdelivr.net/instantsearch.js/1.6.0/instantsearch.min.js'
-  config[:instantsearch_googlemaps_lib_url] = 'https://cdn.jsdelivr.net/instantsearch-googlemaps/1.2.4/instantsearch-googlemaps.min.js'
+  config[:instantsearch_lib_url] = 'https://cdn.jsdelivr.net/instantsearch.js/2.10.1/instantsearch.min.js'
   config[:google_maps_lib_url] = 'https://maps.googleapis.com/maps/api/js'
   activate :external_pipeline,
     name: 'places',
@@ -78,8 +77,7 @@ configure :build do
   config[:places_lib_url] = config[:places_cdn_url]
   config[:places_autocomplete_dataset_lib_url] = config[:places_autocomplete_dataset_cdn_url]
   config[:places_instantsearch_widget_lib_url] = config[:places_instantsearch_widget_cdn_url]
-  config[:instantsearch_lib_url] = 'https://cdn.jsdelivr.net/instantsearch.js/1.6.0/instantsearch.min.js'
-  config[:instantsearch_googlemaps_lib_url] = 'https://cdn.jsdelivr.net/instantsearch-googlemaps/1.2.4/instantsearch-googlemaps.min.js'
+  config[:instantsearch_lib_url] = 'https://cdn.jsdelivr.net/instantsearch.js/2.10.1/instantsearch.min.js'
   config[:google_maps_lib_url] = 'https://maps.googleapis.com/maps/api/js'
   # this may trigger bad behavior, if so, see
   # https://github.com/middleman/middleman-minify-html

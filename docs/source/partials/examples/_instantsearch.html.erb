@@ -7,7 +7,6 @@
 
 <%= javascript_include_tag config[:instantsearch_lib_url] %>
 <%= javascript_include_tag config[:places_instantsearch_widget_lib_url] %>
-<%= javascript_include_tag config[:instantsearch_googlemaps_lib_url] %>
 <%= javascript_include_tag config[:google_maps_lib_url] %>
 <script>
 (function() {
@@ -24,18 +23,13 @@ var searchBox = placesInstantsearchWidget({
   container: document.querySelector('#input-map-instantsearch')
 });
 
-var map = instantsearchGoogleMaps({
-  container: document.querySelector('#map-instantsearch-container'),
-  prepareMarkerData: ({Brand, Name, 'Street Combined': street}) => {
-    return {
-      title: `${Brand} - ${Name}`
-    };
-  },
-  refineOnMapInteraction: true
+var geosearch = instantsearch.widgets.geoSearch({
+  container: '#map-instantsearch-container',
+  googleReference: window.google,
 });
 
 search.addWidget(searchBox);
-search.addWidget(map);
+search.addWidget(geosearch);
 search.start();
 })();
 </script>
