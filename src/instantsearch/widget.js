@@ -4,7 +4,7 @@ import places from '../places.js';
  * The underlying structure for the Algolia Places instantsearch widget.
  */
 class AlgoliaPlacesWidget {
-  constructor({ defaultPosition, ...placesOptions }) {
+  constructor({ defaultPosition, ...placesOptions } = {}) {
     if (Array.isArray(defaultPosition) && defaultPosition.length === 2) {
       this.defaultPosition = defaultPosition.join(',');
     }

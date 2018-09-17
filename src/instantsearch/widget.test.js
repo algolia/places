@@ -40,6 +40,10 @@ describe('instantsearch widget', () => {
     expect(places).toBeCalledWith({ places: 'option' });
   });
 
+  it('creates a places instance without parameters', () => {
+    expect(() => algoliaPlacesWidget()).not.toThrow();
+  });
+
   it('configures the helper', () => {
     const client = createFakeClient();
     const helper = createFakekHelper(client);
