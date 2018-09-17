@@ -27,6 +27,13 @@ var searchBox = placesInstantsearchWidget({
 var geosearch = instantsearch.widgets.geoSearch({
   container: '#map-instantsearch-container',
   googleReference: window.google,
+  builtInMarker: {
+    createOptions: function(item) {
+      return {
+        title: item.Brand + ' ' + item.Name
+      };
+    }
+  }
 });
 
 search.addWidget(configure);
