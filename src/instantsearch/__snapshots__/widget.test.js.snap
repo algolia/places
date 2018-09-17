@@ -7,7 +7,7 @@ SearchParameters {
   "analytics": undefined,
   "analyticsTags": undefined,
   "aroundLatLng": "123,123",
-  "aroundLatLngViaIP": undefined,
+  "aroundLatLngViaIP": false,
   "aroundPrecision": undefined,
   "aroundRadius": undefined,
   "attributesToHighlight": undefined,

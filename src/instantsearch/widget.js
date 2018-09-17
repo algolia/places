@@ -13,21 +13,31 @@ class AlgoliaPlacesWidget {
     this.placesAutocomplete = places(this.placesOptions);
 
     this.query = '';
+    this.initialLatLngViaIP = null;
   }
 
   getConfiguration() {
     const configuration = {};
 
     if (this.defaultPosition) {
-      configuration.aroundLatLng = this.defaultPosition;
       configuration.insideBoundingBox = undefined;
+      configuration.aroundLatLngViaIP = false;
+      configuration.aroundLatLng = this.defaultPosition;
     }
 
     return configuration;
   }
 
   init({ helper }) {
-    const viaIPFlag = helper.getQueryParameter('aroundLatLngViaIP');
+    // Get the initial value only when it's not already set via URLSync
+    // see: getWidgetSearchParameters
+    if (this.initialLatLngViaIP === null) {
+      // The value is retrieved in the `init` rather than `getConfiguration`
+      // because the widget that set `aroundLatLngViaIP` might be registered
+      // after this one. We wait until we have the full configuration to save
+      // the initial value.
+      this.initialLatLngViaIP = helper.getQueryParameter('aroundLatLngViaIP');
+    }
 
     this.placesAutocomplete.on('change', opts => {
       const {
@@ -38,6 +48,7 @@ class AlgoliaPlacesWidget {
       } = opts;
 
       this.query = value;
+
       helper
         .setQueryParameter('insideBoundingBox')
         .setQueryParameter('aroundLatLngViaIP', false)
@@ -47,11 +58,20 @@ class AlgoliaPlacesWidget {
 
     this.placesAutocomplete.on('clear', () => {
       this.query = '';
-      helper
-        .setQueryParameter('insideBoundingBox')
-        .setQueryParameter('aroundLatLngViaIP', viaIPFlag)
-        .setQueryParameter('aroundLatLng', this.defaultPosition)
-        .search();
+
+      helper.setQueryParameter('insideBoundingBox');
+
+      if (this.defaultPosition) {
+        helper
+          .setQueryParameter('aroundLatLngViaIP', false)
+          .setQueryParameter('aroundLatLng', this.defaultPosition);
+      } else {
+        helper
+          .setQueryParameter('aroundLatLngViaIP', this.initialLatLngViaIP)
+          .setQueryParameter('aroundLatLng');
+      }
+
+      helper.search();
     });
   }
 
@@ -59,17 +79,23 @@ class AlgoliaPlacesWidget {
     if (!uiState.places) {
       this.placesAutocomplete.setVal('');
       this.placesAutocomplete.close();
+
       return searchParameters;
     }
 
     const { query, position } = uiState.places;
 
     this.query = query;
+    this.initialLatLngViaIP = searchParameters.getQueryParameter(
+      'aroundLatLngViaIP'
+    );
+
     this.placesAutocomplete.setVal(query || '');
     this.placesAutocomplete.close();
 
     return searchParameters
       .setQueryParameter('insideBoundingBox')
+      .setQueryParameter('aroundLatLngViaIP', false)
       .setQueryParameter('aroundLatLng', position);
   }
 
