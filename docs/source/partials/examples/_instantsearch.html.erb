@@ -14,9 +14,10 @@ var search = instantsearch({
   appId: 'latency',
   apiKey: 'ffc36feb6e9df06e1c3c4549b5af2b31',
   indexName: 'starbucks',
-  searchParameters: {
-    hitsPerPage: 50
-  }
+});
+
+var configure = instantsearch.widgets.configure({
+  hitsPerPage: 25,
 });
 
 var searchBox = placesInstantsearchWidget({
@@ -28,6 +29,7 @@ var geosearch = instantsearch.widgets.geoSearch({
   googleReference: window.google,
 });
 
+search.addWidget(configure);
 search.addWidget(searchBox);
 search.addWidget(geosearch);
 search.start();
