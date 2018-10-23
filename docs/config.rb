@@ -61,6 +61,17 @@ activate :protect_emails
 # Helpers
 ###
 
+
+config[:credentials] = {
+  documentation: {
+    app_id: 'plFMJJT5O9PC',
+    api_key: '8b126ce956636c64b6e74c8b3f3d0e5e'
+  },
+  placeholder: {
+    app_id: '<YOUR_PLACES_APP_ID>',
+    api_key: '<YOUR_PLACES_API_KEY>'
+  }
+}
 config[:places_lib_version] = ENV['VERSION']
 config[:places_cdn_url] = "https://cdn.jsdelivr.net/npm/places.js@#{config[:places_lib_version]}"
 config[:places_autocomplete_dataset_cdn_url] = "https://cdn.jsdelivr.net/npm/places.js@#{config[:places_lib_version]}/dist/cdn/placesAutocompleteDataset.min.js"

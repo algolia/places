@@ -9,6 +9,8 @@
 <script>
 (function() {
   var placesAutocomplete = places({
+    appId: '<%= app_id %>',
+    apiKey: '<%= api_key %>',
     container: document.querySelector('#input-map')
   });
 
@@ -60,7 +62,7 @@
         }
       });
   }
-  
+
   function handleOnClear() {
     map.setView(new L.LatLng(0, 0), 1);
     markers.forEach(removeMarker);
