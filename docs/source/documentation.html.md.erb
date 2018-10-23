@@ -834,25 +834,27 @@ Behind the places.js JavaScript library lies a complete REST API. Read the under
 The default way of using Places is to pass your Places application ID and API Key to the Places library.
 However, since the Places library is user-facing, this means that your credentials can be exposed.
 
-It is therefore recommended to put in place some extra limitations in order to prevent abuse of your API Key. Algolia offers two solutions to restrict the usage of your API Keys, which can be combined together:
+It is therefore recommended to put in place some extra limitations in order to prevent any abuse of your API Key. Algolia offers two solutions to restrict the usage of your API Keys, which can be combined together:
 - [restricted API Keys](#restricted-api-keys)
 - [secured API Keys](#secured-api-keys)
 
-Note: _This section will not go in extreme details about the concepts that presented as they are explained in great lengths in the [official Algolia documentation](https://www.algolia.com/doc/guides/security/api-keys/)._
+Note: _This section will not go in extreme details about the concepts that are presented as they are explained in great lengths in the [official Algolia documentation](https://www.algolia.com/doc/guides/security/api-keys/)._
 
 ### Restricted API Keys
 In Places like in any other Algolia application, you can set up authorizations and restrictions with a great level of precision when creating API keys. It’s common to combine these rules to make it very hard to use a public API key to crawl your data.
 
 You can read more about [creating restricted API Keys](https://www.algolia.com/doc/guides/security/api-keys/?language=javascript#api-key-restrictions) in the official Algolia documentation.
 
-For instance for Places, it is common practice to have a restricted API Key with the following restrictions:
+For instance, for Places, it is common practice to have a restricted API Key with the following restrictions:
 - Rate limiting per IP
 - Restricting the HTTP Referer to your website ([Read about the limitations](https://www.algolia.com/doc/guides/security/best-security-practices/?language=javascript#http-referers-restrictions))
 
 Designing such an API Key will protect your API Key from being used by other website, while partially mitigating attacks from other tools without having to implement an advanced security system or having to route your calls through your backend for validation, which would increase the latency of each query.
 
 ### Secured API Keys
-If you want to have strong control on who accesses Places with your API Key, you can use [secured API Keys](https://www.algolia.com/doc/guides/security/api-keys/?language=javascript#generating-secured-api-keys). This will require a back-end implementation of the secured API generation. Using secured API Keys, you can create short-lived API Keys for a single user based on metrics that you control.
+If you want to have strong control on who accesses Places with your API Key, you can use [secured API Keys](https://www.algolia.com/doc/guides/security/api-keys/?language=javascript#generating-secured-api-keys). This will require a back-end implementation of the secured API generation.
+
+For instance, for Places, you can create short-lived API Keys for every single user based on your own metrics, using secured API Keys.
 
 There is a great tutorial on [how to use secured API Keys](https://www.algolia.com/doc/tutorials/security/api-keys/secured-api-keys/how-to-restrict-the-search-to-a-subset-of-records-belonging-to-a-specific-user/#introduction) in the official documentation of Algolia.
 
