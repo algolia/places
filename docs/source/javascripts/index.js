@@ -3,6 +3,8 @@
 
 const $input = document.querySelector('#landing-demo');
 const placesAutocomplete = places({
+  appId: 'plFMJJT5O9PC',
+  apiKey: '8b126ce956636c64b6e74c8b3f3d0e5e',
   container: $input,
   useDeviceLocation: true,
 });
