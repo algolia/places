@@ -28,9 +28,9 @@ do
   echo "$license" | cat - "${dist_file}" > /tmp/out && mv /tmp/out "${dist_file}"
 
   uglifyjs "${dist_file}" \
-    --in-source-map "${dist_file_sourcemap}" \
-    --source-map "${dist_file_sourcemap_min}" \
-    --source-map-url "${source_map_min}" \
+    --source-map "content=${dist_file_sourcemap}" \
+    --source-map "base=${dist_file_sourcemap_min}" \
+    --source-map "url=${source_map_min}" \
     --preamble "$license" \
     -c warnings=false \
     -m \
