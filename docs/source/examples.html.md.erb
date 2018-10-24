@@ -9,7 +9,7 @@ layout: documentation
 
 ## Simple input
 
-places.js turns any HTML `<input>` into an autocomplete address search bar.
+In this section, we will see how places.js turns any HTML `<input>` into an autocomplete address search bar.
 
 <%= partial '/partials/examples/simple_input', locals: config[:credentials][:documentation] %>
 
@@ -17,15 +17,27 @@ places.js turns any HTML `<input>` into an autocomplete address search bar.
 <%= partial '/partials/examples/simple_input', locals: config[:credentials][:placeholder] %>
 ```
 
+You should consider using this snippet when you want your users to easily find their addresses, and have it presented in a good and reliable format.
+
 ## Complete form
 
-Once the user has selected an address, you can use the [change event](documentation.html#events) to fill-out another form with the user address structured data.
+In this section, we will see how you can interact with Places in order to fill in a complete address form.
+
+Having an address autocomplete offers great user experience, but if the address is meant to be processed internally or used for shipping, you may have to reformat or access parts of the address, which can be cumbersome when reading an already formatted address.
+
+In order to help you with this, Places.js emits a [change event](documentation.html#events) when a user selects an address from its dropdown. The event includes the selected address, also called a [suggestion](documentation#suggestions), in a structured format, which can then be used to populate other fields. You can learn more about the suggestion object in the [documentation](documentation#suggestions).
 
 <%= partial '/partials/examples/complete_form', locals: config[:credentials][:documentation] %>
 
 ```html
 <%= partial '/partials/examples/complete_form', locals: config[:credentials][:placeholder] %>
 ```
+
+This template can be used as a helper for shipping forms.
+
+**Note:** This template intercepts the suggestion from the `change` event and updates other `<input>` fields, so that the user can then validate and/or modify the data if it is needed. This is considered a best practice because Places addresses can sometimes be incorrect or incomplete: new streets are built all the time; cities are sometimes renamed; or simply because the underlying OpenStreetMap data is not perfect in all areas. Therefore, you should not use the suggestion data without allowing the end user the possibility to modify the address.
+
+**Note:** There are some challenges with address forms that have not been addressed in this example for the sake of simplicity. For instance, in some countries, there can be multiple postal codes for a single city, and you should then use a dropdown with the possible values provided in the suggestion, while still allowing the user to correct it if needed.
 
 ## City search
 
