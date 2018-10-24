@@ -12,4 +12,4 @@ anchorableElements(
     .querySelector('.documentation-container')
     .querySelectorAll('h2, h3, .api-entry')
 );
-activateClipboard([...document.querySelectorAll('.code')]);
+activateClipboard(document.querySelectorAll('.rouge-code'));
