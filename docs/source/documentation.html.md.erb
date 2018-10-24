@@ -342,11 +342,11 @@ Format: `p1Lat, p1Lng, p2Lat, p2Lng, p3Lat, p3Lng...`
 The Algolia Places autocomplete exposes some events that you can register to:
 
 ```js
-var placesAutocomplete = {
+var placesAutocomplete = places({
   appId: <YOUR_PLACES_APP_ID>,
   apiKey: <YOUR_PLACES_API_KEY>,
   container: document.querySelector('#demo')
-};
+});
 
 placesAutocomplete.on('change', e => console.log(e.suggestion));
 ```
