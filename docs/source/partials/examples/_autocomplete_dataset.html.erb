@@ -71,6 +71,8 @@
   // we automatically inject the default CSS
   // all the places.js options are available
   var placesDataset = placesAutocompleteDataset({
+    appId: '<%= app_id %>',
+    apiKey: '<%= api_key %>',
     algoliasearch: algoliasearch,
     templates: {
       header: '<div class="ad-example-header">Cities</div>'
