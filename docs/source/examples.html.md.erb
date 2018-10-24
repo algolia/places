@@ -11,30 +11,30 @@ layout: documentation
 
 places.js turns any HTML `<input>` into an autocomplete address search bar.
 
-<%= partial '/partials/examples/simple_input' %>
+<%= partial '/partials/examples/simple_input', locals: config[:credentials][:documentation] %>
 
 ```html
-<%= partial '/partials/examples/simple_input' %>
+<%= partial '/partials/examples/simple_input', locals: config[:credentials][:placeholder] %>
 ```
 
 ## Complete form
 
 Once the user has selected an address, you can use the [change event](documentation.html#events) to fill-out another form with the user address structured data.
 
-<%= partial '/partials/examples/complete_form' %>
+<%= partial '/partials/examples/complete_form', locals: config[:credentials][:documentation] %>
 
 ```html
-<%= partial '/partials/examples/complete_form' %>
+<%= partial '/partials/examples/complete_form', locals: config[:credentials][:placeholder] %>
 ```
 
 ## City search
 
 You can build a city search input by using the [type parameter](documentation.html#options).
 
-<%= partial '/partials/examples/city_search' %>
+<%= partial '/partials/examples/city_search', locals: config[:credentials][:documentation] %>
 
 ```html
-<%= partial '/partials/examples/city_search' %>
+<%= partial '/partials/examples/city_search', locals: config[:credentials][:placeholder] %>
 ```
 
 ## Country search
@@ -43,17 +43,17 @@ You can also search in countries only.
 
 places.js turns any HTML `<input>` into a City as-you-type search bar. You can filter on a specific list of countries if needed:
 
-<%= partial '/partials/examples/country_search' %>
+<%= partial '/partials/examples/country_search', locals: config[:credentials][:documentation] %>
 
 ```html
-<%= partial '/partials/examples/country_search' %>
+<%= partial '/partials/examples/country_search', locals: config[:credentials][:placeholder] %>
 ```
 
 ## Link to a map
 
 We will use the [Leaflet](http://leafletjs.com/) JavaScript library as an example to display the places.js results on the map and update them when needed.
 
-<%= partial '/partials/examples/map' %>
+<%= partial '/partials/examples/map', locals: config[:credentials][:documentation] %>
 
 To try this example, you need to add leaflet in your code:
 
@@ -65,7 +65,7 @@ To try this example, you need to add leaflet in your code:
 Then use this:
 
 ```html
-<%= partial '/partials/examples/map' %>
+<%= partial '/partials/examples/map', locals: config[:credentials][:placeholder] %>
 ```
 
 ## Force lat, lng, radius
@@ -74,7 +74,7 @@ Reusing the [map](#link-to-a-map) example, we want to only search around Paris, 
 
 This is useful when you really want to display results around a specific area.
 
-<%= partial '/partials/examples/map_paris' %>
+<%= partial '/partials/examples/map_paris', locals: config[:credentials][:documentation] %>
 
 To try this example, you need to add leaflet in your code:
 
@@ -86,7 +86,7 @@ To try this example, you need to add leaflet in your code:
 Then use this:
 
 ```html
-<%= partial '/partials/examples/map_paris' %>
+<%= partial '/partials/examples/map_paris', locals: config[:credentials][:placeholder] %>
 ```
 
 ## Advanced
@@ -97,10 +97,10 @@ You can customize both the input value and dropdown suggestion templates.
 
 Templates are functions called with a [suggestion object](./documentation.html#suggestions).
 
-<%= partial '/partials/examples/templates' %>
+<%= partial '/partials/examples/templates', locals: config[:credentials][:documentation] %>
 
 ```html
-<%= partial '/partials/examples/templates' %>
+<%= partial '/partials/examples/templates', locals: config[:credentials][:placeholder] %>
 ```
 
 ### Disable styling
@@ -109,10 +109,10 @@ The default Algolia Places styling can be enhanced by overriding the [default ru
 
 If you need full control and want to disable all default styling, you can also do it.
 
-<%= partial '/partials/examples/disable_styling' %>
+<%= partial '/partials/examples/disable_styling', locals: config[:credentials][:documentation] %>
 
 ```html
-<%= partial '/partials/examples/disable_styling' %>
+<%= partial '/partials/examples/disable_styling', locals: config[:credentials][:placeholder] %>
 ```
 
 See our [documentation about styling](./documentation.html#styling) for more details.
@@ -123,18 +123,18 @@ Using [Algolia's autocomplete.js](https://github.com/algolia/autocomplete.js) li
 
 You need an Algolia account to do so and the Algolia Places dataset:
 
-<%= partial '/partials/examples/autocomplete_dataset' %>
+<%= partial '/partials/examples/autocomplete_dataset', locals: config[:credentials][:documentation] %>
 
 ```html
-<%= partial '/partials/examples/autocomplete_dataset' %>
+<%= partial '/partials/examples/autocomplete_dataset', locals: config[:credentials][:placeholder] %>
 ```
 
 See the documentation about the [placesAutocompleteDataset function](documentation.html#autocompletejs).
 
 ### instantsearch.js
 
-<%= partial '/partials/examples/instantsearch' %>
+<%= partial '/partials/examples/instantsearch', locals: config[:credentials][:documentation] %>
 
 ```html
-<%= partial '/partials/examples/instantsearch' %>
+<%= partial '/partials/examples/instantsearch', locals: config[:credentials][:placeholder] %>
 ```

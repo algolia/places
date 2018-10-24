@@ -83,6 +83,8 @@ subtitle: Turn any <code>&lt;input&gt;</code> into an address autocomplete
     }
 
     var placesAutocomplete = places({
+      appId: '#{config[:credentials][:documentation][:app_id]}',
+      apiKey: '#{config[:credentials][:documentation][:api_key]}',
       container: document.querySelector('#country'),
       type: 'country',
       language: 'en',

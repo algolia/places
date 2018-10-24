@@ -1,17 +1,18 @@
 <input type="search" id="address" class="form-control" placeholder="Where are we going?" />
 
 <p>Selected: <strong id="address-value">none</strong></p>
-
 <%= javascript_include_tag config[:places_lib_url] %>
 <script>
 (function() {
   var placesAutocomplete = places({
+    appId: '<%= app_id %>',
+    apiKey: '<%= api_key %>',
     container: document.querySelector('#address')
   });
 
   var $address = document.querySelector('#address-value')
   placesAutocomplete.on('change', function(e) {
-    $address.textContent = e.suggestion.value 
+    $address.textContent = e.suggestion.value
   });
 
   placesAutocomplete.on('clear', function() {

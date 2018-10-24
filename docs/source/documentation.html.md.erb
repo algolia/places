@@ -23,10 +23,15 @@ Here's a small example using it:
 <%= javascript_include_tag config[:places_cdn_url] %>
 <script>
   var placesAutocomplete = places({
+    appId: <YOUR_PLACES_APP_ID>,
+    apiKey: <YOUR_PLACES_API_KEY>,
     container: document.querySelector('#address-input')
   });
 </script>
 ```
+
+Note: _You can access your Places credentials from the [dashboard](https://www.algolia.com/api-keys) like any other Algolia application._
+_If you do not have a Places application, you can create one by [signing up for free](https://www.algolia.com/users/sign_up/places)._
 
 ### Using npm
 
@@ -49,6 +54,8 @@ Initialize the places.js library:
 ```js
 var places = require('places.js');
 var placesAutocomplete = places({
+  appId: <YOUR_PLACES_APP_ID>,
+  apiKey: <YOUR_PLACES_API_KEY>,
   container: document.querySelector('#address-input')
 });
 ```
@@ -65,17 +72,31 @@ To turn any HTML `<input />` into an address search bar make sure you include th
 
 ```js
 var options = {
+  appId: <YOUR_PLACES_APP_ID>,
+  apiKey: <YOUR_PLACES_API_KEY>,
   container: '#my-input-DOM-selector',
   // ...
 };
 places(options);
 ```
 
-<script>
-places({
-  container: document.querySelector('#docs-getting-started-demo')
-});
-</script>
+Advanced example using all parameters:
+
+```js
+var options = {
+  appId: <YOUR_PLACES_APP_ID>,
+  apiKey: <YOUR_PLACES_API_KEY>,
+  container: document.querySelector('#demo'),
+  language: 'de', // Receives results in German
+  countries: ['us', 'ru'], // Search in the United States of America and in the Russian Federation
+  type: 'city', // Search only for cities names
+  aroundLatLngViaIP: false // disable the extra search/boost around the source IP
+};
+places(options);
+```
+
+Tip: _Places application IDs **always** start by_ `pl`, _which makes them recognizable at a glance._
+_If you do not have a Places application, you can create one by [signing up for free](https://www.algolia.com/users/sign_up/places)._
 
 ### Options
 
@@ -229,7 +250,9 @@ Control whether the default styles should be used.
 Type: **string**
 </td>
 <td markdown="1">
-If using the authenticated API, the Application ID to use.
+The Places application ID to use.
+
+**Note**: Create a <a href="https://www.algolia.com/users/sign_up/places">Places app here</a>.
 </td>
     </tr>
     <tr>
@@ -239,7 +262,7 @@ If using the authenticated API, the Application ID to use.
 Type: **string**
 </td>
 <td markdown="1">
-If using the authenticated API, the API key to use.
+The Places search API key to use.
 </td>
     </tr>
     <tr>
@@ -314,34 +337,16 @@ Format: `p1Lat, p1Lng, p2Lat, p2Lng, p3Lat, p3Lng...`
   </tbody>
 </table>
 
-Simple example providing only the required `container` parameter:
-
-```js
-var placesAutocomplete = {
-  container: document.querySelector('#demo')
-};
-```
-
-Advanced example using all parameters:
-
-```js
-var placesAutocomplete = {
-  container: document.querySelector('#demo'),
-  language: 'de', // Receives results in German
-  countries: ['us', 'ru'], // Search in the United States of America and in the Russian Federation
-  type: 'city', // Search only for cities names
-  aroundLatLngViaIP: false // disable the extra search/boost around the source IP
-};
-```
-
 ### Events
 
 The Algolia Places autocomplete exposes some events that you can register to:
 
 ```js
-var placesAutocomplete = {
+var placesAutocomplete = places({
+  appId: <YOUR_PLACES_APP_ID>,
+  apiKey: <YOUR_PLACES_API_KEY>,
   container: document.querySelector('#demo')
-};
+});
 
 placesAutocomplete.on('change', e => console.log(e.suggestion));
 ```
@@ -801,18 +806,7 @@ places
 You can directly query the [Places REST API](rest.html) with our [PHP API Client](https://github.com/algolia/algoliasearch-client-php),
 so that you can do backend Places searches.
 
-Without credentials (require PHP API Client >= 1.18.0):
-
-```php
-<?php
-
-$places = \AlgoliaSearch\Client::initPlaces();
-
-$result = $places->search('Paris');
-var_dump($result);
-```
-
-With credentials, requires a registered [Places account](https://www.algolia.com/users/sign_up/places).
+Create a [Places account](https://www.algolia.com/users/sign_up/places) to get your credentials.
 
 ```php
 <?php

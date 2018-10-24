@@ -45,6 +45,8 @@
 <script>
 (function() {
   var placesAutocomplete = places({
+    appId: '<%= app_id %>',
+    apiKey: '<%= api_key %>',
     container: document.querySelector('#input-styling-address input'),
     style: false,
     debug: true

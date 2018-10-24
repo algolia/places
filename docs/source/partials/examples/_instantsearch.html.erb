@@ -21,6 +21,8 @@ var configure = instantsearch.widgets.configure({
 });
 
 var searchBox = placesInstantsearchWidget({
+  appId: '<%= app_id %>',
+  apiKey: '<%= api_key %>',
   container: document.querySelector('#input-map-instantsearch')
 });
 
