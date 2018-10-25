@@ -1,0 +1,24 @@
+<input type="search" id="single-country-search" class="form-control" placeholder="Where are we going?" />
+
+<p>Selected: <strong id="single_country-address-value">none</strong></p>
+<%= javascript_include_tag config[:places_lib_url] %>
+<script>
+(function() {
+  var placesAutocomplete = places({
+    appId: '<%= app_id %>',
+    apiKey: '<%= api_key %>',
+    container: document.querySelector('#single-country-search'),
+    countries: ['fr']
+  });
+
+  var $address = document.querySelector('#single-country-address-value')
+  placesAutocomplete.on('change', function(e) {
+    $address.textContent = e.suggestion.value
+  });
+
+  placesAutocomplete.on('clear', function() {
+    $address.textContent = 'none';
+  });
+
+})();
+</script>
