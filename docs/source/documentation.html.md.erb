@@ -711,6 +711,10 @@ console.log(suggestion.highlight);
   </tbody>
 </table>
 
+## Integrations
+
+On top of the regular **places** component, the places.js library offers additional integrations with autocomplete.js and InstantSearch.js.
+
 ### autocomplete.js
 
 The places.js library is leveraging [Algolia's autocomplete.js](https://github.com/algolia/autocomplete.js) library.
@@ -731,7 +735,7 @@ All the places.js [options](#options) are available and can be passed to the `pl
 
 You will need an [Algolia account](https://www.algolia.com/) to be able to search into your own data. See the [autocomplete.js dataset example](examples.html#autocompletejs).
 
-### instantsearch.js
+### InstantSearch.js
 
 If you're already using instantsearch.js, you can use Algolia Places out of the box. This
 widget will do a search of places using Algolia Places and when an address is selected, it
@@ -775,56 +779,6 @@ This position is an array of two numbers, representing the latitude and the long
     </tr>
     </tbody>
     </table>
-
-### JavaScript API Client
-
-You can directly query the [Places REST API](rest.html) using our [JavaScript API client](https://github.com/algolia/algoliasearch-client-javascript),
-either in browsers or with [Node.js](https://nodejs.org/).
-
-
-
-```js
-// var algoliasearch = require('algoliasearch');
-var places = algoliasearch.initPlaces(/*appId, apiKey*/);
-places
-  .search(/*{REST API Params}*/, function(err, res) {
-    if (err) {
-      throw err;
-    }
-    console.log(res);
-  });
-
-places
-  .getObject(/*{REST API Params}*/, function(err, res) {
-    if (err) {
-      throw err;
-    }
-    console.log(res);
-  });
-```
-
-### PHP API Client
-
-You can directly query the [Places REST API](rest.html) with our [PHP API Client](https://github.com/algolia/algoliasearch-client-php),
-so that you can do backend Places searches.
-
-Create a [Places account](https://www.algolia.com/users/sign_up/places) to get your credentials.
-
-```php
-<?php
-
-$appId = 'YOUR_PLACES_APP_ID';
-$apiKey = 'YOUR_PLACES_API_KEY';
-
-$places = \AlgoliaSearch\Client::initPlaces($appId, $apiKey);
-
-$result = $places->search('Paris');
-var_dump($result);
-```
-
-### REST API
-
-Behind the places.js JavaScript library lies a complete REST API. Read the underlying [REST API documentation](rest.html).
 
 ## Security
 The default way of using Places is to pass your Places application ID and API Key to the Places library.

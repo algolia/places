@@ -1,7 +1,61 @@
 ---
-title: REST API
+title: API Clients and REST API
 layout: documentation
 ---
+
+## Places.js Library
+
+**Important:** The default way to use Places is through the Places.js library.
+
+You can read more about how to use the Places.js library in the [documentation section](documentation.html). The present section is describing alternative ways of accessing Places data. You should first checkout out the [documentation](documentation.html) for Places.js as well as the [examples](examples.html) page to determine whether or not the clients are a better fit for your use case.
+
+## API Clients
+### JavaScript API Client
+
+You can directly query the [Places REST API](api-client.html#rest-api) using our [JavaScript API client](https://github.com/algolia/algoliasearch-client-javascript), either in browsers or with [Node.js](https://nodejs.org/).
+
+
+
+```js
+// var algoliasearch = require('algoliasearch');
+var places = algoliasearch.initPlaces(/*appId, apiKey*/);
+places
+  .search(/*{REST API Params}*/, function(err, res) {
+    if (err) {
+      throw err;
+    }
+    console.log(res);
+  });
+
+places
+  .getObject(/*{REST API Params}*/, function(err, res) {
+    if (err) {
+      throw err;
+    }
+    console.log(res);
+  });
+```
+
+Note: _Like with the Places.js library, you need to provide your Places App credentials in order for the clients to function properly. If you do not have a Places application, you can create one by [signing up for free](https://www.algolia.com/users/sign_up/places)._
+
+### PHP API Client
+
+You can directly query the [Places REST API](api-client.html#rest-api) with our [PHP API Client](https://github.com/algolia/algoliasearch-client-php), so that you can do backend Places searches.
+
+```php
+<?php
+
+$appId = 'YOUR_PLACES_APP_ID';
+$apiKey = 'YOUR_PLACES_API_KEY';
+
+$places = \AlgoliaSearch\Client::initPlaces($appId, $apiKey);
+
+$result = $places->search('Paris');
+var_dump($result);
+```
+
+Note: _Like with the Places.js library, you need to provide your Places App credentials in order for the clients to function properly. If you do not have a Places application, you can create one by [signing up for free](https://www.algolia.com/users/sign_up/places)._
+
 ## REST API
 
 The Algolia Places REST API supports HTTPS and is available via the `https://places-dsn.algolia.net` domain (leveraging our [Distributed Search Network](https://www.algolia.com/dsn) infrastructure).
