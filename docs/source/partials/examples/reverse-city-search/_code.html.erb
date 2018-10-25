@@ -1,0 +1,28 @@
+<div>
+  <strong>Searching around: </strong>
+  <div id="reverse-city"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+<script>
+const placesClient = algoliasearch.initPlaces(
+  '<%= app_id %>',
+  '<%= api_key %>'
+);
+
+const preferredLanguage = window.navigator.language.split('-')[0];
+
+placesClient.search({
+  query: '',
+  aroundLatLngViaIP: true,
+  type: 'city',
+  hitsPerPage: 1,
+  language: preferredLanguage,
+}).then(({ hits }) => {
+  const { locale_names, country }= hits[0];
+  const formattedCity = `${locale_names[0]}, ${country}`;
+
+  const infoElt = document.querySelector("#reverse-city");
+  infoElt.textContent = formattedCity;
+});
+</script>

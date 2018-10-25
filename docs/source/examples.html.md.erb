@@ -170,7 +170,7 @@ Then use this:
 
 ## Advanced
 
-### autocomplete.js
+### Places + Custom data
 
 Using [Algolia's autocomplete.js](https://github.com/algolia/autocomplete.js) library, you can search in your own data along with showing Algolia Places results.
 
@@ -184,10 +184,22 @@ You need an Algolia account to do so and the Algolia Places dataset:
 
 See the documentation about the [placesAutocompleteDataset function](documentation.html#autocompletejs).
 
-### instantsearch.js
+### Places + InstantSearch
 
 <%= partial '/partials/examples/instantsearch', locals: config[:credentials][:documentation] %>
 
 ```html
 <%= partial '/partials/examples/instantsearch', locals: config[:credentials][:placeholder] %>
+```
+
+### Reverse Geocoding
+
+**Concepts:** type parameter, aroundLatLngViaIP, aroundPrecision, Places API Client.
+
+In this section, we will see how you can do reverse geocoding to find city closest to a user using the Places API Client.
+
+<%= partial '/partials/examples/reverse-city-search/demo', locals: config[:credentials][:documentation] %>
+
+```html
+<%= partial '/partials/examples/reverse-city-search/code', locals: config[:credentials][:placeholder] %>
 ```
