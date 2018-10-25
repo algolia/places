@@ -41,7 +41,11 @@ This template can be used as a helper for shipping forms.
 
 ## City search
 
-You can build a city search input by using the [type parameter](documentation.html#options).
+In this section, we will see how you can restrict the scope of Places to only a certain type.
+
+There are many use-cases where having a full blown address search is not necessary, and simply searching for a city is enough.
+
+In order to help you with this, Places.js exposes a configuration parameter to restrict the type of records you want to search against. You can build a city search input by using the [type parameter](documentation.html#options).
 
 <%= partial '/partials/examples/city_search', locals: config[:credentials][:documentation] %>
 
@@ -49,11 +53,14 @@ You can build a city search input by using the [type parameter](documentation.ht
 <%= partial '/partials/examples/city_search', locals: config[:credentials][:placeholder] %>
 ```
 
+Note: It is possible to restrict the type of records to more than a single type by passing an array of types that you want to search against. For instance, you can combine the `city` type with the `airport` type.
+However, be careful when searching for cities and other types. Due to the fact that cities are prioritized in the ranking, other types of records can be pushed back and have difficulties appearing in the results.
+
 ## Country search
 
 You can also search in countries only.
 
-places.js turns any HTML `<input>` into a City as-you-type search bar. You can filter on a specific list of countries if needed:
+places.js turns any HTML `<input>` into a Country as-you-type search bar. You can filter on a specific list of countries if needed:
 
 <%= partial '/partials/examples/country_search', locals: config[:credentials][:documentation] %>
 
