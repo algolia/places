@@ -145,6 +145,8 @@ Places.js exposes a [countries parameter](documentation.html#api-options-countri
 <%= partial '/partials/examples/single_country_search', locals: config[:credentials][:placeholder] %>
 ```
 
+**Note:** It is considered a best practice to restrict Places search to only the countries that are relevant to your use case. Restricting Places to a single country can greatly improve the relevance of the results.
+
 ### Search around lat/lng
 
 **Concepts:** [aroundLatLng](documentation.html#api-options-aroundLatLng) and [aroundRadius](documentation.html##api-options-aroundRadius) parameters.
