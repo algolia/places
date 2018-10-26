@@ -64,7 +64,7 @@ var placesAutocomplete = places({
 
 As a result, you will get the Algolia Places autocompletion menu:
 
-<input type="search" id="docs-getting-started-demo" class="form-control" placeholder="Where are we going?" />
+<%= partial '/partials/examples/demo', locals: config[:credentials][:documentation] %>
 
 ## Usage
 

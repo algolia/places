@@ -1,0 +1,12 @@
+<input type="search" id="docs-getting-started-demo" class="form-control" placeholder="Where are we going?" />
+
+<%= javascript_include_tag config[:places_lib_url] %>
+<script>
+(function() {
+  var placesAutocomplete = places({
+    appId: '<%= app_id %>',
+    apiKey: '<%= api_key %>',
+    container: document.querySelector('#docs-getting-started-demo')
+  });
+})();
+</script>
