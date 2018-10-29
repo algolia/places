@@ -208,6 +208,6 @@ In this section, we will see how you can do _emulate_ reverse geocoding to find 
 <%= partial '/partials/examples/reverse-city-search/code', locals: config[:credentials][:placeholder] %>
 ```
 
-**Note:** This example uses the standard [JavaScript API client](https://github.com/algolia/algoliasearch-client-javascript) in which the Places API is integrated. This example does uses the Places.js library.
+**Note:** This example uses the standard [JavaScript API client](https://github.com/algolia/algoliasearch-client-javascript) in which the Places API is integrated. This example does not use the Places.js library.
 
 **Note:** This is not a reverse geocoding API, and it is still bound by the ranking used for search, which means that in some cases large close-by cities can be promoted over a more precise city.
