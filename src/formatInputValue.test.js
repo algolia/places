@@ -1,4 +1,4 @@
-import formatInputValue from './formatInputValue.js';
+import formatInputValue from './formatInputValue';
 
 describe('formatInputValue', () => {
   const testCases = [

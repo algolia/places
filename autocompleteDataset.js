@@ -3,8 +3,8 @@
 
 /* eslint-disable import/no-commonjs */
 
-import './src/navigatorLanguage.js';
-import createAutocompleteDataset from './src/createAutocompleteDataset.js';
+import './src/navigatorLanguage';
+import createAutocompleteDataset from './src/createAutocompleteDataset';
 import css from './src/places.css';
 import insertCss from 'insert-css';
 insertCss(css, { prepend: true });

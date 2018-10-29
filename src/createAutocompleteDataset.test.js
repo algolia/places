@@ -1,5 +1,5 @@
-import createAutocompleteDataset from './createAutocompleteDataset.js';
-import createAutocompleteSource from './createAutocompleteSource.js';
+import createAutocompleteDataset from './createAutocompleteDataset';
+import createAutocompleteSource from './createAutocompleteSource';
 
 jest.mock('./defaultTemplates.js', () => ({ template: 'test', value: 'test' }));
 jest.mock('./createAutocompleteSource.js', () => jest.fn(() => 'source'));

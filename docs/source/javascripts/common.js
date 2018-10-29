@@ -1,3 +1,3 @@
-import responsiveNavigation from './responsiveNavigation.js';
-import './docsearch.js';
+import responsiveNavigation from './responsiveNavigation';
+import './docsearch';
 responsiveNavigation();

@@ -1,5 +1,5 @@
-import createAutocompleteSource from './createAutocompleteSource.js';
-import defaultTemplates from './defaultTemplates.js';
+import createAutocompleteSource from './createAutocompleteSource';
+import defaultTemplates from './defaultTemplates';
 
 export default function createAutocompleteDataset(options) {
   const templates = {

@@ -3,5 +3,5 @@
 
 /* eslint-disable import/no-commonjs */
 
-import widget from './src/instantsearch/widget.js';
+import widget from './src/instantsearch/widget';
 module.exports = widget;

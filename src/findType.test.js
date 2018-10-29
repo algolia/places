@@ -1,4 +1,4 @@
-import findType from './findType.js';
+import findType from './findType';
 
 describe('findType', () => {
   const testCases = [

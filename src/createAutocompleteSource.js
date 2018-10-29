@@ -1,5 +1,5 @@
-import formatHit from './formatHit.js';
-import version from './version.js';
+import formatHit from './formatHit';
+import version from './version';
 
 export default function createAutocompleteSource({
   algoliasearch,

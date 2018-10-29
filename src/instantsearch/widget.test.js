@@ -1,6 +1,6 @@
 import searchHelper, { SearchParameters } from 'algoliasearch-helper';
-import algoliaPlacesWidget from './widget.js';
-import places from '../places.js';
+import algoliaPlacesWidget from './widget';
+import places from '../places';
 
 jest.mock('../places.js', () => {
   const module = jest.fn(() => {

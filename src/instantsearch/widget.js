@@ -1,4 +1,4 @@
-import places from '../places.js';
+import places from '../places';
 
 /**
  * The underlying structure for the Algolia Places instantsearch widget.

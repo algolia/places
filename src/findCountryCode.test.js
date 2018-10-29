@@ -1,4 +1,4 @@
-import findCountryCode from './findCountryCode.js';
+import findCountryCode from './findCountryCode';
 
 describe('findCountryCode', () => {
   const testCases = [

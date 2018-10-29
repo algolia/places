@@ -1,6 +1,6 @@
-import sidebar from './sidebar.js';
-import activateClipboard from './activateClipboard.js';
-import anchorableElements from './anchorableElements.js';
+import sidebar from './sidebar';
+import activateClipboard from './activateClipboard';
+import anchorableElements from './anchorableElements';
 
 sidebar({
   headersContainer: document.querySelector('.documentation-container'),
