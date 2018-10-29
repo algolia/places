@@ -1,4 +1,4 @@
-import formatDropdownValue from './formatDropdownValue.js';
+import formatDropdownValue from './formatDropdownValue';
 jest.mock('./icons/address.svg', () => 'address');
 
 describe('formatDropdownValue', () => {

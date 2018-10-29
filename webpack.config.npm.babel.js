@@ -1,4 +1,4 @@
-import baseConfig from './webpack.config.babel.js';
+import baseConfig from './webpack.config.babel';
 
 export default {
   ...baseConfig,

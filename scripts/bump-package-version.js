@@ -4,7 +4,7 @@ import path from 'path';
 
 import replace from 'replace-in-file';
 import semver from 'semver';
-import currentVersion from '../src/version.js';
+import currentVersion from '../src/version';
 
 if (!process.env.VERSION) {
   throw new Error(

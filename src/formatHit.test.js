@@ -1,8 +1,8 @@
 /* eslint-disable camelcase */
 
-import formatHit from './formatHit.js';
-import findCountryCode from './findCountryCode.js';
-import findType from './findType.js';
+import formatHit from './formatHit';
+import findCountryCode from './findCountryCode';
+import findType from './findType';
 
 jest.mock('./findCountryCode.js', () => jest.fn(() => 'countryCode'));
 jest.mock('./findType.js', () => jest.fn(() => 'type'));

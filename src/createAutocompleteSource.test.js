@@ -1,7 +1,7 @@
-import formatHit from './formatHit.js';
-import version from './version.js';
-import createAutocompleteSource from './createAutocompleteSource.js';
-import algoliasearch from 'algoliasearch/src/browser/builds/algoliasearchLite.js';
+import formatHit from './formatHit';
+import version from './version';
+import createAutocompleteSource from './createAutocompleteSource';
+import algoliasearch from 'algoliasearch/src/browser/builds/algoliasearchLite';
 
 jest.mock('./formatHit.js', () =>
   jest.fn(hit => ({ formattedHit: { ...hit } }))

@@ -1,5 +1,5 @@
-import findCountryCode from './findCountryCode.js';
-import findType from './findType.js';
+import findCountryCode from './findCountryCode';
+import findType from './findType';
 
 function getBestHighlightedForm(highlightedValues) {
   const defaultValue = highlightedValues[0].value;

@@ -4,7 +4,7 @@
 /* eslint-disable import/no-commonjs */
 
 import places from './src/places';
-import version from './src/version.js';
+import version from './src/version';
 
 // must use module.exports to be commonJS compatible
 module.exports = places;

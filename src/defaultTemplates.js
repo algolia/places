@@ -1,5 +1,5 @@
-import value from './formatInputValue.js';
-import suggestion from './formatDropdownValue.js';
+import value from './formatInputValue';
+import suggestion from './formatDropdownValue';
 import algoliaLogo from './icons/algolia.svg';
 import osmLogo from './icons/osm.svg';
 

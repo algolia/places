@@ -1,11 +1,11 @@
 import EventEmitter from 'events';
 
-import algoliasearch from 'algoliasearch/src/browser/builds/algoliasearchLite.js';
+import algoliasearch from 'algoliasearch/src/browser/builds/algoliasearchLite';
 import autocomplete from 'autocomplete.js';
 
-import './navigatorLanguage.js';
+import './navigatorLanguage';
 
-import createAutocompleteDataset from './createAutocompleteDataset.js';
+import createAutocompleteDataset from './createAutocompleteDataset';
 
 import clearIcon from './icons/clear.svg';
 import pinIcon from './icons/address.svg';
@@ -14,7 +14,7 @@ import css from './places.css';
 import insertCss from 'insert-css';
 insertCss(css, { prepend: true });
 
-import errors from './errors.js';
+import errors from './errors';
 
 export default function places(options) {
   const {
