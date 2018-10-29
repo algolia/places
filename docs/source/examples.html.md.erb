@@ -196,14 +196,16 @@ See the documentation about the [placesAutocompleteDataset function](documentati
 <%= partial '/partials/examples/instantsearch', locals: config[:credentials][:placeholder] %>
 ```
 
-### Reverse Geocoding
+### Nearby City Search
 
 **Concepts:** type parameter, aroundLatLngViaIP, aroundPrecision, Places API Client.
 
-In this section, we will see how you can do reverse geocoding to find city closest to a user using the Places API Client.
+In this section, we will see how you can do _emulate_ reverse geocoding to find city closest to a user using the Places API Client.
 
 <%= partial '/partials/examples/reverse-city-search/demo', locals: config[:credentials][:documentation] %>
 
 ```html
 <%= partial '/partials/examples/reverse-city-search/code', locals: config[:credentials][:placeholder] %>
 ```
+
+**Note:** This is not a reverse geocoding API, and it is still bound by the ranking used for search, which means that in some cases large close-by cities can be promoted over a more precise city.
