@@ -32,7 +32,6 @@ placesClient.search({
 
   const coordElt = document.querySelector("#coords"); 
   const { lat, lng } = _geoloc;
-  console.log(lat, lng, coordElt);
   coordElt.innerHTML = `<code>${lat}, ${lng}</code>`;
   const infoElt = document.querySelector("#reverse-city");
   infoElt.textContent = formattedCity;
