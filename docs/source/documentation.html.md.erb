@@ -657,12 +657,27 @@ Latitude and longitude of the place found. Shape: `{lat: 48.797885, lng: 2.33703
 Type: **string**
 </td>
 <td markdown="1">
-Postcode (or ZIP Code) of the place found.
+The best matching postcode (or ZIP Code) of the place found.
 
 Examples:
 
- - 94230
- - 1001
+ - 94104
+ - 75009
+</td>
+    </tr>
+    <tr>
+<td markdown="1">
+<div class="api-entry" id="api-suggestion-postcodes"><code>postcodes</code></div>
+
+Type: **array**
+</td>
+<td markdown="1">
+The list of all postcode (or ZIP Code) of the place found.
+
+Examples:
+
+ - `["94102","94103","94104",...]`
+ - `["75008", "75009"]`
 </td>
     </tr>
     <tr>
@@ -690,8 +705,11 @@ Type: **object**
 Given the query, contains the highlighted values of the following attributes:
 
 - name
-- administrative
+- suburb
 - city
+- postcode
+- county
+- administrative
 - country
 
 Example:
