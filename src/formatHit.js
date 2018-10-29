@@ -32,6 +32,39 @@ function getBestHighlightedForm(highlightedValues) {
     : `${highlightedValues[bestAttributes[0].index].value} (${defaultValue})`;
 }
 
+function getBestPostcode(postcodes, highlightedPostcodes) {
+  const defaultValue = highlightedPostcodes[0].value;
+  // collect all other matches
+  const bestAttributes = [];
+  for (let i = 1; i < highlightedPostcodes.length; ++i) {
+    if (highlightedPostcodes[i].matchLevel !== 'none') {
+      bestAttributes.push({
+        index: i,
+        words: highlightedPostcodes[i].matchedWords,
+      });
+    }
+  }
+  // no matches in this attribute, retrieve first value
+  if (bestAttributes.length === 0) {
+    return { postcode: postcodes[0], highlightedPostcode: defaultValue };
+  }
+  // sort the matches by `desc(words)`
+  bestAttributes.sort((a, b) => {
+    if (a.words > b.words) {
+      return -1;
+    } else if (a.words < b.words) {
+      return 1;
+    }
+    return a.index - b.index;
+  });
+
+  const postcode = postcodes[bestAttributes[0].index];
+  return {
+    postcode,
+    highlightedPostcode: highlightedPostcodes[bestAttributes[0].index].value,
+  };
+}
+
 export default function formatHit({
   formatInputValue,
   hit,
@@ -53,6 +86,10 @@ export default function formatHit({
     const county =
       hit.county && hit.county[0] !== name ? hit.county[0] : undefined;
 
+    const { postcode, highlightedPostcode } = hit.postcode
+      ? getBestPostcode(hit.postcode, hit._highlightResult.postcode)
+      : { postcode: undefined, highlightedPostcode: undefined };
+
     const highlight = {
       name: getBestHighlightedForm(hit._highlightResult.locale_names),
       city: city
@@ -68,6 +105,7 @@ export default function formatHit({
       county: county
         ? getBestHighlightedForm(hit._highlightResult.county)
         : undefined,
+      postcode: highlightedPostcode,
     };
 
     const suggestion = {
@@ -83,7 +121,8 @@ export default function formatHit({
         lat: hit._geoloc.lat,
         lng: hit._geoloc.lng,
       },
-      postcode: hit.postcode && hit.postcode[0],
+      postcode,
+      postcodes: hit.postcode ? hit.postcode : undefined,
     };
 
     // this is the value to put inside the <input value=

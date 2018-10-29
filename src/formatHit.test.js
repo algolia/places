@@ -184,6 +184,57 @@ describe('formatHit', () => {
         highlight: { country: undefined },
       },
     }),
+    getTestCase({
+      name: 'no postcode',
+      hit: { postcode: undefined },
+      expected: {
+        postcode: undefined,
+        postcodes: undefined,
+        highlight: { postcode: undefined },
+      },
+    }),
+    getTestCase({
+      name: 'postcode[0] matches',
+      hit: {
+        postcode: ['75009', '75010'],
+        _highlightResult: {
+          postcode: [
+            {
+              value: '<em>75009</em>',
+              matchedWords: ['75009'],
+              matchLevel: 'full',
+            },
+            { value: '75010', matchedWords: [], matchLevel: 'none' },
+          ],
+        },
+      },
+      expected: {
+        postcode: '75009',
+        postcodes: ['75009', '75010'],
+        highlight: { postcode: '<em>75009</em>' },
+      },
+    }),
+    getTestCase({
+      name: 'postcode[1] matches',
+      hit: {
+        postcode: ['75009', '75010'],
+        _highlightResult: {
+          postcode: [
+            { value: '75009', matchedWords: [], matchLevel: 'none' },
+            {
+              value: '<em>75010</em>',
+              matchedWords: ['75010'],
+              matchLevel: 'full',
+            },
+          ],
+        },
+      },
+      expected: {
+        postcode: '75010',
+        postcodes: ['75009', '75010'],
+        highlight: { postcode: '<em>75010</em>' },
+      },
+    }),
   ];
 
   testCases.forEach(testCase =>
@@ -220,6 +271,7 @@ describe('formatHit', () => {
         type: output.type,
         latlng: output.latlng,
         postcode: output.postcode,
+        postcodes: output.postcodes,
       });
 
       expect(output.rawAnswer).toEqual('rawAnswer');
@@ -258,6 +310,7 @@ function getTestCase({ name, hit: userHit = {}, expected: userExpected = {} }) {
       county: [{ value: 'County of Paris' }],
       administrative: [{ value: 'Île-de-France' }],
       country: { value: 'France' },
+      postcode: [{ value: '75004' }],
     },
   };
 
@@ -272,6 +325,7 @@ function getTestCase({ name, hit: userHit = {}, expected: userExpected = {} }) {
       lng: '456',
     },
     postcode: '75004',
+    postcodes: ['75004'],
     hitIndex: 0,
     query: 'query',
     rawAnswer: 'rawAnswer',
@@ -281,6 +335,7 @@ function getTestCase({ name, hit: userHit = {}, expected: userExpected = {} }) {
       administrative: 'Île-de-France',
       country: 'France',
       county: 'County of Paris',
+      postcode: '75004',
     },
   };
 
