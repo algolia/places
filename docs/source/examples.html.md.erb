@@ -7,9 +7,11 @@ layout: documentation
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/leaflet/1/leaflet.css" />
 <script src="https://cdn.jsdelivr.net/leaflet/1/leaflet.js"></script>
 
-## Simple input
+## Rendering
 
-places.js turns any HTML `<input>` into an autocomplete address search bar.
+### Simple input
+
+In this section, we will see how places.js turns any HTML `<input>` into an autocomplete address search bar.
 
 <%= partial '/partials/examples/simple_input', locals: config[:credentials][:documentation] %>
 
@@ -17,9 +19,15 @@ places.js turns any HTML `<input>` into an autocomplete address search bar.
 <%= partial '/partials/examples/simple_input', locals: config[:credentials][:placeholder] %>
 ```
 
-## Complete form
+You should consider using this snippet when you want your users to easily find their addresses, and have it presented in a good and reliable format.
 
-Once the user has selected an address, you can use the [change event](documentation.html#events) to fill-out another form with the user address structured data.
+### Complete form
+
+In this section, we will see how you can interact with Places in order to fill in a complete address form.
+
+Having an address autocomplete offers great user experience, but if the address is meant to be processed internally or used for shipping, you may have to reformat or access parts of the address, which can be cumbersome when reading an already formatted address.
+
+In order to help you with this, Places.js emits a [change event](documentation.html#events) when a user selects an address from its dropdown. The event includes the selected address, also called a [suggestion](documentation#suggestions), in a structured format, which can then be used to populate other fields. You can learn more about the suggestion object in the [documentation](documentation#suggestions).
 
 <%= partial '/partials/examples/complete_form', locals: config[:credentials][:documentation] %>
 
@@ -27,29 +35,13 @@ Once the user has selected an address, you can use the [change event](documentat
 <%= partial '/partials/examples/complete_form', locals: config[:credentials][:placeholder] %>
 ```
 
-## City search
+This template can be used as a helper for shipping forms.
 
-You can build a city search input by using the [type parameter](documentation.html#options).
+**Note:** This template intercepts the suggestion from the `change` event and updates other `<input>` fields, so that the user can then validate and/or modify the data if it is needed. This is considered a best practice because Places addresses can sometimes be incorrect or incomplete: new streets are built all the time; cities are sometimes renamed; or simply because the underlying OpenStreetMap data is not perfect in all areas. Therefore, you should not use the suggestion data without allowing the end user the possibility to modify the address.
 
-<%= partial '/partials/examples/city_search', locals: config[:credentials][:documentation] %>
+**Note:** There are some challenges with address forms that have not been addressed in this example for the sake of simplicity. For instance, in some countries, there can be multiple postal codes for a single city, and you should then use a dropdown with the possible values provided in the suggestion, while still allowing the user to correct it if needed.
 
-```html
-<%= partial '/partials/examples/city_search', locals: config[:credentials][:placeholder] %>
-```
-
-## Country search
-
-You can also search in countries only.
-
-places.js turns any HTML `<input>` into a City as-you-type search bar. You can filter on a specific list of countries if needed:
-
-<%= partial '/partials/examples/country_search', locals: config[:credentials][:documentation] %>
-
-```html
-<%= partial '/partials/examples/country_search', locals: config[:credentials][:placeholder] %>
-```
-
-## Link to a map
+### Displaying on a map
 
 We will use the [Leaflet](http://leafletjs.com/) JavaScript library as an example to display the places.js results on the map and update them when needed.
 
@@ -68,9 +60,98 @@ Then use this:
 <%= partial '/partials/examples/map', locals: config[:credentials][:placeholder] %>
 ```
 
-## Force lat, lng, radius
+### Templates
 
-Reusing the [map](#link-to-a-map) example, we want to only search around Paris, France.
+**Warning:** This is an advanced feature. 
+
+Although Places.js comes with a good default template that should fit most use cases, you may want to customize both the input value and dropdown suggestion templates to better fit your needs.
+
+In order to help you modify the rendered values for both objects, Places exposes a [templates option](documentation.html#api-options-templates) that can be configured for both the `value` and `suggestion` components.
+
+Templates are functions called with a [suggestion object](./documentation.html#suggestions).
+
+<%= partial '/partials/examples/templates', locals: config[:credentials][:documentation] %>
+
+```html
+<%= partial '/partials/examples/templates', locals: config[:credentials][:placeholder] %>
+```
+
+### Disable styling
+
+**Warning:** This is an advanced feature.
+
+The default Algolia Places styling can be enhanced by overriding the [default rules](documentation.html#styling).
+
+If you need full control and want to disable all default styling, you can do it by setting the `style` option to false.
+
+<%= partial '/partials/examples/disable_styling', locals: config[:credentials][:documentation] %>
+
+```html
+<%= partial '/partials/examples/disable_styling', locals: config[:credentials][:placeholder] %>
+```
+
+See our [documentation about styling](./documentation.html#styling) for more details.
+
+**Important:** Regardless of how you want to style your results, your updated styles must still be compliant with our [Usage Policy](documentation.html#licenses--policies) and must display the Algolia Logo.
+
+
+## Focusing search
+
+Places offers many ways to restrict the scope of its search to either certain types of records, certain countries, or even certain locations.
+
+In this section, we will explore how we can use these restrictions to improve the relevance to best match the end user expectations.
+
+### City search
+
+**Concept:** [type](documentation.html#api-options-type) parameter.
+
+In this section, we will see how you can restrict the scope of Places to only a certain type.
+
+There are many use-cases where having a full blown address search is not necessary, and simply searching for a city is enough.
+
+In order to help you with this, Places.js exposes a configuration parameter to restrict the type of records you want to search against. You can build a city search input by using the [type parameter](documentation.html#api-options-type).
+
+<%= partial '/partials/examples/city_search', locals: config[:credentials][:documentation] %>
+
+```html
+<%= partial '/partials/examples/city_search', locals: config[:credentials][:placeholder] %>
+```
+
+**Note:** It is possible to restrict the type of records to more than a single type by passing an array of types that you want to search against. For instance, you can combine the `city` type with the `airport` type. However, be careful when searching for cities and other types at the same time. Due to the fact that cities are prioritized in the ranking, other types of records can be pushed back and have difficulties appearing in the results.
+
+### Country search
+
+You can also search in countries only.
+
+places.js turns any HTML `<input>` into a Country as-you-type search bar. You can filter on a specific list of countries if needed:
+
+<%= partial '/partials/examples/country_search', locals: config[:credentials][:documentation] %>
+
+```html
+<%= partial '/partials/examples/country_search', locals: config[:credentials][:placeholder] %>
+```
+
+### Searching in a country
+
+**Concept:** [countries](documentation.html#api-options-countries) parameter.
+
+In this section, we will see how you can restrict the scope of Places to search only in some countries.
+
+Places.js exposes a [countries parameter](documentation.html#api-options-countries) will restrict the search to records that belong to this array of countries. For instance, if you want to restrict the search to records in France:
+
+<%= partial '/partials/examples/single_country_search', locals: config[:credentials][:documentation] %>
+
+```html
+<%= partial '/partials/examples/single_country_search', locals: config[:credentials][:placeholder] %>
+```
+
+**Note:** It is considered a best practice to restrict Places search to only the countries that are relevant to your use case. Restricting Places to a single country can greatly improve the relevance of the results.
+
+### Search around lat/lng
+
+**Concepts:** [aroundLatLng](documentation.html#api-options-aroundLatLng) and [aroundRadius](documentation.html##api-options-aroundRadius) parameters.
+
+Reusing the [map](#displaying-on-a-map) example, we want to only search around Paris, France.
 
 This is useful when you really want to display results around a specific area.
 
@@ -89,35 +170,11 @@ Then use this:
 <%= partial '/partials/examples/map_paris', locals: config[:credentials][:placeholder] %>
 ```
 
+**Note:** Both parameters are key to restrict the search to a certain area. If a location is passed in `aroundLatLng` without the `aroundRadius` parameter being set, Places will prioritize results around the location but will also search the rest of the world for additional results. This is why the `aroundLatLng` parameter should be considered as a wait to _first_ search around a location rather than as a filter.
+
 ## Advanced
 
-### Templates
-
-You can customize both the input value and dropdown suggestion templates.
-
-Templates are functions called with a [suggestion object](./documentation.html#suggestions).
-
-<%= partial '/partials/examples/templates', locals: config[:credentials][:documentation] %>
-
-```html
-<%= partial '/partials/examples/templates', locals: config[:credentials][:placeholder] %>
-```
-
-### Disable styling
-
-The default Algolia Places styling can be enhanced by overriding the [default rules](documentation.html#styling).
-
-If you need full control and want to disable all default styling, you can also do it.
-
-<%= partial '/partials/examples/disable_styling', locals: config[:credentials][:documentation] %>
-
-```html
-<%= partial '/partials/examples/disable_styling', locals: config[:credentials][:placeholder] %>
-```
-
-See our [documentation about styling](./documentation.html#styling) for more details.
-
-### autocomplete.js
+### Places + Custom data
 
 Using [Algolia's autocomplete.js](https://github.com/algolia/autocomplete.js) library, you can search in your own data along with showing Algolia Places results.
 
@@ -131,10 +188,26 @@ You need an Algolia account to do so and the Algolia Places dataset:
 
 See the documentation about the [placesAutocompleteDataset function](documentation.html#autocompletejs).
 
-### instantsearch.js
+### Places + InstantSearch
 
 <%= partial '/partials/examples/instantsearch', locals: config[:credentials][:documentation] %>
 
 ```html
 <%= partial '/partials/examples/instantsearch', locals: config[:credentials][:placeholder] %>
 ```
+
+### Nearby City Search
+
+**Concepts:** type parameter, aroundLatLngViaIP, aroundPrecision, Places API Client.
+
+In this section, we will see how you can do _emulate_ reverse geocoding to find city closest to a user using the Places API Client.
+
+<%= partial '/partials/examples/reverse-city-search/demo', locals: config[:credentials][:documentation] %>
+
+```html
+<%= partial '/partials/examples/reverse-city-search/code', locals: config[:credentials][:placeholder] %>
+```
+
+**Note:** This example uses the standard [JavaScript API client](https://github.com/algolia/algoliasearch-client-javascript) in which the Places API is integrated. This example does not use the Places.js library.
+
+**Note:** This is not a reverse geocoding API, and it is still bound by the ranking used for search, which means that in some cases large close-by cities can be promoted over a more closely located city.
