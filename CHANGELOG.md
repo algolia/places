@@ -1,3 +1,19 @@
+<a name="1.12.0"></a>
+# [1.12.0](https://github.com/algolia/places/compare/v1.11.0...v1.12.0) (2018-10-30)
+
+
+### Bug Fixes
+
+* **credentials:** fix credentials formatting in situations where double quotes are needed ([#626](https://github.com/algolia/places/issues/626)) ([113bb7b](https://github.com/algolia/places/commit/113bb7b))
+
+
+### Features
+
+* **cta:** add signup CTA on landing ([#610](https://github.com/algolia/places/issues/610)) ([7735df0](https://github.com/algolia/places/commit/7735df0))
+* **postcodes:** expose postcodes array in suggestions ([#622](https://github.com/algolia/places/issues/622)) ([870e08a](https://github.com/algolia/places/commit/870e08a))
+
+
+
 <a name="1.11.0"></a>
 # [1.11.0](https://github.com/algolia/places/compare/v1.10.0...v1.11.0) (2018-09-17)
 
