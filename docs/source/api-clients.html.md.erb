@@ -18,7 +18,7 @@ You can directly query the [Places REST API](api-client.html#rest-api) using our
 
 ```js
 // var algoliasearch = require('algoliasearch');
-var places = algoliasearch.initPlaces(/*appId, apiKey*/);
+var places = algoliasearch.initPlaces('YOUR_PLACES_APP_ID', 'YOUR_PLACES_API_KEY');
 places
   .search(/*{REST API Params}*/, function(err, res) {
     if (err) {
@@ -62,7 +62,7 @@ You can directly query the [Places REST API](api-client.html#rest-api) with our 
 
 ```swift
 // initialize client
-let places = PlacesClient(appID: appID, apiKey: apiKey)
+let places = PlacesClient(appID: 'YOUR_PLACES_APP_ID', apiKey: 'YOUR_PLACES_API_KEY')
 
 // craft a query
 let query = PlacesQuery()
@@ -88,7 +88,7 @@ You can directly query the [Places REST API](api-client.html#rest-api) with our 
 
 ```java
 // initialize client
-PlacesClient places = new PlacesClient(PLACES_APP_ID, PLACES_API_KEY);
+PlacesClient places = new PlacesClient('YOUR_PLACES_APP_ID', 'YOUR_PLACES_API_KEY');
 
 // craft a query
 PlacesQuery query = new PlacesQuery();
