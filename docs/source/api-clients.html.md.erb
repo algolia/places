@@ -56,6 +56,56 @@ var_dump($result);
 
 Note: _Like with the Places.js library, you need to provide your Places App credentials in order for the clients to function properly. If you do not have a Places application, you can create one by [signing up for free](https://www.algolia.com/users/sign_up/places)._
 
+### Swift API Client
+
+You can directly query the [Places REST API](api-client.html#rest-api) with our [Swift API Client](https://github.com/algolia/algoliasearch-client-swift), so that you can do backend Places searches.
+
+```swift
+// initialize client
+let places = PlacesClient(appID: appID, apiKey: apiKey)
+
+// craft a query
+let query = PlacesQuery()
+query.query = "Paris"
+query.type = .city
+query.hitsPerPage = 10
+query.aroundLatLngViaIP = false
+query.aroundLatLng = LatLng(lat: 32.7767, lng: -96.7970) // Dallas, TX, USA
+query.language = "en"
+query.countries = ["fr", "us"]
+
+// search
+places.search(query) { (content, error) in
+    // content?["hits"] to access the hits
+}
+```
+
+Note: _Like with the Places.js library, you need to provide your Places App credentials in order for the clients to function properly. If you do not have a Places application, you can create one by [signing up for free](https://www.algolia.com/users/sign_up/places)._
+
+### Android API Client
+
+You can directly query the [Places REST API](api-client.html#rest-api) with our [Android API Client](https://github.com/algolia/algoliasearch-client-android), so that you can do backend Places searches.
+
+```java
+// initialize client
+PlacesClient places = new PlacesClient(PLACES_APP_ID, PLACES_API_KEY);
+
+// craft a query
+PlacesQuery query = new PlacesQuery();
+query.setQuery("Paris");
+query.setType(PlacesQuery.Type.CITY);
+query.setHitsPerPage(10);
+query.setAroundLatLngViaIP(false);
+query.setAroundLatLng(new PlacesQuery.LatLng(32.7767, -96.7970)); // Dallas, TX, USA
+query.setLanguage("en");
+query.setCountries("fr", "us");
+
+// search
+places.searchAsync(query, new CompletionHandler() {
+    ...
+});
+```
+
 ## REST API
 
 The Algolia Places REST API supports HTTPS and is available via the `https://places-dsn.algolia.net` domain (leveraging our [Distributed Search Network](https://www.algolia.com/dsn) infrastructure).
