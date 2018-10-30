@@ -49,6 +49,13 @@ const $response = document.querySelector('#json-response');
 const $responseText = document.querySelector('#json-response-text');
 const $responseTiming = document.querySelector('#json-response-timing');
 placesAutocomplete.on('change', e => {
+  let postcodes = (e.suggestion.postcodes || []).slice(0, 3);
+  if (postcodes.length !== (e.suggestion.postcodes || []).length) {
+    postcodes = [...postcodes, '...'];
+  } else if (postcodes.length === 0) {
+    postcodes = undefined;
+  }
+
   const content = {
     ...e,
     // hide advanced API event data in demo
@@ -58,6 +65,7 @@ placesAutocomplete.on('change', e => {
       hitIndex: undefined,
       query: undefined,
       rawAnswer: undefined,
+      postcodes,
     },
     rawAnswer: undefined,
     suggestionIndex: undefined,
