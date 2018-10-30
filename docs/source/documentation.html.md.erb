@@ -23,8 +23,8 @@ Here's a small example using it:
 <%= javascript_include_tag config[:places_cdn_url] %>
 <script>
   var placesAutocomplete = places({
-    appId: <YOUR_PLACES_APP_ID>,
-    apiKey: <YOUR_PLACES_API_KEY>,
+    appId: 'YOUR_PLACES_APP_ID',
+    apiKey: 'YOUR_PLACES_API_KEY',
     container: document.querySelector('#address-input')
   });
 </script>
@@ -56,8 +56,8 @@ Initialize the places.js library:
 ```js
 var places = require('places.js');
 var placesAutocomplete = places({
-  appId: <YOUR_PLACES_APP_ID>,
-  apiKey: <YOUR_PLACES_API_KEY>,
+  appId: 'YOUR_PLACES_APP_ID',
+  apiKey: 'YOUR_PLACES_API_KEY',
   container: document.querySelector('#address-input')
 });
 ```
@@ -74,8 +74,8 @@ To turn any HTML `<input />` into an address search bar make sure you include th
 
 ```js
 var options = {
-  appId: <YOUR_PLACES_APP_ID>,
-  apiKey: <YOUR_PLACES_API_KEY>,
+  appId: 'YOUR_PLACES_APP_ID',
+  apiKey: 'YOUR_PLACES_API_KEY',
   container: '#my-input-DOM-selector',
   // ...
 };
@@ -86,8 +86,8 @@ Advanced example using all parameters:
 
 ```js
 var options = {
-  appId: <YOUR_PLACES_APP_ID>,
-  apiKey: <YOUR_PLACES_API_KEY>,
+  appId: 'YOUR_PLACES_APP_ID',
+  apiKey: 'YOUR_PLACES_API_KEY',
   container: document.querySelector('#demo'),
   language: 'de', // Receives results in German
   countries: ['us', 'ru'], // Search in the United States of America and in the Russian Federation
@@ -345,8 +345,8 @@ The Algolia Places autocomplete exposes some events that you can register to:
 
 ```js
 var placesAutocomplete = places({
-  appId: <YOUR_PLACES_APP_ID>,
-  apiKey: <YOUR_PLACES_API_KEY>,
+  appId: 'YOUR_PLACES_APP_ID',
+  apiKey: 'YOUR_PLACES_API_KEY',
   container: document.querySelector('#demo')
 });
 
