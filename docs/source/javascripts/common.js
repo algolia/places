@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import responsiveNavigation from './responsiveNavigation';
 import autoPullCredentials from './autoPullCredentials';
 import './docsearch';
