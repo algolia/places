@@ -55,13 +55,23 @@ function getCredentials() {
 function updatePlaceholders({ appId, apiKey }) {
   document.querySelectorAll('.rouge-code > pre > span').forEach(elt => {
     if (elt.textContent.match(/.*YOUR_PLACES_APP_ID.*/)) {
-      // eslint-disable-next-line no-param-reassign
-      elt.innerHTML = `'${appId}'`;
+      if (elt.textContent.startsWith(`'`)) {
+        // eslint-disable-next-line no-param-reassign
+        elt.innerHTML = `'${appId}'`;
+      } else {
+        // eslint-disable-next-line no-param-reassign
+        elt.innerHTML = `"${appId}"`;
+      }
     }
 
     if (elt.textContent.match(/.*YOUR_PLACES_API_KEY.*/)) {
-      // eslint-disable-next-line no-param-reassign
-      elt.innerHTML = `'${apiKey}'`;
+      if (elt.textContent.startsWith(`'`)) {
+        // eslint-disable-next-line no-param-reassign
+        elt.innerHTML = `'${apiKey}'`;
+      } else {
+        // eslint-disable-next-line no-param-reassign
+        elt.innerHTML = `"${apiKey}"`;
+      }
     }
   });
 }
