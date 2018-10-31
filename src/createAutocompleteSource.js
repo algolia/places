@@ -12,6 +12,7 @@ export default function createAutocompleteSource({
   aroundLatLngViaIP,
   insideBoundingBox,
   insidePolygon,
+  getRankingInfo,
   countries,
   formatInputValue,
   computeQueryParams = params => params,
@@ -60,6 +61,10 @@ export default function createAutocompleteSource({
 
   if (insidePolygon) {
     defaultQueryParams.insidePolygon = insidePolygon;
+  }
+
+  if (getRankingInfo) {
+    defaultQueryParams.getRankingInfo = getRankingInfo;
   }
 
   let userCoords;
