@@ -211,3 +211,50 @@ In this section, we will see how you can do _emulate_ reverse geocoding to find 
 **Note:** This example uses the standard [JavaScript API client](https://github.com/algolia/algoliasearch-client-javascript) in which the Places API is integrated. This example does not use the Places.js library.
 
 **Note:** This is not a reverse geocoding API, and it is still bound by the ranking used for search, which means that in some cases large close-by cities can be promoted over a more closely located city.
+
+### Using _rankingInfo
+
+**Concepts:** _rankingInfo, query strategy, geolocation precision.
+
+In this section, we will see how we can leverage `_rankingInfo` to provide additional information to our user about certain behaviours of the query strategy.
+
+As with any Algolia query, `_rankingInfo` will include information about how the ranking was computed based on the `words`, `exact`, `filters`, `nbTypos`, etc.
+However, Places also enriches the _rankingInfo with additional information based on which part of the query strategy was used to return this result.
+Finally, in countries where Places supports house level precision queries, it also provides some data on how precise the geolocation resolution was.
+
+As such, on top of the regular `_rankingInfo` fields, Places exposes the two following:
+- query
+- roadNumberPrecision 
+
+##### query
+The `query` field of the `_rankingInfo` object is a reference to which query strategy was used to find this result while executing the Algolia Places Query.
+You can read more about the Algolia Places query strategy [here](api-clients#query-strategy).
+
+It can take 3 values depending of the strategy used to find this record:
+- **worldwide_query**: Places searched the entire world to find this record.
+- **local_query**: Places searched the country of the user to find this record.
+- **geo_query**: Places searched around the user to find this record.
+
+You can leverage this attribute to better understand how your constraints impact the relevance of your search.
+
+**Note:** This is a very advanced feature, which will be irrelevant to most users.
+
+**Note:** all searches that Places does internally still take into account the filters that you applied, so if you restrict a query to only a few countries, a worldwide query will only look into these few countries.
+
+##### roadNumberPrecision
+The `roadNumberPrecision` field of the `_rankingInfo` object provides additional information on how precise the geolocation of the record is.
+
+By default, Places only offers precision up to the street level, which means that all the house numbers of a street will have the same geolocation. However, Places offers house level precision in France, if you are part of the opt-in beta for this program.
+In this case, the `roadNumberPrecision` field will return either `exact` or `closest` depending on whether the house number passed in the query was found exactly in the data or if we had to fallback on the closest matching house number that we found.
+
+##### Demo
+In this demo, we will visually show which query strategy was used to find each suggestion (on the left of the suggestion), as well as show the geolocation precision of results on the right.
+Remember that house level precision is only available in France, so here are some example queries that you can try to see how things work under the hood:
+- `L` (or any first letter that is not the first letter of a large city that is close to you)
+- `55 rue d'Amsterdam, Paris` (look at how there are 2 records and only one has the exact house number - 3 circles vs 2 circles)
+
+<%= partial '/partials/examples/ranking_info', locals: config[:credentials][:documentation] %>
+
+```html
+<%= partial '/partials/examples/ranking_info', locals: config[:credentials][:placeholder] %>
+```
