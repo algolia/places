@@ -1,3 +1,13 @@
+<a name="1.13.0"></a>
+# [1.13.0](https://github.com/algolia/places/compare/v1.12.0...v1.13.0) (2018-11-01)
+
+
+### Features
+
+* **ranking-info:** expose and explain _rankingInfo ([#628](https://github.com/algolia/places/issues/628)) ([131123f](https://github.com/algolia/places/commit/131123f))
+
+
+
 <a name="1.12.0"></a>
 # [1.12.0](https://github.com/algolia/places/compare/v1.11.0...v1.12.0) (2018-10-30)
 
