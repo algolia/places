@@ -244,7 +244,7 @@ You can leverage this attribute to better understand how your constraints impact
 ##### roadNumberPrecision
 The `roadNumberPrecision` field of the `_rankingInfo` object provides additional information on how precise the geolocation of the record is.
 
-By default, Places only offers precision up to the street level, which means that all the house numbers of a street will have the same geolocation. However, Places offers house level precision in France, if you are part of the opt-in beta for this program.
+By default, Places only offers precision up to the street level, which means that all the house numbers of a street will have the same geolocation. However, Places offers house level precision in France, if you are part of [the opt-in beta for this program](https://goo.gl/forms/8sIEGSShUm85jMLp2).
 In this case, the `roadNumberPrecision` field will return either:
 - **exact**: the house number passed in the query was found exactly in the data
 - **closest**: interpolate the position based on known datapoints
