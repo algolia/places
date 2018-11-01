@@ -341,6 +341,18 @@ Filters the results inside the area defined by a shape. [See guide](https://www.
 Format: `p1Lat, p1Lng, p2Lat, p2Lng, p3Lat, p3Lng...`
 </td>
 </tr>
+<tr>
+<td markdown="1">
+<div class="api-entry" id="api-options-getRankingInfo"><code>getRankingInfo</code></div>
+
+Type: **boolean**
+</td>
+<td markdown="1">
+Controls whether the [_rankingInfo](https://www.algolia.com/doc/api-reference/api-methods/search/#method-response-_rankinginfo) object should be included in the hits. This defaults to `false`.
+
+The _rankingInfo object for a Places query is slightly different from a regular Algolia query and you can read up more about the difference and how to leverage them in [our guide](examples.html#using-_rankinginfo).
+</td>
+</tr>
   </tbody>
 </table>
 

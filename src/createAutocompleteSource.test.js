@@ -163,6 +163,15 @@ describe('createAutocompleteSource', () => {
     });
   });
 
+  it('supports getRankingInfo option', () => {
+    const { source, defaults } = setup({ getRankingInfo: true });
+    source(defaults.query);
+    expect(algoliasearch.__searchSpy).toHaveBeenCalledWith({
+      ...defaults,
+      getRankingInfo: true,
+    });
+  });
+
   it('supports hitsPerPage option', () => {
     const { source, defaults } = setup({ hitsPerPage: 2 });
     source(defaults.query);
