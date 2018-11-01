@@ -65,8 +65,8 @@
   }
 
   const formatName = ({ name }) => name
-  const formatAddress = ({ suburb, city, postcode, country }) => {
-    return [ suburb, city, postcode, country ]
+  const formatAddress = ({ suburb, city, postcode, administrative, country }) => {
+    return [ suburb, city, postcode, administrative, country ]
       .filter(v => !!v)
       .join(', ')
   }
