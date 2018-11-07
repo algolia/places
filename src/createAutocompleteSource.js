@@ -67,14 +67,15 @@ export default function createAutocompleteSource({
     defaultQueryParams.getRankingInfo = getRankingInfo;
   }
 
+  let tracker = null;
   let userCoords;
   if (useDeviceLocation) {
-    navigator.geolocation.watchPosition(({ coords }) => {
+    tracker = navigator.geolocation.watchPosition(({ coords }) => {
       userCoords = `${coords.latitude},${coords.longitude}`;
     });
   }
 
-  return (query, cb) =>
+  const searcher = (query, cb) =>
     placesClient
       .search(
         computeQueryParams({
@@ -111,4 +112,16 @@ export default function createAutocompleteSource({
 
         onError(e);
       });
+
+  searcher.setUseDeviceLocation = bool => {
+    if (bool && tracker === null) {
+      tracker = navigator.geolocation.watchPosition(({ coords }) => {
+        userCoords = `${coords.latitude},${coords.longitude}`;
+      });
+    } else if (!bool && tracker !== null) {
+      navigator.geolocation.clearWatch(tracker);
+      tracker = null;
+    }
+  };
+  return searcher;
 }
