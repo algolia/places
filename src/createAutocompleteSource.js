@@ -1,6 +1,59 @@
 import formatHit from './formatHit';
 import version from './version';
 
+const configure = (
+  {
+    hitsPerPage,
+    aroundLatLng,
+    aroundRadius,
+    aroundLatLngViaIP,
+    insideBoundingBox,
+    insidePolygon,
+    getRankingInfo,
+    countries,
+    language = navigator.language.split('-')[0],
+    type,
+  },
+  { useDeviceLocation = false }
+) => {
+  const baseParams = {
+    countries,
+    hitsPerPage: hitsPerPage || 5,
+    language,
+    type,
+  };
+
+  const baseControls = {};
+
+  if (Array.isArray(baseParams.countries)) {
+    baseParams.countries = baseParams.countries.map(country =>
+      country.toLowerCase()
+    );
+  }
+
+  if (typeof baseParams.language === 'string') {
+    baseParams.language = baseParams.language.toLowerCase();
+  }
+
+  if (aroundLatLng) {
+    baseParams.aroundLatLng = aroundLatLng;
+  } else if (aroundLatLngViaIP !== undefined) {
+    baseParams.aroundLatLngViaIP = aroundLatLngViaIP;
+  }
+
+  return {
+    params: Object.assign(baseParams, {
+      aroundRadius,
+      insideBoundingBox,
+      insidePolygon,
+      getRankingInfo,
+    }),
+    controls: Object.assign(baseControls, {
+      useDeviceLocation,
+    }),
+  };
+};
+
 export default function createAutocompleteSource({
   algoliasearch,
   clientOptions,
@@ -28,58 +81,39 @@ export default function createAutocompleteSource({
   const placesClient = algoliasearch.initPlaces(appId, apiKey, clientOptions);
   placesClient.as.addAlgoliaAgent(`Algolia Places ${version}`);
 
-  const defaultQueryParams = {
-    countries,
-    hitsPerPage: hitsPerPage || 5,
-    language,
-    type,
-  };
+  const configuration = configure(
+    {
+      hitsPerPage,
+      aroundLatLng,
+      aroundRadius,
+      aroundLatLngViaIP,
+      insideBoundingBox,
+      insidePolygon,
+      getRankingInfo,
+      countries,
+      language,
+      type,
+    },
+    { useDeviceLocation }
+  );
 
-  if (Array.isArray(defaultQueryParams.countries)) {
-    defaultQueryParams.countries = defaultQueryParams.countries.map(country =>
-      country.toLowerCase()
-    );
-  }
+  let params = configuration.params;
+  let controls = configuration.controls;
 
-  if (typeof defaultQueryParams.language === 'string') {
-    defaultQueryParams.language = defaultQueryParams.language.toLowerCase();
-  }
-
-  if (aroundLatLng) {
-    defaultQueryParams.aroundLatLng = aroundLatLng;
-  } else if (aroundLatLngViaIP !== undefined) {
-    defaultQueryParams.aroundLatLngViaIP = aroundLatLngViaIP;
-  }
-
-  if (aroundRadius) {
-    defaultQueryParams.aroundRadius = aroundRadius;
-  }
-
-  if (insideBoundingBox) {
-    defaultQueryParams.insideBoundingBox = insideBoundingBox;
-  }
-
-  if (insidePolygon) {
-    defaultQueryParams.insidePolygon = insidePolygon;
-  }
-
-  if (getRankingInfo) {
-    defaultQueryParams.getRankingInfo = getRankingInfo;
-  }
-
-  let tracker = null;
   let userCoords;
-  if (useDeviceLocation) {
+  let tracker = null;
+
+  if (controls.useDeviceLocation) {
     tracker = navigator.geolocation.watchPosition(({ coords }) => {
       userCoords = `${coords.latitude},${coords.longitude}`;
     });
   }
 
-  const searcher = (query, cb) =>
-    placesClient
+  function searcher(query, cb) {
+    return placesClient
       .search(
         computeQueryParams({
-          ...defaultQueryParams,
+          ...params,
           [userCoords ? 'aroundLatLng' : undefined]: userCoords,
           query,
         })
@@ -112,13 +146,23 @@ export default function createAutocompleteSource({
 
         onError(e);
       });
+  }
 
-  searcher.setUseDeviceLocation = bool => {
-    if (bool && tracker === null) {
+  // eslint-disable-next-line camelcase
+  searcher.unstable_configure = partial => {
+    const updated = configure(
+      { ...params, ...partial },
+      { ...controls, ...partial }
+    );
+
+    params = updated.params;
+    controls = updated.controls;
+
+    if (controls.useDeviceLocation && tracker === null) {
       tracker = navigator.geolocation.watchPosition(({ coords }) => {
         userCoords = `${coords.latitude},${coords.longitude}`;
       });
-    } else if (!bool && tracker !== null) {
+    } else if (!controls.useDeviceLocation && tracker !== null) {
       navigator.geolocation.clearWatch(tracker);
       tracker = null;
     }

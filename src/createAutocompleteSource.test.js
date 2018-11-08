@@ -292,7 +292,7 @@ describe('createAutocompleteSource', () => {
     });
   });
 
-  it('setUseDeviceLocation toggles useDeviceLocation behavior', () => {
+  it('allows reconfiguration of defaults', () => {
     const latitude = '456';
     const longitude = '789';
     navigator.geolocation = {
@@ -301,10 +301,8 @@ describe('createAutocompleteSource', () => {
 
     const { source, defaults } = setup({ useDeviceLocation: false });
     source(defaults.query);
-    expect(algoliasearch.__searchSpy).toBeCalledWith({
-      ...defaults,
-    });
-    source.setUseDeviceLocation(true);
+    expect(algoliasearch.__searchSpy).toBeCalledWith({ ...defaults });
+    source.unstable_configure({ useDeviceLocation: true });
     source(defaults.query);
     expect(algoliasearch.__searchSpy).toBeCalledWith({
       ...defaults,

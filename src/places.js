@@ -126,9 +126,10 @@ export default function places(options) {
   autocompleteContainer.appendChild(pin);
 
   pin.addEventListener('click', () => {
-    autocompleteDataset.source.setUseDeviceLocation(true);
+    autocompleteDataset.source.unstable_configure({ useDeviceLocation: true });
     autocompleteInstance.focus();
   });
+
   clear.addEventListener('click', () => {
     autocompleteInstance.autocomplete.setVal('');
     autocompleteInstance.focus();
@@ -179,8 +180,11 @@ export default function places(options) {
   };
 
   placesInstance.autocomplete = autocompleteInstance;
-  placesInstance.setUseDeviceLocation =
-    autocompleteDataset.source.setUseDeviceLocation;
+
+  /* eslint-disable camelcase */
+  placesInstance.unstable_configure =
+    autocompleteDataset.source.unstable_configure;
+  /* eslint-enable camelcase */
 
   return placesInstance;
 }

@@ -5,10 +5,12 @@ jest.mock(
 );
 jest.mock('./icons/clear.svg', () => 'clear');
 jest.mock('./places.css', () => 'places.css');
+
 jest.mock('./createAutocompleteDataset', () =>
   jest.fn(() => ({
     source: {
-      setUseDeviceLocation: 'useDeviceLocation',
+      // eslint-disable-next-line camelcase
+      unstable_configure: 'configure',
     },
     other: 'autocompleteDataset',
   }))
@@ -162,7 +164,8 @@ describe('places', () => {
         },
         {
           source: {
-            setUseDeviceLocation: 'useDeviceLocation',
+            // eslint-disable-next-line camelcase
+            unstable_configure: 'configure',
           },
           other: 'autocompleteDataset',
         }
