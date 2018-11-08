@@ -7,13 +7,13 @@
   "scripts": {
     "build": "NODE_ENV=production ./scripts/build.sh",
     "dev": "./scripts/dev.sh",
-    "docs:js:build": "webpack --config webpack.config.docs.babel.js",
-    "docs:js:watch": "webpack --config webpack.config.docs.babel.js --watch",
+    "docs:js:build": "webpack --mode production --config webpack.config.docs.babel.js",
+    "docs:js:watch": "webpack --mode production --config webpack.config.docs.babel.js --watch",
     "docs:build": "./scripts/build-website.sh",
     "docs:deploy": "./scripts/deploy-website.sh",
     "doctoc": "doctoc --maxlevel 3 CONTRIBUTING.md",
-    "js:build": "webpack",
-    "js:watch": "webpack --watch",
+    "js:build": "webpack --mode development",
+    "js:watch": "webpack --mode development --watch",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "release": "./scripts/release.sh",
@@ -57,7 +57,8 @@
     "replace-in-file": "3.4.2",
     "semver": "5.6.0",
     "uglify-js": "3.4.9",
-    "webpack": "4.25.1"
+    "webpack": "4.25.1",
+    "webpack-cli": "3.1.2"
   },
   "dependencies": {
     "algolia-aerial": "^1.5.3",
