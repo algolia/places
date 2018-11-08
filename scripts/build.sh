@@ -14,7 +14,7 @@ mkdir -p "$dist_dir_cdn"
 rm -rf "${dist_dir:?}"/*
 
 # CDN build
-webpack
+webpack --mode production
 
 for bundle in "${bundles[@]}"
 do
