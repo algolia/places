@@ -133,6 +133,61 @@ You just need to pass a reference to an Element. Obtained via
     </tr>
     <tr>
 <td markdown="1">
+<div class="api-entry" id="api-options-appId"><code>appId</code></div>
+
+Type: **string**
+</td>
+<td markdown="1">
+The Places application ID to use.
+
+**Note**: Create a <a href="https://www.algolia.com/users/sign_up/places">Places app here</a>.
+</td>
+    </tr>
+    <tr>
+<td markdown="1">
+<div class="api-entry" id="api-options-apiKey"><code>apiKey</code></div>
+
+Type: **string**
+</td>
+<td markdown="1">
+The Places search API key to use.
+</td>
+    </tr>
+    <tr>
+<td markdown="1">
+<div class="api-entry" id="api-options-templates"><code>templates</code></div>
+
+Type: **Object**
+</td>
+<td markdown="1">
+Change the templates used in place.js.
+
+Available templates:
+
+- value
+- suggestion
+
+Each template is a function that will receive a [suggestion object](#suggestions) and must return
+a `string`.
+
+`value` must return a plain string as it's used to fill the `input.value`. `suggestion` should
+return an HTML string to be displayed in the dropdown.
+</td>
+    </tr>
+    <tr>
+<td markdown="1">
+<div class="api-entry" id="api-options-style"><code>style</code></div>
+
+Type: **boolean**
+</td>
+<td markdown="1">
+Control whether the default styles should be used.
+
+**Default**: Styles are enabled.
+</td>
+    </tr>
+    <tr>
+<td markdown="1">
 <div class="api-entry" id="api-options-type"><code>type</code></div>
 
 Type: **string**
@@ -252,28 +307,6 @@ Control whether the default styles should be used.
     </tr>
     <tr>
 <td markdown="1">
-<div class="api-entry" id="api-options-appId"><code>appId</code></div>
-
-Type: **string**
-</td>
-<td markdown="1">
-The Places application ID to use.
-
-**Note**: Create a <a href="https://www.algolia.com/users/sign_up/places">Places app here</a>.
-</td>
-    </tr>
-    <tr>
-<td markdown="1">
-<div class="api-entry" id="api-options-apiKey"><code>apiKey</code></div>
-
-Type: **string**
-</td>
-<td markdown="1">
-The Places search API key to use.
-</td>
-    </tr>
-    <tr>
-<td markdown="1">
 <div class="api-entry" id="api-options-useDeviceLocation"><code>useDeviceLocation</code></div>
 
 Type: **boolean**
@@ -290,29 +323,6 @@ Type: **object**
 </td>
 <td markdown="1">
 Allows you to override computed query parameters sent to the [Algolia Places REST API](rest.html).
-</td>
-    </tr>
-    <tr>
-<td markdown="1">
-<div class="api-entry" id="api-options-clientOptions"><code>clientOptions</code></div>
-
-Type: **object**
-</td>
-<td markdown="1">
-Algolia [JavaScript API client options](https://github.com/algolia/algoliasearch-client-js#client-options).
-
-This is an advanced option.
-</td>
-  </tr>
-  <tr>
-<td markdown="1">
-<div class="api-entry" id="api-options-autocompleteOptions"><code>autocompleteOptions</code></div>
-
-Type: **object**
-</td>
-<td markdown="1">
-[autocomplete.js options](https://github.com/algolia/autocomplete.js#options) to configure the underlying
-autocomplete.js instance.
 </td>
     </tr>
     <tr>
@@ -353,6 +363,29 @@ Controls whether the [_rankingInfo](https://www.algolia.com/doc/api-reference/ap
 The _rankingInfo object for a Places query is slightly different from a regular Algolia query and you can read up more about the difference and how to leverage them in [our guide](examples.html#using-_rankinginfo).
 </td>
 </tr>
+    <tr>
+<td markdown="1">
+<div class="api-entry" id="api-options-clientOptions"><code>clientOptions</code></div>
+
+Type: **object**
+</td>
+<td markdown="1">
+Algolia [JavaScript API client options](https://github.com/algolia/algoliasearch-client-js#client-options).
+
+This is an advanced option.
+</td>
+  </tr>
+  <tr>
+<td markdown="1">
+<div class="api-entry" id="api-options-autocompleteOptions"><code>autocompleteOptions</code></div>
+
+Type: **object**
+</td>
+<td markdown="1">
+[autocomplete.js options](https://github.com/algolia/autocomplete.js#options) to configure the underlying
+autocomplete.js instance.
+</td>
+    </tr>
   </tbody>
 </table>
 

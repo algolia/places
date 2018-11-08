@@ -181,7 +181,16 @@ export default function places(options) {
 
   placesInstance.autocomplete = autocompleteInstance;
 
-  placesInstance.configure = autocompleteDataset.source.configure;
+  placesInstance.configure = configuration => {
+    const safeConfig = Object.assign({}, configuration, {
+      onHits: undefined,
+      onError: undefined,
+      onRateLimitReached: undefined,
+      formatInputValue: (configuration.templates || {}).value,
+      templates: undefined,
+    });
+    return autocompleteDataset.source.configure(safeConfig);
+  };
 
   return placesInstance;
 }
