@@ -309,7 +309,7 @@ describe('createAutocompleteSource.configure', () => {
       const { source, defaults } = setup({ useDeviceLocation: false });
       source(defaults.query);
       expect(algoliasearch.__searchSpy).toBeCalledWith({ ...defaults });
-      source.unstable_configure({ useDeviceLocation: true });
+      source.configure({ useDeviceLocation: true });
       source(defaults.query);
       expect(algoliasearch.__searchSpy).toBeCalledWith({
         ...defaults,
@@ -332,7 +332,7 @@ describe('createAutocompleteSource.configure', () => {
       expect(otherOnHits).not.toHaveBeenCalled();
 
       onHits.mockClear();
-      source.unstable_configure({ onHits: otherOnHits });
+      source.configure({ onHits: otherOnHits });
 
       await source(defaults.query);
       expect(otherOnHits).toHaveBeenCalledWith({
@@ -358,7 +358,7 @@ describe('createAutocompleteSource.configure', () => {
 
       onError.mockClear();
 
-      source.unstable_configure({ onError: otherOnError });
+      source.configure({ onError: otherOnError });
 
       await source();
       expect(otherOnError).toHaveBeenCalledWith(error);
@@ -383,7 +383,7 @@ describe('createAutocompleteSource.configure', () => {
 
       onRateLimitReached.mockClear();
 
-      source.unstable_configure({
+      source.configure({
         onRateLimitReached: otherOnRateLimitReached,
       });
 
@@ -400,7 +400,7 @@ describe('createAutocompleteSource.configure', () => {
         'custom'
       );
 
-      source.unstable_configure({ formatInputValue: 'otherCustom' });
+      source.configure({ formatInputValue: 'otherCustom' });
       await source(defaults.query, cb);
 
       expect(cb.mock.calls[1][0][0].formattedHit.formatInputValue).toEqual(
@@ -424,7 +424,7 @@ describe('createAutocompleteSource.configure', () => {
       algoliasearch.__searchSpy.mockClear();
       computeQueryParams.mockClear();
 
-      source.unstable_configure({
+      source.configure({
         computeQueryParams: otherComputeQueryParams,
       });
 
@@ -459,7 +459,7 @@ describe('createAutocompleteSource.configure', () => {
         type: 'city',
       };
 
-      source.unstable_configure(params);
+      source.configure(params);
 
       await source('rivoli');
 
@@ -489,7 +489,7 @@ describe('createAutocompleteSource.configure', () => {
         type: 'city',
       };
 
-      source.unstable_configure(params);
+      source.configure(params);
 
       await source('rivoli');
 

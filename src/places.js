@@ -126,7 +126,7 @@ export default function places(options) {
   autocompleteContainer.appendChild(pin);
 
   pin.addEventListener('click', () => {
-    autocompleteDataset.source.unstable_configure({ useDeviceLocation: true });
+    autocompleteDataset.source.configure({ useDeviceLocation: true });
     autocompleteInstance.focus();
   });
 
@@ -181,10 +181,7 @@ export default function places(options) {
 
   placesInstance.autocomplete = autocompleteInstance;
 
-  /* eslint-disable camelcase */
-  placesInstance.unstable_configure =
-    autocompleteDataset.source.unstable_configure;
-  /* eslint-enable camelcase */
+  placesInstance.configure = autocompleteDataset.source.configure;
 
   return placesInstance;
 }

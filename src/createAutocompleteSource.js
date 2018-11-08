@@ -172,7 +172,7 @@ export default function createAutocompleteSource({
   }
 
   // eslint-disable-next-line camelcase
-  searcher.unstable_configure = partial => {
+  searcher.configure = partial => {
     const updated = configure(
       { ...params, ...partial },
       { ...controls, ...partial }

@@ -9,8 +9,7 @@ jest.mock('./places.css', () => 'places.css');
 jest.mock('./createAutocompleteDataset', () =>
   jest.fn(() => ({
     source: {
-      // eslint-disable-next-line camelcase
-      unstable_configure: 'configure',
+      configure: 'configure',
     },
     other: 'autocompleteDataset',
   }))
@@ -164,8 +163,7 @@ describe('places', () => {
         },
         {
           source: {
-            // eslint-disable-next-line camelcase
-            unstable_configure: 'configure',
+            configure: 'configure',
           },
           other: 'autocompleteDataset',
         }
