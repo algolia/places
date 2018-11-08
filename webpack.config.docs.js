@@ -1,7 +1,8 @@
-import baseConfig from './webpack.config.babel';
-import { join } from 'path';
+/* eslint-disable import/no-commonjs */
+const baseConfig = require('./webpack.config');
+const { join } = require('path');
 
-export default {
+module.exports = {
   ...baseConfig,
   entry: `./docs/source/javascripts/${process.env.BUNDLE}.js`,
   output: {
