@@ -3,13 +3,12 @@
   "env": {
     "npm": {
       "plugins": [
-        [
-          "babel-plugin-webpack-loaders",
-          {
-            "config": "./webpack.config.npm.babel.js",
-            "verbose": false
-          }
-        ]
+        ["babel-plugin-inline-import", {
+          "extensions": [
+            ".svg",
+            ".css"
+          ]
+        }]
       ]
     }
   }
