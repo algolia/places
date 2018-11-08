@@ -14,7 +14,16 @@ const configure = (
     language = navigator.language.split('-')[0],
     type,
   },
-  { useDeviceLocation = false }
+  {
+    useDeviceLocation = false,
+    computeQueryParams = params => params,
+    formatInputValue,
+    onHits = () => {},
+    onError = e => {
+      throw e;
+    },
+    onRateLimitReached,
+  }
 ) => {
   const baseParams = {
     countries,
@@ -41,17 +50,23 @@ const configure = (
     baseParams.aroundLatLngViaIP = aroundLatLngViaIP;
   }
 
-  return {
-    params: Object.assign(baseParams, {
-      aroundRadius,
-      insideBoundingBox,
-      insidePolygon,
-      getRankingInfo,
-    }),
-    controls: Object.assign(baseControls, {
-      useDeviceLocation,
-    }),
-  };
+  const params = Object.assign(baseParams, {
+    aroundRadius,
+    insideBoundingBox,
+    insidePolygon,
+    getRankingInfo,
+  });
+
+  const controls = Object.assign(baseControls, {
+    useDeviceLocation,
+    computeQueryParams,
+    formatInputValue,
+    onHits,
+    onError,
+    onRateLimitReached,
+  });
+
+  return { params, controls };
 };
 
 export default function createAutocompleteSource({
@@ -94,7 +109,14 @@ export default function createAutocompleteSource({
       language,
       type,
     },
-    { useDeviceLocation }
+    {
+      useDeviceLocation,
+      computeQueryParams,
+      formatInputValue,
+      onHits,
+      onError,
+      onRateLimitReached,
+    }
   );
 
   let params = configuration.params;
@@ -110,18 +132,19 @@ export default function createAutocompleteSource({
   }
 
   function searcher(query, cb) {
+    const searchParams = Object.assign(
+      {},
+      params,
+      userCoords && { aroundLatLng: userCoords },
+      { query }
+    );
+
     return placesClient
-      .search(
-        computeQueryParams({
-          ...params,
-          [userCoords ? 'aroundLatLng' : undefined]: userCoords,
-          query,
-        })
-      )
+      .search(controls.computeQueryParams(searchParams))
       .then(content => {
         const hits = content.hits.map((hit, hitIndex) =>
           formatHit({
-            formatInputValue,
+            formatInputValue: controls.formatInputValue,
             hit,
             hitIndex,
             query,
@@ -129,7 +152,7 @@ export default function createAutocompleteSource({
           })
         );
 
-        onHits({
+        controls.onHits({
           hits,
           query,
           rawAnswer: content,
@@ -140,11 +163,11 @@ export default function createAutocompleteSource({
       .then(cb)
       .catch(e => {
         if (e.statusCode === 429) {
-          onRateLimitReached();
+          controls.onRateLimitReached();
           return;
         }
 
-        onError(e);
+        controls.onError(e);
       });
   }
 
@@ -165,6 +188,7 @@ export default function createAutocompleteSource({
     } else if (!controls.useDeviceLocation && tracker !== null) {
       navigator.geolocation.clearWatch(tracker);
       tracker = null;
+      userCoords = null;
     }
   };
   return searcher;

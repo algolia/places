@@ -291,22 +291,213 @@ describe('createAutocompleteSource', () => {
         });
     });
   });
+});
 
-  it('allows reconfiguration of defaults', () => {
-    const latitude = '456';
-    const longitude = '789';
-    navigator.geolocation = {
-      watchPosition: fn => fn({ coords: { latitude, longitude } }),
-    };
+describe('createAutocompleteSource.configure', () => {
+  beforeEach(() => formatHit.mockClear());
+  beforeEach(() => algoliasearch.__searchSpy.mockClear());
+  beforeEach(() => algoliasearch.__clearSearchStub());
 
-    const { source, defaults } = setup({ useDeviceLocation: false });
-    source(defaults.query);
-    expect(algoliasearch.__searchSpy).toBeCalledWith({ ...defaults });
-    source.unstable_configure({ useDeviceLocation: true });
-    source(defaults.query);
-    expect(algoliasearch.__searchSpy).toBeCalledWith({
-      ...defaults,
-      aroundLatLng: '456,789',
+  describe('controls', () => {
+    it('allows reconfiguration of geolocation controls', () => {
+      const latitude = '456';
+      const longitude = '789';
+      navigator.geolocation = {
+        watchPosition: fn => fn({ coords: { latitude, longitude } }),
+      };
+
+      const { source, defaults } = setup({ useDeviceLocation: false });
+      source(defaults.query);
+      expect(algoliasearch.__searchSpy).toBeCalledWith({ ...defaults });
+      source.unstable_configure({ useDeviceLocation: true });
+      source(defaults.query);
+      expect(algoliasearch.__searchSpy).toBeCalledWith({
+        ...defaults,
+        aroundLatLng: '456,789',
+      });
+    });
+
+    it('allows reconfiguration of onHits controls', async () => {
+      const onHits = jest.fn();
+      const otherOnHits = jest.fn();
+      const { source, defaults, expectedHits, content } = setup({ onHits });
+
+      await source(defaults.query);
+      expect(onHits).toHaveBeenCalledWith({
+        hits: expectedHits,
+        query: defaults.query,
+        rawAnswer: content,
+      });
+
+      expect(otherOnHits).not.toHaveBeenCalled();
+
+      onHits.mockClear();
+      source.unstable_configure({ onHits: otherOnHits });
+
+      await source(defaults.query);
+      expect(otherOnHits).toHaveBeenCalledWith({
+        hits: expectedHits,
+        query: defaults.query,
+        rawAnswer: content,
+      });
+
+      expect(onHits).not.toHaveBeenCalled();
+    });
+
+    it('allows reconfiguration of onError controls', async () => {
+      const error = new Error('Nope');
+      const searchFn = jest.fn(() => Promise.reject(error));
+      const onError = jest.fn();
+      const otherOnError = jest.fn();
+      algoliasearch.__setSearchStub(searchFn);
+      const source = createAutocompleteSource({ algoliasearch, onError });
+
+      await source();
+      expect(onError).toHaveBeenCalledWith(error);
+      expect(otherOnError).not.toHaveBeenCalled();
+
+      onError.mockClear();
+
+      source.unstable_configure({ onError: otherOnError });
+
+      await source();
+      expect(otherOnError).toHaveBeenCalledWith(error);
+      expect(onError).not.toHaveBeenCalled();
+    });
+
+    it('allows reconfiguration of onRateLimitReached controls', async () => {
+      const error = new Error('Some error message');
+      error.statusCode = 429;
+      const searchFn = jest.fn(() => Promise.reject(error));
+      const onRateLimitReached = jest.fn();
+      const otherOnRateLimitReached = jest.fn();
+      algoliasearch.__setSearchStub(searchFn);
+      const source = createAutocompleteSource({
+        algoliasearch,
+        onRateLimitReached,
+      });
+
+      await source();
+      expect(onRateLimitReached).toHaveBeenCalled();
+      expect(otherOnRateLimitReached).not.toHaveBeenCalled();
+
+      onRateLimitReached.mockClear();
+
+      source.unstable_configure({
+        onRateLimitReached: otherOnRateLimitReached,
+      });
+
+      await source();
+      expect(otherOnRateLimitReached).toHaveBeenCalled();
+      expect(onRateLimitReached).not.toHaveBeenCalled();
+    });
+
+    it('allows reconfiguration of formatInputValue controls', async () => {
+      const { source, defaults, cb } = setup({ formatInputValue: 'custom' });
+      await source(defaults.query, cb);
+
+      expect(cb.mock.calls[0][0][0].formattedHit.formatInputValue).toEqual(
+        'custom'
+      );
+
+      source.unstable_configure({ formatInputValue: 'otherCustom' });
+      await source(defaults.query, cb);
+
+      expect(cb.mock.calls[1][0][0].formattedHit.formatInputValue).toEqual(
+        'otherCustom'
+      );
+    });
+
+    it('allows reconfiguration of computeQueryParams controls', async () => {
+      const params = { myParams: 'wins' };
+      const computeQueryParams = jest.fn(() => params);
+
+      const otherParams = { myParams: 'winsMore' };
+      const otherComputeQueryParams = jest.fn(() => otherParams);
+
+      const { source, defaults } = setup({ computeQueryParams });
+      await source(defaults.query);
+      expect(algoliasearch.__searchSpy).toHaveBeenCalledWith(params);
+      expect(computeQueryParams).toHaveBeenCalledWith(defaults);
+      expect(otherComputeQueryParams).not.toHaveBeenCalled();
+
+      algoliasearch.__searchSpy.mockClear();
+      computeQueryParams.mockClear();
+
+      source.unstable_configure({
+        computeQueryParams: otherComputeQueryParams,
+      });
+
+      await source(defaults.query);
+      expect(algoliasearch.__searchSpy).toHaveBeenCalledWith(otherParams);
+      expect(otherComputeQueryParams).toHaveBeenCalledWith(defaults);
+      expect(computeQueryParams).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('params', () => {
+    it('allows reconfiguration of query parameters', async () => {
+      const { source, defaults } = setup();
+
+      await source('rivoli');
+      expect(algoliasearch.__searchSpy).toHaveBeenCalledWith({
+        ...defaults,
+        query: 'rivoli',
+      });
+
+      algoliasearch.__searchSpy.mockClear();
+
+      const params = {
+        hitsPerPage: 2,
+        aroundLatLng: `123,234`,
+        aroundRadius: 10000,
+        insideBoundingBox: `boundingBox`,
+        insidePolygon: `polygon`,
+        getRankingInfo: true,
+        countries: ['fr'],
+        language: 'pt',
+        type: 'city',
+      };
+
+      source.unstable_configure(params);
+
+      await source('rivoli');
+
+      expect(algoliasearch.__searchSpy).toHaveBeenCalledWith({
+        ...defaults,
+        ...params,
+        query: 'rivoli',
+      });
+    });
+
+    it('allows partial reconfiguration of query parameters', async () => {
+      const { source, defaults } = setup();
+
+      await source('rivoli');
+      expect(algoliasearch.__searchSpy).toHaveBeenCalledWith({
+        ...defaults,
+        query: 'rivoli',
+      });
+
+      algoliasearch.__searchSpy.mockClear();
+
+      const params = {
+        aroundLatLngViaIP: false,
+        getRankingInfo: true,
+        countries: ['fr'],
+        language: 'pt',
+        type: 'city',
+      };
+
+      source.unstable_configure(params);
+
+      await source('rivoli');
+
+      expect(algoliasearch.__searchSpy).toHaveBeenCalledWith({
+        ...defaults,
+        ...params,
+        query: 'rivoli',
+      });
     });
   });
 });
