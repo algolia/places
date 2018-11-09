@@ -7,8 +7,8 @@
   "scripts": {
     "build": "NODE_ENV=production ./scripts/build.sh",
     "dev": "./scripts/dev.sh",
-    "docs:js:build": "webpack --mode production --config webpack.config.docs.babel.js",
-    "docs:js:watch": "webpack --mode production --config webpack.config.docs.babel.js --watch",
+    "docs:js:build": "webpack --mode production --config webpack.config.docs.js",
+    "docs:js:watch": "webpack --mode production --config webpack.config.docs.js --watch",
     "docs:build": "./scripts/build-website.sh",
     "docs:deploy": "./scripts/deploy-website.sh",
     "doctoc": "doctoc --maxlevel 3 CONTRIBUTING.md",
