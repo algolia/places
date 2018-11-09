@@ -58,7 +58,7 @@
     "eslint-plugin-jest": "21.27.2",
     "eslint-plugin-prettier": "3.0.0",
     "eslint-plugin-react": "7.11.1",
-    "jest-cli": "^23.6.0",
+    "jest-cli": "23.6.0",
     "json": "9.0.6",
     "prettier": "1.14.3",
     "pretty-bytes-cli": "2.0.0",
