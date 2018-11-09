@@ -171,7 +171,6 @@ export default function createAutocompleteSource({
       });
   }
 
-  // eslint-disable-next-line camelcase
   searcher.configure = partial => {
     const updated = configure(
       { ...params, ...partial },

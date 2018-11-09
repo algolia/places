@@ -183,9 +183,14 @@ export default function places(options) {
 
   placesInstance.configure = configuration => {
     const safeConfig = Object.assign({}, configuration, {
+      // onHits, onError and onRateLimitReached are superseded
+      // by the event emitters used in places.on('change', ...)
+      // they should not be modified
       onHits: undefined,
       onError: undefined,
       onRateLimitReached: undefined,
+
+      // formatInputValue is obtained from the templates rather directly exposed
       formatInputValue: (configuration.templates || {}).value,
       templates: undefined,
     });
