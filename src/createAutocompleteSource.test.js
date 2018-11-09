@@ -291,6 +291,26 @@ describe('createAutocompleteSource', () => {
         });
     });
   });
+
+  it('setUseDeviceLocation toggles useDeviceLocation behavior', () => {
+    const latitude = '456';
+    const longitude = '789';
+    navigator.geolocation = {
+      watchPosition: fn => fn({ coords: { latitude, longitude } }),
+    };
+
+    const { source, defaults } = setup({ useDeviceLocation: false });
+    source(defaults.query);
+    expect(algoliasearch.__searchSpy).toBeCalledWith({
+      ...defaults,
+    });
+    source.setUseDeviceLocation(true);
+    source(defaults.query);
+    expect(algoliasearch.__searchSpy).toBeCalledWith({
+      ...defaults,
+      aroundLatLng: '456,789',
+    });
+  });
 });
 
 function setup(sourceOptions = {}) {

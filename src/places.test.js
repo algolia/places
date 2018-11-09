@@ -6,7 +6,12 @@ jest.mock(
 jest.mock('./icons/clear.svg', () => 'clear');
 jest.mock('./places.css', () => 'places.css');
 jest.mock('./createAutocompleteDataset', () =>
-  jest.fn(() => 'autocompleteDataset')
+  jest.fn(() => ({
+    source: {
+      setUseDeviceLocation: 'useDeviceLocation',
+    },
+    other: 'autocompleteDataset',
+  }))
 );
 
 import places from './places';
@@ -155,7 +160,12 @@ describe('places', () => {
           hint: false,
           option: 'value',
         },
-        'autocompleteDataset'
+        {
+          source: {
+            setUseDeviceLocation: 'useDeviceLocation',
+          },
+          other: 'autocompleteDataset',
+        }
       );
     });
 

@@ -6,7 +6,6 @@ const placesAutocomplete = places({
   appId: 'plFMJJT5O9PC',
   apiKey: '8b126ce956636c64b6e74c8b3f3d0e5e',
   container: $input,
-  useDeviceLocation: true,
 });
 $input.style.opacity = 1; // we initially hide the input to avoid size flickering
 

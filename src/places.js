@@ -125,7 +125,10 @@ export default function places(options) {
   pin.innerHTML = pinIcon;
   autocompleteContainer.appendChild(pin);
 
-  pin.addEventListener('click', () => autocompleteInstance.focus());
+  pin.addEventListener('click', () => {
+    autocompleteDataset.source.setUseDeviceLocation(true);
+    autocompleteInstance.focus();
+  });
   clear.addEventListener('click', () => {
     autocompleteInstance.autocomplete.setVal('');
     autocompleteInstance.focus();
@@ -176,6 +179,8 @@ export default function places(options) {
   };
 
   placesInstance.autocomplete = autocompleteInstance;
+  placesInstance.setUseDeviceLocation =
+    autocompleteDataset.source.setUseDeviceLocation;
 
   return placesInstance;
 }
