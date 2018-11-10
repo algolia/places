@@ -576,10 +576,10 @@ atob@^2.1.1:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-autocomplete.js@^0.29.0:
-  version "0.29.0"
-  resolved "https://registry.yarnpkg.com/autocomplete.js/-/autocomplete.js-0.29.0.tgz#0185f7375ee9daf068f7d52d794bc90dcd739fd7"
-  integrity sha512-pvR95T2OVglWEmh+MiIF4kDzBS8EfxsyDTJo0G7DR3BcFXTYUsJ5EyXnEMfUMjTgv7ytnwH9mdEYNCJ+p2ZlHQ==
+autocomplete.js@0.32.0:
+  version "0.32.0"
+  resolved "https://registry.yarnpkg.com/autocomplete.js/-/autocomplete.js-0.32.0.tgz#a00eab44dcb9e573ebd8bb3178e7fe67466cd4f1"
+  integrity sha512-GYGmOo0r2wLgUEYE5J9z9OSLb8e0SAicgDR1M1pHOvwQ0Hc1SLHR0EqjDhl+lhl01cYq2d7lLbsgRmaizgLqrA==
   dependencies:
     immediate "^3.2.3"
 
@@ -2324,15 +2324,18 @@ diffie-hellman@^5.0.0:
     miller-rabin "^4.0.0"
     randombytes "^2.0.0"
 
-docsearch.js@2.5.2:
-  version "2.5.2"
-  resolved "https://registry.yarnpkg.com/docsearch.js/-/docsearch.js-2.5.2.tgz#1a3521c92e5f252cc522c57357ef1c47b945b381"
-  integrity sha512-bf84/poKgLgeNg45SqabZ9lHdK55QcMtUHvpVj8NLMCpAE6IPaxzeNAg5UfHRPVMwFRKMU0NNZt9yFyNYmVGrg==
+docsearch.js@2.6.1:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/docsearch.js/-/docsearch.js-2.6.1.tgz#57d5b2441e4671f801f6ede42039ceb67edc2251"
+  integrity sha512-3rAvJ4w+dl90kEdiuB26cfVjgUrIqIpEAtqjUfVo7pS7a5TuM914cpFfPGekb+W/Boz4zkBD8d2o1NKSeV8MHg==
   dependencies:
     algoliasearch "^3.24.5"
-    autocomplete.js "^0.29.0"
+    autocomplete.js "0.32.0"
     hogan.js "^3.0.2"
+    request "^2.87.0"
+    stack-utils "^1.0.1"
     to-factory "^1.0.0"
+    zepto "^1.2.0"
 
 doctoc@1.3.1:
   version "1.3.1"
@@ -7417,3 +7420,8 @@ yargs@^12.0.1, yargs@^12.0.2:
     which-module "^2.0.0"
     y18n "^3.2.1 || ^4.0.0"
     yargs-parser "^10.1.0"
+
+zepto@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/zepto/-/zepto-1.2.0.tgz#e127bd9e66fd846be5eab48c1394882f7c0e4f98"
+  integrity sha1-4Se9nmb9hGvl6rSME5SIL3wOT5g=
