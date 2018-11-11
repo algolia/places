@@ -576,17 +576,10 @@ atob@^2.1.1:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-autocomplete.js@0.32.0:
+autocomplete.js@0.32.0, autocomplete.js@^0.32.0:
   version "0.32.0"
   resolved "https://registry.yarnpkg.com/autocomplete.js/-/autocomplete.js-0.32.0.tgz#a00eab44dcb9e573ebd8bb3178e7fe67466cd4f1"
   integrity sha512-GYGmOo0r2wLgUEYE5J9z9OSLb8e0SAicgDR1M1pHOvwQ0Hc1SLHR0EqjDhl+lhl01cYq2d7lLbsgRmaizgLqrA==
-  dependencies:
-    immediate "^3.2.3"
-
-autocomplete.js@^0.31.0:
-  version "0.31.0"
-  resolved "https://registry.yarnpkg.com/autocomplete.js/-/autocomplete.js-0.31.0.tgz#2387c4e9759dbfd03558777705f6f14a66ba446c"
-  integrity sha512-eews6qUL2xbGyOjpqL6I5STOGdZtkcXDtPAot+4HQk0T+H8X/c9JKHY5C78ATfLM4fI+lJ00pWvPEOcHRkNRrQ==
   dependencies:
     immediate "^3.2.3"
 
