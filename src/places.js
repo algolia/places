@@ -194,7 +194,9 @@ export default function places(options) {
       formatInputValue: (configuration.templates || {}).value,
       templates: undefined,
     });
-    return autocompleteDataset.source.configure(safeConfig);
+
+    autocompleteDataset.source.configure(safeConfig);
+    return placesInstance;
   };
 
   return placesInstance;
