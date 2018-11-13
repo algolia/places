@@ -500,6 +500,110 @@ describe('createAutocompleteSource.configure', () => {
       });
     });
   });
+
+  describe('reset', () => {
+    it('allows reset of query parameters to defaults', async () => {
+      const initialParams = {
+        hitsPerPage: 2,
+        aroundLatLng: `123,234`,
+        aroundRadius: 10000,
+        insideBoundingBox: `boundingBox`,
+        insidePolygon: `polygon`,
+        getRankingInfo: true,
+        countries: ['fr'],
+        language: 'pt',
+        type: 'city',
+      };
+      const { source, defaults } = setup(initialParams);
+
+      await source('rivoli');
+
+      expect(algoliasearch.__searchSpy).toHaveBeenCalledWith({
+        ...defaults,
+        ...initialParams,
+        query: 'rivoli',
+      });
+
+      algoliasearch.__searchSpy.mockClear();
+
+      const params = {
+        hitsPerPage: undefined,
+        aroundLatLng: undefined,
+        aroundRadius: undefined,
+        insideBoundingBox: undefined,
+        insidePolygon: undefined,
+        getRankingInfo: undefined,
+        countries: undefined,
+        language: undefined,
+        type: undefined,
+      };
+
+      source.configure(params);
+
+      await source('rivoli');
+
+      /* defaults are
+       * {
+       *   hitsPerPage: 5,
+       *   language: 'en'
+       * }
+       */
+      const expectedParams = {
+        hitsPerPage: 5,
+        aroundRadius: undefined,
+        insideBoundingBox: undefined,
+        insidePolygon: undefined,
+        getRankingInfo: undefined,
+        countries: undefined,
+        language: 'en',
+        type: undefined,
+      };
+
+      expect(algoliasearch.__searchSpy).toHaveBeenCalledWith({
+        ...expectedParams,
+        query: 'rivoli',
+      });
+    });
+
+    it('allows reset of controls to defaults', async () => {
+      const latitude = '456';
+      const longitude = '789';
+      navigator.geolocation = {
+        watchPosition: fn => fn({ coords: { latitude, longitude } }),
+        clearWatch: jest.fn(),
+      };
+
+      const initialControls = {
+        useDeviceLocation: true,
+      };
+      const { source, defaults } = setup(initialControls);
+
+      await source('rivoli');
+
+      expect(algoliasearch.__searchSpy).toHaveBeenCalledWith({
+        ...defaults,
+        aroundLatLng: `${latitude},${longitude}`,
+        query: 'rivoli',
+      });
+      expect(navigator.geolocation.clearWatch).not.toHaveBeenCalled();
+
+      algoliasearch.__searchSpy.mockClear();
+
+      const controls = {
+        useDeviceLocation: undefined,
+      };
+
+      source.configure(controls);
+
+      await source('rivoli');
+
+      expect(algoliasearch.__searchSpy).toHaveBeenCalledWith({
+        ...defaults,
+        query: 'rivoli',
+      });
+      expect(navigator.geolocation.clearWatch).toHaveBeenCalled();
+    });
+  });
 });
 
 function setup(sourceOptions = {}) {
