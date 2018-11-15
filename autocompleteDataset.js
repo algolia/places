@@ -3,10 +3,11 @@
 
 /* eslint-disable import/no-commonjs */
 
-import './src/navigatorLanguage';
-import createAutocompleteDataset from './src/createAutocompleteDataset';
-import css from './src/places.css';
-import insertCss from 'insert-css';
+require('./src/navigatorLanguage');
+const createAutocompleteDataset = require('./src/createAutocompleteDataset')
+  .default;
+const css = require('./src/places.css');
+const insertCss = require('insert-css');
 insertCss(css, { prepend: true });
 
 // must use module.exports to be commonJS compatible

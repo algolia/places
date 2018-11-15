@@ -48,63 +48,78 @@
 </style>
 <script>
 (function() {
-  const formatIcon = (query) => {
+  function formatIcon(query) {
     switch (query) {
       case "worldwide_query":
         // globe icon - result found while searching in the whole world (still respects filter restrictions)
-        return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M10 0C4.48 0 0 4.48 0 10s4.48 10 10 10 10-4.48 10-10S15.52 0 10 0zM9 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L7 13v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H6V8h2c.55 0 1-.45 1-1V5h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>`
+        return '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M10 0C4.48 0 0 4.48 0 10s4.48 10 10 10 10-4.48 10-10S15.52 0 10 0zM9 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L7 13v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H6V8h2c.55 0 1-.45 1-1V5h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>'
       case "local_query":
         // building icon - result found while searching in the country of the user (still respects filter restrictions)
-        return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M12 .6L2.5 6.9h18.9L12 .6zM3.8 8.2c-.7 0-1.3.6-1.3 1.3v8.8L.3 22.1c-.2.3-.3.5-.3.6 0 .6.8.6 1.3.6h21.5c.4 0 1.3 0 1.3-.6 0-.2-.1-.3-.3-.6l-2.2-3.8V9.5c0-.7-.6-1.3-1.3-1.3H3.8zm2.5 2.5c.7 0 1.1.6 1.3 1.3v7.6H5.1V12c0-.7.5-1.3 1.2-1.3zm5.7 0c.7 0 1.3.6 1.3 1.3v7.6h-2.5V12c-.1-.7.5-1.3 1.2-1.3zm5.7 0c.7 0 1.3.6 1.3 1.3v7.6h-2.5V12c-.1-.7.5-1.3 1.2-1.3z"/></svg>`
+        return '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M12 .6L2.5 6.9h18.9L12 .6zM3.8 8.2c-.7 0-1.3.6-1.3 1.3v8.8L.3 22.1c-.2.3-.3.5-.3.6 0 .6.8.6 1.3.6h21.5c.4 0 1.3 0 1.3-.6 0-.2-.1-.3-.3-.6l-2.2-3.8V9.5c0-.7-.6-1.3-1.3-1.3H3.8zm2.5 2.5c.7 0 1.1.6 1.3 1.3v7.6H5.1V12c0-.7.5-1.3 1.2-1.3zm5.7 0c.7 0 1.3.6 1.3 1.3v7.6h-2.5V12c-.1-.7.5-1.3 1.2-1.3zm5.7 0c.7 0 1.3.6 1.3 1.3v7.6h-2.5V12c-.1-.7.5-1.3 1.2-1.3z"/></svg>'
       case "geo_query":
         // pin icon - result found while searching near location of the user (still respects filter restrictions)
-        return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 14 20"><path d="M7 0C3.13 0 0 3.13 0 7c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5C5.62 9.5 4.5 8.38 4.5 7S5.62 4.5 7 4.5 9.5 5.62 9.5 7 8.38 9.5 7 9.5z"/></svg>`
+        return '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 14 20"><path d="M7 0C3.13 0 0 3.13 0 7c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5C5.62 9.5 4.5 8.38 4.5 7S5.62 4.5 7 4.5 9.5 5.62 9.5 7 8.38 9.5 7 9.5z"/></svg>'
       default:
-        return ``;
+        return '';
     }
   }
 
-  const formatName = ({ name }) => name
-  const formatAddress = ({ suburb, city, postcode, administrative, country }) => {
+  function formatName (highlight) {
+    var name = highlight.name;
+    return name;
+  }
+
+  function formatAddress (address) {
+    var suburb = address.suburb;
+    var city = address.city;
+    var postcode = address.postcode;
+    var administrative = address.administrative;
+    var country = address.country;
     return [ suburb, city, postcode, administrative, country ]
-      .filter(v => !!v)
+      .filter(function(v) { return !!v })
       .join(', ')
   }
 
-  const formatPrecision = (type, roadNumberPrecision) => {
+  function formatPrecision (type, roadNumberPrecision) {
     if (type === 'city') {
       // 0 circle - city level precision
-      return ``;
+      return '';
     }
 
     switch (roadNumberPrecision) {
       case "exact":
         // 3 circles - house level precision
-        return `<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <circle r="12" cy="16" cx="16" fill="#ddd"/>
-  <circle r="8" cy="16" cx="16" fill="#aaa"/>
-  <circle r="4" cy="16" cx="16" fill="#000"/>
-</svg>`;
+        return '<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">' +
+  '<circle r="12" cy="16" cx="16" fill="#ddd"/>' +
+  '<circle r="8" cy="16" cx="16" fill="#aaa"/>' +
+  '<circle r="4" cy="16" cx="16" fill="#000"/>' +
+'</svg>';
       case "closest":
         // 2 circles - house number not found - returned geolocation of the closest house number.
-        return `<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <circle r="12" cy="16" cx="16" fill="#ddd"/>
-  <circle r="8" cy="16" cx="16" fill="#aaa"/>
-</svg>`;
+        return '<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">' +
+  '<circle r="12" cy="16" cx="16" fill="#ddd"/>' +
+  '<circle r="8" cy="16" cx="16" fill="#aaa"/>' +
+'</svg>';
       default:
         // 1 circle - street level precision
-        return `<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <circle r="12" cy="16" cx="16" fill="#ddd"/>
-</svg>`;
+        return '<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">' +
+  '<circle r="12" cy="16" cx="16" fill="#ddd"/>' +
+'</svg>';
     }
   }
 
-  const formatSuggestion = ({ highlight, hit: { _rankingInfo }, type }) => `<div class="suggestion">
-    <span class="suggestion-icon">${formatIcon(_rankingInfo.query)}</span>
-    <span class="suggestion-name">${formatName(highlight)}</span>
-    <span class="suggestion-address">${formatAddress(highlight)}</span>
-    <span class="suggestion-precision">${formatPrecision(type, _rankingInfo.roadNumberPrecision)}</span>
-  </div>`;
+  function formatSuggestion (suggestion) {
+    var highlight = suggestion.highlight;
+    var _rankingInfo = suggestion.hit._rankingInfo;
+    var type = suggestion.type;
+
+    return '<div class="suggestion">' + 
+      '<span class="suggestion-icon">' + formatIcon(_rankingInfo.query) + '</span>' +
+      '<span class="suggestion-name">' + formatName(highlight) + '</span>' +
+      '<span class="suggestion-address">' + formatAddress(highlight) + '</span>' +
+      '<span class="suggestion-precision">' + formatPrecision(type, _rankingInfo.roadNumberPrecision) + '</span>' +
+    '</div>'
+  }
 
   const placesAutocomplete = places({
     appId: '<%= app_id %>',

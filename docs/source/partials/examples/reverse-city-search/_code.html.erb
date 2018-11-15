@@ -5,12 +5,12 @@
 
 <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
 <script>
-const placesClient = algoliasearch.initPlaces(
+var placesClient = algoliasearch.initPlaces(
   '<%= app_id %>',
   '<%= api_key %>'
 );
 
-const preferredLanguage = window.navigator.language.split('-')[0];
+var preferredLanguage = window.navigator.language.split('-')[0];
 
 placesClient.search({
   query: '',
@@ -18,11 +18,16 @@ placesClient.search({
   type: 'city',
   hitsPerPage: 1,
   language: preferredLanguage,
-}).then(({ hits }) => {
-  const { locale_names, country }= hits[0];
-  const formattedCity = `${locale_names[0]}, ${country}`;
+}).then(function(results) {
+  var hits = results.hits;
+  if (!hits[0]) {
+    return;
+  }
+  var locale_names = hits[0].locale_names;
+  var country = hits[0].country;
+  var formattedCity = locale_names[0] + ', ' + country;
 
-  const infoElt = document.querySelector("#reverse-city");
+  var infoElt = document.querySelector("#reverse-city");
   infoElt.textContent = formattedCity;
 });
 </script>

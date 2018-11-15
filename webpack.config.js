@@ -1,6 +1,7 @@
-import { join } from 'path';
+/* eslint-disable import/no-commonjs */
+const { join } = require('path');
 
-export default {
+module.exports = {
   entry: {
     places: './index.js',
     placesAutocompleteDataset: './autocompleteDataset.js',
