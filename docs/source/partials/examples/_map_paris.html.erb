@@ -18,7 +18,8 @@
   var placesAutocomplete = places({
     appId: '<%= app_id %>',
     apiKey: '<%= api_key %>',
-    container: document.querySelector('#input-map-paris'),
+    container: document.querySelector('#input-map-paris')
+  }).configure({
     aroundLatLng: latlng.lat + ',' + latlng.lng, // Paris latitude longitude
     aroundRadius: 10 * 1000, // 10km radius
     type: 'address'

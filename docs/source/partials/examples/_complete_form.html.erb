@@ -24,12 +24,13 @@
     appId: '<%= app_id %>',
     apiKey: '<%= api_key %>',
     container: document.querySelector('#form-address'),
-    type: 'address',
     templates: {
       value: function(suggestion) {
         return suggestion.name;
       }
     }
+  }).configure({
+    type: 'address'
   });
   placesAutocomplete.on('change', function resultSelected(e) {
     document.querySelector('#form-address2').value = e.suggestion.administrative || '';

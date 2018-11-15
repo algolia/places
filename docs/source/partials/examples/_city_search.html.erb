@@ -7,13 +7,14 @@
     appId: '<%= app_id %>',
     apiKey: '<%= api_key %>',
     container: document.querySelector('#city'),
-    type: 'city',
-    aroundLatLngViaIP: false,
     templates: {
       value: function(suggestion) {
         return suggestion.name;
       }
     }
+  }).configure({
+    type: 'city',
+    aroundLatLngViaIP: false,
   });
 })();
 </script>
