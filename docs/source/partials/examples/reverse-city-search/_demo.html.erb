@@ -27,7 +27,10 @@ placesClient.search({
   hitsPerPage: 1,
   language: preferredLanguage,
 }).then(function(results) {
-  var hits = results;
+  var hits = results.hits;
+  if (!hits[0]) {
+    return;
+  }
   var locale_names = hits[0].locale_names;
   var country = hits[0].country;
   var _geoloc = hits[0]._geoloc;

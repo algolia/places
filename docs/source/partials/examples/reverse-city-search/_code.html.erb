@@ -20,6 +20,9 @@ placesClient.search({
   language: preferredLanguage,
 }).then(function(results) {
   var hits = results.hits;
+  if (!hits[0]) {
+    return;
+  }
   var locale_names = hits[0].locale_names;
   var country = hits[0].country;
   var formattedCity = locale_names[0] + ', ' + country;
