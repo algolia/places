@@ -7,13 +7,13 @@ const extractParams = ({
   insidePolygon,
   getRankingInfo,
   countries,
-  language = navigator.language.split('-')[0],
+  language,
   type,
 }) => {
   const extracted = {
     countries,
     hitsPerPage: hitsPerPage || 5,
-    language,
+    language: language || navigator.language.split('-')[0],
     type,
   };
 
