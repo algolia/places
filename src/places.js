@@ -182,15 +182,12 @@ export default function places(options) {
   placesInstance.autocomplete = autocompleteInstance;
 
   placesInstance.configure = configuration => {
-    const safeConfig = Object.assign({}, configuration, {
-      // onHits, onError and onRateLimitReached are superseded
-      // by the event emitters used in places.on('change', ...)
-      // they should not be modified
-      onHits: undefined,
-      onError: undefined,
-      onRateLimitReached: undefined,
-      templates: undefined,
-    });
+    const safeConfig = Object.assign({}, configuration);
+
+    delete safeConfig.onHits;
+    delete safeConfig.onError;
+    delete safeConfig.onRateLimitReached;
+    delete safeConfig.templates;
 
     autocompleteDataset.source.configure(safeConfig);
     return placesInstance;

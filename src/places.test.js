@@ -364,4 +364,40 @@ describe('places', () => {
     it('returns an EventEmitter', () =>
       expect(placesInstance instanceof EventEmitter).toEqual(true));
   });
+
+  it('has a configure method which ignores unsafe params', () => {
+    autocomplete.mockClear();
+    const container = document
+      .querySelector('body')
+      .appendChild(document.createElement('input'));
+
+    const configureMock = jest.fn();
+    createAutocompleteDataset.mockImplementation(() => ({
+      source: {
+        configure: configureMock,
+      },
+      other: 'autocompleteDataset',
+    }));
+
+    const placesInstance = places({
+      container,
+      autocompleteOptions: { option: 'value' },
+    });
+
+    placesInstance.configure({
+      onHits: () => 123,
+      onError: () => 234,
+      onRateLimitReached: () => 345,
+      templates: {
+        value: () => 456,
+      },
+      type: 'address',
+      countries: ['fr'],
+    });
+
+    expect(configureMock).toHaveBeenCalledWith({
+      type: 'address',
+      countries: ['fr'],
+    });
+  });
 });
