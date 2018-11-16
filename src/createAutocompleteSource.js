@@ -1,73 +1,6 @@
+import configure from './configure';
 import formatHit from './formatHit';
 import version from './version';
-
-const configure = (
-  {
-    hitsPerPage,
-    aroundLatLng,
-    aroundRadius,
-    aroundLatLngViaIP,
-    insideBoundingBox,
-    insidePolygon,
-    getRankingInfo,
-    countries,
-    language = navigator.language.split('-')[0],
-    type,
-  },
-  {
-    useDeviceLocation = false,
-    computeQueryParams = params => params,
-    formatInputValue,
-    onHits = () => {},
-    onError = e => {
-      throw e;
-    },
-    onRateLimitReached,
-  }
-) => {
-  const baseParams = {
-    countries,
-    hitsPerPage: hitsPerPage || 5,
-    language,
-    type,
-  };
-
-  const baseControls = {};
-
-  if (Array.isArray(baseParams.countries)) {
-    baseParams.countries = baseParams.countries.map(country =>
-      country.toLowerCase()
-    );
-  }
-
-  if (typeof baseParams.language === 'string') {
-    baseParams.language = baseParams.language.toLowerCase();
-  }
-
-  if (aroundLatLng) {
-    baseParams.aroundLatLng = aroundLatLng;
-  } else if (aroundLatLngViaIP !== undefined) {
-    baseParams.aroundLatLngViaIP = aroundLatLngViaIP;
-  }
-
-  const params = Object.assign(baseParams, {
-    aroundRadius,
-    insideBoundingBox,
-    insidePolygon,
-    getRankingInfo,
-  });
-
-  const controls = Object.assign(baseControls, {
-    useDeviceLocation,
-    computeQueryParams,
-    formatInputValue,
-    onHits,
-    onError,
-    onRateLimitReached,
-  });
-
-  return { params, controls };
-};
 
 export default function createAutocompleteSource({
   algoliasearch,
@@ -96,28 +29,24 @@ export default function createAutocompleteSource({
   const placesClient = algoliasearch.initPlaces(appId, apiKey, clientOptions);
   placesClient.as.addAlgoliaAgent(`Algolia Places ${version}`);
 
-  const configuration = configure(
-    {
-      hitsPerPage,
-      aroundLatLng,
-      aroundRadius,
-      aroundLatLngViaIP,
-      insideBoundingBox,
-      insidePolygon,
-      getRankingInfo,
-      countries,
-      language,
-      type,
-    },
-    {
-      useDeviceLocation,
-      computeQueryParams,
-      formatInputValue,
-      onHits,
-      onError,
-      onRateLimitReached,
-    }
-  );
+  const configuration = configure({
+    hitsPerPage,
+    type,
+    countries,
+    language,
+    aroundLatLng,
+    aroundRadius,
+    aroundLatLngViaIP,
+    insideBoundingBox,
+    insidePolygon,
+    getRankingInfo,
+    formatInputValue,
+    computeQueryParams,
+    useDeviceLocation,
+    onHits,
+    onError,
+    onRateLimitReached,
+  });
 
   let params = configuration.params;
   let controls = configuration.controls;
@@ -172,10 +101,7 @@ export default function createAutocompleteSource({
   }
 
   searcher.configure = partial => {
-    const updated = configure(
-      { ...params, ...partial },
-      { ...controls, ...partial }
-    );
+    const updated = configure({ ...params, ...controls, ...partial });
 
     params = updated.params;
     controls = updated.controls;
