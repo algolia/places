@@ -189,9 +189,6 @@ export default function places(options) {
       onHits: undefined,
       onError: undefined,
       onRateLimitReached: undefined,
-
-      // formatInputValue is obtained from the templates rather directly exposed
-      formatInputValue: (configuration.templates || {}).value,
       templates: undefined,
     });
 

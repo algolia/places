@@ -1,3 +1,8 @@
+<select id="country-selector">
+  <option value="fr">France</option>
+  <option value="us">United States</option>
+</select>
+
 <input type="search" id="single-country-search" class="form-control" placeholder="Where are we going?" />
 
 <p>Selected: <strong id="single-country-address-value">none</strong></p>
@@ -20,6 +25,11 @@
   placesAutocomplete.on('clear', function() {
     $address.textContent = 'none';
   });
+
+  var $country = document.querySelector('#country-selector')
+  $country.addEventListener('change', function(e){
+    placesAutocomplete.configure({ countries: [e.target.value] });
+  })
 
 })();
 </script>
