@@ -15,6 +15,7 @@ import insertCss from 'insert-css';
 insertCss(css, { prepend: true });
 
 import errors from './errors';
+import createReverseGeocodingSource from './createReverseGeocodingSource';
 
 export default function places(options) {
   const {
@@ -192,6 +193,26 @@ export default function places(options) {
     autocompleteDataset.source.configure(safeConfig);
     return placesInstance;
   };
+
+  placesInstance.reverse = createReverseGeocodingSource({
+    ...options,
+    onHits: ({ hits, rawAnswer, query }) =>
+      placesInstance.emit('suggestions', {
+        rawAnswer,
+        query,
+        suggestions: hits,
+      }),
+    onError: e => placesInstance.emit('error', e),
+    onRateLimitReached: () => {
+      const listeners = placesInstance.listenerCount('limit');
+      if (listeners === 0) {
+        console.log(errors.rateLimitReached); // eslint-disable-line
+        return;
+      }
+
+      placesInstance.emit('limit', { message: errors.rateLimitReached });
+    },
+  });
 
   return placesInstance;
 }
