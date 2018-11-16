@@ -89,7 +89,7 @@
 
   var $country = document.querySelector('#dynamic-country-selector')
   $country.addEventListener('change', function(e){
-    const country = e.target.value;
+    var country = e.target.value;
     if (country) {
       placesAutocomplete.configure({ countries: [country] });
     }
@@ -107,7 +107,7 @@
   $language.addEventListener('change', function(e){
     var language = e.target.value;
     if (language) {
-      placesAutocomplete.configure({ language });
+      placesAutocomplete.configure({ language: language });
     }
     else {
       placesAutocomplete.configure({ language: undefined });
@@ -119,7 +119,7 @@
     var hitsPerPage = parseInt(e.target.value, 10);
 
     if (hitsPerPage) {
-      placesAutocomplete.configure({ hitsPerPage });
+      placesAutocomplete.configure({ hitsPerPage: hitsPerPage });
     }
     else {
       placesAutocomplete.configure({ hitsPerPage: undefined });
