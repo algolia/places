@@ -31,6 +31,7 @@ configure :development do
   config[:places_lib_url] = 'places'
   config[:places_autocomplete_dataset_lib_url] = 'placesAutocompleteDataset'
   config[:places_instantsearch_widget_lib_url] = 'placesInstantsearchWidget'
+  config[:places_reverse_widget_lib_url] = 'reversePlaces'
   config[:instantsearch_lib_url] = 'https://cdn.jsdelivr.net/instantsearch.js/2.10.1/instantsearch.min.js'
   config[:google_maps_lib_url] = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBawL8VbstJDdU5397SUX7pEt9DslAwWgQ'
   activate :external_pipeline,
@@ -76,6 +77,7 @@ config[:places_lib_version] = ENV['VERSION']
 config[:places_cdn_url] = "https://cdn.jsdelivr.net/npm/places.js@#{config[:places_lib_version]}"
 config[:places_autocomplete_dataset_cdn_url] = "https://cdn.jsdelivr.net/npm/places.js@#{config[:places_lib_version]}/dist/cdn/placesAutocompleteDataset.min.js"
 config[:places_instantsearch_widget_cdn_url] = "https://cdn.jsdelivr.net/npm/places.js@#{config[:places_lib_version]}/dist/cdn/placesInstantsearchWidget.min.js"
+config[:places_reverse_cdn_url] = "https://cdn.jsdelivr.net/npm/places.js@#{config[:places_lib_version]}/dist/cdn/reversePlaces.min.js"
 
 helpers do
   def nav_active(path)
@@ -88,6 +90,7 @@ configure :build do
   config[:places_lib_url] = config[:places_cdn_url]
   config[:places_autocomplete_dataset_lib_url] = config[:places_autocomplete_dataset_cdn_url]
   config[:places_instantsearch_widget_lib_url] = config[:places_instantsearch_widget_cdn_url]
+  config[:places_reverse_lib_url] = config[:places_reverse_cdn_url]
   config[:instantsearch_lib_url] = 'https://cdn.jsdelivr.net/instantsearch.js/2.10.1/instantsearch.min.js'
   config[:google_maps_lib_url] = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBawL8VbstJDdU5397SUX7pEt9DslAwWgQ'
   # this may trigger bad behavior, if so, see

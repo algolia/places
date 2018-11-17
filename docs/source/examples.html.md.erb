@@ -224,6 +224,14 @@ In this section, we will see how you can do _emulate_ reverse geocoding to find 
 
 **Note:** This is not a reverse geocoding API, and it is still bound by the ranking used for search, which means that in some cases large close-by cities can be promoted over a more closely located city.
 
+### Reverse geocoding
+
+<%= partial '/partials/examples/reverse_geocoding', locals: config[:credentials][:documentation] %>
+
+```html
+<%= partial '/partials/examples/reverse_geocoding', locals: config[:credentials][:placeholder] %>
+```
+
 ### Using _rankingInfo
 
 **Concepts:** _rankingInfo, query strategy, geolocation precision.

@@ -1,5 +1,6 @@
 import formatHit from './formatHit';
 import configure from './configure';
+import defaultTemplates from './defaultTemplates';
 
 const filterApplicableParams = params => {
   const { hitsPerPage, aroundLatLng, getRankingInfo, language } = params;
@@ -30,7 +31,7 @@ const createReverseGeocodingSource = ({
   hitsPerPage,
   aroundLatLng,
   getRankingInfo,
-  formatInputValue,
+  formatInputValue = defaultTemplates.value,
   language = navigator.language.split('-')[0],
   onHits = () => {},
   onError = e => {
@@ -70,6 +71,7 @@ const createReverseGeocodingSource = ({
     const args = Object.entries(searchParams)
       .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
       .join('&');
+
     return fetch(`${baseUrl}&${args}`)
       .then(res => res.json())
       .then(content => {
@@ -83,6 +85,7 @@ const createReverseGeocodingSource = ({
           })
         );
 
+        console.log(`~~~~ hits ~~~~`, hits);
         controls.onHits({
           hits,
           query: finalAroundLatLng,
