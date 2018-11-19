@@ -1,9 +1,17 @@
 import formatHit from './formatHit';
 // import version from './version';
 import createReverseGeocodingSource from './createReverseGeocodingSource';
+jest.mock('./defaultTemplates.js', () => ({
+  value: jest.fn(() => 'valueTemplate'),
+}));
 
 jest.mock('./formatHit.js', () =>
-  jest.fn(hit => ({ formattedHit: { ...hit } }))
+  jest.fn(hit => {
+    const { formatInputValue } = hit;
+    return {
+      formattedHit: { ...hit, formatInputValue: formatInputValue() },
+    };
+  })
 );
 global.fetch = jest.fn(() =>
   Promise.resolve({
@@ -80,20 +88,22 @@ describe('createReverseGeocodingSource', () => {
     expect(cb).toHaveBeenCalledWith(expectedHits);
   });
 
-  it('supports formatInputValue option', () => {
-    const { source, defaults, cb } = setup({ formatInputValue: 'custom' });
-    return source(defaults.query, cb).then(() => {
-      expect(cb.mock.calls[0][0][0].formattedHit.formatInputValue).toEqual(
-        'custom'
-      );
-    });
+  it('supports formatInputValue option', async () => {
+    const formatInputValue = jest.fn(() => 'custom');
+    const { source, defaults, cb } = setup({ formatInputValue });
+
+    await source(defaults.query, cb);
+
+    expect(cb.mock.calls[0][0][0].formattedHit.formatInputValue).toEqual(
+      'custom'
+    );
   });
 
   it('supports onHits option', () => {
     const onHits = jest.fn();
     const { source, defaults, expectedHits, content } = setup({ onHits });
     return source(defaults.query).then(() => {
-      expect(onHits).toBeCalledWith({
+      expect(onHits).toHaveBeenCalledWith({
         hits: expectedHits,
         query: defaults.query,
         rawAnswer: content,
@@ -158,7 +168,7 @@ function setup(sourceOptions = {}) {
       hitIndex,
       query,
       rawAnswer: content,
-      formatInputValue: sourceOptions.formatInputValue || undefined,
+      formatInputValue: sourceOptions.formatInputValue || 'valueTemplate',
     },
   }));
   return { source, baseUrl, defaults, expectedHits, content, cb };
