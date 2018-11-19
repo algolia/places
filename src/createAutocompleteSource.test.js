@@ -19,7 +19,7 @@ describe('createAutocompleteSource', () => {
 
   it('instantiates an Algolia Places client', () => {
     setup();
-    expect(algoliasearch.initPlaces).toBeCalledWith(
+    expect(algoliasearch.initPlaces).toHaveBeenCalledWith(
       undefined,
       undefined,
       undefined
@@ -30,7 +30,11 @@ describe('createAutocompleteSource', () => {
     const appId = 'id';
     const apiKey = 'key';
     setup({ appId, apiKey });
-    expect(algoliasearch.initPlaces).toBeCalledWith(appId, apiKey, undefined);
+    expect(algoliasearch.initPlaces).toHaveBeenCalledWith(
+      appId,
+      apiKey,
+      undefined
+    );
   });
 
   it('supports clientOptions', () => {
@@ -38,7 +42,7 @@ describe('createAutocompleteSource', () => {
       some: 'param',
     };
     setup({ clientOptions });
-    expect(algoliasearch.initPlaces).toBeCalledWith(
+    expect(algoliasearch.initPlaces).toHaveBeenCalledWith(
       undefined,
       undefined,
       clientOptions
@@ -47,7 +51,7 @@ describe('createAutocompleteSource', () => {
 
   it('configures the Algolia Places client agent', () => {
     setup();
-    expect(algoliasearch.__addAlgoliaAgentSpy).toBeCalledWith(
+    expect(algoliasearch.__addAlgoliaAgentSpy).toHaveBeenCalledWith(
       `Algolia Places ${version}`
     );
   });
@@ -55,7 +59,7 @@ describe('createAutocompleteSource', () => {
   it('calls Algolia Places search with some default parameters', () => {
     const { source, defaults } = setup();
     source('rivoli');
-    expect(algoliasearch.__searchSpy).toBeCalledWith({
+    expect(algoliasearch.__searchSpy).toHaveBeenCalledWith({
       ...defaults,
       query: 'rivoli',
     });
@@ -64,7 +68,7 @@ describe('createAutocompleteSource', () => {
   it('supports countries option', () => {
     const { source, defaults } = setup({ countries: ['fr'] });
     source(defaults.query);
-    expect(algoliasearch.__searchSpy).toBeCalledWith({
+    expect(algoliasearch.__searchSpy).toHaveBeenCalledWith({
       ...defaults,
       countries: ['fr'],
     });
@@ -73,7 +77,7 @@ describe('createAutocompleteSource', () => {
   it('lowercases countries option', () => {
     const { source, defaults } = setup({ countries: ['FR'] });
     source(defaults.query);
-    expect(algoliasearch.__searchSpy).toBeCalledWith({
+    expect(algoliasearch.__searchSpy).toHaveBeenCalledWith({
       ...defaults,
       countries: ['fr'],
     });
@@ -82,7 +86,7 @@ describe('createAutocompleteSource', () => {
   it('supports type option', () => {
     const { source, defaults } = setup({ type: 'city' });
     source(defaults.query);
-    expect(algoliasearch.__searchSpy).toBeCalledWith({
+    expect(algoliasearch.__searchSpy).toHaveBeenCalledWith({
       ...defaults,
       type: 'city',
     });
@@ -91,7 +95,7 @@ describe('createAutocompleteSource', () => {
   it('supports language option', () => {
     const { source, defaults } = setup({ language: 'en' });
     source(defaults.query);
-    expect(algoliasearch.__searchSpy).toBeCalledWith({
+    expect(algoliasearch.__searchSpy).toHaveBeenCalledWith({
       ...defaults,
       language: 'en',
     });
@@ -100,7 +104,7 @@ describe('createAutocompleteSource', () => {
   it('lowercases language option', () => {
     const { source, defaults } = setup({ language: 'EN' });
     source(defaults.query);
-    expect(algoliasearch.__searchSpy).toBeCalledWith({
+    expect(algoliasearch.__searchSpy).toHaveBeenCalledWith({
       ...defaults,
       language: 'en',
     });
@@ -109,7 +113,7 @@ describe('createAutocompleteSource', () => {
   it('supports aroundLatLng option', () => {
     const { source, defaults } = setup({ aroundLatLng: '123,456' });
     source(defaults.query);
-    expect(algoliasearch.__searchSpy).toBeCalledWith({
+    expect(algoliasearch.__searchSpy).toHaveBeenCalledWith({
       ...defaults,
       aroundLatLng: '123,456',
     });
@@ -118,7 +122,7 @@ describe('createAutocompleteSource', () => {
   it('supports aroundLatLngViaIP option', () => {
     const { source, defaults } = setup({ aroundLatLngViaIP: true });
     source(defaults.query);
-    expect(algoliasearch.__searchSpy).toBeCalledWith({
+    expect(algoliasearch.__searchSpy).toHaveBeenCalledWith({
       ...defaults,
       aroundLatLngViaIP: true,
     });
@@ -130,7 +134,7 @@ describe('createAutocompleteSource', () => {
       aroundLatLngViaIP: true,
     });
     source(defaults.query);
-    expect(algoliasearch.__searchSpy).toBeCalledWith({
+    expect(algoliasearch.__searchSpy).toHaveBeenCalledWith({
       ...defaults,
       aroundLatLng: '123,456',
     });
@@ -139,7 +143,7 @@ describe('createAutocompleteSource', () => {
   it('supports aroundRadius option', () => {
     const { source, defaults } = setup({ aroundRadius: 2000 });
     source(defaults.query);
-    expect(algoliasearch.__searchSpy).toBeCalledWith({
+    expect(algoliasearch.__searchSpy).toHaveBeenCalledWith({
       ...defaults,
       aroundRadius: 2000,
     });
@@ -148,7 +152,7 @@ describe('createAutocompleteSource', () => {
   it('supports insidePolygon option', () => {
     const { source, defaults } = setup({ insidePolygon: 2000 });
     source(defaults.query);
-    expect(algoliasearch.__searchSpy).toBeCalledWith({
+    expect(algoliasearch.__searchSpy).toHaveBeenCalledWith({
       ...defaults,
       insidePolygon: 2000,
     });
@@ -175,7 +179,7 @@ describe('createAutocompleteSource', () => {
   it('supports hitsPerPage option', () => {
     const { source, defaults } = setup({ hitsPerPage: 2 });
     source(defaults.query);
-    expect(algoliasearch.__searchSpy).toBeCalledWith({
+    expect(algoliasearch.__searchSpy).toHaveBeenCalledWith({
       ...defaults,
       hitsPerPage: 2,
     });
@@ -190,7 +194,7 @@ describe('createAutocompleteSource', () => {
 
     const { source, defaults } = setup({ useDeviceLocation: true });
     source(defaults.query);
-    expect(algoliasearch.__searchSpy).toBeCalledWith({
+    expect(algoliasearch.__searchSpy).toHaveBeenCalledWith({
       ...defaults,
       aroundLatLng: '456,789',
     });
@@ -201,8 +205,8 @@ describe('createAutocompleteSource', () => {
     const computeQueryParams = jest.fn(() => params);
     const { source, defaults } = setup({ computeQueryParams });
     source(defaults.query);
-    expect(algoliasearch.__searchSpy).toBeCalledWith(params);
-    expect(computeQueryParams).toBeCalledWith(defaults);
+    expect(algoliasearch.__searchSpy).toHaveBeenCalledWith(params);
+    expect(computeQueryParams).toHaveBeenCalledWith(defaults);
   });
 
   it('calls the source callback with the formatted hits', () => {
@@ -210,7 +214,7 @@ describe('createAutocompleteSource', () => {
       aroundLatLngViaIP: true,
     });
     return source(defaults.query, cb).then(() => {
-      expect(cb).toBeCalledWith(expectedHits);
+      expect(cb).toHaveBeenCalledWith(expectedHits);
     });
   });
 
@@ -227,7 +231,7 @@ describe('createAutocompleteSource', () => {
     const onHits = jest.fn();
     const { source, defaults, expectedHits, content } = setup({ onHits });
     return source(defaults.query).then(() => {
-      expect(onHits).toBeCalledWith({
+      expect(onHits).toHaveBeenCalledWith({
         hits: expectedHits,
         query: defaults.query,
         rawAnswer: content,
@@ -244,7 +248,7 @@ describe('createAutocompleteSource', () => {
     return new Promise((resolve, reject) => {
       source()
         .then(() => {
-          expect(onError).toBeCalledWith(error);
+          expect(onError).toHaveBeenCalledWith(error);
           resolve();
         })
         .catch(() => {
@@ -283,7 +287,7 @@ describe('createAutocompleteSource', () => {
     return new Promise((resolve, reject) => {
       source()
         .then(() => {
-          expect(onRateLimitReached).toBeCalled();
+          expect(onRateLimitReached).toHaveBeenCalled();
           resolve();
         })
         .catch(() => {
