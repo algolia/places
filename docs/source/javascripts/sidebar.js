@@ -119,10 +119,11 @@ function scrollSpy(sidebarContainer, headersContainer) {
           rect.top < window.innerHeight / 3 && rect.bottom < window.innerHeight
       )
       // then we take the closest to this position as reference
-      .sort(
-        (header1, header2) =>
-          Math.abs(header1.rect.top) < Math.abs(header2.rect.top) ? -1 : 1
-      );
+      .sort((header1, header2) => {
+        const h1Top = Math.abs(header1.rect.top);
+        const h2Top = Math.abs(header2.rect.top);
+        return h1Top < h2Top ? -1 : 1;
+      });
 
     if (highestVisibleHeaders.length === 0) {
       setActiveSidebarLink(headers[0]);
