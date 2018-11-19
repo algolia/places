@@ -85,7 +85,6 @@ const createReverseGeocodingSource = ({
           })
         );
 
-        console.log(`~~~~ hits ~~~~`, hits);
         controls.onHits({
           hits,
           query: finalAroundLatLng,
