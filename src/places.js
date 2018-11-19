@@ -198,7 +198,7 @@ export default function places(options) {
     ...options,
     formatInputValue: (options.templates || {}).value,
     onHits: ({ hits, rawAnswer, query }) =>
-      placesInstance.emit('suggestions', {
+      placesInstance.emit('reverse', {
         rawAnswer,
         query,
         suggestions: hits,
