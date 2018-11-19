@@ -254,13 +254,13 @@ describe('formatHit', () => {
 
       // check fn calls
       expect(output.countryCode).toEqual('countryCode');
-      expect(findCountryCode).toBeCalledWith(['tags']);
+      expect(findCountryCode).toHaveBeenCalledWith(['tags']);
 
       expect(output.type).toEqual('type');
-      expect(findType).toBeCalledWith(['tags']);
+      expect(findType).toHaveBeenCalledWith(['tags']);
 
       expect(output.value).toEqual('value');
-      expect(testCase.input.formatInputValue).toBeCalledWith({
+      expect(testCase.input.formatInputValue).toHaveBeenCalledWith({
         name: output.name,
         administrative: output.administrative,
         city: output.city,
@@ -286,7 +286,7 @@ describe('formatHit', () => {
     const output = formatHit({ bad: 'data' });
     const expected = { value: 'Could not parse object' };
     expect(output).toEqual(expected);
-    expect(console.error).toBeCalled(); // eslint-disable-line no-console
+    expect(console.error).toHaveBeenCalled(); // eslint-disable-line no-console
     console.error = consoleError; // eslint-disable-line no-console
   });
 });
