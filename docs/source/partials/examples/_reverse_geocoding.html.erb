@@ -39,14 +39,20 @@
   </div>
 </form>
 
-<%= javascript_include_tag config[:places_lib_url] %>
+<%= javascript_include_tag config[:places_reverse_widget_lib_url] %>
 <script>
 (function() {
-  var placesAutocomplete = places({
+  var reverse = reversePlaces({
     appId: '<%= app_id %>',
     apiKey: '<%= api_key %>',
-    container: document.querySelector('#reverse-demo-ignored')
-  });
+    hitsPerPage: 1,
+    onHits: ({ hits }) => {
+      var suggestion = hits[0];
+      document.querySelector('#reverse-address').value = suggestion.name || '';
+      document.querySelector('#reverse-town').value = suggestion.city || '';
+      document.querySelector('#reverse-zip').value = suggestion.postcode || '';
+    }
+  })
 
   var lat, lng;
 
@@ -59,7 +65,7 @@
       lat = parseFloat(e.target.value);
 
       if (typeof lat !== 'undefined' && typeof lng !== 'undefined') {
-        placesAutocomplete.reverse(`${lat}, ${lng}`);
+        reverse(`${lat}, ${lng}`);
       }
     } catch (e) {
       lat = undefined;
@@ -71,7 +77,7 @@
       lng = parseFloat(e.target.value);
 
       if (typeof lat !== 'undefined' && typeof lng !== 'undefined') {
-        placesAutocomplete.reverse(`${lat}, ${lng}`);
+        reverse(`${lat}, ${lng}`);
       }
     } catch (e) {
       lng = undefined;
@@ -91,15 +97,8 @@
 
       $button.textContent = 'Locate me';
       
-      placesAutocomplete.reverse(lat + ',' + lng);
+      reverse(lat + ',' + lng);
     });
-  });
-
-  placesAutocomplete.on('suggestions', function resultSelected(e) {
-    var suggestion = e.suggestions[0];
-    document.querySelector('#reverse-address').value = suggestion.name || '';
-    document.querySelector('#reverse-town').value = suggestion.city || '';
-    document.querySelector('#reverse-zip').value = suggestion.postcode || '';
   });
 })();
 </script>
