@@ -109,6 +109,8 @@ const createReverseGeocodingSource = ({
 
     params = filterApplicableParams(updated.params);
     controls = updated.controls;
+
+    return searcher;
   };
 
   return searcher;
