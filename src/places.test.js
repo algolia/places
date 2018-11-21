@@ -37,7 +37,7 @@ describe('places', () => {
         .querySelector('body')
         .appendChild(document.createElement('span'));
       const container = document.querySelectorAll('span');
-      expect(() => places({ container })).toThrowError(errors.multiContainers);
+      expect(() => places({ container })).toThrow(errors.multiContainers);
     });
 
     it('fails when container is a css selector resoling to multiple elements', () => {
@@ -48,7 +48,7 @@ describe('places', () => {
         .querySelector('body')
         .appendChild(document.createElement('span'));
       const container = 'span';
-      expect(() => places({ container })).toThrowError(errors.multiContainers);
+      expect(() => places({ container })).toThrow(errors.multiContainers);
     });
 
     it('fails when container does not resolves to an HTMLInputElement', () => {
@@ -56,7 +56,7 @@ describe('places', () => {
         .querySelector('body')
         .appendChild(document.createElement('span'));
       const container = 'span';
-      expect(() => places({ container })).toThrowError(errors.badContainer);
+      expect(() => places({ container })).toThrow(errors.badContainer);
     });
 
     it('works when using document.querySelectorAll', () => {
@@ -91,7 +91,7 @@ describe('places', () => {
     });
 
     it('creates an autocomplete dataset', () =>
-      expect(createAutocompleteDataset).toBeCalled());
+      expect(createAutocompleteDataset).toHaveBeenCalled());
     it('passes the algoliasearch client', () =>
       expect(args.algoliasearch).toEqual('algoliasearch'));
     it('passes provided options', () =>
@@ -132,7 +132,7 @@ describe('places', () => {
       const consoleLog = console.log; // eslint-disable-line no-console
       console.log = jest.fn(); // eslint-disable-line no-console
       args.onRateLimitReached();
-      expect(console.log).toBeCalledWith(errors.rateLimitReached); // eslint-disable-line no-console
+      expect(console.log).toHaveBeenCalledWith(errors.rateLimitReached); // eslint-disable-line no-console
       console.log = consoleLog; // eslint-disable-line no-console
     });
   });
@@ -152,7 +152,7 @@ describe('places', () => {
     });
 
     it('creates an autocomplete instance', () => {
-      expect(autocomplete).toBeCalledWith(
+      expect(autocomplete).toHaveBeenCalledWith(
         document.querySelector('input'),
         {
           autoselect: true,
@@ -260,8 +260,10 @@ describe('places', () => {
       expect(clearButton.getAttribute('aria-label')).toEqual('clear');
 
       placesInstance.once('clear', () => {
-        expect(autocomplete.__instance.autocomplete.setVal).toBeCalledWith('');
-        expect(autocomplete.__instance.focus).toBeCalled();
+        expect(
+          autocomplete.__instance.autocomplete.setVal
+        ).toHaveBeenCalledWith('');
+        expect(autocomplete.__instance.focus).toHaveBeenCalled();
         expect(clearButton.style.display).toEqual('none');
         expect(pinButton.style.display).toEqual('');
         done();
@@ -290,9 +292,9 @@ describe('places', () => {
       });
 
       it('listens to the input event', () => {
-        expect(autocomplete.__instance.val).not.toBeCalled();
+        expect(autocomplete.__instance.val).not.toHaveBeenCalled();
         input.dispatchEvent(new Event('input'));
-        expect(autocomplete.__instance.val).toBeCalled();
+        expect(autocomplete.__instance.val).toHaveBeenCalled();
       });
 
       // eslint-disable-next-line jasmine/missing-expect
@@ -331,13 +333,13 @@ describe('places', () => {
         placesInstance.destroy();
         autocomplete.__setQuery('');
         input.dispatchEvent(new Event('input'));
-        expect(autocomplete.__instance.val).not.toBeCalled();
+        expect(autocomplete.__instance.val).not.toHaveBeenCalled();
       });
     });
 
     it('has a destroy method', () => {
       placesInstance.destroy();
-      expect(autocomplete.__instance.autocomplete.destroy).toBeCalled();
+      expect(autocomplete.__instance.autocomplete.destroy).toHaveBeenCalled();
     });
 
     it('has all autocomplete methods', () => {
@@ -350,9 +352,9 @@ describe('places', () => {
       ];
       autocompleteMethods.forEach(methodName => {
         placesInstance[methodName]('hello');
-        expect(autocomplete.__instance.autocomplete[methodName]).toBeCalledWith(
-          'hello'
-        );
+        expect(
+          autocomplete.__instance.autocomplete[methodName]
+        ).toHaveBeenCalledWith('hello');
       });
     });
 

@@ -37,7 +37,7 @@ describe('instantsearch widget', () => {
 
     widget.init({ helper });
 
-    expect(places).toBeCalledWith({ places: 'option' });
+    expect(places).toHaveBeenCalledWith({ places: 'option' });
   });
 
   it('creates a places instance without parameters', () => {
@@ -126,7 +126,7 @@ describe('instantsearch widget', () => {
 
     eventListener({ suggestion: { latlng: { lat: '123', lng: '456' } } });
 
-    expect(helper.search).toBeCalled();
+    expect(helper.search).toHaveBeenCalled();
     expect(helper.getState()).toMatchObject({
       insideBoundingBox: undefined,
       aroundLatLng: '123,456',
@@ -149,7 +149,7 @@ describe('instantsearch widget', () => {
 
     eventListener({ suggestion: { latlng: { lat: '123', lng: '456' } } });
 
-    expect(helper.search).toBeCalled();
+    expect(helper.search).toHaveBeenCalled();
     expect(helper.getState()).toMatchObject({
       insideBoundingBox: undefined,
       aroundLatLng: '123,456',
@@ -173,7 +173,7 @@ describe('instantsearch widget', () => {
 
     eventListener();
 
-    expect(helper.search).toBeCalled();
+    expect(helper.search).toHaveBeenCalled();
     expect(helper.getState()).toMatchObject({
       insideBoundingBox: undefined,
       aroundLatLngViaIP: false,
@@ -204,7 +204,7 @@ describe('instantsearch widget', () => {
       },
     });
 
-    expect(helper.search).toBeCalled();
+    expect(helper.search).toHaveBeenCalled();
     expect(helper.getState()).toMatchObject({
       insideBoundingBox: undefined,
       aroundLatLng: '123,456',
@@ -218,7 +218,7 @@ describe('instantsearch widget', () => {
 
     clearEventListener();
 
-    expect(helper.search).toBeCalled();
+    expect(helper.search).toHaveBeenCalled();
     expect(helper.getState()).toMatchObject({
       insideBoundingBox: undefined,
       aroundLatLng: undefined,
@@ -266,7 +266,7 @@ describe('instantsearch widget', () => {
 
       clearEventListener();
 
-      expect(helper.search).toBeCalled();
+      expect(helper.search).toHaveBeenCalled();
       expect(helper.getState()).toMatchObject({
         insideBoundingBox: undefined,
         aroundLatLng: undefined,
@@ -301,7 +301,7 @@ describe('instantsearch widget', () => {
           },
         });
 
-        expect(helper.search).toBeCalled();
+        expect(helper.search).toHaveBeenCalled();
         expect(helper.getState()).toMatchObject({
           insideBoundingBox: undefined,
           aroundLatLng: '123,456',
@@ -334,7 +334,7 @@ describe('instantsearch widget', () => {
 
         eventListener();
 
-        expect(helper.search).toBeCalled();
+        expect(helper.search).toHaveBeenCalled();
         expect(helper.getState()).toMatchObject({
           insideBoundingBox: undefined,
           aroundLatLng: '2,2',
@@ -372,7 +372,7 @@ describe('instantsearch widget', () => {
 
         eventListener();
 
-        expect(helper.search).toBeCalled();
+        expect(helper.search).toHaveBeenCalled();
         expect(helper.getState()).toMatchObject({
           insideBoundingBox: undefined,
           aroundLatLng: undefined,
