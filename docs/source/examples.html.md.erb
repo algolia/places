@@ -210,11 +210,27 @@ See the documentation about the [placesAutocompleteDataset function](documentati
 
 ### Nearby City Search
 
-**Concepts:** type parameter, aroundLatLngViaIP, aroundPrecision, Places API Client.
+**Concepts:** type parameter, aroundLatLngViaIP, aroundPrecision, programmatic search.
 
 In this section, we will see how you can _emulate_ reverse geocoding to find city closest to a user using the Places API Client.
 
-<%= partial '/partials/examples/reverse-city-search/demo', locals: config[:credentials][:documentation] %>
+<%= partial '/partials/examples/reverse-city-search/demo_places', locals: config[:credentials][:documentation] %>
+
+```html
+<%= partial '/partials/examples/reverse-city-search/code_places', locals: config[:credentials][:placeholder] %>
+```
+
+**Note:** This is not a reverse geocoding API, and it is still bound by the ranking used for search, which means that in some cases large close-by cities can be promoted over a more closely located city.
+
+### Using an API client
+
+In some cases, you may not want to tie your Places search to an input, but rather access it only programmatically.
+
+In these cases, you can use the regular JavaScript API Client, or the api client in your preferred language. You can head to the [API Clients page](api-clients.html) to see which api clients support Places.
+
+For instance, here we will rewrite the previous example using the JS api client instead.
+
+<%= partial '/partials/examples/reverse-city-search/code', locals: config[:credentials][:documentation] %>
 
 ```html
 <%= partial '/partials/examples/reverse-city-search/code', locals: config[:credentials][:placeholder] %>

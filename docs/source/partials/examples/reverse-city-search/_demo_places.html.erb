@@ -1,0 +1,54 @@
+<div>
+<p>When constructing a search UI using InstantSearch, you may want to filter your dataset to only display some of your products based on the distance to the end user. This is usually done using the aroundLatLngViaIP filter, or aroundLatLng filter if you have access to precise geolocation information. However geographical filters are hard to interpret when displayed in raw format, as noone really knows where the coordinates <span id="coords"><code>48.8566, 2.34287</code></span> are.</p>
+
+<p>Using Places, you can do a query to find the city in which your user is located and display that city name instead of a geolocation.</p>
+</div>
+
+<p><strong>Example:</strong></p>
+
+<div>
+  <strong>Searching around: </strong>
+  <input type="search" id="reverse-city" placeholder="Your favorite city" />
+</div>
+
+<%= javascript_include_tag config[:places_lib_url] %>
+<script>
+var placesAutocomplete = places({
+    appId: '<%= app_id %>',
+    apiKey: '<%= api_key %>',
+    container: document.querySelector('#reverse-city')
+  }).configure({
+    type: 'city',
+    hitsPerPage: 5,
+    aroundLatLngViaIP: true,
+    debug: true
+  });
+
+placesAutocomplete.search().then(function(suggestions) {
+  if (!suggestions[0]) {
+    return;
+  }
+
+  var name = suggestions[0].name;
+  var country = suggestions[0].country;
+  var latlng = suggestions[0].latlng;
+  var formattedCity = name + ', ' + country;
+
+  var coordElt = document.querySelector("#coords"); 
+  var lat = latlng.lat;
+  var lng = latlng.lng;
+  coordElt.innerHTML = '<code>' + lat + ', ' + lng + '</code>';
+
+  var infoElt = document.querySelector("#reverse-city");
+  infoElt.value = formattedCity;
+});
+
+placesAutocomplete.on('change', (response) => {
+  var suggestion = response.suggestion;
+  var latlng = suggestion.latlng;
+  var coordElt = document.querySelector("#coords"); 
+  var lat = latlng.lat;
+  var lng = latlng.lng;
+  coordElt.innerHTML = '<code>' + lat + ', ' + lng + '</code>';
+});
+</script>

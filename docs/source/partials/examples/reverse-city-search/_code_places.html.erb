@@ -1,0 +1,30 @@
+<div>
+  <strong>Searching around: </strong>
+  <input type="search" id="reverse-city" placeholder="What's your favorite city?"></div>
+</div>
+
+<%= javascript_include_tag config[:places_lib_url] %>
+<script>
+var placesAutocomplete = places({
+    appId: '<%= app_id %>',
+    apiKey: '<%= api_key %>',
+    container: document.querySelector('#reverse-city')
+  }).configure({
+    type: 'city',
+    hitsPerPage: 1,
+    aroundLatLngViaIP: true
+  });
+
+placesAutocomplete.search().then(function(suggestions) {
+  if (!suggestions[0]) {
+    return;
+  }
+
+  var name = suggestions[0].name;
+  var country = suggestions[0].country;
+  var formattedCity = locale_names[0] + ', ' + country;
+
+  var infoElt = document.querySelector("#reverse-city");
+  infoElt.value = formattedCity;
+});
+</script>
