@@ -126,9 +126,10 @@ export default function places(options) {
   autocompleteContainer.appendChild(pin);
 
   pin.addEventListener('click', () => {
-    autocompleteDataset.source.setUseDeviceLocation(true);
+    autocompleteDataset.source.configure({ useDeviceLocation: true });
     autocompleteInstance.focus();
   });
+
   clear.addEventListener('click', () => {
     autocompleteInstance.autocomplete.setVal('');
     autocompleteInstance.focus();
@@ -179,8 +180,18 @@ export default function places(options) {
   };
 
   placesInstance.autocomplete = autocompleteInstance;
-  placesInstance.setUseDeviceLocation =
-    autocompleteDataset.source.setUseDeviceLocation;
+
+  placesInstance.configure = configuration => {
+    const safeConfig = Object.assign({}, configuration);
+
+    delete safeConfig.onHits;
+    delete safeConfig.onError;
+    delete safeConfig.onRateLimitReached;
+    delete safeConfig.templates;
+
+    autocompleteDataset.source.configure(safeConfig);
+    return placesInstance;
+  };
 
   return placesInstance;
 }

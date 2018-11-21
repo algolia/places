@@ -11,13 +11,14 @@
     appId: '<%= app_id %>',
     apiKey: '<%= api_key %>',
     container: document.querySelector('#country'),
-    type: 'country',
     templates: {
       suggestion: function(suggestion) {
         return '<i class="flag ' + suggestion.countryCode + '"></i> ' +
           suggestion.highlight.name;
       }
     }
+  }).configure({
+    type: 'country',
   });
 })();
 </script>

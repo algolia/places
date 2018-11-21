@@ -124,11 +124,12 @@
   const placesAutocomplete = places({
     appId: '<%= app_id %>',
     apiKey: '<%= api_key %>',
-    getRankingInfo: true,
     container: document.querySelector('#ranking-info'),
     templates: {
       suggestion: formatSuggestion
     }
+  }).configure({
+    getRankingInfo: true
   });
 })();
 </script>

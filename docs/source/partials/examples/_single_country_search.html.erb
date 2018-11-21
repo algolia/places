@@ -1,3 +1,11 @@
+<div class="dynamic-control-group" style="max-width: 240px">
+  <label for="country-selector">Select country</label>
+  <select id="country-selector" class="btn btn-black">
+    <option value="fr">France</option>
+    <option value="us">United States</option>
+  </select>
+</div>
+
 <input type="search" id="single-country-search" class="form-control" placeholder="Where are we going?" />
 
 <p>Selected: <strong id="single-country-address-value">none</strong></p>
@@ -7,7 +15,8 @@
   var placesAutocomplete = places({
     appId: '<%= app_id %>',
     apiKey: '<%= api_key %>',
-    container: document.querySelector('#single-country-search'),
+    container: document.querySelector('#single-country-search')
+  }).configure({
     countries: ['fr']
   });
 
@@ -19,6 +28,11 @@
   placesAutocomplete.on('clear', function() {
     $address.textContent = 'none';
   });
+
+  var $country = document.querySelector('#country-selector')
+  $country.addEventListener('change', function(e){
+    placesAutocomplete.configure({ countries: [e.target.value] });
+  })
 
 })();
 </script>

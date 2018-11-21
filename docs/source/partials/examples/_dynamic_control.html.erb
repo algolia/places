@@ -1,0 +1,129 @@
+<style>
+  .dynamic-controls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .dynamic-control-group {
+    padding: 8px;
+    box-sizing: border-box; 
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .dynamic-control-group > label {
+    font-size: 12px;
+    margin-bottom: 4px;
+    color: #333;
+    text-transform: uppercase;
+  }
+  .dynamic-control-group > select {
+    height: 32px;
+    overflow: hidden;
+  }
+</style>
+<div class="dynamic-controls">
+  <div class="dynamic-control-group">
+    <label for="dynamic-country-selector">Search in country</label>
+    <select id="dynamic-country-selector" class="btn btn-black">
+      <option value="de">Germany</option>
+      <option value="us">United States</option>
+      <option value="">World</option>
+    </select>
+  </div>
+  <div class="dynamic-control-group">
+    <label for="dynamic-type-selector">Search for</label>
+    <select id="dynamic-type-selector" class="btn btn-black">
+      <option value="city">City</option>
+      <option value="address">Address</option>
+    </select>
+  </div>
+  <div class="dynamic-control-group">
+    <label for="dynamic-language-selector">Display in</label>
+    <select id="dynamic-language-selector" class="btn btn-black">
+      <option value="en">English</option>
+      <option value="de">German</option>
+      <option value="">Use default</option>
+    </select>
+  </div>
+  <div class="dynamic-control-group">
+    <label for="dynamic-nb-hits">Display X results</label>
+    <select id="dynamic-nb-hits" class="btn btn-black">
+      <option value="4">4</option>
+      <option value="8">8</option>
+      <option value="0">Use default (5)</option>
+    </select>
+  </div>
+</div>
+
+<input type="search" id="dynamic-search" class="form-control" placeholder="Where are we going?" />
+
+<p>Selected: <strong id="dynamic-address-value">none</strong></p>
+<%= javascript_include_tag config[:places_lib_url] %>
+<script>
+(function() {
+  var placesAutocomplete = places({
+    appId: '<%= app_id %>',
+    apiKey: '<%= api_key %>',
+    container: document.querySelector('#dynamic-search')
+  }).configure({
+    countries: ['de'],
+    type: 'city',
+    language: 'en',
+    hitsPerPage: 4
+  });
+
+  var $address = document.querySelector('#dynamic-address-value')
+  placesAutocomplete.on('change', function(e) {
+    $address.textContent = e.suggestion.value
+  });
+
+  placesAutocomplete.on('clear', function() {
+    $address.textContent = 'none';
+  });
+
+  var $country = document.querySelector('#dynamic-country-selector')
+  $country.addEventListener('change', function(e){
+    var country = e.target.value;
+    if (country) {
+      placesAutocomplete.configure({ countries: [country] });
+    }
+    else {
+      placesAutocomplete.configure({ countries: undefined });
+    }
+  });
+
+  var $type = document.querySelector('#dynamic-type-selector')
+  $type.addEventListener('change', function(e){
+    placesAutocomplete.configure({ type: e.target.value });
+  });
+
+  var $language = document.querySelector('#dynamic-language-selector')
+  $language.addEventListener('change', function(e){
+    var language = e.target.value;
+    if (language) {
+      placesAutocomplete.configure({ language: language });
+    }
+    else {
+      placesAutocomplete.configure({ language: undefined });
+    }
+  });
+
+  var $nbHits = document.querySelector('#dynamic-nb-hits')
+  $nbHits.addEventListener('change', function(e) {
+    var hitsPerPage = parseInt(e.target.value, 10);
+
+    if (hitsPerPage) {
+      placesAutocomplete.configure({ hitsPerPage: hitsPerPage });
+    }
+    else {
+      placesAutocomplete.configure({ hitsPerPage: undefined });
+    }
+  });
+})();
+</script>

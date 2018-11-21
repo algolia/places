@@ -1,3 +1,4 @@
+import configure from './configure';
 import formatHit from './formatHit';
 import version from './version';
 
@@ -28,66 +29,51 @@ export default function createAutocompleteSource({
   const placesClient = algoliasearch.initPlaces(appId, apiKey, clientOptions);
   placesClient.as.addAlgoliaAgent(`Algolia Places ${version}`);
 
-  const defaultQueryParams = {
-    countries,
-    hitsPerPage: hitsPerPage || 5,
-    language,
+  const configuration = configure({
+    hitsPerPage,
     type,
-  };
+    countries,
+    language,
+    aroundLatLng,
+    aroundRadius,
+    aroundLatLngViaIP,
+    insideBoundingBox,
+    insidePolygon,
+    getRankingInfo,
+    formatInputValue,
+    computeQueryParams,
+    useDeviceLocation,
+    onHits,
+    onError,
+    onRateLimitReached,
+  });
 
-  if (Array.isArray(defaultQueryParams.countries)) {
-    defaultQueryParams.countries = defaultQueryParams.countries.map(country =>
-      country.toLowerCase()
-    );
-  }
+  let params = configuration.params;
+  let controls = configuration.controls;
 
-  if (typeof defaultQueryParams.language === 'string') {
-    defaultQueryParams.language = defaultQueryParams.language.toLowerCase();
-  }
-
-  if (aroundLatLng) {
-    defaultQueryParams.aroundLatLng = aroundLatLng;
-  } else if (aroundLatLngViaIP !== undefined) {
-    defaultQueryParams.aroundLatLngViaIP = aroundLatLngViaIP;
-  }
-
-  if (aroundRadius) {
-    defaultQueryParams.aroundRadius = aroundRadius;
-  }
-
-  if (insideBoundingBox) {
-    defaultQueryParams.insideBoundingBox = insideBoundingBox;
-  }
-
-  if (insidePolygon) {
-    defaultQueryParams.insidePolygon = insidePolygon;
-  }
-
-  if (getRankingInfo) {
-    defaultQueryParams.getRankingInfo = getRankingInfo;
-  }
-
-  let tracker = null;
   let userCoords;
-  if (useDeviceLocation) {
+  let tracker = null;
+
+  if (controls.useDeviceLocation) {
     tracker = navigator.geolocation.watchPosition(({ coords }) => {
       userCoords = `${coords.latitude},${coords.longitude}`;
     });
   }
 
-  const searcher = (query, cb) =>
-    placesClient
-      .search(
-        computeQueryParams({
-          ...defaultQueryParams,
-          [userCoords ? 'aroundLatLng' : undefined]: userCoords,
-          query,
-        })
-      )
+  function searcher(query, cb) {
+    const searchParams = Object.assign(
+      {},
+      params,
+      userCoords && { aroundLatLng: userCoords },
+      { query }
+    );
+
+    return placesClient
+      .search(controls.computeQueryParams(searchParams))
       .then(content => {
         const hits = content.hits.map((hit, hitIndex) =>
           formatHit({
-            formatInputValue,
+            formatInputValue: controls.formatInputValue,
             hit,
             hitIndex,
             query,
@@ -95,7 +81,7 @@ export default function createAutocompleteSource({
           })
         );
 
-        onHits({
+        controls.onHits({
           hits,
           query,
           rawAnswer: content,
@@ -106,21 +92,28 @@ export default function createAutocompleteSource({
       .then(cb)
       .catch(e => {
         if (e.statusCode === 429) {
-          onRateLimitReached();
+          controls.onRateLimitReached();
           return;
         }
 
-        onError(e);
+        controls.onError(e);
       });
+  }
 
-  searcher.setUseDeviceLocation = bool => {
-    if (bool && tracker === null) {
+  searcher.configure = partial => {
+    const updated = configure({ ...params, ...controls, ...partial });
+
+    params = updated.params;
+    controls = updated.controls;
+
+    if (controls.useDeviceLocation && tracker === null) {
       tracker = navigator.geolocation.watchPosition(({ coords }) => {
         userCoords = `${coords.latitude},${coords.longitude}`;
       });
-    } else if (!bool && tracker !== null) {
+    } else if (!controls.useDeviceLocation && tracker !== null) {
       navigator.geolocation.clearWatch(tracker);
       tracker = null;
+      userCoords = null;
     }
   };
   return searcher;
