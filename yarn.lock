@@ -1223,7 +1223,14 @@ atob@^2.1.1:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-autocomplete.js@0.32.0, autocomplete.js@^0.32.0:
+autocomplete.js@0.33.0:
+  version "0.33.0"
+  resolved "https://registry.yarnpkg.com/autocomplete.js/-/autocomplete.js-0.33.0.tgz#33d460367e2e7b6c2fe424353d955e022fe4594c"
+  integrity sha512-J0F7BkPhYwXvfs8Skp6v2e2IHYv0SL8INyHYwb7nUpvKHr96g6zS8RNEFGEfEuO3ND+XUsesEMM59LlwQoLfoA==
+  dependencies:
+    immediate "^3.2.3"
+
+autocomplete.js@^0.32.0:
   version "0.32.0"
   resolved "https://registry.yarnpkg.com/autocomplete.js/-/autocomplete.js-0.32.0.tgz#a00eab44dcb9e573ebd8bb3178e7fe67466cd4f1"
   integrity sha512-GYGmOo0r2wLgUEYE5J9z9OSLb8e0SAicgDR1M1pHOvwQ0Hc1SLHR0EqjDhl+lhl01cYq2d7lLbsgRmaizgLqrA==
@@ -2459,13 +2466,13 @@ diffie-hellman@^5.0.0:
     miller-rabin "^4.0.0"
     randombytes "^2.0.0"
 
-docsearch.js@2.6.1:
-  version "2.6.1"
-  resolved "https://registry.yarnpkg.com/docsearch.js/-/docsearch.js-2.6.1.tgz#57d5b2441e4671f801f6ede42039ceb67edc2251"
-  integrity sha512-3rAvJ4w+dl90kEdiuB26cfVjgUrIqIpEAtqjUfVo7pS7a5TuM914cpFfPGekb+W/Boz4zkBD8d2o1NKSeV8MHg==
+docsearch.js@2.6.2:
+  version "2.6.2"
+  resolved "https://registry.yarnpkg.com/docsearch.js/-/docsearch.js-2.6.2.tgz#cb36a97aeac8a8d31eed5915cdee808a2248b41c"
+  integrity sha512-qyQ+raZlHSkfdpFg8wJNhjiz9WsjdQkRGe2LiiKS6vIIsouNNole2Kg/9UvGoUIK9PLLl31uL3I4YDwnrXt5yQ==
   dependencies:
     algoliasearch "^3.24.5"
-    autocomplete.js "0.32.0"
+    autocomplete.js "0.33.0"
     hogan.js "^3.0.2"
     request "^2.87.0"
     stack-utils "^1.0.1"
