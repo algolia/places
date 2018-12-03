@@ -196,6 +196,7 @@ export default function places(options) {
 
   placesInstance.reverse = createReverseGeocodingSource({
     ...options,
+    algoliasearch,
     formatInputValue: (options.templates || {}).value,
     onHits: ({ hits, rawAnswer, query }) =>
       placesInstance.emit('reverse', {

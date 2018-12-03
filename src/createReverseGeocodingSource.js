@@ -1,5 +1,6 @@
-import formatHit from './formatHit';
 import configure from './configure';
+import formatHit from './formatHit';
+import version from './version';
 import defaultTemplates from './defaultTemplates';
 
 const filterApplicableParams = params => {
@@ -26,6 +27,8 @@ const filterApplicableParams = params => {
 };
 
 const createReverseGeocodingSource = ({
+  algoliasearch,
+  clientOptions,
   apiKey,
   appId,
   hitsPerPage,
@@ -39,6 +42,9 @@ const createReverseGeocodingSource = ({
   },
   onRateLimitReached,
 }) => {
+  const placesClient = algoliasearch.initPlaces(appId, apiKey, clientOptions);
+  placesClient.as.addAlgoliaAgent(`Algolia Places ${version}`);
+
   const configuration = configure({
     apiKey,
     appId,
@@ -55,25 +61,18 @@ const createReverseGeocodingSource = ({
   let params = filterApplicableParams(configuration.params);
   let controls = configuration.controls;
 
-  const baseUrl = `https://places-dsn.algolia.net/1/places/reverse?x-algolia-application-id=${appId}&x-algolia-api-key=${apiKey}`;
-
   const searcher = (queryAroundLatLng, cb) => {
     const finalAroundLatLng = queryAroundLatLng || params.aroundLatLng;
 
     if (!finalAroundLatLng) {
-      return Promise.reject(
-        new Error('A location must be provided for reverse geocoding')
+      const error = new Error(
+        'A location must be provided for reverse geocoding'
       );
+      return Promise.reject(error);
     }
 
-    const searchParams = { ...params, aroundLatLng: finalAroundLatLng };
-
-    const args = Object.entries(searchParams)
-      .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
-      .join('&');
-
-    return fetch(`${baseUrl}&${args}`)
-      .then(res => res.json())
+    return placesClient
+      .reverse({ ...params, aroundLatLng: finalAroundLatLng })
       .then(content => {
         const hits = content.hits.map((hit, hitIndex) =>
           formatHit({

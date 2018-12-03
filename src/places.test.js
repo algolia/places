@@ -15,10 +15,17 @@ jest.mock('./createAutocompleteDataset', () =>
   }))
 );
 
+jest.mock('./createReverseGeocodingSource', () =>
+  jest.fn(() => ({
+    configure: 'configure',
+  }))
+);
+
 import places from './places';
 import errors from './errors';
 import EventEmitter from 'events';
 import createAutocompleteDataset from './createAutocompleteDataset';
+import createReverseGeocodingSource from './createReverseGeocodingSource';
 import autocomplete from 'autocomplete.js';
 
 jest.mock('autocomplete.js');
@@ -400,6 +407,27 @@ describe('places', () => {
     expect(configureMock).toHaveBeenCalledWith({
       type: 'address',
       countries: ['fr'],
+    });
+  });
+
+  it('has a reverse method which calls createReverseGeocodingSource', () => {
+    autocomplete.mockClear();
+    const container = document
+      .querySelector('body')
+      .appendChild(document.createElement('input'));
+
+    const reverseMock = jest.fn();
+    createReverseGeocodingSource.mockImplementation(() => reverseMock);
+
+    const placesInstance = places({
+      container,
+      autocompleteOptions: { option: 'value' },
+    });
+
+    placesInstance.reverse('123,234', { language: 'de' });
+
+    expect(reverseMock).toHaveBeenCalledWith('123,234', {
+      language: 'de',
     });
   });
 });
