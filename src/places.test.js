@@ -299,7 +299,7 @@ describe('places', () => {
       });
 
       it('listens to the input event', () => {
-        expect(autocomplete.__instance.val).not.toBeCalled();
+        expect(autocomplete.__instance.val).not.toHaveBeenCalled();
         input.dispatchEvent(new Event('input'));
         expect(autocomplete.__instance.val).toHaveBeenCalled();
       });
@@ -340,7 +340,7 @@ describe('places', () => {
         placesInstance.destroy();
         autocomplete.__setQuery('');
         input.dispatchEvent(new Event('input'));
-        expect(autocomplete.__instance.val).not.toBeCalled();
+        expect(autocomplete.__instance.val).not.toHaveBeenCalled();
       });
     });
 

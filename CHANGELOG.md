@@ -1,3 +1,20 @@
+# [1.14.0](https://github.com/algolia/places/compare/v1.13.0...v1.14.0) (2018-11-22)
+
+
+### Bug Fixes
+
+* **deps:** update dependency autocomplete.js to ^0.32.0 ([e382f91](https://github.com/algolia/places/commit/e382f91))
+* **geolocation-permission:** expose method to toggle useDeviceLocation ([#636](https://github.com/algolia/places/issues/636)) ([d405e31](https://github.com/algolia/places/commit/d405e31))
+* **security:** upgrade rack ([#656](https://github.com/algolia/places/issues/656)) ([3befee1](https://github.com/algolia/places/commit/3befee1))
+* **SEO:** fix contact page title ([#655](https://github.com/algolia/places/issues/655)) ([6601ef0](https://github.com/algolia/places/commit/6601ef0))
+
+
+### Features
+
+* **configure:** expose configure method ([#637](https://github.com/algolia/places/issues/637)) ([853f0d7](https://github.com/algolia/places/commit/853f0d7))
+
+
+
 <a name="1.13.0"></a>
 # [1.13.0](https://github.com/algolia/places/compare/v1.12.0...v1.13.0) (2018-11-01)
 
