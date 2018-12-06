@@ -39,10 +39,12 @@
   </div>
 </form>
 
+<script src="https://cdn.jsdelivr.net/algoliasearch/3.31/algoliasearchLite.min.js"></script>
 <%= javascript_include_tag config[:places_reverse_widget_lib_url] %>
 <script>
 (function() {
   var reverse = reversePlaces({
+    algoliasearch,
     appId: '<%= app_id %>',
     apiKey: '<%= api_key %>',
     hitsPerPage: 1,
