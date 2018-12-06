@@ -98,7 +98,10 @@ function scrollSpy(sidebarContainer, headersContainer) {
 
   const setActiveSidebarLink = header => {
     [...sidebarContainer.querySelectorAll('a')].forEach(item => {
-      if (item.getAttribute('href').slice(1) === header.getAttribute('id')) {
+      const matches = Array.from(item.parentNode.querySelectorAll('a'))
+        .map(sub => sub.getAttribute('href').slice(1))
+        .filter(ref => ref === header.getAttribute('id'));
+      if (matches.length > 0) {
         item.classList.add('active');
       } else {
         item.classList.remove('active');
