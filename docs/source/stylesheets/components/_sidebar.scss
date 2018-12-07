@@ -14,14 +14,21 @@ nav.sidebar {
     padding-top: 0;
   }
 
+  li:hover ul {
+    display: block;
+  }
+
+  a.active ~ ul {
+    display: block;
+  }
 
   ul {
+    display: none;
     list-style: none;
     width: 100%;
     padding: 0;
     margin: 0;
     float: left;
-
 
     li {
       width: 100%;
