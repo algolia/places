@@ -236,9 +236,11 @@ In this section, we will see how you can do reverse geocoding with a precision u
 <%= partial '/partials/examples/reverse_geocoding', locals: config[:credentials][:placeholder] %>
 ```
 
-**Important:** Contrary to the standard places library, the reverse library does not require a container for the input. This is because there is little point in having a user pass his latitude and longitude manually and the user coordinates are most of the time computed. Therefore, the reverse places client has a slightly different API when compared to the places library, and its behaviour is actually closer to the autocompleteDataset standalone library.
+**Important:** This example does not rely on the Places.js library, but the JavaScript algoliasearch-client library. This API is only available in the JS Client for **version 3.31 and above**.
 
-**Note:** There are many use cases where you will want to combine the reverse geocoding API with the regular Places search. In this case, you do not need to import both the standard reverse Places libraries, as the reverse library is included in the standard library. You can access the reverse endpoint programmatically using `placesInstance.reverse(location)`.
+**Note:** The format of the response is slightly different from the one that is available with the Places.js library (it matches the format of the rawAnswer field in Places.js suggestions object).
+
+**Note:** There are many use cases where you will want to combine the reverse geocoding API with the regular Places search. In this case, you do not need to import both the standard Places library and the JS Client, as the reverse functionality is included in the standard Places.js library. You can access the reverse endpoint programmatically using `placesInstance.reverse(location)`.
 
 ### Dynamic Form
 

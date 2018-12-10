@@ -6,7 +6,6 @@ module.exports = {
     places: './index.js',
     placesAutocompleteDataset: './autocompleteDataset.js',
     placesInstantsearchWidget: './instantsearchWidget.js',
-    reversePlaces: './reversePlaces.js',
   },
   devtool: 'source-map',
   output: {

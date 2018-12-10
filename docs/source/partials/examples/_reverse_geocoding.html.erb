@@ -40,21 +40,19 @@
 </form>
 
 <script src="https://cdn.jsdelivr.net/algoliasearch/3.31/algoliasearchLite.min.js"></script>
-<%= javascript_include_tag config[:places_reverse_widget_lib_url] %>
 <script>
 (function() {
-  var reverse = reversePlaces({
-    algoliasearch,
-    appId: '<%= app_id %>',
-    apiKey: '<%= api_key %>',
-    hitsPerPage: 1,
-    onHits: ({ hits }) => {
+  var places = algoliasearch.initPlaces('<%= app_id %>', '<%= api_key %>');
+  
+  function updateForm({ hits }) {
       var suggestion = hits[0];
-      document.querySelector('#reverse-address').value = suggestion.name || '';
-      document.querySelector('#reverse-town').value = suggestion.city || '';
-      document.querySelector('#reverse-zip').value = suggestion.postcode || '';
-    }
-  })
+
+      if (suggestion && suggestion.locale_names && suggestion.city) {
+        document.querySelector('#reverse-address').value = suggestion.locale_names.default[0] || '';
+        document.querySelector('#reverse-town').value = suggestion.city.default[0] || '';
+        document.querySelector('#reverse-zip').value = (suggestion.postcode || [])[0] || '';
+      }
+  }
 
   var lat, lng;
 
@@ -67,7 +65,10 @@
       lat = parseFloat(e.target.value);
 
       if (typeof lat !== 'undefined' && typeof lng !== 'undefined') {
-        reverse(`${lat}, ${lng}`);
+        places.reverse({
+          aroundLatLng: lat + ',' + lng,
+          hitsPerPage: 1,
+        }).then(updateForm);
       }
     } catch (e) {
       lat = undefined;
@@ -79,7 +80,10 @@
       lng = parseFloat(e.target.value);
 
       if (typeof lat !== 'undefined' && typeof lng !== 'undefined') {
-        reverse(`${lat}, ${lng}`);
+        places.reverse({
+          aroundLatLng: lat + ',' + lng,
+          hitsPerPage: 1,
+        }).then(updateForm);
       }
     } catch (e) {
       lng = undefined;
@@ -99,7 +103,10 @@
 
       $button.textContent = 'Locate me';
       
-      reverse(lat + ',' + lng);
+      places.reverse({
+        aroundLatLng: lat + ',' + lng,
+        hitsPerPage: 1
+      }).then(updateForm);
     });
   });
 })();

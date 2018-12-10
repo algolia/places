@@ -4,7 +4,7 @@ set -e # exit when error, no verbose
 
 printf "\nBuilding places.js library\n"
 
-bundles=( 'places' 'placesAutocompleteDataset' 'placesInstantsearchWidget' 'reversePlaces' )
+bundles=( 'places' 'placesAutocompleteDataset' 'placesInstantsearchWidget' )
 license="/*! ${NAME} ${VERSION:-UNRELEASED} | © Algolia | github.com/algolia/places */"
 dist_dir="dist"
 dist_dir_cdn="dist/cdn"
@@ -46,6 +46,5 @@ done
 # having to import a complete build (dist/cdn), to avoid duplication of dependencies
 BABEL_DISABLE_CACHE=1 BABEL_ENV=npm babel index.js -o "$dist_dir/index.js"
 BABEL_DISABLE_CACHE=1 BABEL_ENV=npm babel autocompleteDataset.js -o "$dist_dir/autocompleteDataset.js"
-BABEL_DISABLE_CACHE=1 BABEL_ENV=npm babel reversePlaces.js -o "$dist_dir/reversePlaces.js"
 BABEL_DISABLE_CACHE=1 BABEL_ENV=npm babel instantsearchWidget.js -o "$dist_dir/instantsearchWidget.js"
 BABEL_DISABLE_CACHE=1 BABEL_ENV=npm babel src/ --out-dir "$dist_dir/src/" --ignore "src/**/*.test.js","src/**/__mocks__/*","src/**/__snapshots__/*"
