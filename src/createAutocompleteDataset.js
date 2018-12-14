@@ -18,5 +18,6 @@ export default function createAutocompleteDataset(options) {
     templates,
     displayKey: 'value',
     name: 'places',
+    cache: false,
   };
 }

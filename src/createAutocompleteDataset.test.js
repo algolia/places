@@ -21,6 +21,7 @@ describe('createAutocompleteDataset', () => {
       templates: { template: 'test', value: 'test', option: 'test' },
       displayKey: 'value',
       name: 'places',
+      cache: false,
     });
   });
 
