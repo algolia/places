@@ -1,6 +1,6 @@
 {
   "name": "places.js",
-  "version": "1.15.0",
+  "version": "1.15.1",
   "description": "🌐 Turn any <input> into an address autocomplete.",
   "main": "index.js",
   "jsdelivr": "dist/cdn/places.min.js",

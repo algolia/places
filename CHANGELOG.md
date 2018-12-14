@@ -1,3 +1,12 @@
+## [1.15.1](https://github.com/algolia/places/compare/v1.15.0...v1.15.1) (2018-12-14)
+
+
+### Bug Fixes
+
+* **caching:** disable autocomplete caching ([#678](https://github.com/algolia/places/issues/678)) ([30b516a](https://github.com/algolia/places/commit/30b516a))
+
+
+
 # [1.15.0](https://github.com/algolia/places/compare/v1.14.0...v1.15.0) (2018-12-14)
 
 
