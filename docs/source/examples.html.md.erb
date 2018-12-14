@@ -212,7 +212,7 @@ See the documentation about the [placesAutocompleteDataset function](documentati
 
 **Concepts:** type parameter, aroundLatLngViaIP, aroundPrecision, Places API Client.
 
-In this section, we will see how you can do _emulate_ reverse geocoding to find city closest to a user using the Places API Client.
+In this section, we will see how you can _emulate_ reverse geocoding to find city closest to a user using the Places API Client.
 
 <%= partial '/partials/examples/reverse-city-search/demo', locals: config[:credentials][:documentation] %>
 
@@ -222,7 +222,39 @@ In this section, we will see how you can do _emulate_ reverse geocoding to find 
 
 **Note:** This example uses the standard [JavaScript API client](https://github.com/algolia/algoliasearch-client-javascript) in which the Places API is integrated. This example does not use the Places.js library.
 
-**Note:** This is not a reverse geocoding API, and it is still bound by the ranking used for search, which means that in some cases large close-by cities can be promoted over a more closely located city.
+**Note:** This is not a reverse geocoding API, and it is still bound by the ranking used for search, which means that in some cases large close-by cities can be promoted over a more closely located city. You should use the reverse API if you want results that are only affected by the geolocation.
+
+### Reverse geocoding
+
+**Concepts:** reverse API.
+
+In this section, we will see how you can do reverse geocoding with a precision up to the street using the reverse places client.
+
+<%= partial '/partials/examples/reverse_geocoding', locals: config[:credentials][:documentation] %>
+
+```html
+<%= partial '/partials/examples/reverse_geocoding', locals: config[:credentials][:placeholder] %>
+```
+
+**Important:** This example does not rely on the Places.js library, but the JavaScript algoliasearch-client library. This API is only available in the JS Client for **version 3.31 and above**.
+
+**Note:** The format of the response is slightly different from the one that is available with the Places.js library (it matches the format of the rawAnswer field in Places.js suggestions object).
+
+**Note:** There are many use cases where you will want to combine the reverse geocoding API with the regular Places search. In this case, you do not need to import both the standard Places library and the JS Client, as the reverse functionality is included in the standard Places.js library. You can access the reverse endpoint programmatically using `placesInstance.reverse(location)`.
+
+### Dynamic Form
+
+**Concepts:** dynamic configuration, reverse API, multiple instance.
+
+As we explained in the Focusing Search section, restricting the search to a single country can greatly increase the relevance of the search, because it allows Places to leverage certain specificities of that particular country. However, your userbase might not necessarily be located in a single country, which means that by default you cannot use this option to your advantage.
+
+In this example, we will present a way to dynamically restrict the scope of the Places search to a single country on page load, while still allowing the user to change the behaviour if he prefers less restricted search. We will also expose a way for the user to use the reverse geocoding API to fill in the details for him based on the geolocation provided by the browser. In other words, this is a more advanced implementation of the Complete Form example introduced earlier.
+
+<%= partial '/partials/examples/dynamic_search', locals: config[:credentials][:documentation] %>
+
+```html
+<%= partial '/partials/examples/dynamic_search', locals: config[:credentials][:placeholder] %>
+```
 
 ### Using _rankingInfo
 

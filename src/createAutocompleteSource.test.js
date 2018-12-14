@@ -312,10 +312,10 @@ describe('createAutocompleteSource.configure', () => {
 
       const { source, defaults } = setup({ useDeviceLocation: false });
       source(defaults.query);
-      expect(algoliasearch.__searchSpy).toBeCalledWith({ ...defaults });
+      expect(algoliasearch.__searchSpy).toHaveBeenCalledWith({ ...defaults });
       source.configure({ useDeviceLocation: true });
       source(defaults.query);
-      expect(algoliasearch.__searchSpy).toBeCalledWith({
+      expect(algoliasearch.__searchSpy).toHaveBeenCalledWith({
         ...defaults,
         aroundLatLng: '456,789',
       });

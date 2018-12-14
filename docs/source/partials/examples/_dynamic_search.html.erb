@@ -1,0 +1,164 @@
+<link rel="stylesheet" type="text/css" href="//github.com/downloads/lafeber/world-flags-sprite/flags16.css" />
+<style>
+  .form-inline-group {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .form-inline-group .primary {
+    flex-grow: 1;
+    margin-left: 0.5em;
+  }
+
+  .form-info {
+    font-size: 0.85em;
+    color: rgba(0, 0, 0, 0.75);
+    margin-bottom: 1em;
+  }
+</style>
+<form action="/shippit" class="form">
+  <div class="form-inline-group">
+    <div class="form-group">
+      <label for="dynamic-form-hsn">House Nr.</label>
+      <input type="text" class="form-control" id="dynamic-form-hsn" placeholder="ex: 123" />
+    </div>
+    <div class="form-group primary">
+      <label for="dynamic-form-address">Address*</label>
+      <div class="reverse-geo-controls">
+        <input type="search" class="form-control" id="dynamic-form-address" placeholder="Where do you live?" />
+        <div style="margin-left: 0.5em;">
+          <button id="locate-me" class="btn btn-black" style="width: 150px;">Try to locate me</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-info"> Searching in <span id="dynamic-scope">the entire world</span>. You can modify this by changing your Country of residence below.</div>
+  <div class="form-group">
+    <label for="dynamic-form-address2">Address 2</label>
+    <input type="text" class="form-control" id="dynamic-form-address2" placeholder="Appartment/Suite number" />
+  </div>
+  <div class="form-group">
+    <label for="dynamic-form-city">City*</label>
+    <input type="text" class="form-control" id="dynamic-form-city" placeholder="City">
+  </div>
+  <div class="form-group">
+    <label for="dynamic-form-zip">ZIP code*</label>
+    <input type="text" class="form-control" id="dynamic-form-zip" placeholder="ZIP code">
+  </div>
+  <div class="form-group">
+    <label for="dynmic-form-country">Country of residence*</label>
+    <div class="f16">
+      <input type="search" class="form-control" id="dynamic-form-country" placeholder="Country">
+    </div>
+  </div>
+</form>
+
+<%= javascript_include_tag config[:places_lib_url] %>
+<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+<script>
+(function() {
+  /* create a regular autocomplete form */
+  var addressPlacesInstance = places({
+    appId: '<%= app_id %>',
+    apiKey: '<%= api_key %>',
+    container: document.querySelector('#dynamic-form-address'),
+    type: 'address',
+    templates: {
+      value: function(suggestion) {
+        return suggestion.name;
+      }
+    }
+  });
+
+  addressPlacesInstance.on('change', function resultSelected(e) {
+    document.querySelector('#dynamic-form-address').value = e.suggestion.name || '';
+    document.querySelector('#dynamic-form-city').value = e.suggestion.city || '';
+    document.querySelector('#dynamic-form-zip').value = e.suggestion.postcode || '';
+    document.querySelector('#dynamic-form-country').value = e.suggestion.country || '';
+  });
+
+  /* enrich the country field with a country search */
+  var countryPlacesInstance = places({
+    appId: '<%= app_id %>',
+    apiKey: '<%= api_key %>',
+    container: document.querySelector('#dynamic-form-country'),
+    type: 'country',
+    templates: {
+      suggestion: function(suggestion) {
+        return '<i class="flag ' + suggestion.countryCode + '"></i> ' +
+          suggestion.highlight.name;
+      }
+    }
+  });
+
+  /* If the user changes the country, update the address search configuration */
+  countryPlacesInstance.on('change', (e) => {
+    var country = e.suggestion.name;
+    var countryCode = e.suggestion.countryCode;
+
+    document.querySelector('#dynamic-form-country').value = country;
+    document.querySelector('#dynamic-scope').textContent = country;
+
+    addressPlacesInstance.configure({ countries: [countryCode] });
+  })
+
+  /* do a onload query for the country */
+  var preferredLanguage = window.navigator.language.split('-')[0];
+  algoliasearch.initPlaces('<%= app_id %>','<%= api_key %>').search({
+    query: '',
+    aroundLatLngViaIP: true,
+    type: 'country',
+    hitsPerPage: 1,
+    language: preferredLanguage,
+  }).then(({ hits }) => {
+    var suggestion = hits[0];
+    var country = suggestion.locale_names[0];
+    var countryCode = suggestion.country_code;
+
+    document.querySelector('#dynamic-form-country').value = country;
+    document.querySelector('#dynamic-scope').textContent = country;
+
+    addressPlacesInstance.configure({ countries: [countryCode] });
+  });
+
+  /* -- use this instead once the method is implemented
+  countryPlacesInstance.search('').then(([suggestion]) => {
+    var country = suggestion.name;
+    var countryCode = suggestion.countryCode;
+
+    document.querySelector('#dynamic-form-country').value = country;
+    document.querySelector('#dynamic-scope').textContent = country;
+
+    addressPlacesInstance.configure({ countries: [countryCode] });
+  });
+  */
+
+  var $button = document.querySelector('#locate-me');
+
+  /* If the user does a click on the Locate me button, do a reverse query */
+  $button.addEventListener('click', (e) => {
+    e.preventDefault();
+    $button.textContent = 'Locating...';
+
+    navigator.geolocation.getCurrentPosition(response => {
+      var coords = response.coords;
+      lat = coords.latitude.toFixed(6);
+      lng = coords.longitude.toFixed(6);
+
+      $button.textContent = 'Try to locate me';
+
+      addressPlacesInstance.reverse(lat + ',' + lng);
+    });
+  });
+
+  /* on reverse results, update the form with the first suggestion */
+  addressPlacesInstance.on('reverse', function resultSelected(e) {
+    var suggestion = e.suggestions[0];
+    document.querySelector('#dynamic-form-address').value = suggestion.name || '';
+    document.querySelector('#dynamic-form-city').value = suggestion.city || '';
+    document.querySelector('#dynamic-form-zip').value = suggestion.postcode || '';
+    document.querySelector('#dynamic-form-country').value = suggestion.country || '';
+    document.querySelector('#dynamic-form-hsn').value = "";
+  });
+})();
+</script>
