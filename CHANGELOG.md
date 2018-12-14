@@ -1,3 +1,17 @@
+# [1.15.0](https://github.com/algolia/places/compare/v1.14.0...v1.15.0) (2018-12-14)
+
+
+### Bug Fixes
+
+* **deps:** update dependency autocomplete.js to ^0.33.0 ([991c764](https://github.com/algolia/places/commit/991c764))
+
+
+### Features
+
+* **reverse-geocoding:** expose the reverse geocoding API. ([#653](https://github.com/algolia/places/issues/653)) ([e9d2bc0](https://github.com/algolia/places/commit/e9d2bc0))
+
+
+
 # [1.14.0](https://github.com/algolia/places/compare/v1.13.0...v1.14.0) (2018-11-22)
 
 
