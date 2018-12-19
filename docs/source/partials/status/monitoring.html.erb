@@ -1,0 +1,43 @@
+<div>
+  <iframe
+    id="monitoring"
+    src="https://status.algolia.com?e="
+    ref="iframe"
+    scrolling="yes"
+    style="width: 100%; border: none; height: 920px"
+  ></iframe>
+  <script type="text/javascript">
+    (function() {
+      var ORIGIN = 'https://status.algolia.com';
+      var state = { origin: ORIGIN, height: '800px' };
+      var props = {
+        applicationId: '<%= app_id %>',
+        monitoringApiKey: '<%= monitoring_api_key %>'
+      };
+
+      var iframe = document.getElementById('monitoring');
+
+      function listenToIframe(iMessage) {
+        console.log('got message from iframe', iMessage);
+        var data = iMessage.data;
+        var origin = iMessage.origin;
+        if (origin === state.origin) {
+          if (data === 'credentials') {
+            var message = 'credentials:' + props.applicationId + ':' + props.monitoringApiKey;
+            console.log('sending message to iframe', message);
+            iframe.contentWindow.postMessage(
+              message,
+              state.origin
+            );
+          } else if (/^resize:\d+/.test(data)) {
+            var size = data.split(':')[1];
+            state.height = size + 'px';
+          }
+        }
+      };
+
+      console.log('run!');
+      window.addEventListener('message', listenToIframe);
+    })();
+  </script>
+</div>

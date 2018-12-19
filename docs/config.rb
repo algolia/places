@@ -65,7 +65,8 @@ activate :protect_emails
 config[:credentials] = {
   documentation: {
     app_id: 'plFMJJT5O9PC',
-    api_key: '8b126ce956636c64b6e74c8b3f3d0e5e'
+    api_key: '8b126ce956636c64b6e74c8b3f3d0e5e',
+    monitoring_api_key: '1d9d58a9a0e91c004a15b84ceffee4f4',
   },
   placeholder: {
     app_id: '<YOUR_PLACES_APP_ID>',
