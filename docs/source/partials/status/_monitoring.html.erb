@@ -1,11 +1,4 @@
 <div>
-  <iframe
-    id="monitoring"
-    src="https://status.algolia.com?e="
-    ref="iframe"
-    scrolling="yes"
-    style="width: 100%; border: none; height: 920px"
-  ></iframe>
   <script type="text/javascript">
     (function() {
       var ORIGIN = 'https://status.algolia.com';
@@ -15,8 +8,6 @@
         monitoringApiKey: '<%= monitoring_api_key %>'
       };
 
-      var iframe = document.getElementById('monitoring');
-
       function listenToIframe(iMessage) {
         console.log('got message from iframe', iMessage);
         var data = iMessage.data;
@@ -25,6 +16,7 @@
           if (data === 'credentials') {
             var message = 'credentials:' + props.applicationId + ':' + props.monitoringApiKey;
             console.log('sending message to iframe', message);
+            var iframe = document.getElementById('monitoring');
             iframe.contentWindow.postMessage(
               message,
               state.origin
@@ -40,4 +32,11 @@
       window.addEventListener('message', listenToIframe);
     })();
   </script>
+  <iframe
+    id="monitoring"
+    src="https://status.algolia.com?e="
+    ref="iframe"
+    scrolling="yes"
+    style="width: 100%; border: none; height: 920px"
+  ></iframe>
 </div>
