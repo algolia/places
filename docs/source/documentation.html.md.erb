@@ -323,7 +323,7 @@ given the area density.
 Type: **string**
 </td>
 <td markdown="1">
-Filters the results inside the area defined by the two extreme points of a rectangle. [See guide](https://www.algolia.com/doc/guides/geo-search/geo-search-overview/#insideboundingbox).
+Filters the results inside the area defined by the two extreme points of a rectangle. [See guide](https://www.algolia.com/doc/guides/managing-results/refine-results/geolocation/#filter-inside-rectanglepolygonal-area) or [API reference](https://www.algolia.com/doc/api-reference/api-parameters/insideBoundingBox/).
 
 Format: `topRightLat, topRightLng, bottomLeftLat, bottomLeftLng`
 
@@ -337,7 +337,7 @@ Example: `"60, 16, 40, -4"`
 Type: **string**
 </td>
 <td markdown="1">
-Filters the results inside the area defined by a shape. [See guide](https://www.algolia.com/doc/guides/geo-search/geo-search-overview/#insidepolygon).
+Filters the results inside the area defined by a shape. [See guide](https://www.algolia.com/doc/guides/managing-results/refine-results/geolocation/#filter-inside-rectanglepolygonal-area) or [API reference](https://www.algolia.com/doc/api-reference/api-parameters/insidePolygon/).
 
 Format: `p1Lat, p1Lng, p2Lat, p2Lng, p3Lat, p3Lng...`
 </td>
@@ -905,7 +905,7 @@ If you want to have strong control on who accesses Places with your API Key, you
 
 For instance, for Places, you can create short-lived API Keys for every single user based on your own metrics, using secured API Keys.
 
-There is a great tutorial on [how to use secured API Keys](https://www.algolia.com/doc/tutorials/security/api-keys/secured-api-keys/how-to-restrict-the-search-to-a-subset-of-records-belonging-to-a-specific-user/#introduction) in the official documentation of Algolia.
+There is a great tutorial on [how to use secured API Keys](https://www.algolia.com/doc/guides/security/api-keys/how-to/how-to-restrict-the-search-to-a-subset-of-records-belonging-to-a-specific-user/#introduction) in the official documentation of Algolia.
 
 ## Styling
 
