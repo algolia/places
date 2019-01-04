@@ -27,9 +27,6 @@
 ### Bug Fixes
 
 * **deps:** update dependency autocomplete.js to ^0.32.0 ([e382f91](https://github.com/algolia/places/commit/e382f91))
-* **geolocation-permission:** expose method to toggle useDeviceLocation ([#636](https://github.com/algolia/places/issues/636)) ([d405e31](https://github.com/algolia/places/commit/d405e31))
-* **security:** upgrade rack ([#656](https://github.com/algolia/places/issues/656)) ([3befee1](https://github.com/algolia/places/commit/3befee1))
-* **SEO:** fix contact page title ([#655](https://github.com/algolia/places/issues/655)) ([6601ef0](https://github.com/algolia/places/commit/6601ef0))
 
 
 ### Features
@@ -52,15 +49,9 @@
 # [1.12.0](https://github.com/algolia/places/compare/v1.11.0...v1.12.0) (2018-10-30)
 
 
-### Bug Fixes
-
-* **credentials:** fix credentials formatting in situations where double quotes are needed ([#626](https://github.com/algolia/places/issues/626)) ([113bb7b](https://github.com/algolia/places/commit/113bb7b))
-
-
 ### Features
 
-* **cta:** add signup CTA on landing ([#610](https://github.com/algolia/places/issues/610)) ([7735df0](https://github.com/algolia/places/commit/7735df0))
-* **postcodes:** expose postcodes array in suggestions ([#622](https://github.com/algolia/places/issues/622)) ([870e08a](https://github.com/algolia/places/commit/870e08a))
+* **suggestions:** expose postcodes array in suggestions ([#622](https://github.com/algolia/places/issues/622)) ([870e08a](https://github.com/algolia/places/commit/870e08a))
 
 
 
@@ -68,9 +59,9 @@
 # [1.11.0](https://github.com/algolia/places/compare/v1.10.0...v1.11.0) (2018-09-17)
 
 
-### Bug Fixes
+### Widget Bug Fixes
 
-* **viaIP-conflict:** disable aroundLatLngViaIP when setting location ([#554](https://github.com/algolia/places/issues/554)) ([29c2473](https://github.com/algolia/places/commit/29c2473))
+* **InstantSearchWidget:** disable aroundLatLngViaIP when setting location ([#554](https://github.com/algolia/places/issues/554)) ([29c2473](https://github.com/algolia/places/commit/29c2473))
 
 
 
@@ -93,9 +84,9 @@
 # [1.9.0](https://github.com/algolia/places/compare/v1.8.0...v1.9.0) (2018-08-08)
 
 
-### Features
+### Widget Features
 
-* **is-routing:** support instantsearch routing ([#551](https://github.com/algolia/places/issues/551)) ([05a8cdb](https://github.com/algolia/places/commit/05a8cdb))
+* **InstantSearchWidget:** support instantsearch routing ([#551](https://github.com/algolia/places/issues/551)) ([05a8cdb](https://github.com/algolia/places/commit/05a8cdb))
 
 
 
@@ -103,7 +94,7 @@
 # [1.8.0](https://github.com/algolia/places/compare/v1.7.3...v1.8.0) (2018-08-08)
 
 
-### Bug Fixes
+### Widget Bug Fixes
 
 * **default-location:** don't default to [0,0] for defaultPosition ([#550](https://github.com/algolia/places/issues/550)) ([9c0056c](https://github.com/algolia/places/commit/9c0056c))
 
@@ -175,13 +166,9 @@
 
 ### Bug Fixes
 
-* **contact:** force language to be English to avoid contact misses (SFDC) ([e6215bf](https://github.com/algolia/places/commit/e6215bf))
 * **css:** override the appearance of the input (#419) ([b3425ed](https://github.com/algolia/places/commit/b3425ed))
-* **doc:** broken links ([c55a4eb](https://github.com/algolia/places/commit/c55a4eb))
-* **doc:** make app creation more visible ([0ae6330](https://github.com/algolia/places/commit/0ae6330))
 * **events:** ensure clear event is emitted after setVal is called (#456) ([c84b7aa](https://github.com/algolia/places/commit/c84b7aa))
 * **formatHit:** not picking up the best highlighted attr ([9d14b83](https://github.com/algolia/places/commit/9d14b83))
-* **link:** broken license link ([aa3e5fa](https://github.com/algolia/places/commit/aa3e5fa))
 
 
 
@@ -202,11 +189,6 @@
 
 <a name="1.4.13"></a>
 ## [1.4.13](https://github.com/algolia/places/compare/v1.4.12...v1.4.13) (2017-05-26)
-
-
-### Bug Fixes
-
-* **contributing:** fix link ([6473d4f](https://github.com/algolia/places/commit/6473d4f))
 
 
 
