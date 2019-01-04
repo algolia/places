@@ -61,10 +61,10 @@ Note: _Like with the Places.js library, you need to provide your Places App cred
 You can directly query the [Places REST API](api-clients.html#rest-api) with our [Swift API Client](https://github.com/algolia/algoliasearch-client-swift), so that you can do backend Places searches.
 
 ```swift
-// initialize client
-let places = PlacesClient(appID: "YOUR_PLACES_APP_ID", apiKey: "YOUR_PLACES_API_KEY")
+// Provide credentials to create an authenticated, full-fledged client:
+var places = PlacesClient(appID: "YOUR_PLACES_APP_ID", apiKey: "YOUR_PLACES_API_KEY")
 
-// craft a query
+ // Create your query and set its parameters for your search
 let query = PlacesQuery()
 query.query = "Paris"
 query.type = .city
@@ -74,9 +74,13 @@ query.aroundLatLng = LatLng(lat: 32.7767, lng: -96.7970) // Dallas, TX, USA
 query.language = "en"
 query.countries = ["fr", "us"]
 
-// search
+// Search Places
 places.search(query) { (content, error) in
-    // content?["hits"] to access the hits
+    if let error = error {
+        // do something with error
+    } else if let content = content {
+        // do something with content["hits"] to access the hits
+    }
 }
 ```
 
