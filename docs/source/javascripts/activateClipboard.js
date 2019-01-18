@@ -3,7 +3,7 @@
 import ClipboardJS from 'clipboard';
 
 export default function activateClipboard(codeSamples) {
-  codeSamples.forEach(codeSample => {
+  Array.from(codeSamples).forEach(codeSample => {
     const copyToClipboard = document.createElement('button');
     copyToClipboard.innerHTML = `<img src="${clippyPath}" width="13" />`;
     copyToClipboard.classList.add('clipboard');

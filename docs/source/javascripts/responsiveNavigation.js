@@ -16,7 +16,7 @@ export default function responsiveNavigation() {
     navigationAsSelect.classList.add('display-on-small');
   }
 
-  [...links].forEach(link => {
+  Array.from(links).forEach(link => {
     const option = document.createElement('option');
     option.text = link.title;
     option.value = link.href;

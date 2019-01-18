@@ -11,19 +11,23 @@ export default function sidebar({
   let currentList = list;
   let currentLevel = startLevel;
 
-  [...headers].forEach(header => {
+  Array.from(headers).forEach(header => {
     const level = parseInt(header.tagName.split('')[1], 10);
 
     if (level > currentLevel) {
       // we enter a sublist
       currentLevel = level;
-      currentList = currentList.lastChild.appendChild(
-        document.createElement('ul')
-      );
+      if (currentList.lastChild) {
+        currentList = currentList.lastChild.appendChild(
+          document.createElement('ul')
+        );
+      }
     } else if (level < currentLevel) {
       // we exit a sublit
       currentLevel = level;
-      currentList = currentList.parentNode.parentNode;
+      if (currentList.parentNode && currentList.parentNode.parentNode) {
+        currentList = currentList.parentNode.parentNode;
+      }
     }
 
     const title = header.textContent;
@@ -94,10 +98,10 @@ function sidebarFollowScroll(sidebarContainer) {
 }
 
 function scrollSpy(sidebarContainer, headersContainer) {
-  const headers = [...headersContainer.querySelectorAll('h2, h3')];
+  const headers = Array.from(headersContainer.querySelectorAll('h2, h3'));
 
   const setActiveSidebarLink = header => {
-    [...sidebarContainer.querySelectorAll('a')].forEach(item => {
+    Array.from(sidebarContainer.querySelectorAll('a')).forEach(item => {
       const matches = Array.from(item.parentNode.querySelectorAll('a'))
         .map(sub => sub.getAttribute('href').slice(1))
         .filter(ref => ref === header.getAttribute('id'));
@@ -150,7 +154,7 @@ function activeLinks(sidebarContainer) {
 
   linksContainer.addEventListener('click', e => {
     if (e.target.tagName === 'A') {
-      [...linksContainer.querySelectorAll('a')].forEach(item =>
+      Array.from(linksContainer.querySelectorAll('a')).forEach(item =>
         item.classList.remove('active')
       );
       e.target.classList.add('active');

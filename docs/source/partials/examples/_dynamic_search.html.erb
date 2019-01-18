@@ -92,7 +92,7 @@
   });
 
   /* If the user changes the country, update the address search configuration */
-  countryPlacesInstance.on('change', (e) => {
+  countryPlacesInstance.on('change', function(e) {
     var country = e.suggestion.name;
     var countryCode = e.suggestion.countryCode;
 
@@ -110,7 +110,8 @@
     type: 'country',
     hitsPerPage: 1,
     language: preferredLanguage,
-  }).then(({ hits }) => {
+  }).then(function(response) {
+    var hits = response.hits;
     var suggestion = hits[0];
     var country = suggestion.locale_names[0];
     var countryCode = suggestion.country_code;
@@ -122,7 +123,8 @@
   });
 
   /* -- use this instead once the method is implemented
-  countryPlacesInstance.search('').then(([suggestion]) => {
+  countryPlacesInstance.search('').then(function(suggestions) {
+    var suggestion = suggestions[0];
     var country = suggestion.name;
     var countryCode = suggestion.countryCode;
 
@@ -136,11 +138,11 @@
   var $button = document.querySelector('#locate-me');
 
   /* If the user does a click on the Locate me button, do a reverse query */
-  $button.addEventListener('click', (e) => {
+  $button.addEventListener('click', function(e) {
     e.preventDefault();
     $button.textContent = 'Locating...';
 
-    navigator.geolocation.getCurrentPosition(response => {
+    navigator.geolocation.getCurrentPosition(function(response) {
       var coords = response.coords;
       lat = coords.latitude.toFixed(6);
       lng = coords.longitude.toFixed(6);

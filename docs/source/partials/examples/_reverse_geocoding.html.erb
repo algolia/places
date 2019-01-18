@@ -44,14 +44,15 @@
 (function() {
   var places = algoliasearch.initPlaces('<%= app_id %>', '<%= api_key %>');
   
-  function updateForm({ hits }) {
-      var suggestion = hits[0];
+  function updateForm(response) {
+    var hits = response.hits;
+    var suggestion = hits[0];
 
-      if (suggestion && suggestion.locale_names && suggestion.city) {
-        document.querySelector('#reverse-address').value = suggestion.locale_names.default[0] || '';
-        document.querySelector('#reverse-town').value = suggestion.city.default[0] || '';
-        document.querySelector('#reverse-zip').value = (suggestion.postcode || [])[0] || '';
-      }
+    if (suggestion && suggestion.locale_names && suggestion.city) {
+      document.querySelector('#reverse-address').value = suggestion.locale_names.default[0] || '';
+      document.querySelector('#reverse-town').value = suggestion.city.default[0] || '';
+      document.querySelector('#reverse-zip').value = (suggestion.postcode || [])[0] || '';
+    }
   }
 
   var lat, lng;
@@ -60,7 +61,7 @@
   var $latInput = document.querySelector('#reverse-geo-lat');
   var $lngInput = document.querySelector('#reverse-geo-lng');
 
-  $latInput.addEventListener('change', (e) => {
+  $latInput.addEventListener('change', function(e) {
     try {
       lat = parseFloat(e.target.value);
 
@@ -75,7 +76,7 @@
     }
   });
 
-  $lngInput.addEventListener('change', (e) => {
+  $lngInput.addEventListener('change', function(e) {
     try {
       lng = parseFloat(e.target.value);
 
@@ -90,10 +91,10 @@
     }
   });
 
-  $button.addEventListener('click', () => {
+  $button.addEventListener('click', function() {
     $button.textContent = 'Locating...';
 
-    navigator.geolocation.getCurrentPosition(response => {
+    navigator.geolocation.getCurrentPosition(function(response) {
       var coords = response.coords;
       lat = coords.latitude.toFixed(6);
       lng = coords.longitude.toFixed(6);
