@@ -9,7 +9,7 @@ const search = docsearch({
 const form = document.querySelector('#docsearch-form');
 const docsearchInput = document.querySelector('#docsearch');
 const reset = form.querySelector('[type="reset"]');
-const searchbox = form.querySelector('.aa-input');
+const searchbox = form.querySelector('.searchbox__input');
 
 reset.addEventListener('click', () => {
   searchbox.focus();
