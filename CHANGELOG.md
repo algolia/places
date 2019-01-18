@@ -1,3 +1,14 @@
+## [1.15.2](https://github.com/algolia/places/compare/v1.15.1...v1.15.2) (2019-01-18)
+
+
+### Bug Fixes
+
+* **deps:** update dependency autocomplete.js to ^0.35.0 ([8ee0889](https://github.com/algolia/places/commit/8ee0889))
+* **ie-11-support:** Ensure that places.js and the website can run on IE 11 ([#707](https://github.com/algolia/places/issues/707)) ([a20ce08](https://github.com/algolia/places/commit/a20ce08))
+* **ie11-logo:** fix algolia logo rendering on IE 11 ([#575](https://github.com/algolia/places/issues/575)) ([009d26c](https://github.com/algolia/places/commit/009d26c))
+
+
+
 ## [1.15.1](https://github.com/algolia/places/compare/v1.15.0...v1.15.1) (2018-12-14)
 
 
