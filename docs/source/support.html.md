@@ -23,7 +23,7 @@ If the data is incorrect in Nominatim/OpenStreetMap, you can simply edit the cor
 If the data is correct in OpenStreetMap but not in Places, don't hesitate to use the irrelevant results form below. We will investigate the issue and come back to you.
 
 ### How to make OpenStreetMap better
-The only thing required to improve OSM data is an account on openstreetmap.org. You can the n zoom to the area with the problematic data, and click "edit". The editor has a built-in guide that will explain the basics.
+The only thing required to improve OSM data is an account on openstreetmap.org. Then you just have to visit [https://www.openstreetmap.org](https://www.openstreetmap.org), zoom to the area with the problematic data, and click "edit". The editor has a built-in guide that will explain the basics.
 
 If you want to know how to best contribute to OpenStreetMap, we recommend that you follow the [Beginner's Guide in the OpenStreetMap wiki](https://wiki.openstreetmap.org/wiki/Beginners%27_guide).
 
