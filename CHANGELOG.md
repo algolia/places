@@ -1,3 +1,12 @@
+## [1.15.4](https://github.com/algolia/places/compare/v1.15.3...v1.15.4) (2019-01-21)
+
+
+### Bug Fixes
+
+* **babel-node:** make [@babel](https://github.com/babel)/polyfill a main dependency ([#713](https://github.com/algolia/places/issues/713)) ([5cc9209](https://github.com/algolia/places/commit/5cc9209))
+
+
+
 ## [1.15.3](https://github.com/algolia/places/compare/v1.15.2...v1.15.3) (2019-01-21)
 
 
