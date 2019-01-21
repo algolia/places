@@ -1,3 +1,12 @@
+## [1.15.3](https://github.com/algolia/places/compare/v1.15.2...v1.15.3) (2019-01-21)
+
+
+### Bug Fixes
+
+* **node-support:** fix a critical bug where missing polyfills were crashing the library ([#712](https://github.com/algolia/places/issues/712)) ([2a2f808](https://github.com/algolia/places/commit/2a2f808))
+
+
+
 ## [1.15.2](https://github.com/algolia/places/compare/v1.15.1...v1.15.2) (2019-01-18)
 
 
