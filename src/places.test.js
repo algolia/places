@@ -430,4 +430,26 @@ describe('places', () => {
       language: 'de',
     });
   });
+
+  it('has a search method which calls autocomplete.source', () => {
+    autocomplete.mockClear();
+    const container = document
+      .querySelector('body')
+      .appendChild(document.createElement('input'));
+
+    const searchMock = jest.fn();
+    createAutocompleteDataset.mockImplementation(() => ({
+      source: searchMock,
+      other: 'autocompleteDataset',
+    }));
+
+    const placesInstance = places({
+      container,
+      autocompleteOptions: { option: 'value' },
+    });
+
+    placesInstance.search('some Query');
+
+    expect(searchMock.mock.calls[0][0]).toEqual('some Query');
+  });
 });
