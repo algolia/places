@@ -34,7 +34,7 @@ placesAutocomplete.search().then(function(suggestions) {
   var latlng = suggestions[0].latlng;
   var formattedCity = name + ', ' + country;
 
-  var coordElt = document.querySelector("#coords"); 
+  var coordElt = document.querySelector("#coords");
   var lat = latlng.lat;
   var lng = latlng.lng;
   coordElt.innerHTML = '<code>' + lat + ', ' + lng + '</code>';
@@ -46,7 +46,7 @@ placesAutocomplete.search().then(function(suggestions) {
 placesAutocomplete.on('change', (response) => {
   var suggestion = response.suggestion;
   var latlng = suggestion.latlng;
-  var coordElt = document.querySelector("#coords"); 
+  var coordElt = document.querySelector("#coords");
   var lat = latlng.lat;
   var lng = latlng.lng;
   coordElt.innerHTML = '<code>' + lat + ', ' + lng + '</code>';
