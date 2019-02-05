@@ -61,12 +61,14 @@ export default function createAutocompleteSource({
   }
 
   function searcher(query, cb) {
-    const searchParams = Object.assign(
-      {},
-      params,
-      userCoords && { aroundLatLng: userCoords },
-      { query }
-    );
+    const searchParams = {
+      ...params,
+      query,
+    };
+
+    if (userCoords) {
+      searchParams.aroundLatLng = userCoords;
+    }
 
     return placesClient
       .search(controls.computeQueryParams(searchParams))

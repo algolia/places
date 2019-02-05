@@ -109,7 +109,7 @@ class AlgoliaPlacesWidget {
     }
 
     if (searchParameters.aroundLatLng === undefined && !this.query) {
-      const newUiState = Object.assign({}, uiState);
+      const newUiState = { ...uiState };
       delete newUiState.places;
       return newUiState;
     }

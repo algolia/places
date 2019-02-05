@@ -183,7 +183,7 @@ export default function places(options) {
   placesInstance.autocomplete = autocompleteInstance;
 
   placesInstance.configure = configuration => {
-    const safeConfig = Object.assign({}, configuration);
+    const safeConfig = { ...configuration };
 
     delete safeConfig.onHits;
     delete safeConfig.onError;

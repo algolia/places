@@ -33,12 +33,13 @@ const extractParams = ({
     extracted.aroundLatLngViaIP = aroundLatLngViaIP;
   }
 
-  return Object.assign(extracted, {
+  return {
+    ...extracted,
     aroundRadius,
     insideBoundingBox,
     insidePolygon,
     getRankingInfo,
-  });
+  };
 };
 
 const extractControls = ({
