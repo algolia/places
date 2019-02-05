@@ -1,3 +1,12 @@
+## [1.15.5](https://github.com/algolia/places/compare/v1.15.4...v1.15.5) (2019-02-05)
+
+
+### Bug Fixes
+
+* **promise-polyfill:** remove babel-polyfill and let babel do magic ([#726](https://github.com/algolia/places/issues/726)) ([be9170b](https://github.com/algolia/places/commit/be9170b))
+
+
+
 ## [1.15.4](https://github.com/algolia/places/compare/v1.15.3...v1.15.4) (2019-01-21)
 
 
