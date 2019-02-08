@@ -61,7 +61,7 @@
     "eslint-plugin-react": "7.12.4",
     "jest-cli": "23.6.0",
     "json": "9.0.6",
-    "prettier": "1.16.1",
+    "prettier": "1.16.4",
     "pretty-bytes-cli": "2.0.0",
     "raw-loader": "1.0.0",
     "replace-in-file": "3.4.3",
