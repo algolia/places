@@ -73,7 +73,7 @@
   "dependencies": {
     "algolia-aerial": "^1.5.3",
     "algoliasearch": "^3.31.0",
-    "autocomplete.js": "^0.35.0",
+    "autocomplete.js": "^0.36.0",
     "events": "^3.0.0",
     "insert-css": "^2.0.0"
   },
