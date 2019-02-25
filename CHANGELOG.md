@@ -1,3 +1,12 @@
+## [1.15.6](https://github.com/algolia/places/compare/v1.15.5...v1.15.6) (2019-02-25)
+
+
+### Bug Fixes
+
+* **deps:** update dependency autocomplete.js to ^0.36.0 ([2b0e06c](https://github.com/algolia/places/commit/2b0e06c))
+
+
+
 ## [1.15.5](https://github.com/algolia/places/compare/v1.15.4...v1.15.5) (2019-02-05)
 
 
