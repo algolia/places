@@ -1,6 +1,6 @@
 <div>
   <strong>Searching around: </strong>
-  <div id="reverse-city"></div>
+  <div id="api-client-reverse-city"></div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
@@ -27,7 +27,7 @@ placesClient.search({
   var country = hits[0].country;
   var formattedCity = locale_names[0] + ', ' + country;
 
-  var infoElt = document.querySelector("#reverse-city");
+  var infoElt = document.querySelector("#api-client-reverse-city");
   infoElt.textContent = formattedCity;
 });
 </script>
