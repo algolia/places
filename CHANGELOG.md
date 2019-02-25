@@ -1,3 +1,17 @@
+## [1.16.1](https://github.com/algolia/places/compare/v1.15.5...v1.16.1) (2019-02-25)
+
+
+### Bug Fixes
+
+* **deps:** update dependency autocomplete.js to ^0.36.0 ([2b0e06c](https://github.com/algolia/places/commit/2b0e06c))
+
+
+### Features
+
+* **controlled-search:** expose search method in places.js ([#659](https://github.com/algolia/places/issues/659)) ([4ddd681](https://github.com/algolia/places/commit/4ddd681))
+
+
+
 ## [1.15.5](https://github.com/algolia/places/compare/v1.15.4...v1.15.5) (2019-02-05)
 
 
