@@ -52,7 +52,7 @@
     "doctoc": "1.4.0",
     "eslint": "5.15.3",
     "eslint-config-algolia": "13.2.3",
-    "eslint-config-prettier": "3.6.0",
+    "eslint-config-prettier": "4.1.0",
     "eslint-import-resolver-webpack": "0.11.0",
     "eslint-plugin-import": "2.16.0",
     "eslint-plugin-jasmine": "2.10.1",
