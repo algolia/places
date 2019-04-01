@@ -1,3 +1,4 @@
+import '@babel/polyfill';
 import formatHit from './formatHit';
 import version from './version';
 import algoliasearch from 'algoliasearch/src/browser/builds/algoliasearchLite';
