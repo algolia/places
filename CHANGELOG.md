@@ -1,3 +1,12 @@
+## [1.16.2](https://github.com/algolia/places/compare/v1.16.1...v1.16.2) (2019-04-01)
+
+
+### Bug Fixes
+
+* **empty-postcode-list:** fix a bug where an empty postcode list could crash results ([#759](https://github.com/algolia/places/issues/759)) ([a9228a4](https://github.com/algolia/places/commit/a9228a4))
+
+
+
 ## [1.16.1](https://github.com/algolia/places/compare/v1.15.5...v1.16.1) (2019-02-25)
 
 
