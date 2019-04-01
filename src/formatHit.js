@@ -86,9 +86,10 @@ export default function formatHit({
     const county =
       hit.county && hit.county[0] !== name ? hit.county[0] : undefined;
 
-    const { postcode, highlightedPostcode } = hit.postcode
-      ? getBestPostcode(hit.postcode, hit._highlightResult.postcode)
-      : { postcode: undefined, highlightedPostcode: undefined };
+    const { postcode, highlightedPostcode } =
+      hit.postcode && hit.postcode.length
+        ? getBestPostcode(hit.postcode, hit._highlightResult.postcode)
+        : { postcode: undefined, highlightedPostcode: undefined };
 
     const highlight = {
       name: getBestHighlightedForm(hit._highlightResult.locale_names),
@@ -122,7 +123,7 @@ export default function formatHit({
         lng: hit._geoloc.lng,
       },
       postcode,
-      postcodes: hit.postcode ? hit.postcode : undefined,
+      postcodes: hit.postcode && hit.postcode.length ? hit.postcode : undefined,
     };
 
     // this is the value to put inside the <input value=

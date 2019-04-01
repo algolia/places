@@ -194,6 +194,15 @@ describe('formatHit', () => {
       },
     }),
     getTestCase({
+      name: 'empty postcode list',
+      hit: { postcode: [] },
+      expected: {
+        postcode: undefined,
+        postcodes: undefined,
+        highlight: { postcode: undefined },
+      },
+    }),
+    getTestCase({
       name: 'postcode[0] matches',
       hit: {
         postcode: ['75009', '75010'],
