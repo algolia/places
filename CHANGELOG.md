@@ -1,3 +1,12 @@
+## [1.16.3](https://github.com/algolia/places/compare/v1.16.2...v1.16.3) (2019-04-01)
+
+
+### Bug Fixes
+
+* **set-val-icon:** show correct icon when calling setVal ([#760](https://github.com/algolia/places/issues/760)) ([3050e15](https://github.com/algolia/places/commit/3050e15))
+
+
+
 ## [1.16.2](https://github.com/algolia/places/compare/v1.16.1...v1.16.2) (2019-04-01)
 
 
