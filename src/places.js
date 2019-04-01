@@ -177,6 +177,13 @@ export default function places(options) {
 
   placesInstance.setVal = (...args) => {
     previousQuery = args[0];
+    if (previousQuery === '') {
+      pin.style.display = '';
+      clear.style.display = 'none';
+    } else {
+      clear.style.display = '';
+      pin.style.display = 'none';
+    }
     autocompleteInstance.autocomplete.setVal(...args);
   };
 
