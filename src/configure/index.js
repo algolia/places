@@ -51,6 +51,7 @@ const extractControls = ({
     throw e;
   },
   onRateLimitReached,
+  onInvalidCredentials,
 }) => ({
   useDeviceLocation,
   computeQueryParams,
@@ -58,6 +59,7 @@ const extractControls = ({
   onHits,
   onError,
   onRateLimitReached,
+  onInvalidCredentials,
 });
 
 let params = {};

@@ -24,6 +24,7 @@ export default function createAutocompleteSource({
     throw e;
   },
   onRateLimitReached,
+  onInvalidCredentials,
   type,
 }) {
   const placesClient = algoliasearch.initPlaces(appId, apiKey, clientOptions);
@@ -46,6 +47,7 @@ export default function createAutocompleteSource({
     onHits,
     onError,
     onRateLimitReached,
+    onInvalidCredentials,
   });
 
   let params = configuration.params;
@@ -93,7 +95,13 @@ export default function createAutocompleteSource({
       })
       .then(cb)
       .catch(e => {
-        if (e.statusCode === 429) {
+        if (
+          e.statusCode === 403 &&
+          e.message === 'Invalid Application-ID or API key'
+        ) {
+          controls.onInvalidCredentials();
+          return;
+        } else if (e.statusCode === 429) {
           controls.onRateLimitReached();
           return;
         }

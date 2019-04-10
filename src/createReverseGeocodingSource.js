@@ -41,6 +41,7 @@ const createReverseGeocodingSource = ({
     throw e;
   },
   onRateLimitReached,
+  onInvalidCredentials,
 }) => {
   const placesClient = algoliasearch.initPlaces(appId, apiKey, clientOptions);
   placesClient.as.addAlgoliaAgent(`Algolia Places ${version}`);
@@ -56,6 +57,7 @@ const createReverseGeocodingSource = ({
     onHits,
     onError,
     onRateLimitReached,
+    onInvalidCredentials,
   });
 
   let params = filterApplicableParams(configuration.params);
@@ -94,7 +96,13 @@ const createReverseGeocodingSource = ({
       })
       .then(cb)
       .catch(e => {
-        if (e.statusCode === 429) {
+        if (
+          e.statusCode === 403 &&
+          e.message === 'Invalid Application-ID or API key'
+        ) {
+          controls.onInvalidCredentials();
+          return;
+        } else if (e.statusCode === 429) {
           controls.onRateLimitReached();
           return;
         }
