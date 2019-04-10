@@ -78,6 +78,13 @@ export default function places(options) {
 
       placesInstance.emit('limit', { message: errors.rateLimitReached });
     },
+    onInvalidCredentials: () => {
+      if (options && options.appId && options.appId.startsWith('pl')) {
+        console.error(errors.invalidCredentials); // eslint-disable-line
+      } else {
+        console.error(errors.invalidAppId); // eslint-disable-line
+      }
+    },
     container: undefined,
   });
 
@@ -200,6 +207,7 @@ export default function places(options) {
     delete safeConfig.onHits;
     delete safeConfig.onError;
     delete safeConfig.onRateLimitReached;
+    delete safeConfig.onInvalidCredentials;
     delete safeConfig.templates;
 
     autocompleteDataset.source.configure(safeConfig);
@@ -225,6 +233,13 @@ export default function places(options) {
       }
 
       placesInstance.emit('limit', { message: errors.rateLimitReached });
+    },
+    onInvalidCredentials: () => {
+      if (options && options.appId && options.appId.startsWith('pl')) {
+        console.error(errors.invalidCredentials); // eslint-disable-line
+      } else {
+        console.error(errors.invalidAppId); // eslint-disable-line
+      }
     },
   });
 

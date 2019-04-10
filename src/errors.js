@@ -13,4 +13,8 @@ https://www.algolia.com/users/sign_up/places.
 
 Or upgrade your 100,000 queries/month plan by contacting us at
 https://community.algolia.com/places/contact.html.`,
+  invalidCredentials: `The APP ID or API key provided is invalid.`,
+  invalidAppId: `Your APP ID is invalid. A Places APP ID starts with 'pl'. You must create a valid Places app first.
+
+Create a free Places app here: https://www.algolia.com/users/sign_up/places`,
 };

@@ -296,6 +296,28 @@ describe('createAutocompleteSource', () => {
         });
     });
   });
+
+  it('supports onInvalidCredentials option', () => {
+    const error = new Error('Invalid Application-ID or API key');
+    error.statusCode = 403;
+    const searchFn = jest.fn(() => Promise.reject(error));
+    const onInvalidCredentials = jest.fn();
+    algoliasearch.__setSearchStub(searchFn);
+    const source = createAutocompleteSource({
+      algoliasearch,
+      onInvalidCredentials,
+    });
+    return new Promise((resolve, reject) => {
+      source()
+        .then(() => {
+          expect(onInvalidCredentials).toHaveBeenCalled();
+          resolve();
+        })
+        .catch(() => {
+          reject(new Error('This should not happen'));
+        });
+    });
+  });
 });
 
 describe('createAutocompleteSource.configure', () => {

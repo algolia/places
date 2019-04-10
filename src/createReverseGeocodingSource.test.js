@@ -175,6 +175,21 @@ describe('createReverseGeocodingSource', () => {
     await source('test');
     expect(onRateLimitReached).toHaveBeenCalled();
   });
+
+  it('supports onInvalidCredentials option', async () => {
+    const error = new Error('Invalid Application-ID or API key');
+    error.statusCode = 403;
+    const searchFn = jest.fn(() => Promise.reject(error));
+    const onInvalidCredentials = jest.fn();
+    algoliasearch.__setSearchStub(searchFn);
+    const source = createReverseGeocodingSource({
+      algoliasearch,
+      onInvalidCredentials,
+    });
+
+    await source('test');
+    expect(onInvalidCredentials).toHaveBeenCalled();
+  });
 });
 
 function setup(sourceOptions = {}) {
