@@ -142,6 +142,14 @@ describe('places', () => {
       expect(console.log).toHaveBeenCalledWith(errors.rateLimitReached); // eslint-disable-line no-console
       console.log = consoleLog; // eslint-disable-line no-console
     });
+
+    it('writes a message to console when credentials are invalid', () => {
+      const consoleLog = console.log; // eslint-disable-line no-console
+      console.log = jest.fn(); // eslint-disable-line no-console
+      args.onInvalidCredentials();
+      expect(console.log).toHaveBeenCalledWith(errors.invalidCredentials); // eslint-disable-line no-console
+      console.log = consoleLog; // eslint-disable-line no-console
+    });
   });
 
   describe('places autocomplete', () => {
