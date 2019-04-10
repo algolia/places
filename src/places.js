@@ -79,10 +79,10 @@ export default function places(options) {
       placesInstance.emit('limit', { message: errors.rateLimitReached });
     },
     onInvalidCredentials: () => {
-      if (!options && options.appId && options.appId.startsWith('pl')) {
-        console.log(errors.invalidAppId); // eslint-disable-line
+      if (options && options.appId && options.appId.startsWith('pl')) {
+        console.error(errors.invalidCredentials); // eslint-disable-line
       } else {
-        console.log(errors.invalidCredentials); // eslint-disable-line
+        console.error(errors.invalidAppId); // eslint-disable-line
       }
     },
     container: undefined,
@@ -235,10 +235,10 @@ export default function places(options) {
       placesInstance.emit('limit', { message: errors.rateLimitReached });
     },
     onInvalidCredentials: () => {
-      if (!options && options.appId && options.appId.startsWith('pl')) {
-        console.log(errors.invalidAppId); // eslint-disable-line
+      if (options && options.appId && options.appId.startsWith('pl')) {
+        console.error(errors.invalidCredentials); // eslint-disable-line
       } else {
-        console.log(errors.invalidCredentials); // eslint-disable-line
+        console.error(errors.invalidAppId); // eslint-disable-line
       }
     },
   });
