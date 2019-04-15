@@ -1,6 +1,11 @@
 ## [1.16.4](https://github.com/algolia/places/compare/v1.16.3...v1.16.4) (2019-04-15)
 
 
+### Features
+
+* **invalid-credentials:** clearer warning message in console ([#768](https://github.com/algolia/places/pull/768)) ([e68b1e8](https://github.com/algolia/places/commit/e68b1e8))
+
+
 
 ## [1.16.3](https://github.com/algolia/places/compare/v1.16.2...v1.16.3) (2019-04-01)
 
