@@ -52,7 +52,7 @@
     "docsearch.js": "2.6.2",
     "doctoc": "1.4.0",
     "eslint": "5.16.0",
-    "eslint-config-algolia": "13.2.3",
+    "eslint-config-algolia": "13.3.0",
     "eslint-config-prettier": "4.1.0",
     "eslint-import-resolver-webpack": "0.11.0",
     "eslint-plugin-import": "2.16.0",
