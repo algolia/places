@@ -68,7 +68,7 @@
     "replace-in-file": "3.4.4",
     "semver": "6.0.0",
     "uglify-js": "3.5.6",
-    "webpack": "4.29.6",
+    "webpack": "4.30.0",
     "webpack-cli": "3.3.0"
   },
   "dependencies": {
