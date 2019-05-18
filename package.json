@@ -49,7 +49,7 @@
     "babel-plugin-inline-import": "3.0.0",
     "clipboard": "2.0.4",
     "conventional-changelog-cli": "2.0.21",
-    "docsearch.js": "2.6.2",
+    "docsearch.js": "2.6.3",
     "doctoc": "1.4.0",
     "eslint": "5.16.0",
     "eslint-config-algolia": "13.3.0",
