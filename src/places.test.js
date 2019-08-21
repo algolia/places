@@ -312,7 +312,6 @@ describe('places', () => {
         expect(autocomplete.__instance.val).toHaveBeenCalled();
       });
 
-      // eslint-disable-next-line jasmine/missing-expect
       it('emits a clear event when necessary', done => {
         placesInstance.once('clear', done);
         autocomplete.__setQuery('a');
