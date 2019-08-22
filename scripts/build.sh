@@ -32,7 +32,7 @@ do
     --source-map "base=${dist_file_sourcemap_min}" \
     --source-map "url=${source_map_min}" \
     --preamble "$license" \
-    -c warnings=false \
+    -c \
     -m \
     -o "${dist_file_min}"
 
