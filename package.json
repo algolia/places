@@ -43,7 +43,7 @@
     "@babel/preset-env": "7.5.5",
     "algoliasearch-helper": "2.28.0",
     "babel-core": "7.0.0-bridge.0",
-    "babel-eslint": "10.0.2",
+    "babel-eslint": "10.0.3",
     "babel-jest": "24.9.0",
     "babel-loader": "8.0.6",
     "babel-plugin-inline-import": "3.0.0",
