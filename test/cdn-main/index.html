@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+  </head>
+  <body>
+    <input type="search" id="search-box" class="form-control" placeholder="Where are we going?" />
+    <script type="text/javascript" src="../../dist/cdn/places.js"></script>
+    <script>
+      window.placesAutocomplete = places({
+        container: document.querySelector('#search-box'),
+        debug: true,
+      });
+    </script>
+  </body>
+</html>

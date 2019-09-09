@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+  </head>
+  <body>
+    <input type="search" id="search-box" class="form-control" placeholder="Where are you looking for a coffee?" />
+    
+    <script src="https://cdn.jsdelivr.net/instantsearch.js/2.10.1/instantsearch.min.js"></script>
+    <script type="text/javascript" src="../../dist/cdn/placesInstantsearchWidget.js"></script>
+    <script>
+      window.instantsearchInstance = instantsearch({
+        appId: 'latency',
+        apiKey: 'ffc36feb6e9df06e1c3c4549b5af2b31',
+        indexName: 'starbucks',
+      });
+      
+      const configure = instantsearch.widgets.configure({
+        hitsPerPage: 25,
+      });
+      
+      const searchBox = placesInstantsearchWidget({
+        container: document.querySelector('#search-box')
+      });
+      
+      window.instantsearchInstance.addWidget(configure);
+      window.instantsearchInstance.addWidget(searchBox);
+      window.instantsearchInstance.start();
+    </script>
+  </body>
+</html>

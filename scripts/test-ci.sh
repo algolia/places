@@ -8,10 +8,14 @@ printf "\nTesting\n"
 NODE_ENV=production npm run build
 
 # run tests
-npm test
+npm run test:unit
+npm run lint
 
 # try to build the libray
 npm run build
+
+# run end-to-end tests against the libraries that were built
+npm run test:e2e
 
 # try to build the website
 ./scripts/build-website.sh

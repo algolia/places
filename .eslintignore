@@ -1,3 +1,4 @@
 dist/
 docs/build/
 docs/vendor/
+test/npm-lib/

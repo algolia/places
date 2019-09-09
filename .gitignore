@@ -6,3 +6,4 @@ docs/.webpack/
 .DS_Store
 .coverage/
 .vscode/
+test/npm-lib/places.js
