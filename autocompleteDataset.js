@@ -6,7 +6,7 @@
 require('./src/navigatorLanguage');
 const createAutocompleteDataset = require('./src/createAutocompleteDataset')
   .default;
-const css = require('./src/places.css').default;
+import css from './src/places.css';
 const insertCss = require('insert-css');
 insertCss(css, { prepend: true });
 
