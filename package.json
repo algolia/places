@@ -73,7 +73,7 @@
     "semver": "6.3.0",
     "uglify-js": "3.6.0",
     "webpack": "4.40.2",
-    "webpack-cli": "3.3.8"
+    "webpack-cli": "3.3.9"
   },
   "dependencies": {
     "algolia-aerial": "^1.5.3",
