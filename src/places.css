@@ -83,7 +83,7 @@
 }
 
 .ap-input-icon.ap-icon-pin {
-  cursor: initial;
+  cursor: pointer;
 }
 
 .ap-input-icon svg {
