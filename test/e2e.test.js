@@ -88,6 +88,10 @@ describe('releases', () => {
       page = await browser.newPage();
       await page.goto(url);
 
+      await page.setExtraHTTPHeaders({
+        referer: 'https://community.algolia.com/',
+      });
+
       page.on('error', err => {
         throw new Error(err);
       });
@@ -235,6 +239,10 @@ describe('releases', () => {
       });
       page = await browser.newPage();
       await page.goto(url);
+
+      await page.setExtraHTTPHeaders({
+        referer: 'https://community.algolia.com/',
+      });
 
       page.on('error', err => {
         throw new Error(err);
@@ -384,6 +392,10 @@ describe('releases', () => {
       page = await browser.newPage();
       await page.goto(url);
 
+      await page.setExtraHTTPHeaders({
+        referer: 'https://community.algolia.com/',
+      });
+
       page.on('error', err => {
         throw new Error(err);
       });
@@ -532,6 +544,10 @@ describe('releases', () => {
       page = await browser.newPage();
       await page.goto(url);
 
+      await page.setExtraHTTPHeaders({
+        referer: 'https://community.algolia.com/',
+      });
+
       page.on('error', err => {
         throw new Error(err);
       });
@@ -613,6 +629,10 @@ describe('releases', () => {
       page = await browser.newPage();
       await page.goto(url);
 
+      await page.setExtraHTTPHeaders({
+        referer: 'https://community.algolia.com/',
+      });
+
       page.on('error', err => {
         throw new Error(err);
       });
@@ -689,6 +709,10 @@ describe('releases', () => {
       });
       page = await browser.newPage();
       await page.goto(url);
+
+      await page.setExtraHTTPHeaders({
+        referer: 'https://community.algolia.com/',
+      });
 
       page.on('error', err => {
         throw new Error(err);
@@ -782,6 +806,10 @@ describe('releases', () => {
       });
       page = await browser.newPage();
       await page.goto(url);
+
+      await page.setExtraHTTPHeaders({
+        referer: 'https://community.algolia.com/',
+      });
 
       page.on('error', err => {
         throw new Error(err);
