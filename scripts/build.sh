@@ -45,6 +45,7 @@ done
 # The goal is for the user to be able to require/import places without
 # having to import a complete build (dist/cdn), to avoid duplication of dependencies
 BABEL_DISABLE_CACHE=1 BABEL_ENV=npm babel index.js -o "$dist_dir/index.js"
+BABEL_DISABLE_CACHE=1 BABEL_ENV=npm babel babel-css.js -o "$dist_dir/babel-css.js"
 BABEL_DISABLE_CACHE=1 BABEL_ENV=npm babel autocompleteDataset.js -o "$dist_dir/autocompleteDataset.js"
 BABEL_DISABLE_CACHE=1 BABEL_ENV=npm babel instantsearchWidget.js -o "$dist_dir/instantsearchWidget.js"
 BABEL_DISABLE_CACHE=1 BABEL_ENV=npm babel src/ --out-dir "$dist_dir/src/" --ignore "src/**/*.test.js","src/**/__mocks__/*","src/**/__snapshots__/*"
