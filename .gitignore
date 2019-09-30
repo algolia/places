@@ -7,3 +7,5 @@ docs/.webpack/
 .coverage/
 .vscode/
 test/npm-lib/places.js
+test/npm-widget/places.js
+test/npm-autocomplete/places.js
