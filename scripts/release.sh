@@ -85,7 +85,7 @@ git push origin --tags
 
 # We are gonna publish the package to npm, in a way
 # where only the dist cdn and npm are available
-cp package.json README.md LICENSE dist/
+cp package.json README.md LICENSE typings.d.ts dist/
 # jsDelivr original structure for places.js
 # cannot be changed easily: https://github.com/jsdelivr/jsdelivr/issues/12282
 mkdir dist/dist

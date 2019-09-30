@@ -52,7 +52,7 @@ type HighlightResults = {
   postcode: HighlightMatch[],
   county: HighlightMatch[],
   administrative: HighlightMatch[],
-  locale_names: (HighlightMatch & { fullyHighlitghted: boolean })[],
+  locale_names: (HighlightMatch & { fullyHighlighted: boolean })[],
 }
 
 type Hit = {
