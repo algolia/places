@@ -58,7 +58,7 @@ Note: _Like with the Places.js library, you need to provide your Places App cred
 
 ### Swift API Client
 
-You can directly query the [Places REST API](api-clients.html#rest-api) with our [Swift API Client](https://github.com/algolia/algoliasearch-client-swift), so that you can do backend Places searches.
+You can directly query the [Places REST API](api-clients.html#rest-api) with our [Swift API Client](https://github.com/algolia/algoliasearch-client-swift).
 
 ```swift
 // Provide credentials to create an authenticated, full-fledged client:
@@ -88,7 +88,7 @@ Note: _Like with the Places.js library, you need to provide your Places App cred
 
 ### Android API Client
 
-You can directly query the [Places REST API](api-clients.html#rest-api) with our [Android API Client](https://github.com/algolia/algoliasearch-client-android), so that you can do backend Places searches.
+You can directly query the [Places REST API](api-clients.html#rest-api) with our [Android API Client](https://github.com/algolia/algoliasearch-client-android).
 
 ```java
 // initialize client
@@ -109,6 +109,28 @@ places.searchAsync(query, new CompletionHandler() {
     ...
 });
 ```
+
+### Kotlin API Client
+
+You can directly query the [Places REST API](api-clients.html#rest-api) with our [Kotlin API Client](https://github.com/algolia/algoliasearch-client-kotlin).
+
+```kotlin
+// initialize client
+val client = ClientPlaces(
+    ApplicationID("YOUR_PLACES_APP_ID"),
+    APIKey("YOUR_PLACES_API_KEY")
+)
+
+// search places for one language
+val response = client.searchPlaces(
+    query = PlacesQuery("New-York"),
+    language = Language.English
+)
+
+response.hits.first().city
+```
+
+You can find more examples in the [Kotlin documentation](https://github.com/algolia/algoliasearch-client-kotlin/blob/develop/docs/Places.md).
 
 ## REST API
 
