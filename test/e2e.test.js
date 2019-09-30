@@ -224,6 +224,218 @@ describe('releases', () => {
     });
   });
 
+  describe('npm autocomplete', () => {
+    let url;
+    let browser;
+    let page;
+
+    beforeAll(done => {
+      url = `file://${path.join(__dirname, 'npm-autocomplete', 'index.html')}`;
+      // webpack bundle
+      webpack(
+        {
+          mode: 'development',
+          target: 'web',
+          entry: {
+            places: path.join(__dirname, 'npm-autocomplete', 'import.js'),
+          },
+          output: {
+            path: path.join(__dirname, 'npm-autocomplete'),
+            libraryTarget: 'umd',
+          },
+        },
+        () => {
+          done();
+        }
+      );
+    });
+
+    beforeEach(async () => {
+      browser = await puppeteer.launch({
+        headless: true,
+      });
+      page = await browser.newPage();
+      await page.goto(url);
+
+      await page.setExtraHTTPHeaders({
+        referer: 'https://community.algolia.com/',
+      });
+
+      page.on('error', err => {
+        throw new Error(err);
+      });
+
+      page.on('pageerror', pageerr => {
+        throw new Error(pageerr);
+      });
+    });
+
+    afterEach(async () => {
+      await browser.close();
+    });
+
+    it('puppeteer can access demo file', () => {
+      page.on('error', err => {
+        throw new Error(err);
+      });
+
+      page.on('pageerror', pageerr => {
+        throw new Error(pageerr);
+      });
+    });
+
+    it('can search from search box', async () => {
+      const pendingXHR = new PendingXHR(page);
+      await page.focus('#search-box');
+      const query = `London`;
+      await page.keyboard.type(query);
+
+      // autocomplete should send a query per character typed
+      expect(pendingXHR.pendingXhrCount()).toEqual(query.length * 2);
+      await pendingXHR.waitForAllXhrFinished();
+
+      const request = utils.getXHRDataForQuery(pendingXHR, query);
+
+      // Places response should have the expected number of hits
+      const body = await utils.getResponseBodyFromRequest(request);
+      expect(body.hits).toHaveLength(3);
+
+      // autocomplete container should display suggestion dropdown
+      const apDropdown = await page.$('.ap-dropdown-menu');
+      expect(apDropdown).toBeTruthy();
+
+      // Places suggestion dropdown should have has many suggestions as there are hits
+      const suggestions = await page.$$eval(
+        '.ap-dataset-places .ap-suggestion',
+        $suggestions => {
+          return Array.from($suggestions).map(elt => elt.textContent);
+        }
+      );
+
+      expect(suggestions).toHaveLength(body.hits.length);
+
+      // Places suggestion dropdown data should match hits
+      const allMatching = suggestions.every((domText, i) =>
+        domText.match(body.hits[i].locale_names[0])
+      );
+      expect(allMatching).toBeTruthy();
+    });
+  });
+
+  describe('npm widget', () => {
+    let url;
+    let browser;
+    let page;
+
+    beforeAll(done => {
+      url = `file://${path.join(__dirname, 'npm-widget', 'index.html')}`;
+      // webpack bundle
+      webpack(
+        {
+          mode: 'development',
+          target: 'web',
+          entry: {
+            places: path.join(__dirname, 'npm-widget', 'import.js'),
+          },
+          output: {
+            path: path.join(__dirname, 'npm-widget'),
+            libraryTarget: 'umd',
+          },
+        },
+        () => {
+          done();
+        }
+      );
+    });
+
+    beforeEach(async () => {
+      browser = await puppeteer.launch({
+        headless: true,
+      });
+      page = await browser.newPage();
+      await page.goto(url);
+
+      await page.setExtraHTTPHeaders({
+        referer: 'https://community.algolia.com/',
+      });
+
+      page.on('error', err => {
+        throw new Error(err);
+      });
+
+      page.on('pageerror', pageerr => {
+        throw new Error(pageerr);
+      });
+    });
+
+    afterEach(async () => {
+      await browser.close();
+    });
+
+    it('puppeteer can access demo file', () => {
+      page.on('error', err => {
+        throw new Error(err);
+      });
+
+      page.on('pageerror', pageerr => {
+        throw new Error(pageerr);
+      });
+    });
+
+    it('using places search box updates aroundLatLng in InstantSearch', async () => {
+      const pendingXHR = new PendingXHR(page);
+
+      expect(pendingXHR.pendingXhrCount()).toEqual(0);
+      await pendingXHR.waitForAllXhrFinished();
+
+      await page.focus('#search-box');
+      const query = `55 rue d'Amsterd`;
+      await page.keyboard.type(query);
+
+      // autocomplete should send a query per character typed
+      expect(pendingXHR.pendingXhrCount()).toEqual(query.length);
+      await pendingXHR.waitForAllXhrFinished();
+
+      const request = utils.getXHRDataForQuery(pendingXHR, query);
+
+      const body = await utils.getResponseBodyFromRequest(request);
+      const geoloc = body.hits[0]._geoloc;
+
+      const aroundLatLngQueriesBeforeSelect = Array.from(
+        pendingXHR.finishedWithSuccessXhrs
+      )
+        .filter($request => $request._url.match(/queries/)) // generic algolia query
+        .filter($request => {
+          const { _postData } = $request;
+          const $body = JSON.parse(_postData);
+          const params = new URLSearchParams($body.requests[0].params);
+          return params.get('aroundLatLng') === `${geoloc.lat},${geoloc.lng}`;
+        });
+
+      // we shouldn't have done any aroundLatLng query yet
+      expect(aroundLatLngQueriesBeforeSelect).toHaveLength(0);
+
+      // selecting a result should trigger a query
+      await page.keyboard.press('Enter');
+
+      expect(pendingXHR.pendingXhrCount()).toEqual(1);
+      await pendingXHR.waitForAllXhrFinished();
+
+      const aroundLatLngQueriesAfterSelect = Array.from(
+        pendingXHR.finishedWithSuccessXhrs
+      )
+        .filter($request => $request._url.match(/queries/)) // generic algolia query
+        .filter($request => {
+          const { _postData } = $request;
+          const $body = JSON.parse(_postData);
+          const params = new URLSearchParams($body.requests[0].params);
+          return params.get('aroundLatLng') === `${geoloc.lat},${geoloc.lng}`;
+        });
+
+      expect(aroundLatLngQueriesAfterSelect).toHaveLength(1);
+    });
+  });
+
   describe('cdn place.js non-minified', () => {
     let url;
     let browser;
@@ -588,12 +800,12 @@ describe('releases', () => {
       expect(body.hits).toHaveLength(3);
 
       // autocomplete container should display suggestion dropdown
-      const apDropdown = await page.$('.ad-example-dropdown-menu');
+      const apDropdown = await page.$('.ap-dropdown-menu');
       expect(apDropdown).toBeTruthy();
 
       // Places suggestion dropdown should have has many suggestions as there are hits
       const suggestions = await page.$$eval(
-        '.ad-example-dataset-places .ad-example-suggestion',
+        '.ap-dataset-places .ap-suggestion',
         $suggestions => {
           return Array.from($suggestions).map(elt => elt.textContent);
         }
@@ -673,12 +885,12 @@ describe('releases', () => {
       expect(body.hits).toHaveLength(3);
 
       // autocomplete container should display suggestion dropdown
-      const apDropdown = await page.$('.ad-example-dropdown-menu');
+      const apDropdown = await page.$('.ap-dropdown-menu');
       expect(apDropdown).toBeTruthy();
 
       // Places suggestion dropdown should have has many suggestions as there are hits
       const suggestions = await page.$$eval(
-        '.ad-example-dataset-places .ad-example-suggestion',
+        '.ap-dataset-places .ap-suggestion',
         $suggestions => {
           return Array.from($suggestions).map(elt => elt.textContent);
         }
