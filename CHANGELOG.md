@@ -1,3 +1,14 @@
+## [1.16.5](https://github.com/algolia/places/compare/v1.16.4...v1.16.5) (2019-09-30)
+
+
+### Bug Fixes
+
+* **autocomplete-css:** use babel transpiling for places.css ([#887](https://github.com/algolia/places/issues/887)) ([fcc7112](https://github.com/algolia/places/commit/fcc7112))
+* **deps:** update dependency autocomplete.js to ^0.37.0 ([d03e08f](https://github.com/algolia/places/commit/d03e08f))
+* **rate-limit-ci:** Use authenticated places app in E2E tests ([#893](https://github.com/algolia/places/issues/893)) ([6a9e506](https://github.com/algolia/places/commit/6a9e506))
+
+
+
 ## [1.16.4](https://github.com/algolia/places/compare/v1.16.3...v1.16.4) (2019-04-15)
 
 
