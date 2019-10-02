@@ -23,22 +23,21 @@ subtitle: Turn any <code>&lt;input&gt;</code> into an address autocomplete
             %label.control-label.required{:for => "email"} Email
             %input#email.form-control{:name => "email", :type => "email", :required => true}
           .form-group
-            .col-8
-              %label.control-label{:for => "company"} Company
-              %input#company.form-control{:name => "company", :type => "text"}
-            .col-4
-              %label.control-label.required{:for => "company_size"} Company Size
-              %select#company_size.form-control{:name => "company_size", :type => "text"}
-                %option{:value => "1-10"} 1-10
-                %option{:value => "11-50"} 11-50
-                %option{:value => "51-100"} 51-100
-                %option{:value => "101-200"} 101-200
-                %option{:value => "201-500"} 201-500
-                %option{:value => "501-1000"} 501-1000
-                %option{:value => "1001-3000"} 1001-3000
-                %option{:value => "3001-5000"} 3001-5000
-                %option{:value => "5001-10000"} 5001-10000
-                %option{:value => "10000+"} 10000+
+            %label.control-label{:for => "company"} Company
+            %input#company.form-control{:name => "company", :type => "text"}
+          .form-group
+            %label.control-label.required{:for => "company_size"} Company Size
+            %select#company_size.form-control{:name => "company_size", :type => "text"}
+              %option{:value => "1-10"} 1-10
+              %option{:value => "11-50"} 11-50
+              %option{:value => "51-100"} 51-100
+              %option{:value => "101-200"} 101-200
+              %option{:value => "201-500"} 201-500
+              %option{:value => "501-1000"} 501-1000
+              %option{:value => "1001-3000"} 1001-3000
+              %option{:value => "3001-5000"} 3001-5000
+              %option{:value => "5001-10000"} 5001-10000
+              %option{:value => "10000+"} 10000+
           .form-group.f16
             %label.control-label{:for => "country"} Country
             %input#country{:name => "country", :type => "text"}
