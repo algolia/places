@@ -1,3 +1,12 @@
+## [1.16.6](https://github.com/algolia/places/compare/v1.16.5...v1.16.6) (2019-10-09)
+
+
+### Bug Fixes
+
+* **typings:** include types field in package.json ([#907](https://github.com/algolia/places/issues/907)) ([4d70e28](https://github.com/algolia/places/commit/4d70e28))
+
+
+
 ## [1.16.5](https://github.com/algolia/places/compare/v1.16.4...v1.16.5) (2019-09-30)
 
 
