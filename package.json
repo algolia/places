@@ -3,6 +3,7 @@
   "version": "1.16.5",
   "description": "🌐 Turn any <input> into an address autocomplete.",
   "main": "index.js",
+  "types": "typings.d.ts",
   "jsdelivr": "dist/cdn/places.min.js",
   "scripts": {
     "build": "NODE_ENV=production ./scripts/build.sh",
