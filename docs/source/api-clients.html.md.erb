@@ -48,7 +48,7 @@ You can directly query the [Places REST API](api-clients.html#rest-api) with our
 $appId = 'YOUR_PLACES_APP_ID';
 $apiKey = 'YOUR_PLACES_API_KEY';
 
-$places = \AlgoliaSearch\Client::initPlaces($appId, $apiKey);
+$places = \Algolia\AlgoliaSearch\PlacesClient::create($appId, $apiKey);
 
 $result = $places->search('Paris');
 var_dump($result);
