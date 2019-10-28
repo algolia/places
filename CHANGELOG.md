@@ -1,3 +1,17 @@
+# [1.17.0](https://github.com/algolia/places/compare/v1.16.6...v1.17.0) (2019-10-28)
+
+
+### Bug Fixes
+
+* **get-val:** call autocompleteInstance.val instead ac.autocomplete.getVal ([#919](https://github.com/algolia/places/issues/919)) ([6621655](https://github.com/algolia/places/commit/662165568edd5fcbd7e51ace2d75a20709500cf8))
+
+
+### Features
+
+* **accessibility:** allow modification of attributes on pin and clear buttons ([#920](https://github.com/algolia/places/issues/920)) ([41cbd09](https://github.com/algolia/places/commit/41cbd09718d3109e364da91af27b8f9bdff4667c))
+
+
+
 ## [1.16.6](https://github.com/algolia/places/compare/v1.16.5...v1.16.6) (2019-10-09)
 
 
