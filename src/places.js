@@ -167,12 +167,16 @@ export default function places(options) {
     .querySelector(`.${prefix}-input`)
     .addEventListener('input', inputListener);
 
-  const autocompleteIsomorphicMethods = ['open', 'close', 'getVal'];
+  const autocompleteIsomorphicMethods = ['open', 'close'];
   autocompleteIsomorphicMethods.forEach(methodName => {
     placesInstance[methodName] = (...args) => {
       autocompleteInstance.autocomplete[methodName](...args);
     };
   });
+
+  placesInstance.getVal = () => {
+    return autocompleteInstance.val();
+  };
 
   placesInstance.destroy = (...args) => {
     autocompleteContainer

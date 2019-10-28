@@ -356,14 +356,13 @@ describe('places', () => {
       expect(autocomplete.__instance.autocomplete.destroy).toHaveBeenCalled();
     });
 
+    it('has a getVal method', () => {
+      placesInstance.getVal();
+      expect(autocomplete.__instance.val).toHaveBeenCalled();
+    });
+
     it('has all autocomplete methods', () => {
-      const autocompleteMethods = [
-        'open',
-        'close',
-        'getVal',
-        'setVal',
-        'destroy',
-      ];
+      const autocompleteMethods = ['open', 'close', 'setVal', 'destroy'];
       autocompleteMethods.forEach(methodName => {
         placesInstance[methodName]('hello');
         expect(

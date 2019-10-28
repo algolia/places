@@ -150,6 +150,28 @@ describe('releases', () => {
       expect(allMatching).toBeTruthy();
     });
 
+    it('getVal returns the value of the input', async () => {
+      const pendingXHR = new PendingXHR(page);
+      await page.focus('#search-box');
+      const query = `55 rue d'Amsterd`;
+      await page.keyboard.type(query);
+
+      // Places should send a query per character typed
+      expect(pendingXHR.pendingXhrCount()).toEqual(query.length);
+
+      await pendingXHR.waitForAllXhrFinished();
+
+      // Places suggestion dropdown should have has many suggestions as there are hits
+      await page.$eval('.ap-suggestion', $suggestion => {
+        $suggestion.click();
+      });
+
+      const value = await page.evaluate(`window.placesAutocomplete.getVal()`);
+      expect(value).toEqual(
+        `55 Rue d'Amsterdam, Paris 8e Arrondissement, Île-de-France, France`
+      );
+    });
+
     it('exposes a working configure method', async () => {
       const pendingXHR = new PendingXHR(page);
       // Places instance should have a .configure method
@@ -514,6 +536,28 @@ describe('releases', () => {
       expect(allMatching).toBeTruthy();
     });
 
+    it('getVal returns the value of the input', async () => {
+      const pendingXHR = new PendingXHR(page);
+      await page.focus('#search-box');
+      const query = `55 rue d'Amsterd`;
+      await page.keyboard.type(query);
+
+      // Places should send a query per character typed
+      expect(pendingXHR.pendingXhrCount()).toEqual(query.length);
+
+      await pendingXHR.waitForAllXhrFinished();
+
+      // Places suggestion dropdown should have has many suggestions as there are hits
+      await page.$eval('.ap-suggestion', $suggestion => {
+        $suggestion.click();
+      });
+
+      const value = await page.evaluate(`window.placesAutocomplete.getVal()`);
+      expect(value).toEqual(
+        `55 Rue d'Amsterdam, Paris 8e Arrondissement, Île-de-France, France`
+      );
+    });
+
     it('exposes a working configure method', async () => {
       const pendingXHR = new PendingXHR(page);
       // Places instance should have a .configure method
@@ -664,6 +708,28 @@ describe('releases', () => {
         utils.matchDomWithHit(domText, body.hits[i])
       );
       expect(allMatching).toBeTruthy();
+    });
+
+    it('getVal returns the value of the input', async () => {
+      const pendingXHR = new PendingXHR(page);
+      await page.focus('#search-box');
+      const query = `55 rue d'Amsterd`;
+      await page.keyboard.type(query);
+
+      // Places should send a query per character typed
+      expect(pendingXHR.pendingXhrCount()).toEqual(query.length);
+
+      await pendingXHR.waitForAllXhrFinished();
+
+      // Places suggestion dropdown should have has many suggestions as there are hits
+      await page.$eval('.ap-suggestion', $suggestion => {
+        $suggestion.click();
+      });
+
+      const value = await page.evaluate(`window.placesAutocomplete.getVal()`);
+      expect(value).toEqual(
+        `55 Rue d'Amsterdam, Paris 8e Arrondissement, Île-de-France, France`
+      );
     });
 
     it('exposes a working configure method', async () => {
