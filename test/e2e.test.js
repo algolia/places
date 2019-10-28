@@ -167,9 +167,7 @@ describe('releases', () => {
       });
 
       const value = await page.evaluate(`window.placesAutocomplete.getVal()`);
-      expect(value).toEqual(
-        `55 Rue d'Amsterdam, Paris 8e Arrondissement, Île-de-France, France`
-      );
+      expect(value).toMatch(`55 Rue d'Amsterdam`);
     });
 
     it('exposes a working configure method', async () => {
@@ -553,9 +551,7 @@ describe('releases', () => {
       });
 
       const value = await page.evaluate(`window.placesAutocomplete.getVal()`);
-      expect(value).toEqual(
-        `55 Rue d'Amsterdam, Paris 8e Arrondissement, Île-de-France, France`
-      );
+      expect(value).toMatch(`55 Rue d'Amsterdam`);
     });
 
     it('exposes a working configure method', async () => {
@@ -727,9 +723,7 @@ describe('releases', () => {
       });
 
       const value = await page.evaluate(`window.placesAutocomplete.getVal()`);
-      expect(value).toEqual(
-        `55 Rue d'Amsterdam, Paris 8e Arrondissement, Île-de-France, France`
-      );
+      expect(value).toMatch(`55 Rue d'Amsterdam`);
     });
 
     it('exposes a working configure method', async () => {
