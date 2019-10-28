@@ -17,10 +17,19 @@ insertCss(css, { prepend: true });
 import errors from './errors';
 import createReverseGeocodingSource from './createReverseGeocodingSource';
 
+const applyAttributes = (elt, attrs) => {
+  Object.entries(attrs).forEach(([name, value]) => {
+    elt.setAttribute(name, `${value}`);
+  });
+
+  return elt;
+};
+
 export default function places(options) {
   const {
     container,
     style,
+    accessibility,
     autocompleteOptions: userAutocompleteOptions = {},
   } = options;
 
@@ -119,6 +128,13 @@ export default function places(options) {
   const clear = document.createElement('button');
   clear.setAttribute('type', 'button');
   clear.setAttribute('aria-label', 'clear');
+  if (
+    accessibility &&
+    accessibility.clearButton &&
+    accessibility.clearButton instanceof Object
+  ) {
+    applyAttributes(clear, accessibility.clearButton);
+  }
   clear.classList.add(`${prefix}-input-icon`);
   clear.classList.add(`${prefix}-icon-clear`);
   clear.innerHTML = clearIcon;
@@ -128,6 +144,13 @@ export default function places(options) {
   const pin = document.createElement('button');
   pin.setAttribute('type', 'button');
   pin.setAttribute('aria-label', 'focus');
+  if (
+    accessibility &&
+    accessibility.pinButton &&
+    accessibility.pinButton instanceof Object
+  ) {
+    applyAttributes(pin, accessibility.pinButton);
+  }
   pin.classList.add(`${prefix}-input-icon`);
   pin.classList.add(`${prefix}-icon-pin`);
   pin.innerHTML = pinIcon;
