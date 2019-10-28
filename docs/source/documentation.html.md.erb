@@ -208,6 +208,31 @@ Control whether the default styles should be used.
 **Important**: This parameter can only be set at instantiation.
 </td>
     </tr>
+    <tr>
+<td markdown="1">
+<div class="api-entry" id="api-options-appId"><code>accessibility</code></div>
+
+Type: **Object**
+</td>
+<td markdown="1">
+an object containing a `pinButton` and/or `clearButton` object which is composed of html attributes to apply to the corresponding button
+
+**Example**:
+```
+accessibility: {
+  pinButton: {
+    'aria-label': 'use browser geolocation',
+    'tab-index': 12,
+  },
+  clearButton: {
+    'tab-index': 13,
+  }
+}
+```
+
+**Important**: This parameter can only be set at instantiation.
+</td>
+    </tr>
   </tbody>
 </table>
 
