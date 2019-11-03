@@ -6339,10 +6339,10 @@ replace-ext@1.0.0:
   resolved "https://registry.yarnpkg.com/replace-ext/-/replace-ext-1.0.0.tgz#de63128373fcbf7c3ccfa4de5a480c45a67958eb"
   integrity sha1-3mMSg3P8v3w8z6TeWkgMRaZ5WOs=
 
-replace-in-file@4.1.3:
-  version "4.1.3"
-  resolved "https://registry.yarnpkg.com/replace-in-file/-/replace-in-file-4.1.3.tgz#0692332304c2b535e2323fffb39a1dfe59a8aac6"
-  integrity sha512-x8uSfKKK/5YiJ8JYsNMwa1PJYvHfPdUABVXd21ro09Nh5BRZ5ATuACwrqCNpktwVqVbFTk/cIGFepeMqY0oX3g==
+replace-in-file@4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/replace-in-file/-/replace-in-file-4.2.0.tgz#be779f4f61a8ee1ab9f917998bd36441673680fe"
+  integrity sha512-9PGYDbU8iQF3W5a0Ariaf4KzYjsZSkonCYiZylwMiYOu0w5Bg9IuT4DqNnibA4zGNVxH//F7Hxh1P25TofAHGw==
   dependencies:
     chalk "^2.4.2"
     glob "^7.1.4"
