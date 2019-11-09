@@ -2907,10 +2907,10 @@ eslint-plugin-import@2.18.2:
     read-pkg-up "^2.0.0"
     resolve "^1.11.0"
 
-eslint-plugin-jasmine@2.10.1:
-  version "2.10.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jasmine/-/eslint-plugin-jasmine-2.10.1.tgz#5733b709e751f4bc40e31e1c16989bd2cdfbec97"
-  integrity sha1-VzO3CedR9LxA4x4cFpib0s377Jc=
+eslint-plugin-jasmine@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jasmine/-/eslint-plugin-jasmine-3.0.0.tgz#5f4b4df8c0c59838f78180b444de089df1ff4068"
+  integrity sha512-Kx8+CB/ia3pQGlv5LMxHxdcUIJ94+y3QKtvdwhgTRkFjcb0k0uB91fEMM/4WMQS/x+X7HrA6f8K4YNRhuv5uHg==
 
 eslint-plugin-jest@22.21.0:
   version "22.21.0"
