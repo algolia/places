@@ -12,3 +12,4 @@ insertCss(css, { prepend: true });
 
 // must use module.exports to be commonJS compatible
 module.exports = createAutocompleteDataset;
+/* eslint-enable import/no-commonjs */

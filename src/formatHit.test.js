@@ -379,3 +379,4 @@ function getTestCase({ name, hit: userHit = {}, expected: userExpected = {} }) {
     expected,
   };
 }
+/* eslint-enable camelcase */

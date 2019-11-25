@@ -10,3 +10,4 @@ module.exports = {
     filename: `${process.env.BUNDLE}.js`,
   },
 };
+/* eslint-enable import/no-commonjs */

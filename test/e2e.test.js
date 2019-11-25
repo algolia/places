@@ -6,6 +6,7 @@ const path = require('path');
 const webpack = require('webpack');
 const puppeteer = require('puppeteer');
 const { PendingXHR } = require('pending-xhr-puppeteer');
+/* eslint-enable import/no-commonjs */
 
 const utils = {};
 

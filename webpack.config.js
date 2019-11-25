@@ -32,3 +32,4 @@ module.exports = {
     minimize: false,
   },
 };
+/* eslint-enable import/no-commonjs */

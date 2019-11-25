@@ -81,7 +81,7 @@ export default function places(options) {
     onRateLimitReached: () => {
       const listeners = placesInstance.listenerCount('limit');
       if (listeners === 0) {
-        console.log(errors.rateLimitReached); // eslint-disable-line
+        console.log(errors.rateLimitReached); // eslint-disable-line no-console
         return;
       }
 
@@ -89,9 +89,9 @@ export default function places(options) {
     },
     onInvalidCredentials: () => {
       if (options && options.appId && options.appId.startsWith('pl')) {
-        console.error(errors.invalidCredentials); // eslint-disable-line
+        console.error(errors.invalidCredentials); // eslint-disable-line no-console
       } else {
-        console.error(errors.invalidAppId); // eslint-disable-line
+        console.error(errors.invalidAppId); // eslint-disable-line no-console
       }
     },
     container: undefined,
@@ -255,7 +255,7 @@ export default function places(options) {
     onRateLimitReached: () => {
       const listeners = placesInstance.listenerCount('limit');
       if (listeners === 0) {
-        console.log(errors.rateLimitReached); // eslint-disable-line
+        console.log(errors.rateLimitReached); // eslint-disable-line no-console
         return;
       }
 
@@ -263,9 +263,9 @@ export default function places(options) {
     },
     onInvalidCredentials: () => {
       if (options && options.appId && options.appId.startsWith('pl')) {
-        console.error(errors.invalidCredentials); // eslint-disable-line
+        console.error(errors.invalidCredentials); // eslint-disable-line no-console
       } else {
-        console.error(errors.invalidAppId); // eslint-disable-line
+        console.error(errors.invalidAppId); // eslint-disable-line no-console
       }
     },
   });

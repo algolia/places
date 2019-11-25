@@ -11,3 +11,4 @@ const version = require('./src/version');
 // must use module.exports to be commonJS compatible
 module.exports = places.default;
 module.exports.version = version.default;
+/* eslint-enable import/no-commonjs */
