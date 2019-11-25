@@ -2977,10 +2977,10 @@ escodegen@^1.9.1:
   optionalDependencies:
     source-map "~0.6.1"
 
-eslint-config-algolia@14.0.1:
-  version "14.0.1"
-  resolved "https://registry.yarnpkg.com/eslint-config-algolia/-/eslint-config-algolia-14.0.1.tgz#dac97b07c5b34c5f47ba5ca33a4fd7884377498c"
-  integrity sha512-qkuJLcCiPH+SyeXdHLYxcgVXLH9Mphl/xGRxpHZNSHYwg49hHQQQ3eEfmJAfmAoxAfKW1ep64agqdLEzoTbu1w==
+eslint-config-algolia@15.0.0:
+  version "15.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-algolia/-/eslint-config-algolia-15.0.0.tgz#3fe7de52d1f2d2d97333ade18327c738f72c0292"
+  integrity sha512-Lfl9Sy5fQJDTQPtsMQZR6nx6fnjc1Ot9SXxdx8AVMMP+nwu5ljtxcFCI1e2BeI6+6BHX9g5BFjnpE/S7HS/Eug==
 
 eslint-config-prettier@6.7.0:
   version "6.7.0"
