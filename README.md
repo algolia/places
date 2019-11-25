@@ -26,7 +26,7 @@ and use the places.js library.
 Our JavaScript library is available on the [jsDelivr CDN](http://www.jsdelivr.com) and also on  [cdnjs](https://cdnjs.com/libraries/places.js).
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/places.js@1.17.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/places.js@1.17.1"></script>
 ```
 
 [![Version][version-svg]][package-url] is the latest version.

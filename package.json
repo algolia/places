@@ -1,6 +1,6 @@
 {
   "name": "places.js",
-  "version": "1.17.0",
+  "version": "1.17.1",
   "description": "🌐 Turn any <input> into an address autocomplete.",
   "main": "index.js",
   "types": "typings.d.ts",

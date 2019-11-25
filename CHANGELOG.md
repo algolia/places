@@ -1,3 +1,12 @@
+## [1.17.1](https://github.com/algolia/places/compare/v1.17.0...v1.17.1) (2019-11-25)
+
+
+### Bug Fixes
+
+* **doc:** clarify policy on the Algolia logo ([#943](https://github.com/algolia/places/issues/943)) ([95b6f8f](https://github.com/algolia/places/commit/95b6f8fe7b9ca6885466c63e2fe0c9a95da0b53a))
+
+
+
 # [1.17.0](https://github.com/algolia/places/compare/v1.16.6...v1.17.0) (2019-10-28)
 
 
