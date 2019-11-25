@@ -106,16 +106,6 @@ describe('releases', () => {
       await browser.close();
     });
 
-    it('puppeteer can access demo file', () => {
-      page.on('error', err => {
-        throw new Error(err);
-      });
-
-      page.on('pageerror', pageerr => {
-        throw new Error(pageerr);
-      });
-    });
-
     it('can search from search box', async () => {
       const pendingXHR = new PendingXHR(page);
       await page.focus('#search-box');
@@ -295,16 +285,6 @@ describe('releases', () => {
       await browser.close();
     });
 
-    it('puppeteer can access demo file', () => {
-      page.on('error', err => {
-        throw new Error(err);
-      });
-
-      page.on('pageerror', pageerr => {
-        throw new Error(pageerr);
-      });
-    });
-
     it('can search from search box', async () => {
       const pendingXHR = new PendingXHR(page);
       await page.focus('#search-box');
@@ -393,16 +373,6 @@ describe('releases', () => {
       await browser.close();
     });
 
-    it('puppeteer can access demo file', () => {
-      page.on('error', err => {
-        throw new Error(err);
-      });
-
-      page.on('pageerror', pageerr => {
-        throw new Error(pageerr);
-      });
-    });
-
     it('using places search box updates aroundLatLng in InstantSearch', async () => {
       const pendingXHR = new PendingXHR(page);
 
@@ -488,16 +458,6 @@ describe('releases', () => {
 
     afterEach(async () => {
       await browser.close();
-    });
-
-    it('puppeteer can access demo file', () => {
-      page.on('error', err => {
-        throw new Error(err);
-      });
-
-      page.on('pageerror', pageerr => {
-        throw new Error(pageerr);
-      });
     });
 
     it('can search from search box', async () => {
@@ -662,16 +622,6 @@ describe('releases', () => {
       await browser.close();
     });
 
-    it('puppeteer can access demo file', () => {
-      page.on('error', err => {
-        throw new Error(err);
-      });
-
-      page.on('pageerror', pageerr => {
-        throw new Error(pageerr);
-      });
-    });
-
     it('can search from search box', async () => {
       const pendingXHR = new PendingXHR(page);
       await page.focus('#search-box');
@@ -834,16 +784,6 @@ describe('releases', () => {
       await browser.close();
     });
 
-    it('puppeteer can access demo file', () => {
-      page.on('error', err => {
-        throw new Error(err);
-      });
-
-      page.on('pageerror', pageerr => {
-        throw new Error(pageerr);
-      });
-    });
-
     it('can search from search box', async () => {
       const pendingXHR = new PendingXHR(page);
       await page.focus('#search-box');
@@ -919,16 +859,6 @@ describe('releases', () => {
       await browser.close();
     });
 
-    it('puppeteer can access demo file', () => {
-      page.on('error', err => {
-        throw new Error(err);
-      });
-
-      page.on('pageerror', pageerr => {
-        throw new Error(pageerr);
-      });
-    });
-
     it('can search from search box', async () => {
       const pendingXHR = new PendingXHR(page);
       await page.focus('#search-box');
@@ -998,16 +928,6 @@ describe('releases', () => {
 
     afterEach(async () => {
       await browser.close();
-    });
-
-    it('puppeteer can access demo file', () => {
-      page.on('error', err => {
-        throw new Error(err);
-      });
-
-      page.on('pageerror', pageerr => {
-        throw new Error(pageerr);
-      });
     });
 
     it('using places search box updates aroundLatLng in InstantSearch', async () => {
@@ -1095,16 +1015,6 @@ describe('releases', () => {
 
     afterEach(async () => {
       await browser.close();
-    });
-
-    it('puppeteer can access demo file', () => {
-      page.on('error', err => {
-        throw new Error(err);
-      });
-
-      page.on('pageerror', pageerr => {
-        throw new Error(pageerr);
-      });
     });
 
     it('using places search box updates aroundLatLng in InstantSearch', async () => {
