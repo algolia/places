@@ -44,6 +44,7 @@
     "@babel/plugin-syntax-import-meta": "7.7.4",
     "@babel/polyfill": "7.7.0",
     "@babel/preset-env": "7.7.4",
+    "algolia-aerial": "^1.5.3",
     "algoliasearch-helper": "2.28.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "10.0.3",
@@ -77,8 +78,7 @@
     "webpack-cli": "3.3.10"
   },
   "dependencies": {
-    "algolia-aerial": "^1.5.3",
-    "algoliasearch": "^3.31.0",
+    "algoliasearch": "^3.35.1",
     "autocomplete.js": "^0.37.0",
     "events": "^3.0.0",
     "insert-css": "^2.0.0"
