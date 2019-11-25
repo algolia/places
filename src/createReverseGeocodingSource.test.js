@@ -154,11 +154,7 @@ describe('createReverseGeocodingSource', () => {
     const searchFn = jest.fn(() => Promise.reject(error));
     algoliasearch.__setSearchStub(searchFn);
     const source = createReverseGeocodingSource({ algoliasearch });
-    try {
-      await source('test');
-    } catch (e) {
-      expect(e).toEqual(error);
-    }
+    await expect(source('test')).rejects.toThrow(error);
   });
 
   it('supports onRateLimitReached option', async () => {

@@ -104,35 +104,41 @@ describe('places', () => {
     it('passes provided options', () =>
       expect(args.autocomplete).toEqual('option'));
 
-    it('triggers a suggestions event when onHits called', done => {
-      placesInstance.once('suggestions', eventData => {
-        expect(eventData).toEqual({
-          suggestions: 'hits',
-          rawAnswer: 'rawAnswer',
-          query: 'query',
+    it('triggers a suggestions event when onHits called', () => {
+      return new Promise(done => {
+        placesInstance.once('suggestions', eventData => {
+          expect(eventData).toEqual({
+            suggestions: 'hits',
+            rawAnswer: 'rawAnswer',
+            query: 'query',
+          });
+          done();
         });
-        done();
-      });
 
-      args.onHits({ hits: 'hits', rawAnswer: 'rawAnswer', query: 'query' });
+        args.onHits({ hits: 'hits', rawAnswer: 'rawAnswer', query: 'query' });
+      });
     });
 
-    it('triggers an error event when onError called', done => {
-      placesInstance.once('error', eventData => {
-        expect(eventData).toEqual('error');
-        done();
-      });
+    it('triggers an error event when onError called', () => {
+      return new Promise(done => {
+        placesInstance.once('error', eventData => {
+          expect(eventData).toEqual('error');
+          done();
+        });
 
-      args.onError('error');
+        args.onError('error');
+      });
     });
 
-    it('triggers a limit event when onRateLimitReached called', done => {
-      placesInstance.once('limit', eventData => {
-        expect(eventData).toEqual({ message: errors.rateLimitReached });
-        done();
-      });
+    it('triggers a limit event when onRateLimitReached called', () => {
+      return new Promise(done => {
+        placesInstance.once('limit', eventData => {
+          expect(eventData).toEqual({ message: errors.rateLimitReached });
+          done();
+        });
 
-      args.onRateLimitReached();
+        args.onRateLimitReached();
+      });
     });
 
     it('writes a message to console when nobody listening to the limit event', () => {
@@ -185,106 +191,114 @@ describe('places', () => {
       );
     });
 
-    it('triggers a change event on autocomplete:selected', done => {
-      const args = autocomplete.__instance.on.mock.calls[0];
-      const eventName = args[0];
-      const eventHandler = args[1];
+    it('triggers a change event on autocomplete:selected', () => {
+      return new Promise(done => {
+        const args = autocomplete.__instance.on.mock.calls[0];
+        const eventName = args[0];
+        const eventHandler = args[1];
 
-      // .on(eventName)
-      const expectedEventName = 'autocomplete:selected';
-      expect(eventName).toEqual(expectedEventName);
+        // .on(eventName)
+        const expectedEventName = 'autocomplete:selected';
+        expect(eventName).toEqual(expectedEventName);
 
-      // .on(eventName, eventHandler)
-      const expectedEventData = {
-        rawAnswer: 'rawAnswer',
-        query: 'query',
-        suggestion: { rawAnswer: 'rawAnswer', query: 'query', hitIndex: 0 },
-        suggestionIndex: 0,
-      };
-      placesInstance.once('change', eventData => {
-        expect(eventData).toEqual(expectedEventData);
-        done();
-      });
-      eventHandler(null, {
-        rawAnswer: 'rawAnswer',
-        query: 'query',
-        hitIndex: 0,
-      });
-    });
-
-    it('triggers a change event on autocomplete:autocompleted', done => {
-      const args = autocomplete.__instance.on.mock.calls[1];
-      const eventName = args[0];
-      const eventHandler = args[1];
-
-      // .on(eventName)
-      const expectedEventName = 'autocomplete:autocompleted';
-      expect(eventName).toEqual(expectedEventName);
-
-      // .on(eventName, eventHandler)
-      const expectedEventData = {
-        rawAnswer: 'rawAnswer',
-        query: 'query',
-        suggestion: { rawAnswer: 'rawAnswer', query: 'query', hitIndex: 0 },
-        suggestionIndex: 0,
-      };
-      placesInstance.once('change', eventData => {
-        expect(eventData).toEqual(expectedEventData);
-        done();
-      });
-      eventHandler(null, {
-        rawAnswer: 'rawAnswer',
-        query: 'query',
-        hitIndex: 0,
+        // .on(eventName, eventHandler)
+        const expectedEventData = {
+          rawAnswer: 'rawAnswer',
+          query: 'query',
+          suggestion: { rawAnswer: 'rawAnswer', query: 'query', hitIndex: 0 },
+          suggestionIndex: 0,
+        };
+        placesInstance.once('change', eventData => {
+          expect(eventData).toEqual(expectedEventData);
+          done();
+        });
+        eventHandler(null, {
+          rawAnswer: 'rawAnswer',
+          query: 'query',
+          hitIndex: 0,
+        });
       });
     });
 
-    it('triggers a cursorchanged event on autocomplete:cursorchanged', done => {
-      const args = autocomplete.__instance.on.mock.calls[2];
-      const eventName = args[0];
-      const eventHandler = args[1];
+    it('triggers a change event on autocomplete:autocompleted', () => {
+      return new Promise(done => {
+        const args = autocomplete.__instance.on.mock.calls[1];
+        const eventName = args[0];
+        const eventHandler = args[1];
 
-      // .on(eventName)
-      const expectedEventName = 'autocomplete:cursorchanged';
-      expect(eventName).toEqual(expectedEventName);
+        // .on(eventName)
+        const expectedEventName = 'autocomplete:autocompleted';
+        expect(eventName).toEqual(expectedEventName);
 
-      // .on(eventName, eventHandler)
-      const expectedEventData = {
-        rawAnswer: 'rawAnswer',
-        query: 'query',
-        suggestion: { rawAnswer: 'rawAnswer', query: 'query', hitIndex: 0 },
-        suggestionIndex: 0,
-      };
-      placesInstance.once('cursorchanged', eventData => {
-        expect(eventData).toEqual(expectedEventData);
-        done();
-      });
-      eventHandler(null, {
-        rawAnswer: 'rawAnswer',
-        query: 'query',
-        hitIndex: 0,
+        // .on(eventName, eventHandler)
+        const expectedEventData = {
+          rawAnswer: 'rawAnswer',
+          query: 'query',
+          suggestion: { rawAnswer: 'rawAnswer', query: 'query', hitIndex: 0 },
+          suggestionIndex: 0,
+        };
+        placesInstance.once('change', eventData => {
+          expect(eventData).toEqual(expectedEventData);
+          done();
+        });
+        eventHandler(null, {
+          rawAnswer: 'rawAnswer',
+          query: 'query',
+          hitIndex: 0,
+        });
       });
     });
 
-    it('has a clear button', done => {
-      const clearButton = document.querySelector(
-        'button.ap-input-icon.ap-icon-clear'
-      );
-      const pinButton = document.querySelector('.ap-icon-pin');
-      expect(clearButton.innerHTML).toEqual('clear');
-      expect(clearButton.getAttribute('aria-label')).toEqual('clear');
+    it('triggers a cursorchanged event on autocomplete:cursorchanged', () => {
+      return new Promise(done => {
+        const args = autocomplete.__instance.on.mock.calls[2];
+        const eventName = args[0];
+        const eventHandler = args[1];
 
-      placesInstance.once('clear', () => {
-        expect(
-          autocomplete.__instance.autocomplete.setVal
-        ).toHaveBeenCalledWith('');
-        expect(autocomplete.__instance.focus).toHaveBeenCalled();
-        expect(clearButton.style.display).toEqual('none');
-        expect(pinButton.style.display).toEqual('');
-        done();
+        // .on(eventName)
+        const expectedEventName = 'autocomplete:cursorchanged';
+        expect(eventName).toEqual(expectedEventName);
+
+        // .on(eventName, eventHandler)
+        const expectedEventData = {
+          rawAnswer: 'rawAnswer',
+          query: 'query',
+          suggestion: { rawAnswer: 'rawAnswer', query: 'query', hitIndex: 0 },
+          suggestionIndex: 0,
+        };
+        placesInstance.once('cursorchanged', eventData => {
+          expect(eventData).toEqual(expectedEventData);
+          done();
+        });
+        eventHandler(null, {
+          rawAnswer: 'rawAnswer',
+          query: 'query',
+          hitIndex: 0,
+        });
       });
+    });
 
-      clearButton.dispatchEvent(new Event('click'));
+    it('has a clear button', () => {
+      return new Promise(done => {
+        const clearButton = document.querySelector(
+          'button.ap-input-icon.ap-icon-clear'
+        );
+        const pinButton = document.querySelector('.ap-icon-pin');
+        expect(clearButton.innerHTML).toEqual('clear');
+        expect(clearButton.getAttribute('aria-label')).toEqual('clear');
+
+        placesInstance.once('clear', () => {
+          expect(
+            autocomplete.__instance.autocomplete.setVal
+          ).toHaveBeenCalledWith('');
+          expect(autocomplete.__instance.focus).toHaveBeenCalled();
+          expect(clearButton.style.display).toEqual('none');
+          expect(pinButton.style.display).toEqual('');
+          done();
+        });
+
+        clearButton.dispatchEvent(new Event('click'));
+      });
     });
 
     it('has a pin button', () => {
@@ -312,12 +326,17 @@ describe('places', () => {
         expect(autocomplete.__instance.val).toHaveBeenCalled();
       });
 
-      it('emits a clear event when necessary', done => {
-        placesInstance.once('clear', done);
-        autocomplete.__setQuery('a');
-        input.dispatchEvent(new Event('input'));
-        autocomplete.__setQuery('');
-        input.dispatchEvent(new Event('input'));
+      it('emits a clear event when necessary', () => {
+        return new Promise(done => {
+          placesInstance.once('clear', () => {
+            expect(true).toBeTruthy();
+            done();
+          });
+          autocomplete.__setQuery('a');
+          input.dispatchEvent(new Event('input'));
+          autocomplete.__setQuery('');
+          input.dispatchEvent(new Event('input'));
+        });
       });
 
       it('does not emits a clear event when unecessary', () => {
