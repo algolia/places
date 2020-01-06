@@ -113,7 +113,9 @@ describe('releases', () => {
       await page.keyboard.type(query);
 
       // Places should send a query per character typed
-      expect(pendingXHR.pendingXhrCount()).toEqual(query.length);
+      expect(
+        pendingXHR.pendingXhrCount() + pendingXHR.finishedWithSuccessXhrs.size
+      ).toEqual(query.length);
 
       await pendingXHR.waitForAllXhrFinished();
 
@@ -148,7 +150,9 @@ describe('releases', () => {
       await page.keyboard.type(query);
 
       // Places should send a query per character typed
-      expect(pendingXHR.pendingXhrCount()).toEqual(query.length);
+      expect(
+        pendingXHR.pendingXhrCount() + pendingXHR.finishedWithSuccessXhrs.size
+      ).toEqual(query.length);
 
       await pendingXHR.waitForAllXhrFinished();
 
@@ -183,7 +187,9 @@ describe('releases', () => {
       await page.keyboard.type(query);
 
       // Places should send a query per character typed
-      expect(pendingXHR.pendingXhrCount()).toEqual(query.length);
+      expect(
+        pendingXHR.pendingXhrCount() + pendingXHR.finishedWithSuccessXhrs.size
+      ).toEqual(query.length);
 
       await pendingXHR.waitForAllXhrFinished();
 
@@ -292,7 +298,9 @@ describe('releases', () => {
       await page.keyboard.type(query);
 
       // autocomplete should send a query per character typed
-      expect(pendingXHR.pendingXhrCount()).toEqual(query.length * 2);
+      expect(
+        pendingXHR.pendingXhrCount() + pendingXHR.finishedWithSuccessXhrs.size
+      ).toEqual(query.length * 2);
       await pendingXHR.waitForAllXhrFinished();
 
       const request = utils.getXHRDataForQuery(pendingXHR, query);
@@ -376,15 +384,19 @@ describe('releases', () => {
     it('using places search box updates aroundLatLng in InstantSearch', async () => {
       const pendingXHR = new PendingXHR(page);
 
-      expect(pendingXHR.pendingXhrCount()).toEqual(0);
+      expect(
+        pendingXHR.pendingXhrCount() + pendingXHR.finishedWithSuccessXhrs.size
+      ).toEqual(0);
       await pendingXHR.waitForAllXhrFinished();
 
       await page.focus('#search-box');
       const query = `55 rue d'Amsterd`;
       await page.keyboard.type(query);
 
-      // autocomplete should send a query per character typed
-      expect(pendingXHR.pendingXhrCount()).toEqual(query.length);
+      // autocomplete should send a query per character typed + 1 for pre-heating
+      expect(
+        pendingXHR.pendingXhrCount() + pendingXHR.finishedWithSuccessXhrs.size
+      ).toEqual(query.length + 1);
       await pendingXHR.waitForAllXhrFinished();
 
       const request = utils.getXHRDataForQuery(pendingXHR, query);
@@ -409,7 +421,9 @@ describe('releases', () => {
       // selecting a result should trigger a query
       await page.keyboard.press('Enter');
 
-      expect(pendingXHR.pendingXhrCount()).toEqual(1);
+      expect(
+        pendingXHR.pendingXhrCount() + pendingXHR.finishedWithSuccessXhrs.size
+      ).toEqual(query.length + 2);
       await pendingXHR.waitForAllXhrFinished();
 
       const aroundLatLngQueriesAfterSelect = Array.from(
@@ -467,7 +481,9 @@ describe('releases', () => {
       await page.keyboard.type(query);
 
       // Places should send a query per character typed
-      expect(pendingXHR.pendingXhrCount()).toEqual(query.length);
+      expect(
+        pendingXHR.pendingXhrCount() + pendingXHR.finishedWithSuccessXhrs.size
+      ).toEqual(query.length);
 
       await pendingXHR.waitForAllXhrFinished();
 
@@ -502,7 +518,9 @@ describe('releases', () => {
       await page.keyboard.type(query);
 
       // Places should send a query per character typed
-      expect(pendingXHR.pendingXhrCount()).toEqual(query.length);
+      expect(
+        pendingXHR.pendingXhrCount() + pendingXHR.finishedWithSuccessXhrs.size
+      ).toEqual(query.length);
 
       await pendingXHR.waitForAllXhrFinished();
 
@@ -537,7 +555,9 @@ describe('releases', () => {
       await page.keyboard.type(query);
 
       // Places should send a query per character typed
-      expect(pendingXHR.pendingXhrCount()).toEqual(query.length);
+      expect(
+        pendingXHR.pendingXhrCount() + pendingXHR.finishedWithSuccessXhrs.size
+      ).toEqual(query.length);
 
       await pendingXHR.waitForAllXhrFinished();
 
@@ -629,7 +649,9 @@ describe('releases', () => {
       await page.keyboard.type(query);
 
       // Places should send a query per character typed
-      expect(pendingXHR.pendingXhrCount()).toEqual(query.length);
+      expect(
+        pendingXHR.pendingXhrCount() + pendingXHR.finishedWithSuccessXhrs.size
+      ).toEqual(query.length);
 
       await pendingXHR.waitForAllXhrFinished();
 
@@ -664,7 +686,9 @@ describe('releases', () => {
       await page.keyboard.type(query);
 
       // Places should send a query per character typed
-      expect(pendingXHR.pendingXhrCount()).toEqual(query.length);
+      expect(
+        pendingXHR.pendingXhrCount() + pendingXHR.finishedWithSuccessXhrs.size
+      ).toEqual(query.length);
 
       await pendingXHR.waitForAllXhrFinished();
 
@@ -699,7 +723,9 @@ describe('releases', () => {
       await page.keyboard.type(query);
 
       // Places should send a query per character typed
-      expect(pendingXHR.pendingXhrCount()).toEqual(query.length);
+      expect(
+        pendingXHR.pendingXhrCount() + pendingXHR.finishedWithSuccessXhrs.size
+      ).toEqual(query.length);
 
       await pendingXHR.waitForAllXhrFinished();
 
@@ -791,7 +817,9 @@ describe('releases', () => {
       await page.keyboard.type(query);
 
       // autocomplete should send a query per character typed
-      expect(pendingXHR.pendingXhrCount()).toEqual(query.length * 2);
+      expect(
+        pendingXHR.pendingXhrCount() + pendingXHR.finishedWithSuccessXhrs.size
+      ).toEqual(query.length * 2);
       await pendingXHR.waitForAllXhrFinished();
 
       const request = utils.getXHRDataForQuery(pendingXHR, query);
@@ -866,7 +894,9 @@ describe('releases', () => {
       await page.keyboard.type(query);
 
       // autocomplete should send a query per character typed
-      expect(pendingXHR.pendingXhrCount()).toEqual(query.length * 2);
+      expect(
+        pendingXHR.pendingXhrCount() + pendingXHR.finishedWithSuccessXhrs.size
+      ).toEqual(query.length * 2);
       await pendingXHR.waitForAllXhrFinished();
 
       const request = utils.getXHRDataForQuery(pendingXHR, query);
@@ -933,15 +963,19 @@ describe('releases', () => {
     it('using places search box updates aroundLatLng in InstantSearch', async () => {
       const pendingXHR = new PendingXHR(page);
 
-      expect(pendingXHR.pendingXhrCount()).toEqual(0);
+      expect(
+        pendingXHR.pendingXhrCount() + pendingXHR.finishedWithSuccessXhrs.size
+      ).toEqual(0);
       await pendingXHR.waitForAllXhrFinished();
 
       await page.focus('#search-box');
       const query = `55 rue d'Amsterd`;
       await page.keyboard.type(query);
 
-      // autocomplete should send a query per character typed
-      expect(pendingXHR.pendingXhrCount()).toEqual(query.length);
+      // autocomplete should send a query per character typed + 1 for pre-heating
+      expect(
+        pendingXHR.pendingXhrCount() + pendingXHR.finishedWithSuccessXhrs.size
+      ).toEqual(query.length + 1);
       await pendingXHR.waitForAllXhrFinished();
 
       const request = utils.getXHRDataForQuery(pendingXHR, query);
@@ -966,7 +1000,9 @@ describe('releases', () => {
       // selecting a result should trigger a query
       await page.keyboard.press('Enter');
 
-      expect(pendingXHR.pendingXhrCount()).toEqual(1);
+      expect(
+        pendingXHR.pendingXhrCount() + pendingXHR.finishedWithSuccessXhrs.size
+      ).toEqual(query.length + 2);
       await pendingXHR.waitForAllXhrFinished();
 
       const aroundLatLngQueriesAfterSelect = Array.from(
@@ -1020,15 +1056,19 @@ describe('releases', () => {
     it('using places search box updates aroundLatLng in InstantSearch', async () => {
       const pendingXHR = new PendingXHR(page);
 
-      expect(pendingXHR.pendingXhrCount()).toEqual(0);
+      expect(
+        pendingXHR.pendingXhrCount() + pendingXHR.finishedWithSuccessXhrs.size
+      ).toEqual(0);
       await pendingXHR.waitForAllXhrFinished();
 
       await page.focus('#search-box');
       const query = `55 rue d'Amsterd`;
       await page.keyboard.type(query);
 
-      // autocomplete should send a query per character typed
-      expect(pendingXHR.pendingXhrCount()).toEqual(query.length);
+      // autocomplete should send a query per character typed + 1 for pre-heating
+      expect(
+        pendingXHR.pendingXhrCount() + pendingXHR.finishedWithSuccessXhrs.size
+      ).toEqual(query.length + 1);
       await pendingXHR.waitForAllXhrFinished();
 
       const request = utils.getXHRDataForQuery(pendingXHR, query);
@@ -1053,7 +1093,9 @@ describe('releases', () => {
       // selecting a result should trigger a query
       await page.keyboard.press('Enter');
 
-      expect(pendingXHR.pendingXhrCount()).toEqual(1);
+      expect(
+        pendingXHR.pendingXhrCount() + pendingXHR.finishedWithSuccessXhrs.size
+      ).toEqual(query.length + 2);
       await pendingXHR.waitForAllXhrFinished();
 
       const aroundLatLngQueriesAfterSelect = Array.from(
