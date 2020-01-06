@@ -1,7 +1,6 @@
 language: node_js
 node_js: stable
 before_install:
-- curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.7.0
 - git config --global user.email "algobot@users.noreply.github.com"
 - git config --global user.name "algobot"
 - rvm install 2.4.0
