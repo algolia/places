@@ -1,3 +1,7 @@
+## [1.18.1](https://github.com/algolia/places/compare/v1.18.0...v1.18.1) (2020-02-17)
+
+
+
 # [1.18.0](https://github.com/algolia/places/compare/v1.17.1...v1.18.0) (2020-02-17)
 
 
