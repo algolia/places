@@ -93,6 +93,15 @@ describe('createAutocompleteSource', () => {
     });
   });
 
+  it('supports postcodeSearch option', () => {
+    const { source, defaults } = setup({ postcodeSearch: true });
+    source(defaults.query);
+    expect(algoliasearch.__searchSpy).toHaveBeenCalledWith({
+      ...defaults,
+      restrictSearchableAttributes: 'postcode',
+    });
+  });
+
   it('supports language option', () => {
     const { source, defaults } = setup({ language: 'en' });
     source(defaults.query);
@@ -514,6 +523,7 @@ describe('createAutocompleteSource.configure', () => {
         countries: ['fr'],
         language: 'pt',
         type: 'city',
+        postcodeSearch: true,
       };
 
       source.configure(params);
@@ -523,6 +533,8 @@ describe('createAutocompleteSource.configure', () => {
       expect(algoliasearch.__searchSpy).toHaveBeenCalledWith({
         ...defaults,
         ...params,
+        postcodeSearch: undefined,
+        restrictSearchableAttributes: 'postcode',
         query: 'rivoli',
       });
     });
@@ -540,6 +552,7 @@ describe('createAutocompleteSource.configure', () => {
         countries: ['fr'],
         language: 'pt',
         type: 'city',
+        postcodeSearch: true,
       };
       const { source, defaults } = setup(initialParams);
 
@@ -548,6 +561,8 @@ describe('createAutocompleteSource.configure', () => {
       expect(algoliasearch.__searchSpy).toHaveBeenCalledWith({
         ...defaults,
         ...initialParams,
+        postcodeSearch: undefined,
+        restrictSearchableAttributes: 'postcode',
         query: 'rivoli',
       });
 
@@ -563,6 +578,7 @@ describe('createAutocompleteSource.configure', () => {
         countries: undefined,
         language: undefined,
         type: undefined,
+        postcodeSearch: undefined,
       };
 
       source.configure(params);
