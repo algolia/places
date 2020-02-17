@@ -258,6 +258,18 @@ In this section, we will see how you can do reverse geocoding with a precision u
 
 **Note:** There are many use cases where you will want to combine the reverse geocoding API with the regular Places search. In this case, you do not need to import both the standard Places library and the JS Client, as the reverse functionality is included in the standard Places.js library. You can access the reverse endpoint programmatically using `placesInstance.reverse(location)`.
 
+### Postcode search
+
+Using the `postcodeSearch` attribute, you can restrict the search to the postcodes field only.
+
+**Important:** While this attribute will improve the quality of the search when looking for postcode, please note that postcode in OSM are sparse and that some postcodes may be missing or approximate. As such, we recommend you to always let the user modify this section and only rely on this data as a mean to suggest rather than a source of truth.
+
+<%= partial '/partials/examples/postcode_search', locals: config[:credentials][:documentation] %>
+
+```html
+<%= partial '/partials/examples/postcode_search', locals: config[:credentials][:placeholder] %>
+```
+
 ### Dynamic Form
 
 **Concepts:** dynamic configuration, reverse API, multiple instance.

@@ -1,0 +1,16 @@
+<input type="search" id="docs-postcode-search" class="form-control" placeholder="Search for a french city by postcode (e.g. 75008)" />
+
+<%= javascript_include_tag config[:places_lib_url] %>
+<script>
+(function() {
+  var placesAutocomplete = places({
+    appId: '<%= app_id %>',
+    apiKey: '<%= api_key %>',
+    container: document.querySelector('#docs-postcode-search')
+  }).configure({
+    postcodeSearch: true,
+    countries: ['fr'],
+    type: 'city'
+  });
+})();
+</script>

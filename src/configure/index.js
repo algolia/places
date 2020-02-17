@@ -1,5 +1,6 @@
 const extractParams = ({
   hitsPerPage,
+  postcodeSearch,
   aroundLatLng,
   aroundRadius,
   aroundLatLngViaIP,
@@ -31,6 +32,10 @@ const extractParams = ({
     extracted.aroundLatLng = aroundLatLng;
   } else if (aroundLatLngViaIP !== undefined) {
     extracted.aroundLatLngViaIP = aroundLatLngViaIP;
+  }
+
+  if (postcodeSearch) {
+    extracted.restrictSearchableAttributes = 'postcode';
   }
 
   return {
