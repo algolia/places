@@ -8,6 +8,7 @@ export default function createAutocompleteSource({
   apiKey,
   appId,
   hitsPerPage,
+  postcodeSearch,
   aroundLatLng,
   aroundRadius,
   aroundLatLngViaIP,
@@ -33,6 +34,7 @@ export default function createAutocompleteSource({
   const configuration = configure({
     hitsPerPage,
     type,
+    postcodeSearch,
     countries,
     language,
     aroundLatLng,
