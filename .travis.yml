@@ -3,8 +3,8 @@ node_js: stable
 before_install:
 - git config --global user.email "algobot@users.noreply.github.com"
 - git config --global user.name "algobot"
-- rvm install 2.4.0
-- rvm use 2.4.0
+- rvm install 2.7.0
+- rvm use 2.7.0
 - "(cd docs && bundle install)"
 script:
 - npm run test:ci
