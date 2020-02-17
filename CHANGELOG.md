@@ -1,3 +1,12 @@
+# [1.18.0](https://github.com/algolia/places/compare/v1.17.1...v1.18.0) (2020-02-17)
+
+
+### Features
+
+* **postcode-search:** add postcodeSearch attribute and document restrictSearchableAttributes param ([#998](https://github.com/algolia/places/issues/998)) ([30d9fa5](https://github.com/algolia/places/commit/30d9fa54ccfefb90b4ceed9cc5aa8efaddd392b7))
+
+
+
 ## [1.17.1](https://github.com/algolia/places/compare/v1.17.0...v1.17.1) (2019-11-25)
 
 
