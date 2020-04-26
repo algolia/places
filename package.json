@@ -67,7 +67,7 @@
     "jest-cli": "25.4.0",
     "json": "9.0.6",
     "pending-xhr-puppeteer": "2.1.0",
-    "prettier": "1.19.1",
+    "prettier": "2.0.5",
     "pretty-bytes-cli": "2.0.0",
     "puppeteer": "2.1.1",
     "raw-loader": "4.0.1",
