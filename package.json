@@ -71,7 +71,7 @@
     "pretty-bytes-cli": "2.0.0",
     "puppeteer": "2.1.1",
     "raw-loader": "4.0.1",
-    "replace-in-file": "5.0.2",
+    "replace-in-file": "6.0.0",
     "semver": "7.3.2",
     "uglify-js": "3.9.1",
     "webpack": "4.43.0",
