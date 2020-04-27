@@ -1,3 +1,12 @@
+## [1.18.2](https://github.com/algolia/places/compare/v1.18.1...v1.18.2) (2020-04-27)
+
+
+### Bug Fixes
+
+* **tailwind:**  reset svg display property to avoid tailwind overwrites ([#1046](https://github.com/algolia/places/issues/1046)) ([6599d7e](https://github.com/algolia/places/commit/6599d7e1e3ff9506873a2b9a67dc8eb0063b0c16))
+
+
+
 ## [1.18.1](https://github.com/algolia/places/compare/v1.18.0...v1.18.1) (2020-02-17)
 
 
