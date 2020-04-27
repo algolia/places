@@ -60,6 +60,7 @@
 }
 
 .ap-suggestion-icon {
+  display: inherit;
   margin-right: 10px;
   width: 14px;
   height: 20px;
