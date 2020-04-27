@@ -67,6 +67,7 @@
 }
 
 .ap-suggestion-icon svg {
+  display: inherit;
   -webkit-transform: scale(0.9) translateY(2px);
           transform: scale(0.9) translateY(2px);
   fill: #cfcfcf;
