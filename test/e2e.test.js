@@ -10,7 +10,7 @@ const { PendingXHR } = require('pending-xhr-puppeteer');
 
 const utils = {};
 
-utils.getParamsFromRequest = request => {
+utils.getParamsFromRequest = (request) => {
   const { _postData } = request;
   const { params } = JSON.parse(_postData);
   return new URLSearchParams(params);
@@ -18,17 +18,17 @@ utils.getParamsFromRequest = request => {
 
 utils.getXHRDataForQuery = (pendingXHR, query, source = 'places') => {
   const finishedXHRs = pendingXHR.finishedWithSuccessXhrs;
-  const extractQueryFromRequest = request =>
+  const extractQueryFromRequest = (request) =>
     utils.getParamsFromRequest(request).get('query');
 
-  return Array.from(finishedXHRs).find(request => {
+  return Array.from(finishedXHRs).find((request) => {
     return (
       extractQueryFromRequest(request) === query && request._url.match(source)
     );
   });
 };
 
-utils.getResponseBodyFromRequest = request => {
+utils.getResponseBodyFromRequest = (request) => {
   return request._response.json();
 };
 
@@ -61,7 +61,7 @@ describe('releases', () => {
     let browser;
     let page;
 
-    beforeAll(done => {
+    beforeAll((done) => {
       url = `file://${path.join(__dirname, 'npm-lib', 'index.html')}`;
       // webpack bundle
       webpack(
@@ -93,11 +93,11 @@ describe('releases', () => {
         referer: 'https://community.algolia.com/',
       });
 
-      page.on('error', err => {
+      page.on('error', (err) => {
         throw new Error(err);
       });
 
-      page.on('pageerror', pageerr => {
+      page.on('pageerror', (pageerr) => {
         throw new Error(pageerr);
       });
     });
@@ -130,9 +130,12 @@ describe('releases', () => {
       expect(apDropdown).toBeTruthy();
 
       // Places suggestion dropdown should have has many suggestions as there are hits
-      const suggestions = await page.$$eval('.ap-suggestion', $suggestions => {
-        return Array.from($suggestions).map(elt => elt.textContent);
-      });
+      const suggestions = await page.$$eval(
+        '.ap-suggestion',
+        ($suggestions) => {
+          return Array.from($suggestions).map((elt) => elt.textContent);
+        }
+      );
 
       expect(suggestions).toHaveLength(body.hits.length);
 
@@ -157,7 +160,7 @@ describe('releases', () => {
       await pendingXHR.waitForAllXhrFinished();
 
       // Places suggestion dropdown should have has many suggestions as there are hits
-      await page.$eval('.ap-suggestion', $suggestion => {
+      await page.$eval('.ap-suggestion', ($suggestion) => {
         $suggestion.click();
       });
 
@@ -216,7 +219,7 @@ describe('releases', () => {
       expect(response).toBeInstanceOf(Array);
       const definedValues = response
         .map(({ value }) => value)
-        .filter(value => value !== undefined);
+        .filter((value) => value !== undefined);
       expect(response.length).toEqual(definedValues.length);
     });
 
@@ -236,7 +239,7 @@ describe('releases', () => {
       expect(response).toBeInstanceOf(Array);
       const definedValues = response
         .map(({ value }) => value)
-        .filter(value => value !== undefined);
+        .filter((value) => value !== undefined);
       expect(response.length).toEqual(definedValues.length);
     });
   });
@@ -246,7 +249,7 @@ describe('releases', () => {
     let browser;
     let page;
 
-    beforeAll(done => {
+    beforeAll((done) => {
       url = `file://${path.join(__dirname, 'npm-autocomplete', 'index.html')}`;
       // webpack bundle
       webpack(
@@ -278,11 +281,11 @@ describe('releases', () => {
         referer: 'https://community.algolia.com/',
       });
 
-      page.on('error', err => {
+      page.on('error', (err) => {
         throw new Error(err);
       });
 
-      page.on('pageerror', pageerr => {
+      page.on('pageerror', (pageerr) => {
         throw new Error(pageerr);
       });
     });
@@ -316,8 +319,8 @@ describe('releases', () => {
       // Places suggestion dropdown should have has many suggestions as there are hits
       const suggestions = await page.$$eval(
         '.ap-dataset-places .ap-suggestion',
-        $suggestions => {
-          return Array.from($suggestions).map(elt => elt.textContent);
+        ($suggestions) => {
+          return Array.from($suggestions).map((elt) => elt.textContent);
         }
       );
 
@@ -336,7 +339,7 @@ describe('releases', () => {
     let browser;
     let page;
 
-    beforeAll(done => {
+    beforeAll((done) => {
       url = `file://${path.join(__dirname, 'npm-widget', 'index.html')}`;
       // webpack bundle
       webpack(
@@ -368,11 +371,11 @@ describe('releases', () => {
         referer: 'https://community.algolia.com/',
       });
 
-      page.on('error', err => {
+      page.on('error', (err) => {
         throw new Error(err);
       });
 
-      page.on('pageerror', pageerr => {
+      page.on('pageerror', (pageerr) => {
         throw new Error(pageerr);
       });
     });
@@ -403,8 +406,8 @@ describe('releases', () => {
       const aroundLatLngQueriesBeforeSelect = Array.from(
         pendingXHR.finishedWithSuccessXhrs
       )
-        .filter($request => $request._url.match(/queries/)) // generic algolia query
-        .filter($request => {
+        .filter(($request) => $request._url.match(/queries/)) // generic algolia query
+        .filter(($request) => {
           const { _postData } = $request;
           const $body = JSON.parse(_postData);
           const params = new URLSearchParams($body.requests[0].params);
@@ -423,8 +426,8 @@ describe('releases', () => {
       const aroundLatLngQueriesAfterSelect = Array.from(
         pendingXHR.finishedWithSuccessXhrs
       )
-        .filter($request => $request._url.match(/queries/)) // generic algolia query
-        .filter($request => {
+        .filter(($request) => $request._url.match(/queries/)) // generic algolia query
+        .filter(($request) => {
           const { _postData } = $request;
           const $body = JSON.parse(_postData);
           const params = new URLSearchParams($body.requests[0].params);
@@ -455,11 +458,11 @@ describe('releases', () => {
         referer: 'https://community.algolia.com/',
       });
 
-      page.on('error', err => {
+      page.on('error', (err) => {
         throw new Error(err);
       });
 
-      page.on('pageerror', pageerr => {
+      page.on('pageerror', (pageerr) => {
         throw new Error(pageerr);
       });
     });
@@ -492,9 +495,12 @@ describe('releases', () => {
       expect(apDropdown).toBeTruthy();
 
       // Places suggestion dropdown should have has many suggestions as there are hits
-      const suggestions = await page.$$eval('.ap-suggestion', $suggestions => {
-        return Array.from($suggestions).map(elt => elt.textContent);
-      });
+      const suggestions = await page.$$eval(
+        '.ap-suggestion',
+        ($suggestions) => {
+          return Array.from($suggestions).map((elt) => elt.textContent);
+        }
+      );
 
       expect(suggestions).toHaveLength(body.hits.length);
 
@@ -519,7 +525,7 @@ describe('releases', () => {
       await pendingXHR.waitForAllXhrFinished();
 
       // Places suggestion dropdown should have has many suggestions as there are hits
-      await page.$eval('.ap-suggestion', $suggestion => {
+      await page.$eval('.ap-suggestion', ($suggestion) => {
         $suggestion.click();
       });
 
@@ -578,7 +584,7 @@ describe('releases', () => {
       expect(response).toBeInstanceOf(Array);
       const definedValues = response
         .map(({ value }) => value)
-        .filter(value => value !== undefined);
+        .filter((value) => value !== undefined);
       expect(response.length).toEqual(definedValues.length);
     });
 
@@ -598,7 +604,7 @@ describe('releases', () => {
       expect(response).toBeInstanceOf(Array);
       const definedValues = response
         .map(({ value }) => value)
-        .filter(value => value !== undefined);
+        .filter((value) => value !== undefined);
       expect(response.length).toEqual(definedValues.length);
     });
   });
@@ -623,11 +629,11 @@ describe('releases', () => {
         referer: 'https://community.algolia.com/',
       });
 
-      page.on('error', err => {
+      page.on('error', (err) => {
         throw new Error(err);
       });
 
-      page.on('pageerror', pageerr => {
+      page.on('pageerror', (pageerr) => {
         throw new Error(pageerr);
       });
     });
@@ -660,9 +666,12 @@ describe('releases', () => {
       expect(apDropdown).toBeTruthy();
 
       // Places suggestion dropdown should have has many suggestions as there are hits
-      const suggestions = await page.$$eval('.ap-suggestion', $suggestions => {
-        return Array.from($suggestions).map(elt => elt.textContent);
-      });
+      const suggestions = await page.$$eval(
+        '.ap-suggestion',
+        ($suggestions) => {
+          return Array.from($suggestions).map((elt) => elt.textContent);
+        }
+      );
 
       expect(suggestions).toHaveLength(body.hits.length);
 
@@ -687,7 +696,7 @@ describe('releases', () => {
       await pendingXHR.waitForAllXhrFinished();
 
       // Places suggestion dropdown should have has many suggestions as there are hits
-      await page.$eval('.ap-suggestion', $suggestion => {
+      await page.$eval('.ap-suggestion', ($suggestion) => {
         $suggestion.click();
       });
 
@@ -746,7 +755,7 @@ describe('releases', () => {
       expect(response).toBeInstanceOf(Array);
       const definedValues = response
         .map(({ value }) => value)
-        .filter(value => value !== undefined);
+        .filter((value) => value !== undefined);
       expect(response.length).toEqual(definedValues.length);
     });
 
@@ -766,7 +775,7 @@ describe('releases', () => {
       expect(response).toBeInstanceOf(Array);
       const definedValues = response
         .map(({ value }) => value)
-        .filter(value => value !== undefined);
+        .filter((value) => value !== undefined);
       expect(response.length).toEqual(definedValues.length);
     });
   });
@@ -791,11 +800,11 @@ describe('releases', () => {
         referer: 'https://community.algolia.com/',
       });
 
-      page.on('error', err => {
+      page.on('error', (err) => {
         throw new Error(err);
       });
 
-      page.on('pageerror', pageerr => {
+      page.on('pageerror', (pageerr) => {
         throw new Error(pageerr);
       });
     });
@@ -829,8 +838,8 @@ describe('releases', () => {
       // Places suggestion dropdown should have has many suggestions as there are hits
       const suggestions = await page.$$eval(
         '.ap-dataset-places .ap-suggestion',
-        $suggestions => {
-          return Array.from($suggestions).map(elt => elt.textContent);
+        ($suggestions) => {
+          return Array.from($suggestions).map((elt) => elt.textContent);
         }
       );
 
@@ -868,11 +877,11 @@ describe('releases', () => {
         referer: 'https://community.algolia.com/',
       });
 
-      page.on('error', err => {
+      page.on('error', (err) => {
         throw new Error(err);
       });
 
-      page.on('pageerror', pageerr => {
+      page.on('pageerror', (pageerr) => {
         throw new Error(pageerr);
       });
     });
@@ -906,8 +915,8 @@ describe('releases', () => {
       // Places suggestion dropdown should have has many suggestions as there are hits
       const suggestions = await page.$$eval(
         '.ap-dataset-places .ap-suggestion',
-        $suggestions => {
-          return Array.from($suggestions).map(elt => elt.textContent);
+        ($suggestions) => {
+          return Array.from($suggestions).map((elt) => elt.textContent);
         }
       );
 
@@ -941,11 +950,11 @@ describe('releases', () => {
         referer: 'https://community.algolia.com/',
       });
 
-      page.on('error', err => {
+      page.on('error', (err) => {
         throw new Error(err);
       });
 
-      page.on('pageerror', pageerr => {
+      page.on('pageerror', (pageerr) => {
         throw new Error(pageerr);
       });
     });
@@ -976,8 +985,8 @@ describe('releases', () => {
       const aroundLatLngQueriesBeforeSelect = Array.from(
         pendingXHR.finishedWithSuccessXhrs
       )
-        .filter($request => $request._url.match(/queries/)) // generic algolia query
-        .filter($request => {
+        .filter(($request) => $request._url.match(/queries/)) // generic algolia query
+        .filter(($request) => {
           const { _postData } = $request;
           const $body = JSON.parse(_postData);
           const params = new URLSearchParams($body.requests[0].params);
@@ -996,8 +1005,8 @@ describe('releases', () => {
       const aroundLatLngQueriesAfterSelect = Array.from(
         pendingXHR.finishedWithSuccessXhrs
       )
-        .filter($request => $request._url.match(/queries/)) // generic algolia query
-        .filter($request => {
+        .filter(($request) => $request._url.match(/queries/)) // generic algolia query
+        .filter(($request) => {
           const { _postData } = $request;
           const $body = JSON.parse(_postData);
           const params = new URLSearchParams($body.requests[0].params);
@@ -1028,11 +1037,11 @@ describe('releases', () => {
         referer: 'https://community.algolia.com/',
       });
 
-      page.on('error', err => {
+      page.on('error', (err) => {
         throw new Error(err);
       });
 
-      page.on('pageerror', pageerr => {
+      page.on('pageerror', (pageerr) => {
         throw new Error(pageerr);
       });
     });
@@ -1063,8 +1072,8 @@ describe('releases', () => {
       const aroundLatLngQueriesBeforeSelect = Array.from(
         pendingXHR.finishedWithSuccessXhrs
       )
-        .filter($request => $request._url.match(/queries/)) // generic algolia query
-        .filter($request => {
+        .filter(($request) => $request._url.match(/queries/)) // generic algolia query
+        .filter(($request) => {
           const { _postData } = $request;
           const $body = JSON.parse(_postData);
           const params = new URLSearchParams($body.requests[0].params);
@@ -1083,8 +1092,8 @@ describe('releases', () => {
       const aroundLatLngQueriesAfterSelect = Array.from(
         pendingXHR.finishedWithSuccessXhrs
       )
-        .filter($request => $request._url.match(/queries/)) // generic algolia query
-        .filter($request => {
+        .filter(($request) => $request._url.match(/queries/)) // generic algolia query
+        .filter(($request) => {
           const { _postData } = $request;
           const $body = JSON.parse(_postData);
           const params = new URLSearchParams($body.requests[0].params);

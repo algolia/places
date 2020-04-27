@@ -15,7 +15,7 @@ const autocomplete = jest.fn(() => {
     },
   };
   autocomplete.__instance = instance;
-  autocomplete.__setQuery = q => {
+  autocomplete.__setQuery = (q) => {
     query = q;
   };
   return instance;

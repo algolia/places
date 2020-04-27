@@ -77,7 +77,7 @@ export default function places(options) {
         query,
         suggestions: hits,
       }),
-    onError: e => placesInstance.emit('error', e),
+    onError: (e) => placesInstance.emit('error', e),
     onRateLimitReached: () => {
       const listeners = placesInstance.listenerCount('limit');
       if (listeners === 0) {
@@ -106,7 +106,7 @@ export default function places(options) {
 
   const autocompleteChangeEvents = ['selected', 'autocompleted'];
 
-  autocompleteChangeEvents.forEach(eventName => {
+  autocompleteChangeEvents.forEach((eventName) => {
     autocompleteInstance.on(`autocomplete:${eventName}`, (_, suggestion) => {
       placesInstance.emit('change', {
         rawAnswer: suggestion.rawAnswer,
@@ -191,7 +191,7 @@ export default function places(options) {
     .addEventListener('input', inputListener);
 
   const autocompleteIsomorphicMethods = ['open', 'close'];
-  autocompleteIsomorphicMethods.forEach(methodName => {
+  autocompleteIsomorphicMethods.forEach((methodName) => {
     placesInstance[methodName] = (...args) => {
       autocompleteInstance.autocomplete[methodName](...args);
     };
@@ -224,11 +224,11 @@ export default function places(options) {
   placesInstance.autocomplete = autocompleteInstance;
 
   placesInstance.search = (query = '') =>
-    new Promise(resolve => {
+    new Promise((resolve) => {
       autocompleteDataset.source(query, resolve);
     });
 
-  placesInstance.configure = configuration => {
+  placesInstance.configure = (configuration) => {
     const safeConfig = { ...configuration };
 
     delete safeConfig.onHits;
@@ -251,7 +251,7 @@ export default function places(options) {
         query,
         suggestions: hits,
       }),
-    onError: e => placesInstance.emit('error', e),
+    onError: (e) => placesInstance.emit('error', e),
     onRateLimitReached: () => {
       const listeners = placesInstance.listenerCount('limit');
       if (listeners === 0) {

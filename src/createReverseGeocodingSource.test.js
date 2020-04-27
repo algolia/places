@@ -8,7 +8,7 @@ jest.mock('./defaultTemplates.js', () => ({
 }));
 
 jest.mock('./formatHit.js', () =>
-  jest.fn(hit => {
+  jest.fn((hit) => {
     const { formatInputValue } = hit;
     return {
       formattedHit: { ...hit, formatInputValue: formatInputValue() },
@@ -201,7 +201,7 @@ function setup(sourceOptions = {}) {
     hitsPerPage: 5,
     language: navigator.language.split('-')[0],
   };
-  const cb = jest.fn(hits => hits);
+  const cb = jest.fn((hits) => hits);
   const expectedHits = content.hits.map((hit, hitIndex) => ({
     formattedHit: {
       hit,

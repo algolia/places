@@ -17,11 +17,11 @@ export default function createAutocompleteSource({
   getRankingInfo,
   countries,
   formatInputValue,
-  computeQueryParams = params => params,
+  computeQueryParams = (params) => params,
   useDeviceLocation = false,
   language = navigator.language.split('-')[0],
   onHits = () => {},
-  onError = e => {
+  onError = (e) => {
     throw e;
   },
   onRateLimitReached,
@@ -76,7 +76,7 @@ export default function createAutocompleteSource({
 
     return placesClient
       .search(controls.computeQueryParams(searchParams))
-      .then(content => {
+      .then((content) => {
         const hits = content.hits.map((hit, hitIndex) =>
           formatHit({
             formatInputValue: controls.formatInputValue,
@@ -96,7 +96,7 @@ export default function createAutocompleteSource({
         return hits;
       })
       .then(cb)
-      .catch(e => {
+      .catch((e) => {
         if (
           e.statusCode === 403 &&
           e.message === 'Invalid Application-ID or API key'
@@ -112,7 +112,7 @@ export default function createAutocompleteSource({
       });
   }
 
-  searcher.configure = partial => {
+  searcher.configure = (partial) => {
     const updated = configure({ ...params, ...controls, ...partial });
 
     params = updated.params;

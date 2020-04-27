@@ -3,7 +3,7 @@ import formatHit from './formatHit';
 import version from './version';
 import defaultTemplates from './defaultTemplates';
 
-const filterApplicableParams = params => {
+const filterApplicableParams = (params) => {
   const { hitsPerPage, aroundLatLng, getRankingInfo, language } = params;
 
   const filtered = {};
@@ -37,7 +37,7 @@ const createReverseGeocodingSource = ({
   formatInputValue = defaultTemplates.value,
   language = navigator.language.split('-')[0],
   onHits = () => {},
-  onError = e => {
+  onError = (e) => {
     throw e;
   },
   onRateLimitReached,
@@ -75,7 +75,7 @@ const createReverseGeocodingSource = ({
 
     return placesClient
       .reverse({ ...params, aroundLatLng: finalAroundLatLng })
-      .then(content => {
+      .then((content) => {
         const hits = content.hits.map((hit, hitIndex) =>
           formatHit({
             formatInputValue: controls.formatInputValue,
@@ -95,7 +95,7 @@ const createReverseGeocodingSource = ({
         return hits;
       })
       .then(cb)
-      .catch(e => {
+      .catch((e) => {
         if (
           e.statusCode === 403 &&
           e.message === 'Invalid Application-ID or API key'
@@ -111,7 +111,7 @@ const createReverseGeocodingSource = ({
       });
   };
 
-  searcher.configure = partial => {
+  searcher.configure = (partial) => {
     const updated = configure({ ...params, ...controls, ...partial });
 
     params = filterApplicableParams(updated.params);

@@ -246,12 +246,12 @@ describe('formatHit', () => {
     }),
   ];
 
-  testCases.forEach(testCase =>
+  testCases.forEach((testCase) =>
     it(`${testCase.name} test case`, () => {
       const output = formatHit(testCase.input);
 
       // check properties
-      Object.keys(testCase.expected).forEach(key =>
+      Object.keys(testCase.expected).forEach((key) =>
         expect(output[key]).toEqual(
           testCase.expected[key],
           `unexcepted value of "${key}"`

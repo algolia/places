@@ -5,7 +5,7 @@ import createAutocompleteSource from './createAutocompleteSource';
 import algoliasearch from 'algoliasearch/src/browser/builds/algoliasearchLite';
 
 jest.mock('./formatHit.js', () =>
-  jest.fn(hit => ({ formattedHit: { ...hit } }))
+  jest.fn((hit) => ({ formattedHit: { ...hit } }))
 );
 jest.mock('algoliasearch/src/browser/builds/algoliasearchLite.js', () =>
   require.requireActual(
@@ -199,7 +199,7 @@ describe('createAutocompleteSource', () => {
     const latitude = '456';
     const longitude = '789';
     navigator.geolocation = {
-      watchPosition: fn => fn({ coords: { latitude, longitude } }),
+      watchPosition: (fn) => fn({ coords: { latitude, longitude } }),
     };
 
     const { source, defaults } = setup({ useDeviceLocation: true });
@@ -277,7 +277,7 @@ describe('createAutocompleteSource', () => {
         .then(() => {
           reject(new Error('This should not happen'));
         })
-        .catch(e => {
+        .catch((e) => {
           expect(e).toEqual(error);
           resolve();
         });
@@ -339,7 +339,7 @@ describe('createAutocompleteSource.configure', () => {
       const latitude = '456';
       const longitude = '789';
       navigator.geolocation = {
-        watchPosition: fn => fn({ coords: { latitude, longitude } }),
+        watchPosition: (fn) => fn({ coords: { latitude, longitude } }),
       };
 
       const { source, defaults } = setup({ useDeviceLocation: false });
@@ -612,7 +612,7 @@ describe('createAutocompleteSource.configure', () => {
       const latitude = '456';
       const longitude = '789';
       navigator.geolocation = {
-        watchPosition: fn => fn({ coords: { latitude, longitude } }),
+        watchPosition: (fn) => fn({ coords: { latitude, longitude } }),
         clearWatch: jest.fn(),
       };
 
@@ -659,7 +659,7 @@ function setup(sourceOptions = {}) {
     hitsPerPage: 5,
     language: navigator.language.split('-')[0],
   };
-  const cb = jest.fn(hits => hits);
+  const cb = jest.fn((hits) => hits);
   const expectedHits = content.hits.map((hit, hitIndex) => ({
     formattedHit: {
       hit,

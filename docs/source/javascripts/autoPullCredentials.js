@@ -24,8 +24,8 @@ function getCredentialsFromAlgolia() {
     method: 'GET',
     mode: 'cors',
   })
-    .then(x => x.json())
-    .then(credentials => {
+    .then((x) => x.json())
+    .then((credentials) => {
       const { application_id: appId, search_api_key: apiKey } = credentials;
       if (appId && appId.startsWith('pl') && apiKey) {
         saveCredentialsForSession({ appId, apiKey });
@@ -42,7 +42,7 @@ function getCredentials() {
     const sessionCredentials = getCredentialsFromSession();
     if (!sessionCredentials) {
       getCredentialsFromAlgolia()
-        .then(credentials => {
+        .then((credentials) => {
           resolve(credentials || {});
         })
         .catch(reject);
@@ -53,7 +53,7 @@ function getCredentials() {
 }
 
 function updatePlaceholders({ appId, apiKey }) {
-  document.querySelectorAll('.rouge-code > pre > span').forEach(elt => {
+  document.querySelectorAll('.rouge-code > pre > span').forEach((elt) => {
     if (elt.textContent.match(/.*YOUR_PLACES_APP_ID.*/)) {
       if (elt.textContent.startsWith(`'`)) {
         // eslint-disable-next-line no-param-reassign

@@ -23,7 +23,7 @@ export default function formatDropdownValue({ type, highlight }) {
 <span class="ap-name">${name}</span>
 <span class="ap-address">
   ${[city, administrative, country]
-    .filter(token => token !== undefined)
+    .filter((token) => token !== undefined)
     .join(', ')}</span>`.replace(/\s*\n\s*/g, ' ');
 
   return out;
