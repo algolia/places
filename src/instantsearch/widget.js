@@ -39,7 +39,7 @@ class AlgoliaPlacesWidget {
       this.initialLatLngViaIP = helper.getQueryParameter('aroundLatLngViaIP');
     }
 
-    this.placesAutocomplete.on('change', opts => {
+    this.placesAutocomplete.on('change', (opts) => {
       const {
         suggestion: {
           latlng: { lat, lng },

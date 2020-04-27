@@ -17,7 +17,7 @@ const createFakeClient = () => ({
   addAlgoliaAgent: () => {},
 });
 
-const createFakekHelper = client => {
+const createFakekHelper = (client) => {
   const helper = searchHelper(client);
 
   helper.search = jest.fn();

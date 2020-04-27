@@ -16,7 +16,7 @@ export default function responsiveNavigation() {
     navigationAsSelect.classList.add('display-on-small');
   }
 
-  Array.from(links).forEach(link => {
+  Array.from(links).forEach((link) => {
     const option = document.createElement('option');
     option.text = link.title;
     option.value = link.href;
@@ -27,7 +27,7 @@ export default function responsiveNavigation() {
   });
 
   navigation.appendChild(navigationAsSelect);
-  navigationAsSelect.addEventListener('change', e => {
+  navigationAsSelect.addEventListener('change', (e) => {
     window.location = e.target.value;
   });
 }

@@ -105,8 +105,8 @@ describe('places', () => {
       expect(args.autocomplete).toEqual('option'));
 
     it('triggers a suggestions event when onHits called', () => {
-      return new Promise(done => {
-        placesInstance.once('suggestions', eventData => {
+      return new Promise((done) => {
+        placesInstance.once('suggestions', (eventData) => {
           expect(eventData).toEqual({
             suggestions: 'hits',
             rawAnswer: 'rawAnswer',
@@ -120,8 +120,8 @@ describe('places', () => {
     });
 
     it('triggers an error event when onError called', () => {
-      return new Promise(done => {
-        placesInstance.once('error', eventData => {
+      return new Promise((done) => {
+        placesInstance.once('error', (eventData) => {
           expect(eventData).toEqual('error');
           done();
         });
@@ -131,8 +131,8 @@ describe('places', () => {
     });
 
     it('triggers a limit event when onRateLimitReached called', () => {
-      return new Promise(done => {
-        placesInstance.once('limit', eventData => {
+      return new Promise((done) => {
+        placesInstance.once('limit', (eventData) => {
           expect(eventData).toEqual({ message: errors.rateLimitReached });
           done();
         });
@@ -192,7 +192,7 @@ describe('places', () => {
     });
 
     it('triggers a change event on autocomplete:selected', () => {
-      return new Promise(done => {
+      return new Promise((done) => {
         const args = autocomplete.__instance.on.mock.calls[0];
         const eventName = args[0];
         const eventHandler = args[1];
@@ -208,7 +208,7 @@ describe('places', () => {
           suggestion: { rawAnswer: 'rawAnswer', query: 'query', hitIndex: 0 },
           suggestionIndex: 0,
         };
-        placesInstance.once('change', eventData => {
+        placesInstance.once('change', (eventData) => {
           expect(eventData).toEqual(expectedEventData);
           done();
         });
@@ -221,7 +221,7 @@ describe('places', () => {
     });
 
     it('triggers a change event on autocomplete:autocompleted', () => {
-      return new Promise(done => {
+      return new Promise((done) => {
         const args = autocomplete.__instance.on.mock.calls[1];
         const eventName = args[0];
         const eventHandler = args[1];
@@ -237,7 +237,7 @@ describe('places', () => {
           suggestion: { rawAnswer: 'rawAnswer', query: 'query', hitIndex: 0 },
           suggestionIndex: 0,
         };
-        placesInstance.once('change', eventData => {
+        placesInstance.once('change', (eventData) => {
           expect(eventData).toEqual(expectedEventData);
           done();
         });
@@ -250,7 +250,7 @@ describe('places', () => {
     });
 
     it('triggers a cursorchanged event on autocomplete:cursorchanged', () => {
-      return new Promise(done => {
+      return new Promise((done) => {
         const args = autocomplete.__instance.on.mock.calls[2];
         const eventName = args[0];
         const eventHandler = args[1];
@@ -266,7 +266,7 @@ describe('places', () => {
           suggestion: { rawAnswer: 'rawAnswer', query: 'query', hitIndex: 0 },
           suggestionIndex: 0,
         };
-        placesInstance.once('cursorchanged', eventData => {
+        placesInstance.once('cursorchanged', (eventData) => {
           expect(eventData).toEqual(expectedEventData);
           done();
         });
@@ -279,7 +279,7 @@ describe('places', () => {
     });
 
     it('has a clear button', () => {
-      return new Promise(done => {
+      return new Promise((done) => {
         const clearButton = document.querySelector(
           'button.ap-input-icon.ap-icon-clear'
         );
@@ -327,7 +327,7 @@ describe('places', () => {
       });
 
       it('emits a clear event when necessary', () => {
-        return new Promise(done => {
+        return new Promise((done) => {
           placesInstance.once('clear', () => {
             expect(true).toBeTruthy();
             done();
@@ -382,7 +382,7 @@ describe('places', () => {
 
     it('has all autocomplete methods', () => {
       const autocompleteMethods = ['open', 'close', 'setVal', 'destroy'];
-      autocompleteMethods.forEach(methodName => {
+      autocompleteMethods.forEach((methodName) => {
         placesInstance[methodName]('hello');
         expect(
           autocomplete.__instance.autocomplete[methodName]

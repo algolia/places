@@ -6,7 +6,7 @@ const getFormURL = (ip, coords) =>
     ip
   )}&entry.2019626860=${encodeURIComponent(coords)}`;
 link.setAttribute('href', getFormURL(defaultIp, defaultCoords));
-link.addEventListener('click', clickEvent => {
+link.addEventListener('click', (clickEvent) => {
   clickEvent.preventDefault();
   try {
     navigator.geolocation.getCurrentPosition(

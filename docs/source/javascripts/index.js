@@ -11,11 +11,11 @@ $input.style.opacity = 1; // we initially hide the input to avoid size flickerin
 
 if (process.env.NODE_ENV === 'development') {
   const events = ['change', 'suggestions', 'cursorchanged'];
-  events.forEach(eventName =>
-    placesAutocomplete.on(eventName, eventData => {
+  events.forEach((eventName) =>
+    placesAutocomplete.on(eventName, (eventData) => {
       console.log(`Algolia Places: received event **${eventName}**`);
       if (typeof console.table === 'function') {
-        Object.keys(eventData).forEach(dataKeyName => {
+        Object.keys(eventData).forEach((dataKeyName) => {
           console.log(`data: ${dataKeyName}`);
           const data = eventData[dataKeyName];
           if (Array.isArray(data)) {
@@ -31,7 +31,7 @@ if (process.env.NODE_ENV === 'development') {
   );
 }
 
-const processingTime = time => {
+const processingTime = (time) => {
   switch (true) {
     case time < 26:
       return 'data-highlight-fast';
@@ -47,7 +47,7 @@ const processingTime = time => {
 const $response = document.querySelector('#json-response');
 const $responseText = document.querySelector('#json-response-text');
 const $responseTiming = document.querySelector('#json-response-timing');
-placesAutocomplete.on('change', e => {
+placesAutocomplete.on('change', (e) => {
   let postcodes = (e.suggestion.postcodes || []).slice(0, 3);
   if (postcodes.length !== (e.suggestion.postcodes || []).length) {
     postcodes = [...postcodes, '...'];

@@ -19,7 +19,7 @@ const extractParams = ({
   };
 
   if (Array.isArray(countries)) {
-    extracted.countries = extracted.countries.map(country =>
+    extracted.countries = extracted.countries.map((country) =>
       country.toLowerCase()
     );
   }
@@ -49,10 +49,10 @@ const extractParams = ({
 
 const extractControls = ({
   useDeviceLocation = false,
-  computeQueryParams = params => params,
+  computeQueryParams = (params) => params,
   formatInputValue,
   onHits = () => {},
-  onError = e => {
+  onError = (e) => {
     throw e;
   },
   onRateLimitReached,
@@ -70,7 +70,7 @@ const extractControls = ({
 let params = {};
 let controls = {};
 
-const configure = configuration => {
+const configure = (configuration) => {
   params = extractParams({ ...params, ...configuration });
   controls = extractControls({ ...controls, ...configuration });
 

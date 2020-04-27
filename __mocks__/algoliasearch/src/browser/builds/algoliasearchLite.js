@@ -17,7 +17,7 @@ const algoliasearch = {
 algoliasearch.__searchSpy = search;
 algoliasearch.__reverseSpy = reverse;
 algoliasearch.__addAlgoliaAgentSpy = addAlgoliaAgent;
-algoliasearch.__setSearchStub = fn => {
+algoliasearch.__setSearchStub = (fn) => {
   searchStub = fn;
 };
 algoliasearch.__clearSearchStub = () => {

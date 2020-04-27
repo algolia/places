@@ -11,7 +11,7 @@ export default function sidebar({
   let currentList = list;
   let currentLevel = startLevel;
 
-  Array.from(headers).forEach(header => {
+  Array.from(headers).forEach((header) => {
     const level = parseInt(header.tagName.split('')[1], 10);
 
     if (level > currentLevel) {
@@ -44,7 +44,7 @@ export default function sidebar({
     select.appendChild(option);
   });
 
-  select.addEventListener('change', e => {
+  select.addEventListener('change', (e) => {
     window.location = e.target.value;
   });
   sidebarContainer.appendChild(list);
@@ -100,11 +100,11 @@ function sidebarFollowScroll(sidebarContainer) {
 function scrollSpy(sidebarContainer, headersContainer) {
   const headers = Array.from(headersContainer.querySelectorAll('h2, h3'));
 
-  const setActiveSidebarLink = header => {
-    Array.from(sidebarContainer.querySelectorAll('a')).forEach(item => {
+  const setActiveSidebarLink = (header) => {
+    Array.from(sidebarContainer.querySelectorAll('a')).forEach((item) => {
       const matches = Array.from(item.parentNode.querySelectorAll('a'))
-        .map(sub => sub.getAttribute('href').slice(1))
-        .filter(ref => ref === header.getAttribute('id'));
+        .map((sub) => sub.getAttribute('href').slice(1))
+        .filter((ref) => ref === header.getAttribute('id'));
       if (matches.length > 0) {
         item.classList.add('active');
       } else {
@@ -115,7 +115,7 @@ function scrollSpy(sidebarContainer, headersContainer) {
 
   const findActiveSidebarLink = () => {
     const highestVisibleHeaders = headers
-      .map(header => ({
+      .map((header) => ({
         element: header,
         rect: header.getBoundingClientRect(),
       }))
@@ -152,9 +152,9 @@ function scrollSpy(sidebarContainer, headersContainer) {
 function activeLinks(sidebarContainer) {
   const linksContainer = sidebarContainer.querySelector('ul');
 
-  linksContainer.addEventListener('click', e => {
+  linksContainer.addEventListener('click', (e) => {
     if (e.target.tagName === 'A') {
-      Array.from(linksContainer.querySelectorAll('a')).forEach(item =>
+      Array.from(linksContainer.querySelectorAll('a')).forEach((item) =>
         item.classList.remove('active')
       );
       e.target.classList.add('active');

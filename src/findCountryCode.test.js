@@ -14,7 +14,7 @@ describe('findCountryCode', () => {
     },
   ];
 
-  testCases.forEach(testCase =>
+  testCases.forEach((testCase) =>
     it(`${testCase.name} test case`, () =>
       expect(findCountryCode(testCase.input)).toEqual(testCase.expected))
   );
