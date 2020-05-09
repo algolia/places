@@ -52,7 +52,7 @@
     "babel-loader": "8.1.0",
     "babel-plugin-inline-import": "3.0.0",
     "clipboard": "2.0.6",
-    "conventional-changelog-cli": "2.0.31",
+    "conventional-changelog-cli": "2.0.34",
     "docsearch.js": "2.6.3",
     "doctoc": "1.4.0",
     "eslint": "6.8.0",
