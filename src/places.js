@@ -159,6 +159,7 @@ export default function places(options) {
   pin.addEventListener('click', () => {
     autocompleteDataset.source.configure({ useDeviceLocation: true });
     autocompleteInstance.focus();
+    placesInstance.emit('locate');
   });
 
   clear.addEventListener('click', () => {

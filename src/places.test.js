@@ -160,9 +160,19 @@ describe('places', () => {
 
   describe('places autocomplete', () => {
     let placesInstance;
+    let configureMock;
 
     beforeEach(() => {
       autocomplete.mockClear();
+      createAutocompleteDataset.mockClear();
+      configureMock = jest.fn();
+      createAutocompleteDataset.mockImplementation(() => ({
+        source: {
+          configure: configureMock,
+        },
+        other: 'autocompleteDataset',
+      }));
+
       const container = document
         .querySelector('body')
         .appendChild(document.createElement('input'));
@@ -184,7 +194,7 @@ describe('places', () => {
         },
         {
           source: {
-            configure: 'configure',
+            configure: configureMock,
           },
           other: 'autocompleteDataset',
         }
@@ -307,6 +317,22 @@ describe('places', () => {
       );
       expect(pinButton.style.display).toEqual('');
       expect(pinButton.getAttribute('aria-label')).toEqual('focus');
+    });
+
+    it('triggers a locate event on pin click', () => {
+      return new Promise((done) => {
+        const pinButton = document.querySelector('.ap-icon-pin');
+        placesInstance.once('locate', () => {
+          expect(configureMock).toHaveBeenCalledWith({
+            useDeviceLocation: true,
+          });
+
+          expect(autocomplete.__instance.focus).toHaveBeenCalled();
+          done();
+        });
+
+        pinButton.dispatchEvent(new Event('click'));
+      });
     });
 
     describe('input listener', () => {
