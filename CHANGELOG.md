@@ -1,3 +1,12 @@
+# [1.19.0](https://github.com/algolia/places/compare/v1.18.2...v1.19.0) (2020-05-26)
+
+
+### Features
+
+* **autocomplete:** add locate event when pin is clicked + tests ([#1063](https://github.com/algolia/places/issues/1063)) ([9b9efdc](https://github.com/algolia/places/commit/9b9efdc0977d6986ca909d5432077926864d10a1))
+
+
+
 ## [1.18.2](https://github.com/algolia/places/compare/v1.18.1...v1.18.2) (2020-04-27)
 
 
