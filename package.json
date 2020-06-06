@@ -73,7 +73,7 @@
     "raw-loader": "4.0.1",
     "replace-in-file": "6.0.0",
     "semver": "7.3.2",
-    "uglify-js": "3.9.3",
+    "uglify-js": "3.9.4",
     "webpack": "4.43.0",
     "webpack-cli": "3.3.11"
   },
