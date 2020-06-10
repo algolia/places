@@ -12,9 +12,10 @@ You can read more about how to use the Places.js library in the [documentation s
 ## API Clients
 ### JavaScript API Client
 
-You can directly query the [Places REST API](api-clients.html#rest-api) using our [JavaScript API client](https://github.com/algolia/algoliasearch-client-javascript), either in browsers or with [Node.js](https://nodejs.org/).
+You can directly query the [Places REST API](api-clients.html#rest-api) using our [JavaScript API client v3](https://github.com/algolia/algoliasearch-client-javascript), either in browsers or with [Node.js](https://nodejs.org/).
 
-
+**Important:** The initPlaces method is only available algoliasearch v3, therefore we highly recommend you use algoliasearch v3 for this
+specific functionality. If your project is running the v4, you can follow [this workaround](https://www.algolia.com/doc/api-client/getting-started/upgrade-guides/javascript/#the-initplaces-method).
 
 ```js
 // var algoliasearch = require('algoliasearch');
