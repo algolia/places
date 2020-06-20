@@ -75,7 +75,7 @@
     "semver": "7.3.2",
     "uglify-js": "3.9.4",
     "webpack": "4.43.0",
-    "webpack-cli": "3.3.11"
+    "webpack-cli": "3.3.12"
   },
   "dependencies": {
     "algoliasearch": "^3.35.1",
