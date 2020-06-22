@@ -31,7 +31,7 @@ do
     --source-map "content=${dist_file_sourcemap}" \
     --source-map "base=${dist_file_sourcemap_min}" \
     --source-map "url=${source_map_min}" \
-    -b preamble="$license" \
+    -b beautify=false,preamble="\"$license\"" \
     -c \
     -m \
     -o "${dist_file_min}"
