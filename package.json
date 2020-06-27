@@ -69,7 +69,7 @@
     "pending-xhr-puppeteer": "2.3.2",
     "prettier": "2.0.5",
     "pretty-bytes-cli": "2.0.0",
-    "puppeteer": "3.3.0",
+    "puppeteer": "4.0.1",
     "raw-loader": "4.0.1",
     "replace-in-file": "6.1.0",
     "semver": "7.3.2",
