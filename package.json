@@ -64,7 +64,7 @@
     "eslint-plugin-jest": "23.20.0",
     "eslint-plugin-prettier": "3.1.4",
     "eslint-plugin-react": "7.20.6",
-    "jest-cli": "26.4.1",
+    "jest-cli": "26.4.2",
     "json": "9.0.6",
     "pending-xhr-puppeteer": "2.3.2",
     "prettier": "2.0.5",
