@@ -17,7 +17,7 @@ jest.mock('./formatHit.js', () =>
 );
 
 jest.mock('algoliasearch/src/browser/builds/algoliasearchLite.js', () =>
-  require.requireActual(
+  jest.requireActual(
     '../__mocks__/algoliasearch/src/browser/builds/algoliasearchLite.js'
   )
 );

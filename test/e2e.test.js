@@ -61,25 +61,27 @@ describe('releases', () => {
     let browser;
     let page;
 
-    beforeAll((done) => {
-      url = `file://${path.join(__dirname, 'npm-lib', 'index.html')}`;
-      // webpack bundle
-      webpack(
-        {
-          mode: 'development',
-          target: 'web',
-          entry: {
-            places: path.join(__dirname, 'npm-lib', 'import.js'),
+    beforeAll(() => {
+      return new Promise((resolve) => {
+        url = `file://${path.join(__dirname, 'npm-lib', 'index.html')}`;
+        // webpack bundle
+        webpack(
+          {
+            mode: 'development',
+            target: 'web',
+            entry: {
+              places: path.join(__dirname, 'npm-lib', 'import.js'),
+            },
+            output: {
+              path: path.join(__dirname, 'npm-lib'),
+              libraryTarget: 'umd',
+            },
           },
-          output: {
-            path: path.join(__dirname, 'npm-lib'),
-            libraryTarget: 'umd',
-          },
-        },
-        () => {
-          done();
-        }
-      );
+          () => {
+            resolve();
+          }
+        );
+      });
     });
 
     beforeEach(async () => {
@@ -249,25 +251,31 @@ describe('releases', () => {
     let browser;
     let page;
 
-    beforeAll((done) => {
-      url = `file://${path.join(__dirname, 'npm-autocomplete', 'index.html')}`;
-      // webpack bundle
-      webpack(
-        {
-          mode: 'development',
-          target: 'web',
-          entry: {
-            places: path.join(__dirname, 'npm-autocomplete', 'import.js'),
+    beforeAll(() => {
+      return new Promise((resolve) => {
+        url = `file://${path.join(
+          __dirname,
+          'npm-autocomplete',
+          'index.html'
+        )}`;
+        // webpack bundle
+        webpack(
+          {
+            mode: 'development',
+            target: 'web',
+            entry: {
+              places: path.join(__dirname, 'npm-autocomplete', 'import.js'),
+            },
+            output: {
+              path: path.join(__dirname, 'npm-autocomplete'),
+              libraryTarget: 'umd',
+            },
           },
-          output: {
-            path: path.join(__dirname, 'npm-autocomplete'),
-            libraryTarget: 'umd',
-          },
-        },
-        () => {
-          done();
-        }
-      );
+          () => {
+            resolve();
+          }
+        );
+      });
     });
 
     beforeEach(async () => {
@@ -339,25 +347,27 @@ describe('releases', () => {
     let browser;
     let page;
 
-    beforeAll((done) => {
-      url = `file://${path.join(__dirname, 'npm-widget', 'index.html')}`;
-      // webpack bundle
-      webpack(
-        {
-          mode: 'development',
-          target: 'web',
-          entry: {
-            places: path.join(__dirname, 'npm-widget', 'import.js'),
+    beforeAll(() => {
+      return new Promise((resolve) => {
+        url = `file://${path.join(__dirname, 'npm-widget', 'index.html')}`;
+        // webpack bundle
+        webpack(
+          {
+            mode: 'development',
+            target: 'web',
+            entry: {
+              places: path.join(__dirname, 'npm-widget', 'import.js'),
+            },
+            output: {
+              path: path.join(__dirname, 'npm-widget'),
+              libraryTarget: 'umd',
+            },
           },
-          output: {
-            path: path.join(__dirname, 'npm-widget'),
-            libraryTarget: 'umd',
-          },
-        },
-        () => {
-          done();
-        }
-      );
+          () => {
+            resolve();
+          }
+        );
+      });
     });
 
     beforeEach(async () => {
