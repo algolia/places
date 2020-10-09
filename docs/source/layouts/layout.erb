@@ -30,6 +30,9 @@
     <% if current_page.path == 'index.html' %>
     <link rel=canonical href="https://community.algolia.com/places">
     <% end %>
+    <% if current_page.path == 'contact.html' %>
+    <meta http-equiv="refresh" content="0; URL='https://www.algolia.com/contactus/'" />
+    <% end %>
 
     <%= stylesheet_link_tag :site %>
     <%= auto_stylesheet_link_tag %>
