@@ -1,0 +1,7 @@
+
+[[plugins]]
+package = "@algolia/netlify-plugin-crawler"
+  [plugins.inputs]
+  branches = ["*"]
+  customDomain = 'community.algolia.com'
+  pathPrefix = '/places'
