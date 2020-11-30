@@ -3,8 +3,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: $navigation-height;
-  padding: 0 16px;
+  height: calc($navigation-height * 2);
   margin: 0;
   line-height: $navigation-height;
   z-index: 101;
@@ -38,8 +37,25 @@
     }
   }
 
+  .ac-announcement {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 600;
+    color: #F5A623;
+    border-bottom: 1px solid rgba(245, 166, 35, 0.5);
+
+    a {
+      color: #F5A623;
+      text-decoration: underline;
+    }
+  }
+
   .ac-nav-brand,
   .ac-nav-menu {
+    padding: 0 16px;
     max-height: 50px;
   }
 
