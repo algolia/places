@@ -71,7 +71,7 @@
     "puppeteer": "5.5.0",
     "raw-loader": "4.0.2",
     "replace-in-file": "6.1.0",
-    "semver": "7.3.2",
+    "semver": "7.3.4",
     "uglify-js": "3.12.0",
     "webpack": "4.44.2",
     "webpack-cli": "3.3.12"
