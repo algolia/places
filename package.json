@@ -34,7 +34,7 @@
     "@babel/core": "7.12.10",
     "@babel/node": "7.12.10",
     "@babel/plugin-proposal-class-properties": "7.12.1",
-    "@babel/plugin-proposal-decorators": "7.12.1",
+    "@babel/plugin-proposal-decorators": "7.12.12",
     "@babel/plugin-proposal-export-namespace-from": "7.12.1",
     "@babel/plugin-proposal-function-sent": "7.12.1",
     "@babel/plugin-proposal-json-strings": "7.12.1",
