@@ -55,7 +55,7 @@
     "conventional-changelog-cli": "2.1.1",
     "docsearch.js": "2.6.3",
     "doctoc": "1.4.0",
-    "eslint": "7.18.0",
+    "eslint": "7.19.0",
     "eslint-config-algolia": "16.0.0",
     "eslint-config-prettier": "6.15.0",
     "eslint-import-resolver-webpack": "0.13.0",
