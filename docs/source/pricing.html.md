@@ -5,7 +5,7 @@ layout: documentation
 
 ## Pricing
 
-By [signing up](https://www.algolia.com/users/sign_up/places), you can create a free Places app and access your API keys.
+Algolia Places is being sunset. It is not possible to sign up anymore.
 
 <table class="rate-limits">
   <thead>
@@ -23,11 +23,9 @@ By [signing up](https://www.algolia.com/users/sign_up/places), you can create a 
       </td>
       <td>
         <p>Free, requires authentication</p>
-        <p><a href="https://www.algolia.com/users/sign_up/places">Sign up</a></p>
       </td>
       <td>
         <p>$0.40 per 1,000 requests</p>
-        <p><a href="https://www.algolia.com/users/sign_up/places">Sign up</a></p>
       </td>
       <td>
         <p>Up to Unlimited</p>
