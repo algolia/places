@@ -68,7 +68,7 @@
     "json": "10.0.0",
     "prettier": "2.2.1",
     "pretty-bytes-cli": "2.0.0",
-    "puppeteer": "5.5.0",
+    "puppeteer": "7.1.0",
     "raw-loader": "4.0.2",
     "replace-in-file": "6.2.0",
     "semver": "7.3.4",
