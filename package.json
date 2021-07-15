@@ -81,7 +81,7 @@
     "autocomplete.js": "^0.38.0",
     "events": "^3.0.0",
     "insert-css": "^2.0.0",
-    "pending-xhr-puppeteer": "1.0.17"
+    "pending-xhr-puppeteer": "2.3.3"
   },
   "jest": {
     "testRegex": "\\.test\\.js$",
