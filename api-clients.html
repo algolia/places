@@ -1,0 +1,334 @@
+<!doctype html> <html> <head> <meta content="IE=edge" http-equiv=X-UA-Compatible> <meta charset=utf-8> <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name=viewport> <!--[if IE]><link rel="shortcut icon" href="images/favicon-4989dd00.png"><![endif]--> <link rel=icon href="images/favicon-4989dd00.png"> <meta content="IE=edge,chrome=1" http-equiv=X-UA-Compatible> <meta content=summary_large_image name='twitter:card'> <meta content='Algolia Places' name='twitter:site'> <meta content='@Algolia' name='twitter:creator'> <meta content="Autocompletion within search is essential for user experience and address search functionality. Learn how Algolia Places increases both with speed and ease." name="twitter:description"> <meta content="https://res.cloudinary.com/hilnmyskv/image/upload/v1466000434/places-og-image_jp9phw.png" name="twitter:image"> <meta content='https://community.algolia.com/places/' property='og:url'> <meta content='Algolia Places' property='og:title'> <meta content='https://res.cloudinary.com/hilnmyskv/image/upload/v1466000434/places-og-image_jp9phw.png' property='og:image'> <meta content='Autocompletion within search is essential for user experience and address search functionality. Learn how Algolia Places increases both with speed and ease.' property='og:description'> <meta content='Algolia Places' property='og:site_name'> <title>Algolia Places | API Clients and REST API</title> <link rel=stylesheet href="https://cdn.jsdelivr.net/hint.css/2/hint.min.css"/> <link rel=stylesheet media=screen href="//fonts.googleapis.com/css?family=Raleway:300,800"> <link href="stylesheets/site-b3fc0d41.css" rel=stylesheet /> <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script> <script>
+      var currentPath = 'api-clients.html';
+      var clippyPath = 'images/clippy-386f5330.svg';
+    </script> </head> <body class=api-clients> <div class=ac-nav> <div class=ac-nav-container> <div class=ac-announcement> <a href='https://www.algolia.com/blog/sunsetting-our-places-feature/' title='Places is going away on May 31st 2022. Read our announcement.'>Places is going away on May 31st 2022. Read our announcement.</a> </div> </div> <div class=ac-nav-container> <div class=ac-nav-brand> <a class=ac-logo href='https://community.algolia.com/' title='Algolia Community'> <img alt='Algolia Community' class='ac-logo__lg nav-icon' src='https://res.cloudinary.com/hilnmyskv/image/upload/v1484217596/algolia-community-logo-darkbg.svg' width=150> <img alt='Algolia Community' class='ac-logo__sm community-badge' src='images/svg/logo-community-fcccfd2c.svg'> </a> <span class=ac-nav-brand-breadcrumb></span> <a class=ac-nav-brand-title data-path='index.html' href='./' title=Home>Places</a> </div> <div class=ac-nav-menu> <div class=ac-nav-searchbox> <form class=searchbox id=docsearch-form novalidate=novalidate onsubmit='return false;' style='visibility:hidden;height:0'> <div class=searchbox__wrapper role=search> <input autocomplete=off class=searchbox__input id=docsearch name=search placeholder='Search in the doc' required=required type=search> <button class=searchbox__submit title='Submit your search query.' type=submit> <svg aria-label=Search role=img> <use xlink:href='#sbx-icon-search-13' xmlns:xlink='http://www.w3.org/1999/xlink'></use> </svg> </button> <button class='searchbox__reset hide' title='Clear the search query.' type=reset> <svg aria-label=Reset role=img> <use xlink:href='#sbx-icon-clear-3' xmlns:xlink='http://www.w3.org/1999/xlink'></use> </svg> </button> </input> </div> </form> <div class=svg-icons style='height: 0; width: 0; position: absolute; visibility: hidden'> <svg xmlns='http://www.w3.org/2000/svg'> <symbol id=sbx-icon-clear-3 viewBox="0 0 40 40"><path d="M16.228 20L1.886 5.657 0 3.772 3.772 0l1.885 1.886L20 16.228 34.343 1.886 36.228 0 40 3.772l-1.886 1.885L23.772 20l14.342 14.343L40 36.228 36.228 40l-1.885-1.886L20 23.772 5.657 38.114 3.772 40 0 36.228l1.886-1.885L16.228 20z" fill-rule=evenodd /></symbol> <symbol id=sbx-icon-search-13 viewBox="0 0 12 12"><path d="M12 11.077c0-.245-.1-.483-.267-.65L9.26 7.955c.584-.843.894-1.853.894-2.877C10.154 2.272 7.882 0 5.077 0S0 2.272 0 5.077s2.272 5.077 5.077 5.077c1.024 0 2.034-.31 2.877-.894l2.474 2.466c.166.173.404.274.65.274.504 0 .922-.418.922-.923zm-3.692-6c0 1.78-1.45 3.23-3.23 3.23-1.782 0-3.232-1.45-3.232-3.23s1.45-3.23 3.23-3.23c1.782 0 3.232 1.45 3.232 3.23z" fill="#FFF" fill-rule=evenodd opacity="0.85"/></symbol> </svg> </div> </div> <ul class=ac-nav-menu-list> <li class=ac-nav-menu-list-item> <a data-path='documentation.html' href='documentation.html' title=Documentation>Documentation</a> </li> <li class='ac-nav-menu-list-item active'> <a data-path='api-clients.html' href='api-clients.html' title='API Clients'>API Clients</a> </li> <li class=ac-nav-menu-list-item> <a data-path='examples.html' href='examples.html' title=Examples>Examples</a> </li> <li class=ac-nav-menu-list-item> <a data-path='pricing.html' href='pricing.html' title=Pricing>Pricing</a> </li> <li class=ac-nav-menu-list-item> <a data-path='status.html' href='status.html' title=Status>Status</a> </li> <li class=ac-nav-menu-list-item> <a data-path='support.html' href='support.html' title=Support>Support</a> </li> <li class=ac-nav-menu-list-item> <a data-path='https://www.algolia.com/contactus/' href='https://www.algolia.com/contactus/' title=Contact>Contact</a> </li> <li class=ac-nav-menu-list-icon> <a class=ac-icon href='https://github.com/algolia/places' title='GitHub repository'> <span class='ac-icon ac-icon-github'></span> </a> </li> </ul> </div> </div> </div> <section class='hero-section shrink'> <div class=container> <div class=hero-container> <div class=fl-left> <a href='https://www.algolia.com/?utm_medium=social-owned&amp;utm_source=places%20website&amp;utm_campaign=homepage' title='Algolia built this'> <span class='icon icon-algolia-small no-mobile' id=icon-algolia></span> </a> <span class='display-on-small small-illustration'> <img src='images/svg/places-illustration-65745839.svg'> </span> <h1>API Clients and REST API</h1> </div> </div> </div> <div class=relative> <div id=json-response> <div id=json-response-text></div> <div id=json-response-timing></div> </div> </div> </section> <section class=documentation-section> <div class=container> <nav class=sidebar id=sidebar></nav> <div class=documentation-container> <h2 id=placesjs-library>Places.js Library</h2> <p><strong>Important:</strong> The default way to use Places is through the Places.js library.</p> <p>You can read more about how to use the Places.js library in the <a href="documentation.html">documentation section</a>. The present section is describing alternative ways of accessing Places data. You should first checkout out the <a href="documentation.html">documentation</a> for Places.js as well as the <a href="examples.html">examples</a> page to determine whether or not the clients are a better fit for your use case.</p> <h2 id=api-clients>API Clients</h2> <h3 id=javascript-api-client>JavaScript API Client</h3> <p>You can directly query the <a href="api-clients.html#rest-api">Places REST API</a> using our <a href="https://github.com/algolia/algoliasearch-client-javascript">JavaScript API client v3</a>, either in browsers or with <a href="https://nodejs.org/">Node.js</a>.</p> <p><strong>Important:</strong> The initPlaces method is only available algoliasearch v3, therefore we highly recommend you use algoliasearch v3 for this<br/> specific functionality. If your project is running the v4, you can follow <a href="https://www.algolia.com/doc/api-client/getting-started/upgrade-guides/javascript/#the-initplaces-method">this workaround</a>.</p> <div class=highlight><pre class="codehilite javascript"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class=rouge-code><pre><span class="c1">// var algoliasearch = require('algoliasearch');</span>
+<span class="kd">var</span> <span class="nx">places</span> <span class="o">=</span> <span class="nx">algoliasearch</span><span class="p">.</span><span class="nx">initPlaces</span><span class="p">(</span><span class="dl">'</span><span class="s1">YOUR_PLACES_APP_ID</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">YOUR_PLACES_API_KEY</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">places</span>
+  <span class="p">.</span><span class="nx">search</span><span class="p">(</span><span class="cm">/*{REST API Params}*/</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+  <span class="p">});</span>
+
+<span class="nx">places</span>
+  <span class="p">.</span><span class="nx">getObject</span><span class="p">(</span><span class="cm">/*{REST API Params}*/</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+  <span class="p">});</span>
+</pre></td></tr></tbody></table></code></pre></div> <p>Note: <em>Like with the Places.js library, you need to provide your Places App credentials in order for the clients to function properly.</em></p> <h3 id=php-api-client>PHP API Client</h3> <p>You can directly query the <a href="api-clients.html#rest-api">Places REST API</a> with our <a href="https://github.com/algolia/algoliasearch-client-php">PHP API Client</a>, so that you can do backend Places searches.</p> <div class=highlight><pre class="codehilite php"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class=rouge-code><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$appId</span> <span class="o">=</span> <span class="s1">'YOUR_PLACES_APP_ID'</span><span class="p">;</span>
+<span class="nv">$apiKey</span> <span class="o">=</span> <span class="s1">'YOUR_PLACES_API_KEY'</span><span class="p">;</span>
+
+<span class="nv">$places</span> <span class="o">=</span> <span class="nx">\Algolia\AlgoliaSearch\PlacesClient</span><span class="o">::</span><span class="na">create</span><span class="p">(</span><span class="nv">$appId</span><span class="p">,</span> <span class="nv">$apiKey</span><span class="p">);</span>
+
+<span class="nv">$result</span> <span class="o">=</span> <span class="nv">$places</span><span class="o">-&gt;</span><span class="na">search</span><span class="p">(</span><span class="s1">'Paris'</span><span class="p">);</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div> <p><strong>Important:</strong> the following syntax is correct for version 2.0.0 and above of the PHP API client. The API client documentation has a guide on <a href="https://www.algolia.com/doc/api-client/getting-started/upgrade-guides/php/#places-index-instantiation">how to migrate from version 1 to version 2</a></p> <p>Note: <em>Like with the Places.js library, you need to provide your Places App credentials in order for the clients to function properly.</em></p> <h3 id=swift-api-client>Swift API Client</h3> <p>You can directly query the <a href="api-clients.html#rest-api">Places REST API</a> with our <a href="https://github.com/algolia/algoliasearch-client-swift">Swift API Client</a>.</p> <div class=highlight><pre class="codehilite swift"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class=rouge-code><pre><span class="c1">// Provide credentials to create an authenticated, full-fledged client:</span>
+<span class="k">var</span> <span class="nv">places</span> <span class="o">=</span> <span class="kt">PlacesClient</span><span class="p">(</span><span class="nv">appID</span><span class="p">:</span> <span class="s">"YOUR_PLACES_APP_ID"</span><span class="p">,</span> <span class="nv">apiKey</span><span class="p">:</span> <span class="s">"YOUR_PLACES_API_KEY"</span><span class="p">)</span>
+
+ <span class="c1">// Create your query and set its parameters for your search</span>
+<span class="k">let</span> <span class="nv">query</span> <span class="o">=</span> <span class="kt">PlacesQuery</span><span class="p">()</span>
+<span class="n">query</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="s">"Paris"</span>
+<span class="n">query</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="o">.</span><span class="n">city</span>
+<span class="n">query</span><span class="o">.</span><span class="n">hitsPerPage</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">query</span><span class="o">.</span><span class="n">aroundLatLngViaIP</span> <span class="o">=</span> <span class="kc">false</span>
+<span class="n">query</span><span class="o">.</span><span class="n">aroundLatLng</span> <span class="o">=</span> <span class="kt">LatLng</span><span class="p">(</span><span class="nv">lat</span><span class="p">:</span> <span class="mf">32.7767</span><span class="p">,</span> <span class="nv">lng</span><span class="p">:</span> <span class="o">-</span><span class="mf">96.7970</span><span class="p">)</span> <span class="c1">// Dallas, TX, USA</span>
+<span class="n">query</span><span class="o">.</span><span class="n">language</span> <span class="o">=</span> <span class="s">"en"</span>
+<span class="n">query</span><span class="o">.</span><span class="n">countries</span> <span class="o">=</span> <span class="p">[</span><span class="s">"fr"</span><span class="p">,</span> <span class="s">"us"</span><span class="p">]</span>
+
+<span class="c1">// Search Places</span>
+<span class="n">places</span><span class="o">.</span><span class="nf">search</span><span class="p">(</span><span class="n">query</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+    <span class="k">if</span> <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">error</span> <span class="p">{</span>
+        <span class="c1">// do something with error</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="k">let</span> <span class="nv">content</span> <span class="o">=</span> <span class="n">content</span> <span class="p">{</span>
+        <span class="c1">// do something with content["hits"] to access the hits</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div> <p>Note: <em>Like with the Places.js library, you need to provide your Places App credentials in order for the clients to function properly.</em></p> <h3 id=android-api-client>Android API Client</h3> <p>You can directly query the <a href="api-clients.html#rest-api">Places REST API</a> with our <a href="https://github.com/algolia/algoliasearch-client-android">Android API Client</a>.</p> <div class=highlight><pre class="codehilite java"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class=rouge-code><pre><span class="c1">// initialize client</span>
+<span class="nc">PlacesClient</span> <span class="n">places</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PlacesClient</span><span class="o">(</span><span class="s">"YOUR_PLACES_APP_ID"</span><span class="o">,</span> <span class="s">"YOUR_PLACES_API_KEY"</span><span class="o">);</span>
+
+<span class="c1">// craft a query</span>
+<span class="nc">PlacesQuery</span> <span class="n">query</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PlacesQuery</span><span class="o">();</span>
+<span class="n">query</span><span class="o">.</span><span class="na">setQuery</span><span class="o">(</span><span class="s">"Paris"</span><span class="o">);</span>
+<span class="n">query</span><span class="o">.</span><span class="na">setType</span><span class="o">(</span><span class="nc">PlacesQuery</span><span class="o">.</span><span class="na">Type</span><span class="o">.</span><span class="na">CITY</span><span class="o">);</span>
+<span class="n">query</span><span class="o">.</span><span class="na">setHitsPerPage</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
+<span class="n">query</span><span class="o">.</span><span class="na">setAroundLatLngViaIP</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+<span class="n">query</span><span class="o">.</span><span class="na">setAroundLatLng</span><span class="o">(</span><span class="k">new</span> <span class="nc">PlacesQuery</span><span class="o">.</span><span class="na">LatLng</span><span class="o">(</span><span class="mf">32.7767</span><span class="o">,</span> <span class="o">-</span><span class="mf">96.7970</span><span class="o">));</span> <span class="c1">// Dallas, TX, USA</span>
+<span class="n">query</span><span class="o">.</span><span class="na">setLanguage</span><span class="o">(</span><span class="s">"en"</span><span class="o">);</span>
+<span class="n">query</span><span class="o">.</span><span class="na">setCountries</span><span class="o">(</span><span class="s">"fr"</span><span class="o">,</span> <span class="s">"us"</span><span class="o">);</span>
+
+<span class="c1">// search</span>
+<span class="n">places</span><span class="o">.</span><span class="na">searchAsync</span><span class="o">(</span><span class="n">query</span><span class="o">,</span> <span class="k">new</span> <span class="nc">CompletionHandler</span><span class="o">()</span> <span class="o">{</span>
+    <span class="o">...</span>
+<span class="o">});</span>
+</pre></td></tr></tbody></table></code></pre></div> <h3 id=kotlin-api-client>Kotlin API Client</h3> <p>You can directly query the <a href="api-clients.html#rest-api">Places REST API</a> with our <a href="https://github.com/algolia/algoliasearch-client-kotlin">Kotlin API Client</a>.</p> <div class=highlight><pre class="codehilite kotlin"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class=rouge-code><pre><span class="c1">// initialize client</span>
+<span class="kd">val</span> <span class="py">client</span> <span class="p">=</span> <span class="nc">ClientPlaces</span><span class="p">(</span>
+    <span class="nc">ApplicationID</span><span class="p">(</span><span class="s">"YOUR_PLACES_APP_ID"</span><span class="p">),</span>
+    <span class="nc">APIKey</span><span class="p">(</span><span class="s">"YOUR_PLACES_API_KEY"</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1">// search places for one language</span>
+<span class="kd">val</span> <span class="py">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">searchPlaces</span><span class="p">(</span>
+    <span class="n">query</span> <span class="p">=</span> <span class="nc">PlacesQuery</span><span class="p">(</span><span class="s">"New-York"</span><span class="p">),</span>
+    <span class="n">language</span> <span class="p">=</span> <span class="nc">Language</span><span class="p">.</span><span class="nc">English</span>
+<span class="p">)</span>
+
+<span class="n">response</span><span class="p">.</span><span class="n">hits</span><span class="p">.</span><span class="nf">first</span><span class="p">().</span><span class="n">city</span>
+</pre></td></tr></tbody></table></code></pre></div> <p>You can find more examples in the <a href="https://github.com/algolia/algoliasearch-client-kotlin/blob/develop/docs/Places.md">Kotlin documentation</a>.</p> <h2 id=rest-api>REST API</h2> <p>The Algolia Places REST API supports HTTPS and is available via the <code>https://places-dsn.algolia.net</code> domain (leveraging our <a href="https://www.algolia.com/dsn">Distributed Search Network</a> infrastructure).</p> <p>In order to guarantee a very high-availability, we recommend to implement a retry strategy on the following hosts if the <code>https://places-dsn.algolia.net</code> call fails:</p> <ul> <li><code>https://places-1.algolianet.com</code>,</li> <li>then <code>https://places-2.algolianet.com</code>,</li> <li>then <code>https://places-3.algolianet.com</code>.</li> </ul> <h3 id=endpoints>Endpoints</h3> <h4 id=search>Search</h4> <p>To search using the Algolia Places REST API, you need to target the <code>/1/places/query</code> endpoint with a <code>POST</code> request.</p> <div class=highlight><pre class="codehilite shell"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class=rouge-code><pre><span class="nv">$ </span>curl <span class="nt">-X</span> POST <span class="s1">'https://places-dsn.algolia.net/1/places/query'</span> <span class="nt">--data</span> <span class="s1">'{"query": "Paris"}'</span>
+</pre></td></tr></tbody></table></code></pre></div> <p><strong>Note:</strong> The relative path prefix <code>/1/</code> indicates that we are currently using version 1 of the API.</p> <h4 id=get-by-objectid>Get by objectID</h4> <p>To get an Algolia Places Record using the REST API, you need to target the <code>/1/places/{objectID}</code> endpoint with a <code>GET</code> request.<br/> Replace <code>{objectID}</code> by the objectID you whish to query.</p> <div class=highlight><pre class="codehilite shell"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class=rouge-code><pre><span class="nv">$ </span>curl <span class="nt">-X</span> GET <span class="s1">'https://places-dsn.algolia.net/1/places/111781_17807753'</span>
+</pre></td></tr></tbody></table></code></pre></div> <h3 id=reverse-geocoding>Reverse geocoding</h3> <p>Reverse geocoding means converting a location (latitude and longitude) to a readable address.</p> <p><strong>Note:</strong> <code>aroundLatLng</code> parameter is mandatory. The only optional parameters permitted for this endpoint are <code>hitsPerPage</code> and <code>language</code>.</p> <div class=highlight><pre class="codehilite shell"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class=rouge-code><pre><span class="nv">$ </span>curl <span class="nt">-X</span> GET <span class="s1">'https://places-dsn.algolia.net/1/places/reverse?aroundLatLng=48.880379,%202.327007&amp;hitsPerPage=5&amp;language=fr'</span>
+</pre></td></tr></tbody></table></code></pre></div> <h3 id=authentication>Authentication</h3> <p>If you're using the authenticated version of our API (higher rate-limits), you'll need to authenticate yourself. This is done via the following HTTP headers:</p> <ul> <li><code>X-Algolia-Application-Id</code>,</li> <li>and <code>X-Algolia-API-Key</code>.</li> </ul> <div class=highlight><pre class="codehilite shell"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class=rouge-code><pre><span class="nv">$ </span>curl <span class="nt">-X</span> POST <span class="s1">'https://places-dsn.algolia.net/1/places/query'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'X-Algolia-Application-Id: YourApplicationId'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'X-Algolia-API-Key: YourAPIKey'</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"query": "Paris"}'</span>
+</pre></td></tr></tbody></table></code></pre></div> <h3 id=search-parameters>Search parameters</h3> <p>Those are the available query parameters you can use to filter your search results:</p> <table class=api> <thead><tr> <th>Option</th> <th>Description</th> </tr></thead> <tbody> <tr> <td> <div class=api-entry id=api-options-type><code>type</code></div> <p>Type: string</p> </td> <td> <p>Restrict the search results to a specific type.</p> <p>Available types:</p> <ul> <li><code>city</code></li> <li><code>country</code></li> <li><code>address</code></li> <li><code>busStop</code></li> <li><code>trainStation</code></li> <li><code>townhall</code></li> <li><code>airport</code></li> </ul> <p><strong>Default</strong>: Search in all types.</p> </td> </tr> <tr> <td> <div class=api-entry id=api-options-postcode-search><code>restrictSearchableAttributes</code></div> <p>Type: string</p> </td> <td> <p>Restrict the fields in which the search is done.</p> <p>Available fields:</p> <ul> <li><code>postcode</code></li> </ul> <p><strong>Note</strong>: This parameter is only useful to search for postcodes.</p> </td> </tr> <tr> <td> <div class=api-entry id=api-options-type><code>hitsPerPage</code></div> <p>Type: number</p> </td> <td> <p>Specifies how many results you want to retrieve per search, with a maximum of 20.</p> <p><strong>Default</strong>: 20.</p> </td> </tr> <tr> <td> <div class=api-entry id=api-options-language><code>language</code></div> <p>Type: string</p> </td> <td> <p>If specified, restrict the search results to a single language. You can pass two letters country codes (<a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">ISO 639-1</a>).</p> <p>Warning: language parameter is case sensitive and should be lowercase otherwise it will fallback to default language.</p> </td> </tr> <tr> <td> <div class=api-entry id=api-options-countries><code>countries</code></div> <p>Type: string</p> </td> <td> <p>If specified, restrict the search results to a specific list of comma-separated countries. You can pass two letters country codes (<a href="https://en.wikipedia.org/wiki/ISO_3166-1#Officially_assigned_code_elements">ISO 3166-1</a>).</p> <p><strong>Default</strong>: Search on the whole planet.</p> <p><strong>Warning</strong>: country codes <strong>must</strong> be lower-cased.</p> </td> </tr> <tr> <td> <div class=api-entry id=api-options-aroundLatLng><code>aroundLatLng</code></div> <p>Type: string</p> </td> <td> <p>Force to <em>first</em> search around a specific latitude longitude. The option value must be provided as a string: <code>latitude,longitude</code> like <code>12.232,23.1</code>.</p> <p>The default is to search around the location of the user determined via his IP address (geoip).</p> </td> </tr> <tr> <td> <div class=api-entry id=api-options-aroundLatLngViaIP><code>aroundLatLngViaIP</code></div> <p>Type: boolean</p> </td> <td> <p>Whether or not to <em>first</em> search around the geolocation of the user found via his IP address. This is <code>true</code> by default.</p> </td> </tr> <tr> <td> <div class=api-entry id=api-options-aroundRadius><code>aroundRadius</code></div> <p>Type: number</p> </td> <td> <p>Radius in meters to search around the latitude/longitude. Otherwise a default radius is automatically computed given the area density.</p> </td> </tr> <tr> <td> <div class=api-entry id=api-options-getRankingInfo><code>getRankingInfo</code></div> <p>Type: <strong>boolean</strong></p> </td> <td> <p>Controls whether the <a href="https://www.algolia.com/doc/api-reference/api-methods/search/#method-response-_rankinginfo">_rankingInfo</a> object should be included in the hits. This defaults to <code>false</code>.</p> <p>The _rankingInfo object for a Places query is slightly different from a regular Algolia query and you can read up more about the difference and how to leverage them in <a href="examples.html#using-_rankinginfo">our guide</a>.</p> </td> </tr> </tbody> </table> <p>For instance, to search for <strong>cities</strong> in the <strong>US</strong> and in <strong>France</strong>, you would do:</p> <div class=highlight><pre class="codehilite shell"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class=rouge-code><pre><span class="nv">$ </span>curl <span class="nt">-X</span> POST <span class="s1">'https://places-dsn.algolia.net/1/places/query'</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"query": "Paris", "type": "city", "countries": ["us", "fr"]}'</span>
+</pre></td></tr></tbody></table></code></pre></div> <h3 id=http-headers>HTTP headers</h3> <p>You can use the regular <code>X-Forwarded-For</code> HTTP header to override the source IP address used to resolve the geo-location of the user. This is particularly useful when you want to use the API from your backend as if it was from your end-users locations.</p> <div class=highlight><pre class="codehilite shell"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class=rouge-code><pre><span class="nv">$ </span>curl <span class="nt">-X</span> POST <span class="s1">'https://places-dsn.algolia.net/1/places/query'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'X-Forwarded-For: 1.2.3.4'</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"query": "Paris"}'</span>
+</pre></td></tr></tbody></table></code></pre></div> <h3 id=json-answer>JSON answer</h3> <p>The API answers is using the JSON format and looks like:</p> <div class=highlight><pre class="codehilite javascript"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+</pre></td><td class=rouge-code><pre><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">hits</span><span class="dl">"</span><span class="p">:</span> <span class="p">[{</span>
+    <span class="dl">"</span><span class="s2">objectID</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">145746683_7444</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">locale_names</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="dl">"</span><span class="s2">ar</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">باريس</span><span class="dl">"</span><span class="p">],</span>
+      <span class="dl">"</span><span class="s2">ru</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">Париж</span><span class="dl">"</span><span class="p">],</span>
+      <span class="dl">"</span><span class="s2">fr</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">Paris</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Lutèce</span><span class="dl">"</span><span class="p">],</span>
+      <span class="dl">"</span><span class="s2">it</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">Parigi</span><span class="dl">"</span><span class="p">],</span>
+      <span class="dl">"</span><span class="s2">default</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">Paris</span><span class="dl">"</span><span class="p">],</span>
+      <span class="dl">"</span><span class="s2">pl</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">Paryż</span><span class="dl">"</span><span class="p">],</span>
+      <span class="dl">"</span><span class="s2">hu</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">Párizs</span><span class="dl">"</span><span class="p">],</span>
+      <span class="dl">"</span><span class="s2">ja</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">パリ</span><span class="dl">"</span><span class="p">],</span>
+      <span class="dl">"</span><span class="s2">nl</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">Parijs</span><span class="dl">"</span><span class="p">],</span>
+      <span class="dl">"</span><span class="s2">es</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">París</span><span class="dl">"</span><span class="p">],</span>
+      <span class="dl">"</span><span class="s2">zh</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">巴黎</span><span class="dl">"</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="dl">"</span><span class="s2">city</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="dl">"</span><span class="s2">default</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">Paris</span><span class="dl">"</span><span class="p">],</span>
+      <span class="c1">// ... other languages</span>
+    <span class="p">},</span>
+    <span class="dl">"</span><span class="s2">county</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="dl">"</span><span class="s2">default</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">Paris</span><span class="dl">"</span><span class="p">],</span>
+      <span class="c1">// ... other languages</span>
+    <span class="p">},</span>
+    <span class="dl">"</span><span class="s2">administrative</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">Île-de-France</span><span class="dl">"</span><span class="p">],</span>
+    <span class="dl">"</span><span class="s2">country</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="dl">"</span><span class="s2">default</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">France</span><span class="dl">"</span><span class="p">,</span>
+      <span class="c1">// ... other languages</span>
+    <span class="p">},</span>
+    <span class="dl">"</span><span class="s2">country_code</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">fr</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">postcode</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">75000</span><span class="dl">"</span><span class="p">],</span>
+    <span class="dl">"</span><span class="s2">population</span><span class="dl">"</span><span class="p">:</span> <span class="mi">2243833</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">_geoloc</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="dl">"</span><span class="s2">lat</span><span class="dl">"</span><span class="p">:</span> <span class="mf">48.8564</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">lng</span><span class="dl">"</span><span class="p">:</span> <span class="mf">2.3521</span>
+    <span class="p">},</span>
+    <span class="dl">"</span><span class="s2">_highlightResult</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="dl">"</span><span class="s2">locale_names</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="dl">"</span><span class="s2">default</span><span class="dl">"</span><span class="p">:</span> <span class="p">[{</span>
+            <span class="dl">"</span><span class="s2">value</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">&lt;em&gt;Paris&lt;/em&gt;</span><span class="dl">"</span><span class="p">,</span>
+            <span class="dl">"</span><span class="s2">fullyHighlighted</span><span class="dl">"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="dl">"</span><span class="s2">matchedWords</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">paris</span><span class="dl">"</span><span class="p">],</span>
+            <span class="dl">"</span><span class="s2">matchLevel</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">full</span><span class="dl">"</span>
+          <span class="p">}]</span>
+          <span class="c1">// [...]</span>
+      <span class="p">},</span>
+      <span class="dl">"</span><span class="s2">city</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="c1">// [...]</span>
+      <span class="p">},</span>
+      <span class="dl">"</span><span class="s2">county</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="c1">// [...]</span>
+      <span class="p">},</span>
+      <span class="dl">"</span><span class="s2">country</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="c1">// [...]</span>
+      <span class="p">},</span>
+      <span class="dl">"</span><span class="s2">postcode</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="c1">// [...]</span>
+      <span class="p">],</span>
+      <span class="dl">"</span><span class="s2">administrative</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="c1">// [...]</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">}],</span>
+  <span class="dl">"</span><span class="s2">nbHits</span><span class="dl">"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">query</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Paris</span><span class="dl">"</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div> <table class=api> <thead><tr> <th>Property</th> <th>Description</th> </tr></thead> <tbody> <tr> <td> <div class=api-entry id=api-suggestion-name><code>locale_names</code></div> </td> <td> <p>List of names of the place. If no <code>language</code> parameter is specified, retrieves all of them.</p> <p>Examples:</p> <ul> <li>Paris</li> <li>589 Howard Street</li> </ul> </td> </tr> <tr> <td> <div class=api-entry id=api-suggestion-city><code>city</code></div> </td> <td> <p>List of the associated city names. If no <code>language</code> parameter is specified, retrieves all of them.</p> </td> </tr> <tr> <td> <div class=api-entry id=api-suggestion-county><code>county</code></div> </td> <td> <p>List of the associated county names. If no <code>language</code> parameter is specified, retrieves all of them.</p> </td> </tr> <tr> <td> <div class=api-entry id=api-suggestion-administrative><code>administrative</code></div> </td> <td> <p>List of associated administrative region names.</p> <p>Examples:</p> <ul> <li>Pays de la Loire</li> <li>Texas</li> <li>Catalunya</li> </ul> </td> </tr> <tr> <td> <div class=api-entry id=api-suggestion-country><code>country</code></div> </td> <td> <p>Associated country name.</p> </td> </tr> <tr> <td> <div class=api-entry id=api-suggestion-countryCode><code>countryCode</code></div> </td> <td> <p>Two letters country code (<a href="https://en.wikipedia.org/wiki/ISO_3166-1#Officially_assigned_code_elements">ISO 639-1</a>).</p> </td> </tr> <tr> <td> <div class=api-entry id=api-suggestion-postcode><code>postcode</code></div> </td> <td> <p>List of associated postcodes.</p> </td> </tr> <tr> <td> <div class=api-entry id=api-suggestion-population><code>population</code></div> </td> <td> <p>Associated population.</p> </td> </tr> <tr> <td> <div class=api-entry id=api-suggestion-latlng><code>_geoloc</code></div> </td> <td> <p>Associated list of latitude and longitude.</p> <p>Examples:</p> <ul> <li><code>[{lat: 48.797885, lng: 2.337034}]</code></li> </ul> </td> </tr> <tr> <td> <div class=api-entry id=api-suggestion-highlightResult><code>_highlightResult</code></div> </td> <td> <p>The associated highlighting information.</p> </td> </tr> </tbody> </table> <p><strong>Note:</strong> The non-documented attributes of the JSON answer may change, don't rely on them.</p> <h3 id=alternative-json-answer-format>Alternative JSON answer format</h3> <p>When you provide the <code>language</code> parameter, only data for that language will be returned.</p> <p>Here is what it would look like if you are using the <code>fr</code> language for the <code>Paris</code> query:</p> <div class=highlight><pre class="codehilite javascript"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class=rouge-code><pre><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">hits</span><span class="dl">"</span><span class="p">:</span> <span class="p">[{</span>
+    <span class="dl">"</span><span class="s2">objectID</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">145746683_7444</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">locale_names</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">Paris</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Lutèce</span><span class="dl">"</span><span class="p">],</span>
+    <span class="dl">"</span><span class="s2">city</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">Paris</span><span class="dl">"</span><span class="p">],</span>
+    <span class="c1">// ...</span>
+  <span class="p">}],</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div> <p><strong>Warning:</strong> In case you provide a non existing language, the engine will fallback to<br/> the default language and only display flattened values for that one resulting in<br/> the same output as in the last example.</p> <h3 id=query-strategy>Query strategy</h3> <p>The Algolia Places REST API leverages <a href="https://www.algolia.com">Algolia's Search API</a>, the <a href="https://www.openstreetmap.org/">OpenStreetMap</a> and the <a href="http://www.geonames.org/">GeoNames</a> data.</p> <p>When you perform an Algolia Places Query:</p> <ol> <li>If you don't specify any <code>aroundLatLng</code> query parameter or if your source IP address isn't geo-localized, results will come from all around the world.</li> <li>If you specify an <code>aroundLatLng</code> query parameter or if your source IP address is geo-localized, results will be composed by: <ul> <li>Places around you (&lt;10km),</li> <li>Places in your country,</li> <li>Popular places all around the world.</li> </ul> </li> <li>Specifying a <code>country</code> query parameter will override this behavior, restricting the results to come from a subset of the countries.</li> <li>Numerical tokens are considered as optional words.</li> <li>Stopwords in the middle of the query are removed from the underlying search query (performance and relevancy purposes).</li> <li>Popular cities will always be retrieved first.</li> <li>If both a <code>city</code> and an <code>address</code> are matching, the city will be retrieved first.</li> <li>If the <code>query</code> doesn't retrieve any results, we fallback on a degraded query strategy: all words are considered optional and we only target cities.</li> </ol> </div> </div> </section> <script src="js/documentation-layout-57097802.js"></script> <section class=ac-footer> <div class=ac-footer-container> <p class=ac-footer-links> Code licensed under <a class=ac-footer-link-item href='https://github.com/algolia/places/blob/master/LICENSE'>MIT</a> <br> <a class=ac-footer-link-item href='https://github.com/algolia/places/'>Github</a> <a class=ac-footer-link-item href='https://github.com/algolia/places/issues'>Issues</a> <a class=ac-footer-link-item href='https://www.algolia.com/policies/privacy'>Privacy policy</a> </p> </div> <div class='ac-footer-container ac-footer-brand'> <p>This project is part of</p> <img class=ac-footer-brand-icon src='images/svg/community-badge-271b6a52.svg'> <figure> <img class=ac-footer-brand-logo src='https://res.cloudinary.com/hilnmyskv/image/upload/v1484219849/algolia-community-logo-words-darkbg.svg'> <figcaption>Algolia Community</figcaption> </figure> <a class='ac-footer-btn ac-footer-btn-cta' href='https://community.algolia.com/'>See More</a> <span class='ac-icon ac-icon-love-dark'></span> </div> <p class=ac-footer-version>Latest version: 1.19.0</p> <div class=ac-footer-actions> <div class=footer-container> <p>Build unique search experiences with Algolia</p> <a class='ac-footer-btn ac-footer-btn-ghost-grey' href='https://www.algolia.com/why?utm_medium=social-owned&amp;utm_source=places%20website&amp;utm_campaign=homepage&amp;utm_term=why'> See Why <span class=ac-icon-triangle></span> </a> </div> </div> </section> <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-N8JP8G" height=0 width=0 style="display:none;visibility:hidden"></iframe></noscript> <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-N8JP8G');</script> <script src="js/common-7302ebba.js"></script> </body> </html>

@@ -1,0 +1,12 @@
+<!doctype html> <html> <head> <meta content="IE=edge" http-equiv=X-UA-Compatible> <meta charset=utf-8> <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name=viewport> <link rel=stylesheet href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin=anonymous> <link rel=stylesheet href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin=anonymous> <link rel=stylesheet media=screen href="//fonts.googleapis.com/css?family=Raleway:300,800"> <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script> <meta content="IE=edge,chrome=1" http-equiv=X-UA-Compatible> <title>Algolia Places | No style test</title> <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script> <style>
+      body {
+        padding: 3em;
+      }
+    </style> </head> <body> <h1>Example using bootstrap</h1> <input type=search class=form-control id=test /> <script>
+places({
+  container: document.querySelector('#test'),
+  autocompleteOptions: {
+    debug: true
+  }
+});
+</script> </body> </html>

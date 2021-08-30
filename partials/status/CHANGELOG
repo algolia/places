@@ -1,0 +1,160 @@
+<h3 id="1190-2020-05-26"><a href="https://github.com/algolia/places/compare/v1.18.2...v1.19.0">1.19.0</a> (2020-05-26)</h3>
+
+<h5 id="features">Features</h5>
+
+<ul>
+  <li><strong>autocomplete:</strong> add locate event when pin is clicked + tests (<a href="https://github.com/algolia/places/issues/1063">#1063</a>) (<a href="https://github.com/algolia/places/commit/9b9efdc0977d6986ca909d5432077926864d10a1">9b9efdc</a>)</li>
+</ul>
+
+<h2 id="1182-2020-04-27"><a href="https://github.com/algolia/places/compare/v1.18.1...v1.18.2">1.18.2</a> (2020-04-27)</h2>
+
+<h5 id="bug-fixes">Bug Fixes</h5>
+
+<ul>
+  <li><strong>tailwind:</strong>  reset svg display property to avoid tailwind overwrites (<a href="https://github.com/algolia/places/issues/1046">#1046</a>) (<a href="https://github.com/algolia/places/commit/6599d7e1e3ff9506873a2b9a67dc8eb0063b0c16">6599d7e</a>)</li>
+</ul>
+
+<h2 id="1181-2020-02-17"><a href="https://github.com/algolia/places/compare/v1.18.0...v1.18.1">1.18.1</a> (2020-02-17)</h2>
+
+<h3 id="1180-2020-02-17"><a href="https://github.com/algolia/places/compare/v1.17.1...v1.18.0">1.18.0</a> (2020-02-17)</h3>
+
+<h5 id="features-1">Features</h5>
+
+<ul>
+  <li><strong>postcode-search:</strong> add postcodeSearch attribute and document restrictSearchableAttributes param (<a href="https://github.com/algolia/places/issues/998">#998</a>) (<a href="https://github.com/algolia/places/commit/30d9fa54ccfefb90b4ceed9cc5aa8efaddd392b7">30d9fa5</a>)</li>
+</ul>
+
+<h2 id="1171-2019-11-25"><a href="https://github.com/algolia/places/compare/v1.17.0...v1.17.1">1.17.1</a> (2019-11-25)</h2>
+
+<h5 id="bug-fixes-1">Bug Fixes</h5>
+
+<ul>
+  <li><strong>doc:</strong> clarify policy on the Algolia logo (<a href="https://github.com/algolia/places/issues/943">#943</a>) (<a href="https://github.com/algolia/places/commit/95b6f8fe7b9ca6885466c63e2fe0c9a95da0b53a">95b6f8f</a>)</li>
+</ul>
+
+<h3 id="1170-2019-10-28"><a href="https://github.com/algolia/places/compare/v1.16.6...v1.17.0">1.17.0</a> (2019-10-28)</h3>
+
+<h5 id="bug-fixes-2">Bug Fixes</h5>
+
+<ul>
+  <li><strong>get-val:</strong> call autocompleteInstance.val instead ac.autocomplete.getVal (<a href="https://github.com/algolia/places/issues/919">#919</a>) (<a href="https://github.com/algolia/places/commit/662165568edd5fcbd7e51ace2d75a20709500cf8">6621655</a>)</li>
+</ul>
+
+<h5 id="features-2">Features</h5>
+
+<ul>
+  <li><strong>accessibility:</strong> allow modification of attributes on pin and clear buttons (<a href="https://github.com/algolia/places/issues/920">#920</a>) (<a href="https://github.com/algolia/places/commit/41cbd09718d3109e364da91af27b8f9bdff4667c">41cbd09</a>)</li>
+</ul>
+
+<h2 id="1166-2019-10-09"><a href="https://github.com/algolia/places/compare/v1.16.5...v1.16.6">1.16.6</a> (2019-10-09)</h2>
+
+<h5 id="bug-fixes-3">Bug Fixes</h5>
+
+<ul>
+  <li><strong>typings:</strong> include types field in package.json (<a href="https://github.com/algolia/places/issues/907">#907</a>) (<a href="https://github.com/algolia/places/commit/4d70e28">4d70e28</a>)</li>
+</ul>
+
+<h2 id="1165-2019-09-30"><a href="https://github.com/algolia/places/compare/v1.16.4...v1.16.5">1.16.5</a> (2019-09-30)</h2>
+
+<h5 id="bug-fixes-4">Bug Fixes</h5>
+
+<ul>
+  <li><strong>autocomplete-css:</strong> use babel transpiling for places.css (<a href="https://github.com/algolia/places/issues/887">#887</a>) (<a href="https://github.com/algolia/places/commit/fcc7112">fcc7112</a>)</li>
+  <li><strong>deps:</strong> update dependency autocomplete.js to ^0.37.0 (<a href="https://github.com/algolia/places/commit/d03e08f">d03e08f</a>)</li>
+  <li><strong>rate-limit-ci:</strong> Use authenticated places app in E2E tests (<a href="https://github.com/algolia/places/issues/893">#893</a>) (<a href="https://github.com/algolia/places/commit/6a9e506">6a9e506</a>)</li>
+</ul>
+
+<h2 id="1164-2019-04-15"><a href="https://github.com/algolia/places/compare/v1.16.3...v1.16.4">1.16.4</a> (2019-04-15)</h2>
+
+<h5 id="features-3">Features</h5>
+
+<ul>
+  <li><strong>invalid-credentials:</strong> clearer warning message in console (<a href="https://github.com/algolia/places/pull/768">#768</a>) (<a href="https://github.com/algolia/places/commit/e68b1e8">e68b1e8</a>)</li>
+</ul>
+
+<h2 id="1163-2019-04-01"><a href="https://github.com/algolia/places/compare/v1.16.2...v1.16.3">1.16.3</a> (2019-04-01)</h2>
+
+<h5 id="bug-fixes-5">Bug Fixes</h5>
+
+<ul>
+  <li><strong>set-val-icon:</strong> show correct icon when calling setVal (<a href="https://github.com/algolia/places/issues/760">#760</a>) (<a href="https://github.com/algolia/places/commit/3050e15">3050e15</a>)</li>
+</ul>
+
+<h2 id="1162-2019-04-01"><a href="https://github.com/algolia/places/compare/v1.16.1...v1.16.2">1.16.2</a> (2019-04-01)</h2>
+
+<h5 id="bug-fixes-6">Bug Fixes</h5>
+
+<ul>
+  <li><strong>empty-postcode-list:</strong> fix a bug where an empty postcode list could crash results (<a href="https://github.com/algolia/places/issues/759">#759</a>) (<a href="https://github.com/algolia/places/commit/a9228a4">a9228a4</a>)</li>
+</ul>
+
+<h2 id="1161-2019-02-25"><a href="https://github.com/algolia/places/compare/v1.15.5...v1.16.1">1.16.1</a> (2019-02-25)</h2>
+
+<h5 id="bug-fixes-7">Bug Fixes</h5>
+
+<ul>
+  <li><strong>deps:</strong> update dependency autocomplete.js to ^0.36.0 (<a href="https://github.com/algolia/places/commit/2b0e06c">2b0e06c</a>)</li>
+</ul>
+
+<h5 id="features-4">Features</h5>
+
+<ul>
+  <li><strong>controlled-search:</strong> expose search method in places.js (<a href="https://github.com/algolia/places/issues/659">#659</a>) (<a href="https://github.com/algolia/places/commit/4ddd681">4ddd681</a>)</li>
+</ul>
+
+<h2 id="1155-2019-02-05"><a href="https://github.com/algolia/places/compare/v1.15.4...v1.15.5">1.15.5</a> (2019-02-05)</h2>
+
+<h5 id="bug-fixes-8">Bug Fixes</h5>
+
+<ul>
+  <li><strong>promise-polyfill:</strong> remove babel-polyfill and let babel do magic (<a href="https://github.com/algolia/places/issues/726">#726</a>) (<a href="https://github.com/algolia/places/commit/be9170b">be9170b</a>)</li>
+</ul>
+
+<h2 id="1154-2019-01-21"><a href="https://github.com/algolia/places/compare/v1.15.3...v1.15.4">1.15.4</a> (2019-01-21)</h2>
+
+<h5 id="bug-fixes-9">Bug Fixes</h5>
+
+<ul>
+  <li><strong>babel-node:</strong> make <a href="https://github.com/babel">@babel</a>/polyfill a main dependency (<a href="https://github.com/algolia/places/issues/713">#713</a>) (<a href="https://github.com/algolia/places/commit/5cc9209">5cc9209</a>)</li>
+</ul>
+
+<h2 id="1153-2019-01-21"><a href="https://github.com/algolia/places/compare/v1.15.2...v1.15.3">1.15.3</a> (2019-01-21)</h2>
+
+<h5 id="bug-fixes-10">Bug Fixes</h5>
+
+<ul>
+  <li><strong>node-support:</strong> fix a critical bug where missing polyfills were crashing the library (<a href="https://github.com/algolia/places/issues/712">#712</a>) (<a href="https://github.com/algolia/places/commit/2a2f808">2a2f808</a>)</li>
+</ul>
+
+<h2 id="1152-2019-01-18"><a href="https://github.com/algolia/places/compare/v1.15.1...v1.15.2">1.15.2</a> (2019-01-18)</h2>
+
+<h5 id="bug-fixes-11">Bug Fixes</h5>
+
+<ul>
+  <li><strong>deps:</strong> update dependency autocomplete.js to ^0.35.0 (<a href="https://github.com/algolia/places/commit/8ee0889">8ee0889</a>)</li>
+  <li><strong>ie-11-support:</strong> Ensure that places.js and the website can run on IE 11 (<a href="https://github.com/algolia/places/issues/707">#707</a>) (<a href="https://github.com/algolia/places/commit/a20ce08">a20ce08</a>)</li>
+  <li><strong>ie11-logo:</strong> fix algolia logo rendering on IE 11 (<a href="https://github.com/algolia/places/issues/575">#575</a>) (<a href="https://github.com/algolia/places/commit/009d26c">009d26c</a>)</li>
+</ul>
+
+<h2 id="1151-2018-12-14"><a href="https://github.com/algolia/places/compare/v1.15.0...v1.15.1">1.15.1</a> (2018-12-14)</h2>
+
+<h5 id="bug-fixes-12">Bug Fixes</h5>
+
+<ul>
+  <li><strong>caching:</strong> disable autocomplete caching (<a href="https://github.com/algolia/places/issues/678">#678</a>) (<a href="https://github.com/algolia/places/commit/30b516a">30b516a</a>)</li>
+</ul>
+
+<h3 id="1150-2018-12-14"><a href="https://github.com/algolia/places/compare/v1.14.0...v1.15.0">1.15.0</a> (2018-12-14)</h3>
+
+<h5 id="bug-fixes-13">Bug Fixes</h5>
+
+<ul>
+  <li><strong>deps:</strong> update dependency autocomplete.js to ^0.33.0 (<a href="https://github.com/algolia/places/commit/991c764">991c764</a>)</li>
+</ul>
+
+<h5 id="features-5">Features</h5>
+
+<ul>
+  <li><strong>reverse-geocoding:</strong> expose the reverse geocoding API. (<a href="https://github.com/algolia/places/issues/653">#653</a>) (<a href="https://github.com/algolia/places/commit/e9d2bc0">e9d2bc0</a>)</li>
+</ul>
+

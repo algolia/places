@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1440px" height="629px" viewBox="0 0 1440 629" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.6.1 (26313) - http://www.bohemiancoding.com/sketch -->
+    <title>footer copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <radialGradient cx="50.4345703%" cy="40.0212479%" fx="50.4345703%" fy="40.0212479%" r="40.9971646%" id="radialGradient-1">
+            <stop stop-color="#0B1E39" offset="0%"></stop>
+            <stop stop-color="#1D3657" offset="100%"></stop>
+        </radialGradient>
+        <linearGradient x1="67.1397712%" y1="88.5822452%" x2="-15.2286835%" y2="-69.5126771%" id="linearGradient-2">
+            <stop stop-color="#1D3657" offset="0%"></stop>
+            <stop stop-color="#15517B" offset="100%"></stop>
+        </linearGradient>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="8" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="9" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.35 0" in="shadowBlurOuter1" type="matrix" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="footer-copy">
+            <rect id="Rectangle-90" fill="url(#radialGradient-1)" x="0" y="0" width="1440" height="629"></rect>
+            <rect id="Rectangle-89-Copy-13" fill="#1D3657" transform="translate(1035.057089, 189.057089) rotate(-315.000000) translate(-1035.057089, -189.057089) " x="927.53649" y="81.5364902" width="215.041197" height="215.041197"></rect>
+            <path d="M322.008622,89.6227996 L517.8772,89.6227996 L517.8772,285.491378 L322.008622,285.491378 L322.008622,89.6227996 Z" id="Rectangle-89-Copy-7" fill="#1D3657" transform="translate(419.942911, 187.557089) rotate(-315.000000) translate(-419.942911, -187.557089) "></path>
+            <path d="M178.565711,-52.4342892 L374.434289,-52.4342892 L374.434289,143.434289 L178.565711,143.434289 L178.565711,-52.4342892 Z" id="Rectangle-89-Copy-17" fill="#1D3657" transform="translate(276.500000, 45.500000) rotate(-315.000000) translate(-276.500000, -45.500000) "></path>
+            <path d="M308.732603,285.482603 L396.767397,285.482603 L396.767397,373.517397 L308.732603,373.517397 L308.732603,285.482603 Z" id="Rectangle-89-Copy-7" fill="#1D3657" transform="translate(352.750000, 329.500000) rotate(-315.000000) translate(-352.750000, -329.500000) "></path>
+            <path d="M-28.1304336,107.244566 L283.880434,107.244566 L283.880434,419.255434 L-28.1304336,419.255434 L-28.1304336,107.244566 Z" id="Rectangle-89-Copy-7" fill="#1D3657" transform="translate(127.875000, 263.250000) rotate(-315.000000) translate(-127.875000, -263.250000) "></path>
+            <path d="M242.232603,352.232603 L330.267397,352.232603 L330.267397,440.267397 L242.232603,440.267397 L242.232603,352.232603 Z" id="Rectangle-89-Copy-7" fill="#1D3657" transform="translate(286.250000, 396.250000) rotate(-315.000000) translate(-286.250000, -396.250000) "></path>
+            <rect id="Rectangle-89-Copy-9" fill="#1D3657" transform="translate(721.057089, -86.114178) rotate(-315.000000) translate(-721.057089, 86.114178) " x="417.667912" y="-389.503355" width="606.778354" height="606.778354"></rect>
+            <rect id="Rectangle-89-Copy" fill="#1D3657" transform="translate(988.971456, 571.971456) rotate(-315.000000) translate(-988.971456, -571.971456) " x="803.669111" y="381.13336" width="370.604689" height="381.67619"></rect>
+            <rect id="Rectangle-89-Copy-6" fill="#1D3657" transform="translate(447.114178, 458.057089) rotate(-315.000000) translate(-447.114178, -458.057089) " x="339.593579" y="350.53649" width="215.041197" height="215.041197"></rect>
+            <rect id="Rectangle-89-Copy-14" fill="#1D3657" transform="translate(1190.000000, 33.528544) rotate(-315.000000) translate(-1190.000000, -33.528544) " x="1083.56025" y="-72.9112101" width="212.879509" height="212.879509"></rect>
+            <rect id="Rectangle-89-Copy-11" fill="#1D3657" transform="translate(602.442911, 615.442911) rotate(-315.000000) translate(-602.442911, -615.442911) " x="494.649495" y="507.649495" width="215.586832" height="215.586832"></rect>
+            <rect id="Rectangle-89-Copy-10" fill="#1D3657" transform="translate(-85.114178, -14.114178) rotate(-315.000000) translate(85.114178, 14.114178) " x="-275.952273" y="-204.952273" width="381.67619" height="381.67619"></rect>
+            <rect id="Rectangle-89-Copy-8" fill="#1D3657" transform="translate(136.885822, 579.885822) rotate(-315.000000) translate(-136.885822, -579.885822) " x="-53.9522728" y="389.047727" width="381.67619" height="381.67619"></rect>
+            <rect id="Rectangle-89-Copy-2" fill="#1D3657" transform="translate(1308.885822, 344.838095) rotate(-315.000000) translate(-1308.885822, -344.838095) " x="1118.04773" y="154" width="381.67619" height="381.67619"></rect>
+            <rect id="Rectangle-89-Copy-3" fill="#1D3657" transform="translate(1613.885822, 631.838095) rotate(-315.000000) translate(-1613.885822, -631.838095) " x="1423.04773" y="441" width="381.67619" height="381.67619"></rect>
+            <rect id="Rectangle-89" stroke-opacity="0.158571105" stroke="#46AEDA" fill="url(#linearGradient-2)" filter="url(#filter-3)" transform="translate(719.885822, 283.114178) rotate(-315.000000) translate(-719.885822, -283.114178) " x="529.047727" y="92.2760826" width="381.67619" height="381.67619"></rect>
+        </g>
+    </g>
+</svg>

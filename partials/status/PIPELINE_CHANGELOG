@@ -1,0 +1,49 @@
+
+<h3 id="2019-01-07">2019-01-07</h3>
+
+<h5 id="features">Features</h5>
+
+<ul>
+  <li><strong>admin-levels</strong>
+    <ul>
+      <li>define administrative, county and city admin levels by country (#104)</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="2018-11-15">2018-11-15</h3>
+
+<h5 id="bug-fixes">Bug Fixes</h5>
+
+<ul>
+  <li><strong>tests</strong>
+    <ul>
+      <li>Update Andorra end-to-end test (#94)</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="2018-11-02">2018-11-02</h3>
+
+<h5 id="bug-fixes-1">Bug Fixes</h5>
+
+<ul>
+  <li><strong>pt-housenumber</strong>
+    <ul>
+      <li>put house number after streetname in Portugal (#89)</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="2018-10-31">2018-10-31</h3>
+
+<h5 id="bug-fixes-2">Bug Fixes</h5>
+
+<ul>
+  <li><strong>district</strong>
+    <ul>
+      <li>rank district lower than the city (#88)</li>
+    </ul>
+  </li>
+</ul>
+

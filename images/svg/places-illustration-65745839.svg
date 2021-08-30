@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="303" height="230" viewBox="0 0 303 230" id="places_illustration">
+<title>Geosearch</title>
+<defs>
+    <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="b">
+        <feOffset dy="6" in="SourceAlpha" result="shadowOffsetOuter1"/>
+        <feGaussianBlur stdDeviation="6" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>
+        <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0" in="shadowBlurOuter1" result="shadowMatrixOuter1"/>
+        <feOffset dy="9" in="SourceAlpha" result="shadowOffsetOuter2"/>
+        <feGaussianBlur stdDeviation="13.5" in="shadowOffsetOuter2" result="shadowBlurOuter2"/>
+        <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.14 0" in="shadowBlurOuter2" result="shadowMatrixOuter2"/>
+        <feMerge>
+            <feMergeNode in="shadowMatrixOuter1"/>
+            <feMergeNode in="shadowMatrixOuter2"/>
+            <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+    </filter>
+    <path id="a" d="M130.62 1.387c-2.643-1.54-6.92-1.54-9.547 0L2.163 71.102c-2.63 1.542-2.614 4.02.038 5.536l118.834 67.927c2.652 1.515 6.96 1.516 9.605.01l119.436-67.948c2.653-1.51 2.672-3.978.02-5.525L130.618 1.387z"/>
+</defs>
+<g transform="translate(24.132 2.347)" fill="none" fill-rule="evenodd">
+    <g transform="translate(1 46)">
+        <mask id="c" fill="#fff">
+            <use xlink:href="#a"/>
+        </mask>
+        <use stroke="#2897C5" stroke-width="4.5" fill="#FFF" filter="url(#b)" xlink:href="#a"/>
+        <g mask="url(#c)" id="plan-holder" stroke="#2897C5" stroke-opacity=".33" stroke-width="4.147">
+            <path id="plan" d="M29.126 91.633l26.547 14.52 6.216-14.52H29.125zM87.428 22.49L.448 72.965l6.214 4.84H67.76L87.428 22.49zM86.644 65.36l-15.855 50.9 49.7 28.772c5.993-27.148 27.824-62.706 42.803-79.673h-76.65zM178.208 50.913c5.99-4.743 11.752-8.325 16.84-10.454l-45.564-28.266h-44.17L91.5 50.914h86.708zM179.167 115.413L161.57 92.25c-8.02 11.407-17.772 31.234-21.75 46.325M215.144 49.456c-11.523 4.846-38.12 21.31-46.328 30.17l24.293 27.218 63.78-33.88-41.746-23.508z"/>
+        </g>
+    </g>
+    <ellipse fill-opacity=".6" fill="#A1C2D0" cx="124.745" cy="122.421" rx="29.979" ry="11.063"/>
+    <g stroke="#8962B2" id="pin" viewbox="0 0 100 100">
+        <path d="M157.39 34.315c0 18.546-33.825 83.958-33.825 83.958S89.74 52.86 89.74 34.315C89.74 15.768 104.885.73 123.565.73c18.68 0 33.825 15.038 33.825 33.585z" stroke-width="5.53" fill="#E6D2FC"/>
+        <path d="M123.565 49.13c-8.008 0-14.496-6.498-14.496-14.52 0-8.017 6.487-14.52 14.495-14.52s14.496 6.503 14.496 14.52c0 8.022-6.487 14.52-14.495 14.52z" stroke-width="2.765" fill="#FFF"/>
+    </g>
+</g>
+</svg>
