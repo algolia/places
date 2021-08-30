@@ -3,7 +3,7 @@
 [![Version][version-svg]][package-url] [![Build Status][travis-svg]][travis-url] [![License][license-image]][license-url] [![Downloads][downloads-image]][downloads-url] [![jsDelivr Hits][jsdelivr-badge]][jsdelivr-url]
 
 ## Deprecation of service
-> Places is going away on May 31st 2022. [Read our blog post announcement.](https://www.algolia.com/blog/sunsetting-our-places-feature/)
+> Places is going away on May 31st 2022. [Read our blog post announcement.](https://www.algolia.com/blog/product/sunsetting-our-places-feature/)
 
 ## Introduction
 
