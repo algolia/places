@@ -9,7 +9,7 @@ const placesAutocomplete = places({
 });
 $input.style.opacity = 1; // we initially hide the input to avoid size flickering
 
-if (process.env.NODE_ENV === 'development') {
+if ((import.meta.env.NODE_ENV || process.env.NODE_ENV) === 'development') {
   const events = ['change', 'suggestions', 'cursorchanged'];
   events.forEach((eventName) =>
     placesAutocomplete.on(eventName, (eventData) => {

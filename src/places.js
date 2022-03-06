@@ -64,7 +64,7 @@ export default function places(options) {
       root: `algolia-places${style === false ? '-nostyle' : ''}`,
       prefix,
     },
-    debug: process.env.NODE_ENV === 'development',
+    debug: (import.meta.env.NODE_ENV || process.env.NODE_ENV) === 'development',
     ...userAutocompleteOptions,
   };
 

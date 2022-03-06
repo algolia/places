@@ -6,12 +6,12 @@ import replace from 'replace-in-file';
 import semver from 'semver';
 import currentVersion from '../src/version';
 
-if (!process.env.VERSION) {
+if (!(import.meta.env.VERSION || process.env.VERSION)) {
   throw new Error(
     'bump: Usage is VERSION=MAJOR.MINOR.PATCH scripts/bump-package-version.js'
   );
 }
-const newVersion = process.env.VERSION;
+const newVersion = (import.meta.env.VERSION || process.env.VERSION);
 
 if (!semver.valid(newVersion)) {
   throw new Error(
