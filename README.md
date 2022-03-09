@@ -4,6 +4,11 @@
 
 ## Deprecation of service
 > Places is going away on May 31st 2022. [Read our blog post announcement.](https://www.algolia.com/blog/product/sunsetting-our-places-feature/)
+> Places is going away on May 31st 2022. [Read our blog post announcement.](https://www.algolia.com/blog/product/sunsetting-our-places-feature/)
+> Places is going away on May 31st 2022. [Read our blog post announcement.](https://www.algolia.com/blog/product/sunsetting-our-places-feature/)
+> Places is going away on May 31st 2022. [Read our blog post announcement.](https://www.algolia.com/blog/product/sunsetting-our-places-feature/)
+> Places is going away on May 31st 2022. [Read our blog post announcement.](https://www.algolia.com/blog/product/sunsetting-our-places-feature/)
+> Places is going away on May 31st 2022. [Read our blog post announcement.](https://www.algolia.com/blog/product/sunsetting-our-places-feature/)
 
 ## Introduction
 
