@@ -45,7 +45,7 @@
     "@babel/polyfill": "7.12.1",
     "@babel/preset-env": "7.16.0",
     "algolia-aerial": "1.5.3",
-    "algoliasearch-helper": "2.28.1",
+    "algoliasearch-helper": "3.6.2",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "10.1.0",
     "babel-jest": "26.6.3",
