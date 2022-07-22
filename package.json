@@ -65,7 +65,7 @@
     "eslint-plugin-prettier": "3.4.1",
     "eslint-plugin-react": "7.26.1",
     "jest-cli": "26.6.3",
-    "json": "10.0.0",
+    "json": "11.0.0",
     "prettier": "2.4.1",
     "pretty-bytes-cli": "2.0.0",
     "puppeteer": "5.5.0",
