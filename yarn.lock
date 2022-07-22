@@ -7561,10 +7561,10 @@ pend@~1.2.0:
   resolved "https://registry.yarnpkg.com/pend/-/pend-1.2.0.tgz#7a57eb550a6783f9115331fcf4663d5c8e007a50"
   integrity sha1-elfrVQpng/kRUzH89GY9XI4AelA=
 
-pending-xhr-puppeteer@1.0.17:
-  version "1.0.17"
-  resolved "https://registry.yarnpkg.com/pending-xhr-puppeteer/-/pending-xhr-puppeteer-1.0.17.tgz#7b9b17c6cd56acce3eb229a25732e130072a4eeb"
-  integrity sha512-Z5yI27414aZrkyEjjpRoSYh/5HnKWaCTcAPTq+I3D29ZdMCSJhqz3rFPWM2bX1nMScbJcsuvWbDq8lmQGPCAGA==
+pending-xhr-puppeteer@2.3.3:
+  version "2.3.3"
+  resolved "https://registry.yarnpkg.com/pending-xhr-puppeteer/-/pending-xhr-puppeteer-2.3.3.tgz#3c2fd42ed90474bc8500da8df2ed9af0cf50a9fb"
+  integrity sha512-C5nOpB3G0lBAhA+pff9ndsR7PrI9Bbkz30L78RpRfnXrG7FDsFD8xmkxYnBTiiItyywLo/+ZHQXKdK+JR+YdFA==
 
 performance-now@^2.1.0:
   version "2.1.0"
